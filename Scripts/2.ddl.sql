@@ -1,9 +1,3 @@
--- proj21_funding
-DROP SCHEMA IF EXISTS proj21_funding;
-
--- proj21_funding
-CREATE SCHEMA proj21_funding;
-
 -- 회원정보
 DROP TABLE IF EXISTS proj21_funding.UserInfo RESTRICT;
 
@@ -40,11 +34,15 @@ DROP TABLE IF EXISTS proj21_funding.BoardCategory RESTRICT;
 -- 주소
 DROP TABLE IF EXISTS proj21_funding.addresses RESTRICT;
 
+-- proj21_funding
+DROP SCHEMA IF EXISTS proj21_funding;
 
+-- proj21_funding
+CREATE SCHEMA proj21_funding;
 
 -- 회원정보
 CREATE TABLE proj21_funding.UserInfo (
-	UserNo        CHAR(10)     NOT NULL COMMENT '회원번호', -- 회원번호
+	UserNo        INT(10)      NOT NULL COMMENT '회원번호', -- 회원번호
 	UserId        VARCHAR(10)  NOT NULL COMMENT '회원계정', -- 회원계정
 	UserPw        CHAR(41)     NOT NULL COMMENT '비밀번호', -- 비밀번호
 	UserName      VARCHAR(20)  NOT NULL COMMENT '회원성명', -- 회원성명
@@ -66,7 +64,7 @@ ALTER TABLE proj21_funding.UserInfo
 
 -- 회원(판매자)
 CREATE TABLE proj21_funding.UserSeller (
-	UserNo      CHAR(10)    NOT NULL COMMENT '회원번호', -- 회원번호
+	UserNo      INT(10)     NOT NULL COMMENT '회원번호', -- 회원번호
 	BankAccount INT(20)     NOT NULL COMMENT '계좌번호', -- 계좌번호
 	BankName    VARCHAR(10) NOT NULL COMMENT '은행명' -- 은행명
 )
@@ -81,8 +79,8 @@ ALTER TABLE proj21_funding.UserSeller
 
 -- 프로젝트
 CREATE TABLE proj21_funding.Project (
-	PrjNo      CHAR(10)    NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
-	UserNo     CHAR(10)    NOT NULL COMMENT '프로젝트관리자', -- 프로젝트관리자
+	PrjNo      INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
+	UserNo     INT(10)     NOT NULL COMMENT '프로젝트관리자', -- 프로젝트관리자
 	PrjName    VARCHAR(30) NOT NULL COMMENT '프로젝트명', -- 프로젝트명
 	PrjContent LONGTEXT    NOT NULL COMMENT '프로젝트내용', -- 프로젝트내용
 	PrjGoal    INT(10)     NOT NULL COMMENT '목표금액', -- 목표금액
@@ -102,8 +100,8 @@ ALTER TABLE proj21_funding.Project
 
 -- 프로젝트구매옵션
 CREATE TABLE proj21_funding.PrjOption (
-	OptNo      CHAR(10)    NOT NULL COMMENT '옵션번호', -- 옵션번호
-	PrjNo      CHAR(10)    NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
+	OptNo      INT(10)     NOT NULL COMMENT '옵션번호', -- 옵션번호
+	PrjNo      INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
 	OptPrice   INT(10)     NOT NULL COMMENT '옵션금액', -- 옵션금액
 	OptContent VARCHAR(50) NOT NULL COMMENT '옵션내용' -- 옵션내용
 )
@@ -118,9 +116,9 @@ ALTER TABLE proj21_funding.PrjOption
 
 -- 후원정보
 CREATE TABLE proj21_funding.FundingInfo (
-	FundingNo CHAR(10) NOT NULL COMMENT '후원번호', -- 후원번호
-	UserNo    CHAR(10) NOT NULL COMMENT '회원번호', -- 회원번호
-	PrjNo     CHAR(10) NULL     COMMENT '프로젝트번호', -- 프로젝트번호
+	FundingNo INT(10)  NOT NULL COMMENT '후원번호', -- 후원번호
+	UserNo    INT(10)  NOT NULL COMMENT '회원번호', -- 회원번호
+	PrjNo     INT(10)  NULL     COMMENT '프로젝트번호', -- 프로젝트번호
 	OptNo     CHAR(10) NOT NULL COMMENT '옵션번호', -- 옵션번호
 	AccountNo INT(20)  NOT NULL COMMENT '계좌(카드)번호', -- 계좌(카드)번호
 	PayYN     TINYINT  NOT NULL DEFAULT 0 COMMENT '결제여부', -- 결제여부
@@ -137,6 +135,7 @@ ALTER TABLE proj21_funding.FundingInfo
 
 -- 관리자
 CREATE TABLE proj21_funding.Admin (
+	AdminNo   INT(10)     NOT NULL COMMENT '관리자번호', -- 관리자번호
 	AdminId   VARCHAR(10) NOT NULL COMMENT '관리자아이디', -- 관리자아이디
 	AdminPw   CHAR(41)    NOT NULL COMMENT '관리자비밀번호', -- 관리자비밀번호
 	AdminName VARCHAR(10) NULL     COMMENT '관리자이름', -- 관리자이름
@@ -148,12 +147,12 @@ COMMENT '관리자';
 ALTER TABLE proj21_funding.Admin
 	ADD CONSTRAINT PK_Admin -- 관리자 기본키
 		PRIMARY KEY (
-			AdminId -- 관리자아이디
+			AdminNo -- 관리자번호
 		);
 
 -- 메세지
 CREATE TABLE proj21_funding.Message (
-	MsgNo       CHAR(10)     NOT NULL COMMENT '메세지번호', -- 메세지번호
+	MsgNo       INT(10)      NOT NULL COMMENT '메세지번호', -- 메세지번호
 	SendUser    VARCHAR(10)  NOT NULL COMMENT '발신자', -- 발신자
 	ReceiveUser VARCHAR(10)  NOT NULL COMMENT '수신자', -- 수신자
 	MsgContent  VARCHAR(100) NOT NULL COMMENT '내용', -- 내용
@@ -172,10 +171,11 @@ ALTER TABLE proj21_funding.Message
 -- 프로젝트게시판
 CREATE TABLE proj21_funding.PrjBoard (
 	PostNo      INT(10)     NOT NULL COMMENT '게시글번호', -- 게시글번호
-	PrjNo       CHAR(10)    NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
+	PrjNo       INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
 	UserNo      CHAR(10)    NOT NULL COMMENT '글작성자', -- 글작성자
 	PostTitle   VARCHAR(50) NOT NULL COMMENT '게시글제목', -- 게시글제목
-	PostContent LONGTEXT    NOT NULL COMMENT '게시글내용' -- 게시글내용
+	PostContent LONGTEXT    NOT NULL COMMENT '게시글내용', -- 게시글내용
+	PostFile    VARCHAR(50) NULL     COMMENT '첨부파일' -- 첨부파일
 )
 COMMENT '프로젝트게시판';
 
@@ -192,12 +192,14 @@ ALTER TABLE proj21_funding.PrjBoard
 
 -- Q&A
 CREATE TABLE proj21_funding.QnA (
-	QnaNo      CHAR(10)     NOT NULL COMMENT '문의번호', -- 문의번호
-	UserNo     CHAR(10)     NOT NULL COMMENT '문의작성자', -- 문의작성자
-	AdminId    VARCHAR(10)  NOT NULL COMMENT '답글작성자', -- 답글작성자
+	QnaNo      INT(10)      NOT NULL COMMENT '문의번호', -- 문의번호
+	UserNo     INT(10)      NOT NULL COMMENT '문의작성자', -- 문의작성자
+	AdminNo    INT(10)      NULL     COMMENT '답변작성자', -- 답변작성자
+	CategoryNo INT(1)       NOT NULL COMMENT '글 분류', -- 글 분류
 	QnaTitle   VARCHAR(50)  NOT NULL COMMENT '문의제목', -- 문의제목
 	QnaContent LONGTEXT     NOT NULL COMMENT '문의내용', -- 문의내용
-	QnaReply   VARCHAR(300) NOT NULL COMMENT '문의답변' -- 문의답변
+	QnaReply   VARCHAR(300) NULL     COMMENT '문의답변', -- 문의답변
+	QnaFile    VARCHAR(50)  NULL     COMMENT '문의첨부파일' -- 문의첨부파일
 )
 COMMENT 'Q&A';
 
@@ -210,8 +212,8 @@ ALTER TABLE proj21_funding.QnA
 
 -- 사이트게시판
 CREATE TABLE proj21_funding.Board (
-	BoardNo        CHAR(10)    NOT NULL COMMENT '게시글번호', -- 게시글번호
-	CategoryNo     INT(1)      NOT NULL COMMENT '게시글 분류', -- 게시글 분류
+	BoardNo        INT(10)     NOT NULL COMMENT '게시글번호', -- 게시글번호
+	CategoryNo     INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
 	BoardTitle     VARCHAR(50) NOT NULL COMMENT '공지제목', -- 공지제목
 	BoardContent   LONGTEXT    NOT NULL COMMENT '공지내용', -- 공지내용
 	BoardDate      DATE        NOT NULL COMMENT '작성일', -- 작성일
@@ -228,7 +230,7 @@ ALTER TABLE proj21_funding.Board
 
 -- 글분류
 CREATE TABLE proj21_funding.BoardCategory (
-	CategoryNo   INT(1)      NOT NULL COMMENT '게시글 분류', -- 게시글 분류
+	CategoryNo   INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
 	CategoryName VARCHAR(10) NOT NULL COMMENT '분류명' -- 분류명
 )
 COMMENT '글분류';
@@ -237,7 +239,7 @@ COMMENT '글분류';
 ALTER TABLE proj21_funding.BoardCategory
 	ADD CONSTRAINT PK_BoardCategory -- 글분류 기본키
 		PRIMARY KEY (
-			CategoryNo -- 게시글 분류
+			CategoryNo -- 글 분류
 		);
 
 -- 주소
@@ -330,20 +332,30 @@ ALTER TABLE proj21_funding.QnA
 
 -- Q&A
 ALTER TABLE proj21_funding.QnA
+	ADD CONSTRAINT FK_BoardCategory_TO_QnA -- 글분류 -> Q&A
+		FOREIGN KEY (
+			CategoryNo -- 글 분류
+		)
+		REFERENCES proj21_funding.BoardCategory ( -- 글분류
+			CategoryNo -- 글 분류
+		);
+
+-- Q&A
+ALTER TABLE proj21_funding.QnA
 	ADD CONSTRAINT FK_Admin_TO_QnA -- 관리자 -> Q&A
 		FOREIGN KEY (
-			AdminId -- 답글작성자
+			AdminNo -- 답변작성자
 		)
 		REFERENCES proj21_funding.Admin ( -- 관리자
-			AdminId -- 관리자아이디
+			AdminNo -- 관리자번호
 		);
 
 -- 사이트게시판
 ALTER TABLE proj21_funding.Board
 	ADD CONSTRAINT FK_BoardCategory_TO_Board -- 글분류 -> 사이트게시판
 		FOREIGN KEY (
-			CategoryNo -- 게시글 분류
+			CategoryNo -- 글 분류
 		)
 		REFERENCES proj21_funding.BoardCategory ( -- 글분류
-			CategoryNo -- 게시글 분류
+			CategoryNo -- 글 분류
 		);
