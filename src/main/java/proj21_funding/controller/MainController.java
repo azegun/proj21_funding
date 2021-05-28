@@ -25,5 +25,14 @@ public class MainController {
 		return "board_servicecenter/servicecenter_view";
 	}
 	
+	@RequestMapping("/login/login")
+	public String login() {
+		return "login/login";
+	}
+	
+	@RequestMapping("/login/signUp")
+	public String signUp() {
+		return "login/signUp";
+	}
 
 }
