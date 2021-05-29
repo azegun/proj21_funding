@@ -1,35 +1,37 @@
--- 회원정보
-DROP TABLE IF EXISTS proj21_funding.UserInfo RESTRICT;
-
--- 회원(판매자)
-DROP TABLE IF EXISTS proj21_funding.UserSeller RESTRICT;
-
--- 프로젝트
-DROP TABLE IF EXISTS proj21_funding.Project RESTRICT;
+-- 후원정보
+DROP TABLE IF EXISTS proj21_funding.FundingInfo RESTRICT;
 
 -- 프로젝트구매옵션
 DROP TABLE IF EXISTS proj21_funding.PrjOption RESTRICT;
 
--- 후원정보
-DROP TABLE IF EXISTS proj21_funding.FundingInfo RESTRICT;
+-- 프로젝트게시판
+DROP TABLE IF EXISTS proj21_funding.PrjBoard RESTRICT;
+
+-- 프로젝트
+DROP TABLE IF EXISTS proj21_funding.Project RESTRICT;
+
+
+-- Q&A
+DROP TABLE IF EXISTS proj21_funding.QnA RESTRICT;
+
 
 -- 관리자
 DROP TABLE IF EXISTS proj21_funding.Admin RESTRICT;
 
--- 메세지
-DROP TABLE IF EXISTS proj21_funding.Message RESTRICT;
+-- 회원(판매자)
+DROP TABLE IF EXISTS proj21_funding.UserSeller RESTRICT;
 
--- 프로젝트게시판
-DROP TABLE IF EXISTS proj21_funding.PrjBoard RESTRICT;
-
--- Q&A
-DROP TABLE IF EXISTS proj21_funding.QnA RESTRICT;
+-- 회원정보
+DROP TABLE IF EXISTS proj21_funding.UserInfo RESTRICT;
 
 -- 사이트게시판
 DROP TABLE IF EXISTS proj21_funding.Board RESTRICT;
 
 -- 글분류
 DROP TABLE IF EXISTS proj21_funding.BoardCategory RESTRICT;
+
+-- 메세지
+DROP TABLE IF EXISTS proj21_funding.Message RESTRICT;
 
 -- 주소
 DROP TABLE IF EXISTS proj21_funding.addresses RESTRICT;
