@@ -9,7 +9,7 @@
 </head>
 <body>
 		<div class= account_menu>
-				<a href = "/proj21_funding/include/header_account_menu" ><span>김상건</span>님 환영합니다.</a>
+				<a href = "/proj21_funding/home/header_logmenu" ><span>김상건</span>님 환영합니다.</a>
 		</div>
 
 </body>

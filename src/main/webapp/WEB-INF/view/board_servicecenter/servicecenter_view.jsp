@@ -6,15 +6,13 @@
 <meta charset="UTF-8">
 <title>고객센터</title>
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
-
-<link rel="stylesheet" href="/proj21_funding/home_css/header.css">
-<link rel="stylesheet" href="/proj21_funding/home_css/footer.css">
 <link rel="stylesheet" href="/proj21_funding/home_css/main.css">
 </head>
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/include/header_top.jsp"/>
+			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
 	<h2>고객센터</h2>
 	<nav>
@@ -47,7 +45,7 @@
 	<button>1:1 문의하기</button></a>
 	</p>
 		<footer>
-			<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>
 		</div>
 </body>

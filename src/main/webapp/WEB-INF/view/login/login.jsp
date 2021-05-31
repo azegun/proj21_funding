@@ -6,12 +6,11 @@
 <meta charset="UTF-8">
 <title>로그인 화면</title>
 <link rel="stylesheet" href="proj21_funding/css/login.css">
-<link rel="stylesheet" href="proj21_funding/css/header.css">
 </head>
 <body>
 	<div class="container">
-		<header>		   
-			<jsp:include page="/WEB-INF/view/include/header.jsp"/> 
+		<header>		  
+		<jsp:include page="/WEB-INF/view/home/header_top.jsp"/>  
 		</header>
 		<section id="loginFormArea">
 			<h1>로그인</h1>

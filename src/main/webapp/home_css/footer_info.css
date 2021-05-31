@@ -1,5 +1,10 @@
 @charset "UTF-8";
 .context p{
-	margin-top: 60px;
 	margin-left: 20px;
+}
+#context_top{
+	margin-top: 55px;
+}
+#context_bottom{
+	margin-top: 40px;
 }
