@@ -36,12 +36,6 @@ select
 	BankAcoount, BankName
 from userinfo;
 
--- UserSeller(판매자) - UserInfo에서 외래키 받음
-select 
-	UserNo, BankAccount, BankName 
-from userseller;
-
-
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
