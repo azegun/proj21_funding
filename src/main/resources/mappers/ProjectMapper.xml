@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_funding.mapper.ProjectMapper">
+
+<!-- 	<resultMap type="Project" id="resProject">
+		<id column="PrjNo" property="prjNo" />
+		<result column></result>
+	</resultMap>
+ -->
+ 
+	<select id="selectProjectListAll" resultType="Project">
+		select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
+		StartDate, EndDate,	PayDate, EndYN
+		from project;
+	</select>
+</mapper>

@@ -3,3 +3,14 @@
 [DEBUG] [2021-05-27 16:44] LoginTimeout 30
 [DEBUG] [2021-05-27 16:45] testSqlSession()
 [DEBUG] [2021-05-27 16:45] session org.apache.ibatis.session.defaults.DefaultSqlSession@2db2a05f
+[DEBUG] [2021-05-31 16:46] testSelectProjectListAll()
+[DEBUG] [2021-05-31 17:02] testSelectProjectListAll()
+[DEBUG] [2021-05-31 17:02] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-05-31 17:02] ==> Parameters: 
+[DEBUG] [2021-05-31 17:04] testSelectProjectListAll()
+[DEBUG] [2021-05-31 17:04] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-05-31 17:04] ==> Parameters: 
+[TRACE] [2021-05-31 17:04] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-05-31 17:04] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 1000000, 2021-05-31 15:39:58.0, 2021-05-31 15:39:58.0, 2021-05-31 15:39:58.0, 1
+[TRACE] [2021-05-31 17:04] <==        Row: 2, 1, 홈페이지만들기, <<BLOB>>, 5000000, 2021-05-31 15:39:58.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-05-31 17:04] <==      Total: 2

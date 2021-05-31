@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("web_funding_prj.mapper")
+@MapperScan("proj21_funding.mapper")
 public class ContextSqlSession {
 
 	@Autowired
@@ -23,9 +23,9 @@ public class ContextSqlSession {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setConfigLocation(applicationContext.getResource("classpath:/mybatis-config.xml"));
-	//mapper 사용할 때 주석 풀기.
-	//factoryBean.setMapperLocations(applicationContext.getResources("classpath:/mappers/*Mapper.xml"));
- 		return factoryBean;
+		// mapper 사용할 때 주석 풀기.
+		factoryBean.setMapperLocations(applicationContext.getResources("classpath:/mappers/*Mapper.xml"));
+		return factoryBean;
 	}
 
 	@Bean
