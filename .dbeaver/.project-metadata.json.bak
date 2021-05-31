@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-{"resources":{"Scripts/1.grant.sql":{"sql-editor-data-source-id":"mysql5-179acf93577-4cb54e6a44cc6e0a","default-datasource":"mysql5-179acf93577-4cb54e6a44cc6e0a"},"Scripts/2.ddl.sql":{"sql-editor-data-source-id":"mysql5-179acf9c38d-23538d3452d44717","default-datasource":"mysql5-179acf9c38d-23538d3452d44717","default-catalog":"proj21_funding"},"Scripts/3.dml.sql":{"sql-editor-data-source-id":"mysql5-179acf9c38d-23538d3452d44717","default-datasource":"mysql5-179acf9c38d-23538d3452d44717","default-catalog":"proj21_funding"},"Scripts/test.sql":{"sql-editor-data-source-id":"mysql5-179acf9c38d-23538d3452d44717","default-datasource":"mysql5-179acf9c38d-23538d3452d44717","default-catalog":"proj21_funding"}}}
-=======
-{"resources":{"Scripts/1.grant.sql":{"sql-editor-data-source-id":"mysql5-179bfc1402a-6ce66dd83ac1c0b8","default-datasource":"mysql5-179bfc1402a-6ce66dd83ac1c0b8"}}}
->>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git
