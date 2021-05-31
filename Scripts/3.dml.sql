@@ -25,7 +25,7 @@ insert into boardcategory  values
 
 #default값 없이
 insert into boardcategory (CategoryName)
-	values ('이벤트')
+	values ('이벤트');
 
 	
 	
@@ -84,7 +84,7 @@ insert into qna  values
 
 #default값 null값 제외
 insert into qna (UserNo,CategoryNo,QnaTitle,QnaContent)
-values(2,2,'이벤트','언제시작?')
+values(2,2,'이벤트','언제시작?');
 
 
 
@@ -116,7 +116,7 @@ insert into fundinginfo values
 (00001, 00001, 00001, 00001, 000000001, 0,0);
 #default값 null값 제외
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
-values (2, 2, 2, 12341234 )
+values (2, 2, 2, 12341234 );
 
 
 
@@ -130,7 +130,7 @@ insert into prjoption values
 (00001, 00001, 30000, '가방2개+연필1자루');
 #default값 null값 제외
 insert into prjoption (prjno,OptPrice,OptContent)
-values (2, 300000, '옵션B')
+values (2, 300000, '옵션B');
 
 
 
@@ -145,7 +145,7 @@ insert into prjboard values
 #default값 null값 제외
 insert into prjboard (PrjNo, UserNo,
 	PostTitle, PostContent )
-values (2, 2, '진행','잘되고있어요')
+values (2, 2, '진행','잘되고있어요');
 
 
 
