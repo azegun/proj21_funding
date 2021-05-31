@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
-	
+	//home에서 프로젝트 둘러보기
 	@RequestMapping("/home/menu")
 	public String menu() {
 		return "home/menu";
 	}
-	
+	//home에서 개인정보 보는거
 	@RequestMapping("/home/header_logmenu")
 	public String logonMenu() {
 		return "home/header_logmenu";
