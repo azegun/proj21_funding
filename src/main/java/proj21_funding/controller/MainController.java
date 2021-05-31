@@ -20,9 +20,15 @@ public class MainController {
 	public String write_ServiceCenter(){
 		return "board_servicecenter/servicecenter_write";
 	}
-	@RequestMapping("/board_servicecenter/servicecenter_view")
-	public String view_ServiceCenter() {
-		return "board_servicecenter/servicecenter_view";
+	
+	@RequestMapping("/board_servicecenter/servicecenter_view_all")
+	public String view_all_ServiceCenter() {
+		return "board_servicecenter/servicecenter_view_all";
+	}
+	
+	@RequestMapping("/board_servicecenter/servicecenter_view_user")
+	public String view_user_ServiceCenter() {
+		return "board_servicecenter/servicecenter_view_user";
 	}
 	
 	@RequestMapping("/login/login")

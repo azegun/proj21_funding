@@ -11,7 +11,7 @@
 			<div class = "footer_menu">
 				<a href = "">공지사항</a>
 				<a href = "">이용약관</a>
-				<a href = "/proj21_funding/board_servicecenter/servicecenter_view">고객센터</a>
+				<a href = "/proj21_funding/board_servicecenter/servicecenter_view_all">고객센터</a>
 			</div>
 			<div class= "footer_question">
 				<a href = "/proj21_funding/board_servicecenter/servicecenter_write">문의하기</a>
