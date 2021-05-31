@@ -25,7 +25,8 @@ public class Admin {
 		this.adminName = adminName;
 		this.adminTel = adminTel;
 	}
-
+	
+	/* getter & setter */
 	public String getAdminId() {
 		return adminId;
 	}
@@ -57,7 +58,8 @@ public class Admin {
 	public void setAdminTel(String adminTel) {
 		this.adminTel = adminTel;
 	}
-
+	
+	/* toString */
 	@Override
 	public String toString() {
 		return "Admin [adminId=" + adminId + ", adminPw=" + adminPw + ", adminName=" + adminName + ", adminTel="

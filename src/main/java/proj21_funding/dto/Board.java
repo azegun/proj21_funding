@@ -5,7 +5,7 @@ import java.util.Date;
 public class Board {
 
 	private int boardNo; // 게시글번호
-	private BoardCategory categoryNo; // 게시글 분류
+	private BoardCategory categoryNo; // 글 분류
 	private String boardTitle; // 공지제목
 	private String boardContent; // 공지내용
 	private Date boardDate; // 작성일
@@ -25,7 +25,14 @@ public class Board {
 		this.boardDate = boardDate;
 		this.boardReadCount = boardReadCount;
 	}
+	
+	/* 카테고리 분류로 검색 */
+	public Board(BoardCategory categoryNo) {
+		super();
+		this.categoryNo = categoryNo;
+	}
 
+	/* getter & setter */
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -73,7 +80,8 @@ public class Board {
 	public void setBoardReadCount(int boardReadCount) {
 		this.boardReadCount = boardReadCount;
 	}
-
+	
+	/* toString */
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", categoryNo=" + categoryNo + ", boardTitle=" + boardTitle
