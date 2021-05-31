@@ -14,6 +14,7 @@ public class BoardCategory {
 		this.categoryName = categoryName;
 	}
 
+	/* getter & setter*/
 	public int getCategoryNo() {
 		return categoryNo;
 	}
@@ -30,6 +31,7 @@ public class BoardCategory {
 		this.categoryName = categoryName;
 	}
 
+	/* toString */
 	@Override
 	public String toString() {
 		return "BoardCategory [categoryNo=" + categoryNo + ", categoryName=" + categoryName + "]";
