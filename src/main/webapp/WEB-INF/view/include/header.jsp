@@ -5,14 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
-<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="/proj21_funding/home_css/header.css">
 </head>
-<body>							
-					<a href= "/proj21_funding/main" class = "title">100펀딩</a>
-					<span class="left"> 						
-						<a href="/proj21_funding/include/menu">프로젝트 둘러보기</a>
-						<a href="">프로젝트 올리기</a>						
-					</span>
+<body>					
+					<div id = "header_main">
+							<jsp:include page="/WEB-INF/view/include/header_top.jsp"/>
+					</div>		
+					<div id = "header_account">
+							<jsp:include page="/WEB-INF/view/include/header_account.jsp"/>					
+					</div>
+					<div id = "header_menu">
+						<jsp:include page="/WEB-INF/view/include/header_menu.jsp"/>	
+					</div>							
 
 </body>
 </html>

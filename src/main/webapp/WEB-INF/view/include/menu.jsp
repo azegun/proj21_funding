@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Menu</title>
-<link rel="stylesheet" href="/proj21_funding/css/menu.css">
+<link rel="stylesheet" href="/proj21_funding/home_css/menu.css">
 </head>
 <body>
 		<div class = project_all>

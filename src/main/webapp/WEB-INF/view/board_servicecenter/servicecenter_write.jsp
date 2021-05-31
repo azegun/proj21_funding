@@ -6,13 +6,15 @@
 <meta charset="UTF-8">
 <title>문의하기 | 고객센터</title>
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_write.css">
-<link rel="stylesheet" href="/proj21_funding/css/header.css">
-<link rel="stylesheet" href="/proj21_funding/css/footer.css">
+
+<link rel="stylesheet" href="/proj21_funding/home_css/header.css">
+<link rel="stylesheet" href="/proj21_funding/home_css/footer.css">
+<link rel="stylesheet" href="/proj21_funding/home_css/main.css">
 </head>
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+			<jsp:include page="/WEB-INF/view/include/header_top.jsp"/>
 		</header>
 	<h2>문의하기</h2>
 	<form action="#">
@@ -44,7 +46,8 @@
 			<input type="reset" value="다시쓰기">
 		</section>
 		<footer>
-			<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+			<jsp:include page="/WEB-INF/view/include/footer_menu.jsp"/>
+			<jsp:include page="/WEB-INF/view/include/footer_info.jsp"/>
 		</footer>
 		
 	</form>

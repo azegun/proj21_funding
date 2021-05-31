@@ -1,8 +1,12 @@
 @charset "UTF-8";
-a{
-	float:left;
+.go_menu{
+	margin-top: 40px;
+}
+.go_menu a{
+	/* float:left; */
 	margin-left: 20px;
 	text-decoration: none;
 	color:black;
 	font-size: 18px;
+
 }

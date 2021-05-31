@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.header_menu a{
+	/* font-family: 'Nanum Pen Script', cursive; */
+	font-size:25px;
+	margin:0 auto;
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+}
+
+.header_menu a:hover {
+	color:grey;
+}
