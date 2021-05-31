@@ -1,19 +1,19 @@
 package proj21_funding.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
 	
-	@GetMapping("/main")
-	public String main() {
-		return "main";
-	}
 	@RequestMapping("/include/menu")
 	public String menu() {
 		return "include/menu";
+	}
+	
+	@RequestMapping("/include/header_logmenu")
+	public String logonMenu() {
+		return "include/header_logmenu";
 	}
 	//맵핑할때 view안에 있는 폴더이면 꼭! 위치 설정해주세요. 밑에처럼
 	@RequestMapping("/board_servicecenter/servicecenter_write")

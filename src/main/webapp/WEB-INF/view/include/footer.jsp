@@ -9,7 +9,7 @@
 </head>
 <body>
 			<div class = "footer_menu">
-					<jsp:include page="/WEB-INF/view/include/footer_menu.jsp"/>
+					<jsp:include page="/WEB-INF/view/include/footer_menu.jsp"/>			
 			</div>
 			<div class= "footer_question">
 					<jsp:include page="/WEB-INF/view/include/footer_question.jsp"/>

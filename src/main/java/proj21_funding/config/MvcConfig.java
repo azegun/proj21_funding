@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -25,10 +26,10 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.jsp("/WEB-INF/view/", ".jsp");
 	}	
 
-//	@Override
-//	public void addViewControllers(ViewControllerRegistry registry) {
-//		registry.addViewController("/main").setViewName("main");
-//	}
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/main").setViewName("main");
+	}
 	
 	@Bean
 	public MessageSource messageSource() {

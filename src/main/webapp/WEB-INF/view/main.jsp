@@ -11,6 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
 <script>
 	$(document).ready(function() {
 		$('.slider').bxSlider();
