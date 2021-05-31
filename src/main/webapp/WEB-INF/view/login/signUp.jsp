@@ -6,12 +6,11 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="proj21_funding/css/signUp.css">
-<link rel="stylesheet" href="proj21_funding/css/header.css">
 </head>
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/include/header.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
 		<section id="signUpForm">
 			<h2>회원 가입</h2>		

@@ -22,13 +22,13 @@
 	<!-- 페이지마다 .container해서 main.css에 있는 css비율대로 마진이랑 맞추기 -->
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
 		<section>
-			<jsp:include page="/WEB-INF/view/include/main_section.jsp"/>		
+			<jsp:include page="/WEB-INF/view/home/main_section.jsp"/>		
 		</section>
 		<footer>
-			<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 		</footer>
 	</div>
 </body>

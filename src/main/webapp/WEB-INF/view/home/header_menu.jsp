@@ -9,7 +9,7 @@
 </head>
 <body>
 					<span class="header_menu"> 						
-						<a href="/proj21_funding/include/menu">프로젝트 둘러보기</a>
+						<a href="/proj21_funding/home/menu">프로젝트 둘러보기</a>
 						<a href="">프로젝트 올리기</a>						
 					</span>	
 

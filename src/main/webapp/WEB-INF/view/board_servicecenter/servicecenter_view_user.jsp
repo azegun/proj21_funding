@@ -11,8 +11,8 @@
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/include/header_top.jsp"/>
-			<jsp:include page="/WEB-INF/view/include/header_account.jsp"/>
+			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
 	<h2>고객센터</h2>
 	<nav>
@@ -32,7 +32,7 @@
 	<!-- 페이지 구성 자체는 동일하게 만들면 될 듯. 클릭시 내 질문 내역과 답변 내역 한 눈에 볼 수 있게. -->
 	</p>
 		<footer>
-			<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>
 		</div>
 </body>

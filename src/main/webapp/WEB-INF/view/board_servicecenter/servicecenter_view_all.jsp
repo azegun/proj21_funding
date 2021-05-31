@@ -11,8 +11,8 @@
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/include/header_top.jsp"/>
-			<jsp:include page="/WEB-INF/view/include/header_account.jsp"/>
+			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
 	<h2>고객센터</h2>
 	<nav>
@@ -36,7 +36,7 @@
 	<button>1:1 문의하기</button></a>
 	</p>
 		<footer>
-			<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>
 		</div>
 </body>
