@@ -4,7 +4,8 @@
 }
 .go_menu a{
 	/* float:left; */
-	margin-left: 20px;
+	margin-left: 50px;
+	margin-right: 50px;
 	text-decoration: none;
 	color:black;
 	font-size: 18px;

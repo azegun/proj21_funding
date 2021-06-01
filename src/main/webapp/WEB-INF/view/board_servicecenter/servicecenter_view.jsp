@@ -9,11 +9,12 @@
 <link rel="stylesheet" href="/proj21_funding/home_css/main.css">
 </head>
 <body>
-	<div class="container">
+	<section class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
+	<section class = "sevicecenter_view">
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
@@ -47,7 +48,8 @@
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>
-		</div>
+		</section>
+		</section>
 </body>
 </html>
 
