@@ -36,8 +36,8 @@ select
 	BankAccount, BankName
 from userinfo;
 
-delete from userinfo where userNo >3;
-
+delete from userinfo where userNo >2;
+alter table userinfo auto_increment=3;
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
 	QnaNo, UserNo, AdminNo, CategoryNo,

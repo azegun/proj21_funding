@@ -15,7 +15,7 @@
 			<fieldset>
 				<h1> 가입이 완료되었습니다.</h1>				
 			</fieldset>			
-			<a href="<c:url value='/login/login'/>"><button>로그인화면으로</button></a>
+			<a href="<c:url value='/login'/>"><button>로그인화면으로</button></a>
 			<a href="<c:url value='/main'/>"><button>메인으로</button></a>			
 		</section>		
 	</div>

@@ -1,6 +1,6 @@
 package proj21_funding.dto;
 
-//회원정보
+// 회원정보 
 public class UserInfo {
 	private int userNo; // 회원번호
 	private String userId; // 회원계정
@@ -117,6 +117,10 @@ public class UserInfo {
 		this.bankName = bankName;
 	}
 
+	public boolean matchPassword(String userPw) {
+		return this.userPw.equals(userPw);		
+	}
+	
 	@Override
 	public String toString() {
 		return String.format(

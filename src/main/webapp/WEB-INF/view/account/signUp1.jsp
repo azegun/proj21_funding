@@ -15,7 +15,8 @@
 		</header>
 		<section id="signUpForm">
 			<h2>회원 가입</h2>		
-			<form:form action="signUp2" modelAttribute="registerRequest">			
+			<form:form action="signUp2" modelAttribute="registerRequest">	
+			<form:errors />		
 			<fieldset id="signForm">
 				<p>
 					<label> 회원계정 :
@@ -76,8 +77,8 @@
 					<form:input path="bankName" /> 
 					<form:errors path="bankName" />
 					</label>
-				</p>				
-				<P><a href="#" id="Terms">이용약관보기</a></P>
+				</p>						
+				<P><a href="#" id="Terms">이용약관보기</a></P>					
 				<label><input type="checkbox" name="agree" value="true">동의하기</label>			
 				<input type="submit" value="가입하기" id="submit">			
 			</fieldset>			
