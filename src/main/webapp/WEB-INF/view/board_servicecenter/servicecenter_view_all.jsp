@@ -14,6 +14,7 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
+	<section class = "sevicecenter_view">
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
@@ -35,6 +36,7 @@
 	<p><a href="/proj21_funding/board_servicecenter/servicecenter_write">
 	<button>1:1 문의하기</button></a>
 	</p>
+	</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>

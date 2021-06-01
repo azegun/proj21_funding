@@ -1,5 +1,8 @@
 @charset "UTF-8";
 .container{
 	margin:0 auto;
-	width:80%;	
+	width:80%;		
+}
+.sevicecenter_write{
+	margin-left: 50px;
 }

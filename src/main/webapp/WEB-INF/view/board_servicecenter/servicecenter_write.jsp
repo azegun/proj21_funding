@@ -9,11 +9,12 @@
 <link rel="stylesheet" href="/proj21_funding/home_css/main.css">
 </head>
 <body>
-	<div class="container">
+	<section class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
+	<section class = "sevicecenter_write">
 	<h2>문의하기</h2>
 	<form action="#">
 		<table>
@@ -43,12 +44,14 @@
 			<input type="submit" value="등록">&nbsp;&nbsp;
 			<input type="reset" value="다시쓰기">
 		</section>
+			</form>
+		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer_menu.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/footer_info.jsp"/> 
-		</footer>
-		
-	</form>
-	</div>
+		</footer>		
+
+	
+	</section>
 </body>
 </html>

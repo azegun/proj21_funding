@@ -1,0 +1,18 @@
+@charset "UTF-8";
+#bottom h3, #bottom_first{
+	margin-left: 60px;	
+}
+#bottom div{
+	border: 1px solid black;
+	display: inline-block;
+	height: 300px;
+	width: 270px;
+}
+#bottom_first{
+}
+#bottom_second{
+	
+}
+#bottom_third{
+	
+}
