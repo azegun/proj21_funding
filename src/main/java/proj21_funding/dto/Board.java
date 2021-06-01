@@ -81,12 +81,11 @@ public class Board {
 		this.boardReadCount = boardReadCount;
 	}
 	
-	/* toString */
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", categoryNo=" + categoryNo + ", boardTitle=" + boardTitle
-				+ ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", boardReadCount=" + boardReadCount
-				+ "]";
+		return String.format(
+				"Board [boardNo=%s, categoryNo=%s, boardTitle=%s, boardContent=%s, boardDate=%s, boardReadCount=%s]",
+				boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount);
 	}
 
 }

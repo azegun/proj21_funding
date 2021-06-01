@@ -1,7 +1,7 @@
 package proj21_funding.dto;
 
 public class Admin {
-
+	private int adminNo;//관리자번호
 	private String adminId; // 관리자아이디
 	private String adminPw; // 관리자비밀번호
 	private String adminName; // 관리자이름
@@ -19,6 +19,15 @@ public class Admin {
 		this.adminTel = adminTel;
 	}
 
+	public Admin(int adminNo, String adminId, String adminPw, String adminName, String adminTel) {
+		super();
+		this.adminNo = adminNo;
+		this.adminId = adminId;
+		this.adminPw = adminPw;
+		this.adminName = adminName;
+		this.adminTel = adminTel;
+	}
+
 	public Admin(String adminId, String adminName, String adminTel) {
 		super();
 		this.adminId = adminId;
@@ -27,8 +36,17 @@ public class Admin {
 	}
 	
 	/* getter & setter */
+	
 	public String getAdminId() {
 		return adminId;
+	}
+
+	public int getAdminNo() {
+		return adminNo;
+	}
+
+	public void setAdminNo(int adminNo) {
+		this.adminNo = adminNo;
 	}
 
 	public void setAdminId(String adminId) {
@@ -59,11 +77,10 @@ public class Admin {
 		this.adminTel = adminTel;
 	}
 	
-	/* toString */
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", adminPw=" + adminPw + ", adminName=" + adminName + ", adminTel="
-				+ adminTel + "]";
+		return String.format("Admin [adminNo=%s, adminId=%s, adminPw=%s, adminName=%s, adminTel=%s]", adminNo, adminId,
+				adminPw, adminName, adminTel);
 	}
 
 }
