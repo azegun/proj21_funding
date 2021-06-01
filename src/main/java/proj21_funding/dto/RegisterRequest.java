@@ -1,50 +1,31 @@
 package proj21_funding.dto;
 
-//회원정보
-public class UserInfo {
-	private int userNo; // 회원번호
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+public class RegisterRequest {
+	@NotBlank	
+	@Size(min = 4)
 	private String userId; // 회원계정
-	private String userPw; // 비밀번호
-	private String userName; // 회원성명
+	@NotBlank
+	@Size(min = 4)
+	private String userPw; // 비밀번호	
+	@NotBlank
+	@Size(min = 4)
+	private String confirmUserPw; // 비밀번호확인
+	@NotBlank
+	private String userName; // 회원성명	
+	@NotBlank
 	private String address; // 주소
-	private String detailAddress;// 상세주소
+	private String detailAddress; // 상세주소
 	private String userPhone; // 회원H.P
+	@Email
 	private String email; // 이메일
 	private int bankAccount; // 계좌번호
 	private String bankName; // 은행명
 
-	// 생성자
-	public UserInfo() {
-	}
-
-	// 회원번호
-	public UserInfo(int userNo) {
-		this.userNo = userNo;
-	}
-	
-	//회원가입
-	public UserInfo(String userId, String userPw, String userName, String address, String detailAddress,
-			String userPhone, String email, int bankAccount, String bankName) {
-		this.userId = userId;
-		this.userPw = userPw;
-		this.userName = userName;
-		this.address = address;
-		this.detailAddress = detailAddress;
-		this.userPhone = userPhone;
-		this.email = email;
-		this.bankAccount = bankAccount;
-		this.bankName = bankName;
-	}
-
 	// getter & setter
-	public int getUserNo() {
-		return userNo;
-	}
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
-
 	public String getUserId() {
 		return userId;
 	}
@@ -59,6 +40,14 @@ public class UserInfo {
 
 	public void setUserPw(String userPw) {
 		this.userPw = userPw;
+	}
+
+	public String getConfirmUserPw() {
+		return confirmUserPw;
+	}
+
+	public void setConfirmUserPw(String confirmUserPw) {
+		this.confirmUserPw = confirmUserPw;
 	}
 
 	public String getUserName() {
@@ -117,11 +106,16 @@ public class UserInfo {
 		this.bankName = bankName;
 	}
 
+	public boolean isPasswordEqualToComfirmPassword() {
+		return userPw.equals(confirmUserPw);
+	}
+
 	@Override
 	public String toString() {
 		return String.format(
-				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, address=%s, detailAddress=%s, userPhone=%s, email=%s, bankAccount=%s, bankName=%s]",
-				userNo, userId, userPw, userName, address, detailAddress, userPhone, email, bankAccount, bankName);
+				"RegisterRequest [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, address=%s, detailAddress=%s, userPhone=%s, email=%s, bankAccount=%s, bankName=%s]",
+				userId, userPw, confirmUserPw, userName, address, detailAddress, userPhone, email, bankAccount,
+				bankName);
 	}
 
 }

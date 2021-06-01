@@ -33,9 +33,10 @@ from admin;
 select 
 	UserNo, UserId, UserPw, UserName,
 	Address, DetailAddress, UserPhone, Email,
-	BankAcoount, BankName
+	BankAccount, BankName
 from userinfo;
 
+delete from userinfo where userNo >3;
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 

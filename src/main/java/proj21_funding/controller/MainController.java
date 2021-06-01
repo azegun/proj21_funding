@@ -31,14 +31,8 @@ public class MainController {
 		return "board_servicecenter/servicecenter_view_user";
 	}
 	
-	@RequestMapping("/login/login")
+	@RequestMapping("/account/login")
 	public String login() {
-		return "login/login";
+		return "account/login";
 	}
-	
-	@RequestMapping("/login/signUp")
-	public String signUp() {
-		return "login/signUp";
-	}
-
 }
