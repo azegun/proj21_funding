@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>풋터 인포</title>
-		<link rel="stylesheet" href=" <%=request.getContextPath() %>/home_css/footer_info.css">
+		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/footer_info.css">
 </head>
 <body>
 			<div class = "context">

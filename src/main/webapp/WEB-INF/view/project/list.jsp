@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/proj21_funding/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 
 </head>
 <body>

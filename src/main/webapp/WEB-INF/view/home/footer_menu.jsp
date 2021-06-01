@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<title>풋터 메뉴</title>
 		<link rel="stylesheet" href="/proj21_funding/home_css/footer_menu.css">
-		<link rel="stylesheet" href=" <%=request.getContextPath() %>/home_css/footer_menu.css">
+		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/footer_menu.css">
 </head>
 <body>	
 				<div class = "go_menu">

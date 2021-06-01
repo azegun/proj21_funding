@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>헤더 메뉴</title>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/home_css/header_menu.css">
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/header_menu.css">
 </head>
 <body>
 					<div class="header_menu"> 						

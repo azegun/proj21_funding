@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>고객센터</title>
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
-<link rel="stylesheet" href="/proj21_funding/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
 	<div class="container">

@@ -6,7 +6,7 @@
 <head>
 			<meta charset="UTF-8">
 			<title>Info Top</title>
-			<link rel="stylesheet" href=" <%=request.getContextPath() %>/upload_css/info_top.css">
+			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/info_top.css">
 </head>
 <body>
 			 <!-- 프로모션 배너 -->

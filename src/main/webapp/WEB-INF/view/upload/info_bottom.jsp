@@ -5,7 +5,7 @@
 <head>
 			<meta charset="UTF-8">
 			<title>Info Bottom</title>
-			<link rel="stylesheet" href=" <%=request.getContextPath() %>/upload_css/info_bottom.css">
+			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/info_bottom.css">
 </head>
 <body>
 			<section id = "bottom" >			

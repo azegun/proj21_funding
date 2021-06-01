@@ -1,0 +1,16 @@
+@charset "UTF-8";
+h2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}
+#register_content{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}
+#register_btns{
+	text-align: center;
+}

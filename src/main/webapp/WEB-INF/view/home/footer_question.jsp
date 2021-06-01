@@ -5,7 +5,7 @@
 		<head>
 		<meta charset="UTF-8">
 		<title>풋터 문의</title>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/home_css/footer_question.css">
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/footer_question.css">
 		
 </head>
 <body>

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>로그인 화면</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
 </head>
 <body>
 	<div class="container">

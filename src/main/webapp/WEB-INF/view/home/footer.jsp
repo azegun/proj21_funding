@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>footer</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/home_css/footer.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/footer.css">
 </head>
 <body>
 			<div class = "footer_menu">

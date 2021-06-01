@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>개인 정보</title>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/home_css/header_account.css">
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/header_account.css">
 </head>
 <body>
 		<div class= account_menu>
