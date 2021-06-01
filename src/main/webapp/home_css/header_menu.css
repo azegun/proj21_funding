@@ -1,13 +1,14 @@
 @charset "UTF-8";
+.header_menu{
+	margin-top: 40px;
+	margin-left: 33px;
+}
 .header_menu a{
-	/* font-family: 'Nanum Pen Script', cursive; */
-	font-size:25px;
-	margin:0 auto;
+	/* float:left; */
+	margin-left: 20px;
 	text-decoration: none;
 	color:black;
-	font-weight: bold;
-}
+	font-size: 18px;
+	margin: o auto;
 
-.header_menu a:hover {
-	color:grey;
 }

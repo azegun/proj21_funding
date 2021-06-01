@@ -8,9 +8,9 @@
 		<link rel="stylesheet" href="/proj21_funding/home_css/header_menu.css">
 </head>
 <body>
-					<span class="header_menu"> 						
+					<div class="header_menu"> 						
 						<a href="/proj21_funding/home/menu">프로젝트 둘러보기</a>
 						<a href="/proj21_funding/upload/upload_main">프로젝트 올리기</a>						
-					</span>	
+					</div>	
 </body>
 </html>

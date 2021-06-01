@@ -18,8 +18,8 @@
 				</div>
 			</section>
 			<section>
-				<div class="slider">
-				<h2>주목할 만한 프로젝트</h2>
+			<h2>주목할 만한 프로젝트</h2>
+				<div class="slider">				
 					<div><a href=""><img src="images/bul.jpg"></a></div>
 					<div><a href=""><img src="images/shiba.jpg"></a></div>
 					<div><a href=""><img src="images/jin.jpg"></a></div>
@@ -27,8 +27,8 @@
 				</div>
 			</section>
 			<section>
-				<div class="slider">
-				<h2>마감 임박 프로젝트</h2>
+			<h2>마감 임박 프로젝트</h2>
+				<div class="slider">				
 					<div><a href=""><img src="images/bul.jpg"></a></div>
 					<div><a href=""><img src="images/shiba.jpg"></a></div>
 					<div><a href=""><img src="images/jin.jpg"></a></div>

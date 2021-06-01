@@ -1,0 +1,22 @@
+@charset "UTF-8";
+#mid_first{
+	margin-bottom: 60px;
+	
+}
+#mid_context1{
+	height: 240px;
+	width: 400px;
+	
+}
+#mid_img{
+	width: 500px;
+	height: 430px;
+	float: right;
+	margin-left: 80px;
+}
+#mid_second{
+	margin-top: 0px;
+}
+#mid_context2{
+	width: 400px;
+}
