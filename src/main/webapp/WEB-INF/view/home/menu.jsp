@@ -9,7 +9,7 @@
 </head>
 <body>
 		<div class = project_all>
-			<a href= "" >모든 프로젝트</a>	
+			<a href= "<%=request.getContextPath() %>/projectListAll" >모든 프로젝트</a>	
 		</div>
 		<div class = project_rec>
 			<a href= "" >추천 프로젝트</a>	
