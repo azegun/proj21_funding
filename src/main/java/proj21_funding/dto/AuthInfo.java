@@ -30,4 +30,11 @@ public class AuthInfo {
 		return userName;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("AuthInfo [userNo=%s, userId=%s, userName=%s]", userNo, userId, userName);
+	}
+	
+	
+
 }

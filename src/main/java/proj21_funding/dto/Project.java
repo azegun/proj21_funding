@@ -3,8 +3,8 @@ package proj21_funding.dto;
 import java.time.LocalDateTime;
 
 public class Project {
-	private String prjNo;			//프로젝트번호
-//	private UserInfo userNo;		//프로젝트관리자
+	private int prjNo;			//프로젝트번호
+	private UserInfo userNo;		//프로젝트관리자
 	private String prjName;			//프로젝트명
 	private String prjContent;		//프로젝트내용
 	private int prjGoal;			//목표금액
@@ -17,17 +17,25 @@ public class Project {
 	public Project() {
 	}
 
-	public Project(String prjNo) {
+	public Project(int prjNo) {
 		this.prjNo = prjNo;
 	}
 	
 //	getter & setter
-	public String getPrjNo() {
+	public int getPrjNo() {
 		return prjNo;
 	}
 
-	public void setPrjNo(String prjNo) {
+	public void setPrjNo(int prjNo) {
 		this.prjNo = prjNo;
+	}
+
+	public UserInfo getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(UserInfo userNo) {
+		this.userNo = userNo;
 	}
 
 	public String getPrjName() {
@@ -89,8 +97,8 @@ public class Project {
 	@Override
 	public String toString() {
 		return String.format(
-				"Project [prjNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, paydate=%s, endYn=%s]",
-				prjNo, prjName, prjContent, prjGoal, startDate, endDate, paydate, endYn);
+				"Project [prjNo=%s, userNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, paydate=%s, endYn=%s]",
+				prjNo, userNo, prjName, prjContent, prjGoal, startDate, endDate, paydate, endYn);
 	}
 	
 	

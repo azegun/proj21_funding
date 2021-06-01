@@ -31,4 +31,10 @@ public class LoginCommand {
 		this.rememberUserId = rememberUserId;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("LoginCommand [userId=%s, userPw=%s, rememberUserId=%s]", userId, userPw, rememberUserId);
+	}
+	
+
 }
