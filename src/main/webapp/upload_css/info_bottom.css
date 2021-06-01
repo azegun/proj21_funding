@@ -1,25 +1,18 @@
 @charset "UTF-8";
-#bottom_maincontext{
-	display: flex;
-	justify-content: center;
-
+#bottom h3, #bottom_first{
+	margin-left: 60px;	
 }
 #bottom div{
 	border: 1px solid black;
 	display: inline-block;
+	height: 300px;
+	width: 270px;
 }
 #bottom_first{
-	border: 1px solid red;
-	width:200px;
-	
 }
 #bottom_second{
-	border: 1px solid yellow;
-	width:200px;
 	
 }
 #bottom_third{
-	border: 1px solid blue;
-	width:200px;
 	
 }

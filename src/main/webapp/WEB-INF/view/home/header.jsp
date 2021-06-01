@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
-<link rel="stylesheet" href="/proj21_funding/home_css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/home_css/header.css">
 </head>
 <body>					
 					<div id = "header_main">

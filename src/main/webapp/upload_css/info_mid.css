@@ -1,10 +1,8 @@
 @charset "UTF-8";
-#mid_first{
-	margin-bottom: 60px;
-	
-}
-#mid_context1{
-	height: 240px;
+#mid_first{}
+#mid_context1{		
+	height: 240px;		
+	/* 같이 움직이기 */
 	width: 400px;
 	
 }
@@ -15,8 +13,8 @@
 	margin-left: 80px;
 }
 #mid_second{
-	margin-top: 0px;
 }
 #mid_context2{
+		/* 같이 움직이기 */
 	width: 400px;
 }

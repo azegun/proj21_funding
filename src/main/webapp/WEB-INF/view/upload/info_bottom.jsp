@@ -5,7 +5,7 @@
 <head>
 			<meta charset="UTF-8">
 			<title>Info Bottom</title>
-			<link rel="stylesheet" href="/proj21_funding/upload_css/info_bottom.css">
+			<link rel="stylesheet" href=" <%=request.getContextPath() %>/upload_css/info_bottom.css">
 </head>
 <body>
 			<section id = "bottom" >			
@@ -31,6 +31,7 @@
 						데이터에 기초해 스마트한 홍보와 진행을 할 수 있도록 노하우를 지원해 드리겠습니다.
 						</p>
 				</div>
+				
 				</section>
 				
 </body>

@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>uploadMain</title>
-		<link rel="stylesheet" href="/proj21_funding/home_css/main.css">
+		<link rel="stylesheet" href=" <%=request.getContextPath() %>/home_css/main.css">
 </head>
 <body>
 		<section class="container">

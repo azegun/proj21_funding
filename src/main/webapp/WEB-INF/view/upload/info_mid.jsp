@@ -5,10 +5,11 @@
 <head>
 			<meta charset="UTF-8">
 			<title>Info Mid</title>
-			<link rel="stylesheet" href="/proj21_funding/upload_css/info_mid.css">
+			<link rel="stylesheet" href=" <%=request.getContextPath() %>/upload_css/info_mid.css">
 </head>
 <body>
 			<section id = "mid_first">
+			 <!-- 프로모션 배너 -->
 			<img src="<%=request.getContextPath() %>/images/Shin3.jpg" id="mid_img">	
 				<div id = "mid_context1">					
 					<h3>100펀딩에서 펀딩에 성공한 17,000개 프로젝트와 함께 하세요.</h3>

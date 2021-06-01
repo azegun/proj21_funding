@@ -9,6 +9,7 @@
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/upload_css/info_top.css">
 </head>
 <body>
+			 <!-- 프로모션 배너 -->
 			<img src=" <%=request.getContextPath() %>/images/Shin2.jpg" id="top_img">
 			<div id = "top_context">					
 					<h3>마음 속 프로젝트 아이디어, 100펀딩에서 현실로.</h3>

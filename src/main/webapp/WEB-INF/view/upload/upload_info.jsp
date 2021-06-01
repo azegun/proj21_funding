@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>uploadInfo</title>
-		<link rel="stylesheet" href="/proj21_funding/upload_css/upload_info.css">
+		<link rel="stylesheet" href=" <%=request.getContextPath() %>/upload_css/upload_info.css">
 </head>
 <body>
 	<section id = "info">

@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>로그메뉴</title>
-		<link rel="stylesheet" href="/proj21_funding/home_css/header_logmenu.css">
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/home_css/header_logmenu.css">
 </head>
 <body>
          <section id = "logon_infomation">

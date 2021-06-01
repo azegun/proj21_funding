@@ -5,11 +5,11 @@
 <head>
 		<meta charset="UTF-8">
 		<title>개인 정보</title>
-		<link rel="stylesheet" href="/proj21_funding/home_css/header_account.css">
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/home_css/header_account.css">
 </head>
 <body>
 		<div class= account_menu>
-				<a href = "/proj21_funding/home/header_logmenu" ><span>김상건</span>님 환영합니다.</a>
+				<a href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>김상건</span>님 환영합니다.</a>
 		</div>
 
 </body>
