@@ -77,8 +77,8 @@
 					<form:input path="bankName" /> 
 					<form:errors path="bankName" />
 					</label>
-				</p>				
-				<P><a href="#" id="Terms">이용약관보기</a></P>
+				</p>						
+				<P><a href="#" id="Terms">이용약관보기</a></P>					
 				<label><input type="checkbox" name="agree" value="true">동의하기</label>			
 				<input type="submit" value="가입하기" id="submit">			
 			</fieldset>			

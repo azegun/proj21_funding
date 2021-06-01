@@ -28,8 +28,8 @@ public class RegisterController {
 
 	// 가입성공화면가기
 	@PostMapping("/account/signUp2")
-	public String signUp2(@Valid @RequestParam(value = "agree", defaultValue = "false") Boolean agree,
-			RegisterRequest request, Errors errors) {
+	public String signUp2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree,
+			@Valid RegisterRequest request, Errors errors) {
 		if (errors.hasErrors()) {
 			return "account/signUp1";
 		}
