@@ -4,6 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+// 회원가입시 양식 제한
 public class RegisterRequest {
 	@NotBlank	
 	@Size(min = 4)

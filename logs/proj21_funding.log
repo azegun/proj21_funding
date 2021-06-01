@@ -268,3 +268,32 @@
 [DEBUG] [2021-06-01 11:56] UserInfo [userNo=3, userId=test11, userPw=111111, userName=, address=대구, detailAddress=, userPhone=, email=, bankAccount=0, bankName=]
 [DEBUG] [2021-06-01 11:56] UserInfo [userNo=4, userId=test011, userPw=111111, userName=, address=대구, detailAddress=, userPhone=, email=, bankAccount=0, bankName=]
 [DEBUG] [2021-06-01 11:56] UserInfo [userNo=5, userId=test013, userPw=1111, userName=, address=대구, detailAddress=, userPhone=, email=, bankAccount=0, bankName=]
+[DEBUG] [2021-06-01 14:28] testDataSource()
+[DEBUG] [2021-06-01 14:28] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-01 14:28] LoginTimeout 30
+[DEBUG] [2021-06-01 14:28] testSqlSession()
+[DEBUG] [2021-06-01 14:28] session org.apache.ibatis.session.defaults.DefaultSqlSession@4cc52c52
+[DEBUG] [2021-06-01 14:28] testSelectProjectListAll()
+[DEBUG] [2021-06-01 14:28] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-01 14:28] ==> Parameters: 
+[TRACE] [2021-06-01 14:28] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-01 14:28] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-01 14:28] <==        Row: 2, 1, 홈페이지만들기, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-01 14:28] <==      Total: 2
+[DEBUG] [2021-06-01 14:28] test07SelectUserAll()
+[DEBUG] [2021-06-01 14:28] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-01 14:28] ==> Parameters: 
+[TRACE] [2021-06-01 14:28] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-01 14:28] <==        Row: 1, test, 0000, 김상건, 대구, 달서구, 010-3302-1972, test@test.com, 1, 국민
+[TRACE] [2021-06-01 14:28] <==        Row: 2, test2, 1111, 김경연, 대구, 북구, null, null, null, null
+[TRACE] [2021-06-01 14:28] <==        Row: 3, test11, 111111, , 대구, , , , 0, 
+[TRACE] [2021-06-01 14:28] <==        Row: 4, test011, 111111, , 대구, , , , 0, 
+[TRACE] [2021-06-01 14:28] <==        Row: 5, test013, 1111, , 대구, , , , 0, 
+[TRACE] [2021-06-01 14:28] <==        Row: 6, test014, 1111, test014, 대구, , , , 0, 
+[DEBUG] [2021-06-01 14:28] <==      Total: 6
+[DEBUG] [2021-06-01 14:28] UserInfo [userNo=1, userId=test, userPw=0000, userName=김상건, address=대구, detailAddress=달서구, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=국민]
+[DEBUG] [2021-06-01 14:28] UserInfo [userNo=2, userId=test2, userPw=1111, userName=김경연, address=대구, detailAddress=북구, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-01 14:28] UserInfo [userNo=3, userId=test11, userPw=111111, userName=, address=대구, detailAddress=, userPhone=, email=, bankAccount=0, bankName=]
+[DEBUG] [2021-06-01 14:28] UserInfo [userNo=4, userId=test011, userPw=111111, userName=, address=대구, detailAddress=, userPhone=, email=, bankAccount=0, bankName=]
+[DEBUG] [2021-06-01 14:28] UserInfo [userNo=5, userId=test013, userPw=1111, userName=, address=대구, detailAddress=, userPhone=, email=, bankAccount=0, bankName=]
+[DEBUG] [2021-06-01 14:28] UserInfo [userNo=6, userId=test014, userPw=1111, userName=test014, address=대구, detailAddress=, userPhone=, email=, bankAccount=0, bankName=]

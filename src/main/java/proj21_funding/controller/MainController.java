@@ -30,9 +30,5 @@ public class MainController {
 	public String view_user_ServiceCenter() {
 		return "board_servicecenter/servicecenter_view_user";
 	}
-	
-	@RequestMapping("/account/login")
-	public String login() {
-		return "account/login";
-	}
+		
 }

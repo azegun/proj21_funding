@@ -15,7 +15,8 @@
 		</header>
 		<section id="signUpForm">
 			<h2>회원 가입</h2>		
-			<form:form action="signUp2" modelAttribute="registerRequest">			
+			<form:form action="signUp2" modelAttribute="registerRequest">	
+			<form:errors />		
 			<fieldset id="signForm">
 				<p>
 					<label> 회원계정 :

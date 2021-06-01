@@ -20,11 +20,13 @@ public class RegisterController {
 	@Autowired
 	private UserRegisterService service;
 
+	// 회원가입 화면가기
 	@RequestMapping("/account/signUp1")
 	public String signUp1(RegisterRequest registerRequest) {
 		return "account/signUp1";
 	}
 
+	// 가입성공화면가기
 	@PostMapping("/account/signUp2")
 	public String signUp2(@Valid @RequestParam(value = "agree", defaultValue = "false") Boolean agree,
 			RegisterRequest request, Errors errors) {
@@ -48,6 +50,7 @@ public class RegisterController {
 		}
 	}
 
+	// 회원가입 성공화면 직접입력방지
 	@GetMapping("/account/signUp2")
 	public String signUp2() {
 		return "redirect:/account/signUp1";
