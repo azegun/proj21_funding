@@ -17,6 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
 import proj21_funding.dto.Project;
+import proj21_funding.dto.UserInfo;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -39,6 +40,16 @@ public class ProjectMapperTest {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		List<Project> list = mapper.selectProjectListAll();
 		Assert.assertNotNull(list);
+	}
+	
+//	@Test
+	public void testinsertProject() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Project project = new Project(new UserInfo(2), "인서트성공", "제발,,,,", 3000000);
+		int res = mapper.insertProject(project);
+		
+		Assert.assertEquals(1, res);
 	}
 	
 	@Test
