@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import proj21_funding.dto.RegisterRequest;
+import proj21_funding.dto.UserSignUp;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.service.UserRegisterService;
 
 @Controller
-public class RegisterController {
+public class UserSignUpController {
 
 	@Autowired
 	private UserRegisterService service;
 
 	// 회원가입 화면가기
 	@RequestMapping("/account/signUp1")
-	public String signUp1(RegisterRequest registerRequest) {
+	public String signUp1(UserSignUp userSignUp) {
 		return "account/signUp1";
 	}
 
 	// 가입성공화면가기
 	@PostMapping("/account/signUp2")
 	public String signUp2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree,
-			@Valid RegisterRequest request, Errors errors) {
+			@Valid UserSignUp userSignUp, Errors errors) {
 		if (errors.hasErrors()) {
 			return "account/signUp1";
 		}
@@ -37,12 +37,12 @@ public class RegisterController {
 			return "account/signUp1";
 		}
 
-		if (!request.isPasswordEqualToComfirmPassword()) {
+		if (!userSignUp.isPasswordEqualToComfirmPassword()) {
 			errors.rejectValue("confirmUserPw", "nomatch");
 			return "account/signUp1";
 		}
 		try {
-			service.regist(request);
+			service.regist(userSignUp);
 			return "account/signUp2";
 		} catch (DuplicateUserException e) {
 			errors.rejectValue("userId", "duplicate");

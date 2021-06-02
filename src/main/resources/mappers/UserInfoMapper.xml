@@ -41,7 +41,7 @@
 		where email = #{email}	
 	</select>
 
-	<insert id="insertMember" parameterType="UserInfo">
+	<insert id="insertUser" parameterType="UserInfo">
 		insert
 		  into userinfo( UserId, UserPw, UserName, Address,
 				DetailAddress, UserPhone, Email, BankAccount, BankName)
@@ -49,7 +49,7 @@
 			   #{userPhone}, #{email}, #{bankAccount}, #{bankName})			
 	</insert>
 	
-	<update id="updateMember">
+	<update id="updateUser">
 		update userinfo
 		   set UserPw = #{userPw}, UserName = #{userName}, Address = #{address},
 			   DetailAddress = #{detailAddress}, UserPhone = #{userPhone}, Email = #{email},
@@ -57,7 +57,7 @@
 		 where userId = #{userId}
 	</update>
 	
-	<delete id="deleteMember">
+	<delete id="deleteUser">
 		delete
 		  from userinfo
 		 where userNo = #{userNo}	
