@@ -61,3 +61,87 @@
 [DEBUG] [2021-06-02 15:01] <==      Total: 2
 [DEBUG] [2021-06-02 15:01] UserInfo [userNo=1, userId=test, userPw=0000, userName=±è»ó°Ç, address=´ë±¸, detailAddress=´Þ¼­±¸, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±¹¹Î]
 [DEBUG] [2021-06-02 15:01] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±è°æ¿¬, address=´ë±¸, detailAddress=ºÏ±¸, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:24] testDataSource()
+[DEBUG] [2021-06-02 15:24] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:24] LoginTimeout 30
+[DEBUG] [2021-06-02 15:24] testSqlSession()
+[DEBUG] [2021-06-02 15:24] session org.apache.ibatis.session.defaults.DefaultSqlSession@388b7c8e
+[DEBUG] [2021-06-02 15:24] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:24] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:24] ==> Parameters: 
+[TRACE] [2021-06-02 15:24] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:24] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:24] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:24] <==      Total: 2
+[DEBUG] [2021-06-02 15:24] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:24] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:24] ==> Parameters: 
+[TRACE] [2021-06-02 15:24] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:24] <==        Row: 1, test, 0000, ±è»ó°Ç, ´ë±¸, ´Þ¼­±¸, 010-3302-1972, test@test.com, 1, ±¹¹Î
+[TRACE] [2021-06-02 15:24] <==        Row: 2, test2, 1111, ±è°æ¿¬, ´ë±¸, ºÏ±¸, null, null, null, null
+[DEBUG] [2021-06-02 15:24] <==      Total: 2
+[DEBUG] [2021-06-02 15:24] UserInfo [userNo=1, userId=test, userPw=0000, userName=±è»ó°Ç, address=´ë±¸, detailAddress=´Þ¼­±¸, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±¹¹Î]
+[DEBUG] [2021-06-02 15:24] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±è°æ¿¬, address=´ë±¸, detailAddress=ºÏ±¸, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:39] testDataSource()
+[DEBUG] [2021-06-02 15:39] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:39] LoginTimeout 30
+[DEBUG] [2021-06-02 15:39] testSqlSession()
+[DEBUG] [2021-06-02 15:39] session org.apache.ibatis.session.defaults.DefaultSqlSession@388b7c8e
+[DEBUG] [2021-06-02 15:39] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:39] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:39] ==> Parameters: 
+[TRACE] [2021-06-02 15:39] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:39] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:39] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:39] <==      Total: 2
+[DEBUG] [2021-06-02 15:39] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:39] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:39] ==> Parameters: 
+[TRACE] [2021-06-02 15:39] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:39] <==        Row: 1, test, 0000, ±è»ó°Ç, ´ë±¸, ´Þ¼­±¸, 010-3302-1972, test@test.com, 1, ±¹¹Î
+[TRACE] [2021-06-02 15:39] <==        Row: 2, test2, 1111, ±è°æ¿¬, ´ë±¸, ºÏ±¸, null, null, null, null
+[DEBUG] [2021-06-02 15:39] <==      Total: 2
+[DEBUG] [2021-06-02 15:39] UserInfo [userNo=1, userId=test, userPw=0000, userName=±è»ó°Ç, address=´ë±¸, detailAddress=´Þ¼­±¸, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±¹¹Î]
+[DEBUG] [2021-06-02 15:39] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±è°æ¿¬, address=´ë±¸, detailAddress=ºÏ±¸, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:44] testDataSource()
+[DEBUG] [2021-06-02 15:44] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:44] LoginTimeout 30
+[DEBUG] [2021-06-02 15:44] testSqlSession()
+[DEBUG] [2021-06-02 15:44] session org.apache.ibatis.session.defaults.DefaultSqlSession@388b7c8e
+[DEBUG] [2021-06-02 15:44] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:44] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:44] ==> Parameters: 
+[TRACE] [2021-06-02 15:44] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:44] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:44] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:44] <==      Total: 2
+[DEBUG] [2021-06-02 15:44] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:44] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:44] ==> Parameters: 
+[TRACE] [2021-06-02 15:44] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:44] <==        Row: 1, test, 0000, ±è»ó°Ç, ´ë±¸, ´Þ¼­±¸, 010-3302-1972, test@test.com, 1, ±¹¹Î
+[TRACE] [2021-06-02 15:44] <==        Row: 2, test2, 1111, ±è°æ¿¬, ´ë±¸, ºÏ±¸, null, null, null, null
+[DEBUG] [2021-06-02 15:44] <==      Total: 2
+[DEBUG] [2021-06-02 15:44] UserInfo [userNo=1, userId=test, userPw=0000, userName=±è»ó°Ç, address=´ë±¸, detailAddress=´Þ¼­±¸, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±¹¹Î]
+[DEBUG] [2021-06-02 15:44] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±è°æ¿¬, address=´ë±¸, detailAddress=ºÏ±¸, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:49] testDataSource()
+[DEBUG] [2021-06-02 15:49] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:49] LoginTimeout 30
+[DEBUG] [2021-06-02 15:49] testSqlSession()
+[DEBUG] [2021-06-02 15:49] session org.apache.ibatis.session.defaults.DefaultSqlSession@388b7c8e
+[DEBUG] [2021-06-02 15:49] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:49] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:49] ==> Parameters: 
+[TRACE] [2021-06-02 15:49] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:49] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:49] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:49] <==      Total: 2
+[DEBUG] [2021-06-02 15:49] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:49] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:49] ==> Parameters: 
+[TRACE] [2021-06-02 15:49] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:49] <==        Row: 1, test, 0000, ±è»ó°Ç, ´ë±¸, ´Þ¼­±¸, 010-3302-1972, test@test.com, 1, ±¹¹Î
+[TRACE] [2021-06-02 15:49] <==        Row: 2, test2, 1111, ±è°æ¿¬, ´ë±¸, ºÏ±¸, null, null, null, null
+[DEBUG] [2021-06-02 15:49] <==      Total: 2
+[DEBUG] [2021-06-02 15:49] UserInfo [userNo=1, userId=test, userPw=0000, userName=±è»ó°Ç, address=´ë±¸, detailAddress=´Þ¼­±¸, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±¹¹Î]
+[DEBUG] [2021-06-02 15:49] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±è°æ¿¬, address=´ë±¸, detailAddress=ºÏ±¸, userPhone=null, email=null, bankAccount=0, bankName=null]

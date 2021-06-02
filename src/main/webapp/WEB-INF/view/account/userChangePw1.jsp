@@ -17,7 +17,7 @@
 	<p>
 		<label>변경 비밀번호:<br>
 		<form:input path="newUserPw"/>
-		<form:errors path="newPUserPw" />
+		<form:errors path="newUserPw" />
 		</label>
 	</p>
 	<p>

@@ -33,6 +33,8 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
+${userInfo.userId}1
+${session.getId}2
 <div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
@@ -43,7 +45,7 @@
 			<form:errors />
 				<p>
 					<label>아이디:
-					<form:input path="userId" readonly="true" />
+					<form:input path="userId" readonly="true" value="${user.userId}" />
 					<form:errors path="userId" />
 					</label>
 				</p>
