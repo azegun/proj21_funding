@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proj21_funding.mapper.ProjectMapper">
-
-<!-- 	<resultMap type="Project" id="resProject">
-		<id column="PrjNo" property="prjNo" />
-		<result column></result>
+		<!-- property는 dto  column는 sql 컬럼 -->
+	<resultMap type="Project" id="resProject">
+		<id property="prjNo" column="PrjNo"/>
+		<result property="userNo" column="UserNo"/>
+		<result property="prjName" column="PrjName"/>
+		<result property="prjContent" column="PrjContent"/>
+		<result property="prjGoal" column="PrjGoal"/>
+		<result property="startDate" column="StartDate"/>
+		<result property="endDate" column="EndDate"/>
+		<result property="payDate" column="PayDate"/>
+		<result property="endYn" column="EndYN"/>		
 	</resultMap>
- -->
+
  
 	<select id="selectProjectListAll" resultType="Project">
 		select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
 		StartDate, EndDate,	PayDate, EndYN
-		from project;
+		from project
 	</select>
+	
+	<insert id="insertProject" parameterType="Project">
+		insert into project(
+				UserNo, PrjName, PrjContent, PrjGoal, 
+				StartDate, EndDate, PayDate) 
+		values(
+				#{userNo}, #{prjName}, #{prjContent}, #{prjGoal},
+				now(), now(), now())
+	</insert>
 </mapper>
