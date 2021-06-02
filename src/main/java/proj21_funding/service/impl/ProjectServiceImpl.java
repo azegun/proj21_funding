@@ -25,4 +25,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return list;
 	}
 
+	@Override
+	public Project showProjectByNo(int prjNo) {
+		Project prj = mapper.selectProjectByNo(prjNo);
+		return prj;
+	}
+
 }

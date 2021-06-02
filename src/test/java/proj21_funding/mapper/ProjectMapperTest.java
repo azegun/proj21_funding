@@ -40,5 +40,12 @@ public class ProjectMapperTest {
 		List<Project> list = mapper.selectProjectListAll();
 		Assert.assertNotNull(list);
 	}
+	
+	@Test
+	public void testSelectProjjectListByNo() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Project list = mapper.selectProjectByNo(3);
+		Assert.assertNotNull(list);
+	}
 
 }
