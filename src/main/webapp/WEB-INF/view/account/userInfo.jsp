@@ -49,7 +49,7 @@
 				</p>
 				<p>
 					<label>비밀번호:
-					<a href="<c:url value='/account/UserchangePw'/>">비밀번호 변경</a>
+					<a href="<c:url value='/account/userChangePw'/>">비밀번호 변경</a>
 					</label>
 				</p>
 				<p>
