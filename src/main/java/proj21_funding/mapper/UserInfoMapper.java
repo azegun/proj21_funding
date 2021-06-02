@@ -17,10 +17,10 @@ public interface UserInfoMapper {
 
 	UserInfo selectUserbyEmail(String email);
 
-	int insertMember(UserInfo userInfo);
+	int insertUser(UserInfo userInfo);
 
-	int updateMember(UserInfo userInfo);
+	int updateUser(UserInfo userInfo);
 
-	int deleteMember(int userNo);
+	int deleteUser(int userNo);
 
 }

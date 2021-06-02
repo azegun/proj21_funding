@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/signUp1.css">
+<title>회원정보관리</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/userInfo.css">
 	<script type="text/javascript">
 	function findAddr(){
 		new daum.Postcode({
@@ -32,31 +33,25 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-	<div class="container">
+${userInfo.userId}1
+${session.getId}2
+<div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
-		<section id="signUpForm">
-			<h2>회원 가입</h2>		
-			<form:form action="signUp2" modelAttribute="userSignUp">	
-			<form:errors />		
-			<fieldset id="signForm">
+		<section id="userInfoArea">
+			<h1>회원정보</h1>
+			<form:form modelAttribute="userInfo">
+			<form:errors />
 				<p>
-					<label> 회원계정 :
-					<form:input path="userId" placeholder="4글자 이상 입력하세요" /> 
+					<label>아이디:
+					<form:input path="userId" readonly="true" value="${user.userId}" />
 					<form:errors path="userId" />
 					</label>
 				</p>
 				<p>
-					<label> 비밀번호 :
-					<form:password path="userPw" placeholder="4자리 이상 입력하세요"/> 
-					<form:errors path="userPw" />
-					</label>
-				</p>
-				<p>
-					<label> 비밀번호확인 :
-					<form:password path="confirmUserPw" placeholder="4자리 이상 입력하세요" /> 
-					<form:errors path="confirmUserPw" />
+					<label>비밀번호:
+					<a href="<c:url value='/account/userChangePw'/>">비밀번호 변경</a>
 					</label>
 				</p>
 				<p>
@@ -67,8 +62,8 @@
 				</p>
 				<p>
 					<label> 우편번호로 검색하기 :
-					<form:input path="address" id="member_post" placeholder="클릭하세요" readonly="true" onclick="findAddr()" /> 
-					<form:errors path="address" />					
+					<form:input path="address" id="member_post"  readonly="true" onclick="findAddr()"/>					 
+					<form:errors path="address" />										
 					</label>
 				</p>
 				<p>
@@ -79,40 +74,40 @@
 				</p>
 				<p>
 					<label> 상세주소 :
-					<form:input path="detailAddress" placeholder="상세주소를 입력하세요" /> 
+					<form:input path="detailAddress" readonly="true"/> 
 					<form:errors path="detailAddress" />					
 					</label>
 				</p>				
 				<p>
 					<label> 회원H.P :
-					<form:input path="userPhone" /> 
+					<form:input path="userPhone" readonly="true"/> 
 					<form:errors path="userPhone" />
 					</label>
 				</p>
 				<p>
 					<label> 이메일 :
-					<form:input path="email" /> 
+					<form:input path="email" readonly="true"/> 
 					<form:errors path="email" />
 					</label>
 				</p>
 				<p>
 					<label> 계좌번호 :
-					<form:input path="bankAccount" /> 									
+					<form:input path="bankAccount" readonly="true"/> 									
 					<form:errors path="bankAccount" />
 					</label>
 				</p>
 				<p>
 					<label> 은행명 :
-					<form:input path="bankName" /> 
+					<form:input path="bankName" readonly="true"/> 
 					<form:errors path="bankName" />
 					</label>
-				</p>						
-				<P><a href="#" id="Terms">이용약관보기</a></P>					
-				<label><input type="checkbox" name="agree" value="true">동의하기</label>
-				<form:button id="submit">가입하기</form:button>
-			</fieldset>			
+				</p>			
 			</form:form>
-		</section>		
+		</section>
+		<a href="#"><button>탈퇴하기</button></a>
+		<footer>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
+		</footer>		
 	</div>
 </body>
 </html>

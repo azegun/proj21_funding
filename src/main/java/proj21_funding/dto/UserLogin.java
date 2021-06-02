@@ -1,7 +1,7 @@
 package proj21_funding.dto;
 
 // 로그인시도시  정보확인
-public class LoginCommand {
+public class UserLogin {
 	private String userId;//회원계정
 	private String userPw;//회원비밀번호
 	private boolean rememberUserId; //아이디기억하기

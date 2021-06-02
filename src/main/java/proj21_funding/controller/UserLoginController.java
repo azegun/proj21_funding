@@ -13,43 +13,42 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import proj21_funding.dto.AuthInfo;
-import proj21_funding.dto.LoginCommand;
+import proj21_funding.dto.UserAuthInfo;
+import proj21_funding.dto.UserLogin;
 import proj21_funding.exception.WrongIdPasswordException;
-import proj21_funding.service.AuthService;
+import proj21_funding.service.UserAuthService;
 
 @Controller
-@RequestMapping("/login")
-public class LoginController {
+public class UserLoginController {
 
 	@Autowired
-	private AuthService authService;
+	private UserAuthService authService;
 
 	// 로그인 화면가기
-	@GetMapping
-	public String login(LoginCommand loginCommand, @CookieValue(value = "REMEMBER", required = false) Cookie rCookie) {
+	@GetMapping("/login")
+	public String login(UserLogin userLogin, @CookieValue(value = "REMEMBER", required = false) Cookie rCookie) {
 		if (rCookie != null) {
-			loginCommand.setUserId(rCookie.getValue());
-			loginCommand.setRememberUserId(true);
+			userLogin.setUserId(rCookie.getValue());
+			userLogin.setRememberUserId(true);
 		}
 		return "/account/login";
 	}
 
 	// 로그인 성공시 메인화면으로
-	@PostMapping
-	public String submit(@Valid LoginCommand loginCommand, Errors errors, HttpSession session,
+	@PostMapping("/login")
+	public String submit(@Valid UserLogin userLogin, Errors errors, HttpSession session,
 			HttpServletResponse response) {
 		if (errors.hasErrors())
 			return "/account/login";
 
 		try {
-			AuthInfo authInfo = authService.authenicate(loginCommand.getUserId(), loginCommand.getUserPw());
-			session.setAttribute("authInfo", authInfo);
+			UserAuthInfo userAuthInfo = authService.authenicate(userLogin.getUserId(), userLogin.getUserPw());
+			session.setAttribute("authInfo", userAuthInfo);
 
-			Cookie rememberCookie = new Cookie("REMEMBER", loginCommand.getUserId());
+			Cookie rememberCookie = new Cookie("REMEMBER", userLogin.getUserId());
 			rememberCookie.setPath("/");
 
-			if (loginCommand.isRememberUserId()) {
+			if (userLogin.isRememberUserId()) {
 				rememberCookie.setMaxAge(60 * 60 * 24 * 30);
 			} else {
 				rememberCookie.setMaxAge(0);
@@ -64,4 +63,11 @@ public class LoginController {
 
 	}
 
+	//로그아웃
+		@RequestMapping("/logout")
+		public String logout(HttpSession session) {
+			session.invalidate();
+			return "redirect:/main";
+		}
+	
 }

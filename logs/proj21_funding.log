@@ -1,3 +1,152 @@
+<<<<<<< HEAD
+[DEBUG] [2021-06-02 12:12] testDataSource()
+[DEBUG] [2021-06-02 12:12] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 12:12] LoginTimeout 30
+[DEBUG] [2021-06-02 12:12] testSqlSession()
+[DEBUG] [2021-06-02 12:12] session org.apache.ibatis.session.defaults.DefaultSqlSession@58500ccc
+[DEBUG] [2021-06-02 12:12] testSelectProjectListAll()
+[DEBUG] [2021-06-02 12:12] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 12:12] ==> Parameters: 
+[TRACE] [2021-06-02 12:12] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 12:12] <==        Row: 1, 1, ≈¨∂ÛøÏµÂ∆›µ˘, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 12:12] <==        Row: 2, 1, »®∆‰¿Ã¡ˆ∏∏µÈ±‚, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 12:12] <==      Total: 2
+[DEBUG] [2021-06-02 12:12] test07SelectUserAll()
+[DEBUG] [2021-06-02 12:12] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 12:12] ==> Parameters: 
+[TRACE] [2021-06-02 12:12] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 12:12] <==        Row: 1, test, 0000, ±ËªÛ∞«, ¥Î±∏, ¥ﬁº≠±∏, 010-3302-1972, test@test.com, 1, ±ππŒ
+[TRACE] [2021-06-02 12:12] <==        Row: 2, test2, 1111, ±Ë∞Êø¨, ¥Î±∏, ∫œ±∏, null, null, null, null
+[DEBUG] [2021-06-02 12:12] <==      Total: 2
+[DEBUG] [2021-06-02 12:12] UserInfo [userNo=1, userId=test, userPw=0000, userName=±ËªÛ∞«, address=¥Î±∏, detailAddress=¥ﬁº≠±∏, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±ππŒ]
+[DEBUG] [2021-06-02 12:12] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±Ë∞Êø¨, address=¥Î±∏, detailAddress=∫œ±∏, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 14:52] testDataSource()
+[DEBUG] [2021-06-02 14:52] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 14:52] LoginTimeout 30
+[DEBUG] [2021-06-02 14:52] testSqlSession()
+[DEBUG] [2021-06-02 14:52] session org.apache.ibatis.session.defaults.DefaultSqlSession@13d9ac9f
+[DEBUG] [2021-06-02 14:52] testSelectProjectListAll()
+[DEBUG] [2021-06-02 14:52] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 14:52] ==> Parameters: 
+[TRACE] [2021-06-02 14:52] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 14:52] <==        Row: 1, 1, ≈¨∂ÛøÏµÂ∆›µ˘, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 14:52] <==        Row: 2, 1, »®∆‰¿Ã¡ˆ∏∏µÈ±‚, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 14:52] <==      Total: 2
+[DEBUG] [2021-06-02 14:52] test07SelectUserAll()
+[DEBUG] [2021-06-02 14:52] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 14:52] ==> Parameters: 
+[TRACE] [2021-06-02 14:52] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 14:52] <==        Row: 1, test, 0000, ±ËªÛ∞«, ¥Î±∏, ¥ﬁº≠±∏, 010-3302-1972, test@test.com, 1, ±ππŒ
+[TRACE] [2021-06-02 14:52] <==        Row: 2, test2, 1111, ±Ë∞Êø¨, ¥Î±∏, ∫œ±∏, null, null, null, null
+[DEBUG] [2021-06-02 14:52] <==      Total: 2
+[DEBUG] [2021-06-02 14:52] UserInfo [userNo=1, userId=test, userPw=0000, userName=±ËªÛ∞«, address=¥Î±∏, detailAddress=¥ﬁº≠±∏, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±ππŒ]
+[DEBUG] [2021-06-02 14:52] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±Ë∞Êø¨, address=¥Î±∏, detailAddress=∫œ±∏, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:01] testDataSource()
+[DEBUG] [2021-06-02 15:01] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:01] LoginTimeout 30
+[DEBUG] [2021-06-02 15:01] testSqlSession()
+[DEBUG] [2021-06-02 15:01] session org.apache.ibatis.session.defaults.DefaultSqlSession@13d9ac9f
+[DEBUG] [2021-06-02 15:01] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:01] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:01] ==> Parameters: 
+[TRACE] [2021-06-02 15:01] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:01] <==        Row: 1, 1, ≈¨∂ÛøÏµÂ∆›µ˘, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:01] <==        Row: 2, 1, »®∆‰¿Ã¡ˆ∏∏µÈ±‚, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:01] <==      Total: 2
+[DEBUG] [2021-06-02 15:01] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:01] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:01] ==> Parameters: 
+[TRACE] [2021-06-02 15:01] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:01] <==        Row: 1, test, 0000, ±ËªÛ∞«, ¥Î±∏, ¥ﬁº≠±∏, 010-3302-1972, test@test.com, 1, ±ππŒ
+[TRACE] [2021-06-02 15:01] <==        Row: 2, test2, 1111, ±Ë∞Êø¨, ¥Î±∏, ∫œ±∏, null, null, null, null
+[DEBUG] [2021-06-02 15:01] <==      Total: 2
+[DEBUG] [2021-06-02 15:01] UserInfo [userNo=1, userId=test, userPw=0000, userName=±ËªÛ∞«, address=¥Î±∏, detailAddress=¥ﬁº≠±∏, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±ππŒ]
+[DEBUG] [2021-06-02 15:01] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±Ë∞Êø¨, address=¥Î±∏, detailAddress=∫œ±∏, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:24] testDataSource()
+[DEBUG] [2021-06-02 15:24] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:24] LoginTimeout 30
+[DEBUG] [2021-06-02 15:24] testSqlSession()
+[DEBUG] [2021-06-02 15:24] session org.apache.ibatis.session.defaults.DefaultSqlSession@388b7c8e
+[DEBUG] [2021-06-02 15:24] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:24] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:24] ==> Parameters: 
+[TRACE] [2021-06-02 15:24] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:24] <==        Row: 1, 1, ≈¨∂ÛøÏµÂ∆›µ˘, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:24] <==        Row: 2, 1, »®∆‰¿Ã¡ˆ∏∏µÈ±‚, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:24] <==      Total: 2
+[DEBUG] [2021-06-02 15:24] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:24] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:24] ==> Parameters: 
+[TRACE] [2021-06-02 15:24] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:24] <==        Row: 1, test, 0000, ±ËªÛ∞«, ¥Î±∏, ¥ﬁº≠±∏, 010-3302-1972, test@test.com, 1, ±ππŒ
+[TRACE] [2021-06-02 15:24] <==        Row: 2, test2, 1111, ±Ë∞Êø¨, ¥Î±∏, ∫œ±∏, null, null, null, null
+[DEBUG] [2021-06-02 15:24] <==      Total: 2
+[DEBUG] [2021-06-02 15:24] UserInfo [userNo=1, userId=test, userPw=0000, userName=±ËªÛ∞«, address=¥Î±∏, detailAddress=¥ﬁº≠±∏, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±ππŒ]
+[DEBUG] [2021-06-02 15:24] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±Ë∞Êø¨, address=¥Î±∏, detailAddress=∫œ±∏, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:39] testDataSource()
+[DEBUG] [2021-06-02 15:39] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:39] LoginTimeout 30
+[DEBUG] [2021-06-02 15:39] testSqlSession()
+[DEBUG] [2021-06-02 15:39] session org.apache.ibatis.session.defaults.DefaultSqlSession@388b7c8e
+[DEBUG] [2021-06-02 15:39] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:39] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:39] ==> Parameters: 
+[TRACE] [2021-06-02 15:39] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:39] <==        Row: 1, 1, ≈¨∂ÛøÏµÂ∆›µ˘, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:39] <==        Row: 2, 1, »®∆‰¿Ã¡ˆ∏∏µÈ±‚, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:39] <==      Total: 2
+[DEBUG] [2021-06-02 15:39] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:39] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:39] ==> Parameters: 
+[TRACE] [2021-06-02 15:39] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:39] <==        Row: 1, test, 0000, ±ËªÛ∞«, ¥Î±∏, ¥ﬁº≠±∏, 010-3302-1972, test@test.com, 1, ±ππŒ
+[TRACE] [2021-06-02 15:39] <==        Row: 2, test2, 1111, ±Ë∞Êø¨, ¥Î±∏, ∫œ±∏, null, null, null, null
+[DEBUG] [2021-06-02 15:39] <==      Total: 2
+[DEBUG] [2021-06-02 15:39] UserInfo [userNo=1, userId=test, userPw=0000, userName=±ËªÛ∞«, address=¥Î±∏, detailAddress=¥ﬁº≠±∏, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±ππŒ]
+[DEBUG] [2021-06-02 15:39] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±Ë∞Êø¨, address=¥Î±∏, detailAddress=∫œ±∏, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:44] testDataSource()
+[DEBUG] [2021-06-02 15:44] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:44] LoginTimeout 30
+[DEBUG] [2021-06-02 15:44] testSqlSession()
+[DEBUG] [2021-06-02 15:44] session org.apache.ibatis.session.defaults.DefaultSqlSession@388b7c8e
+[DEBUG] [2021-06-02 15:44] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:44] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:44] ==> Parameters: 
+[TRACE] [2021-06-02 15:44] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:44] <==        Row: 1, 1, ≈¨∂ÛøÏµÂ∆›µ˘, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:44] <==        Row: 2, 1, »®∆‰¿Ã¡ˆ∏∏µÈ±‚, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:44] <==      Total: 2
+[DEBUG] [2021-06-02 15:44] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:44] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:44] ==> Parameters: 
+[TRACE] [2021-06-02 15:44] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:44] <==        Row: 1, test, 0000, ±ËªÛ∞«, ¥Î±∏, ¥ﬁº≠±∏, 010-3302-1972, test@test.com, 1, ±ππŒ
+[TRACE] [2021-06-02 15:44] <==        Row: 2, test2, 1111, ±Ë∞Êø¨, ¥Î±∏, ∫œ±∏, null, null, null, null
+[DEBUG] [2021-06-02 15:44] <==      Total: 2
+[DEBUG] [2021-06-02 15:44] UserInfo [userNo=1, userId=test, userPw=0000, userName=±ËªÛ∞«, address=¥Î±∏, detailAddress=¥ﬁº≠±∏, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±ππŒ]
+[DEBUG] [2021-06-02 15:44] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±Ë∞Êø¨, address=¥Î±∏, detailAddress=∫œ±∏, userPhone=null, email=null, bankAccount=0, bankName=null]
+[DEBUG] [2021-06-02 15:49] testDataSource()
+[DEBUG] [2021-06-02 15:49] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-02 15:49] LoginTimeout 30
+[DEBUG] [2021-06-02 15:49] testSqlSession()
+[DEBUG] [2021-06-02 15:49] session org.apache.ibatis.session.defaults.DefaultSqlSession@388b7c8e
+[DEBUG] [2021-06-02 15:49] testSelectProjectListAll()
+[DEBUG] [2021-06-02 15:49] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project;
+[DEBUG] [2021-06-02 15:49] ==> Parameters: 
+[TRACE] [2021-06-02 15:49] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 15:49] <==        Row: 1, 1, ≈¨∂ÛøÏµÂ∆›µ˘, <<BLOB>>, 1000000, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 2021-06-01 11:26:40.0, 1
+[TRACE] [2021-06-02 15:49] <==        Row: 2, 1, »®∆‰¿Ã¡ˆ∏∏µÈ±‚, <<BLOB>>, 5000000, 2021-06-01 11:26:40.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[DEBUG] [2021-06-02 15:49] <==      Total: 2
+[DEBUG] [2021-06-02 15:49] test07SelectUserAll()
+[DEBUG] [2021-06-02 15:49] ==>  Preparing: select * from userinfo
+[DEBUG] [2021-06-02 15:49] ==> Parameters: 
+[TRACE] [2021-06-02 15:49] <==    Columns: UserNo, UserId, UserPw, UserName, Address, DetailAddress, UserPhone, Email, BankAccount, BankName
+[TRACE] [2021-06-02 15:49] <==        Row: 1, test, 0000, ±ËªÛ∞«, ¥Î±∏, ¥ﬁº≠±∏, 010-3302-1972, test@test.com, 1, ±ππŒ
+[TRACE] [2021-06-02 15:49] <==        Row: 2, test2, 1111, ±Ë∞Êø¨, ¥Î±∏, ∫œ±∏, null, null, null, null
+[DEBUG] [2021-06-02 15:49] <==      Total: 2
+[DEBUG] [2021-06-02 15:49] UserInfo [userNo=1, userId=test, userPw=0000, userName=±ËªÛ∞«, address=¥Î±∏, detailAddress=¥ﬁº≠±∏, userPhone=010-3302-1972, email=test@test.com, bankAccount=1, bankName=±ππŒ]
+[DEBUG] [2021-06-02 15:49] UserInfo [userNo=2, userId=test2, userPw=1111, userName=±Ë∞Êø¨, address=¥Î±∏, detailAddress=∫œ±∏, userPhone=null, email=null, bankAccount=0, bankName=null]
+=======
 [DEBUG] [2021-06-02 14:58] test07SelectUserAll()
 [DEBUG] [2021-06-02 14:58] ==>  Preparing: select * from userinfo
 [DEBUG] [2021-06-02 14:58] ==> Parameters: 
@@ -358,6 +507,7 @@
 [DEBUG] [2021-06-02 15:40] <==      Total: 2
 [DEBUG] [2021-06-02 15:40] BoardCategory [categoryNo=1, categoryName=Í≥µÏßÄÏÇ¨Ìï≠]
 [DEBUG] [2021-06-02 15:40] BoardCategory [categoryNo=2, categoryName=Ïù¥Î≤§Ìä∏]
+<<<<<<< HEAD
 [DEBUG] [2021-06-02 17:06] test01SelectAdminbyNo()
 [DEBUG] [2021-06-02 17:06] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
 [DEBUG] [2021-06-02 17:06] ==> Parameters: 1(Integer)
@@ -656,3 +806,158 @@
 [DEBUG] [2021-06-02 17:32] <==      Total: 2
 [DEBUG] [2021-06-02 17:32] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=ÏïÑÏûêÏïÑÏûê ÌéÄÎî©ÌåÄ, boardContent=ÌûòÏùÑÎÇ¥Ïöî! ÏûòÌï†Í±∞ÏòàÏöî, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
 [DEBUG] [2021-06-02 17:32] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=Ïù¥Î≤§Ìä∏, boardContent=Í≤ΩÌóòÏπò2Î∞∞Ïù¥Î≤§Ìä∏, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+=======
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git
+[DEBUG] [2021-06-02 17:34] test01SelectBCbyNo()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select CategoryNo, CategoryName from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:34] <==    Columns: CategoryNo, CategoryName
+[TRACE] [2021-06-02 17:34] <==        Row: 1, Í≥µÏßÄÏÇ¨Ìï≠
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] BoardCategory [categoryNo=1, categoryName=Í≥µÏßÄÏÇ¨Ìï≠]
+[DEBUG] [2021-06-02 17:34] test02InsertBC()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName ) values(?, ?)
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 3(Integer), ÏóÖÎç∞Ïù¥Ìä∏(String)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: update BoardCategory set categoryName = ? where categoryNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: Ï¢ÖÎ£åÎêú Ïù¥Î≤§Ìä∏(String), 3(Integer)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select CategoryNo, CategoryName from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: Ï¢ÖÎ£åÎêú Ïù¥Î≤§Ìä∏(String)
+[TRACE] [2021-06-02 17:34] <==    Columns: CategoryNo, CategoryName
+[TRACE] [2021-06-02 17:34] <==        Row: 3, Ï¢ÖÎ£åÎêú Ïù¥Î≤§Ìä∏
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] BoardCategory [categoryNo=3, categoryName=Ï¢ÖÎ£åÎêú Ïù¥Î≤§Ìä∏]
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] test06SelectBCAll()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select CategoryNo, CategoryName from BoardCategory
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 
+[TRACE] [2021-06-02 17:34] <==    Columns: CategoryNo, CategoryName
+[TRACE] [2021-06-02 17:34] <==        Row: 1, Í≥µÏßÄÏÇ¨Ìï≠
+[TRACE] [2021-06-02 17:34] <==        Row: 2, Ïù¥Î≤§Ìä∏
+[DEBUG] [2021-06-02 17:34] <==      Total: 2
+[DEBUG] [2021-06-02 17:34] BoardCategory [categoryNo=1, categoryName=Í≥µÏßÄÏÇ¨Ìï≠]
+[DEBUG] [2021-06-02 17:34] BoardCategory [categoryNo=2, categoryName=Ïù¥Î≤§Ìä∏]
+[DEBUG] [2021-06-02 17:34] test01SelectAdminbyNo()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:34] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-02 17:34] <==        Row: 1, admin, 0000, ÍπÄÍ≤ΩÏó∞, 010-6510-7277
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=ÍπÄÍ≤ΩÏó∞, adminTel=010-6510-7277]
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: admin1(String)
+[TRACE] [2021-06-02 17:34] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-02 17:34] <==        Row: 2, admin1, 0000, ÍπÄÏÉÅÍ±¥, 010-3302-1972
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=ÍπÄÏÉÅÍ±¥, adminTel=010-3302-1972]
+[DEBUG] [2021-06-02 17:34] test03InsertAdmin()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 3(Integer), admin2(String), 0000(String), Ïú†ÌïúÏÜî(String), 010-1111-1111(String)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 1111(String), Ïú†ÌïúÏÜî(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: Ïú†ÌïúÏÜî(String)
+[TRACE] [2021-06-02 17:34] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-02 17:34] <==        Row: 3, admin2, 1111, Ïú†ÌïúÏÜî, 010-1111-1122
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=Ïú†ÌïúÏÜî, adminTel=010-1111-1122]
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] test07SelectAdminAll()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 
+[TRACE] [2021-06-02 17:34] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-02 17:34] <==        Row: 1, admin, 0000, ÍπÄÍ≤ΩÏó∞, 010-6510-7277
+[TRACE] [2021-06-02 17:34] <==        Row: 2, admin1, 0000, ÍπÄÏÉÅÍ±¥, 010-3302-1972
+[DEBUG] [2021-06-02 17:34] <==      Total: 2
+[DEBUG] [2021-06-02 17:34] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=ÍπÄÍ≤ΩÏó∞, adminTel=010-6510-7277]
+[DEBUG] [2021-06-02 17:34] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=ÍπÄÏÉÅÍ±¥, adminTel=010-3302-1972]
+[DEBUG] [2021-06-02 17:34] test01SelectBCbyNo()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select CategoryNo, CategoryName from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:34] <==    Columns: CategoryNo, CategoryName
+[TRACE] [2021-06-02 17:34] <==        Row: 1, Í≥µÏßÄÏÇ¨Ìï≠
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] BoardCategory [categoryNo=1, categoryName=Í≥µÏßÄÏÇ¨Ìï≠]
+[DEBUG] [2021-06-02 17:34] test02InsertBC()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName ) values(?, ?)
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 3(Integer), ÏóÖÎç∞Ïù¥Ìä∏(String)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: update BoardCategory set categoryName = ? where categoryNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: Ï¢ÖÎ£åÎêú Ïù¥Î≤§Ìä∏(String), 3(Integer)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select CategoryNo, CategoryName from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: Ï¢ÖÎ£åÎêú Ïù¥Î≤§Ìä∏(String)
+[TRACE] [2021-06-02 17:34] <==    Columns: CategoryNo, CategoryName
+[TRACE] [2021-06-02 17:34] <==        Row: 3, Ï¢ÖÎ£åÎêú Ïù¥Î≤§Ìä∏
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] BoardCategory [categoryNo=3, categoryName=Ï¢ÖÎ£åÎêú Ïù¥Î≤§Ìä∏]
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] test06SelectBCAll()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select CategoryNo, CategoryName from BoardCategory
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 
+[TRACE] [2021-06-02 17:34] <==    Columns: CategoryNo, CategoryName
+[TRACE] [2021-06-02 17:34] <==        Row: 1, Í≥µÏßÄÏÇ¨Ìï≠
+[TRACE] [2021-06-02 17:34] <==        Row: 2, Ïù¥Î≤§Ìä∏
+[DEBUG] [2021-06-02 17:34] <==      Total: 2
+[DEBUG] [2021-06-02 17:34] BoardCategory [categoryNo=1, categoryName=Í≥µÏßÄÏÇ¨Ìï≠]
+[DEBUG] [2021-06-02 17:34] BoardCategory [categoryNo=2, categoryName=Ïù¥Î≤§Ìä∏]
+[DEBUG] [2021-06-02 17:34] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:34] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:34] <==        Row: 1, 1, ÏïÑÏûêÏïÑÏûê ÌéÄÎî©ÌåÄ, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] Board [boardNo=1, categoryNo=null, boardTitle=ÏïÑÏûêÏïÑÏûê ÌéÄÎî©ÌåÄ, boardContent=ÌûòÏùÑÎÇ¥Ïöî! ÏûòÌï†Í±∞ÏòàÏöî, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-02 17:34] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:34] <==        Row: 2, 2, Ïù¥Î≤§Ìä∏, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=Ïù¥Î≤§Ìä∏, boardContent=Í≤ΩÌóòÏπò2Î∞∞Ïù¥Î≤§Ìä∏, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:34] test03InsertBoard()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: insert into Board(boardNo, categoryNo, boardTitle, boardContent ) values(?, ?, ?, ?)
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 3(Integer), 1(Integer), Í≥µÏßÄÏÇ¨Ìï≠(String), Í∏àÏùºÏùò Í≥µÏßÄÏÇ¨Ìï≠(String)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 1(Integer), Í≥µÏßÄÏÇ¨Ìï≠(String), 06Ïõî 02Ïùº UI Î≥ÄÍ≤Ω ÏïàÎÇ¥(String), 3(Integer)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: Í≥µÏßÄÏÇ¨Ìï≠(String)
+[TRACE] [2021-06-02 17:34] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:34] <==        Row: 3, 1, Í≥µÏßÄÏÇ¨Ìï≠, <<BLOB>>, 2021-06-02 17:34:49.0, 0
+[DEBUG] [2021-06-02 17:34] <==      Total: 1
+[DEBUG] [2021-06-02 17:34] Board [boardNo=3, categoryNo=null, boardTitle=Í≥µÏßÄÏÇ¨Ìï≠, boardContent=06Ïõî 02Ïùº UI Î≥ÄÍ≤Ω ÏïàÎÇ¥, boardDate=Wed Jun 02 17:34:49 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:34] <==    Updates: 1
+[DEBUG] [2021-06-02 17:34] res id >> 1
+[DEBUG] [2021-06-02 17:34] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:34] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:34] ==> Parameters: 
+[TRACE] [2021-06-02 17:34] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:34] <==        Row: 1, 1, ÏïÑÏûêÏïÑÏûê ÌéÄÎî©ÌåÄ, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:34] <==        Row: 2, 2, Ïù¥Î≤§Ìä∏, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:34] <==      Total: 2
+[DEBUG] [2021-06-02 17:34] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=ÏïÑÏûêÏïÑÏûê ÌéÄÎî©ÌåÄ, boardContent=ÌûòÏùÑÎÇ¥Ïöî! ÏûòÌï†Í±∞ÏòàÏöî, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:34] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=Ïù¥Î≤§Ìä∏, boardContent=Í≤ΩÌóòÏπò2Î∞∞Ïù¥Î≤§Ìä∏, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
