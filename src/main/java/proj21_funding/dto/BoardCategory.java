@@ -14,7 +14,17 @@ public class BoardCategory {
 		this.categoryName = categoryName;
 	}
 
-	/* getter & setter*/
+	public BoardCategory(int categoryNo) {
+		super();
+		this.categoryNo = categoryNo;
+	}
+
+	public BoardCategory(String categoryName) {
+		super();
+		this.categoryName = categoryName;
+	}
+
+	/* getter & setter */
 	public int getCategoryNo() {
 		return categoryNo;
 	}

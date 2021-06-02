@@ -358,3 +358,301 @@
 [DEBUG] [2021-06-02 15:40] <==      Total: 2
 [DEBUG] [2021-06-02 15:40] BoardCategory [categoryNo=1, categoryName=공지사항]
 [DEBUG] [2021-06-02 15:40] BoardCategory [categoryNo=2, categoryName=이벤트]
+[DEBUG] [2021-06-02 17:06] test01SelectAdminbyNo()
+[DEBUG] [2021-06-02 17:06] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-02 17:06] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:06] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-02 17:06] <==        Row: 1, admin, 0000, 김경연, 010-6510-7277
+[DEBUG] [2021-06-02 17:06] <==      Total: 1
+[DEBUG] [2021-06-02 17:06] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=김경연, adminTel=010-6510-7277]
+[DEBUG] [2021-06-02 17:06] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-02 17:06] ==> Parameters: admin1(String)
+[TRACE] [2021-06-02 17:06] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-02 17:06] <==        Row: 2, admin1, 0000, 김상건, 010-3302-1972
+[DEBUG] [2021-06-02 17:06] <==      Total: 1
+[DEBUG] [2021-06-02 17:06] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=김상건, adminTel=010-3302-1972]
+[DEBUG] [2021-06-02 17:06] test03InsertAdmin()
+[DEBUG] [2021-06-02 17:06] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-02 17:06] ==> Parameters: 3(Integer), admin2(String), 0000(String), 유한솔(String), 010-1111-1111(String)
+[DEBUG] [2021-06-02 17:06] <==    Updates: 1
+[DEBUG] [2021-06-02 17:06] res id >> 1
+[DEBUG] [2021-06-02 17:06] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-02 17:06] ==> Parameters: 1111(String), 유한솔(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-02 17:06] <==    Updates: 1
+[DEBUG] [2021-06-02 17:06] res id >> 1
+[DEBUG] [2021-06-02 17:06] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-02 17:06] ==> Parameters: 유한솔(String)
+[TRACE] [2021-06-02 17:06] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-02 17:06] <==        Row: 3, admin2, 1111, 유한솔, 010-1111-1122
+[DEBUG] [2021-06-02 17:06] <==      Total: 1
+[DEBUG] [2021-06-02 17:06] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=유한솔, adminTel=010-1111-1122]
+[DEBUG] [2021-06-02 17:06] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-02 17:06] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:06] <==    Updates: 1
+[DEBUG] [2021-06-02 17:06] res id >> 1
+[DEBUG] [2021-06-02 17:06] test07SelectAdminAll()
+[DEBUG] [2021-06-02 17:06] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-02 17:06] ==> Parameters: 
+[TRACE] [2021-06-02 17:06] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-02 17:06] <==        Row: 1, admin, 0000, 김경연, 010-6510-7277
+[TRACE] [2021-06-02 17:06] <==        Row: 2, admin1, 0000, 김상건, 010-3302-1972
+[DEBUG] [2021-06-02 17:06] <==      Total: 2
+[DEBUG] [2021-06-02 17:06] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=김경연, adminTel=010-6510-7277]
+[DEBUG] [2021-06-02 17:06] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=김상건, adminTel=010-3302-1972]
+[DEBUG] [2021-06-02 17:23] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:23] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:23] ==> Parameters: 
+[TRACE] [2021-06-02 17:23] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:23] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:23] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:23] <==      Total: 2
+[DEBUG] [2021-06-02 17:23] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:23] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:23] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:23] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:23] ==> Parameters: 
+[TRACE] [2021-06-02 17:23] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:23] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:23] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:23] <==      Total: 2
+[DEBUG] [2021-06-02 17:23] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:23] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:24] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:24] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:24] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:24] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:24] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:24] <==      Total: 1
+[DEBUG] [2021-06-02 17:24] Board [boardNo=1, categoryNo=null, boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:24] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:24] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:24] ==> Parameters: 
+[TRACE] [2021-06-02 17:24] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:24] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:24] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:24] <==      Total: 2
+[DEBUG] [2021-06-02 17:24] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:24] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:25] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:25] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:25] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:25] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:25] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:25] <==      Total: 1
+[DEBUG] [2021-06-02 17:25] Board [boardNo=1, categoryNo=null, boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:25] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-02 17:25] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:25] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:25] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:25] <==      Total: 1
+[DEBUG] [2021-06-02 17:25] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:25] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:25] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:25] ==> Parameters: 
+[TRACE] [2021-06-02 17:25] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:25] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:25] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:25] <==      Total: 2
+[DEBUG] [2021-06-02 17:25] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:25] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:25] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:25] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:25] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:25] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:25] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:25] <==      Total: 1
+[DEBUG] [2021-06-02 17:25] Board [boardNo=1, categoryNo=null, boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:25] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-02 17:25] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-02 17:25] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:25] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:25] <==      Total: 1
+[DEBUG] [2021-06-02 17:25] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:25] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:25] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:25] ==> Parameters: 
+[TRACE] [2021-06-02 17:25] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:25] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:25] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:25] <==      Total: 2
+[DEBUG] [2021-06-02 17:25] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:25] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:30] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:30] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:30] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:30] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:30] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:30] <==      Total: 1
+[DEBUG] [2021-06-02 17:30] Board [boardNo=1, categoryNo=null, boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:30] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-02 17:30] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-02 17:30] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:30] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:30] <==      Total: 1
+[DEBUG] [2021-06-02 17:30] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:30] test03InsertBoard()
+[DEBUG] [2021-06-02 17:30] ==>  Preparing: insert into Board(boardNo, categoryNo, boardTitle, boardContent ) values(?, ?, ?, ?)
+[DEBUG] [2021-06-02 17:30] ==> Parameters: 3(Integer), 1(Integer), 공지사항(String), <<BLOB>>(String)
+[DEBUG] [2021-06-02 17:30] <==    Updates: 1
+[DEBUG] [2021-06-02 17:30] res id >> 1
+[DEBUG] [2021-06-02 17:30] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:30] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:30] ==> Parameters: 
+[TRACE] [2021-06-02 17:30] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:30] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:30] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[TRACE] [2021-06-02 17:30] <==        Row: 3, 1, 공지사항, <<BLOB>>, 2021-06-02 17:30:23.0, 0
+[DEBUG] [2021-06-02 17:30] <==      Total: 3
+[DEBUG] [2021-06-02 17:30] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:30] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:30] Board [boardNo=3, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=공지사항, boardContent=<<BLOB>>, boardDate=Wed Jun 02 17:30:23 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:31] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:31] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:31] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:31] <==      Total: 1
+[DEBUG] [2021-06-02 17:31] Board [boardNo=1, categoryNo=null, boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-02 17:31] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:31] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:31] <==      Total: 1
+[DEBUG] [2021-06-02 17:31] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:31] test03InsertBoard()
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: insert into Board(boardNo, categoryNo, boardTitle, boardContent ) values(?, ?, ?, ?)
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 3(Integer), 1(Integer), 공지사항(String), <<BLOB>>(String)
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 1(Integer), 공지사항(String), 06월 02일 UI 변경 안내(String), 3(Integer)
+[DEBUG] [2021-06-02 17:31] <==    Updates: 1
+[DEBUG] [2021-06-02 17:31] res id >> 1
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:31] <==    Updates: 1
+[DEBUG] [2021-06-02 17:31] res id >> 1
+[DEBUG] [2021-06-02 17:31] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 
+[TRACE] [2021-06-02 17:31] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:31] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:31] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:31] <==      Total: 2
+[DEBUG] [2021-06-02 17:31] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:31] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:31] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:31] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:31] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:31] <==      Total: 1
+[DEBUG] [2021-06-02 17:31] Board [boardNo=1, categoryNo=null, boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-02 17:31] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:31] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:31] <==      Total: 1
+[DEBUG] [2021-06-02 17:31] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:31] test03InsertBoard()
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: insert into Board(boardNo, categoryNo, boardTitle, boardContent ) values(?, ?, ?, ?)
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 3(Integer), 1(Integer), 공지사항(String), <<BLOB>>(String)
+[DEBUG] [2021-06-02 17:31] <==    Updates: 1
+[DEBUG] [2021-06-02 17:31] res id >> 1
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 1(Integer), 공지사항(String), 06월 02일 UI 변경 안내(String), 3(Integer)
+[DEBUG] [2021-06-02 17:31] <==    Updates: 1
+[DEBUG] [2021-06-02 17:31] res id >> 1
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:31] <==    Updates: 1
+[DEBUG] [2021-06-02 17:31] res id >> 1
+[DEBUG] [2021-06-02 17:31] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:31] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:31] ==> Parameters: 
+[TRACE] [2021-06-02 17:31] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:31] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:31] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:31] <==      Total: 2
+[DEBUG] [2021-06-02 17:31] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:31] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:32] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:32] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:32] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:32] <==      Total: 1
+[DEBUG] [2021-06-02 17:32] Board [boardNo=1, categoryNo=null, boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-02 17:32] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:32] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:32] <==      Total: 1
+[DEBUG] [2021-06-02 17:32] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:32] test03InsertBoard()
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: insert into Board(boardNo, categoryNo, boardTitle, boardContent ) values(?, ?, ?, ?)
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 3(Integer), 1(Integer), 공지사항(String), <<BLOB>>(String)
+[DEBUG] [2021-06-02 17:32] <==    Updates: 1
+[DEBUG] [2021-06-02 17:32] res id >> 1
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 1(Integer), 공지사항(String), 06월 02일 UI 변경 안내(String), 3(Integer)
+[DEBUG] [2021-06-02 17:32] <==    Updates: 1
+[DEBUG] [2021-06-02 17:32] res id >> 1
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 공지사항(String)
+[TRACE] [2021-06-02 17:32] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:32] <==        Row: 3, 1, 공지사항, <<BLOB>>, 2021-06-02 17:32:35.0, 0
+[DEBUG] [2021-06-02 17:32] <==      Total: 1
+[DEBUG] [2021-06-02 17:32] Board [boardNo=3, categoryNo=null, boardTitle=공지사항, boardContent=06월 02일 UI 변경 안내, boardDate=Wed Jun 02 17:32:35 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:32] <==    Updates: 1
+[DEBUG] [2021-06-02 17:32] res id >> 1
+[DEBUG] [2021-06-02 17:32] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 
+[TRACE] [2021-06-02 17:32] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:32] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:32] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:32] <==      Total: 2
+[DEBUG] [2021-06-02 17:32] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:32] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:32] test01SelectBoardByNo()
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-02 17:32] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:32] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[DEBUG] [2021-06-02 17:32] <==      Total: 1
+[DEBUG] [2021-06-02 17:32] Board [boardNo=1, categoryNo=null, boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-02 17:32] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:32] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:32] <==      Total: 1
+[DEBUG] [2021-06-02 17:32] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:32] test03InsertBoard()
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: insert into Board(boardNo, categoryNo, boardTitle, boardContent ) values(?, ?, ?, ?)
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 3(Integer), 1(Integer), 공지사항(String), 금일의 공지사항(String)
+[DEBUG] [2021-06-02 17:32] <==    Updates: 1
+[DEBUG] [2021-06-02 17:32] res id >> 1
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 1(Integer), 공지사항(String), 06월 02일 UI 변경 안내(String), 3(Integer)
+[DEBUG] [2021-06-02 17:32] <==    Updates: 1
+[DEBUG] [2021-06-02 17:32] res id >> 1
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 공지사항(String)
+[TRACE] [2021-06-02 17:32] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:32] <==        Row: 3, 1, 공지사항, <<BLOB>>, 2021-06-02 17:32:56.0, 0
+[DEBUG] [2021-06-02 17:32] <==      Total: 1
+[DEBUG] [2021-06-02 17:32] Board [boardNo=3, categoryNo=null, boardTitle=공지사항, boardContent=06월 02일 UI 변경 안내, boardDate=Wed Jun 02 17:32:56 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-02 17:32] <==    Updates: 1
+[DEBUG] [2021-06-02 17:32] res id >> 1
+[DEBUG] [2021-06-02 17:32] test07SelectBoardAll()
+[DEBUG] [2021-06-02 17:32] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-02 17:32] ==> Parameters: 
+[TRACE] [2021-06-02 17:32] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-02 17:32] <==        Row: 1, 1, 아자아자 펀딩팀, <<BLOB>>, 2021-06-02 15:17:17.0, 1
+[TRACE] [2021-06-02 17:32] <==        Row: 2, 2, 이벤트, <<BLOB>>, 2021-06-02 15:17:17.0, 0
+[DEBUG] [2021-06-02 17:32] <==      Total: 2
+[DEBUG] [2021-06-02 17:32] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null], boardTitle=아자아자 펀딩팀, boardContent=힘을내요! 잘할거예요, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-02 17:32] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null], boardTitle=이벤트, boardContent=경험치2배이벤트, boardDate=Wed Jun 02 15:17:17 KST 2021, boardReadCount=0]

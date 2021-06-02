@@ -18,7 +18,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
+import proj21_funding.dto.Admin;
 import proj21_funding.dto.Board;
+import proj21_funding.dto.BoardCategory;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
@@ -47,32 +49,54 @@ public class BoardMapperTest {
 
 	@Test
 	public void test01SelectBoardByNo() {
-		fail("Not yet implemented");
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		int boardNo = 00001;
+		Board board = mapper.selectBoardByNo(boardNo);
+		log.debug(board.toString());
+		Assert.assertNotNull(board);
 	}
 
 	@Test
 	public void test02SelectBoardByCNo() {
-		fail("Not yet implemented");
+		int categoryNo = 2;
+		Board board = mapper.selectBoardByCNo(categoryNo);
+		log.debug(board.toString());
+		Assert.assertNotNull(board);
 	}
 
 	@Test
 	public void test05SelectBoardByTitle() {
-		fail("Not yet implemented");
+		String boardTitle = "공지사항";
+		Board board = mapper.selectBoardByTitle(boardTitle);
+		log.debug(board.toString());
+		Assert.assertNotNull(board);
 	}
 
 	@Test
 	public void test03InsertBoard() {
-		fail("Not yet implemented");
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		Board board = new Board(3, new BoardCategory(1), "공지사항", "금일의 공지사항");
+		int res = mapper.insertBoard(board);
+		Assert.assertEquals(1, res);
+		log.debug("res id >> " + res);
 	}
 
 	@Test
 	public void test04UpdateBoard() {
-		fail("Not yet implemented");
+		Board board = new Board(3, new BoardCategory(1), "공지사항", "06월 02일 UI 변경 안내");
+		int res = mapper.updateBoard(board);
+		Assert.assertEquals(1, res);
+		log.debug("res id >> " + res);
 	}
 
 	@Test
 	public void test06DeleteBoard() {
-		fail("Not yet implemented");
+		int boardNo = 3;
+		int res = mapper.deleteBoard(boardNo);
+		Assert.assertEquals(1, res);
+		log.debug("res id >> " + res);
 	}
 
 }

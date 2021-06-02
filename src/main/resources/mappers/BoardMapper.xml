@@ -4,53 +4,57 @@
 
 	<resultMap type="Board" id="resBoard">
 		<id property="boardNo" column="BoardNo" />
-		<result property="categoryNo" column="CategoryNo" />
 		<result property="boardTitle" column="BoardTitle" />
 		<result property="boardContent" column="BoardContent" />
 		<result property="boardDate" column="BoardDate" />
 		<result property="boardReadCount" column="BoardReadCount" />
 	</resultMap>
 
+
+	<resultMap type="Board" id="AssociateResCategory" extends="resBoard">
+		<association property="categoryNo"
+			resultMap="proj21_funding.mapper.BoardCategoryMapper.resBC"></association>
+	</resultMap>
+	
+
 	<sql id="selectSql">
 		select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
-		  from Board	
+		from Board
 	</sql>
 
-	<select id="selectBoardAll" resultMap="resBoard">
-		<include refid="selectSql" />	
+	<select id="selectBoardAll" resultType="Board" resultMap="AssociateResCategory">
+		<include refid="selectSql" />
 	</select>
 
 	<select id="selectBoardByNo" resultMap="resBoard">
 		<include refid="selectSql" />
-		where boardNo = #{boardNo}	
+		where boardNo = #{boardNo}
 	</select>
 
-	<select id="selectBoardByCNo" resultMap="resBoard">
+	<select id="selectBoardByCNo" resultMap="AssociateResCategory">
 		<include refid="selectSql" />
-		where categoryNo = #{categoryNo}	
+		where categoryNo = #{categoryNo.categoryNo}
 	</select>
 
 	<select id="selectBoardByTitle" resultMap="resBoard">
 		<include refid="selectSql" />
-		where boardTitle = #{boardTitle}	
+		where boardTitle = #{boardTitle}
 	</select>
 
 	<insert id="insertBoard" parameterType="Board">
-		insert
-		  into Board( boardNo, categoryNo, boardTitle, boardContent )
-		values(#{boardNo}, #{categoryNo}, #{boardTitle}, #{boardContent})			
+		insert into Board(boardNo, categoryNo, boardTitle, boardContent )
+		values(#{boardNo}, #{categoryNo.categoryNo}, #{boardTitle}, #{boardContent})
 	</insert>
-	
+
 	<update id="updateBoard">
 		update Board
-		   set categoryNo = #{categoryNo}, boardTitle = #{boardTitle}, boardContent = #{boardContent}
-		 where boardNo = #{boardNo}
+		set categoryNo = #{categoryNo.categoryNo}, boardTitle = #{boardTitle}, boardContent = #{boardContent}
+		where boardNo = #{boardNo}
 	</update>
-	
+
 	<delete id="deleteBoard">
 		delete
-		  from Board
-		 where boardNo = #{boardNo}	
+		from Board
+		where boardNo = #{boardNo}
 	</delete>
-
 </mapper>
