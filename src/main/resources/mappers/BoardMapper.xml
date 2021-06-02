@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_funding.mapper.BoardMapper">
+
+	<resultMap type="Board" id="resBoard">
+		<id property="boardNo" column="BoardNo" />
+		<result property="categoryNo" column="CategoryNo" />
+		<result property="boardTitle" column="BoardTitle" />
+		<result property="boardContent" column="BoardContent" />
+		<result property="boardDate" column="BoardDate" />
+		<result property="boardReadCount" column="BoardReadCount" />
+	</resultMap>
+
+	<sql id="selectSql">
+		select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+		  from Board	
+	</sql>
+
+	<select id="selectBoardAll" resultMap="resBoard">
+		<include refid="selectSql" />	
+	</select>
+
+	<select id="selectBoardByNo" resultMap="resBoard">
+		<include refid="selectSql" />
+		where boardNo = #{boardNo}	
+	</select>
+
+	<select id="selectBoardByCNo" resultMap="resBoard">
+		<include refid="selectSql" />
+		where categoryNo = #{categoryNo}	
+	</select>
+
+	<select id="selectBoardByTitle" resultMap="resBoard">
+		<include refid="selectSql" />
+		where boardTitle = #{boardTitle}	
+	</select>
+
+	<insert id="insertBoard" parameterType="Board">
+		insert
+		  into Board( boardNo, categoryNo, boardTitle, boardContent )
+		values(#{boardNo}, #{categoryNo}, #{boardTitle}, #{boardContent})			
+	</insert>
+	
+	<update id="updateBoard">
+		update Board
+		   set categoryNo = #{categoryNo}, boardTitle = #{boardTitle}, boardContent = #{boardContent}
+		 where boardNo = #{boardNo}
+	</update>
+	
+	<delete id="deleteBoard">
+		delete
+		  from Board
+		 where boardNo = #{boardNo}	
+	</delete>
+
+</mapper>
