@@ -13,4 +13,10 @@
 		StartDate, EndDate,	PayDate, EndYN
 		from project;
 	</select>
+	
+	<select id="selectProjectByNo" resultType="Project">
+		select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
+		StartDate, EndDate,	PayDate, EndYN
+		from project where prjNo = #{prjNo};
+	</select>
 </mapper>

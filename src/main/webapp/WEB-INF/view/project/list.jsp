@@ -6,14 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
-=======
 <title>100펀딩 - 크리에이터를 위한 크라우드펀딩</title>
-<link rel="stylesheet" href="/proj21_funding/home_css/main.css">
->>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git
-
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
 	<div class="container">
@@ -22,7 +16,7 @@
 		</header>
 		<%-- ${projects } --%>
 		<section>
-			<jsp:include page="/WEB-INF/view/project/list_section.jsp"/>
+			<jsp:include page="/WEB-INF/view/project/list_section2.jsp"/>
 		<%-- 	<c:forEach var="prj" items="${projects }">
 			
 			<img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"><br>
