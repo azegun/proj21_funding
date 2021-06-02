@@ -103,6 +103,15 @@ now(), now(),  now(), 1
 insert into project (UserNo, PrjName, PrjContent, PrjGoal,
 	StartDate, EndDate, PayDate)
 values (1,'홈페이지만들기','펀딩프로젝트만듭니다.',5000000,now(),'2021-6-30','2021-7-12');
+insert into project (UserNo, PrjName, PrjContent, PrjGoal,
+	StartDate, EndDate, PayDate)
+values (2,'보드게임','부루마블입니다.',15000000,now(),'2021-7-1','2021-7-12');
+insert into project (UserNo, PrjName, PrjContent, PrjGoal,
+	StartDate, EndDate, PayDate)
+values (1,'UDT 훈련 수기, <내가 유디티가 된 이유> 출간','UDT 훈련 수기, <내가 유디티가 된 이유> 출간.',10000000,now(),'2021-6-30','2021-7-12');
+insert into project (UserNo, PrjName, PrjContent, PrjGoal,
+	StartDate, EndDate, PayDate)
+values (1,'성평등한 하루를 위한 양말','성평등한 하루를 위한 양말.',7000000,now(),'2021-6-10','2021-7-22');
 
 
 

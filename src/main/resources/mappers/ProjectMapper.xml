@@ -21,6 +21,7 @@
 		from project
 	</select>
 	
+
 	<insert id="insertProject" parameterType="Project">
 		insert into project(
 				UserNo, PrjName, PrjContent, PrjGoal, 
@@ -29,4 +30,10 @@
 				#{userNo}, #{prjName}, #{prjContent}, #{prjGoal},
 				now(), now(), now())
 	</insert>
+
+	<select id="selectProjectByNo" resultType="Project">
+		select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
+		StartDate, EndDate,	PayDate, EndYN
+		from project where prjNo = #{prjNo};
+	</select>
 </mapper>
