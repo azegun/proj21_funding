@@ -1,5 +1,7 @@
 package proj21_funding.mapper;
 
+import static org.junit.Assert.fail;
+
 import java.util.List;
 
 import org.apache.ibatis.logging.Log;
@@ -16,19 +18,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
-import proj21_funding.dto.Project;
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.Board;
 
-
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @WebAppConfiguration
-public class ProjectMapperTest {
-	protected static final Log log = LogFactory.getLog(ProjectMapperTest.class);
+public class BoardMapperTest {
+
+	private static final Log log = LogFactory.getLog(BoardMapperTest.class);
 	
 	@Autowired
-	private ProjectMapper mapper;
+	private BoardMapper mapper;
 	
 	@After
 	public void tearDown() throws Exception {
@@ -36,27 +37,42 @@ public class ProjectMapperTest {
 	}
 
 	@Test
-	public void testSelectProjectListAll() {
+	public void test07SelectBoardAll() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		List<Project> list = mapper.selectProjectListAll();
+
+		List<Board> list = mapper.selectBoardAll();
 		Assert.assertNotNull(list);
+		list.stream().forEach(s -> log.debug(s.toString()));
 	}
-	
-//	@Test
-	public void testinsertProject() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		
-		Project project = new Project(new UserInfo(2), "인서트성공", "제발,,,,", 3000000);
-		int res = mapper.insertProject(project);
-		
-		Assert.assertEquals(1, res);
-	}
-	
+
 	@Test
-	public void testSelectProjjectListByNo() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		Project list = mapper.selectProjectByNo(3);
-		Assert.assertNotNull(list);
+	public void test01SelectBoardByNo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void test02SelectBoardByCNo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void test05SelectBoardByTitle() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void test03InsertBoard() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void test04UpdateBoard() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void test06DeleteBoard() {
+		fail("Not yet implemented");
 	}
 
 }

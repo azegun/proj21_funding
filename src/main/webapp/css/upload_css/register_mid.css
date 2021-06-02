@@ -4,6 +4,8 @@ h2{
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 #register_content{
 	display: flex;
@@ -11,6 +13,13 @@ h2{
 	align-items: center;
 	margin:0 auto;
 }
+.td_left{}
+.td_right{}
+
 #register_btns{
-	text-align: center;
+	text-align: center;	
 }
+
+#startDate{}
+#endDate{}
+#payDate{}

@@ -10,11 +10,20 @@ public class Project {
 	private int prjGoal;			//목표금액
 	private LocalDateTime startDate;//시작일
 	private LocalDateTime endDate;	//마감일
-	private LocalDateTime paydate;	//결제일
+	private LocalDateTime payDate;	//결제일
 	private boolean	endYn;			//마감여부
 	
 //	생성자
 	public Project() {
+	}
+	
+	//프로젝트 등록
+	public Project(UserInfo userNo, String prjName, String prjContent, int prjGoal) {
+		super();
+		this.userNo = userNo;
+		this.prjName = prjName;
+		this.prjContent = prjContent;
+		this.prjGoal = prjGoal;
 	}
 
 	public Project(int prjNo) {
@@ -78,12 +87,14 @@ public class Project {
 		this.endDate = endDate;
 	}
 
-	public LocalDateTime getPaydate() {
-		return paydate;
+
+
+	public LocalDateTime getPayDate() {
+		return payDate;
 	}
 
-	public void setPaydate(LocalDateTime paydate) {
-		this.paydate = paydate;
+	public void setPayDate(LocalDateTime payDate) {
+		this.payDate = payDate;
 	}
 
 	public boolean isEndYn() {
@@ -98,7 +109,7 @@ public class Project {
 	public String toString() {
 		return String.format(
 				"Project [prjNo=%s, userNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, paydate=%s, endYn=%s]",
-				prjNo, userNo, prjName, prjContent, prjGoal, startDate, endDate, paydate, endYn);
+				prjNo, userNo, prjName, prjContent, prjGoal, startDate, endDate, payDate, endYn);
 	}
 	
 	
