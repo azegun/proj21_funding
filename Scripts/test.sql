@@ -86,6 +86,7 @@ select
 from addresses ;
 
 -- Project + PrjOption insert 트렌젝션
+desc project;
 select  * from project; 
 SELECT * FROM prjoption;
 select * from userinfo;

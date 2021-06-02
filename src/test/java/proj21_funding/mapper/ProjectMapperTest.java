@@ -42,7 +42,7 @@ public class ProjectMapperTest {
 		Assert.assertNotNull(list);
 	}
 	
-	@Test
+//	@Test
 	public void testinsertProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -51,7 +51,8 @@ public class ProjectMapperTest {
 		
 		Assert.assertEquals(1, res);
 	}
-		
+	
+	@Test
 	public void testSelectProjjectListByNo() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		Project list = mapper.selectProjectByNo(3);
