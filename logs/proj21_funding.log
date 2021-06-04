@@ -253,3 +253,25 @@
 [DEBUG] [2021-06-02 16:50] ==>  Preparing: insert into project( UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate) values( ?, ?, ?, ?, now(), now(), now())
 [DEBUG] [2021-06-02 16:50] ==> Parameters: 2(Integer), 인서트성공(String), 제발,,,,(String), 3000000(Integer)
 [DEBUG] [2021-06-02 16:50] <==    Updates: 1
+[DEBUG] [2021-06-02 19:56] testSelectProjectListAll()
+[DEBUG] [2021-06-02 19:56] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project
+[DEBUG] [2021-06-02 19:56] ==> Parameters: 
+[TRACE] [2021-06-02 19:56] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 19:56] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 1000000, 2021-05-31 16:09:23.0, 2021-05-31 16:09:23.0, 2021-05-31 16:09:23.0, 1
+[TRACE] [2021-06-02 19:56] <==        Row: 2, 1, 홈페이지만들기, <<BLOB>>, 5000000, 2021-05-31 16:09:23.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0
+[TRACE] [2021-06-02 19:56] <==        Row: 3, 1, 클라우드펀딩 올리기, <<BLOB>>, 1000000, 2021-06-02 15:07:34.0, 2021-06-02 15:07:34.0, 2021-06-02 15:07:34.0, 0
+[TRACE] [2021-06-02 19:56] <==        Row: 4, 2, 인서트성공, <<BLOB>>, 3000000, 2021-06-02 16:44:30.0, 2021-06-02 16:44:30.0, 2021-06-02 16:44:30.0, 0
+[TRACE] [2021-06-02 19:56] <==        Row: 5, 2, 인서트성공, <<BLOB>>, 3000000, 2021-06-02 16:48:39.0, 2021-06-02 16:48:39.0, 2021-06-02 16:48:39.0, 0
+[TRACE] [2021-06-02 19:56] <==        Row: 6, 2, 인서트성공, <<BLOB>>, 3000000, 2021-06-02 16:48:59.0, 2021-06-02 16:48:59.0, 2021-06-02 16:48:59.0, 0
+[TRACE] [2021-06-02 19:56] <==        Row: 7, 2, 인서트성공, <<BLOB>>, 3000000, 2021-06-02 16:50:06.0, 2021-06-02 16:50:06.0, 2021-06-02 16:50:06.0, 0
+[DEBUG] [2021-06-02 19:56] <==      Total: 7
+[DEBUG] [2021-06-02 19:56] testSelectProjjectListByNo()
+[DEBUG] [2021-06-02 19:56] ==>  Preparing: select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN from project where prjNo = ?;
+[DEBUG] [2021-06-02 19:56] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-02 19:56] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+[TRACE] [2021-06-02 19:56] <==        Row: 3, 1, 클라우드펀딩 올리기, <<BLOB>>, 1000000, 2021-06-02 15:07:34.0, 2021-06-02 15:07:34.0, 2021-06-02 15:07:34.0, 0
+[DEBUG] [2021-06-02 19:56] <==      Total: 1
+[DEBUG] [2021-06-02 19:56] testInsertPrjOption()
+[DEBUG] [2021-06-02 19:56] ==>  Preparing: insert into PrjOption( PrjNo, OptPrice, OptContent) values( ?, ?, ? )
+[DEBUG] [2021-06-02 19:56] ==> Parameters: 4(Integer), 4000000(Integer), 옵션d(String)
+[DEBUG] [2021-06-02 19:56] <==    Updates: 1
