@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 // 회원가입시 양식 제한
-public class RegisterRequest {	
+public class UserSignUp {	
 	@Size(min = 4)
 	private String userId; // 회원계정	
 	@Size(min = 4)

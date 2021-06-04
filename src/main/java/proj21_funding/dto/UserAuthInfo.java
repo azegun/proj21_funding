@@ -1,17 +1,17 @@
 package proj21_funding.dto;
 
 // 로그인상태 유지중 유저정보 저장
-public class AuthInfo {
+public class UserAuthInfo {
 
 	private int userNo; // 회원번호
 	private String userId; // 회원계정
 	private String userName; // 회원성명
 
-	public AuthInfo() {
+	public UserAuthInfo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AuthInfo(int userNo, String userId, String userName) {
+	public UserAuthInfo(int userNo, String userId, String userName) {
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userName = userName;

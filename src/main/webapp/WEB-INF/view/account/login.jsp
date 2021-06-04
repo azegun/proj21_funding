@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 화면</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/login.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
 		</header>
 		<section id="loginFormArea">
 			<h1>로그인</h1>
-			<form:form modelAttribute="loginCommand">
+			<form:form modelAttribute="userLogin">
 			<form:errors />
 			<fieldset id="loginBtn">
 					<p>

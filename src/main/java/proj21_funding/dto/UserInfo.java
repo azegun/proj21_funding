@@ -1,5 +1,7 @@
 package proj21_funding.dto;
 
+import proj21_funding.exception.WrongIdPasswordException;
+
 // 회원정보 
 public class UserInfo {
 	private int userNo; // 회원번호
@@ -119,6 +121,12 @@ public class UserInfo {
 
 	public boolean matchPassword(String userPw) {
 		return this.userPw.equals(userPw);		
+	}
+	
+	public void changePassword(String oldPassword, String newPassword) {
+		if (!userPw.equals(oldPassword))
+			throw new WrongIdPasswordException();
+		this.userPw = newPassword;
 	}
 	
 	@Override

@@ -3,7 +3,7 @@ package proj21_funding.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proj21_funding.dto.RegisterRequest;
+import proj21_funding.dto.UserSignUp;
 import proj21_funding.dto.UserInfo;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.mapper.UserInfoMapper;
@@ -16,15 +16,15 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 	private UserInfoMapper mapper;
 
 	@Override
-	public int regist(RegisterRequest req) {
-		UserInfo userInfo = mapper.selectUserbyId(req.getUserId());
+	public int regist(UserSignUp userSignUp) {
+		UserInfo userInfo = mapper.selectUserbyId(userSignUp.getUserId());
 		if (userInfo != null) {
-			throw new DuplicateUserException("dup id" + req.getUserId());
+			throw new DuplicateUserException("dup id" + userSignUp.getUserId());
 		}
-		UserInfo newUserInfo = new UserInfo(req.getUserId(), req.getUserPw(), req.getUserName(), req.getAddress(),
-				req.getDetailAddress(), req.getUserPhone(), req.getEmail(), req.getBankAccount(), req.getBankName());
+		UserInfo newUserInfo = new UserInfo(userSignUp.getUserId(), userSignUp.getUserPw(), userSignUp.getUserName(), userSignUp.getAddress(),
+				userSignUp.getDetailAddress(), userSignUp.getUserPhone(), userSignUp.getEmail(), userSignUp.getBankAccount(), userSignUp.getBankName());
 
-		mapper.insertMember(newUserInfo);
+		mapper.insertUser(newUserInfo);
 		return newUserInfo.getUserNo();
 	}
 
