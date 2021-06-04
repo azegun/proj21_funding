@@ -8,6 +8,8 @@ import javax.sql.DataSource;
 import org.apache.ibatis.io.Resources;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -28,6 +30,11 @@ public class ContextDataSource {
 			e.printStackTrace();
 		}
 		return dataSource;
+	}
+	
+	@Bean // Transaction관리자
+	public PlatformTransactionManager transactionManager() {
+		return new DataSourceTransactionManager(dataSource());
 	}
 
 }

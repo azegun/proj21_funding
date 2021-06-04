@@ -38,6 +38,7 @@ from userinfo;
 
 delete from userinfo where userNo >2;
 alter table userinfo auto_increment=3;
+
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
 	QnaNo, UserNo, AdminNo, CategoryNo,
@@ -83,3 +84,21 @@ from prjboard;
 select 
 	addr_id, street, city, state, zip, country 
 from addresses ;
+
+-- Project + PrjOption insert 트렌젝션
+desc project;
+select  * from project; 
+SELECT * FROM prjoption;
+select * from userinfo;
+insert into project(
+		UserNo, PrjName, PrjContent, PrjGoal, 
+		StartDate, EndDate, PayDate) 
+values(
+		00001, '클라우드펀딩 올리기', '후원받아 제품 구매할수있게 만들기', 1000000,
+		now(), now(), now());
+
+
+insert into prjoption 
+		(prjno,OptPrice,OptContent)
+values 
+		(3, 300000, '옵션c');

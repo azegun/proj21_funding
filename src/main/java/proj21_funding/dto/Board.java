@@ -26,6 +26,14 @@ public class Board {
 		this.boardReadCount = boardReadCount;
 	}
 	
+	public Board(int boardNo, BoardCategory categoryNo, String boardTitle, String boardContent) {
+		super();
+		this.boardNo = boardNo;
+		this.categoryNo = categoryNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+	}
+
 	/* 카테고리 분류로 검색 */
 	public Board(BoardCategory categoryNo) {
 		super();

@@ -76,7 +76,7 @@ public class UserInfoMapperTest {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
 		UserInfo userInfo = new UserInfo("test02", "1111", "1111", "test01", "대구", "", "", 33, "농협");
-		int res = mapper.insertMember(userInfo);
+		int res = mapper.insertUser(userInfo);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
 	}
@@ -84,7 +84,7 @@ public class UserInfoMapperTest {
 //	@Test
 	public void test05UpdateMember() {
 		UserInfo userInfo = new UserInfo("test02", "1111", "1111", "test11", "대구", "", "", 33, "농협");
-		int res = mapper.updateMember(userInfo);
+		int res = mapper.updateUser(userInfo);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
 	}
@@ -92,7 +92,7 @@ public class UserInfoMapperTest {
 //	@Test
 	public void test06DeleteMember() {
 		int userNo = 3;
-		int res = mapper.deleteMember(userNo);
+		int res = mapper.deleteUser(userNo);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
 	}

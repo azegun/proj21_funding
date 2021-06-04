@@ -47,19 +47,19 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public int resisterUserInfo(UserInfo userInfo) {
 		log.debug("service - list() > " + userInfo);
-		return mapper.insertMember(userInfo);
+		return mapper.insertUser(userInfo);
 	}
 
 	@Override
 	public int modifyUserInfo(UserInfo userInfo) {
 		log.debug("service - list() > " + userInfo);
-		return mapper.updateMember(userInfo);
+		return mapper.updateUser(userInfo);
 	}
 
 	@Override
 	public int removeUserInfo(int userNo) {
 		log.debug("service - list() > " + userNo);
-		return mapper.deleteMember(userNo);
+		return mapper.deleteUser(userNo);
 	}
 
 }
