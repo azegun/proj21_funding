@@ -138,7 +138,7 @@ from prjoption;
 
 insert into prjoption values
 (00001, 00001, 30000, '가방2개+연필1자루');
---#default값 null값 제외
+-- default값 null값 제외
 insert into prjoption (prjno,OptPrice,OptContent)
 values (2, 300000, '옵션B');
 

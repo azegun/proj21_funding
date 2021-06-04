@@ -8,6 +8,7 @@ body{
 	width: 500px;
 	margin: 0 auto;
 	margin-top: 20px;
+	border-collapse: collapse;	
 }
 
 ul.tabs{
@@ -24,16 +25,19 @@ ul.tabs li{
 }
 
 ul.tabs li.current{
-	background: #227ad2;
+	background: #e4e4e4;
 	color: #222;
 }
 
 .register_mid{
 	display: none;
-	background: #227ad2;
+	background: #e4e4e4;
 	padding: 15px;
 }
 
 .register_mid.current{
 	display: inherit;
 }	
+#register_btns{
+	text-align: center;	
+}

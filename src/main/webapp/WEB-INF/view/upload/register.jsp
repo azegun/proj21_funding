@@ -20,33 +20,37 @@
 			$("#"+tab_id).addClass('current');
 	});
 });
-</script>
-		
+</script>		
 </head>
 <body>
 		<section class="container">
+		<form action="" method="post" name = "registerPrjForm">
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
 		<section id = "register_mid">
 			<div class="container_tab">
 					<ul class="tabs">
-						<li class="tab-link current" data-tab="tab-1">프로젝트 개요</li>
-						<li class="tab-link" data-tab="tab-2">프로젝트 스토리</li>
+							<li class="tab-link current" data-tab="tab-1">프로젝트 정보</li>
+							<li class="tab-link" data-tab="tab-2">옵션</li>
 					</ul>		
-			<div id="tab-1" class="register_mid current">
-				<jsp:include page="/WEB-INF/view/upload/register_mid.jsp"/>		
-			</div>
-	<div id="tab-2" class="register_mid">
-				<jsp:include page="/WEB-INF/view/upload/register_secpage.jsp"/>		
-	</div>
-
-</div>
-			
+					<div id="tab-1" class="register_mid current">
+							<jsp:include page="/WEB-INF/view/upload/register_prjinfo.jsp"/>		
+					</div>
+					<div id="tab-2" class="register_mid">
+							<jsp:include page="/WEB-INF/view/upload/register_optinfo.jsp"/>		
+					</div>	
+			</div>		
+			<div id="register_btns">
+					<input type="submit" value="등록"/>&nbsp;&nbsp; 
+					<input type="reset" value="다시쓰기" />&nbsp;&nbsp; 
+					<button id = "go_info" >취소</button>					
+			</div>	
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 		</footer>
+		</form>			
 		</section>
 
 </body>
