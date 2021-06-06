@@ -37,6 +37,10 @@ select
 from userinfo;
 where userId = 'test10' and userPw = password(1111);
 
+update userinfo
+		   set UserPw = password('qwe11')
+		 where userId = 'test10';
+		 
 delete from userinfo where userNo >2;
 alter table userinfo auto_increment=3;
 

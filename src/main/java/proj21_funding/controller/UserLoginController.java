@@ -31,7 +31,7 @@ public class UserLoginController {
 			userLogin.setUserId(rCookie.getValue());
 			userLogin.setRememberUserId(true);
 		}
-		return "/account/login";
+		return "account/login";
 	}
 
 	// 로그인 성공시 메인화면으로
@@ -39,7 +39,7 @@ public class UserLoginController {
 	public String submit(@Valid UserLogin userLogin, Errors errors, HttpSession session,
 			HttpServletResponse response) {
 		if (errors.hasErrors())
-			return "/account/login";
+			return "account/login";
 
 		try {
 			UserAuthInfo userAuthInfo = authService.authenicate(userLogin.getUserId(), userLogin.getUserPw());
@@ -58,7 +58,7 @@ public class UserLoginController {
 			return "/main";
 		} catch (WrongIdPasswordException ex) {
 			errors.reject("idPasswordNotMatching");
-			return "/account/login";
+			return "account/login";
 		}
 
 	}

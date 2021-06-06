@@ -10,19 +10,19 @@
 	<form:form modelAttribute="userChangePw">
 	<p>
 		<label>현재 비밀번호:<br>
-		<form:input path="currentUserPw"/>
+		<form:password path="currentUserPw"/>
 		<form:errors path="currentUserPw" />
 		</label>
 	</p>
 	<p>
 		<label>변경 비밀번호:<br>
-		<form:input path="newUserPw"/>
+		<form:password path="newUserPw"/>
 		<form:errors path="newUserPw" />
 		</label>
 	</p>
 	<p>
 		<label>변경 비밀번호확인:<br>
-		<form:input path="confirmUserPw"/>
+		<form:password path="confirmUserPw"/>
 		<form:errors path="confirmUserPw" />
 		</label>
 	</p>

@@ -27,12 +27,7 @@
 		<include refid="selecSql" />
 		where userId = #{userId}	
 	</select>
-
-	<select id="selectUserbyEmail" resultMap="resUser">
-		<include refid="selecSql" />
-		where email = #{email}	
-	</select>
-	
+		
 	<select id="selectUserbylogin" resultMap="resUser">
 		<include refid="selecSql" />
 		where userId = #{param1} and userPw = password(#{param2})	
@@ -48,23 +43,16 @@
 	
 	<update id="updateUser">
 		update userinfo
-		   set UserName = #{userName}, UserPhone = #{userPhone},
-		    ZipCode = #{zipCode}, Address = #{address}, DetailAddress = #{detailAddress},
-		      Email = #{email}, BankName = #{bankName}, BankAccount = #{bankAccount}
+		   set UserPw = password(#{userPw}), UserPhone = #{userPhone}, ZipCode = #{zipCode}, Address = #{address},
+		    DetailAddress = #{detailAddress}, Email = #{email}, BankName = #{bankName}, BankAccount = #{bankAccount}
 		 where userId = #{userId}
 	</update>
 	
 	
-	<update id="updateUserbyPw">
-		update userinfo
-		   set UserPw = password(#{param2})
-		 where userId = #{param1}
-	</update>
-	
 	<delete id="deleteUser">
 		delete
 		  from userinfo
-		 where userNo = #{userNo}	
+		where UserNo = #{userNo}	
 	</delete>
 
 </mapper>

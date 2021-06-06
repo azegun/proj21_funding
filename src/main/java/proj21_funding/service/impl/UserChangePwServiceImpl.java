@@ -21,8 +21,10 @@ public class UserChangePwServiceImpl implements UserChangePwService {
 		UserInfo userInfo = mapper.selectUserbylogin(userId, oldPwd);
 		if (userInfo == null) {
 			throw new WrongIdPasswordException();
-		}		
-		mapper.updateUserbyPw(userId, newPwd);
+		}	
+		userInfo.setUserPw(newPwd);		
+		
+		mapper.updateUser(userInfo);
 	}
 
 }

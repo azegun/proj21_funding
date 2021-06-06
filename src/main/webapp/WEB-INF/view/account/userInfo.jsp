@@ -33,8 +33,6 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-${userInfo.userId}1
-${session.getId}2
 <div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
@@ -62,7 +60,7 @@ ${session.getId}2
 				</p>
 				<p>
 					<label> 회원H.P :
-					<form:input path="userPhone" readonly="true" value="${authInfo.userPhone}"/> 
+					<form:input path="userPhone" value="${authInfo.userPhone}"/> 
 					<form:errors path="userPhone" />
 					</label>
 				</p>
@@ -80,31 +78,34 @@ ${session.getId}2
 				</p>
 				<p>
 					<label> 상세주소 :
-					<form:input path="detailAddress" readonly="true" value="${authInfo.detailAddress}"/> 
+					<form:input path="detailAddress" value="${authInfo.detailAddress}"/> 
 					<form:errors path="detailAddress" />					
 					</label>
 				</p>				
 				<p>
 					<label> 이메일 :
-					<form:input path="email" readonly="true" value="${authInfo.email}"/> 
+					<form:input path="email" value="${authInfo.email}"/> 
 					<form:errors path="email" />
 					</label>
 				</p>
 				<p>
 					<label> 은행명 :
-					<form:input path="bankName" readonly="true" value="${authInfo.bankName}"/> 
+					<form:input path="bankName" value="${authInfo.bankName}"/> 
 					<form:errors path="bankName" />
 					</label>
 				</p>
 				<p>
 					<label> 계좌번호 :
-					<form:input path="bankAccount" readonly="true" value="${authInfo.bankAccount}"/> 									
+					<form:input path="bankAccount" value="${authInfo.bankAccount}"/> 									
 					<form:errors path="bankAccount" />
 					</label>
-				</p>							
+				</p>
+				<form:button id="submit" value="submit">수정하기</form:button>
+											
 			</form:form>
-		</section>
-		<a href="#"><button>탈퇴하기</button></a>
+			<a href="<c:url value='/account/userReSign'/>"><button value="del">탈퇴하기</button></a>
+		</section>	
+			
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>		
