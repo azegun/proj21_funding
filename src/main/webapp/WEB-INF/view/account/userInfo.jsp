@@ -33,8 +33,6 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-${userInfo.userId}1
-${session.getId}2
 <div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
@@ -45,7 +43,7 @@ ${session.getId}2
 			<form:errors />
 				<p>
 					<label>아이디:
-					<form:input path="userId" readonly="true" value="${user.userId}" />
+					<form:input path="userId" readonly="true" value="${authInfo.userId}" />
 					<form:errors path="userId" />
 					</label>
 				</p>
@@ -56,55 +54,57 @@ ${session.getId}2
 				</p>
 				<p>
 					<label> 회원성명 :
-					<form:input path="userName" /> 
+					<form:input path="userName" readonly="true" value="${authInfo.userName}" /> 
 					<form:errors path="userName" />
 					</label>
 				</p>
 				<p>
-					<label> 우편번호로 검색하기 :
-					<form:input path="address" id="member_post"  readonly="true" onclick="findAddr()"/>					 
-					<form:errors path="address" />										
+					<label> 회원H.P :
+					<form:input path="userPhone" value="${authInfo.userPhone}"/> 
+					<form:errors path="userPhone" />
+					</label>
+				</p>
+				<p>
+					<label> 우편번호 검색하기 :
+					<form:input path="zipCode" id="member_post"  readonly="true" onclick="findAddr()" value="${authInfo.zipCode}"/>					 
+					<form:errors path="zipCode" />										
 					</label>
 				</p>
 				<p>
 					<label> 주소 :
-					<form:input path="address" id="member_addr" readonly="true" /> 
+					<form:input path="address" id="member_addr" readonly="true" value="${authInfo.address}"/> 
 					<form:errors path="address" />					
 					</label>
 				</p>
 				<p>
 					<label> 상세주소 :
-					<form:input path="detailAddress" readonly="true"/> 
+					<form:input path="detailAddress" value="${authInfo.detailAddress}"/> 
 					<form:errors path="detailAddress" />					
 					</label>
 				</p>				
 				<p>
-					<label> 회원H.P :
-					<form:input path="userPhone" readonly="true"/> 
-					<form:errors path="userPhone" />
-					</label>
-				</p>
-				<p>
 					<label> 이메일 :
-					<form:input path="email" readonly="true"/> 
+					<form:input path="email" value="${authInfo.email}"/> 
 					<form:errors path="email" />
 					</label>
 				</p>
 				<p>
-					<label> 계좌번호 :
-					<form:input path="bankAccount" readonly="true"/> 									
-					<form:errors path="bankAccount" />
+					<label> 은행명 :
+					<form:input path="bankName" value="${authInfo.bankName}"/> 
+					<form:errors path="bankName" />
 					</label>
 				</p>
 				<p>
-					<label> 은행명 :
-					<form:input path="bankName" readonly="true"/> 
-					<form:errors path="bankName" />
+					<label> 계좌번호 :
+					<form:input path="bankAccount" value="${authInfo.bankAccount}"/> 									
+					<form:errors path="bankAccount" />
 					</label>
-				</p>			
+				</p>
+				<form:button id="submit" value="submit">수정하기</form:button>
+											
 			</form:form>
-		</section>
-		<a href="#"><button>탈퇴하기</button></a>
+			<a href="<c:url value='/account/userReSign'/>"><button value="del">탈퇴하기</button></a>
+		</section>			
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>		

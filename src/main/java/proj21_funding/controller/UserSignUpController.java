@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import proj21_funding.dto.UserSignUp;
+import proj21_funding.dto.account.UserSignUp;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.service.UserRegisterService;
 

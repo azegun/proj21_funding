@@ -56,20 +56,20 @@ values ('admin1','0000','김상건','010-3302-1972');
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw, UserName,
-	Address, DetailAddress, UserPhone, Email,
-	BankAccount, BankName
+	UserNo, UserId, UserPw,	UserName, UserPhone,
+	ZipCode, Address, DetailAddress,
+	Email, BankName, BankAccount
 from userinfo;
 
 insert into userinfo values(
-00001, 'test', '0000', '김상건', '대구', '달서구',
-'010-3302-1972', 'test@test.com', 00000001, '국민'
+00001, 'test1', password(0000), '김상건', '010-3302-1972',
+'111222', '대구', '달서구', 'test@test.com', '국민', 00000001 
 );
 
 #default값 제외
 insert into userinfo ( UserId, UserPw, UserName,
-	Address, DetailAddress)
-values ('test2','1111','김경연','대구','북구');
+	UserPhone, ZipCode, Address, DetailAddress)
+values ('test2', password(1111),'김경연', '010-1234-5678','222333', '대구','북구');
 
 
 
@@ -138,7 +138,7 @@ from prjoption;
 
 insert into prjoption values
 (00001, 00001, 30000, '가방2개+연필1자루');
---#default값 null값 제외
+-- default값 null값 제외
 insert into prjoption (prjno,OptPrice,OptContent)
 values (2, 300000, '옵션B');
 insert into prjoption (prjno,OptPrice,OptContent)

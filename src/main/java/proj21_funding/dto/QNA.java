@@ -2,6 +2,8 @@ package proj21_funding.dto;
 
 import java.util.Date;
 
+import proj21_funding.dto.account.UserInfo;
+
 public class QNA {
 
 	private int qnaNo; // 문의번호

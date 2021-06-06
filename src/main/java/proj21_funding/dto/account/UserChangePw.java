@@ -1,4 +1,4 @@
-package proj21_funding.dto;
+package proj21_funding.dto.account;
 
 import javax.validation.constraints.Size;
 

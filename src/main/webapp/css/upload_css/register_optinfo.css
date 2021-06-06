@@ -1,0 +1,7 @@
+@charset "UTF-8";
+#register_optcontent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}

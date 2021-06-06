@@ -19,9 +19,9 @@
 			<h1>로그인</h1>
 			<form:form modelAttribute="userLogin">
 			<form:errors />
-			<fieldset id="loginBtn">
+				<fieldset id="loginUser">
 					<p>
-						<label>아이디:<br>
+						<label>회원계정:<br>
 						<form:input path="userId"/>
 						<form:errors path="userId" />
 						</label>
@@ -36,13 +36,13 @@
 						<label>아이디 기억하기:<br>
 						<form:checkbox path="rememberUserId"/></label>
 					</p>
-				<input type="submit" value="로그인" id="login"/>
-			</fieldset>						
-			<fieldset id="aBtn">
+					<form:button id="login">로그인</form:button>				
+				</fieldset>	
+			</form:form>					
+			<fieldset id="loginBtn">
 				<p>아직 계정이 없으신가요??<a href="<c:url value='/account/signUp1'/>">회원가입하기</a></p>
-				<p><a href="#">아이디/비밀번호를 잊으셨나요??</a>
-			</fieldset>	
-			</form:form>	
+				<p><a href="<c:url value='/account/searchAccount'/>">아이디/비밀번호를 잊으셨나요??</a>
+			</fieldset>					
 		</section>		
 	</div>
 </body>

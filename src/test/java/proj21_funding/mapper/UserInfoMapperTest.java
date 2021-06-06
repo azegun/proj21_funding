@@ -1,10 +1,7 @@
 package proj21_funding.mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -16,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.account.UserInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
@@ -30,30 +27,30 @@ public class UserInfoMapperTest {
 	private UserInfoMapper mapper;
 
 //	@After
-	public void tearDown() throws Exception {
-		System.out.println();
-	}
+//	public void tearDown() throws Exception {
+//		System.out.println();
+//	}
+//
+//	@Test
+//	public void test07SelectUserAll() {
+//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+//
+//		List<UserInfo> list = mapper.selectUserAll();
+//		Assert.assertNotNull(list);
+//		list.stream().forEach(s -> log.debug(s.toString()));
+//	}
+
+////	@Test
+//	public void test01SelectUserbyNo() {
+//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+//
+//		int userNo = 1;
+//		UserInfo userInfo = mapper.selectUserbyNo(userNo);
+//		log.debug(userInfo.toString());
+//		Assert.assertNotNull(userInfo);
+//	}
 
 	@Test
-	public void test07SelectUserAll() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-
-		List<UserInfo> list = mapper.selectUserAll();
-		Assert.assertNotNull(list);
-		list.stream().forEach(s -> log.debug(s.toString()));
-	}
-
-//	@Test
-	public void test01SelectUserbyNo() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-
-		int userNo = 1;
-		UserInfo userInfo = mapper.selectUserbyNo(userNo);
-		log.debug(userInfo.toString());
-		Assert.assertNotNull(userInfo);
-	}
-
-//	@Test
 	public void test02SelectUserbyId() {
 		String userId = "test";
 		UserInfo userInfo = mapper.selectUserbyId(userId);
@@ -61,40 +58,40 @@ public class UserInfoMapperTest {
 		Assert.assertNotNull(userInfo);
 	}
 
-//	@Test
-	public void test03SelectUserbyEmail() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-
-		String email = "test@test.com";
-		UserInfo userInfo = mapper.selectUserbyEmail(email);
-		log.debug(userInfo.toString());
-		Assert.assertNotNull(userInfo);
-	}
-
-//	@Test
-	public void test04InsertMember() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-
-		UserInfo userInfo = new UserInfo("test02", "1111", "1111", "test01", "대구", "", "", 33, "농협");
-		int res = mapper.insertUser(userInfo);
-		Assert.assertEquals(1, res);
-		log.debug("res id >> " + res);
-	}
+////	@Test
+//	public void test03SelectUserbyEmail() {
+//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+//
+//		String email = "test@test.com";
+//		UserInfo userInfo = mapper.selectUserbyEmail(email);
+//		log.debug(userInfo.toString());
+//		Assert.assertNotNull(userInfo);
+//	}
 
 //	@Test
-	public void test05UpdateMember() {
-		UserInfo userInfo = new UserInfo("test02", "1111", "1111", "test11", "대구", "", "", 33, "농협");
-		int res = mapper.updateUser(userInfo);
-		Assert.assertEquals(1, res);
-		log.debug("res id >> " + res);
-	}
+//	public void test04InsertMember() {
+//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+//
+//		UserInfo userInfo = new UserInfo("test02", "1111", "1111", "test01","010-1234-1234", 111222, "대구", "", "", "농협", 33);
+//		int res = mapper.insertUser(userInfo);
+//		Assert.assertEquals(1, res);
+//		log.debug("res id >> " + res);
+//	}
 
 //	@Test
-	public void test06DeleteMember() {
-		int userNo = 3;
-		int res = mapper.deleteUser(userNo);
-		Assert.assertEquals(1, res);
-		log.debug("res id >> " + res);
-	}
+//	public void test05UpdateMember() {
+//		UserInfo userInfo = new UserInfo("test02", "1111", "1111", "test11", "대구", "", "", 33, "농협");
+//		int res = mapper.updateUser(userInfo);
+//		Assert.assertEquals(1, res);
+//		log.debug("res id >> " + res);
+//	}
+
+////	@Test
+//	public void test06DeleteMember() {
+//		int userNo = 3;
+//		int res = mapper.deleteUser(userNo);
+//		Assert.assertEquals(1, res);
+//		log.debug("res id >> " + res);
+//	}
 
 }

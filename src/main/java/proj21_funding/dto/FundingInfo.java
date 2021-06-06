@@ -1,5 +1,7 @@
 package proj21_funding.dto;
 
+import proj21_funding.dto.account.UserInfo;
+
 //후원정보
 public class FundingInfo {
 	private int fundingNo;//후원번호  		ex)F00001

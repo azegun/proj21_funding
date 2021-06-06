@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import proj21_funding.dto.UserAuthInfo;
-import proj21_funding.dto.UserLogin;
+import proj21_funding.dto.account.UserAuthInfo;
+import proj21_funding.dto.account.UserLogin;
 import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.service.UserAuthService;
 
@@ -31,7 +31,7 @@ public class UserLoginController {
 			userLogin.setUserId(rCookie.getValue());
 			userLogin.setRememberUserId(true);
 		}
-		return "/account/login";
+		return "account/login";
 	}
 
 	// 로그인 성공시 메인화면으로
@@ -39,7 +39,7 @@ public class UserLoginController {
 	public String submit(@Valid UserLogin userLogin, Errors errors, HttpSession session,
 			HttpServletResponse response) {
 		if (errors.hasErrors())
-			return "/account/login";
+			return "account/login";
 
 		try {
 			UserAuthInfo userAuthInfo = authService.authenicate(userLogin.getUserId(), userLogin.getUserPw());
@@ -58,7 +58,7 @@ public class UserLoginController {
 			return "/main";
 		} catch (WrongIdPasswordException ex) {
 			errors.reject("idPasswordNotMatching");
-			return "/account/login";
+			return "account/login";
 		}
 
 	}

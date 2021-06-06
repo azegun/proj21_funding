@@ -7,7 +7,7 @@ h2{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-#register_content{
+#register_prjcontent{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -15,11 +15,6 @@ h2{
 }
 .td_left{}
 .td_right{}
-
-#register_btns{
-	text-align: center;	
-}
-
 #startDate{}
 #endDate{}
 #payDate{}

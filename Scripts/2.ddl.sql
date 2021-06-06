@@ -43,12 +43,13 @@ CREATE TABLE proj21_funding.UserInfo (
 	UserId        VARCHAR(10)  NOT NULL COMMENT '회원계정', -- 회원계정
 	UserPw        CHAR(41)     NOT NULL COMMENT '비밀번호', -- 비밀번호
 	UserName      VARCHAR(20)  NOT NULL COMMENT '회원성명', -- 회원성명
+	UserPhone     VARCHAR(20)  NOT NULL COMMENT '회원H.P', -- 회원H.P
+	ZipCode		  INT(10)	   NOT NULL COMMENT '우편번호', -- 우편번호
 	Address       VARCHAR(100) NOT NULL COMMENT '주소', -- 주소
-	DetailAddress VARCHAR(50)  NULL     COMMENT '상세주소', -- 상세주소
-	UserPhone     VARCHAR(20)  NULL     COMMENT '회원H.P', -- 회원H.P
-	Email         VARCHAR(100) NULL     COMMENT '이메일', -- 이메일
-	BankAccount   INT(20)      NULL     COMMENT '계좌번호', -- 계좌번호
-	BankName      VARCHAR(10)  NULL     COMMENT '은행명' -- 은행명
+	DetailAddress VARCHAR(50)  NULL     COMMENT '상세주소', -- 상세주소	
+	Email         VARCHAR(100) NULL     COMMENT '이메일', -- 이메일	
+	BankName      VARCHAR(10)  NULL     COMMENT '은행명', -- 은행명
+	BankAccount   INT(20)      NULL     COMMENT '계좌번호' -- 계좌번호
 )
 COMMENT '회원정보';
 

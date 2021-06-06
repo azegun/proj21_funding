@@ -4,23 +4,23 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.account.UserInfo;
 
 @Component
 public interface UserInfoMapper {
 
-	List<UserInfo> selectUserAll();
+//	List<UserInfo> selectUserAll();
 
-	UserInfo selectUserbyNo(int userNo);
+//	UserInfo selectUserbyNo(int userNo);
 
 	UserInfo selectUserbyId(String userId);
-
-	UserInfo selectUserbyEmail(String email);
+	
+	UserInfo selectUserbylogin(String userId, String userPw);
 
 	int insertUser(UserInfo userInfo);
 
 	int updateUser(UserInfo userInfo);
 
-	int deleteUser(int userNo);
+	int deleteUser(UserInfo userInfo);
 
 }

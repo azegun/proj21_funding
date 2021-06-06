@@ -17,7 +17,10 @@
 			</fieldset>			
 			<a href="<c:url value='/login'/>"><button>로그인화면으로</button></a>
 			<a href="<c:url value='/main'/>"><button>메인으로</button></a>			
-		</section>		
+		</section>
+		<footer>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
+		</footer>		
 	</div>
 </body>
 </html>

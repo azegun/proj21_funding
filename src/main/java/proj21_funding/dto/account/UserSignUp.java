@@ -1,27 +1,32 @@
-package proj21_funding.dto;
+package proj21_funding.dto.account;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.sun.istack.internal.NotNull;
+
 // 회원가입시 양식 제한
-public class UserSignUp {	
+public class UserSignUp {
 	@Size(min = 4)
-	private String userId; // 회원계정	
+	private String userId; // 회원계정
 	@Size(min = 4)
-	private String userPw; // 비밀번호		
+	private String userPw; // 비밀번호
 	@Size(min = 4)
 	private String confirmUserPw; // 비밀번호확인
 	@NotBlank
-	private String userName; // 회원성명	
+	private String userName; // 회원성명
+	@NotBlank
+	private String userPhone; // 회원H.P
+	@NotNull
+	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
 	private String detailAddress; // 상세주소
-	private String userPhone; // 회원H.P
 	@Email
 	private String email; // 이메일
-	private int bankAccount; // 계좌번호
 	private String bankName; // 은행명
+	private int bankAccount; // 계좌번호
 
 	// getter & setter
 	public String getUserId() {
@@ -56,6 +61,22 @@ public class UserSignUp {
 		this.userName = userName;
 	}
 
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public int getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -72,28 +93,12 @@ public class UserSignUp {
 		this.detailAddress = detailAddress;
 	}
 
-	public String getUserPhone() {
-		return userPhone;
-	}
-
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public int getBankAccount() {
-		return bankAccount;
-	}
-
-	public void setBankAccount(int bankAccount) {
-		this.bankAccount = bankAccount;
 	}
 
 	public String getBankName() {
@@ -104,6 +109,15 @@ public class UserSignUp {
 		this.bankName = bankName;
 	}
 
+	public int getBankAccount() {
+		return bankAccount;
+	}
+
+	public void setBankAccount(int bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+
+	// 비밀번호 일치확인
 	public boolean isPasswordEqualToComfirmPassword() {
 		return userPw.equals(confirmUserPw);
 	}
@@ -111,9 +125,9 @@ public class UserSignUp {
 	@Override
 	public String toString() {
 		return String.format(
-				"RegisterRequest [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, address=%s, detailAddress=%s, userPhone=%s, email=%s, bankAccount=%s, bankName=%s]",
-				userId, userPw, confirmUserPw, userName, address, detailAddress, userPhone, email, bankAccount,
-				bankName);
+				"UserSignUp [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
+				userId, userPw, confirmUserPw, userName, userPhone, zipCode, address, detailAddress, email, bankName,
+				bankAccount);
 	}
 
 }

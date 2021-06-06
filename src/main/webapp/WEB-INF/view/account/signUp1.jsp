@@ -66,9 +66,15 @@
 					</label>
 				</p>
 				<p>
-					<label> 우편번호로 검색하기 :
-					<form:input path="address" id="member_post" placeholder="클릭하세요" readonly="true" onclick="findAddr()" /> 
-					<form:errors path="address" />					
+					<label> 회원H.P :
+					<form:input path="userPhone" /> 
+					<form:errors path="userPhone" />
+					</label>
+				</p>
+				<p>
+					<label> 우편번호 검색하기 :
+					<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true" onclick="findAddr()" /> 
+					<form:errors path="zipCode" />					
 					</label>
 				</p>
 				<p>
@@ -84,21 +90,9 @@
 					</label>
 				</p>				
 				<p>
-					<label> 회원H.P :
-					<form:input path="userPhone" /> 
-					<form:errors path="userPhone" />
-					</label>
-				</p>
-				<p>
 					<label> 이메일 :
 					<form:input path="email" /> 
 					<form:errors path="email" />
-					</label>
-				</p>
-				<p>
-					<label> 계좌번호 :
-					<form:input path="bankAccount" /> 									
-					<form:errors path="bankAccount" />
 					</label>
 				</p>
 				<p>
@@ -106,7 +100,14 @@
 					<form:input path="bankName" /> 
 					<form:errors path="bankName" />
 					</label>
-				</p>						
+				</p>	
+				<p>
+					<label> 계좌번호 :
+					<form:input path="bankAccount" /> 									
+					<form:errors path="bankAccount" />
+					</label>
+				</p>
+									
 				<P><a href="#" id="Terms">이용약관보기</a></P>					
 				<label><input type="checkbox" name="agree" value="true">동의하기</label>
 				<form:button id="submit">가입하기</form:button>

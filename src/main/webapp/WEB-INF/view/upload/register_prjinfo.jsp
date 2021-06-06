@@ -6,12 +6,11 @@
 		<meta charset="UTF-8">
 		<title>Register mid</title>		
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/register_mid.css">
+		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/register_prjinfo.css">
 </head>
 <body>
 	<h2>프로젝트 등록</h2>
-		<section id = "register_content">					
-			<form action="" method="post" name = "registerPrjForm">
+		<section id = "register_prjcontent">							
 			<table>			
 			<tbody>
 			<tr>
@@ -78,34 +77,9 @@
 							 <input type="date" id = "payDate" name = "payDate"  required="required"></input>
 					</td>
 			</tr>
-			<tr>
-					<td class = "td_left">
-							<label for = "optPrice">옵션금액</label>
-					</td>
-					<td class = "td_right">
-							 <input type="text" id = "optPrice" name = "optPrice"  size = 40 required="required"></input>
-					</td>
-			</tr>
-			<tr>
-					<td class = "td_left">
-							<label for = "optContent">옵션내용</label>
-					</td>
-					<td class = "td_right">
-							 <textarea id = "optContent" name = "optContent"	rows="7" cols="38" required="required"></textarea>
-					</td>
-			</tr>
-			</tbody>
-			<tfoot>
-					<tr>
-						<td colspan="2" id="register_btns">
-							<input type="submit" value="등록"/>&nbsp;&nbsp; 
-							<input type="reset" value="다시쓰기" />&nbsp;&nbsp; 
-							<button id = "go_info" >취소</button>
-						</td>
-					</tr>			
-			</tfoot>
-			</table>
-			</form>				
+			
+			</tbody>	
+			</table>				
 		</section>
 		
 </body>
