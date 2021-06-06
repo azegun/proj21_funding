@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.account.UserInfo;
 import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserChangePwService;

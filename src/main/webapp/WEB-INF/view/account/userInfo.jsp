@@ -104,8 +104,7 @@
 											
 			</form:form>
 			<a href="<c:url value='/account/userReSign'/>"><button value="del">탈퇴하기</button></a>
-		</section>	
-			
+		</section>			
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>		

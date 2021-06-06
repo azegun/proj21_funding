@@ -1,34 +1,51 @@
-package proj21_funding.dto;
+package proj21_funding.dto.account;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
-import com.sun.istack.internal.NotNull;
-
-// 회원가입시 양식 제한
-public class UserSignUp {
-	@Size(min = 4)
+// 회원정보 
+public class UserInfo {
+	private int userNo; // 회원번호
 	private String userId; // 회원계정
-	@Size(min = 4)
 	private String userPw; // 비밀번호
-	@Size(min = 4)
-	private String confirmUserPw; // 비밀번호확인
-	@NotBlank
 	private String userName; // 회원성명
-	@NotBlank
 	private String userPhone; // 회원H.P
-	@NotNull
 	private int zipCode; // 우편번호
-	@NotBlank
 	private String address; // 주소
-	private String detailAddress; // 상세주소
-	@Email
+	private String detailAddress;// 상세주소
 	private String email; // 이메일
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호
 
+	public UserInfo(String userId, String userPw, String userName, String userPhone, int zipCode, String address,
+			String detailAddress, String email, String bankName, int bankAccount) {
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userName = userName;
+		this.userPhone = userPhone;
+		this.zipCode = zipCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+		this.email = email;
+		this.bankName = bankName;
+		this.bankAccount = bankAccount;
+	}
+
+	// 생성자
+	public UserInfo() {
+	}
+
+	// 회원번호
+	public UserInfo(int userNo) {
+		this.userNo = userNo;
+	}
+
 	// getter & setter
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -43,14 +60,6 @@ public class UserSignUp {
 
 	public void setUserPw(String userPw) {
 		this.userPw = userPw;
-	}
-
-	public String getConfirmUserPw() {
-		return confirmUserPw;
-	}
-
-	public void setConfirmUserPw(String confirmUserPw) {
-		this.confirmUserPw = confirmUserPw;
 	}
 
 	public String getUserName() {
@@ -117,16 +126,11 @@ public class UserSignUp {
 		this.bankAccount = bankAccount;
 	}
 
-	// 비밀번호 일치확인
-	public boolean isPasswordEqualToComfirmPassword() {
-		return userPw.equals(confirmUserPw);
-	}
-
 	@Override
 	public String toString() {
 		return String.format(
-				"UserSignUp [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
-				userId, userPw, confirmUserPw, userName, userPhone, zipCode, address, detailAddress, email, bankName,
+				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
+				userNo, userId, userPw, userName, userPhone, zipCode, address, detailAddress, email, bankName,
 				bankAccount);
 	}
 

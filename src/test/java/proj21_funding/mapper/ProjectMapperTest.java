@@ -17,7 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
 import proj21_funding.dto.Project;
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.account.UserInfo;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

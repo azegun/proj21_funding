@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.account.UserInfo;
 
 @Component
 public interface UserInfoMapper {

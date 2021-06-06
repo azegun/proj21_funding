@@ -1,4 +1,4 @@
-package proj21_funding.dto;
+package proj21_funding.dto.account;
 
 // 로그인상태 유지중 유저정보 저장
 public class UserAuthInfo {

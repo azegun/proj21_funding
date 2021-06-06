@@ -2,6 +2,8 @@ package proj21_funding.dto;
 
 import java.time.LocalDateTime;
 
+import proj21_funding.dto.account.UserInfo;
+
 public class Project {
 	private int prjNo;			//프로젝트번호
 	private UserInfo userNo;		//프로젝트관리자

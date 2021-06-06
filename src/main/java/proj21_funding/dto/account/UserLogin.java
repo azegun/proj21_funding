@@ -1,4 +1,4 @@
-package proj21_funding.dto;
+package proj21_funding.dto.account;
 
 // 로그인시도시  정보확인
 public class UserLogin {

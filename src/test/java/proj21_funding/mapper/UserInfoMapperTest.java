@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.account.UserInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })

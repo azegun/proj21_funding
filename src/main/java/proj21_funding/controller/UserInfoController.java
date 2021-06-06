@@ -9,8 +9,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import proj21_funding.dto.UserAuthInfo;
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.account.UserAuthInfo;
+import proj21_funding.dto.account.UserInfo;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.service.UserInfoService;
 

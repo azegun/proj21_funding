@@ -3,8 +3,8 @@ package proj21_funding.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proj21_funding.dto.UserAuthInfo;
-import proj21_funding.dto.UserInfo;
+import proj21_funding.dto.account.UserAuthInfo;
+import proj21_funding.dto.account.UserInfo;
 import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserAuthService;
