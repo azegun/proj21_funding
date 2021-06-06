@@ -21,8 +21,11 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 		if (userInfo != null) {
 			throw new DuplicateUserException("dup id" + userSignUp.getUserId());
 		}
-		UserInfo newUserInfo = new UserInfo(userSignUp.getUserId(), userSignUp.getUserPw(), userSignUp.getUserName(), userSignUp.getAddress(),
-				userSignUp.getDetailAddress(), userSignUp.getUserPhone(), userSignUp.getEmail(), userSignUp.getBankAccount(), userSignUp.getBankName());
+		UserInfo newUserInfo = new UserInfo(
+				userSignUp.getUserId(), userSignUp.getUserPw(), userSignUp.getUserName(),
+				userSignUp.getUserPhone(), userSignUp.getZipCode(), userSignUp.getAddress(),
+				userSignUp.getDetailAddress(), userSignUp.getEmail(), userSignUp.getBankName(),
+				userSignUp.getBankAccount());
 
 		mapper.insertUser(newUserInfo);
 		return newUserInfo.getUserNo();

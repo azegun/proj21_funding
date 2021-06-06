@@ -45,7 +45,7 @@ ${session.getId}2
 			<form:errors />
 				<p>
 					<label>아이디:
-					<form:input path="userId" readonly="true" value="${user.userId}" />
+					<form:input path="userId" readonly="true" value="${authInfo.userId}" />
 					<form:errors path="userId" />
 					</label>
 				</p>
@@ -56,52 +56,52 @@ ${session.getId}2
 				</p>
 				<p>
 					<label> 회원성명 :
-					<form:input path="userName" /> 
+					<form:input path="userName" readonly="true" value="${authInfo.userName}" /> 
 					<form:errors path="userName" />
 					</label>
 				</p>
 				<p>
-					<label> 우편번호로 검색하기 :
-					<form:input path="address" id="member_post"  readonly="true" onclick="findAddr()"/>					 
-					<form:errors path="address" />										
+					<label> 회원H.P :
+					<form:input path="userPhone" readonly="true" value="${authInfo.userPhone}"/> 
+					<form:errors path="userPhone" />
+					</label>
+				</p>
+				<p>
+					<label> 우편번호 검색하기 :
+					<form:input path="zipCode" id="member_post"  readonly="true" onclick="findAddr()" value="${authInfo.zipCode}"/>					 
+					<form:errors path="zipCode" />										
 					</label>
 				</p>
 				<p>
 					<label> 주소 :
-					<form:input path="address" id="member_addr" readonly="true" /> 
+					<form:input path="address" id="member_addr" readonly="true" value="${authInfo.address}"/> 
 					<form:errors path="address" />					
 					</label>
 				</p>
 				<p>
 					<label> 상세주소 :
-					<form:input path="detailAddress" readonly="true"/> 
+					<form:input path="detailAddress" readonly="true" value="${authInfo.detailAddress}"/> 
 					<form:errors path="detailAddress" />					
 					</label>
 				</p>				
 				<p>
-					<label> 회원H.P :
-					<form:input path="userPhone" readonly="true"/> 
-					<form:errors path="userPhone" />
-					</label>
-				</p>
-				<p>
 					<label> 이메일 :
-					<form:input path="email" readonly="true"/> 
+					<form:input path="email" readonly="true" value="${authInfo.email}"/> 
 					<form:errors path="email" />
 					</label>
 				</p>
 				<p>
-					<label> 계좌번호 :
-					<form:input path="bankAccount" readonly="true"/> 									
-					<form:errors path="bankAccount" />
+					<label> 은행명 :
+					<form:input path="bankName" readonly="true" value="${authInfo.bankName}"/> 
+					<form:errors path="bankName" />
 					</label>
 				</p>
 				<p>
-					<label> 은행명 :
-					<form:input path="bankName" readonly="true"/> 
-					<form:errors path="bankName" />
+					<label> 계좌번호 :
+					<form:input path="bankAccount" readonly="true" value="${authInfo.bankAccount}"/> 									
+					<form:errors path="bankAccount" />
 					</label>
-				</p>			
+				</p>							
 			</form:form>
 		</section>
 		<a href="#"><button>탈퇴하기</button></a>

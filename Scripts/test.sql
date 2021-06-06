@@ -31,10 +31,11 @@ from admin;
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw, UserName,
-	Address, DetailAddress, UserPhone, Email,
-	BankAccount, BankName
+	UserNo, UserId, UserPw,	UserName, UserPhone,
+	ZipCode, Address, DetailAddress,
+	Email, BankName, BankAccount
 from userinfo;
+where userId = 'test10' and userPw = password(1111);
 
 delete from userinfo where userNo >2;
 alter table userinfo auto_increment=3;

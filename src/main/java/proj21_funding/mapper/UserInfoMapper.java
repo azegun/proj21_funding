@@ -16,10 +16,14 @@ public interface UserInfoMapper {
 	UserInfo selectUserbyId(String userId);
 
 	UserInfo selectUserbyEmail(String email);
+	
+	UserInfo selectUserbylogin(String userId, String userPw);
 
 	int insertUser(UserInfo userInfo);
 
 	int updateUser(UserInfo userInfo);
+	
+	int updateUserbyPw(String userId,String userPw);
 
 	int deleteUser(int userNo);
 
