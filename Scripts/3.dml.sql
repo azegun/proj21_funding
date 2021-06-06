@@ -141,6 +141,10 @@ insert into prjoption values
 --#default값 null값 제외
 insert into prjoption (prjno,OptPrice,OptContent)
 values (2, 300000, '옵션B');
+insert into prjoption (prjno,OptPrice,OptContent)
+values (1, 500000, '가방3개+연필 2자루');
+insert into prjoption (prjno,OptPrice,OptContent)
+values (1, 100000, '연필1자루');
 
 
 

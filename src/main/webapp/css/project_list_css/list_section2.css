@@ -1,8 +1,17 @@
 @charset "UTF-8";
 
 .prj {
+	margin-top:10px;
 	width: 300px;
 	height: 350px;
+}
+
+.border{
+	width: 300px;
+	height:360px;
+}
+.prjThumb{
+	margin-top: 10px;
 }
 
 .prjThumb img {

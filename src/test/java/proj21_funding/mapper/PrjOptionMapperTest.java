@@ -17,12 +17,12 @@ import proj21_funding.dto.Project;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {ContextRoot.class})
 @WebAppConfiguration
-public class ProjectOptionMapperTest {
+public class PrjOptionMapperTest {
 	
-	private static final Log log = LogFactory.getLog(ProjectOptionMapperTest.class);
+	private static final Log log = LogFactory.getLog(PrjOptionMapperTest.class);
 	
 	@Autowired
-	private ProjectOptionMapper mapper;
+	private PrjOptionMapper mapper;
 
 	@After
 	public void tearDown() throws Exception {

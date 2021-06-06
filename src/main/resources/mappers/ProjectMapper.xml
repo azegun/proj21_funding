@@ -11,6 +11,17 @@
 				<result property="endDate" column="EndDate"/>
 				<result property="payDate" column="PayDate"/>
 				<result property="endYn" column="EndYN"/>
+			<!-- 	<association property="userNo">
+				<id property="userNo" column="userNo" />
+				<result property="userId" column="UserId" />
+				<result property="userPw" column="UserPw" />
+				<result property="userName" column="UserName" />
+				<result property="address" column="Address" />
+				<result property="detailAddress" column="DetailAddress" />
+				<result property="userPhone" column="UserPhone" />
+				<result property="email" column="Email" />
+				<result property="bankAccount" column="BankAccount" />
+				<result property="bankName" column="BankName" /></association> -->
 		</resultMap>	
 
 		<!-- UserNo 추가하기 Associate로 -->
@@ -19,9 +30,13 @@
 		</resultMap>
 	 
 		<select id="selectProjectListAll" resultType="Project" resultMap="AssociateResUserInfo">
-			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
+			<!-- select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
 			StartDate, EndDate,	PayDate, EndYN
-			from project
+			from project -->
+			select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
+			StartDate, EndDate,	PayDate, EndYN, u.UserId , u.UserName 
+			from project p join userinfo u 
+			on p.userno = u.UserNo ;
 		</select>	
 
 		 <insert id="insertProject" parameterType="Project">
@@ -33,9 +48,14 @@
 						now(), now(), now())
 		</insert>
 
-		<select id="selectProjectByNo" resultMap="AssociateResUserInfo">
-			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
+		<select id="selectProjectByNo" resultMap="resProject">
+			<!-- select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
 			StartDate, EndDate,	PayDate, EndYN
-			from project where prjNo = #{prjNo};
+			from project -->
+			select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
+			StartDate, EndDate,	PayDate, EndYN, u.UserId , u.UserName 
+			from project p join userinfo u 
+			on p.userno = u.UserNo 
+			where prjNo = #{prjNo};
 		</select>
 </mapper>

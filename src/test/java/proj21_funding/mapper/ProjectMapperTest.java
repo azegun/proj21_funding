@@ -42,7 +42,7 @@ public class ProjectMapperTest {
 		Assert.assertNotNull(list);
 	}
 	
-	@Test
+//	@Test
 	public void testinsertProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		

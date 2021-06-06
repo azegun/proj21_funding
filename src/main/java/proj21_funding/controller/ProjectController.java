@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectService;
 
 @Controller
@@ -16,8 +18,8 @@ public class ProjectController {
 	
 	@Autowired
 	ProjectService service;
-//	@Autowired
-//	ProjectMapper mapper;
+	@Autowired
+	PrjOptionService service1;
 	
 //	모든 프로젝트
 	@RequestMapping("/projectListAll")
@@ -35,7 +37,8 @@ public class ProjectController {
 	
 	@RequestMapping("/prjDetail/{prjNo}")
 	public ModelAndView detail(@PathVariable("prjNo") int prjNo) {
-		Project prj = service.showProjectByNo(prjNo);
+//		Project prj = service.showProjectByNo(prjNo);
+		List<PrjOption> prj= service1.showPrjOptionByPrjNo(prjNo);
 		ModelAndView mav = new ModelAndView("project/project_detail","prj",prj);
 		return mav;
 	}
