@@ -24,7 +24,7 @@ public class UserChangePwServiceImpl implements UserChangePwService {
 		}	
 		userInfo.setUserPw(newPwd);		
 		
-		mapper.updateUser(userInfo);
+		mapper.updateUserPw(userInfo);
 	}
 
 }

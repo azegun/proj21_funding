@@ -14,7 +14,7 @@
 		</header>
 		<section id="searchPwFormArea">
 			<h1>비밀번호 찾기</h1>
-			<form:form modelAttribute="userInfo">
+			<form:form modelAttribute="userSearch">
 			<form:errors />
 				<fieldset id="searchBtn">
 					<p>

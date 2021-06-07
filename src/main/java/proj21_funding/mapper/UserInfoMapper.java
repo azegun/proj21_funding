@@ -9,17 +9,21 @@ import proj21_funding.dto.account.UserInfo;
 @Component
 public interface UserInfoMapper {
 
-//	List<UserInfo> selectUserAll();
+	List<UserInfo> selectUserAll();
 
-//	UserInfo selectUserbyNo(int userNo);
+	UserInfo selectUserbyNo(int userNo);
 
 	UserInfo selectUserbyId(String userId);
-	
+
 	UserInfo selectUserbylogin(String userId, String userPw);
+
+	UserInfo selectUserbySearchId(String userName, String userPhone);
 
 	int insertUser(UserInfo userInfo);
 
 	int updateUser(UserInfo userInfo);
+
+	int updateUserPw(UserInfo userInfo);
 
 	int deleteUser(UserInfo userInfo);
 

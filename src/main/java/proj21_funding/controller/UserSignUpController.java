@@ -44,8 +44,8 @@ public class UserSignUpController {
 		try {
 			service.regist(userSignUp);
 			return "account/signUp2";
-		} catch (DuplicateUserException e) {
-			errors.rejectValue("userId", "duplicate");
+		} catch (DuplicateUserException  e) {
+			errors.rejectValue("UserName", "notSearching");
 			return "account/signUp1";
 		}
 	}
