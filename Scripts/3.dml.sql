@@ -126,6 +126,12 @@ insert into fundinginfo values
 #default값 null값 제외
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
 values (2, 2, 2, 12341234 );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
+values (2, 1, 3, 12341234 );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
+values (2, 1, 4, 12341234 );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
+values (2, 1, 1, 3131214 );
 
 
 

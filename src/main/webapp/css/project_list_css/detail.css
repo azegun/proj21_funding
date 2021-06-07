@@ -5,4 +5,14 @@ span {
 }
 h1 {
 	display:inline;
+	margin-top:0;
+}
+
+img{
+	display:inline;
+	
+}
+
+.content {
+	display:inline;
 }
