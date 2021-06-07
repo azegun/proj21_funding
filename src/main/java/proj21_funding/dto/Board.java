@@ -26,6 +26,13 @@ public class Board {
 		this.boardReadCount = boardReadCount;
 	}
 	
+	public Board(BoardCategory categoryNo, String boardTitle, String boardContent) {
+		super();
+		this.categoryNo = categoryNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+	}
+
 	public Board(int boardNo, BoardCategory categoryNo, String boardTitle, String boardContent) {
 		super();
 		this.boardNo = boardNo;
