@@ -34,7 +34,13 @@ public class Admin {
 		this.adminName = adminName;
 		this.adminTel = adminTel;
 	}
+
 	
+	public Admin(int adminNo) {
+		super();
+		this.adminNo = adminNo;
+	}
+
 	/* getter & setter */
 	
 	public String getAdminId() {
