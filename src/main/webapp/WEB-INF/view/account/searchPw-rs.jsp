@@ -14,7 +14,7 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
 		<fieldset id="searchPw">			
-			<c:if test="userInfo != null">
+			<c:if test="${null ne userSearch.userId}">
 				<section id="searchPwFormArea">
 					<form:form modelAttribute="userChangePw">	
 						<p>
@@ -33,7 +33,7 @@
 					</form:form>
 				</section>				
 			</c:if>
-			<c:if test="userInfo == null">
+			<c:if test="${null eq userSearch.userId}">
 				<section id="searchIdFormArea">
 					회원계정을 찾을 수 없습니다.
 				</section>						

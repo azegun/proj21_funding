@@ -73,7 +73,7 @@ public class AdminMapperTest {
 	public void test03InsertAdmin() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
-		Admin admin = new Admin(00003, "admin2", "0000", "유한솔", "010-1111-1111");
+		Admin admin = new Admin("admin2", "0000", "유한솔", "010-1111-1111");
 		int res = mapper.insertAdmin(admin);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
@@ -81,7 +81,7 @@ public class AdminMapperTest {
 
 	@Test
 	public void test04UpdateAdmin() {
-		Admin admin = new Admin(00003, "admin2", "1111", "유한솔", "010-1111-1122");
+		Admin admin = new Admin("admin2", "1111", "유한솔", "010-1111-1122");
 		int res = mapper.updateAdmin(admin);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
@@ -89,7 +89,7 @@ public class AdminMapperTest {
 
 	@Test
 	public void test06DeleteAdmin() {
-		int adminNo = 3;
+		int adminNo = 4;
 		int res = mapper.deleteAdmin(adminNo);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);

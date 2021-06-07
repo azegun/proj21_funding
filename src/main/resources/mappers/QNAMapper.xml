@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_funding.mapper.QNAMapper">
+
+	<resultMap type="QNA" id="resQNA">
+		<id property="qnaNo" column="QnaNo" />
+		<result property="qnaTitle" column="QnaTitle" />
+		<result property="qnaContent" column="QnaContent" />
+		<result property="qnaDate" column="QnaDate" />
+		<result property="qnaReply" column="QnaReply" />
+		<result property="replyDate" column="ReplyDate" />
+		<result property="qnaFile" column="QnaFile" />
+	</resultMap>
+
+	<resultMap type="QNA" id="Associate" extends="resQNA">
+		<association property="categoryNo"
+			resultMap="proj21_funding.mapper.BoardCategoryMapper.resBC"></association>
+		<association property="adminNo"
+			resultMap="proj21_funding.mapper.AdminMapper.resAdmin"></association>
+		<association property="userNo"
+			resultMap="proj21_funding.mapper.UserInfoMapper.resUser"></association>
+	</resultMap>
+	
+	<sql id="selectSql">
+		select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+		  from QNA	
+	</sql>
+
+	<select id="selectQNAAll" resultMap="resQNA">
+		<include refid="selectSql" />	
+	</select>
+
+	<select id="selectQNAByUserId" resultMap="resQNA">
+		<include refid="selectSql" />
+		where userNo = #{userNo}	
+	</select>
+	
+	<select id="selectQNAByBC" resultMap="resQNA">
+		<include refid="selectSql" />
+		where categoryNo = #{categoryNo}	
+	</select>
+	
+	<insert id="insertQNA" parameterType="QNA">
+		insert
+		  into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile )
+		values(#{userNo.userNo}, #{categoryNo.categoryNo}, #{qnaTitle}, #{qnaContent}, #{qnaFile})			
+	</insert>
+	
+	<update id="updateQNA">
+		update QNA
+		   set qnaReply = #{qnaReply}, replyDate = now(), adminNo = #{adminNo.adminNo}
+		 where qnaNo = #{qnaNo}
+	</update>
+	
+	<delete id="deleteQNA">
+		delete
+		  from QNA
+		 where qnaNo = #{qnaNo}	
+	</delete>
+
+</mapper>

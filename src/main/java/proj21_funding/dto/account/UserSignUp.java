@@ -2,6 +2,7 @@ package proj21_funding.dto.account;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.internal.NotNull;
@@ -10,9 +11,9 @@ import com.sun.istack.internal.NotNull;
 public class UserSignUp {
 	@Size(min = 4)
 	private String userId; // 회원계정
-	@Size(min = 4)
+	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\\\W).{4,20}")
 	private String userPw; // 비밀번호
-	@Size(min = 4)
+	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\\\W).{4,20}")
 	private String confirmUserPw; // 비밀번호확인
 	@NotBlank
 	private String userName; // 회원성명
