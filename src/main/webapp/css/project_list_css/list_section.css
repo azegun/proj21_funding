@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+img {
+	width: 300px;
+	height: 300px;
+}
+
+.project {
+	margin: 30 30;
+	display: inline-block;
+}

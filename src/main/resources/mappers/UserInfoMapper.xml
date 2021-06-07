@@ -1,3 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="proj21_funding.UserInfoMapper"></mapper>
+<mapper namespace="proj21_funding.mapper.UserInfoMapper">
+
+	<resultMap type="UserInfo" id="resUser">
+		<id property="userNo" column="userNo" />		
+	</resultMap>
+
+	<sql id="selecSql">
+		select 
+			UserNo, UserId, UserPw,	UserName, UserPhone,
+			ZipCode, Address, DetailAddress,
+			Email, BankName, BankAccount
+		 from userinfo
+	</sql>
+
+	<select id="selectUserAll" resultMap="resUser">
+		<include refid="selecSql" />	
+	</select>
+
+	<select id="selectUserbyNo" resultMap="resUser">
+		<include refid="selecSql" />
+		where userNo = #{userNo}	
+	</select>
+
+	<select id="selectUserbyId" resultMap="resUser">
+		<include refid="selecSql" />
+		where userId = #{userId}	
+	</select>
+		
+	<select id="selectUserbylogin" resultMap="resUser">
+		<include refid="selecSql" />
+		where userId = #{param1} and userPw = password(#{param2})	
+	</select>
+
+	<insert id="insertUser" parameterType="UserInfo">
+		insert
+		  into userinfo( UserId, UserPw, UserName, UserPhone,
+		 		 ZipCode, Address, DetailAddress, Email, BankName, BankAccount)
+		values(#{userId}, password(#{userPw}), #{userName}, #{userPhone},
+			   #{zipCode}, #{address}, #{detailAddress}, #{email}, #{bankName}, #{bankAccount})			
+	</insert>
+	
+	<update id="updateUser">
+		update userinfo
+		   set UserPw = password(#{userPw}), UserPhone = #{userPhone}, ZipCode = #{zipCode}, Address = #{address},
+		    DetailAddress = #{detailAddress}, Email = #{email}, BankName = #{bankName}, BankAccount = #{bankAccount}
+		 where userId = #{userId}
+	</update>
+	
+	
+	<delete id="deleteUser">
+		delete
+		  from userinfo
+		where UserNo = #{userNo}	
+	</delete>
+
+</mapper>

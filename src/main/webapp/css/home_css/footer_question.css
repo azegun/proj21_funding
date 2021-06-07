@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.go_question a{
+	padding:10px;
+	border:1px solid black;
+	border-radius:22px;
+	text-decoration: none;
+	color:black;
+	text-align:right;
+	float:right;
+	font-weight: bold;
+	font-size:20px;	
+	margin-right: 55px;
+}

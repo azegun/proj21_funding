@@ -1,0 +1,20 @@
+@charset "UTF-8";
+h2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#register_prjcontent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}
+.td_left{}
+.td_right{}
+#startDate{}
+#endDate{}
+#payDate{}

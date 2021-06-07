@@ -31,11 +31,18 @@ from admin;
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw, UserName,
-	Address, DetailAddress, UserPhone, Email,
-	BankAcoount, BankName
+	UserNo, UserId, UserPw,	UserName, UserPhone,
+	ZipCode, Address, DetailAddress,
+	Email, BankName, BankAccount
 from userinfo;
+where userId = 'test10' and userPw = password(1111);
 
+update userinfo
+		   set UserPw = password('qwe11')
+		 where userId = 'test10';
+		 
+delete from userinfo where userNo >2;
+alter table userinfo auto_increment=3;
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
@@ -82,3 +89,21 @@ from prjboard;
 select 
 	addr_id, street, city, state, zip, country 
 from addresses ;
+
+-- Project + PrjOption insert 트렌젝션
+desc project;
+select  * from project; 
+SELECT * FROM prjoption;
+select * from userinfo;
+insert into project(
+		UserNo, PrjName, PrjContent, PrjGoal, 
+		StartDate, EndDate, PayDate) 
+values(
+		00001, '클라우드펀딩 올리기', '후원받아 제품 구매할수있게 만들기', 1000000,
+		now(), now(), now());
+
+
+insert into prjoption 
+		(prjno,OptPrice,OptContent)
+values 
+		(3, 300000, '옵션c');

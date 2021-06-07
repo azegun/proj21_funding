@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
-	
-	@RequestMapping("/include/menu")
+	//home에서 프로젝트 둘러보기
+	@RequestMapping("/home/menu")
 	public String menu() {
-		return "include/menu";
+		return "home/menu";
 	}
-	
-	@RequestMapping("/include/header_logmenu")
+	//home에서 개인정보 보는거
+	@RequestMapping("/home/header_logmenu")
 	public String logonMenu() {
-		return "include/header_logmenu";
+		return "home/header_logmenu";
 	}
 	//맵핑할때 view안에 있는 폴더이면 꼭! 위치 설정해주세요. 밑에처럼
 	@RequestMapping("/board_servicecenter/servicecenter_write")
@@ -30,15 +30,5 @@ public class MainController {
 	public String view_user_ServiceCenter() {
 		return "board_servicecenter/servicecenter_view_user";
 	}
-	
-	@RequestMapping("/login/login")
-	public String login() {
-		return "login/login";
-	}
-	
-	@RequestMapping("/login/signUp")
-	public String signUp() {
-		return "login/signUp";
-	}
-
+		
 }

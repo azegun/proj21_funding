@@ -1,7 +1,7 @@
 package proj21_funding.dto;
 //프로젝트구매옵션
 public class PrjOption {
-		private String optNo; //옵션번호
+		private int optNo; //옵션번호
 		private Project prjNo;//프로젝트번호
 		private int optPrice;//옵션급액
 		private String optContent;//옵션내용
@@ -9,14 +9,30 @@ public class PrjOption {
 		public PrjOption() {}
 		
 		//옵션 번호로 검색
-		public PrjOption(String optNo) {
+		public PrjOption(int optNo) {
 			this.optNo = optNo;
 		}
+		public PrjOption(Project prjNo, int optPrice, String optContent) {
+			super();
+			this.prjNo = prjNo;
+			this.optPrice = optPrice;
+			this.optContent = optContent;
+		}
+		
+		
+
+		public PrjOption(int optNo, Project prjNo, int optPrice, String optContent) {
+			this.optNo = optNo;
+			this.prjNo = prjNo;
+			this.optPrice = optPrice;
+			this.optContent = optContent;
+		}
+
 		//getter & setter
-		public String getOptNo() {
+		public int getOptNo() {
 			return optNo;
 		}
-		public void setOptNo(String optNo) {
+		public void setOptNo(int optNo) {
 			this.optNo = optNo;
 		}
 		public Project getPrjNo() {

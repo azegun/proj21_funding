@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.prj {
+	margin-top:10px;
+	width: 300px;
+	height: 350px;
+}
+
+.border{
+	width: 300px;
+	height:360px;
+}
+.prjThumb{
+	margin-top: 10px;
+}
+
+.prjThumb img {
+	width: 300px;
+	height: 300px;
+}
+
+.prjName{
+	margin: 5px;
+	height:50px;
+}
+
+ul{
+	width:100%;
+}
+
+li{
+	display:inline-block;
+	margin:10px;
+}
