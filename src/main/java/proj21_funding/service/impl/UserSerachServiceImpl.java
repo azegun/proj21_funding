@@ -2,8 +2,10 @@ package proj21_funding.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserSerachService;
 
@@ -14,7 +16,7 @@ public class UserSerachServiceImpl implements UserSerachService {
 	private UserInfoMapper mapper;
 
 	@Override
-	public UserInfo seachuserId(String userName, String userPhone) {
+	public UserInfo searchuserId(String userName, String userPhone) {
 		try {
 			UserInfo userInfo = mapper.selectUserbySearchId(userName, userPhone);
 			return userInfo;
@@ -25,7 +27,7 @@ public class UserSerachServiceImpl implements UserSerachService {
 	}
 
 	@Override
-	public UserInfo seachuserPw(String userId, String userName, String userPhone) {
+	public UserInfo searchuserPw(String userId, String userName, String userPhone) {
 
 		try {
 			UserInfo userInfo1 = mapper.selectUserbyId(userId);
@@ -38,7 +40,17 @@ public class UserSerachServiceImpl implements UserSerachService {
 		} catch (NullPointerException e) {
 			return null;
 		}
-
+	}
+	
+	@Transactional
+	public void changePassword(String userId, String newPwd) {
+		UserInfo userInfo = mapper.selectUserbyId(userId);
+		if (userInfo == null) {
+			throw new WrongIdPasswordException();
+		}	
+		userInfo.setUserPw(newPwd);		
+		
+		mapper.updateUserPw(userInfo);
 	}
 
 }
