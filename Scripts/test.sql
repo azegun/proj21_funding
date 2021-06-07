@@ -108,11 +108,23 @@ insert into prjoption
 values 
 		(3, 300000, '옵션c');
 
+
+-- qna test	
+	
 insert into qna(qnaNo, userNo, categoryNo, qnaTitle, qnaContent, qnaFile)
-values (4, 1, 1, "오늘의 질문", "왜 업데이트시 날짜 자동 업데이트가 안 될까?", null);
+values (3, 1, 1, "오늘의 질문", "왜 업데이트시 날짜 자동 업데이트가 안 될까?", null);
 
 select * from qna;
 
 update QNA
-   set qnaReply = "나도 그게 고민임...", replyDate = now(), adminNo = "1"
- where qnaNo = "4";
+   set qnaReply = "이제 해결했음!", replyDate = now(), adminNo = "1"
+ where qnaNo = "3";
+
+delete from qna where qnaNo=4;
+ 
+
+-- admin test
+
+select * from admin;
+
+delete from admin where adminNo = 5;

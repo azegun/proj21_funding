@@ -42,8 +42,8 @@
 	</select>
 
 	<insert id="insertBoard" parameterType="Board">
-		insert into Board(boardNo, categoryNo, boardTitle, boardContent )
-		values(#{boardNo}, #{categoryNo.categoryNo}, #{boardTitle}, #{boardContent})
+		insert into Board(categoryNo, boardTitle, boardContent )
+		values(#{categoryNo.categoryNo}, #{boardTitle}, #{boardContent})
 	</insert>
 
 	<update id="updateBoard">

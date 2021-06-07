@@ -30,10 +30,20 @@
 		<include refid="selectSql" />	
 	</select>
 
+	<select id="selectQNAByUserId" resultMap="resQNA">
+		<include refid="selectSql" />
+		where userNo = #{userNo}	
+	</select>
+	
+	<select id="selectQNAByBC" resultMap="resQNA">
+		<include refid="selectSql" />
+		where categoryNo = #{categoryNo}	
+	</select>
+	
 	<insert id="insertQNA" parameterType="QNA">
 		insert
-		  into QNA( qnaNo, userNo, categoryNo, qnaTitle, qnaContent, qnaFile )
-		values(#{qnaNo}, #{userNo.userNo}, #{categoryNo.categoryNo}, #{qnaTitle}, #{qnaContent}, #{qnaFile})			
+		  into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile )
+		values(#{userNo.userNo}, #{categoryNo.categoryNo}, #{qnaTitle}, #{qnaContent}, #{qnaFile})			
 	</insert>
 	
 	<update id="updateQNA">

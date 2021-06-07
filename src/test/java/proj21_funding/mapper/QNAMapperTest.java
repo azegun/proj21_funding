@@ -38,19 +38,40 @@ public class QNAMapperTest {
 	}
 
 	@Test
-	public void test03SelectQNAAll() {
+	public void test06SelectQNAAll() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
 		List<QNA> list = mapper.selectQNAAll();
 		Assert.assertNotNull(list);
 		list.stream().forEach(s -> log.debug(s.toString()));
 	}
+	
+	@Test
+	public void test03SelectQNAByUserId() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		int userNo = 1;
+		List<QNA> qna = mapper.selectQNAByUserId(userNo);
+		log.debug(qna.toString());
+		Assert.assertNotNull(qna);
+	}
+	
+	@Test
+	public void test05SelectQNAByBC() {
+
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		int categoryNo = 2;
+		List<QNA> qna = mapper.selectQNAByBC(categoryNo);
+		log.debug(qna.toString());
+		Assert.assertNotNull(qna);
+	}
 
 	@Test
 	public void test01InsertQNA() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
-		QNA qna = new QNA(3, new UserInfo(1), new BoardCategory(2), "qna 작업 진행?", "잘 되어 감?", null);
+		QNA qna = new QNA(new UserInfo(1), new BoardCategory(2), "qna 작업 진행?", "잘 되어 감?", null);
 		int res = mapper.insertQNA(qna);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
@@ -66,7 +87,7 @@ public class QNAMapperTest {
 
 	@Test
 	public void test04DeleteQNA() {
-		int qnaNo = 3;
+		int qnaNo = 7;
 		int res = mapper.deleteQNA(qnaNo);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);

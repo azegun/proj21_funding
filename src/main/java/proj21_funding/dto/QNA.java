@@ -37,10 +37,9 @@ public class QNA {
 	}
 
 
-	public QNA(int qnaNo, UserInfo userNo, BoardCategory categoryNo, String qnaTitle, String qnaContent,
+	public QNA(UserInfo userNo, BoardCategory categoryNo, String qnaTitle, String qnaContent,
 			String qnaFile) {
 		super();
-		this.qnaNo = qnaNo;
 		this.userNo = userNo;
 		this.categoryNo = categoryNo;
 		this.qnaTitle = qnaTitle;

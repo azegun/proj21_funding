@@ -74,7 +74,7 @@ public class BoardMapperTest {
 	public void test03InsertBoard() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
-		Board board = new Board(3, new BoardCategory(1), "공지사항", "금일의 공지사항");
+		Board board = new Board(new BoardCategory(1), "공지사항", "금일의 공지사항");
 		int res = mapper.insertBoard(board);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
