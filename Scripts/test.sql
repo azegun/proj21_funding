@@ -36,6 +36,7 @@ select
 	Email, BankName, BankAccount
 from userinfo;
 where userId = 'test10' and userPw = password(1111);
+where UserName = 'test10' and UserPhone = '01012345678';
 
 update userinfo
 		   set UserPw = password('qwe11')
@@ -106,6 +107,7 @@ values(
 insert into prjoption 
 		(prjno, OptName, OptPrice, OptContent)
 values 
+<<<<<<< HEAD
 		(3, '작가',  300000, '옵션c');
 
 delete
@@ -113,3 +115,27 @@ from project
 where PrjNo  = 4;
 
 delete from prjoption 
+=======
+		(3, 300000, '옵션c');
+
+
+-- qna test	
+	
+insert into qna(qnaNo, userNo, categoryNo, qnaTitle, qnaContent, qnaFile)
+values (3, 1, 1, "오늘의 질문", "왜 업데이트시 날짜 자동 업데이트가 안 될까?", null);
+
+select * from qna;
+
+update QNA
+   set qnaReply = "이제 해결했음!", replyDate = now(), adminNo = "1"
+ where qnaNo = "3";
+
+delete from qna where qnaNo=4;
+ 
+
+-- admin test
+
+select * from admin;
+
+delete from admin where adminNo = 5;
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git

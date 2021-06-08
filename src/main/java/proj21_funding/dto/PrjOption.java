@@ -20,6 +20,15 @@ public class PrjOption {
 			this.optPrice = optPrice;
 			this.optContent = optContent;
 		}
+		
+		
+
+		public PrjOption(int optNo, Project prjNo, int optPrice, String optContent) {
+			this.optNo = optNo;
+			this.prjNo = prjNo;
+			this.optPrice = optPrice;
+			this.optContent = optContent;
+		}
 
 		//getter & setter
 		public int getOptNo() {

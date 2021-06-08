@@ -64,7 +64,7 @@ select
 from userinfo;
 
 insert into userinfo values(
-00001, 'test1', password(0000), '김상건', '010-3302-1972',
+00001, 'test1', password('0000'), '김상건', '010-3302-1972',
 '111222', '대구', '달서구', 'test@test.com', '국민', 00000001 
 );
 
@@ -128,6 +128,12 @@ insert into fundinginfo values
 #default값 null값 제외
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
 values (2, 2, 2, 12341234 );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
+values (2, 1, 3, 12341234 );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
+values (2, 1, 4, 12341234 );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
+values (2, 1, 1, 3131214 );
 
 
 
@@ -141,8 +147,17 @@ from prjoption;
 insert into prjoption values
 (00001, 00001, '문구셋트', 30000, '가방2개+연필1자루');
 -- default값 null값 제외
+<<<<<<< HEAD
 insert into prjoption (prjno, OptName, OptPrice,OptContent)
 values (2, '필통', 300000, '옵션B');
+=======
+insert into prjoption (prjno,OptPrice,OptContent)
+values (2, 300000, '옵션B');
+insert into prjoption (prjno,OptPrice,OptContent)
+values (1, 500000, '가방3개+연필 2자루');
+insert into prjoption (prjno,OptPrice,OptContent)
+values (1, 100000, '연필1자루');
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git
 
 
 

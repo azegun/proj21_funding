@@ -12,12 +12,14 @@
 	<ul>
 		<c:forEach var="prj" items="${projects }">
 			<li>
-				<div class="prj">
-					<div class="prjThumb">
-						<img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/>
-					</div>
-					<div class="prjName">
-						<a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a>				
+				<div class="border">
+					<div class="prj">
+						<div class="prjThumb">
+							<img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/>
+						</div>
+						<div class="prjName">
+							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a>				
+						</div>
 					</div>
 				</div>
 				

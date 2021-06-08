@@ -37,6 +37,25 @@ public class QNA {
 	}
 
 
+	public QNA(UserInfo userNo, BoardCategory categoryNo, String qnaTitle, String qnaContent,
+			String qnaFile) {
+		super();
+		this.userNo = userNo;
+		this.categoryNo = categoryNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaContent = qnaContent;
+		this.qnaFile = qnaFile;
+	}
+
+
+	public QNA(int qnaNo, Admin adminNo, String qnaReply) {
+		super();
+		this.qnaNo = qnaNo;
+		this.adminNo = adminNo;
+		this.qnaReply = qnaReply;
+	}
+
+
 	// 질문 작성자로 검색
 	public QNA(UserInfo userNo) {
 		super();

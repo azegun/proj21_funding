@@ -52,7 +52,7 @@ public class UserInfoMapperTest {
 
 	@Test
 	public void test02SelectUserbyId() {
-		String userId = "test";
+		String userId = "test1";
 		UserInfo userInfo = mapper.selectUserbyId(userId);
 		log.debug(userInfo.toString());
 		Assert.assertNotNull(userInfo);

@@ -22,15 +22,14 @@
 			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
 		</ul>
 	</nav>
-	<!-- 여기서부터는 내 질문 페이지 -->
 	<h4>내가 한 질문</h4>
 	<p>고객님이 하신 1:1 질문내역 페이지입니다.</p>
 		<table class="table">
 			<td id="qnaNo">번호</td>
 			<td id="qnaTitle">제목</td>
-			<td id="qnaContent">내용</td>
+			<td id="qnaDate">문의 날짜</td>
+			<td id="qnaState">문의 상태</td>
 	</table>
-	<!-- 페이지 구성 자체는 동일하게 만들면 될 듯. 클릭시 내 질문 내역과 답변 내역 한 눈에 볼 수 있게. -->
 	</p>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 

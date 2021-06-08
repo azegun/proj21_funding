@@ -14,6 +14,11 @@ public class UserInfo {
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호
 
+	
+	public UserInfo(String userId) {
+		this.userId = userId;
+	}
+
 	public UserInfo(String userId, String userPw, String userName, String userPhone, int zipCode, String address,
 			String detailAddress, String email, String bankName, int bankAccount) {
 		this.userId = userId;

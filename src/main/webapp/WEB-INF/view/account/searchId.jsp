@@ -14,7 +14,7 @@
 		</header>
 		<section id="searchIdFormArea">
 			<h1>아이디 찾기</h1>
-			<form:form modelAttribute="userInfo">
+			<form:form modelAttribute="userSearch">
 			<form:errors />
 				<fieldset id="searchBtn">
 					<p>
