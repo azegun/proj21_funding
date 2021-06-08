@@ -9,8 +9,10 @@ insert into message values
 (00001, 'sgkim', 'kykim', '펀딩팀 화이팅', now(), 1);
 
 #default값 제외
-insert into message ( SendUser, ReceiveUser,
-	MsgContent, ReadYN) values ( 'sgkim', 'kykim', '펀딩팀 화이팅',  0);
+insert into message (
+	SendUser, ReceiveUser,
+	MsgContent, ReadYN) 
+values ( 'sgkim', 'kykim', '펀딩팀 화이팅',  0);
 
 
 
@@ -132,15 +134,15 @@ values (2, 2, 2, 12341234 );
 
 -- PrjOption(프로젝트구매옵션) - Project(프로젝트) 외래키 받음
 select
-	OptNo, PrjNo, OptPrice, OptContent
+	OptNo, PrjNo, OptName, OptPrice, OptContent
 from prjoption;
 
 
 insert into prjoption values
-(00001, 00001, 30000, '가방2개+연필1자루');
+(00001, 00001, '문구셋트', 30000, '가방2개+연필1자루');
 -- default값 null값 제외
-insert into prjoption (prjno,OptPrice,OptContent)
-values (2, 300000, '옵션B');
+insert into prjoption (prjno, OptName, OptPrice,OptContent)
+values (2, '필통', 300000, '옵션B');
 
 
 

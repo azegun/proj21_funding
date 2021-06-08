@@ -3,6 +3,7 @@ package proj21_funding.dto;
 public class PrjOption {
 		private int optNo; //옵션번호
 		private Project prjNo;//프로젝트번호
+		private String optName; //옵션명
 		private int optPrice;//옵션급액
 		private String optContent;//옵션내용
 		//기본 생성자
@@ -11,10 +12,11 @@ public class PrjOption {
 		//옵션 번호로 검색
 		public PrjOption(int optNo) {
 			this.optNo = optNo;
-		}
-		public PrjOption(Project prjNo, int optPrice, String optContent) {
-			super();
+		}		
+
+		public PrjOption(Project prjNo, String optName, int optPrice, String optContent) {
 			this.prjNo = prjNo;
+			this.optName = optName;
 			this.optPrice = optPrice;
 			this.optContent = optContent;
 		}
@@ -32,6 +34,14 @@ public class PrjOption {
 		public void setPrjNo(Project prjNo) {
 			this.prjNo = prjNo;
 		}
+		public String getOptName() {
+			return optName;
+		}
+
+		public void setOptName(String optName) {
+			this.optName = optName;
+		}
+
 		public int getOptPrice() {
 			return optPrice;
 		}
@@ -47,8 +57,8 @@ public class PrjOption {
 
 		@Override
 		public String toString() {
-			return String.format("PrjOption [optNo=%s, prjNo=%s, optPrice=%s, optContent=%s]", optNo, prjNo, optPrice,
-					optContent);
+			return String.format("PrjOption [optNo=%s, prjNo=%s, optName=%s, optPrice=%s, optContent=%s]", optNo, prjNo,
+					optName, optPrice, optContent);
 		}
 		
 		

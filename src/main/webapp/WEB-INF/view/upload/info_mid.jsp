@@ -6,6 +6,7 @@
 			<meta charset="UTF-8">
 			<title>Info Mid</title>
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/info_mid.css">
+			
 </head>
 <body>
 			<section id = "mid_first">

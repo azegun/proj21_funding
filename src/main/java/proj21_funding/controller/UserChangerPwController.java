@@ -34,7 +34,7 @@ public class UserChangerPwController {
 
 		if (!userChangePw.isPasswordEqualToComfirmPassword()) {
 			errors.rejectValue("confirmUserPw", "nomatch");
-			return "account/userChangePw1";
+			return "account/userChangePw1"; 
 		}
 
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");

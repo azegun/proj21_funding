@@ -104,6 +104,12 @@ values(
 
 
 insert into prjoption 
-		(prjno,OptPrice,OptContent)
+		(prjno, OptName, OptPrice, OptContent)
 values 
-		(3, 300000, '옵션c');
+		(3, '작가',  300000, '옵션c');
+
+delete
+from project
+where PrjNo  = 4;
+
+delete from prjoption 

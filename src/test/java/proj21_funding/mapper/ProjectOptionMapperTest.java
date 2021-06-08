@@ -33,7 +33,7 @@ public class ProjectOptionMapperTest {
 	public void testInsertPrjOption() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		PrjOption prjOption = new PrjOption(new Project(4), 4000000, "옵션d" );
+		PrjOption prjOption = new PrjOption(new Project(4), "분식", 4000000, "옵션d");
 		int res = mapper.insertPrjOption(prjOption);
 	
 		Assert.assertEquals(1, res);		

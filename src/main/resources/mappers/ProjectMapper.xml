@@ -19,11 +19,11 @@
 		</resultMap>
 	 
 		<select id="selectProjectListAll" resultType="Project" resultMap="AssociateResUserInfo">
-			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
-			StartDate, EndDate,	PayDate, EndYN
-			from project
+			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
+			 from project
 		</select>	
 
+		<!-- 프로젝트 insert (Transaction사용) -->
 		 <insert id="insertProject" parameterType="Project">
 				insert into project(
 						UserNo, PrjName, PrjContent, PrjGoal, 
