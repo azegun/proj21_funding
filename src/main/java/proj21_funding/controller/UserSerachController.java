@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import proj21_funding.dto.account.UserChangePw;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserSearch;
-import proj21_funding.exception.UserNotFoundException;
+import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.service.UserSerachService;
 
 @Controller
@@ -33,16 +32,17 @@ public class UserSerachController {
 		return "account/searchId";
 	}
 
+	// 아이디 찾기 결과화면
 	@PostMapping("/account/searchId")
 	public String submit_Id(@Valid UserSearch userSearch, Errors errors) {
 		if (errors.hasErrors())
 			return "account/searchId";
 		try {
-			UserInfo userInfo = service.seachuserId(userSearch.getUserName(), userSearch.getUserPhone());
+			UserInfo userInfo = service.searchuserId(userSearch.getUserName(), userSearch.getUserPhone());
 			userSearch.setUserId(userInfo.getUserId());
 			return "account/searchId-rs";
 		} catch (NullPointerException e) {
-			return "account/searchId-rs";
+			return "account/search-not";
 		}
 	}
 
@@ -52,24 +52,46 @@ public class UserSerachController {
 		return "account/searchPw";
 	}
 
+	// 비밀번호 찾기 결과화면
 	@PostMapping("/account/searchPw")
-	public String submit_Pw(@Valid UserSearch userSearch, Errors errors) {		
+	public String submit_Pw(@Valid UserSearch userSearch, Errors errors) {
 		if (errors.hasErrors())
 			return "account/searchPw";
+
 		try {
-			service.seachuserPw(userSearch.getUserId(), userSearch.getUserName(), userSearch.getUserPhone());
-			return "account/searchPw-rs";
+			UserInfo userInfo = service.searchuserPw(userSearch.getUserId(), userSearch.getUserName(), userSearch.getUserPhone());
+			
+			return "/account/searchPw-rs";
 		} catch (NullPointerException e) {
-			userSearch = null;
+			return "account/search-not";
+		}
+
+	}
+
+	// 비밀번호 찾기 새 비밀번호 설정화면가기
+	@GetMapping("/account/searchPw-rs")
+	public String form_ChangPw(UserSearch userSearch) {
+		return "account/searchPw-rs";
+	}
+
+	@PostMapping("/account/searchPw-rs")
+	public String submit_ChangPw(@Valid UserSearch userSearch, Errors errors) {
+		if (errors.hasErrors())
+			return "account/searchPw-rs";
+
+		if (!userSearch.isPasswordEqualToComfirmPassword()) {
+			errors.rejectValue("confirmUserPw", "nomatch");
+			return "account/searchPw-rs";
+		}
+
+		try {
+			service.changePassword(userSearch.getUserId(), userSearch.getNewUserPw());
+			return "/login";
+		} catch (WrongIdPasswordException e) {
+			errors.rejectValue("currentUserPw", "notMatching");
 			return "account/searchPw-rs";
 		}
 
 	}
-	
-	// 비밀번호 찾기 결과화면가기
-		@GetMapping("/account/searchPw-rs")
-		public String form_ChangPw(UserChangePw userChangePw) {
-			return "account/searchPw-rs";
-		}
 
 }
