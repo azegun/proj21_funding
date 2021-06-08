@@ -6,7 +6,8 @@ select
 	MsgContent, SendDate, ReadYN
 from message;
 
-
+insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'kykim', 'sgkim', '펀딩팀 화이팅');
 
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select

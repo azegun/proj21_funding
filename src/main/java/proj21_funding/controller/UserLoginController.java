@@ -54,7 +54,7 @@ public class UserLoginController {
 			}
 			response.addCookie(rememberCookie);
 
-			return "/main";
+			return "redirect:/main";
 		} catch (WrongIdPasswordException ex) {
 			errors.reject("idPasswordNotMatching");
 			return "account/login";

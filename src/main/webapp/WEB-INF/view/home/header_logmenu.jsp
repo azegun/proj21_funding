@@ -13,7 +13,7 @@
 	         <section id = "logon_infomation">
 		         <div><a href =   "" >마이페이지</a></div>
 		         <div><a href =   "" >회원정보관리</a>   </div>
-		         <div><a href =   "" >메시지</a></div>
+		         <div><a href ="<c:url value='/message/message-receive'/>" >메시지</a></div>
 		         <div><a href =   "" >후원현황</a></div>
 		         <div><a href =   "" >등록한 프로젝트</a>   </div>
 		         <div><a href =   "" >관심 프로젝트</a></div>
@@ -27,7 +27,7 @@
 	         <section id = "logon_infomation">
 		         <div><a href =   "" >마이페이지</a></div>
 		         <div><a href ="<c:url value='/account/userInfo'/>" >회원정보관리</a></div>
-		         <div><a href =   "" >메시지</a></div>
+		         <div><a href ="<c:url value='/message/message-receive'/>" >메시지</a></div>
 		         <div><a href =   "" >후원현황</a></div>
 		         <div><a href =   "" >등록한 프로젝트</a>   </div>
 		         <div><a href =   "" >관심 프로젝트</a></div>
