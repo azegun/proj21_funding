@@ -7,6 +7,15 @@
 			<meta charset="UTF-8">
 			<title>Info Top</title>
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/info_top.css">
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+			<script type="text/javascript">
+		$(function(){
+			var contextPath = "<%=request.getContextPath()%>";
+			$("#register_proj").on("click", function(){
+				window.location.href = contextPath+"/upload/register";
+			});			
+		});
+		</script>
 </head>
 <body>
 			 <!-- 프로모션 배너 -->

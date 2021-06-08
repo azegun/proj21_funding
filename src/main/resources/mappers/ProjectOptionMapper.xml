@@ -14,9 +14,9 @@
 		
 	<insert id="insertPrjOption" parameterType="PrjOption">
 				insert into PrjOption(
-						PrjNo, OptPrice, OptContent)
+						PrjNo, OptName, OptPrice, OptContent)
 				values(
-						#{prjNo.prjNo}, #{optPrice}, #{optContent}
+						#{prjNo.prjNo}, #{optName}, #{optPrice}, #{optContent}
 						)
 		</insert>		
 		

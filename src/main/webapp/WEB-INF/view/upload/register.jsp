@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 </head>
 <body>
 		<section class="container">
-		<form action="" method="post" name = "registerPrjForm">
+		<form action= "<%=request.getContextPath() %>/ListSuccess" method="post">
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
@@ -35,7 +36,7 @@
 							<li class="tab-link" data-tab="tab-2">옵션</li>
 					</ul>		
 					<div id="tab-1" class="register_mid current">
-							<jsp:include page="/WEB-INF/view/upload/register_prjinfo.jsp"/>		
+							<jsp:include page="/WEB-INF/view/upload/register_prjinfo.jsp"/>
 					</div>
 					<div id="tab-2" class="register_mid">
 							<jsp:include page="/WEB-INF/view/upload/register_optinfo.jsp"/>		
