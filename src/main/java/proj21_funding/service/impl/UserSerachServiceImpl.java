@@ -32,7 +32,8 @@ public class UserSerachServiceImpl implements UserSerachService {
 		try {
 			UserInfo userInfo1 = mapper.selectUserbyId(userId);
 			UserInfo userInfo2 = mapper.selectUserbySearchId(userName, userPhone);
-			if (userInfo1 == userInfo2) {
+						
+			if (userInfo1 != null && userInfo2 != null) {
 				return userInfo1;
 			} else {
 				throw new NullPointerException();
@@ -49,7 +50,6 @@ public class UserSerachServiceImpl implements UserSerachService {
 			throw new WrongIdPasswordException();
 		}	
 		userInfo.setUserPw(newPwd);		
-		
 		mapper.updateUserPw(userInfo);
 	}
 

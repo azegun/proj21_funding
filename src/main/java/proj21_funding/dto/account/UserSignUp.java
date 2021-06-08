@@ -2,7 +2,6 @@ package proj21_funding.dto.account;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.internal.NotNull;
