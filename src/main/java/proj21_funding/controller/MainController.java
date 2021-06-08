@@ -30,5 +30,10 @@ public class MainController {
 	public String view_user_ServiceCenter() {
 		return "board_servicecenter/servicecenter_view_user";
 	}
-		
+	
+	//공지사항 연결
+	@RequestMapping("/board/notice_all")
+	public String view_Board() {
+		return "board/notice_all";
+	}	
 }
