@@ -9,11 +9,7 @@ join prjoption o on p.PrjNo =o.PrjNo
 select * from fundinginfo f ;
 select * from prjoption o ;
 
--- 프로젝트별 현재모인금액 
-select count(*),sum(optprice), prjgoal 
-from fundinginfo f 
-join project p on f.PrjNo = p.PrjNo
-join prjoption o on f.prjno= o.prjno where f.PrjNo = 1;
+
 
 -- 프로젝트별 인원수, 가격
 select count(*),sum(optprice) 

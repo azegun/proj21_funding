@@ -1,6 +1,15 @@
+<%@page import="proj21_funding.service.impl.PrjOptionServiceImpl"%>
+<%@page import="proj21_funding.service.PrjOptionService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<%
+	PrjOptionService service;
+	service = new PrjOptionServiceImpl();
+%>
+<c:set var="prjDetail" value="<%=service %>"/>
 <!DOCTYPE html>
 <html>
 <head>
