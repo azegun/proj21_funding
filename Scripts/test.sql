@@ -105,8 +105,17 @@ values(
 
 
 insert into prjoption 
-		(prjno,OptPrice,OptContent)
+		(prjno, OptName, OptPrice, OptContent)
 values 
+<<<<<<< HEAD
+		(3, '작가',  300000, '옵션c');
+
+delete
+from project
+where PrjNo  = 4;
+
+delete from prjoption 
+=======
 		(3, 300000, '옵션c');
 
 
@@ -129,3 +138,4 @@ delete from qna where qnaNo=4;
 select * from admin;
 
 delete from admin where adminNo = 5;
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git

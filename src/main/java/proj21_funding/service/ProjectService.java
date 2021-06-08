@@ -2,8 +2,10 @@ package proj21_funding.service;
 
 import java.util.List;
 
-import proj21_funding.dto.Project;
+import org.springframework.stereotype.Service;
 
+import proj21_funding.dto.Project;
+@Service
 public interface ProjectService {
 	List<Project> showProjectListAll();
 	Project showProjectByNo(int prjNo);

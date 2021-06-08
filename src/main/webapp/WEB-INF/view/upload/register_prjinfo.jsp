@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,15 +19,15 @@
 							<label for = "prjNo">프로젝트 번호 </label>
 					</td>
 					<td class = "td_right" >
-							<input type="text" id = "prjNo" name = "prjNo" size = 40 required="required" readonly="readonly"/>
+							<input type="text" id = "prjNo" name = "prjNo" size = 40 required="required" /><!-- readonly="readonly" -->
 					</td>
 			</tr>
 			<tr>
 					<td class = "td_left">
 							<label for = "userNo" >프로젝트 관리자  </label>
 					</td>
-					<td class = "td_right" width="" >
-							  <input type="text" id = "userNo" name = "userNo"  size = 40   required="required"  readonly="readonly"/>
+					<td class = "td_right">
+							  <input type="text" id = "userNo" name = "userNo"  size = 40   required="required"/>  <!-- readonly="readonly" -->
 					</td>
 			</tr>
 			<tr>
@@ -53,14 +54,14 @@
 							 <input type="text" id = "prjGoal" name = "prjGoal" size = 40 required="required"></input>
 					</td>
 			</tr>
-			<tr>
+			<!-- <tr>
 					<td class = "td_left">
 							<label for = "startDate">시작일</label>
 					</td>
 					<td class = "td_right">
 							 <input type="date" id = "startDate" name = "startDate"  required="required"></input>
 					</td>
-			</tr>
+			</tr> -->
 			<tr>
 					<td class = "td_left">
 							<label for = "endDate">마감일</label>
