@@ -27,7 +27,7 @@
 							<img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/>
 						</div>
 						<div class="prjName">
-							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a>				
+							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a><span>제작자 : ${prj.userNo.userName }</span>			
 						</div>
 					</div>
 				</div>

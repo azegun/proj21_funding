@@ -30,10 +30,7 @@
 		</resultMap>
 	 
 		<select id="selectProjectListAll" resultType="Project" resultMap="AssociateResUserInfo">
-<<<<<<< HEAD
-			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN
-			 from project
-=======
+
 			<!-- select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
 			StartDate, EndDate,	PayDate, EndYN
 			from project -->
@@ -41,7 +38,6 @@
 			StartDate, EndDate,	PayDate, EndYN, u.UserId , u.UserName 
 			from project p join userinfo u 
 			on p.userno = u.UserNo ;
->>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git
 		</select>	
 
 		<!-- 프로젝트 insert (Transaction사용) -->
