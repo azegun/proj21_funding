@@ -31,4 +31,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return prj;
 	}
 
+	@Override
+	public int insertProject(Project project) {
+		return mapper.insertProject(project);
+	}
+
 }

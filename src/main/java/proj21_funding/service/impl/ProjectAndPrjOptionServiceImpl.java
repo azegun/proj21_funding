@@ -20,6 +20,8 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	@Override
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption) {
 		int res = pMapper.insertProject(project);
+		System.out.println("service>>>" + res);
+		System.out.println("ProjectoptionService >> "+prjoption );
 		res += prjOptMapper.insertPrjOption(prjoption);
 		if(res != 2) throw new RuntimeException();		
 	}

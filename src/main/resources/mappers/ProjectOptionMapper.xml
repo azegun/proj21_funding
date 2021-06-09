@@ -4,6 +4,7 @@
 	
 	<resultMap type="PrjOption" id="resOption">
 		<id property="optNo" column="OptNo"/>
+		<result property="optName" column="OptName" />
 		<result property="optPrice" column="OptPrice"/>
 		<result property="optContent" column="OptContent"/>
 	</resultMap>

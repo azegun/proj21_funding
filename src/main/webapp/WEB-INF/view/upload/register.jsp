@@ -25,10 +25,11 @@
 </head>
 <body>
 		<section class="container">
-		<form action= "<%=request.getContextPath() %>/ListSuccess" method="post">
+		
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
+		<form action= "<%=request.getContextPath() %>/ListSuccess" method="post">
 		<section id = "register_mid">
 			<div class="container_tab">
 					<ul class="tabs">

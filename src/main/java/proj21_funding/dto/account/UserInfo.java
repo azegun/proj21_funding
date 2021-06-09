@@ -14,10 +14,8 @@ public class UserInfo {
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호
 
-	
-	public UserInfo(String userId) {
-		this.userId = userId;
-	}
+
+
 
 	public UserInfo(String userId, String userPw, String userName, String userPhone, int zipCode, String address,
 			String detailAddress, String email, String bankName, int bankAccount) {
@@ -41,7 +39,11 @@ public class UserInfo {
 	public UserInfo(int userNo) {
 		this.userNo = userNo;
 	}
-
+	
+	//회원아이디
+	public UserInfo(String userId) {
+		this.userId = userId;
+	}
 	// getter & setter
 	public int getUserNo() {
 		return userNo;
@@ -138,5 +140,9 @@ public class UserInfo {
 				userNo, userId, userPw, userName, userPhone, zipCode, address, detailAddress, email, bankName,
 				bankAccount);
 	}
+
+
+
+
 
 }

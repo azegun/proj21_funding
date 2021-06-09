@@ -42,11 +42,11 @@ public class ProjectMapperTest {
 		Assert.assertNotNull(list);
 	}
 	
-//	@Test
+	@Test
 	public void testinsertProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		Project project = new Project(new UserInfo(2), "인서트성공", "제발,,,,", 3000000);
+		Project project = new Project(new UserInfo(3), "인서트성공", "제발,,,,", 3000000);
 		int res = mapper.insertProject(project);
 		
 		Assert.assertEquals(1, res);

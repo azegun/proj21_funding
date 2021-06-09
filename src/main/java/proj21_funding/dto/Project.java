@@ -1,6 +1,9 @@
 package proj21_funding.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import proj21_funding.dto.account.UserInfo;
 
@@ -10,9 +13,12 @@ public class Project {
 	private String prjName;			//프로젝트명
 	private String prjContent;		//프로젝트내용
 	private int prjGoal;			//목표금액
-	private LocalDateTime startDate;//시작일
-	private LocalDateTime endDate;	//마감일
-	private LocalDateTime payDate;	//결제일
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate startDate;//시작일
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate endDate;	//마감일
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate payDate;	//결제일
 	private boolean	endYn;			//마감여부
 	
 //	생성자
@@ -31,7 +37,6 @@ public class Project {
 	public Project(int prjNo) {
 		this.prjNo = prjNo;
 	}
-	
 //	getter & setter
 	public int getPrjNo() {
 		return prjNo;
@@ -73,29 +78,27 @@ public class Project {
 		this.prjGoal = prjGoal;
 	}
 
-	public LocalDateTime getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(LocalDateTime startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public LocalDateTime getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(LocalDateTime endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
-
-
-	public LocalDateTime getPayDate() {
+	public LocalDate getPayDate() {
 		return payDate;
 	}
 
-	public void setPayDate(LocalDateTime payDate) {
+	public void setPayDate(LocalDate payDate) {
 		this.payDate = payDate;
 	}
 
@@ -110,10 +113,11 @@ public class Project {
 	@Override
 	public String toString() {
 		return String.format(
-				"Project [prjNo=%s, userNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, paydate=%s, endYn=%s]",
+				"Project [prjNo=%s, userNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, payDate=%s, endYn=%s]",
 				prjNo, userNo, prjName, prjContent, prjGoal, startDate, endDate, payDate, endYn);
 	}
 	
-	
+
+
 	
 }

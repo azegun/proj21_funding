@@ -1,7 +1,9 @@
 package proj21_funding.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.service.ProjectAndPrjOptionService;
 
 //@RequestMapping("/upload")
 @Controller
 public class UploadController {
-	
+	@Autowired
 	private ProjectAndPrjOptionService service;
 	
 	//home에서 프로젝트 올리기 광고페이지
@@ -33,29 +36,24 @@ public class UploadController {
 	}
 	
 	@PostMapping("/ListSuccess")
-	public String registerSuccess(/* Project project, PrjOption prjoption */ HttpServletRequest request) {
-		UserInfo userNo = new UserInfo(Integer.parseInt(request.getParameter("userNo")));
-		int prjGoal = Integer.parseInt(request.getParameter("prjGoal"));
-		Project project = new Project(userNo, request.getParameter("prjName"), request.getParameter("prjContent"), prjGoal);
-		
-		
-		Project prjNo = new Project(Integer.parseInt(request.getParameter("prjNo")));
-		int optPrice = Integer.parseInt(request.getParameter("optPrice"));
-		PrjOption prjoption = new PrjOption(prjNo, request.getParameter("optName") , optPrice, request.getParameter("optContent"));
-		System.out.println(project);
-		System.out.println(prjoption);
-		try {
+	public String registerSuccess(Project project, PrjOption prjoption, HttpSession session) {
+	try {
+		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
+		project.setUserNo(new UserInfo(userAuthInfo.getUserNo()));
+			System.out.println("project >>>>"+project);
+			System.out.println("prjproject >>>>"+prjoption);
+			
 		service.trJoinPrjAndPrjOpt(project, prjoption);
 		System.out.println("success");
-		return "project/list";
+		return "upload/register_success";
 		
-		}catch (Exception e) {
+	
+		}catch (Exception e) { 
 			System.out.println("errors2");
 			e.printStackTrace();
-			
-		return "upload/register";
-		}
-		
+		 
+		 return "upload/register"; 
+		 }
 				
 	}
 

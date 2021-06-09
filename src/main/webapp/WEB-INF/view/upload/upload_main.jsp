@@ -18,10 +18,7 @@
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 		</footer>
-		</section>
-		
-		
-		
+		</section>		
 
 </body>
 </html>

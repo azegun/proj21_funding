@@ -10,29 +10,31 @@
 		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/register_prjinfo.css">
 </head>
 <body>
+
 	<h2>프로젝트 등록</h2>
 		<section id = "register_prjcontent">							
 			<table>			
 			<tbody>
-			<tr>
+			
+		<!-- 	<tr>
 					<td class = "td_left">
 							<label for = "prjNo">프로젝트 번호 </label>
 					</td>
 					<td class = "td_right" >
-							<input type="text" id = "prjNo" name = "prjNo" size = 40 required="required" /><!-- readonly="readonly" -->
+							<input type="text" id = "prjNo" name = "prjNo" size = 40 required="required" />readonly="readonly"
 					</td>
-			</tr>
+			</tr> -->
 			<tr>
 					<td class = "td_left">
 							<label for = "userNo" >프로젝트 관리자  </label>
 					</td>
 					<td class = "td_right">
-							  <input type="text" id = "userNo" name = "userNo"  size = 40   required="required"/>  <!-- readonly="readonly" -->
+							  <input type="text" id = "userNo" name = "userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
 					</td>
 			</tr>
 			<tr>
 					<td class = "td_left">
-							<label for = "userNo">프로젝트 명</label>
+							<label for = "prjName">프로젝트 명</label>
 					</td>
 					<td class = "td_right"	>
 							  <input type="text" id = "prjName" name = "prjName" size = 40  required="required"/>
