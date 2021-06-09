@@ -1,5 +1,7 @@
 package proj21_funding.mapper;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import proj21_funding.dto.Message;
@@ -7,13 +9,13 @@ import proj21_funding.dto.Message;
 @Component
 public interface MessageMapper {
 
-	Message selectBySendUser(String sendUser);
-
-	Message selectByreceiveUser(String receiveUser);
-	
 	int insertMessage(Message message);	
+	
+	List<Message> selectBySendUser(String sendUser);
 
-	Message selectByRead(boolean readYN);
+	List<Message> selectByreceiveUser(String receiveUser);	
+
+	List<Message> selectByRead(String receiveUser);
 	
-	
+	Message selectByMsgNo(int msgNo);
 }

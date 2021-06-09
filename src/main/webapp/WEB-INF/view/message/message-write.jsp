@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메세지 작성하기</title>
+<title>메세지</title>
 </head>
 <body>
 	<div class="container">
@@ -32,10 +32,11 @@
 						</label>
 					</p>
 					<p>						
-						<form:textarea path="msgContent" /> 
+						<form:textarea path="msgContent"  cols="40" rows="15" /> 
 						<form:errors path="msgContent" />						
 					</p>
 					<form:button id="submit">보내기</form:button>
+					<form:button type ="reset">다시쓰기</form:button>
 				</fieldset>	
 			</form:form>		
 		</section>

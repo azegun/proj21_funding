@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/project_list_css/list_section2.css">
 </head>
 <body>
+${projects }
 	<ul>
 		<c:forEach var="prj" items="${projects }">
 			<li>

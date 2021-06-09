@@ -15,6 +15,29 @@
 		insert into message ( SendUser, ReceiveUser, MsgContent)
 	 values ( #{sendUser}, #{receiveUser}, #{msgContent})
 	</insert>
-
-
+	
+	<select id="selectBySendUser" resultMap="resMsg">
+		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+		from message
+		where SendUser = #{sendUser}	
+	</select>
+	
+	<select id="selectByreceiveUser" resultMap="resMsg">
+		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+		from message
+		where ReceiveUser = #{receiveUser}	
+	</select>
+	
+	<select id="selectByRead" resultMap="resMsg">
+		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+		from message
+		where ReceiveUser = #{receiveUser} and ReadYN = false	
+	</select>
+	
+	<select id="selectByMsgNo" resultMap="resMsg">
+		select msgNo, SendUser, ReceiveUser, MsgContent
+		from message
+		where msgNo = #{msgNo}
+	</select>
+	
 </mapper>
