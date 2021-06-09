@@ -53,4 +53,9 @@ public class MessageServiceImpl implements MessageService {
 		return mapper.selectByMsgNo(msgNo);
 	}
 
+	@Override
+	public int readMessage(Message message) {		
+		return mapper.updateMessage(message);
+	}
+
 }

@@ -8,6 +8,6 @@
 </head>
 <body>
 	<p>비밀번호가 변경되었습니다.</p>
-	<p><a href="<c:url value='/main'/>">메인화면으로가기</a></p>
+	<a href="<c:url value='/main'/>"><button type="button">메인화면으로가기</button></a>
 </body>
 </html>

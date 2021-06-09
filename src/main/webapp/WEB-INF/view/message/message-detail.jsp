@@ -18,6 +18,7 @@
 			</fieldset>
 			<h2>메세지</h2>	
 			<fieldset>
+			<form:form modelAttribute="message">
 				<p>
 					<label> 보내는사람 :
 					<form:input path="sendUser" readonly="true" value="${message.sendUser}" /> 
@@ -35,6 +36,7 @@
 					<form:errors path="msgContent" />						
 				</p>
 				<form:button type="button"  onclick="history.back(-1);">뒤로가기</form:button>					
+			</form:form>
 			</fieldset>		
 		</section>
 		<footer>
