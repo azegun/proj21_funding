@@ -19,10 +19,9 @@
 		</resultMap>
 	 
 		<select id="selectProjectListAll" resultType="Project" resultMap="AssociateResUserInfo">
-			select PrjNo, p.UserNo, PrjName, PrjContent, PrjGoal,
+			select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			StartDate, EndDate,	PayDate, EndYN, u.UserId , u.UserName 
 			from project p join userinfo u 
-			on p.userno = u.UserNo
 		</select>	
 		
 			<!-- 프로젝트 insert (Transaction사용) -->
@@ -34,9 +33,6 @@
 		</insert>
 
 		<select id="selectProjectByNo" resultMap="resProject">
-			<!-- select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
-			StartDate, EndDate,	PayDate, EndYN
-			from project -->
 			select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			StartDate, EndDate,	PayDate, EndYN, u.UserId , u.UserName 
 			from project p join userinfo u 
