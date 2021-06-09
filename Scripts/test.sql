@@ -6,7 +6,8 @@ select
 	MsgContent, SendDate, ReadYN
 from message;
 
-
+insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'kykim', 'sgkim', '펀딩팀 화이팅');
 
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select
@@ -105,8 +106,17 @@ values(
 
 
 insert into prjoption 
-		(prjno,OptPrice,OptContent)
+		(prjno, OptName, OptPrice, OptContent)
 values 
+<<<<<<< HEAD
+		(3, '작가',  300000, '옵션c');
+
+delete
+from project
+where PrjNo  = 4;
+
+delete from prjoption 
+=======
 		(3, 300000, '옵션c');
 
 
@@ -129,3 +139,4 @@ delete from qna where qnaNo=4;
 select * from admin;
 
 delete from admin where adminNo = 5;
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_funding.git

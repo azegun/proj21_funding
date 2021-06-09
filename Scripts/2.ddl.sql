@@ -91,6 +91,7 @@ ALTER TABLE proj21_funding.Project
 CREATE TABLE proj21_funding.PrjOption (
 	OptNo      INT(10)     NOT NULL COMMENT '옵션번호', -- 옵션번호
 	PrjNo      INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
+	OptName    VARCHAR(10) NULL     COMMENT '옵션명', -- 옵션명
 	OptPrice   INT(10)     NOT NULL COMMENT '옵션금액', -- 옵션금액
 	OptContent VARCHAR(50) NOT NULL COMMENT '옵션내용' -- 옵션내용
 )

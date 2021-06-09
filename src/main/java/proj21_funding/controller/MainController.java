@@ -5,6 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
+	// main화면 바로가기
+	@RequestMapping("/")
+	public String main() {
+		return "/main";
+	}	
+	
 	//home에서 프로젝트 둘러보기
 	@RequestMapping("/home/menu")
 	public String menu() {
@@ -30,5 +36,10 @@ public class MainController {
 	public String view_user_ServiceCenter() {
 		return "board_servicecenter/servicecenter_view_user";
 	}
-		
+	
+	//공지사항 연결
+	@RequestMapping("/board/notice_all")
+	public String view_Board() {
+		return "board/notice_all";
+	}	
 }

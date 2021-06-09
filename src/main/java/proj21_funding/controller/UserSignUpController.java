@@ -41,6 +41,7 @@ public class UserSignUpController {
 			errors.rejectValue("confirmUserPw", "nomatch");
 			return "account/signUp1";
 		}
+		
 		try {
 			service.regist(userSignUp);
 			return "account/signUp2";

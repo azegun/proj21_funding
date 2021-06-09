@@ -11,13 +11,13 @@
 	<div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
-		</header>
-		${userSearch.userId}		
+		</header>	
 		<fieldset id="searchPw">			
 				<section id="searchPwFormArea">
-					<form:form modelAttribute="userSearch">
+					<form:form action="newUserPw" modelAttribute="userSearch">
 					<form:errors />
 					<fieldset id="searchBtn">	
+						<form:hidden path="userId" value="${userSearch.userId}"/>
 							<p>
 								<label>새 비밀번호:<br>
 								<form:password path="newUserPw"/>

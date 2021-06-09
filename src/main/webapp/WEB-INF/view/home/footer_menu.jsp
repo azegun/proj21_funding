@@ -10,7 +10,7 @@
 </head>
 <body>	
 				<div class = "go_menu">
-				<a href = "">공지사항</a>
+				<a href = "<%=request.getContextPath() %>/board/notice_all">공지사항</a>
 				<a href = "">이용약관</a>
 				<a href = "<%=request.getContextPath() %>/board_servicecenter/servicecenter_view_all" id = "go_center">고객센터</a>
 				</div>

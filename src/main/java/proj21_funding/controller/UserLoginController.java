@@ -36,8 +36,7 @@ public class UserLoginController {
 
 	// 로그인 성공시 메인화면으로
 	@PostMapping("/login")
-	public String submit(@Valid UserLogin userLogin, Errors errors, HttpSession session,
-			HttpServletResponse response) {
+	public String submit(@Valid UserLogin userLogin, Errors errors, HttpSession session, HttpServletResponse response) {
 		if (errors.hasErrors())
 			return "account/login";
 
@@ -55,7 +54,7 @@ public class UserLoginController {
 			}
 			response.addCookie(rememberCookie);
 
-			return "/main";
+			return "redirect:/main";
 		} catch (WrongIdPasswordException ex) {
 			errors.reject("idPasswordNotMatching");
 			return "account/login";
@@ -63,11 +62,11 @@ public class UserLoginController {
 
 	}
 
-	//로그아웃
-		@RequestMapping("/logout")
-		public String logout(HttpSession session) {
-			session.invalidate();
-			return "redirect:/main";
-		}
-	
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main";
+	}
+
 }

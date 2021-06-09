@@ -15,6 +15,12 @@ public class Message {
 	public Message() {
 	}
 
+	public Message(String sendUser, String receiveUser, String msgContent) {
+		this.sendUser = sendUser;
+		this.receiveUser = receiveUser;
+		this.msgContent = msgContent;
+	}
+
 	// getter & setter
 	public int getMsgNo() {
 		return msgNo;
