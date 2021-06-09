@@ -10,15 +10,14 @@
 	</resultMap>
 	
 	<resultMap type="PrjOption" id="AssociateProject" extends="resOption">
-		<association property="prjNo" resultMap="proj21_funding.mapper.ProjectMapper.AssociateResUserInfo"></association>
+		<association property="prjNo" javaType="UserInfo"></association>
 	</resultMap>
 		
-	<insert id="insertPrjOption" parameterType="PrjOption">
-				insert into PrjOption(
-						PrjNo, OptName, OptPrice, OptContent)
-				values(
-						#{prjNo.prjNo}, #{optName}, #{optPrice}, #{optContent}
-						)
+	<insert id="insertPrjOption">
+			insert into prjoption 
+					(prjno, OptName, OptPrice, OptContent)
+			values 
+					(#{prjNo.prjNo}, #{optName},  #{optPrice}, #{optContent})
 		</insert>		
 		
 	<select id="selectPrjOptionByAll" resultType="PrjOption">

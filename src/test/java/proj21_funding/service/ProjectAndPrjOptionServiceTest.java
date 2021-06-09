@@ -17,8 +17,8 @@ import proj21_funding.config.ContextRoot;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.mapper.PrjOptionMapper;
 import proj21_funding.mapper.ProjectMapper;
-import proj21_funding.mapper.ProjectOptionMapper;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {ContextRoot.class})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -30,7 +30,7 @@ public class ProjectAndPrjOptionServiceTest {
 	private ProjectMapper pMapper;
 	
 	@Autowired
-	private ProjectOptionMapper prjOptMapper;
+	private PrjOptionMapper prjOptMapper;
 	
 	
 	@After
@@ -42,10 +42,12 @@ public class ProjectAndPrjOptionServiceTest {
 	public void testTrJoinPrjAndPrjOpt_Success() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
         
-    	Project project = new Project(new UserInfo(2), "트렌젝션성공", "제발,,,,", 3000000);
+    	Project project = new Project(new UserInfo(2), "트렌젝션성공!!!!!!!", "제발,,,,", 3000000);
     	int res = pMapper.insertProject(project);
     	System.out.println(" res" + res);
-    	PrjOption prjoption = new PrjOption(new Project(4), "분식2", 4000000, "옵션d");
+    	
+    	PrjOption prjoption = new PrjOption(new Project(project.getPrjNo()), "분식!!!!!!2", 4000000, "옵션d");
+    	System.out.println(prjoption);
     	res += prjOptMapper.insertPrjOption(prjoption);
     	Assert.assertEquals(2, res);
     	System.out.println("final res" +res);

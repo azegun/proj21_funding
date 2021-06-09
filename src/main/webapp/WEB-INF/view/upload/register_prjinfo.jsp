@@ -29,7 +29,7 @@
 							<label for = "userNo" >프로젝트 관리자  </label>
 					</td>
 					<td class = "td_right">
-							  <input type="text" id = "userNo" name = "userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
+							  <input type="text" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
 					</td>
 			</tr>
 			<tr>

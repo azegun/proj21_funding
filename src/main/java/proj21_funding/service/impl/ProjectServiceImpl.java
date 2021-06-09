@@ -33,6 +33,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public int insertProject(Project project) {
+		System.out.println("ProjectService impl >>>"+ project);
 		return mapper.insertProject(project);
 	}
 

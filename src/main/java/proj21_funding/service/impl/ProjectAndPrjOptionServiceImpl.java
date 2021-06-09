@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.mapper.PrjOptionMapper;
 import proj21_funding.mapper.ProjectMapper;
-import proj21_funding.mapper.ProjectOptionMapper;
 import proj21_funding.service.ProjectAndPrjOptionService;
 @Service
 public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionService {
@@ -15,15 +15,16 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	private ProjectMapper pMapper;
 	
 	@Autowired
-	private ProjectOptionMapper prjOptMapper;
+	private PrjOptionMapper prjOptMapper;
 
 	@Override
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption) {
 		int res = pMapper.insertProject(project);
-		System.out.println("service>>>" + res);
-		System.out.println("ProjectoptionService >> "+prjoption );
+		prjoption.setPrjNo(project);
 		res += prjOptMapper.insertPrjOption(prjoption);
+		
 		if(res != 2) throw new RuntimeException();		
+		
 	}
 	
 

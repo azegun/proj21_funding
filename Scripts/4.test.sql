@@ -103,12 +103,14 @@ insert into project(
 values(
 		00001, '클라우드펀딩 올리기', '후원받아 제품 구매할수있게 만들기', 1000000,
 		now(), now(), now());
+	
+	SELECT last_insert_id();
 
 
 insert into prjoption 
 		(prjno, OptName, OptPrice, OptContent)
 values 
-		(3, '작가',  300000, '옵션c');
+		(4, '작가',  300000, '옵션c');
 
 delete
 from project

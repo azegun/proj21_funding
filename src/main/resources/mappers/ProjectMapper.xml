@@ -27,9 +27,12 @@
 			<!-- 프로젝트 insert (Transaction사용) -->
 		 <insert id="insertProject" parameterType="Project">
 				insert into project(
-						UserNo, PrjName, PrjContent, PrjGoal, EndDate, PayDate) 
+						UserNo, PrjName, PrjContent, PrjGoal,  EndDate, PayDate) 
 				values(
-						#{userNo.userNo}, #{prjName}, #{prjContent}, #{prjGoal},  now(), now())
+						#{userNo.userNo}, #{prjName}, #{prjContent}, #{prjGoal}, now(), now())
+					<selectKey keyProperty="prjNo" resultType="int">
+							SELECT last_insert_id()
+					</selectKey>
 		</insert>
 
 		<select id="selectProjectByNo" resultMap="resProject">

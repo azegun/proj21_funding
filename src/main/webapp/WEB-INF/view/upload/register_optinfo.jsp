@@ -14,7 +14,7 @@
 					<tbody>
 							<tr>
 									<td class = "td_left">
-											<label for = "optPrice">옵션이름</label>
+											<label for = "optName">옵션이름</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "optName" name = "optName"  size = 40 required="required"></input>
