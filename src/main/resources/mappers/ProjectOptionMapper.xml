@@ -10,7 +10,7 @@
 	</resultMap>
 	
 	<resultMap type="PrjOption" id="AssociateProject" extends="resOption">
-		<association property="prjNo" javaType="UserInfo"></association>
+		<association property="prjNo" resultMap="proj21_funding.mapper.ProjectMapper.AssociateResUserInfo"></association>
 	</resultMap>
 		
 	<insert id="insertPrjOption">
@@ -25,12 +25,12 @@
 	</select>
 	
 	<!--프로젝트리스트에서 클릭해서 들어가면 해당 프로젝트의 옵션까지 함께 표현  -->
-	<select id="selectPrjOptionByPrjNo" parameterType="int" resultMap="AssociateProject">
+	<select id="selectPrjOptionByPrjNo" resultMap="AssociateProject" parameterType="int">
 			select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
-				StartDate, EndDate,	PayDate, EndYN, u.UserId , u.UserName,
-				o.OptNo, o.OptPrice,o.OptContent
-			from project p join userinfo u on p.userno = u.UserNo
-						   join prjoption o on p.PrjNo =o.PrjNo 
+				StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName,
+				o.OptNo, o.OptPrice,o.OptContent,o.optName
+			from project p join userinfo u on p.userno = u.UserNo 
+						   join prjoption o on p.PrjNo =o.PrjNo
 			where o.prjNo = #{prjNo}
 	</select>
 

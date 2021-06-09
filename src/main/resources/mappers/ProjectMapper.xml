@@ -15,13 +15,13 @@
 
 		<!-- UserNo 추가하기 Associate로 -->
 		<resultMap type="Project" id="AssociateResUserInfo" extends="resProject">
-			<association property="userNo" javaType="UserInfo" ></association>
+			<association property="userNo" resultMap="proj21_funding.mapper.UserInfoMapper.resUser" ></association>
 		</resultMap>
 	 
 		<select id="selectProjectListAll" resultType="Project" resultMap="AssociateResUserInfo">
 			select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			StartDate, EndDate,	PayDate, EndYN, u.UserId , u.UserName 
-			from project p join userinfo u 
+			from project p join userinfo u on p.userno= u.userno
 		</select>	
 		
 			<!-- 프로젝트 insert (Transaction사용) -->

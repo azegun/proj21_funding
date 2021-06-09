@@ -1,8 +1,11 @@
 package proj21_funding.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proj21_funding.dto.FundingInfo;
 import proj21_funding.mapper.FundingInfoMapper;
 import proj21_funding.service.FundingInfoService;
 
@@ -20,5 +23,11 @@ public class FundingInfoServiceImpl implements FundingInfoService {
 	public int showSumByPrjNo(int prjNo) {
 		return mapper.selectSumByPrjNo(prjNo);
 	}
+	
+	@Override
+	public List<FundingInfo> showFundingInfoByUserNo(int userNo) {
+		return mapper.selectFundingInfoByUserNo(userNo);
+	}
+
 
 }
