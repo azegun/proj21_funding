@@ -1,14 +1,14 @@
 package proj21_funding.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 //메세지
 public class Message {
 	private int msgNo; // 메세지번호
 	private String sendUser; // 발신자
 	private String receiveUser;// 수신자
-	private String msgContent; // 내용
-	private Date sendDate; // 발신일
+	private String msgContent; // 내용	
+	private LocalDateTime  sendDate; // 발신일
 	private boolean readYN; // 확인여부
 
 	// 생성자
@@ -54,11 +54,11 @@ public class Message {
 		this.msgContent = msgContent;
 	}
 
-	public Date getSendDate() {
+	public LocalDateTime getSendDate() {
 		return sendDate;
 	}
 
-	public void setSendDate(Date sendDate) {
+	public void setSendDate(LocalDateTime sendDate) {
 		this.sendDate = sendDate;
 	}
 
