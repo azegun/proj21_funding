@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%=request.getContextPath() %>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,13 @@
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
 		<%-- ${projects } --%>
+		<!-- 프로젝트검색 부분 개발중  -->
+		<%-- <section>
+			<form:form  action="projectListByName"  modelAttribute="project">
+				<form:input path="prjName"/><input type="submit" value="검색">
+			</form:form>
+			
+		</section> --%>
 		<section>
 			<jsp:include page="/WEB-INF/view/project/list_section2.jsp"/>
 		<%-- 	<c:forEach var="prj" items="${projects }">

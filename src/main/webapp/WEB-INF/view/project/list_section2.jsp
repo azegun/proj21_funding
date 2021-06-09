@@ -5,11 +5,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%
+<%-- <%
 	PrjOptionService service;
 	service = new PrjOptionServiceImpl();
 %>
-<c:set var="prjDetail" value="<%=service %>"/>
+<c:set var="prjDetail" value="<%=service %>"/> --%>
 <!DOCTYPE html>
 <html>
 <head>

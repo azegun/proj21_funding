@@ -22,3 +22,6 @@ select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			from project p join userinfo u on p.userno = u.UserNo
 						   join prjoption o on p.PrjNo =o.PrjNo 
 			where o.prjNo = 1;
+
+
+select * from prjoption p group by prjno;
