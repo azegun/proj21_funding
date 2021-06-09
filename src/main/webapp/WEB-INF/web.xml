@@ -3,7 +3,9 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
+	
 	<display-name>proj21_funding</display-name>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -12,6 +14,7 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
 
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
@@ -25,7 +28,12 @@
 			<param-value>proj21_funding.config.ContextRoot </param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- 파일 등록할때 위치 알려주기 -->
+		<multipart-config>
+        <location>C:\\workspace_web\\proj21_funding\\src\\main\\webapp\\images</location>
+    	 </multipart-config>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -42,4 +50,5 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
 </web-app>

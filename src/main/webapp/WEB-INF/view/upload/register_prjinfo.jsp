@@ -56,6 +56,14 @@
 							 <input type="text" id = "prjGoal" name = "prjGoal" size = 40 required="required"></input>
 					</td>
 			</tr>
+			<tr>
+					<td class = "td_left">
+							<label for = "uploadFile">프로젝트 파일첨부</label>
+					</td>
+					<td class = "td_right">
+							<input type="file" name = "uploadfile" placeholder="파일 선택">
+					</td>
+			</tr> 
 			<!-- <tr>
 					<td class = "td_left">
 							<label for = "startDate">시작일</label>
