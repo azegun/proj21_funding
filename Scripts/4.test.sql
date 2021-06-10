@@ -5,10 +5,24 @@ select
 	MsgNo, SendUser, ReceiveUser,
 	MsgContent, SendDate, ReadYN
 from message;
+select SendUser, MsgContent, SendDate, ReadYN
+  from message
+ where ReceiveUser = 'test1';
+select ReceiveUser, MsgContent, SendDate, ReadYN
+  from message
+ where SendUser = 'test1';
 
+update message 
+set ReadYN = 1
+where MsgNo = 10;
 insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'kykim', 'sgkim', '펀딩팀 화이팅');
-
+	 values ( 'test1', 'test10', '펀딩팀 화이팅');
+insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'test1', 'test10', '펀딩팀 화이팅');
+	insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'test10', 'test1', '펀딩팀 화이팅');
+	insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'test10', 'test1', '펀딩팀 화이팅');
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select
 	CategoryNo, CategoryName 

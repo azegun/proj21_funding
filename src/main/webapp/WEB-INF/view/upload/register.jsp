@@ -29,7 +29,7 @@
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
-		<form action= "<%=request.getContextPath() %>/ListSuccess" method="post">
+		<form action= "<%=request.getContextPath() %>/ListSuccess" method="post" enctype="multipart/form-data">
 		<section id = "register_mid">
 			<div class="container_tab">
 					<ul class="tabs">

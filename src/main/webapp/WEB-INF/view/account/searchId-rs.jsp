@@ -11,14 +11,14 @@
 	<div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
-		</header>	
-		<fieldset id="searchId">			
-				<section id="searchIdFormArea">
-					회원계정은 ${userSearch.userId}입니다.
-				</section>
-				<p><a href ="<c:url value='/login'/>" >로그인화면으로 가기</a></p>
-				<p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a>			
-		</fieldset>
+		</header>
+		<section id="searchIdFormArea">	
+			<fieldset id="searchId">				
+				회원계정은 ${userSearch.userId}입니다.							
+			</fieldset>
+			<a href ="<c:url value='/login'/>" ><button type="button">로그인화면으로 가기</button></a>
+			<a href="<c:url value='/account/searchPw'/>"><button type="button">비밀번호 찾기</button></a>
+		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>

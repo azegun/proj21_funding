@@ -12,13 +12,13 @@
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>	
-		<fieldset id="searchnot">			
-				<section id="searchnotFormArea">
+		<section id="searchnotFormArea">
+			<fieldset id="searchnot">				
 					회원계정을 찾을 수 없습니다.
-				</section>						
-				<p><a href="<c:url value='/main'/>">메인화면으로가기</a></p>
-				<p><a href="<c:url value='/account/signUp1'/>">회원가입하기</a></p>				
-		</fieldset>
+			</fieldset>						
+			<a href="<c:url value='/main'/>"><button type="button">메인화면으로가기</button></a>
+			<a href="<c:url value='/account/signUp1'/>"><button type="button">회원가입하기</button></a>			
+		</section>	
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>
