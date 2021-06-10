@@ -5,7 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>업로드 완료</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+			<script type="text/javascript">
+		$(function(){
+			var contextPath = "<%=request.getContextPath()%>";
+			$("#go_list").on("click", function(){
+				window.location.href = contextPath+"/projectListAll";
+			});			
+		});
+		</script>
 </head>
 <body>
 		<table border="1">
@@ -28,6 +37,8 @@
 						<td>${propt.optPrice }</td>
 						<td>${propt.optContent }</td>	
 		</table>
+		<button id = "go_list">리스트</button>
+		<a href="<%=request.getContextPath()%>/project/list"></a>
 	
 
 

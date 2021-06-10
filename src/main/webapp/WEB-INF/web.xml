@@ -30,7 +30,7 @@
 		<load-on-startup>1</load-on-startup>
 		<!-- 파일 등록할때 위치 알려주기 -->
 		<multipart-config>
-        <location>C:\\workspace_web\\proj21_funding\\src\\main\\webapp\\images</location>
+        <location>C:\workspace_web\proj21_funding\src\main\webapp\images\project</location>
     	 </multipart-config>
 	</servlet>
 	

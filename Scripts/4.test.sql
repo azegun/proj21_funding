@@ -111,13 +111,14 @@ desc project;
 select  * from project; 
 SELECT * FROM prjoption;
 select * from userinfo;
+
 insert into project(
 		UserNo, PrjName, PrjContent, PrjGoal, 
-		StartDate, EndDate, PayDate) 
+		EndDate, PayDate) 
 values(
 		00001, '클라우드펀딩 올리기', '후원받아 제품 구매할수있게 만들기', 1000000,
-		now(), now(), now());
-	
+		now(), now());
+/*insert할 때 autoincrease하면 번호 정확하게 찾지  못해서 사용하는 select*/
 	SELECT last_insert_id();
 
 
@@ -126,9 +127,15 @@ insert into prjoption
 values 
 		(4, '작가',  300000, '옵션c');
 
+	delete from member where id >91;
+
 delete
 from project
-where PrjNo  = 4;
+where prjno > 6;
+
+delete
+from prjoption 
+where optno > 6;
 
 
 
