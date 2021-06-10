@@ -19,8 +19,7 @@
 	         speed: 500,        // 이동 속도를 설정
 	         pager: false,      // 현재 위치 페이징 표시 여부 설정
 	         moveSlides: 1,     // 슬라이드 이동시 개수
-	        auto:true,
-	        
+	         auto:true,	        
 	        autoHover:true
 		});
 	});

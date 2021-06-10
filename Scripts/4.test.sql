@@ -135,7 +135,7 @@ where prjno > 6;
 
 delete
 from prjoption 
-where optno > 6;
+where optno > 4;
 
 
 
