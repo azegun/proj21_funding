@@ -57,4 +57,9 @@ public class MessageServiceImpl implements MessageService {
 		return mapper.updateMessage(message);
 	}
 
+	@Override
+	public int removeMessage(Message message) {	
+		return mapper.deleteMessage(message);
+	}
+
 }

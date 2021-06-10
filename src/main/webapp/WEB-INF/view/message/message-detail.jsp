@@ -37,14 +37,17 @@
 					</p>															
 				<c:if test="${rcUser eq authInfo.userId}">					
 					<p>	
-						<form:textarea path="msgContent" value="${resend}"/> 
+						<form:textarea path="msgContent" /> 
 						<form:errors path="msgContent" />											
 					</p>			
 					<form:button>답장하기</form:button>			
-				</c:if>				
-				<form:button type="button"  onclick="history.back(-1);">삭제</form:button>					
-				<form:button type="button"  onclick="history.back(-1);">뒤로가기</form:button>					
+				</c:if>	
 			</form:form>
+			<form:form action="delete" modelAttribute="message">	
+				<form:input path="msgNo" type="hidden" value="${msgNo}"/>	
+				<form:button >삭제</form:button>	
+			</form:form>					
+			<button type="button"  onclick="history.back(-1);">뒤로가기</button>					
 			</fieldset>	
 		</section>
 		<footer>

@@ -18,6 +18,7 @@
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<h2>받은 메세지(${fn:length(messages)})</h2>
+			<button type="button"  onclick="">삭제</button>			
 			<fieldset>
 				<table>
 					<tr>						

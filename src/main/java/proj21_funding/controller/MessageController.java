@@ -36,13 +36,15 @@ public class MessageController {
 	
 	@GetMapping("/message/message-receive/{msgNo}")
 	public String receiveDetail(@PathVariable("msgNo") int msgNo, Message message, Model model) {
-		message = service.showByMsgNo(msgNo);		
+		message = service.showByMsgNo(msgNo);
 		
 		if (message == null) {
 			throw new UserNotFoundException();
 		}
 		
 		service.readMessage(message);
+		
+		model.addAttribute("msgNo", message.getMsgNo());
 		model.addAttribute("rcUser", message.getReceiveUser());
 		model.addAttribute("seUser", message.getSendUser());
 		model.addAttribute("content", message.getMsgContent());
@@ -66,7 +68,35 @@ public class MessageController {
 		}
 		
 	}
+	
+//	@RequestMapping("/message/message-send/{msgNo}")
+//	public String sendDetail(@PathVariable("msgNo") int msgNo, Message message, Model model) {
+//		message = service.showByMsgNo(msgNo);		
+//		
+//		if (message == null) {
+//			throw new UserNotFoundException();
+//		}
+//		
+//		service.readMessage(message);	
+//		model.addAttribute("rcUser", message.getReceiveUser());
+//		model.addAttribute("seUser", message.getSendUser());
+//		model.addAttribute("content", message.getMsgContent());
+//		
+//		return "message/message-detail";				
+//	}
+	
+	
+	
 
+	@GetMapping("/message/message-receive/delete")
+	public String delete(Message message, Errors errors) {	
+		if (errors.hasErrors()) {
+			return "redirect:/message/message-receive";
+		}
+		service.removeMessage(message);
+		return "message/message-detail";
+	}
+	
 	@RequestMapping("/message/message-unRead")
 	public String unRead(HttpSession session, Model model ) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
@@ -85,21 +115,7 @@ public class MessageController {
 		return "message/message-send";
 	}
 	
-	@RequestMapping("/message/message-send/{msgNo}")
-	public String sendDetail(@PathVariable("msgNo") int msgNo, Message message, Model model) {
-		message = service.showByMsgNo(msgNo);		
-		
-		if (message == null) {
-			throw new UserNotFoundException();
-		}
-		
-		service.readMessage(message);	
-		model.addAttribute("rcUser", message.getReceiveUser());
-		model.addAttribute("seUser", message.getSendUser());
-		model.addAttribute("content", message.getMsgContent());
-		
-		return "message/message-detail";				
-	}
+	
 	
 	@GetMapping("/message/message-write")
 	public String write(Message message) {
@@ -121,4 +137,8 @@ public class MessageController {
 		}		
 		
 	}
+	
+	
+	
+	
 }

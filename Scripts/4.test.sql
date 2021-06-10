@@ -23,6 +23,8 @@ insert into message ( SendUser, ReceiveUser, MsgContent)
 	 values ( 'test10', 'test1', '펀딩팀 화이팅3');
 insert into message ( SendUser, ReceiveUser, MsgContent)
 	 values ( 'test10', 'test11', '펀딩팀 화이팅4');
+	
+delete from message where MsgNo =6;
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select
 	CategoryNo, CategoryName 

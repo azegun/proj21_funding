@@ -27,8 +27,8 @@
 					</tr>
 					<c:forEach var="msg" items="${messages}">
 						<tr>		
-							<td><a href="<c:url value="/message/message-send/${msg.msgNo}" />">${msg.receiveUser}</a></td>		
-							<td><a href="<c:url value="/message/message-send/${msg.msgNo}" />">${msg.msgContent}</a></td>							
+							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}" />">${msg.receiveUser}</a></td>		
+							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}" />">${msg.msgContent}</a></td>							
 							<td><tf:formatDateTime value="${msg.sendDate}" pattern="yyyy-MM-dd" /></td>																			
 						</tr>
 					</c:forEach>					
