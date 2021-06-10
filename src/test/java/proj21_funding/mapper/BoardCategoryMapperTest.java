@@ -62,10 +62,18 @@ public class BoardCategoryMapperTest {
 	}
 
 	@Test
+	public void test07SelectBCbyClass() {
+		String categoryClass = "board";
+		BoardCategory bc = mapper.selectBCbyClass(categoryClass);
+		log.debug(bc.toString());
+		Assert.assertNotNull(bc);
+	}
+
+	@Test
 	public void test02InsertBC() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
-		BoardCategory bc = new BoardCategory(3, "업데이트");
+		BoardCategory bc = new BoardCategory(3, "업데이트", "board");
 		int res = mapper.insertBC(bc);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
@@ -73,7 +81,7 @@ public class BoardCategoryMapperTest {
 
 	@Test
 	public void test03UpdateBC() {
-		BoardCategory bc = new BoardCategory(3, "종료된 이벤트");
+		BoardCategory bc = new BoardCategory(3, "종료된 이벤트", "board");
 		int res = mapper.updateBC(bc);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
