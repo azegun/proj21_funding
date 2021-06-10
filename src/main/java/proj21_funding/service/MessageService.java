@@ -9,7 +9,7 @@ import proj21_funding.dto.Message;
 @Service
 public interface MessageService {
 
-	int sendMessage(Message message);
+	
 
 	List<Message> showBySendUser(String sendUser);
 
@@ -18,5 +18,9 @@ public interface MessageService {
 	List<Message> showByreceiveUserUnRead(String receiveUser);
 	
 	Message showByMsgNo(int msgNo);
+	
+	int sendMessage(Message message);
+	
+	int readMessage(Message message);
 	
 }

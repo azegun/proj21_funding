@@ -36,35 +36,47 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/message/message-receive/{msgNo}")
-	public ModelAndView detail(@PathVariable("msgNo") int msgNo) {
-		Message message = service.showByMsgNo(msgNo);
+	public ModelAndView receiveDetail(@PathVariable("msgNo") int msgNo) {
+		Message message = service.showByMsgNo(msgNo);		
+		
 		if (message == null) {
 			throw new UserNotFoundException();
 		}
-		ModelAndView mav = new ModelAndView();
-		System.out.println(mav);
-		System.out.println(message);
-		mav.addObject("message", message);
-		mav.setViewName("message/message-detail");
-		System.out.println(mav);
 		
+		service.readMessage(message);		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("message", message);
+		mav.setViewName("message/message-detail");		
 		return mav;		
 		
 	}
-	
-	
-	
-	
 	
 	@RequestMapping("/message/message-unRead")
 	public String unRead(HttpSession session, Model model ) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
 		List<Message> messages = service.showByreceiveUserUnRead(userAuthInfo.getUserId());
-		
+				
 		model.addAttribute("messages", messages );
 		return "message/message-unRead";
 	}
 		
+	@RequestMapping("/message/message-unRead/{msgNo}")
+	public ModelAndView unReadDetail(@PathVariable("msgNo") int msgNo) {
+		Message message = service.showByMsgNo(msgNo);
+		
+		if (message == null) {
+			throw new UserNotFoundException();
+		}
+		
+		service.readMessage(message);	
+		ModelAndView mav = new ModelAndView();		
+		mav.addObject("message", message);
+		mav.setViewName("message/message-detail");	
+		
+		return mav;		
+		
+	}
+	
 	@RequestMapping("/message/message-send")
 	public String send(HttpSession session, Model model ) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
@@ -72,6 +84,21 @@ public class MessageController {
 		
 		model.addAttribute("messages", messages );
 		return "message/message-send";
+	}
+	
+	@RequestMapping("/message/message-send/{msgNo}")
+	public ModelAndView sendDetail(@PathVariable("msgNo") int msgNo) {
+		Message message = service.showByMsgNo(msgNo);
+		
+		if (message == null) {
+			throw new UserNotFoundException();
+		}
+		
+		ModelAndView mav = new ModelAndView();		
+		mav.addObject("message", message);
+		mav.setViewName("message/message-detail");	
+		
+		return mav;				
 	}
 	
 	@GetMapping("/message/message-write")

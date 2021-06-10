@@ -40,4 +40,10 @@
 		where msgNo = #{msgNo}
 	</select>
 	
+	<update id="updateMessage">
+		update message 
+		   set ReadYN = true
+ 		 where MsgNo = #{msgNo}	
+	</update>
+	
 </mapper>

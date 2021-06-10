@@ -242,7 +242,8 @@ ALTER TABLE proj21_funding.Board
 -- 글분류
 CREATE TABLE proj21_funding.BoardCategory (
 	CategoryNo   INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
-	CategoryName VARCHAR(10) NOT NULL COMMENT '분류명' -- 분류명
+	CategoryName VARCHAR(10) NOT NULL COMMENT '분류명', -- 분류명
+	CategoryClass VARCHAR(10) not null COMMENT '적용 카테고리' -- 적용 카테고리 (ex. qna / notice)
 )
 COMMENT '글분류';
 

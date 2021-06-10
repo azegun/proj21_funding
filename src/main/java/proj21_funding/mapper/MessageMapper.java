@@ -8,8 +8,6 @@ import proj21_funding.dto.Message;
 
 @Component
 public interface MessageMapper {
-
-	int insertMessage(Message message);	
 	
 	List<Message> selectBySendUser(String sendUser);
 
@@ -18,4 +16,9 @@ public interface MessageMapper {
 	List<Message> selectByRead(String receiveUser);
 	
 	Message selectByMsgNo(int msgNo);
+	
+	int insertMessage(Message message);	
+	
+	int updateMessage(Message message);	
+	
 }
