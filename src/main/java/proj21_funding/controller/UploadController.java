@@ -1,9 +1,5 @@
 package proj21_funding.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +15,6 @@ import proj21_funding.service.ProjectAndPrjOptionService;
 public class UploadController {
 	
 
-	private static final String UPLOAD_PATH = "C:\\workspace_web\\proj21_funding\\src\\main\\webapp\\images";
-	
 	@Autowired
 	private ProjectAndPrjOptionService service;
 	
@@ -37,16 +31,10 @@ public class UploadController {
 	}
 	
 	@PostMapping("/ListSuccess")
-	public String registerSuccess(Project project, PrjOption prjoption, MultipartFile uploadfile) {
-		System.out.println("upload() POST");
-		System.out.println("filename >>" + uploadfile);
-		System.out.println("파일 이름: {}" + uploadfile.getOriginalFilename());
-		System.out.println("파일 크기: {}"+ uploadfile.getSize());
-		
-		saveFile(uploadfile);
+	public String registerSuccess(Project project, PrjOption prjoption, MultipartFile uploadfile) {	
 		
 	try {
-		service.trJoinPrjAndPrjOpt(project, prjoption);
+		service.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);
 		return "upload/register_success";
 	
 		}catch (Exception e) { 
@@ -57,22 +45,4 @@ public class UploadController {
 				
 	}
 
-	private String saveFile(MultipartFile file) {
-		
-		UUID uuid = UUID.randomUUID();
-		String saveName = uuid + "_" + file.getOriginalFilename();
-		
-		System.out.println("saveName: {}"+ saveName);
-		
-		File saveFile = new File(UPLOAD_PATH, saveName);
-		
-		try {
-			file.transferTo(saveFile);
-		}catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return saveName;
-		}
-	
 }
