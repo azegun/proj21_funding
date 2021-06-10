@@ -16,10 +16,11 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	@RequestMapping()
+	@RequestMapping("/board/notice_all")
 	public ModelAndView noticeAll() {
-		List<Board> notice = service.showBoardAll();
-		return new ModelAndView("");
+		List<Board> board = service.showBoardAll();
+		return new ModelAndView("board/notice_all", "board", board);
 	}
 	
+
 }

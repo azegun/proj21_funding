@@ -137,3 +137,8 @@ delete from qna where qnaNo=4;
 select * from admin;
 
 delete from admin where adminNo = 5;
+
+insert into boardcategory(CategoryName)
+values ('창작자'), ('후원자'), ('사이트 이용');
+
+select * from boardcategory;

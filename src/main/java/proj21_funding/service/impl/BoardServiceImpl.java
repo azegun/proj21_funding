@@ -17,7 +17,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<Board> showBoardAll() {
-		return mapper.selectBoardAll();
+		List<Board> list = mapper.selectBoardAll();
+		return list;
 	}
 
 	@Override
