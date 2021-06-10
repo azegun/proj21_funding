@@ -14,6 +14,8 @@ public interface BoardCategoryMapper {
 
 	BoardCategory selectBCbyName(String categoryName);
 	
+	List<BoardCategory> selectBCbyClass(String categoryClass);
+	
 	int insertBC(BoardCategory bc);
 	
 	int updateBC(BoardCategory bc);

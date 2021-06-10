@@ -1,5 +1,7 @@
 <%@ page import="proj21_funding.service.impl.BoardServiceImpl"%>
 <%@ page import="proj21_funding.service.BoardService"%>
+<%@ page import="proj21_funding.service.impl.CategoryServiceImpl"%>
+<%@ page import="proj21_funding.service.CategoryService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -26,9 +28,11 @@
 	<h2>공지사항</h2>
 	<div>
 		<select name="category">
-			<option value="1">공지사항</option>
-			<option value="2">이벤트</option>
-			<option value="endevent">지나간 이벤트</option>
+			<c:forEach var="bc" items="${bc }">
+				<c:if test="${bc.categoryClass eq 'board' }" >
+					<option value="${bc.categoryNo }">${bc.categoryName }</option>
+				</c:if>
+			</c:forEach>
 		</select>
 		<input type="button" value="조회">
 	</div>
@@ -37,21 +41,18 @@
 			<tr>
 				<td>${board.boardNo }</td>
 				<td>
-					<c:choose>
-						<c:when test="${board.categoryNo.categoryNo eq 1}" >
-							<c:out value = "공지사항" />
-						</c:when>
-						<c:when test="${board.categoryNo.categoryNo eq 2}" >
-							<c:out value = "이벤트" />
-						</c:when>
-					</c:choose>
+					<c:forEach var="bc" items="${bc }">
+						<c:if test="${bc.categoryNo eq board.categoryNo.categoryNo }" >
+							${bc.categoryName }
+						</c:if>
+					</c:forEach>
 				</td>
 				<td><a href="/board/notice_all/${board.boardNo }">${board.boardTitle }</a></td>
 				<td>${board.boardDate }</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<input type="button" value="공지글 작성">
+	<a href="<%=request.getContextPath() %>/board/notice_write"><input type="button" value="공지글 작성"></a>
 	</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 

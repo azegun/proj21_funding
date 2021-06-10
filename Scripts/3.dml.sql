@@ -23,11 +23,11 @@ select
 from boardcategory;
 
 insert into boardcategory  values
-(1, '공지사항');
+(1, '공지사항', 'board');
 
 #default값 없이
-insert into boardcategory (CategoryName)
-	values ('이벤트');
+insert into boardcategory (CategoryName, CategoryClass)
+	values ('이벤트', 'board');
 
 	
 	

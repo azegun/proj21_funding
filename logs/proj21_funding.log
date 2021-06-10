@@ -2605,3 +2605,75 @@
 [TRACE] [2021-06-09 21:03] <==        Row: 1, test1, *97E7471D816A37E38510728AEA47440F9C6E2585, ����, 010-3302-1972, 111222, �뱸, �޼���, test@test.com, ����, 1
 [DEBUG] [2021-06-09 21:03] <==      Total: 1
 [DEBUG] [2021-06-09 21:03] UserInfo [userNo=1, userId=test1, userPw=*97E7471D816A37E38510728AEA47440F9C6E2585, userName=����, userPhone=010-3302-1972, zipCode=111222, address=�뱸, detailAddress=�޼���, email=test@test.com, bankName=����, bankAccount=1]
+[DEBUG] [2021-06-10 14:21] test01SelectBCbyNo()
+[DEBUG] [2021-06-10 14:21] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-10 14:21] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 14:21] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-10 14:21] <==        Row: 1, 공지사항, board
+[DEBUG] [2021-06-10 14:21] <==      Total: 1
+[DEBUG] [2021-06-10 14:21] BoardCategory [categoryNo=1, categoryName=공지사항, categoryClass=board]
+[DEBUG] [2021-06-10 14:21] test02InsertBC()
+[DEBUG] [2021-06-10 14:21] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-10 14:21] ==> Parameters: 3(Integer), 업데이트(String), board(String)
+[DEBUG] [2021-06-10 14:21] <==    Updates: 1
+[DEBUG] [2021-06-10 14:21] res id >> 1
+[DEBUG] [2021-06-10 14:21] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-10 14:21] ==> Parameters: 종료된 이벤트(String), board(String), 3(Integer)
+[DEBUG] [2021-06-10 14:21] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-10 14:21] ==> Parameters: 종료된 이벤트(String)
+[DEBUG] [2021-06-10 14:21] <==      Total: 0
+[DEBUG] [2021-06-10 14:21] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-10 14:21] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-10 14:21] <==    Updates: 1
+[DEBUG] [2021-06-10 14:21] res id >> 1
+[DEBUG] [2021-06-10 14:21] test06SelectBCAll()
+[DEBUG] [2021-06-10 14:21] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-10 14:21] ==> Parameters: 
+[TRACE] [2021-06-10 14:21] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-10 14:21] <==        Row: 1, 공지사항, board
+[TRACE] [2021-06-10 14:21] <==        Row: 2, 이벤트, board
+[DEBUG] [2021-06-10 14:21] <==      Total: 2
+[DEBUG] [2021-06-10 14:21] BoardCategory [categoryNo=1, categoryName=공지사항, categoryClass=board]
+[DEBUG] [2021-06-10 14:21] BoardCategory [categoryNo=2, categoryName=이벤트, categoryClass=board]
+[DEBUG] [2021-06-10 14:21] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryClass = ?
+[DEBUG] [2021-06-10 14:21] ==> Parameters: board(String)
+[TRACE] [2021-06-10 14:21] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-10 14:21] <==        Row: 1, 공지사항, board
+[TRACE] [2021-06-10 14:21] <==        Row: 2, 이벤트, board
+[DEBUG] [2021-06-10 14:21] <==      Total: 2
+[DEBUG] [2021-06-10 14:22] test01SelectBCbyNo()
+[DEBUG] [2021-06-10 14:22] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-10 14:22] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 14:22] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-10 14:22] <==        Row: 1, 공지사항, board
+[DEBUG] [2021-06-10 14:22] <==      Total: 1
+[DEBUG] [2021-06-10 14:22] BoardCategory [categoryNo=1, categoryName=공지사항, categoryClass=board]
+[DEBUG] [2021-06-10 14:22] test02InsertBC()
+[DEBUG] [2021-06-10 14:22] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-10 14:22] ==> Parameters: 3(Integer), 업데이트(String), board(String)
+[DEBUG] [2021-06-10 14:22] <==    Updates: 1
+[DEBUG] [2021-06-10 14:22] res id >> 1
+[DEBUG] [2021-06-10 14:22] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-10 14:22] ==> Parameters: 종료된 이벤트(String), board(String), 3(Integer)
+[DEBUG] [2021-06-10 14:22] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-10 14:22] ==> Parameters: 종료된 이벤트(String)
+[DEBUG] [2021-06-10 14:22] <==      Total: 0
+[DEBUG] [2021-06-10 14:22] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-10 14:22] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-10 14:22] <==    Updates: 1
+[DEBUG] [2021-06-10 14:22] res id >> 1
+[DEBUG] [2021-06-10 14:22] test06SelectBCAll()
+[DEBUG] [2021-06-10 14:22] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-10 14:22] ==> Parameters: 
+[TRACE] [2021-06-10 14:22] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-10 14:22] <==        Row: 1, 공지사항, board
+[TRACE] [2021-06-10 14:22] <==        Row: 2, 이벤트, board
+[DEBUG] [2021-06-10 14:22] <==      Total: 2
+[DEBUG] [2021-06-10 14:22] BoardCategory [categoryNo=1, categoryName=공지사항, categoryClass=board]
+[DEBUG] [2021-06-10 14:22] BoardCategory [categoryNo=2, categoryName=이벤트, categoryClass=board]
+[DEBUG] [2021-06-10 14:22] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryClass = ?
+[DEBUG] [2021-06-10 14:22] ==> Parameters: board(String)
+[TRACE] [2021-06-10 14:22] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-10 14:22] <==        Row: 1, 공지사항, board
+[TRACE] [2021-06-10 14:22] <==        Row: 2, 이벤트, board
+[DEBUG] [2021-06-10 14:22] <==      Total: 2
