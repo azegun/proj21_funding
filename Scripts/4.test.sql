@@ -5,12 +5,12 @@ select
 	MsgNo, SendUser, ReceiveUser,
 	MsgContent, SendDate, ReadYN
 from message;
-select SendUser, MsgContent, SendDate, ReadYN
+select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
   from message
- where ReceiveUser = 'test1';
-select ReceiveUser, MsgContent, SendDate, ReadYN
+ where ReceiveUser = 'test10';
+select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
   from message
- where SendUser = 'test1';
+ where SendUser = 'test10';
 
 update message 
 set ReadYN = 1
@@ -22,7 +22,7 @@ insert into message ( SendUser, ReceiveUser, MsgContent)
 insert into message ( SendUser, ReceiveUser, MsgContent)
 	 values ( 'test10', 'test1', '펀딩팀 화이팅3');
 insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test1', '펀딩팀 화이팅4');
+	 values ( 'test10', 'test11', '펀딩팀 화이팅4');
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select
 	CategoryNo, CategoryName 
@@ -46,7 +46,7 @@ from admin;
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw,	UserName, UserPhone,
+	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
 	ZipCode, Address, DetailAddress,
 	Email, BankName, BankAccount
 from userinfo;
@@ -58,7 +58,7 @@ update userinfo
 		 where userId = 'test10';
 		 
 delete from userinfo where userNo >2;
-alter table userinfo auto_increment=3;
+alter table userinfo auto_increment=4;
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 

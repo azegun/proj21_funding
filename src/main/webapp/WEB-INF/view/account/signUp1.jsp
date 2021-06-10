@@ -66,6 +66,12 @@
 					</label>
 				</p>
 				<p>
+					<label> 회원별명 :
+					<form:input path="nickname" /> 
+					<form:errors path="nickname" />
+					</label>
+				</p>
+				<p>
 					<label> 회원H.P :
 					<form:input path="userPhone" /> 
 					<form:errors path="userPhone" />

@@ -6,13 +6,13 @@ select
 from message;
 
 insert into message values 
-(00001, 'sgkim', 'kykim', '펀딩팀 화이팅', now(), 1);
+(00001, 'test10', 'test2', '펀딩팀 화이팅', now(), 1);
 
 #default값 제외
 insert into message (
 	SendUser, ReceiveUser,
 	MsgContent, ReadYN) 
-values ( 'sgkim', 'kykim', '펀딩팀 화이팅',  0);
+values ( 'test2', 'test10', '펀딩팀 화이팅',  0);
 
 
 
@@ -58,21 +58,24 @@ values ('admin1','0000','김상건','010-3302-1972');
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw,	UserName, UserPhone,
+	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
 	ZipCode, Address, DetailAddress,
 	Email, BankName, BankAccount
 from userinfo;
-
+ 
 insert into userinfo values(
-00001, 'test1', password('0000'), '김상건', '010-3302-1972',
+00001, 'test1', password('0000'), '김상건', 'ksg', '01033021972',
 '111222', '대구', '달서구', 'test@test.com', '국민', 00000001 
 );
 
 #default값 제외
-insert into userinfo ( UserId, UserPw, UserName,
+insert into userinfo ( UserId, UserPw, UserName, Nickname,
 	UserPhone, ZipCode, Address, DetailAddress)
-values ('test2', password('1111'),'김경연', '010-1234-5678','222333', '대구','북구');
+values ('test2', password('1111'),'김경연', 'kky', '01012345678','222333', '대구','북구');
 
+insert into userinfo ( UserId, UserPw, UserName, Nickname,
+	UserPhone, ZipCode, Address, DetailAddress)
+values ('test10', password('1111'),'test10', 'ttt', '01012345678','222333', '대구','달서구');
 
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음

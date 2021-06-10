@@ -14,7 +14,7 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
 		<section id="messageFormArea">		
-			<fieldset>
+			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<h2>안 읽은 쪽지 모아보기(${fn:length(messages)})</h2>
