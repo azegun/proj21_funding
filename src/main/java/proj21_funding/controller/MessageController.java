@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.Message;
 import proj21_funding.dto.account.UserAuthInfo;
@@ -35,22 +34,39 @@ public class MessageController {
 		return "message/message-receive";
 	}
 	
-	@RequestMapping("/message/message-receive/{msgNo}")
-	public ModelAndView receiveDetail(@PathVariable("msgNo") int msgNo) {
-		Message message = service.showByMsgNo(msgNo);		
+	@GetMapping("/message/message-receive/{msgNo}")
+	public String receiveDetail(@PathVariable("msgNo") int msgNo, Message message, Model model) {
+		message = service.showByMsgNo(msgNo);		
 		
 		if (message == null) {
 			throw new UserNotFoundException();
 		}
 		
-		service.readMessage(message);		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("message", message);
-		mav.setViewName("message/message-detail");		
-		return mav;		
+		service.readMessage(message);
+		model.addAttribute("rcUser", message.getReceiveUser());
+		model.addAttribute("seUser", message.getSendUser());
+		model.addAttribute("content", message.getMsgContent());
 		
+		return "message/message-detail";	
 	}
 	
+	@PostMapping("/message/message-receive/{msgNo}")
+	public String receiveReply(@PathVariable("msgNo") int msgNo, Message message, Errors errors, Model model) {
+		if (message == null) {
+			throw new UserNotFoundException();
+		}			
+		try {
+			Message message1 = new Message(message.getReceiveUser(), message.getSendUser(), message.getMsgContent());
+			service.sendMessage(message1);	
+			
+			return "redirect:/message/message-receive";			
+		} catch (UserNotFoundException  e) {
+			errors.rejectValue("UserName", "notSearching");
+			return "message/message-detail";
+		}
+		
+	}
+
 	@RequestMapping("/message/message-unRead")
 	public String unRead(HttpSession session, Model model ) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
@@ -58,23 +74,6 @@ public class MessageController {
 				
 		model.addAttribute("messages", messages );
 		return "message/message-unRead";
-	}
-		
-	@RequestMapping("/message/message-unRead/{msgNo}")
-	public ModelAndView unReadDetail(@PathVariable("msgNo") int msgNo) {
-		Message message = service.showByMsgNo(msgNo);
-		
-		if (message == null) {
-			throw new UserNotFoundException();
-		}
-		
-		service.readMessage(message);	
-		ModelAndView mav = new ModelAndView();		
-		mav.addObject("message", message);
-		mav.setViewName("message/message-detail");	
-		
-		return mav;		
-		
 	}
 	
 	@RequestMapping("/message/message-send")
@@ -87,18 +86,19 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/message/message-send/{msgNo}")
-	public ModelAndView sendDetail(@PathVariable("msgNo") int msgNo) {
-		Message message = service.showByMsgNo(msgNo);
+	public String sendDetail(@PathVariable("msgNo") int msgNo, Message message, Model model) {
+		message = service.showByMsgNo(msgNo);		
 		
 		if (message == null) {
 			throw new UserNotFoundException();
 		}
 		
-		ModelAndView mav = new ModelAndView();		
-		mav.addObject("message", message);
-		mav.setViewName("message/message-detail");	
+		service.readMessage(message);	
+		model.addAttribute("rcUser", message.getReceiveUser());
+		model.addAttribute("seUser", message.getSendUser());
+		model.addAttribute("content", message.getMsgContent());
 		
-		return mav;				
+		return "message/message-detail";				
 	}
 	
 	@GetMapping("/message/message-write")
@@ -114,7 +114,7 @@ public class MessageController {
 		
 		try {
 			service.sendMessage(message);
-			return "message/message-receive";
+			return "redirect:/message/message-receive";
 		} catch (UserNotFoundException  e) {
 			errors.rejectValue("UserName", "notSearching");
 			return "message/message-write";

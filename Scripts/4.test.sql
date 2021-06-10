@@ -16,13 +16,13 @@ update message
 set ReadYN = 1
 where MsgNo = 10;
 insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test1', 'test10', '펀딩팀 화이팅');
+	 values ( 'test1', 'test10', '펀딩팀 화이팅1');
 insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test1', 'test10', '펀딩팀 화이팅');
-	insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test1', '펀딩팀 화이팅');
-	insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test1', '펀딩팀 화이팅');
+	 values ( 'test1', 'test10', '펀딩팀 화이팅2');
+insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'test10', 'test1', '펀딩팀 화이팅3');
+insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'test10', 'test1', '펀딩팀 화이팅4');
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select
 	CategoryNo, CategoryName 
@@ -50,7 +50,7 @@ select
 	ZipCode, Address, DetailAddress,
 	Email, BankName, BankAccount
 from userinfo;
-where userId = 'test10' and userPw = password(1111);
+where userId = 'test10' and userPw = password('1111');
 where UserName = 'test10' and UserPhone = '01012345678';
 
 update userinfo

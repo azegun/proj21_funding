@@ -27,12 +27,12 @@
 					</p>
 					<p>
 						<label> 받는사람 :
-						<form:input path="receiveUser" /> 
+						<form:input path="receiveUser" value="${message.sendUser}"/> 
 						<form:errors path="receiveUser" />
 						</label>
 					</p>
 					<p>						
-						<form:textarea path="msgContent"  cols="40" rows="15" /> 
+						<form:textarea path="msgContent"  cols="40" rows="15" value="${message.sendDate}"/> 
 						<form:errors path="msgContent" />						
 					</p>
 					<form:button id="submit">보내기</form:button>

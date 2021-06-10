@@ -71,7 +71,7 @@ insert into userinfo values(
 #default값 제외
 insert into userinfo ( UserId, UserPw, UserName,
 	UserPhone, ZipCode, Address, DetailAddress)
-values ('test2', password(1111),'김경연', '010-1234-5678','222333', '대구','북구');
+values ('test2', password('1111'),'김경연', '010-1234-5678','222333', '대구','북구');
 
 
 
