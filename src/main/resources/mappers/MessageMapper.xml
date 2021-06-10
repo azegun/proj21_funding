@@ -10,11 +10,6 @@
 		<result property="sendDate" column="sendDate"/>
 		<result property="readYN" column="readYN"/>
 	</resultMap>
-
-	<insert id="insertMessage">
-		insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( #{sendUser}, #{receiveUser}, #{msgContent})
-	</insert>
 	
 	<select id="selectBySendUser" resultMap="resMsg">
 		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
@@ -40,10 +35,21 @@
 		where msgNo = #{msgNo}
 	</select>
 	
+	<insert id="insertMessage">
+		insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( #{sendUser}, #{receiveUser}, #{msgContent})
+	</insert>	
+	
 	<update id="updateMessage">
 		update message 
 		   set ReadYN = true
  		 where MsgNo = #{msgNo}	
 	</update>
+	
+	<delete id="deleteMessage">
+		delete
+		  from message
+		 where MsgNo = #{msgNo}	
+	</delete>
 	
 </mapper>

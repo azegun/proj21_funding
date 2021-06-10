@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
@@ -13,10 +14,10 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
 		<section id="messageFormArea">	
-			<fieldset>
+			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>	
-			<h2>보낸 메세지</h2>			
+			<h2>보낸 메세지(${fn:length(messages)})</h2>			
 			<fieldset>
 				<table>
 					<tr>						
@@ -26,8 +27,8 @@
 					</tr>
 					<c:forEach var="msg" items="${messages}">
 						<tr>		
-							<td><a href="<c:url value="/message/message-send/${msg.msgNo}" />">${msg.receiveUser}</a></td>		
-							<td><a href="<c:url value="/message/message-send/${msg.msgNo}" />">${msg.msgContent}</a></td>							
+							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}" />">${msg.receiveUser}</a></td>		
+							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}" />">${msg.msgContent}</a></td>							
 							<td><tf:formatDateTime value="${msg.sendDate}" pattern="yyyy-MM-dd" /></td>																			
 						</tr>
 					</c:forEach>					

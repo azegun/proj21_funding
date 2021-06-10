@@ -59,6 +59,12 @@
 					</label>
 				</p>
 				<p>
+					<label> 회원별명 :
+					<form:input path="nickname" value="${authInfo.nickname}"/> 
+					<form:errors path="nickname" />
+					</label>
+				</p>
+				<p>
 					<label> 회원H.P :
 					<form:input path="userPhone" value="${authInfo.userPhone}"/> 
 					<form:errors path="userPhone" />
