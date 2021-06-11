@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,10 @@ public class UserInfoController {
 
 	// 회원정보 보기
 	@GetMapping("/account/userInfo")
-	public String form(UserInfo userInfo, HttpSession session) {
+	public String form(UserInfo userInfo, HttpSession session, Model model) {
+		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
+		userInfo = service.showUserInfoById(userAuthInfo.getUserId());
+		model.addAttribute(userInfo);
 		return "account/userInfo";
 	}
 
