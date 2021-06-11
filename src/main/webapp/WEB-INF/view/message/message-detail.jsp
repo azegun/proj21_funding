@@ -40,14 +40,11 @@
 						<form:textarea path="msgContent" /> 
 						<form:errors path="msgContent" />											
 					</p>			
-					<form:button>답장하기</form:button>			
-				</c:if>	
-			</form:form>
-			<form:form action="delete" modelAttribute="message">	
-				<form:input path="msgNo" type="hidden" value="${msgNo}"/>	
-				<form:button >삭제</form:button>	
-			</form:form>					
-			<button type="button"  onclick="history.back(-1);">뒤로가기</button>					
+					<form:button>답장하기</form:button>	
+					<a href="<c:url value="/message/message-receive/delete/${msgNo}" />"><form:button type = "button">삭제</form:button></a>
+				</c:if>						
+			<button type="button"  onclick="history.back(-1);">뒤로가기</button>	
+			</form:form>				
 			</fieldset>	
 		</section>
 		<footer>
