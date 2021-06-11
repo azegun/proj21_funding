@@ -2677,3 +2677,235 @@
 [TRACE] [2021-06-10 14:22] <==        Row: 1, 공지사항, board
 [TRACE] [2021-06-10 14:22] <==        Row: 2, 이벤트, board
 [DEBUG] [2021-06-10 14:22] <==      Total: 2
+[DEBUG] [2021-06-10 15:53] testSelectProjectListAll()
+[DEBUG] [2021-06-10 15:53] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-10 15:53] ==> Parameters: 
+[TRACE] [2021-06-10 15:53] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 15:53] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 1000000, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 1, test1, 김상건
+[TRACE] [2021-06-10 15:53] <==        Row: 2, 1, 홈페이지만들기, <<BLOB>>, 5000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:53] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[TRACE] [2021-06-10 15:53] <==        Row: 4, 1, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, <<BLOB>>, 10000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:53] <==        Row: 5, 1, 성평등한 하루를 위한 양말, <<BLOB>>, 7000000, 2021-06-09 11:03:13.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:53] <==        Row: 6, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 0, test2, 김경연
+[TRACE] [2021-06-10 15:53] <==        Row: 7, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 15:53] <==      Total: 7
+[DEBUG] [2021-06-10 15:53] testSelectProjjectListByNo()
+[DEBUG] [2021-06-10 15:53] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-10 15:53] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-10 15:53] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 15:53] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 15:53] <==      Total: 1
+[DEBUG] [2021-06-10 15:53] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-10 15:53] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-10 15:53] ==> Parameters: 
+[TRACE] [2021-06-10 15:53] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-10 15:53] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, test1, 김상건, 860000, 1000000, 86.0000
+[DEBUG] [2021-06-10 15:53] <==      Total: 1
+[DEBUG] [2021-06-10 15:55] testSelectProjectListAll()
+[DEBUG] [2021-06-10 15:55] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-10 15:55] ==> Parameters: 
+[TRACE] [2021-06-10 15:55] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 15:55] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 1000000, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 1, test1, 김상건
+[TRACE] [2021-06-10 15:55] <==        Row: 2, 1, 홈페이지만들기, <<BLOB>>, 5000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:55] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[TRACE] [2021-06-10 15:55] <==        Row: 4, 1, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, <<BLOB>>, 10000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:55] <==        Row: 5, 1, 성평등한 하루를 위한 양말, <<BLOB>>, 7000000, 2021-06-09 11:03:13.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:55] <==        Row: 6, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 0, test2, 김경연
+[TRACE] [2021-06-10 15:55] <==        Row: 7, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 15:55] <==      Total: 7
+[DEBUG] [2021-06-10 15:55] testSelectProjjectListByNo()
+[DEBUG] [2021-06-10 15:55] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-10 15:55] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-10 15:55] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 15:55] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 15:55] <==      Total: 1
+[DEBUG] [2021-06-10 15:55] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-10 15:55] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-10 15:55] ==> Parameters: 
+[TRACE] [2021-06-10 15:55] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-10 15:55] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, test1, 김상건, 860000, 1000000, 86.0000
+[DEBUG] [2021-06-10 15:55] <==      Total: 1
+[DEBUG] [2021-06-10 15:55] testSelectProjectListAll()
+[DEBUG] [2021-06-10 15:55] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-10 15:55] ==> Parameters: 
+[TRACE] [2021-06-10 15:55] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 15:55] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 1000000, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 1, test1, 김상건
+[TRACE] [2021-06-10 15:55] <==        Row: 2, 1, 홈페이지만들기, <<BLOB>>, 5000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:55] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[TRACE] [2021-06-10 15:55] <==        Row: 4, 1, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, <<BLOB>>, 10000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:55] <==        Row: 5, 1, 성평등한 하루를 위한 양말, <<BLOB>>, 7000000, 2021-06-09 11:03:13.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 15:55] <==        Row: 6, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 0, test2, 김경연
+[TRACE] [2021-06-10 15:55] <==        Row: 7, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 15:55] <==      Total: 7
+[DEBUG] [2021-06-10 15:55] testSelectProjjectListByNo()
+[DEBUG] [2021-06-10 15:55] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-10 15:55] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-10 15:55] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 15:55] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 15:55] <==      Total: 1
+[DEBUG] [2021-06-10 15:55] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-10 15:55] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-10 15:55] ==> Parameters: 
+[TRACE] [2021-06-10 15:55] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-10 15:55] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, test1, 김상건, 860000, 1000000, 86.0000
+[DEBUG] [2021-06-10 15:55] <==      Total: 1
+[DEBUG] [2021-06-10 17:25] testSelectCountByPrjNo()
+[DEBUG] [2021-06-10 17:25] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-10 17:25] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 17:25] <==    Columns: cnt
+[TRACE] [2021-06-10 17:25] <==        Row: 4
+[DEBUG] [2021-06-10 17:25] <==      Total: 1
+[DEBUG] [2021-06-10 17:26] testSelectCountByPrjNo()
+[DEBUG] [2021-06-10 17:26] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-10 17:26] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 17:26] <==    Columns: cnt
+[TRACE] [2021-06-10 17:26] <==        Row: 4
+[DEBUG] [2021-06-10 17:26] <==      Total: 1
+[DEBUG] [2021-06-10 17:26] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-10 17:26] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-10 17:26] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 17:26] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-10 17:26] <==        Row: 1, 1, 클라우드펀딩, 문구세트A, 가방2개+연필1자루, 30000, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 1, 0
+[DEBUG] [2021-06-10 17:26] <==      Total: 1
+[DEBUG] [2021-06-10 17:26] testSelectCountByPrjNo()
+[DEBUG] [2021-06-10 17:26] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-10 17:26] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 17:26] <==    Columns: cnt
+[TRACE] [2021-06-10 17:26] <==        Row: 4
+[DEBUG] [2021-06-10 17:26] <==      Total: 1
+[DEBUG] [2021-06-10 17:26] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-10 17:26] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-10 17:26] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 17:26] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-10 17:26] <==        Row: 1, 1, 클라우드펀딩, 문구세트A, 가방2개+연필1자루, 30000, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 1, 0
+[DEBUG] [2021-06-10 17:26] <==      Total: 1
+[DEBUG] [2021-06-10 17:35] testSelectProjectListAll()
+[DEBUG] [2021-06-10 17:35] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-10 17:35] ==> Parameters: 
+[TRACE] [2021-06-10 17:35] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 17:35] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 1000000, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 1, test1, 김상건
+[TRACE] [2021-06-10 17:35] <==        Row: 2, 1, 홈페이지만들기, <<BLOB>>, 5000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 17:35] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[TRACE] [2021-06-10 17:35] <==        Row: 4, 1, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, <<BLOB>>, 10000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 17:35] <==        Row: 5, 1, 성평등한 하루를 위한 양말, <<BLOB>>, 7000000, 2021-06-09 11:03:13.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 17:35] <==        Row: 6, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 0, test2, 김경연
+[TRACE] [2021-06-10 17:35] <==        Row: 7, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 17:35] <==      Total: 7
+[DEBUG] [2021-06-10 17:35] testSelectProjjectListByNo()
+[DEBUG] [2021-06-10 17:35] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-10 17:35] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-10 17:35] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 17:35] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 17:35] <==      Total: 1
+[DEBUG] [2021-06-10 17:35] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-10 17:35] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-10 17:35] ==> Parameters: 
+[TRACE] [2021-06-10 17:35] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-10 17:35] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, test1, 김상건, 860000, 1000000, 86.0000
+[DEBUG] [2021-06-10 17:35] <==      Total: 1
+[DEBUG] [2021-06-10 17:35] testSelectProjectListAll()
+[DEBUG] [2021-06-10 17:35] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-10 17:35] ==> Parameters: 
+[TRACE] [2021-06-10 17:35] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 17:35] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 1000000, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 1, test1, 김상건
+[TRACE] [2021-06-10 17:35] <==        Row: 2, 1, 홈페이지만들기, <<BLOB>>, 5000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 17:35] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[TRACE] [2021-06-10 17:35] <==        Row: 4, 1, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, <<BLOB>>, 10000000, 2021-06-09 11:03:13.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 17:35] <==        Row: 5, 1, 성평등한 하루를 위한 양말, <<BLOB>>, 7000000, 2021-06-09 11:03:13.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, 김상건
+[TRACE] [2021-06-10 17:35] <==        Row: 6, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 2021-06-10 15:30:54.0, 0, test2, 김경연
+[TRACE] [2021-06-10 17:35] <==        Row: 7, 2, 테스트, <<BLOB>>, 5000000, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 2021-06-10 15:35:15.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 17:35] <==      Total: 7
+[DEBUG] [2021-06-10 17:35] testSelectProjjectListByNo()
+[DEBUG] [2021-06-10 17:35] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-10 17:35] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-10 17:35] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-10 17:35] <==        Row: 3, 2, 보드게임, <<BLOB>>, 15000000, 2021-06-09 11:03:13.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, 김경연
+[DEBUG] [2021-06-10 17:35] <==      Total: 1
+[DEBUG] [2021-06-10 17:35] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-10 17:35] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-10 17:35] ==> Parameters: 
+[TRACE] [2021-06-10 17:35] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-10 17:35] <==        Row: 1, 1, 클라우드펀딩, <<BLOB>>, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, test1, 김상건, 860000, 1000000, 86.0000
+[DEBUG] [2021-06-10 17:35] <==      Total: 1
+[DEBUG] [2021-06-10 20:09] testSelectProjectJoinAll()
+[DEBUG] [2021-06-10 20:09] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-10 20:09] ==> Parameters: 
+[TRACE] [2021-06-10 20:09] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-10 20:09] <==        Row: 1, 860000, 클라우드펀딩, 1000000, 김상건, 4
+[DEBUG] [2021-06-10 20:10] testSelectCountByPrjNo()
+[DEBUG] [2021-06-10 20:10] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-10 20:10] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 20:10] <==    Columns: cnt
+[TRACE] [2021-06-10 20:10] <==        Row: 4
+[DEBUG] [2021-06-10 20:10] <==      Total: 1
+[DEBUG] [2021-06-10 20:10] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-10 20:10] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-10 20:10] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 20:10] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-10 20:10] <==        Row: 1, 1, 클라우드펀딩, 문구세트A, 가방2개+연필1자루, 30000, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 2021-06-09 11:03:13.0, 1, 0
+[DEBUG] [2021-06-10 20:10] <==      Total: 1
+[DEBUG] [2021-06-10 20:11] testSelectProjectJoinAll()
+[DEBUG] [2021-06-10 20:11] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-10 20:11] ==> Parameters: 
+[TRACE] [2021-06-10 20:11] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-10 20:11] <==        Row: 1, 860000, 클라우드펀딩, 1000000, 김상건, 4
+[DEBUG] [2021-06-10 20:12] testSelectProjectJoinAll()
+[DEBUG] [2021-06-10 20:12] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-10 20:12] ==> Parameters: 
+[TRACE] [2021-06-10 20:12] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-10 20:12] <==        Row: 1, 860000, 클라우드펀딩, 1000000, 김상건, 4
+[TRACE] [2021-06-10 20:12] <==        Row: 2, 300000, 홈페이지만들기, 5000000, 김상건, 1
+[TRACE] [2021-06-10 20:12] <==        Row: 3, 0, 보드게임, 15000000, 김경연, 0
+[TRACE] [2021-06-10 20:12] <==        Row: 4, 0, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, 10000000, 김상건, 0
+[TRACE] [2021-06-10 20:12] <==        Row: 5, 0, 성평등한 하루를 위한 양말, 7000000, 김상건, 0
+[TRACE] [2021-06-10 20:12] <==        Row: 6, 20000, 테스트, 5000000, 김경연, 1
+[TRACE] [2021-06-10 20:12] <==        Row: 7, 0, 테스트, 5000000, 김경연, 0
+[DEBUG] [2021-06-10 20:12] <==      Total: 7
+[DEBUG] [2021-06-10 20:14] testSelectProjectJoinAll()
+[DEBUG] [2021-06-10 20:14] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-10 20:14] ==> Parameters: 
+[TRACE] [2021-06-10 20:14] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-10 20:14] <==        Row: 1, 860000, 클라우드펀딩, 1000000, 김상건, 4
+[TRACE] [2021-06-10 20:14] <==        Row: 2, 300000, 홈페이지만들기, 5000000, 김상건, 1
+[TRACE] [2021-06-10 20:14] <==        Row: 3, 0, 보드게임, 15000000, 김경연, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 4, 0, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, 10000000, 김상건, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 5, 0, 성평등한 하루를 위한 양말, 7000000, 김상건, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 6, 20000, 테스트, 5000000, 김경연, 1
+[TRACE] [2021-06-10 20:14] <==        Row: 7, 0, 테스트, 5000000, 김경연, 0
+[DEBUG] [2021-06-10 20:14] <==      Total: 7
+[DEBUG] [2021-06-10 20:14] testSelectProjectJoinAll()
+[DEBUG] [2021-06-10 20:14] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-10 20:14] ==> Parameters: 
+[TRACE] [2021-06-10 20:14] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-10 20:14] <==        Row: 1, 860000, 클라우드펀딩, 1000000, 김상건, 4
+[TRACE] [2021-06-10 20:14] <==        Row: 2, 300000, 홈페이지만들기, 5000000, 김상건, 1
+[TRACE] [2021-06-10 20:14] <==        Row: 3, 0, 보드게임, 15000000, 김경연, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 4, 0, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, 10000000, 김상건, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 5, 0, 성평등한 하루를 위한 양말, 7000000, 김상건, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 6, 20000, 테스트, 5000000, 김경연, 1
+[TRACE] [2021-06-10 20:14] <==        Row: 7, 0, 테스트, 5000000, 김경연, 0
+[DEBUG] [2021-06-10 20:14] <==      Total: 7
+[DEBUG] [2021-06-10 20:14] testSelectProjectJoinAll()
+[DEBUG] [2021-06-10 20:14] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-10 20:14] ==> Parameters: 
+[TRACE] [2021-06-10 20:14] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-10 20:14] <==        Row: 1, 860000, 클라우드펀딩, 1000000, 김상건, 4
+[TRACE] [2021-06-10 20:14] <==        Row: 2, 300000, 홈페이지만들기, 5000000, 김상건, 1
+[TRACE] [2021-06-10 20:14] <==        Row: 3, 0, 보드게임, 15000000, 김경연, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 4, 0, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, 10000000, 김상건, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 5, 0, 성평등한 하루를 위한 양말, 7000000, 김상건, 0
+[TRACE] [2021-06-10 20:14] <==        Row: 6, 20000, 테스트, 5000000, 김경연, 1
+[TRACE] [2021-06-10 20:14] <==        Row: 7, 0, 테스트, 5000000, 김경연, 0
+[DEBUG] [2021-06-10 20:14] <==      Total: 7
+[DEBUG] [2021-06-10 20:35] testSelectProjectJoinAll()
+[DEBUG] [2021-06-10 20:35] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-10 20:35] ==> Parameters: 
+[TRACE] [2021-06-10 20:35] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-10 20:35] <==        Row: 1, 860000, 클라우드펀딩, 1000000, 김상건, 4
+[TRACE] [2021-06-10 20:35] <==        Row: 2, 300000, 홈페이지만들기, 5000000, 김상건, 1
+[TRACE] [2021-06-10 20:35] <==        Row: 3, 0, 보드게임, 15000000, 김경연, 0
+[TRACE] [2021-06-10 20:35] <==        Row: 4, 0, UDT 훈련 수기, <내가 유디티가 된 이유> 출간, 10000000, 김상건, 0
+[TRACE] [2021-06-10 20:35] <==        Row: 5, 0, 성평등한 하루를 위한 양말, 7000000, 김상건, 0
+[TRACE] [2021-06-10 20:35] <==        Row: 6, 20000, 테스트, 5000000, 김경연, 1
+[TRACE] [2021-06-10 20:35] <==        Row: 7, 0, 테스트, 5000000, 김경연, 0
+[DEBUG] [2021-06-10 20:35] <==      Total: 7

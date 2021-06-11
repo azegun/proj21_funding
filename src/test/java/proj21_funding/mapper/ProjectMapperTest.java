@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
-import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
 
@@ -43,7 +42,7 @@ public class ProjectMapperTest {
 		Assert.assertNotNull(list);
 	}
 	
-	@Test
+//	@Test
 	public void testinsertProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -60,6 +59,14 @@ public class ProjectMapperTest {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		Project list = mapper.selectProjectByNo(3);
 		Assert.assertNotNull(list);
+	}
+	
+	@Test
+	public void testselectProjectSuccessImbak() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		List<Project> list = mapper.selectProjectSuccessImbak();
+		System.out.println(list);
+		
 	}
 
 }

@@ -134,6 +134,8 @@ insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
 values (2, 1, 4, 12341234 );
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
 values (2, 1, 1, 3131214 );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
+values (2, 6, 6, 508111027);
 
 
 
@@ -145,16 +147,26 @@ from prjoption;
 
 
 insert into prjoption values
-(00001, 00001, '문구셋트', 30000, '가방2개+연필1자루');
+(00001, 00001, '문구세트A', 30000, '가방2개+연필1자루');
 -- default값 null값 제외
 insert into prjoption (prjno, OptName, OptPrice,OptContent)
-values (2, '필통', 300000, '옵션B');
-insert into prjoption (prjno,OptPrice,OptContent)
-values (2, 300000, '옵션B');
-insert into prjoption (prjno,OptPrice,OptContent)
-values (1, 500000, '가방3개+연필 2자루');
-insert into prjoption (prjno,OptPrice,OptContent)
-values (1, 100000, '연필1자루');
+values (1, '문구세트B', 300000, '필통');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (2,'옵션B', 300000, '메인홈페이지만');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (1,'문구세트C' ,500000, '가방3개+연필 2자루');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (1,'문구세트D',100000, '연필1자루');
+/*insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (3,'부루마블',100000, '부루마블세트');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (4,'사인도서',100000, '작가 친필사인이 추가된 도서');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (5,'세트1',100000, '흰색양말+파란색양말');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (6,'문구세트D',100000, '연필1자루');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (7,'테스트1',100000, '테스트성공');*/
 
 
 

@@ -18,9 +18,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/project_list_css/list_section2.css">
 </head>
 <body>
-${projects }
+${prjs}
+<%-- ${projects } --%>
 	<ul>
-		<c:forEach var="prj" items="${projects }">
+		<c:forEach var="prj" items="${prjs }">
 			<li>
 				<div class="border">
 					<div class="prj">
@@ -28,7 +29,11 @@ ${projects }
 							<img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/>
 						</div>
 						<div class="prjName">
-							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a><span>제작자 : ${prj.userNo.userName }</span>			
+							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a><span>제작자 : ${prj.prjManager }</span><br>
+							<span>총 후원자 수 : ${prj.totalCount }</span><br>
+								
+							<span>후원금액 : ${prj.totalPrice } </span><br>
+							<progress value="${prj.totalPrice }" max = "${prj.prjGoal }"></progress> <span>달성률 :  ${prj.totalPrice/prj.prjGoal*100 }%</span>
 						</div>
 					</div>
 				</div>

@@ -15,7 +15,7 @@
 			<a href= "" >추천 프로젝트</a>	
 		</div>
 		<div class = project_finish>
-			<a href= "">성공 임박 프로젝트</a>			
+			<a href= "<%=request.getContextPath() %>/sucessImbakProject">성공 임박 프로젝트</a>			
 		</div>
 		<div class = project_new>
 			<a href= "" >신규 프로젝트</a>	

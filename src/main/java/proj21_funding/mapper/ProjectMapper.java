@@ -12,6 +12,9 @@ public interface ProjectMapper {
 	List<Project> selectProjectListAll();
 //	프로젝트 번호로 검색
 	Project selectProjectByNo(int prjNo);
+	
+//  성공임박 프로젝트 출력
+	List<Project>selectProjectSuccessImbak();
 
 //	프로젝트 등록
 	int insertProject(Project project);

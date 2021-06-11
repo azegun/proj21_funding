@@ -33,6 +33,10 @@
 			</c:forEach> --%>
 		</section>
 		
+		
 	</div>
+	<footer>
+		<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
+	</footer>
 </body>
 </html>

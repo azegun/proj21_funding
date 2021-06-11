@@ -1,13 +1,10 @@
 package proj21_funding.mapper;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,42 +15,31 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
+import proj21_funding.dto.project.ProjectJoin;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @WebAppConfiguration
-public class FundingInfoMapperTest {
-	private static final Log log = LogFactory.getLog(FundingInfoMapperTest.class);
-	
+public class ProjectJoinMapperTest {
+	private static final Log log = LogFactory.getLog(ProjectJoinMapperTest.class);
+
 	@Autowired
-	private FundingInfoMapper mapper;
-
-
+	private ProjectJoinMapper mapper;
+	
 	@After
 	public void tearDown() throws Exception {
 		System.out.println();
 	}
 
 	@Test
-	public void testSelectCountByPrjNo() {
+	public void testSelectProjectJoinAll() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		List<ProjectJoin> list = mapper.selectProjectJoinAll();
 		
-		int count = mapper.selectCountByPrjNo(1);
-		System.out.println(count);
-	}
-
-//	@Test
-	public void testSelectSumByPrjNo() {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testselectFundingInfoByUserNo() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-
-		System.out.println(mapper.selectFundingInfoByUserNo(1));
-		
+		for (ProjectJoin p: list) {
+			System.out.println(p);
+		}
 	}
 
 }

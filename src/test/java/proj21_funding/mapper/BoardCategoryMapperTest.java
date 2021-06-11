@@ -61,12 +61,12 @@ public class BoardCategoryMapperTest {
 		Assert.assertNotNull(bc);
 	}
 
-	@Test
+//	@Test
 	public void test07SelectBCbyClass() {
 		String categoryClass = "board";
-		BoardCategory bc = mapper.selectBCbyClass(categoryClass);
-		log.debug(bc.toString());
-		Assert.assertNotNull(bc);
+//		BoardCategory bc = mapper.selectBCbyClass(categoryClass);
+//		log.debug(bc.toString());
+//		Assert.assertNotNull(bc);
 	}
 
 	@Test
