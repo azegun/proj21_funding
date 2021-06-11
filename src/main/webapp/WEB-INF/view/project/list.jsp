@@ -1,42 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%=request.getContextPath() %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%=request.getContextPath()%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>100펀딩 - 크리에이터를 위한 크라우드펀딩</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/home_css/main.css">
 </head>
 <body>
+
 	<div class="container">
-		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header.jsp"/>
+		<header>
+			<jsp:include page="/WEB-INF/view/home/header.jsp" />
 		</header>
 		<%-- ${projects } --%>
 		<!-- 프로젝트검색 부분 개발중  -->
-		<%-- <section>
-			<form:form  action="projectListByName"  modelAttribute="project">
+		<section>
+		<!-- <select name="type">
+		<option value="prjName">프로젝트명</option>
+		<option value="prjManager">제작자</option>
+		</select> -->
+			<form:form  action="projectListByName"  modelAttribute="projectJoin">
 				<form:input path="prjName"/><input type="submit" value="검색">
 			</form:form>
 			
-		</section> --%>
-		<section>
-			<jsp:include page="/WEB-INF/view/project/list_section2.jsp"/>
-		<%-- 	<c:forEach var="prj" items="${projects }">
-			
-			<img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"><br>
-			${prj.prjName }
-			
-			</c:forEach> --%>
 		</section>
-		
-		
+		<section>
+			<jsp:include page="/WEB-INF/view/project/list_section.jsp" />
+		</section>
+
 	</div>
 	<footer>
-		<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
+		<jsp:include page="/WEB-INF/view/home/footer.jsp" />
 	</footer>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +32,7 @@ public class ProjectController {
 
 //	모든 프로젝트
 	@RequestMapping("/projectListAll")
-	public ModelAndView listAll() {
+	public ModelAndView listAll(ProjectJoin projectJoin) {
 		List<Project> projects = projectService.showProjectListAll();
 		List<ProjectJoin> prjs = joinService.showProjectJoinAll();
 		ModelAndView mav = new ModelAndView();
@@ -45,18 +46,20 @@ public class ProjectController {
 	public ModelAndView ImbakListAll() {
 
 		ModelAndView mav = new ModelAndView();
+		List<ProjectJoin> prjs = joinService.showProjectSuccessImbak();
 		mav.setViewName("project/list");
+		mav.addObject("prjs", prjs);
 		return mav;
 	}
 
-//	@RequestMapping("/projectListByName")
-//	public ModelAndView listByName(@ModelAttribute("prjName") Project project, Model model) {
-//		List<Project> projects = projectService.showProjectListAll();
-//		ModelAndView mav = new ModelAndView("project/list");
-//		model.addAttribute("prjName",new String());
-//		mav.addObject("projects",projects);
-//		return mav;
-//	}
+	@RequestMapping("/projectListByName")
+	public String listByName(ProjectJoin projectJoin, Model model) {
+		List<ProjectJoin> prjs = joinService.showProjectJoinByPrjName(projectJoin.getPrjName());
+		model.addAttribute("prjs",prjs);
+		System.out.println(projectJoin.getPrjName());
+		return "project/list";
+	}
+	
 
 //	@RequestMapping("/projectListAll")
 //	public String listAll(Model model) {
