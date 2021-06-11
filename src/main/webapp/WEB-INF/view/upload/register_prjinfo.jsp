@@ -26,10 +26,13 @@
 			</tr> -->
 			<tr>
 					<td class = "td_left">
-							<label for = "userNo" >프로젝트 관리자  </label>
+							<label for = "userName" >회원 이름  </label>
 					</td>
 					<td class = "td_right">
-							  <input type="text" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
+							  <input type="text" id = "userName" name = "userName.userName"  value ="${authInfo.userName }"  size = 40   required="required"  readonly="readonly"/> 
+					</td>
+					<td class = "td_right">
+							  <input type="hidden" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
 					</td>
 			</tr>
 			<tr>
@@ -45,7 +48,7 @@
 							<label for = "prjContent">프로젝트 내용</label>
 					</td>
 					<td class = "td_right">
-							 <textarea id = "prjContent" name = "prjContent"   rows="15" cols="38" required="required"></textarea>
+							 <textarea id = "prjContent" name = "prjContent"   rows="15" cols="42" required="required"></textarea>
 					</td>
 			</tr>
 			<tr>

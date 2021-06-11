@@ -7,6 +7,7 @@
 		<result property="userId" column="userId"/>		
 		<result property="userPw" column="userPw"/>		
 		<result property="userName" column="userName"/>		
+		<result property="nickname" column="nickname"/>		
 		<result property="userPhone" column="userPhone"/>		
 		<result property="zipCode" column="zipCode"/>		
 		<result property="address" column="address"/>		
@@ -18,7 +19,7 @@
 
 	<sql id="selecSql">
 		select 
-			UserNo, UserId, UserPw,	UserName, UserPhone,
+			UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
 			ZipCode, Address, DetailAddress,
 			Email, BankName, BankAccount
 		 from userinfo
@@ -50,15 +51,15 @@
 	
 	<insert id="insertUser" parameterType="UserInfo">
 		insert
-		  into userinfo( UserId, UserPw, UserName, UserPhone,
+		  into userinfo( UserId, UserPw, UserName, Nickname, UserPhone,
 		 		 ZipCode, Address, DetailAddress, Email, BankName, BankAccount)
-		values(#{userId}, password(#{userPw}), #{userName}, #{userPhone},
+		values(#{userId}, password(#{userPw}), #{userName}, #{nickname}, #{userPhone},
 			   #{zipCode}, #{address}, #{detailAddress}, #{email}, #{bankName}, #{bankAccount})			
 	</insert>
 	
 	<update id="updateUser">
 		update userinfo
-		   set UserPhone = #{userPhone}, ZipCode = #{zipCode}, Address = #{address},
+		   set UserPhone = #{userPhone}, Nickname = #{nickname}, ZipCode = #{zipCode}, Address = #{address},
 		    DetailAddress = #{detailAddress}, Email = #{email}, BankName = #{bankName}, BankAccount = #{bankAccount}
 		 where userId = #{userId}
 	</update>

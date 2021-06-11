@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/footer.css">
 </head>
 <body>
-		<div class="footer">
+		<section id = "footer">
 			<div class = "footer_menu">
 					<jsp:include page="/WEB-INF/view/home/footer_menu.jsp"/>			
 			</div>
@@ -18,6 +18,6 @@
 			<div class ="footer_info">
 					<jsp:include page="/WEB-INF/view/home/footer_info.jsp"/>
 			</div>
-		</div>
+		</section>
 </body>
 </html>

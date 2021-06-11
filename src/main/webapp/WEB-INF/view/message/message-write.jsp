@@ -12,7 +12,7 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
 		<section id="messageFormArea">		
-			<fieldset>
+			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<h2>메세지 보내기</h2>		
@@ -27,12 +27,12 @@
 					</p>
 					<p>
 						<label> 받는사람 :
-						<form:input path="receiveUser" /> 
+						<form:input path="receiveUser" value="${message.sendUser}"/> 
 						<form:errors path="receiveUser" />
 						</label>
 					</p>
 					<p>						
-						<form:textarea path="msgContent"  cols="40" rows="15" /> 
+						<form:textarea path="msgContent"  cols="40" rows="15" value="${message.sendDate}"/> 
 						<form:errors path="msgContent" />						
 					</p>
 					<form:button id="submit">보내기</form:button>

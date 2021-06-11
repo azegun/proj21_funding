@@ -6,6 +6,7 @@ public class UserInfo {
 	private String userId; // 회원계정
 	private String userPw; // 비밀번호
 	private String userName; // 회원성명
+	private String nickname; // 회원별명
 	private String userPhone; // 회원H.P
 	private int zipCode; // 우편번호
 	private String address; // 주소
@@ -14,14 +15,12 @@ public class UserInfo {
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호
 
-
-
-
-	public UserInfo(String userId, String userPw, String userName, String userPhone, int zipCode, String address,
-			String detailAddress, String email, String bankName, int bankAccount) {
+	public UserInfo(String userId, String userPw, String userName, String nickname, String userPhone, int zipCode,
+			String address, String detailAddress, String email, String bankName, int bankAccount) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
+		this.nickname = nickname;
 		this.userPhone = userPhone;
 		this.zipCode = zipCode;
 		this.address = address;
@@ -39,11 +38,12 @@ public class UserInfo {
 	public UserInfo(int userNo) {
 		this.userNo = userNo;
 	}
-	
-	//회원아이디
+
+	// 회원아이디
 	public UserInfo(String userId) {
 		this.userId = userId;
 	}
+
 	// getter & setter
 	public int getUserNo() {
 		return userNo;
@@ -75,6 +75,14 @@ public class UserInfo {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public String getUserPhone() {
@@ -136,13 +144,9 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		return String.format(
-				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
-				userNo, userId, userPw, userName, userPhone, zipCode, address, detailAddress, email, bankName,
+				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, nickname=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
+				userNo, userId, userPw, userName, nickname, userPhone, zipCode, address, detailAddress, email, bankName,
 				bankAccount);
 	}
-
-
-
-
 
 }

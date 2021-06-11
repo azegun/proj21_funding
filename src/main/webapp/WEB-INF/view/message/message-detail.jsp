@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,31 +14,41 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
 		<section id="messageFormArea">
-			<fieldset>
+			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<h2>메세지</h2>	
 			<fieldset>
 			<form:form modelAttribute="message">
-				<p>
-					<label> 보내는사람 :
-					<form:input path="sendUser" readonly="true" value="${message.sendUser}" /> 
-					<form:errors path="sendUser" />
-					</label>
-				</p>
-				<p>
-					<label> 받는사람 :
-					<form:input path="receiveUser" readonly="true" value="${message.receiveUser}"/> 
-					<form:errors path="receiveUser" />
-					</label>
-				</p>
-				<p>						
-					<form:textarea path="msgContent" readonly="true" value="${message.msgContent}"/> 
-					<form:errors path="msgContent" />						
-				</p>
-				<form:button type="button"  onclick="history.back(-1);">뒤로가기</form:button>					
+					<p>
+						<label> 보내는사람 :
+						<form:input path="sendUser" readonly="true" value="${seUser}"/> 
+						<form:errors path="sendUser" />
+						</label>
+					</p>
+					<p>
+						<label> 받는사람 :
+						<form:input path="receiveUser" readonly="true" value="${rcUser}"/> 
+						<form:errors path="receiveUser" />
+						</label>
+					</p>	
+					<p>
+						<textarea rows="15" cols="40" readonly="readonly">${content}</textarea>
+					</p>															
+				<c:if test="${rcUser eq authInfo.userId}">					
+					<p>	
+						<form:textarea path="msgContent" /> 
+						<form:errors path="msgContent" />											
+					</p>			
+					<form:button>답장하기</form:button>			
+				</c:if>	
 			</form:form>
-			</fieldset>		
+			<form:form action="delete" modelAttribute="message">	
+				<form:input path="msgNo" type="hidden" value="${msgNo}"/>	
+				<form:button >삭제</form:button>	
+			</form:form>					
+			<button type="button"  onclick="history.back(-1);">뒤로가기</button>					
+			</fieldset>	
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 

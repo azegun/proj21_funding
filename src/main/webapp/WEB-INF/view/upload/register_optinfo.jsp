@@ -33,7 +33,7 @@
 											<label for = "optContent">옵션내용</label>
 									</td>
 									<td class = "td_right">
-											 <textarea id = "optContent" name = "optContent"	rows="11" cols="38" required="required"></textarea>
+											 <textarea id = "optContent" name = "optContent"	rows="11" cols="42" required="required"></textarea>
 									</td>
 							</tr>					
 					</tbody>			

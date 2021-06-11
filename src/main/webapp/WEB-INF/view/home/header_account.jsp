@@ -17,7 +17,7 @@
 	</c:if>
 	<c:if test="${!empty authInfo}">
 		<div class= account_menu>
-				<a href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>${authInfo.userName}</span>님 환영합니다.</a>
+				<a href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>${authInfo.nickname}</span>님 환영합니다.</a>
 		</div>
 	</c:if>
 </body>

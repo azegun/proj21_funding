@@ -8,6 +8,7 @@
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/info_bottom.css">
 </head>
 <body>
+
 			<section id = "bottom" >			
 					<h3>창조적인 도전을 잘 아는 사람들이 만듭니다.</h3>
 				<div id = "bottom_first">
