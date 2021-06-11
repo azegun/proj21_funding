@@ -38,7 +38,10 @@ public class UserInfoController {
 
 		try {
 			service.modifyUserInfo(userInfo);
-			session.setAttribute("authInfo", userInfo);
+			UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
+			userAuthInfo.setNickname(userInfo.getNickname());			
+			
+			session.setAttribute("authInfo", userAuthInfo);
 			return "account/userInfo";
 		} catch (DuplicateUserException e) {
 			errors.rejectValue("userId", "duplicate");

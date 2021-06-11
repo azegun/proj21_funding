@@ -2909,3 +2909,1678 @@
 [TRACE] [2021-06-10 20:35] <==        Row: 6, 20000, í…ŒìŠ¤íŠ¸, 5000000, ê¹€ê²½ì—°, 1
 [TRACE] [2021-06-10 20:35] <==        Row: 7, 0, í…ŒìŠ¤íŠ¸, 5000000, ê¹€ê²½ì—°, 0
 [DEBUG] [2021-06-10 20:35] <==      Total: 7
+[DEBUG] [2021-06-11 19:39] test01SelectAdminbyNo()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:39] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:39] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: admin1(String)
+[TRACE] [2021-06-11 19:39] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:39] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 19:39] test03InsertAdmin()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 0(Integer), admin2(String), 0000(String), À¯ÇÑ¼Ö(String), 010-1111-1111(String)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] res id >> 1
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1111(String), À¯ÇÑ¼Ö(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] res id >> 1
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: À¯ÇÑ¼Ö(String)
+[TRACE] [2021-06-11 19:39] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:39] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 4(Integer)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 0
+[DEBUG] [2021-06-11 19:39] test07SelectAdminAll()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 
+[TRACE] [2021-06-11 19:39] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:39] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[TRACE] [2021-06-11 19:39] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[TRACE] [2021-06-11 19:39] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 19:39] <==      Total: 3
+[DEBUG] [2021-06-11 19:39] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 19:39] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 19:39] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 19:39] test01SelectBoardByNo()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:39] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:39] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-10 00:36:46.0, 1
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] Board [boardNo=1, categoryNo=null, boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Thu Jun 10 00:36:46 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 19:39] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:39] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-10 00:36:46.0, 0
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Thu Jun 10 00:36:46 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:39] test03InsertBoard()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: insert into Board(categoryNo, boardTitle, boardContent ) values(?, ?, ?)
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), ±ÝÀÏÀÇ °øÁö»çÇ×(String)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] res id >> 1
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), 06¿ù 02ÀÏ UI º¯°æ ¾È³»(String), 3(Integer)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] res id >> 1
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: °øÁö»çÇ×(String)
+[TRACE] [2021-06-11 19:39] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:39] <==        Row: 3, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:39:04.0, 0
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] Board [boardNo=3, categoryNo=null, boardTitle=°øÁö»çÇ×, boardContent=06¿ù 02ÀÏ UI º¯°æ ¾È³», boardDate=Fri Jun 11 19:39:04 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] res id >> 1
+[DEBUG] [2021-06-11 19:39] test07SelectBoardAll()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 
+[TRACE] [2021-06-11 19:39] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:39] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-10 00:36:46.0, 1
+[TRACE] [2021-06-11 19:39] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-10 00:36:46.0, 0
+[DEBUG] [2021-06-11 19:39] <==      Total: 2
+[DEBUG] [2021-06-11 19:39] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Thu Jun 10 00:36:46 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 19:39] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Thu Jun 10 00:36:46 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:39] testInsertPrjOption()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 4(Integer), ÇÁ·ÎÁ§Æ®¿É¼Ç(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] test01InsertQNA()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: insert into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer), 2(Integer), qna ÀÛ¾÷ ÁøÇà?(String), Àß µÇ¾î °¨?(String), null
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] res id >> 1
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: update QNA set qnaReply = ?, replyDate = now(), adminNo = ? where qnaNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: Àß ¸ð¸£°ÚÀ½(String), 1(Integer), 3(Integer)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] res id >> 1
+[DEBUG] [2021-06-11 19:39] test03SelectQNAByUserId()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where userNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:39] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:39] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-10 00:36:47.0, ³ß, 2021-06-10 00:36:47.0, null
+[TRACE] [2021-06-11 19:39] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:39:04.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:39:04.0, null
+[DEBUG] [2021-06-11 19:39] <==      Total: 2
+[DEBUG] [2021-06-11 19:39] [QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Thu Jun 10 00:36:47 KST 2021, qnaReply=³ß, replyDate=Thu Jun 10 00:36:47 KST 2021, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:39:04 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:39:04 KST 2021, qnaFile=null]]
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: delete from QNA where qnaNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 7(Integer)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 0
+[DEBUG] [2021-06-11 19:39] test05SelectQNAByBC()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where categoryNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 19:39] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:39] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-10 00:36:47.0, null, null, null
+[TRACE] [2021-06-11 19:39] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:39:04.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:39:04.0, null
+[DEBUG] [2021-06-11 19:39] <==      Total: 2
+[DEBUG] [2021-06-11 19:39] [QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Thu Jun 10 00:36:47 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:39:04 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:39:04 KST 2021, qnaFile=null]]
+[DEBUG] [2021-06-11 19:39] test06SelectQNAAll()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 
+[TRACE] [2021-06-11 19:39] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:39] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-10 00:36:47.0, ³ß, 2021-06-10 00:36:47.0, null
+[TRACE] [2021-06-11 19:39] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-10 00:36:47.0, null, null, null
+[TRACE] [2021-06-11 19:39] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:39:04.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:39:04.0, null
+[DEBUG] [2021-06-11 19:39] <==      Total: 3
+[DEBUG] [2021-06-11 19:39] QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Thu Jun 10 00:36:47 KST 2021, qnaReply=³ß, replyDate=Thu Jun 10 00:36:47 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 19:39] QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Thu Jun 10 00:36:47 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 19:39] QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:39:04 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:39:04 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 19:39] testTrJoinPrjAndPrjOpt_Success()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: insert into project( UserNo, PrjName, PrjContent, PrjGoal, EndDate, PayDate) values( ?, ?, ?, ?, now(), now())
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 2(Integer), Æ®·»Á§¼Ç¼º°ø!!!!!!!(String), Á¦¹ß,,,,(String), 3000000(Integer)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: SELECT last_insert_id()
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 
+[TRACE] [2021-06-11 19:39] <==    Columns: last_insert_id()
+[TRACE] [2021-06-11 19:39] <==        Row: 6
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 6(Integer), ºÐ½Ä!!!!!!2(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 1
+[DEBUG] [2021-06-11 19:39] testDataSource()
+[DEBUG] [2021-06-11 19:39] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 19:39] LoginTimeout 30
+[DEBUG] [2021-06-11 19:39] testSqlSession()
+[DEBUG] [2021-06-11 19:39] session org.apache.ibatis.session.defaults.DefaultSqlSession@6b6c1210
+[DEBUG] [2021-06-11 19:39] test01SelectBCbyNo()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer)
+[DEBUG] [2021-06-11 19:39] test02InsertBC()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 3(Integer), ¾÷µ¥ÀÌÆ®(String), board(String)
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String), board(String), 3(Integer)
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String)
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 19:39] <==    Updates: 0
+[DEBUG] [2021-06-11 19:39] test06SelectBCAll()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 
+[DEBUG] [2021-06-11 19:39] testSelectCountByPrjNo()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:39] <==    Columns: cnt
+[TRACE] [2021-06-11 19:39] <==        Row: 4
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:39] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-11 19:39] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, ¹®±¸¼ÂÆ®, °¡¹æ2°³+¿¬ÇÊ1ÀÚ·ç, 30000, 2021-06-10 00:36:47.0, 2021-06-10 00:36:47.0, 2021-06-10 00:36:47.0, 1, 0
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] testSelectProjectJoinAll()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 
+[TRACE] [2021-06-11 19:39] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-11 19:39] <==        Row: 1, 860000, Å¬¶ó¿ìµåÆÝµù, 1000000, ±è»ó°Ç, 4
+[TRACE] [2021-06-11 19:39] <==        Row: 2, 300000, È¨ÆäÀÌÁö¸¸µé±â, 5000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 19:39] <==        Row: 3, 0, º¸µå°ÔÀÓ, 15000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 19:39] <==        Row: 4, 0, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, 10000000, ±è»ó°Ç, 0
+[TRACE] [2021-06-11 19:39] <==        Row: 5, 0, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», 7000000, ±è»ó°Ç, 0
+[TRACE] [2021-06-11 19:39] <==        Row: 6, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[DEBUG] [2021-06-11 19:39] <==      Total: 6
+[DEBUG] [2021-06-11 19:39] testSelectProjectListAll()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 
+[TRACE] [2021-06-11 19:39] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 19:39] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-10 00:36:47.0, 2021-06-10 00:36:47.0, 2021-06-10 00:36:47.0, 1, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:39] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-10 00:36:47.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:39] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-10 00:36:47.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 19:39] <==        Row: 4, 1, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, <<BLOB>>, 10000000, 2021-06-10 00:36:47.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:39] <==        Row: 5, 1, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», <<BLOB>>, 7000000, 2021-06-10 00:36:47.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:39] <==        Row: 6, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:39:04.0, 2021-06-11 19:39:04.0, 2021-06-11 19:39:04.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 19:39] <==      Total: 6
+[DEBUG] [2021-06-11 19:39] testSelectProjjectListByNo()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-11 19:39] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 19:39] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-10 00:36:47.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 19:39] <==      Total: 1
+[DEBUG] [2021-06-11 19:39] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-11 19:39] ==> Parameters: 
+[DEBUG] [2021-06-11 19:39] <==      Total: 0
+[DEBUG] [2021-06-11 19:39] ==>  Preparing: select UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount from userinfo where userId = ?
+[DEBUG] [2021-06-11 19:39] ==> Parameters: test1(String)
+[DEBUG] [2021-06-11 19:41] test01SelectAdminbyNo()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:41] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: admin1(String)
+[TRACE] [2021-06-11 19:41] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:41] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 19:41] test03InsertAdmin()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 0(Integer), admin2(String), 0000(String), À¯ÇÑ¼Ö(String), 010-1111-1111(String)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1111(String), À¯ÇÑ¼Ö(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: À¯ÇÑ¼Ö(String)
+[TRACE] [2021-06-11 19:41] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:41] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 4(Integer)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 0
+[DEBUG] [2021-06-11 19:41] test07SelectAdminAll()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 
+[TRACE] [2021-06-11 19:41] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:41] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[TRACE] [2021-06-11 19:41] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[TRACE] [2021-06-11 19:41] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 19:41] <==      Total: 3
+[DEBUG] [2021-06-11 19:41] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 19:41] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 19:41] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 19:41] test01SelectBCbyNo()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 19:41] <==        Row: 1, °øÁö»çÇ×, board
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 19:41] test02InsertBC()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 3(Integer), ¾÷µ¥ÀÌÆ®(String), board(String)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String), board(String), 3(Integer)
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String)
+[DEBUG] [2021-06-11 19:41] <==      Total: 0
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] test06SelectBCAll()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 
+[TRACE] [2021-06-11 19:41] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 19:41] <==        Row: 1, °øÁö»çÇ×, board
+[TRACE] [2021-06-11 19:41] <==        Row: 2, ÀÌº¥Æ®, board
+[DEBUG] [2021-06-11 19:41] <==      Total: 2
+[DEBUG] [2021-06-11 19:41] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 19:41] BoardCategory [categoryNo=2, categoryName=ÀÌº¥Æ®, categoryClass=board]
+[DEBUG] [2021-06-11 19:41] test01InsertQNA()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: insert into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer), 2(Integer), qna ÀÛ¾÷ ÁøÇà?(String), Àß µÇ¾î °¨?(String), null
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: update QNA set qnaReply = ?, replyDate = now(), adminNo = ? where qnaNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: Àß ¸ð¸£°ÚÀ½(String), 1(Integer), 3(Integer)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] test03SelectQNAByUserId()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where userNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:41] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 19:41] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:41:47.0, null
+[DEBUG] [2021-06-11 19:41] <==      Total: 2
+[DEBUG] [2021-06-11 19:41] [QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:41:47 KST 2021, qnaFile=null]]
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: delete from QNA where qnaNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 7(Integer)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 0
+[DEBUG] [2021-06-11 19:41] test05SelectQNAByBC()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where categoryNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:41] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 19:41] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:41:47.0, null
+[DEBUG] [2021-06-11 19:41] <==      Total: 2
+[DEBUG] [2021-06-11 19:41] [QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:41:47 KST 2021, qnaFile=null]]
+[DEBUG] [2021-06-11 19:41] test06SelectQNAAll()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 
+[TRACE] [2021-06-11 19:41] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:41] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 19:41] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 19:41] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:41:47.0, null
+[DEBUG] [2021-06-11 19:41] <==      Total: 3
+[DEBUG] [2021-06-11 19:41] QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 19:41] QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 19:41] QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:41:47 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount from userinfo where userId = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: test1(String)
+[TRACE] [2021-06-11 19:41] <==    Columns: UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount
+[TRACE] [2021-06-11 19:41] <==        Row: 1, test1, *97E7471D816A37E38510728AEA47440F9C6E2585, ±è»ó°Ç, ksg, 01033021972, 111222, ´ë±¸, ´Þ¼­±¸, test@test.com, ±¹¹Î, 1
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] UserInfo [userNo=1, userId=test1, userPw=*97E7471D816A37E38510728AEA47440F9C6E2585, userName=±è»ó°Ç, nickname=ksg, userPhone=01033021972, zipCode=111222, address=´ë±¸, detailAddress=´Þ¼­±¸, email=test@test.com, bankName=±¹¹Î, bankAccount=1]
+[DEBUG] [2021-06-11 19:41] testDataSource()
+[DEBUG] [2021-06-11 19:41] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 19:41] LoginTimeout 30
+[DEBUG] [2021-06-11 19:41] testSqlSession()
+[DEBUG] [2021-06-11 19:41] session org.apache.ibatis.session.defaults.DefaultSqlSession@60599cd2
+[DEBUG] [2021-06-11 19:41] test01SelectBoardByNo()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:41] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] Board [boardNo=1, categoryNo=null, boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:41] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:41] test03InsertBoard()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: insert into Board(categoryNo, boardTitle, boardContent ) values(?, ?, ?)
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), ±ÝÀÏÀÇ °øÁö»çÇ×(String)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), 06¿ù 02ÀÏ UI º¯°æ ¾È³»(String), 3(Integer)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: °øÁö»çÇ×(String)
+[TRACE] [2021-06-11 19:41] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:41] <==        Row: 3, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:41:47.0, 0
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] Board [boardNo=3, categoryNo=null, boardTitle=°øÁö»çÇ×, boardContent=06¿ù 02ÀÏ UI º¯°æ ¾È³», boardDate=Fri Jun 11 19:41:47 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] res id >> 1
+[DEBUG] [2021-06-11 19:41] test07SelectBoardAll()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 
+[TRACE] [2021-06-11 19:41] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:41] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[TRACE] [2021-06-11 19:41] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[DEBUG] [2021-06-11 19:41] <==      Total: 2
+[DEBUG] [2021-06-11 19:41] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 19:41] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:41] testSelectCountByPrjNo()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: cnt
+[TRACE] [2021-06-11 19:41] <==        Row: 4
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-11 19:41] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, ¹®±¸¼¼Æ®A, °¡¹æ2°³+¿¬ÇÊ1ÀÚ·ç, 30000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, 0
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] testInsertPrjOption()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 4(Integer), ÇÁ·ÎÁ§Æ®¿É¼Ç(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] testSelectProjectJoinAll()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 
+[TRACE] [2021-06-11 19:41] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-11 19:41] <==        Row: 1, 860000, Å¬¶ó¿ìµåÆÝµù, 1000000, ±è»ó°Ç, 4
+[TRACE] [2021-06-11 19:41] <==        Row: 2, 300000, È¨ÆäÀÌÁö¸¸µé±â, 5000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 19:41] <==        Row: 3, 0, º¸µå°ÔÀÓ, 15000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 19:41] <==        Row: 4, 0, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, 10000000, ±è»ó°Ç, 0
+[TRACE] [2021-06-11 19:41] <==        Row: 5, 100000, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», 7000000, ±è»ó°Ç, 1
+[DEBUG] [2021-06-11 19:41] <==      Total: 5
+[DEBUG] [2021-06-11 19:41] testSelectProjectListAll()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 
+[TRACE] [2021-06-11 19:41] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 19:41] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:41] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:41] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 19:41] <==        Row: 4, 1, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, <<BLOB>>, 10000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:41] <==        Row: 5, 1, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», <<BLOB>>, 7000000, 2021-06-11 19:41:31.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, ±è»ó°Ç
+[DEBUG] [2021-06-11 19:41] <==      Total: 5
+[DEBUG] [2021-06-11 19:41] testSelectProjjectListByNo()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-11 19:41] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 19:41] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 
+[TRACE] [2021-06-11 19:41] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-11 19:41] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, test1, ±è»ó°Ç, 960000, 1000000, 96.0000
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] testTrJoinPrjAndPrjOpt_Success()
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: insert into project( UserNo, PrjName, PrjContent, PrjGoal, EndDate, PayDate) values( ?, ?, ?, ?, now(), now())
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 2(Integer), Æ®·»Á§¼Ç¼º°ø!!!!!!!(String), Á¦¹ß,,,,(String), 3000000(Integer)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: SELECT last_insert_id()
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 
+[TRACE] [2021-06-11 19:41] <==    Columns: last_insert_id()
+[TRACE] [2021-06-11 19:41] <==        Row: 6
+[DEBUG] [2021-06-11 19:41] <==      Total: 1
+[DEBUG] [2021-06-11 19:41] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:41] ==> Parameters: 6(Integer), ºÐ½Ä!!!!!!2(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 19:41] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] test01SelectAdminbyNo()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:46] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: admin1(String)
+[TRACE] [2021-06-11 19:46] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:46] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 19:46] test03InsertAdmin()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 0(Integer), admin2(String), 0000(String), À¯ÇÑ¼Ö(String), 010-1111-1111(String)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] res id >> 1
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1111(String), À¯ÇÑ¼Ö(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 2
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: À¯ÇÑ¼Ö(String)
+[TRACE] [2021-06-11 19:46] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:46] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 19:46] <==        Row: 4, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 19:46] <==      Total: 2
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 4(Integer)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] res id >> 1
+[DEBUG] [2021-06-11 19:46] test07SelectAdminAll()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 
+[TRACE] [2021-06-11 19:46] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:46] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[TRACE] [2021-06-11 19:46] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[TRACE] [2021-06-11 19:46] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 19:46] <==      Total: 3
+[DEBUG] [2021-06-11 19:46] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 19:46] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 19:46] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 19:46] test01SelectBCbyNo()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 19:46] <==        Row: 1, °øÁö»çÇ×, board
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 19:46] test02InsertBC()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 3(Integer), ¾÷µ¥ÀÌÆ®(String), board(String)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] res id >> 1
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String), board(String), 3(Integer)
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String)
+[DEBUG] [2021-06-11 19:46] <==      Total: 0
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] res id >> 1
+[DEBUG] [2021-06-11 19:46] test06SelectBCAll()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 
+[TRACE] [2021-06-11 19:46] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 19:46] <==        Row: 1, °øÁö»çÇ×, board
+[TRACE] [2021-06-11 19:46] <==        Row: 2, ÀÌº¥Æ®, board
+[DEBUG] [2021-06-11 19:46] <==      Total: 2
+[DEBUG] [2021-06-11 19:46] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 19:46] BoardCategory [categoryNo=2, categoryName=ÀÌº¥Æ®, categoryClass=board]
+[DEBUG] [2021-06-11 19:46] test01InsertQNA()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: insert into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer), 2(Integer), qna ÀÛ¾÷ ÁøÇà?(String), Àß µÇ¾î °¨?(String), null
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] res id >> 1
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: update QNA set qnaReply = ?, replyDate = now(), adminNo = ? where qnaNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: Àß ¸ð¸£°ÚÀ½(String), 1(Integer), 3(Integer)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] res id >> 1
+[DEBUG] [2021-06-11 19:46] test03SelectQNAByUserId()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where userNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:46] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 19:46] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:46:56.0, null
+[TRACE] [2021-06-11 19:46] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[DEBUG] [2021-06-11 19:46] <==      Total: 3
+[DEBUG] [2021-06-11 19:46] [QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:46:56 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: delete from QNA where qnaNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 7(Integer)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 0
+[DEBUG] [2021-06-11 19:46] test05SelectQNAByBC()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where categoryNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:46] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 19:46] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:46:56.0, null
+[TRACE] [2021-06-11 19:46] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[DEBUG] [2021-06-11 19:46] <==      Total: 3
+[DEBUG] [2021-06-11 19:46] [QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:46:56 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 19:46] test06SelectQNAAll()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 
+[TRACE] [2021-06-11 19:46] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:46] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 19:46] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 19:46] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:46:56.0, null
+[TRACE] [2021-06-11 19:46] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[DEBUG] [2021-06-11 19:46] <==      Total: 4
+[DEBUG] [2021-06-11 19:46] QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 19:46] QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 19:46] QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:46:56 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 19:46] QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 19:46] testDataSource()
+[DEBUG] [2021-06-11 19:46] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 19:46] LoginTimeout 30
+[DEBUG] [2021-06-11 19:46] testSqlSession()
+[DEBUG] [2021-06-11 19:46] session org.apache.ibatis.session.defaults.DefaultSqlSession@6e694e60
+[DEBUG] [2021-06-11 19:46] test01SelectBoardByNo()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:46] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] Board [boardNo=1, categoryNo=null, boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:46] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:46] test03InsertBoard()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: insert into Board(categoryNo, boardTitle, boardContent ) values(?, ?, ?)
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), ±ÝÀÏÀÇ °øÁö»çÇ×(String)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] res id >> 1
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), 06¿ù 02ÀÏ UI º¯°æ ¾È³»(String), 3(Integer)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 0
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: °øÁö»çÇ×(String)
+[TRACE] [2021-06-11 19:46] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:46] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] Board [boardNo=4, categoryNo=null, boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:46:56 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 0
+[DEBUG] [2021-06-11 19:46] test07SelectBoardAll()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 
+[TRACE] [2021-06-11 19:46] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:46] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[TRACE] [2021-06-11 19:46] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[TRACE] [2021-06-11 19:46] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[DEBUG] [2021-06-11 19:46] <==      Total: 3
+[DEBUG] [2021-06-11 19:46] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 19:46] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:46] Board [boardNo=4, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:46:56 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:46] testSelectCountByPrjNo()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: cnt
+[TRACE] [2021-06-11 19:46] <==        Row: 4
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-11 19:46] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, ¹®±¸¼¼Æ®A, °¡¹æ2°³+¿¬ÇÊ1ÀÚ·ç, 30000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, 0
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] testInsertPrjOption()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 4(Integer), ÇÁ·ÎÁ§Æ®¿É¼Ç(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] testSelectProjectJoinAll()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 
+[TRACE] [2021-06-11 19:46] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-11 19:46] <==        Row: 1, 860000, Å¬¶ó¿ìµåÆÝµù, 1000000, ±è»ó°Ç, 4
+[TRACE] [2021-06-11 19:46] <==        Row: 2, 300000, È¨ÆäÀÌÁö¸¸µé±â, 5000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 19:46] <==        Row: 3, 0, º¸µå°ÔÀÓ, 15000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 19:46] <==        Row: 4, 0, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, 10000000, ±è»ó°Ç, 0
+[TRACE] [2021-06-11 19:46] <==        Row: 5, 100000, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», 7000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 19:46] <==        Row: 6, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[DEBUG] [2021-06-11 19:46] <==      Total: 6
+[DEBUG] [2021-06-11 19:46] testSelectProjectListAll()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 
+[TRACE] [2021-06-11 19:46] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 19:46] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:46] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:46] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 19:46] <==        Row: 4, 1, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, <<BLOB>>, 10000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:46] <==        Row: 5, 1, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», <<BLOB>>, 7000000, 2021-06-11 19:41:31.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:46] <==        Row: 6, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 19:46] <==      Total: 6
+[DEBUG] [2021-06-11 19:46] testSelectProjjectListByNo()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-11 19:46] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 19:46] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 
+[TRACE] [2021-06-11 19:46] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-11 19:46] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, test1, ±è»ó°Ç, 960000, 1000000, 96.0000
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: select UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount from userinfo where userId = ?
+[DEBUG] [2021-06-11 19:46] ==> Parameters: test1(String)
+[TRACE] [2021-06-11 19:46] <==    Columns: UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount
+[TRACE] [2021-06-11 19:46] <==        Row: 1, test1, *97E7471D816A37E38510728AEA47440F9C6E2585, ±è»ó°Ç, ksg, 01033021972, 111222, ´ë±¸, ´Þ¼­±¸, test@test.com, ±¹¹Î, 1
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] UserInfo [userNo=1, userId=test1, userPw=*97E7471D816A37E38510728AEA47440F9C6E2585, userName=±è»ó°Ç, nickname=ksg, userPhone=01033021972, zipCode=111222, address=´ë±¸, detailAddress=´Þ¼­±¸, email=test@test.com, bankName=±¹¹Î, bankAccount=1]
+[DEBUG] [2021-06-11 19:46] testTrJoinPrjAndPrjOpt_Success()
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: insert into project( UserNo, PrjName, PrjContent, PrjGoal, EndDate, PayDate) values( ?, ?, ?, ?, now(), now())
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 2(Integer), Æ®·»Á§¼Ç¼º°ø!!!!!!!(String), Á¦¹ß,,,,(String), 3000000(Integer)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: SELECT last_insert_id()
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 
+[TRACE] [2021-06-11 19:46] <==    Columns: last_insert_id()
+[TRACE] [2021-06-11 19:46] <==        Row: 7
+[DEBUG] [2021-06-11 19:46] <==      Total: 1
+[DEBUG] [2021-06-11 19:46] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:46] ==> Parameters: 7(Integer), ºÐ½Ä!!!!!!2(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 19:46] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] test01SelectAdminbyNo()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:56] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: admin1(String)
+[TRACE] [2021-06-11 19:56] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:56] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 19:56] test03InsertAdmin()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 0(Integer), admin2(String), 0000(String), À¯ÇÑ¼Ö(String), 010-1111-1111(String)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] res id >> 1
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1111(String), À¯ÇÑ¼Ö(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 2
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: À¯ÇÑ¼Ö(String)
+[TRACE] [2021-06-11 19:56] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:56] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 19:56] <==        Row: 5, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 19:56] <==      Total: 2
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 4(Integer)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 0
+[DEBUG] [2021-06-11 19:56] test07SelectAdminAll()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 
+[TRACE] [2021-06-11 19:56] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 19:56] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[TRACE] [2021-06-11 19:56] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[TRACE] [2021-06-11 19:56] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 19:56] <==        Row: 5, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 19:56] <==      Total: 4
+[DEBUG] [2021-06-11 19:56] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 19:56] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 19:56] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 19:56] Admin [adminNo=5, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 19:56] test01SelectBCbyNo()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 19:56] <==        Row: 1, °øÁö»çÇ×, board
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 19:56] test02InsertBC()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 3(Integer), ¾÷µ¥ÀÌÆ®(String), board(String)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] res id >> 1
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String), board(String), 3(Integer)
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String)
+[DEBUG] [2021-06-11 19:56] <==      Total: 0
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] res id >> 1
+[DEBUG] [2021-06-11 19:56] test06SelectBCAll()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 
+[TRACE] [2021-06-11 19:56] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 19:56] <==        Row: 1, °øÁö»çÇ×, board
+[TRACE] [2021-06-11 19:56] <==        Row: 2, ÀÌº¥Æ®, board
+[DEBUG] [2021-06-11 19:56] <==      Total: 2
+[DEBUG] [2021-06-11 19:56] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 19:56] BoardCategory [categoryNo=2, categoryName=ÀÌº¥Æ®, categoryClass=board]
+[DEBUG] [2021-06-11 19:56] test01SelectBoardByNo()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:56] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] Board [boardNo=1, categoryNo=null, boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:56] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:56] test03InsertBoard()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: insert into Board(categoryNo, boardTitle, boardContent ) values(?, ?, ?)
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), ±ÝÀÏÀÇ °øÁö»çÇ×(String)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] res id >> 1
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), 06¿ù 02ÀÏ UI º¯°æ ¾È³»(String), 3(Integer)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 0
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: °øÁö»çÇ×(String)
+[TRACE] [2021-06-11 19:56] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:56] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[TRACE] [2021-06-11 19:56] <==        Row: 5, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:56:30.0, 0
+[DEBUG] [2021-06-11 19:56] <==      Total: 2
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 0
+[DEBUG] [2021-06-11 19:56] test07SelectBoardAll()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 
+[TRACE] [2021-06-11 19:56] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 19:56] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[TRACE] [2021-06-11 19:56] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[TRACE] [2021-06-11 19:56] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[TRACE] [2021-06-11 19:56] <==        Row: 5, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:56:30.0, 0
+[DEBUG] [2021-06-11 19:56] <==      Total: 4
+[DEBUG] [2021-06-11 19:56] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 19:56] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:56] Board [boardNo=4, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:46:56 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:56] Board [boardNo=5, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:56:30 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 19:56] test01InsertQNA()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: insert into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer), 2(Integer), qna ÀÛ¾÷ ÁøÇà?(String), Àß µÇ¾î °¨?(String), null
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] res id >> 1
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: update QNA set qnaReply = ?, replyDate = now(), adminNo = ? where qnaNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: Àß ¸ð¸£°ÚÀ½(String), 1(Integer), 3(Integer)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] res id >> 1
+[DEBUG] [2021-06-11 19:56] test03SelectQNAByUserId()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where userNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:56] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 19:56] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:56:30.0, null
+[TRACE] [2021-06-11 19:56] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 19:56] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[DEBUG] [2021-06-11 19:56] <==      Total: 4
+[DEBUG] [2021-06-11 19:56] [QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:56:30 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: delete from QNA where qnaNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 7(Integer)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 0
+[DEBUG] [2021-06-11 19:56] test05SelectQNAByBC()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where categoryNo = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:56] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 19:56] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:56:30.0, null
+[TRACE] [2021-06-11 19:56] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 19:56] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[DEBUG] [2021-06-11 19:56] <==      Total: 4
+[DEBUG] [2021-06-11 19:56] [QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:56:30 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 19:56] test06SelectQNAAll()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 
+[TRACE] [2021-06-11 19:56] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 19:56] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 19:56] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 19:56] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 19:56:30.0, null
+[TRACE] [2021-06-11 19:56] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 19:56] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[DEBUG] [2021-06-11 19:56] <==      Total: 5
+[DEBUG] [2021-06-11 19:56] QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 19:56] QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 19:56] QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 19:56:30 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 19:56] QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 19:56] QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 19:56] testDataSource()
+[DEBUG] [2021-06-11 19:56] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 19:56] LoginTimeout 30
+[DEBUG] [2021-06-11 19:56] testSqlSession()
+[DEBUG] [2021-06-11 19:56] session org.apache.ibatis.session.defaults.DefaultSqlSession@23004b6d
+[DEBUG] [2021-06-11 19:56] testSelectCountByPrjNo()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: cnt
+[TRACE] [2021-06-11 19:56] <==        Row: 4
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-11 19:56] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, ¹®±¸¼¼Æ®A, °¡¹æ2°³+¿¬ÇÊ1ÀÚ·ç, 30000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, 0
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] testInsertPrjOption()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 4(Integer), ÇÁ·ÎÁ§Æ®¿É¼Ç(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] testSelectProjectJoinAll()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 
+[TRACE] [2021-06-11 19:56] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-11 19:56] <==        Row: 1, 860000, Å¬¶ó¿ìµåÆÝµù, 1000000, ±è»ó°Ç, 4
+[TRACE] [2021-06-11 19:56] <==        Row: 2, 300000, È¨ÆäÀÌÁö¸¸µé±â, 5000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 19:56] <==        Row: 3, 0, º¸µå°ÔÀÓ, 15000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 19:56] <==        Row: 4, 0, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, 10000000, ±è»ó°Ç, 0
+[TRACE] [2021-06-11 19:56] <==        Row: 5, 100000, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», 7000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 19:56] <==        Row: 6, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 19:56] <==        Row: 7, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[DEBUG] [2021-06-11 19:56] <==      Total: 7
+[DEBUG] [2021-06-11 19:56] testSelectProjectListAll()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 
+[TRACE] [2021-06-11 19:56] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 19:56] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:56] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:56] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 19:56] <==        Row: 4, 1, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, <<BLOB>>, 10000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:56] <==        Row: 5, 1, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», <<BLOB>>, 7000000, 2021-06-11 19:41:31.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 19:56] <==        Row: 6, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 19:56] <==        Row: 7, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:46:56.0, 2021-06-11 19:46:56.0, 2021-06-11 19:46:56.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 19:56] <==      Total: 7
+[DEBUG] [2021-06-11 19:56] testSelectProjjectListByNo()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-11 19:56] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 19:56] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 
+[TRACE] [2021-06-11 19:56] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-11 19:56] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, test1, ±è»ó°Ç, 960000, 1000000, 96.0000
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: select UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount from userinfo where userId = ?
+[DEBUG] [2021-06-11 19:56] ==> Parameters: test1(String)
+[TRACE] [2021-06-11 19:56] <==    Columns: UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount
+[TRACE] [2021-06-11 19:56] <==        Row: 1, test1, *97E7471D816A37E38510728AEA47440F9C6E2585, ±è»ó°Ç, ksg, 01033021972, 111222, ´ë±¸, ´Þ¼­±¸, test@test.com, ±¹¹Î, 1
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] UserInfo [userNo=1, userId=test1, userPw=*97E7471D816A37E38510728AEA47440F9C6E2585, userName=±è»ó°Ç, nickname=ksg, userPhone=01033021972, zipCode=111222, address=´ë±¸, detailAddress=´Þ¼­±¸, email=test@test.com, bankName=±¹¹Î, bankAccount=1]
+[DEBUG] [2021-06-11 19:56] testTrJoinPrjAndPrjOpt_Success()
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: insert into project( UserNo, PrjName, PrjContent, PrjGoal, EndDate, PayDate) values( ?, ?, ?, ?, now(), now())
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 2(Integer), Æ®·»Á§¼Ç¼º°ø!!!!!!!(String), Á¦¹ß,,,,(String), 3000000(Integer)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: SELECT last_insert_id()
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 
+[TRACE] [2021-06-11 19:56] <==    Columns: last_insert_id()
+[TRACE] [2021-06-11 19:56] <==        Row: 8
+[DEBUG] [2021-06-11 19:56] <==      Total: 1
+[DEBUG] [2021-06-11 19:56] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 19:56] ==> Parameters: 8(Integer), ºÐ½Ä!!!!!!2(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 19:56] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] test01SelectAdminbyNo()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:02] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: admin1(String)
+[TRACE] [2021-06-11 20:02] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:02] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 20:02] test03InsertAdmin()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 0(Integer), admin2(String), 0000(String), À¯ÇÑ¼Ö(String), 010-1111-1111(String)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] res id >> 1
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1111(String), À¯ÇÑ¼Ö(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 3
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: À¯ÇÑ¼Ö(String)
+[TRACE] [2021-06-11 20:02] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:02] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:02] <==        Row: 5, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:02] <==        Row: 6, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 20:02] <==      Total: 3
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 4(Integer)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 0
+[DEBUG] [2021-06-11 20:02] test07SelectAdminAll()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 
+[TRACE] [2021-06-11 20:02] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:02] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[TRACE] [2021-06-11 20:02] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[TRACE] [2021-06-11 20:02] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:02] <==        Row: 5, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:02] <==        Row: 6, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 20:02] <==      Total: 5
+[DEBUG] [2021-06-11 20:02] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 20:02] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 20:02] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:02] Admin [adminNo=5, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:02] Admin [adminNo=6, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:02] test01SelectBCbyNo()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 20:02] <==        Row: 1, °øÁö»çÇ×, board
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 20:02] test02InsertBC()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 3(Integer), ¾÷µ¥ÀÌÆ®(String), board(String)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] res id >> 1
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String), board(String), 3(Integer)
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String)
+[DEBUG] [2021-06-11 20:02] <==      Total: 0
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] res id >> 1
+[DEBUG] [2021-06-11 20:02] test06SelectBCAll()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 
+[TRACE] [2021-06-11 20:02] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 20:02] <==        Row: 1, °øÁö»çÇ×, board
+[TRACE] [2021-06-11 20:02] <==        Row: 2, ÀÌº¥Æ®, board
+[DEBUG] [2021-06-11 20:02] <==      Total: 2
+[DEBUG] [2021-06-11 20:02] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 20:02] BoardCategory [categoryNo=2, categoryName=ÀÌº¥Æ®, categoryClass=board]
+[DEBUG] [2021-06-11 20:02] test01SelectBoardByNo()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:02] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] Board [boardNo=1, categoryNo=null, boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:02] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:02] test03InsertBoard()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: insert into Board(categoryNo, boardTitle, boardContent ) values(?, ?, ?)
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), ±ÝÀÏÀÇ °øÁö»çÇ×(String)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] res id >> 1
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), 06¿ù 02ÀÏ UI º¯°æ ¾È³»(String), 3(Integer)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 0
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: °øÁö»çÇ×(String)
+[TRACE] [2021-06-11 20:02] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:02] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 5, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:56:30.0, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 6, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:02:11.0, 0
+[DEBUG] [2021-06-11 20:02] <==      Total: 3
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 0
+[DEBUG] [2021-06-11 20:02] test07SelectBoardAll()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 
+[TRACE] [2021-06-11 20:02] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:02] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[TRACE] [2021-06-11 20:02] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 5, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:56:30.0, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 6, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:02:11.0, 0
+[DEBUG] [2021-06-11 20:02] <==      Total: 5
+[DEBUG] [2021-06-11 20:02] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 20:02] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:02] Board [boardNo=4, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:46:56 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:02] Board [boardNo=5, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:56:30 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:02] Board [boardNo=6, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 20:02:11 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:02] test01InsertQNA()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: insert into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer), 2(Integer), qna ÀÛ¾÷ ÁøÇà?(String), Àß µÇ¾î °¨?(String), null
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] res id >> 1
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: update QNA set qnaReply = ?, replyDate = now(), adminNo = ? where qnaNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: Àß ¸ð¸£°ÚÀ½(String), 1(Integer), 3(Integer)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] res id >> 1
+[DEBUG] [2021-06-11 20:02] test03SelectQNAByUserId()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where userNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:02] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 20:02] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:02:11.0, null
+[TRACE] [2021-06-11 20:02] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:02] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:02] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[DEBUG] [2021-06-11 20:02] <==      Total: 5
+[DEBUG] [2021-06-11 20:02] [QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:02:11 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: delete from QNA where qnaNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 7(Integer)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 0
+[DEBUG] [2021-06-11 20:02] test05SelectQNAByBC()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where categoryNo = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:02] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 20:02] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:02:11.0, null
+[TRACE] [2021-06-11 20:02] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:02] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:02] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[DEBUG] [2021-06-11 20:02] <==      Total: 5
+[DEBUG] [2021-06-11 20:02] [QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:02:11 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 20:02] test06SelectQNAAll()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 
+[TRACE] [2021-06-11 20:02] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:02] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 20:02] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 20:02] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:02:11.0, null
+[TRACE] [2021-06-11 20:02] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:02] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:02] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[DEBUG] [2021-06-11 20:02] <==      Total: 6
+[DEBUG] [2021-06-11 20:02] QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 20:02] QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:02] QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:02:11 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 20:02] QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:02] QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:02] QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:02] testDataSource()
+[DEBUG] [2021-06-11 20:02] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 20:02] LoginTimeout 30
+[DEBUG] [2021-06-11 20:02] testSqlSession()
+[DEBUG] [2021-06-11 20:02] session org.apache.ibatis.session.defaults.DefaultSqlSession@6596368e
+[DEBUG] [2021-06-11 20:02] testSelectCountByPrjNo()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: cnt
+[TRACE] [2021-06-11 20:02] <==        Row: 4
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-11 20:02] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, ¹®±¸¼¼Æ®A, °¡¹æ2°³+¿¬ÇÊ1ÀÚ·ç, 30000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, 0
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] testInsertPrjOption()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 4(Integer), ÇÁ·ÎÁ§Æ®¿É¼Ç(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] testSelectProjectJoinAll()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 
+[TRACE] [2021-06-11 20:02] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-11 20:02] <==        Row: 1, 860000, Å¬¶ó¿ìµåÆÝµù, 1000000, ±è»ó°Ç, 4
+[TRACE] [2021-06-11 20:02] <==        Row: 2, 300000, È¨ÆäÀÌÁö¸¸µé±â, 5000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 20:02] <==        Row: 3, 0, º¸µå°ÔÀÓ, 15000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 4, 0, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, 10000000, ±è»ó°Ç, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 5, 100000, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», 7000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 20:02] <==        Row: 6, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 7, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:02] <==        Row: 8, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[DEBUG] [2021-06-11 20:02] <==      Total: 8
+[DEBUG] [2021-06-11 20:02] testSelectProjectListAll()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 
+[TRACE] [2021-06-11 20:02] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 20:02] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:02] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:02] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:02] <==        Row: 4, 1, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, <<BLOB>>, 10000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:02] <==        Row: 5, 1, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», <<BLOB>>, 7000000, 2021-06-11 19:41:31.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:02] <==        Row: 6, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:02] <==        Row: 7, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:46:56.0, 2021-06-11 19:46:56.0, 2021-06-11 19:46:56.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:02] <==        Row: 8, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:56:30.0, 2021-06-11 19:56:30.0, 2021-06-11 19:56:30.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 20:02] <==      Total: 8
+[DEBUG] [2021-06-11 20:02] testSelectProjjectListByNo()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-11 20:02] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 20:02] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 
+[TRACE] [2021-06-11 20:02] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-11 20:02] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, test1, ±è»ó°Ç, 960000, 1000000, 96.0000
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: select UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount from userinfo where userId = ?
+[DEBUG] [2021-06-11 20:02] ==> Parameters: test1(String)
+[TRACE] [2021-06-11 20:02] <==    Columns: UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount
+[TRACE] [2021-06-11 20:02] <==        Row: 1, test1, *97E7471D816A37E38510728AEA47440F9C6E2585, ±è»ó°Ç, ksg, 01033021972, 111222, ´ë±¸, ´Þ¼­±¸, test@test.com, ±¹¹Î, 1
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] UserInfo [userNo=1, userId=test1, userPw=*97E7471D816A37E38510728AEA47440F9C6E2585, userName=±è»ó°Ç, nickname=ksg, userPhone=01033021972, zipCode=111222, address=´ë±¸, detailAddress=´Þ¼­±¸, email=test@test.com, bankName=±¹¹Î, bankAccount=1]
+[DEBUG] [2021-06-11 20:02] testTrJoinPrjAndPrjOpt_Success()
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: insert into project( UserNo, PrjName, PrjContent, PrjGoal, EndDate, PayDate) values( ?, ?, ?, ?, now(), now())
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 2(Integer), Æ®·»Á§¼Ç¼º°ø!!!!!!!(String), Á¦¹ß,,,,(String), 3000000(Integer)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: SELECT last_insert_id()
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 
+[TRACE] [2021-06-11 20:02] <==    Columns: last_insert_id()
+[TRACE] [2021-06-11 20:02] <==        Row: 9
+[DEBUG] [2021-06-11 20:02] <==      Total: 1
+[DEBUG] [2021-06-11 20:02] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:02] ==> Parameters: 9(Integer), ºÐ½Ä!!!!!!2(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 20:02] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] test01SelectAdminbyNo()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:47] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: admin1(String)
+[TRACE] [2021-06-11 20:47] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:47] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 20:47] test03InsertAdmin()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 0(Integer), admin2(String), 0000(String), À¯ÇÑ¼Ö(String), 010-1111-1111(String)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] res id >> 1
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1111(String), À¯ÇÑ¼Ö(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 4
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: À¯ÇÑ¼Ö(String)
+[TRACE] [2021-06-11 20:47] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:47] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:47] <==        Row: 5, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:47] <==        Row: 6, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:47] <==        Row: 7, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 20:47] <==      Total: 4
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 4(Integer)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 0
+[DEBUG] [2021-06-11 20:47] test07SelectAdminAll()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 
+[TRACE] [2021-06-11 20:47] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:47] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[TRACE] [2021-06-11 20:47] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[TRACE] [2021-06-11 20:47] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:47] <==        Row: 5, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:47] <==        Row: 6, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:47] <==        Row: 7, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 20:47] <==      Total: 6
+[DEBUG] [2021-06-11 20:47] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 20:47] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 20:47] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:47] Admin [adminNo=5, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:47] Admin [adminNo=6, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:47] Admin [adminNo=7, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:47] test01SelectBCbyNo()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 20:47] <==        Row: 1, °øÁö»çÇ×, board
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 20:47] test02InsertBC()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 3(Integer), ¾÷µ¥ÀÌÆ®(String), board(String)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] res id >> 1
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String), board(String), 3(Integer)
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String)
+[DEBUG] [2021-06-11 20:47] <==      Total: 0
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] res id >> 1
+[DEBUG] [2021-06-11 20:47] test06SelectBCAll()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 
+[TRACE] [2021-06-11 20:47] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 20:47] <==        Row: 1, °øÁö»çÇ×, board
+[TRACE] [2021-06-11 20:47] <==        Row: 2, ÀÌº¥Æ®, board
+[DEBUG] [2021-06-11 20:47] <==      Total: 2
+[DEBUG] [2021-06-11 20:47] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 20:47] BoardCategory [categoryNo=2, categoryName=ÀÌº¥Æ®, categoryClass=board]
+[DEBUG] [2021-06-11 20:47] test01SelectBoardByNo()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:47] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] Board [boardNo=1, categoryNo=null, boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:47] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:47] test03InsertBoard()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: insert into Board(categoryNo, boardTitle, boardContent ) values(?, ?, ?)
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), ±ÝÀÏÀÇ °øÁö»çÇ×(String)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] res id >> 1
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), 06¿ù 02ÀÏ UI º¯°æ ¾È³»(String), 3(Integer)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 0
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: °øÁö»çÇ×(String)
+[TRACE] [2021-06-11 20:47] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:47] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 5, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:56:30.0, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 6, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:02:11.0, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 7, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:47:01.0, 0
+[DEBUG] [2021-06-11 20:47] <==      Total: 4
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 0
+[DEBUG] [2021-06-11 20:47] test07SelectBoardAll()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 
+[TRACE] [2021-06-11 20:47] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:47] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[TRACE] [2021-06-11 20:47] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 5, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:56:30.0, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 6, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:02:11.0, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 7, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:47:01.0, 0
+[DEBUG] [2021-06-11 20:47] <==      Total: 6
+[DEBUG] [2021-06-11 20:47] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 20:47] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:47] Board [boardNo=4, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:46:56 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:47] Board [boardNo=5, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:56:30 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:47] Board [boardNo=6, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 20:02:11 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:47] Board [boardNo=7, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 20:47:01 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:47] test01InsertQNA()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: insert into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer), 2(Integer), qna ÀÛ¾÷ ÁøÇà?(String), Àß µÇ¾î °¨?(String), null
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] res id >> 1
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: update QNA set qnaReply = ?, replyDate = now(), adminNo = ? where qnaNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: Àß ¸ð¸£°ÚÀ½(String), 1(Integer), 3(Integer)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] res id >> 1
+[DEBUG] [2021-06-11 20:47] test03SelectQNAByUserId()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where userNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:47] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 20:47] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:47:01.0, null
+[TRACE] [2021-06-11 20:47] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 7, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:47:01.0, null, null, null
+[DEBUG] [2021-06-11 20:47] <==      Total: 6
+[DEBUG] [2021-06-11 20:47] [QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:47:01 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=7, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:47:01 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: delete from QNA where qnaNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 7(Integer)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] res id >> 1
+[DEBUG] [2021-06-11 20:47] test05SelectQNAByBC()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where categoryNo = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:47] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:47:01.0, null
+[TRACE] [2021-06-11 20:47] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[DEBUG] [2021-06-11 20:47] <==      Total: 5
+[DEBUG] [2021-06-11 20:47] [QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:47:01 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 20:47] test06SelectQNAAll()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 
+[TRACE] [2021-06-11 20:47] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:47] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 20:47] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:47:01.0, null
+[TRACE] [2021-06-11 20:47] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:47] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[DEBUG] [2021-06-11 20:47] <==      Total: 6
+[DEBUG] [2021-06-11 20:47] QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 20:47] QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:47] QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:47:01 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 20:47] QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:47] QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:47] QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:47] testDataSource()
+[DEBUG] [2021-06-11 20:47] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 20:47] LoginTimeout 30
+[DEBUG] [2021-06-11 20:47] testSqlSession()
+[DEBUG] [2021-06-11 20:47] session org.apache.ibatis.session.defaults.DefaultSqlSession@64152f
+[DEBUG] [2021-06-11 20:47] testSelectCountByPrjNo()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: cnt
+[TRACE] [2021-06-11 20:47] <==        Row: 4
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-11 20:47] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, ¹®±¸¼¼Æ®A, °¡¹æ2°³+¿¬ÇÊ1ÀÚ·ç, 30000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, 0
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] testInsertPrjOption()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 4(Integer), ÇÁ·ÎÁ§Æ®¿É¼Ç(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] testSelectProjectJoinAll()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 
+[TRACE] [2021-06-11 20:47] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-11 20:47] <==        Row: 1, 860000, Å¬¶ó¿ìµåÆÝµù, 1000000, ±è»ó°Ç, 4
+[TRACE] [2021-06-11 20:47] <==        Row: 2, 300000, È¨ÆäÀÌÁö¸¸µé±â, 5000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 20:47] <==        Row: 3, 0, º¸µå°ÔÀÓ, 15000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 4, 0, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, 10000000, ±è»ó°Ç, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 5, 100000, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», 7000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 20:47] <==        Row: 6, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 7, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 8, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:47] <==        Row: 9, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[DEBUG] [2021-06-11 20:47] <==      Total: 9
+[DEBUG] [2021-06-11 20:47] testSelectProjectListAll()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 
+[TRACE] [2021-06-11 20:47] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 20:47] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:47] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:47] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:47] <==        Row: 4, 1, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, <<BLOB>>, 10000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:47] <==        Row: 5, 1, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», <<BLOB>>, 7000000, 2021-06-11 19:41:31.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:47] <==        Row: 6, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:47] <==        Row: 7, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:46:56.0, 2021-06-11 19:46:56.0, 2021-06-11 19:46:56.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:47] <==        Row: 8, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:56:30.0, 2021-06-11 19:56:30.0, 2021-06-11 19:56:30.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:47] <==        Row: 9, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 20:02:12.0, 2021-06-11 20:02:12.0, 2021-06-11 20:02:12.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 20:47] <==      Total: 9
+[DEBUG] [2021-06-11 20:47] testSelectProjjectListByNo()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-11 20:47] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 20:47] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 
+[TRACE] [2021-06-11 20:47] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-11 20:47] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, test1, ±è»ó°Ç, 960000, 1000000, 96.0000
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: select UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount from userinfo where userId = ?
+[DEBUG] [2021-06-11 20:47] ==> Parameters: test1(String)
+[TRACE] [2021-06-11 20:47] <==    Columns: UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount
+[TRACE] [2021-06-11 20:47] <==        Row: 1, test1, *97E7471D816A37E38510728AEA47440F9C6E2585, ±è»ó°Ç, ksg, 01033021972, 111222, ´ë±¸, ´Þ¼­±¸, test@test.com, ±¹¹Î, 1
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] UserInfo [userNo=1, userId=test1, userPw=*97E7471D816A37E38510728AEA47440F9C6E2585, userName=±è»ó°Ç, nickname=ksg, userPhone=01033021972, zipCode=111222, address=´ë±¸, detailAddress=´Þ¼­±¸, email=test@test.com, bankName=±¹¹Î, bankAccount=1]
+[DEBUG] [2021-06-11 20:47] testTrJoinPrjAndPrjOpt_Success()
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: insert into project( UserNo, PrjName, PrjContent, PrjGoal, EndDate, PayDate) values( ?, ?, ?, ?, now(), now())
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 2(Integer), Æ®·»Á§¼Ç¼º°ø!!!!!!!(String), Á¦¹ß,,,,(String), 3000000(Integer)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: SELECT last_insert_id()
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 
+[TRACE] [2021-06-11 20:47] <==    Columns: last_insert_id()
+[TRACE] [2021-06-11 20:47] <==        Row: 10
+[DEBUG] [2021-06-11 20:47] <==      Total: 1
+[DEBUG] [2021-06-11 20:47] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:47] ==> Parameters: 10(Integer), ºÐ½Ä!!!!!!2(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 20:47] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] test01SelectAdminbyNo()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:50] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminId = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: admin1(String)
+[TRACE] [2021-06-11 20:50] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:50] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 20:50] test03InsertAdmin()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: insert into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 0(Integer), admin2(String), 0000(String), À¯ÇÑ¼Ö(String), 010-1111-1111(String)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] res id >> 1
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: update admin set AdminPw = ?, AdminName = ?, AdminTel = ? where AdminId = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1111(String), À¯ÇÑ¼Ö(String), 010-1111-1122(String), admin2(String)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 5
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin where adminName = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: À¯ÇÑ¼Ö(String)
+[TRACE] [2021-06-11 20:50] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:50] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:50] <==        Row: 5, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:50] <==        Row: 6, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:50] <==        Row: 7, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:50] <==        Row: 8, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 20:50] <==      Total: 5
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: delete from admin where adminNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 4(Integer)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 0
+[DEBUG] [2021-06-11 20:50] test07SelectAdminAll()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select AdminNo, AdminId, AdminPw, AdminName, AdminTel from Admin
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 
+[TRACE] [2021-06-11 20:50] <==    Columns: AdminNo, AdminId, AdminPw, AdminName, AdminTel
+[TRACE] [2021-06-11 20:50] <==        Row: 1, admin, 0000, ±è°æ¿¬, 010-6510-7277
+[TRACE] [2021-06-11 20:50] <==        Row: 2, admin1, 0000, ±è»ó°Ç, 010-3302-1972
+[TRACE] [2021-06-11 20:50] <==        Row: 3, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:50] <==        Row: 5, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:50] <==        Row: 6, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:50] <==        Row: 7, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[TRACE] [2021-06-11 20:50] <==        Row: 8, admin2, 1111, À¯ÇÑ¼Ö, 010-1111-1122
+[DEBUG] [2021-06-11 20:50] <==      Total: 7
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=1, adminId=admin, adminPw=0000, adminName=±è°æ¿¬, adminTel=010-6510-7277]
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=2, adminId=admin1, adminPw=0000, adminName=±è»ó°Ç, adminTel=010-3302-1972]
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=3, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=5, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=6, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=7, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:50] Admin [adminNo=8, adminId=admin2, adminPw=1111, adminName=À¯ÇÑ¼Ö, adminTel=010-1111-1122]
+[DEBUG] [2021-06-11 20:50] test01SelectBCbyNo()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 20:50] <==        Row: 1, °øÁö»çÇ×, board
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 20:50] test02InsertBC()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: insert into BoardCategory( categoryNo, categoryName, categoryClass ) values(?, ?, ?)
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 3(Integer), ¾÷µ¥ÀÌÆ®(String), board(String)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] res id >> 1
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: update BoardCategory set categoryName = ?, ? where categoryNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String), board(String), 3(Integer)
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory where categoryName = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: Á¾·áµÈ ÀÌº¥Æ®(String)
+[DEBUG] [2021-06-11 20:50] <==      Total: 0
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: delete from BoardCategory where categoryNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] res id >> 1
+[DEBUG] [2021-06-11 20:50] test06SelectBCAll()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select CategoryNo, CategoryName, categoryClass from BoardCategory
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 
+[TRACE] [2021-06-11 20:50] <==    Columns: CategoryNo, CategoryName, categoryClass
+[TRACE] [2021-06-11 20:50] <==        Row: 1, °øÁö»çÇ×, board
+[TRACE] [2021-06-11 20:50] <==        Row: 2, ÀÌº¥Æ®, board
+[DEBUG] [2021-06-11 20:50] <==      Total: 2
+[DEBUG] [2021-06-11 20:50] BoardCategory [categoryNo=1, categoryName=°øÁö»çÇ×, categoryClass=board]
+[DEBUG] [2021-06-11 20:50] BoardCategory [categoryNo=2, categoryName=ÀÌº¥Æ®, categoryClass=board]
+[DEBUG] [2021-06-11 20:50] test01SelectBoardByNo()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:50] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] Board [boardNo=1, categoryNo=null, boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where categoryNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:50] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:50] test03InsertBoard()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: insert into Board(categoryNo, boardTitle, boardContent ) values(?, ?, ?)
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), ±ÝÀÏÀÇ °øÁö»çÇ×(String)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] res id >> 1
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: update Board set categoryNo = ?, boardTitle = ?, boardContent = ? where boardNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer), °øÁö»çÇ×(String), 06¿ù 02ÀÏ UI º¯°æ ¾È³»(String), 3(Integer)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 0
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board where boardTitle = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: °øÁö»çÇ×(String)
+[TRACE] [2021-06-11 20:50] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:50] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 5, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:56:30.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 6, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:02:11.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 7, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:47:01.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 8, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:50:00.0, 0
+[DEBUG] [2021-06-11 20:50] <==      Total: 5
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: delete from Board where boardNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 3(Integer)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 0
+[DEBUG] [2021-06-11 20:50] test07SelectBoardAll()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount from Board
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 
+[TRACE] [2021-06-11 20:50] <==    Columns: boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+[TRACE] [2021-06-11 20:50] <==        Row: 1, 1, ¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, <<BLOB>>, 2021-06-11 19:41:29.0, 1
+[TRACE] [2021-06-11 20:50] <==        Row: 2, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:29.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 4, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:46:56.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 5, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 19:56:30.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 6, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:02:11.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 7, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:47:01.0, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 8, 1, °øÁö»çÇ×, <<BLOB>>, 2021-06-11 20:50:00.0, 0
+[DEBUG] [2021-06-11 20:50] <==      Total: 7
+[DEBUG] [2021-06-11 20:50] Board [boardNo=1, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=¾ÆÀÚ¾ÆÀÚ ÆÝµùÆÀ, boardContent=ÈûÀ»³»¿ä! ÀßÇÒ°Å¿¹¿ä, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=1]
+[DEBUG] [2021-06-11 20:50] Board [boardNo=2, categoryNo=BoardCategory [categoryNo=2, categoryName=null, categoryClass=null], boardTitle=ÀÌº¥Æ®, boardContent=°æÇèÄ¡2¹èÀÌº¥Æ®, boardDate=Fri Jun 11 19:41:29 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:50] Board [boardNo=4, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:46:56 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:50] Board [boardNo=5, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 19:56:30 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:50] Board [boardNo=6, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 20:02:11 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:50] Board [boardNo=7, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 20:47:01 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:50] Board [boardNo=8, categoryNo=BoardCategory [categoryNo=1, categoryName=null, categoryClass=null], boardTitle=°øÁö»çÇ×, boardContent=±ÝÀÏÀÇ °øÁö»çÇ×, boardDate=Fri Jun 11 20:50:00 KST 2021, boardReadCount=0]
+[DEBUG] [2021-06-11 20:50] testDataSource()
+[DEBUG] [2021-06-11 20:50] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 20:50] LoginTimeout 30
+[DEBUG] [2021-06-11 20:50] testSqlSession()
+[DEBUG] [2021-06-11 20:50] session org.apache.ibatis.session.defaults.DefaultSqlSession@31226e8f
+[DEBUG] [2021-06-11 20:50] testSelectCountByPrjNo()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select count(*) as cnt from fundinginfo f join prjoption o on o.optno= f.OptNo where f.prjno = ?;
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: cnt
+[TRACE] [2021-06-11 20:50] <==        Row: 4
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] testselectFundingInfoByUserNo()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo where f.userno = ?;
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: prjNo, FundingNo, PrjName, optname, OptContent, optprice, StartDate, EndDate, PayDate, EndYN, PayYN
+[TRACE] [2021-06-11 20:50] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, ¹®±¸¼¼Æ®A, °¡¹æ2°³+¿¬ÇÊ1ÀÚ·ç, 30000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, 0
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] testInsertPrjOption()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 4(Integer), ÇÁ·ÎÁ§Æ®¿É¼Ç(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] testSelectProjectJoinAll()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName ,count(fundingno) as totalCount from fundinginfo f join prjoption o on o.optno= f.OptNo right join project p on p.prjno = f.PrjNo join userinfo u on p.userno = u.userno group by p.prjNo;
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 
+[TRACE] [2021-06-11 20:50] <==    Columns: prjno, totalPrice, Prjname, prjgoal, UserName, totalCount
+[TRACE] [2021-06-11 20:50] <==        Row: 1, 860000, Å¬¶ó¿ìµåÆÝµù, 1000000, ±è»ó°Ç, 4
+[TRACE] [2021-06-11 20:50] <==        Row: 2, 300000, È¨ÆäÀÌÁö¸¸µé±â, 5000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 20:50] <==        Row: 3, 0, º¸µå°ÔÀÓ, 15000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 4, 0, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, 10000000, ±è»ó°Ç, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 5, 100000, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», 7000000, ±è»ó°Ç, 1
+[TRACE] [2021-06-11 20:50] <==        Row: 6, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 7, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 8, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 9, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[TRACE] [2021-06-11 20:50] <==        Row: 10, 0, Æ®·»Á§¼Ç¼º°ø!!!!!!!, 3000000, ±è°æ¿¬, 0
+[DEBUG] [2021-06-11 20:50] <==      Total: 10
+[DEBUG] [2021-06-11 20:50] testSelectProjectListAll()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno= u.userno
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 
+[TRACE] [2021-06-11 20:50] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 20:50] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 1000000, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 1, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:50] <==        Row: 2, 1, È¨ÆäÀÌÁö¸¸µé±â, <<BLOB>>, 5000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:50] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:50] <==        Row: 4, 1, UDT ÈÆ·Ã ¼ö±â, <³»°¡ À¯µðÆ¼°¡ µÈ ÀÌÀ¯> Ãâ°£, <<BLOB>>, 10000000, 2021-06-11 19:41:31.0, 2021-06-30 00:00:00.0, 2021-07-12 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:50] <==        Row: 5, 1, ¼ºÆòµîÇÑ ÇÏ·ç¸¦ À§ÇÑ ¾ç¸», <<BLOB>>, 7000000, 2021-06-11 19:41:31.0, 2021-06-10 00:00:00.0, 2021-07-22 00:00:00.0, 0, test1, ±è»ó°Ç
+[TRACE] [2021-06-11 20:50] <==        Row: 6, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 2021-06-11 19:41:47.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:50] <==        Row: 7, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:46:56.0, 2021-06-11 19:46:56.0, 2021-06-11 19:46:56.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:50] <==        Row: 8, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 19:56:30.0, 2021-06-11 19:56:30.0, 2021-06-11 19:56:30.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:50] <==        Row: 9, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 20:02:12.0, 2021-06-11 20:02:12.0, 2021-06-11 20:02:12.0, 0, test2, ±è°æ¿¬
+[TRACE] [2021-06-11 20:50] <==        Row: 10, 2, Æ®·»Á§¼Ç¼º°ø!!!!!!!, <<BLOB>>, 3000000, 2021-06-11 20:47:01.0, 2021-06-11 20:47:01.0, 2021-06-11 20:47:01.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 20:50] <==      Total: 10
+[DEBUG] [2021-06-11 20:50] testSelectProjjectListByNo()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName from project p join userinfo u on p.userno = u.UserNo where prjNo = ?;
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 3(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: PrjNo, UserNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate, EndYN, UserId, UserName
+[TRACE] [2021-06-11 20:50] <==        Row: 3, 2, º¸µå°ÔÀÓ, <<BLOB>>, 15000000, 2021-06-11 19:41:31.0, 2021-07-01 00:00:00.0, 2021-07-12 00:00:00.0, 0, test2, ±è°æ¿¬
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] testselectProjectSuccessImbak()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName , sum(optprice), p.PrjGoal,sum(optprice)/PrjGoal*100 from fundinginfo f join prjoption o on o.optno= f.OptNo join project p on o.prjno = p.PrjNo join userinfo u on u.userno = p.userno group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 
+[TRACE] [2021-06-11 20:50] <==    Columns: prjno, userno, prjname, prjcontent, startdate, enddate, PayDate, UserId, UserName, sum(optprice), PrjGoal, sum(optprice)/PrjGoal*100
+[TRACE] [2021-06-11 20:50] <==        Row: 1, 1, Å¬¶ó¿ìµåÆÝµù, <<BLOB>>, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, 2021-06-11 19:41:31.0, test1, ±è»ó°Ç, 960000, 1000000, 96.0000
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] test01InsertQNA()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: insert into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer), 2(Integer), qna ÀÛ¾÷ ÁøÇà?(String), Àß µÇ¾î °¨?(String), null
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] res id >> 1
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: update QNA set qnaReply = ?, replyDate = now(), adminNo = ? where qnaNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: Àß ¸ð¸£°ÚÀ½(String), 1(Integer), 3(Integer)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] res id >> 1
+[DEBUG] [2021-06-11 20:50] test03SelectQNAByUserId()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where userNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:50] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 20:50] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:50:00.0, null
+[TRACE] [2021-06-11 20:50] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 8, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:50:00.0, null, null, null
+[DEBUG] [2021-06-11 20:50] <==      Total: 6
+[DEBUG] [2021-06-11 20:50] [QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:50:00 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=8, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:50:00 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: delete from QNA where qnaNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 7(Integer)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 0
+[DEBUG] [2021-06-11 20:50] test05SelectQNAByBC()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where categoryNo = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-11 20:50] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:50] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:50:00.0, null
+[TRACE] [2021-06-11 20:50] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 8, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:50:00.0, null, null, null
+[DEBUG] [2021-06-11 20:50] <==      Total: 6
+[DEBUG] [2021-06-11 20:50] [QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:50:00 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null], QNA [qnaNo=8, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:50:00 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-11 20:50] test06SelectQNAAll()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 
+[TRACE] [2021-06-11 20:50] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-11 20:50] <==        Row: 1, 1, null, 1, 7¿ùÁ¹¾÷, <<BLOB>>, 2021-06-11 19:41:30.0, ³ß, 2021-06-11 19:41:30.0, null
+[TRACE] [2021-06-11 20:50] <==        Row: 2, 2, null, 2, ÀÌº¥Æ®, <<BLOB>>, 2021-06-11 19:41:30.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 3, 1, 1, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:41:47.0, Àß ¸ð¸£°ÚÀ½, 2021-06-11 20:50:00.0, null
+[TRACE] [2021-06-11 20:50] <==        Row: 4, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:46:56.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 5, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 19:56:30.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 6, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:02:11.0, null, null, null
+[TRACE] [2021-06-11 20:50] <==        Row: 8, 1, null, 2, qna ÀÛ¾÷ ÁøÇà?, <<BLOB>>, 2021-06-11 20:50:00.0, null, null, null
+[DEBUG] [2021-06-11 20:50] <==      Total: 7
+[DEBUG] [2021-06-11 20:50] QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=7¿ùÁ¹¾÷, qnaContent=1´Þ¸¸ ´õ Èû³»¿ä!, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=³ß, replyDate=Fri Jun 11 19:41:30 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 20:50] QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=ÀÌº¥Æ®, qnaContent=¾ðÁ¦½ÃÀÛ?, qnaDate=Fri Jun 11 19:41:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:50] QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:41:47 KST 2021, qnaReply=Àß ¸ð¸£°ÚÀ½, replyDate=Fri Jun 11 20:50:00 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-11 20:50] QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:46:56 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:50] QNA [qnaNo=5, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 19:56:30 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:50] QNA [qnaNo=6, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:02:11 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:50] QNA [qnaNo=8, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna ÀÛ¾÷ ÁøÇà?, qnaContent=Àß µÇ¾î °¨?, qnaDate=Fri Jun 11 20:50:00 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: select UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount from userinfo where userId = ?
+[DEBUG] [2021-06-11 20:50] ==> Parameters: test1(String)
+[TRACE] [2021-06-11 20:50] <==    Columns: UserNo, UserId, UserPw, UserName, Nickname, UserPhone, ZipCode, Address, DetailAddress, Email, BankName, BankAccount
+[TRACE] [2021-06-11 20:50] <==        Row: 1, test1, *97E7471D816A37E38510728AEA47440F9C6E2585, ±è»ó°Ç, ksg, 01033021972, 111222, ´ë±¸, ´Þ¼­±¸, test@test.com, ±¹¹Î, 1
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] UserInfo [userNo=1, userId=test1, userPw=*97E7471D816A37E38510728AEA47440F9C6E2585, userName=±è»ó°Ç, nickname=ksg, userPhone=01033021972, zipCode=111222, address=´ë±¸, detailAddress=´Þ¼­±¸, email=test@test.com, bankName=±¹¹Î, bankAccount=1]
+[DEBUG] [2021-06-11 20:50] testTrJoinPrjAndPrjOpt_Success()
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: insert into project( UserNo, PrjName, PrjContent, PrjGoal, EndDate, PayDate) values( ?, ?, ?, ?, now(), now())
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 2(Integer), Æ®·»Á§¼Ç¼º°ø!!!!!!!(String), Á¦¹ß,,,,(String), 3000000(Integer)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: SELECT last_insert_id()
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 
+[TRACE] [2021-06-11 20:50] <==    Columns: last_insert_id()
+[TRACE] [2021-06-11 20:50] <==        Row: 11
+[DEBUG] [2021-06-11 20:50] <==      Total: 1
+[DEBUG] [2021-06-11 20:50] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 20:50] ==> Parameters: 11(Integer), ºÐ½Ä!!!!!!2(String), 4000000(Integer), ¿É¼Çd(String)
+[DEBUG] [2021-06-11 20:50] <==    Updates: 1
