@@ -6,16 +6,15 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Register mid</title>		
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/register_prjinfo.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
 	<h2>프로젝트 등록</h2>
 		<section id = "register_prjcontent">							
 			<table>			
-			<tbody>
-			
+			<tbody>			
 		<!-- 	<tr>
 					<td class = "td_left">
 							<label for = "prjNo">프로젝트 번호 </label>

@@ -21,13 +21,13 @@ import proj21_funding.service.ProjectService;
 public class ProjectController {
 
 	@Autowired
-	ProjectService projectService;
+	private ProjectService projectService;
 	@Autowired
-	PrjOptionService optionService;
+	private PrjOptionService optionService;
 	@Autowired
-	FundingInfoService fundingService;
+	private FundingInfoService fundingService;
 	@Autowired
-	ProjectJoinService joinService;
+	private ProjectJoinService joinService;
 
 //	모든 프로젝트
 	@RequestMapping("/projectListAll")

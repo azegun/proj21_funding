@@ -2909,3 +2909,47 @@
 [TRACE] [2021-06-10 20:35] <==        Row: 6, 20000, 테스트, 5000000, 김경연, 1
 [TRACE] [2021-06-10 20:35] <==        Row: 7, 0, 테스트, 5000000, 김경연, 0
 [DEBUG] [2021-06-10 20:35] <==      Total: 7
+[DEBUG] [2021-06-11 18:22] testDataSource()
+[DEBUG] [2021-06-11 18:22] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 18:22] LoginTimeout 30
+[DEBUG] [2021-06-11 18:22] testSqlSession()
+[DEBUG] [2021-06-11 18:22] session org.apache.ibatis.session.defaults.DefaultSqlSession@1c758545
+[DEBUG] [2021-06-11 18:26] testInsertAddPrjOption()
+[DEBUG] [2021-06-11 18:26] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:26] testInsertPrjOption()
+[DEBUG] [2021-06-11 18:26] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:26] ==> Parameters: 4(Integer), 프로젝트옵션(String), 4000000(Integer), 옵션d(String)
+[DEBUG] [2021-06-11 18:26] <==    Updates: 1
+[DEBUG] [2021-06-11 18:27] testInsertAddPrjOption()
+[DEBUG] [2021-06-11 18:27] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:27] testInsertPrjOption()
+[DEBUG] [2021-06-11 18:27] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:27] ==> Parameters: 4(Integer), 프로젝트옵션(String), 4000000(Integer), 옵션d(String)
+[DEBUG] [2021-06-11 18:27] <==    Updates: 1
+[DEBUG] [2021-06-11 18:28] testInsertAddPrjOption()
+[DEBUG] [2021-06-11 18:28] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:28] testInsertPrjOption()
+[DEBUG] [2021-06-11 18:28] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:28] ==> Parameters: 4(Integer), 프로젝트옵션(String), 4000000(Integer), 옵션d(String)
+[DEBUG] [2021-06-11 18:28] <==    Updates: 1
+[DEBUG] [2021-06-11 18:33] testInsertAddPrjOption()
+[DEBUG] [2021-06-11 18:33] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:33] ==> Parameters: 4(Integer), 프로젝트옵션222(String), 13824(Integer), 옵션d222(String)
+[DEBUG] [2021-06-11 18:33] <==    Updates: 1
+[DEBUG] [2021-06-11 18:33] testInsertPrjOption()
+[DEBUG] [2021-06-11 18:33] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:33] ==> Parameters: 4(Integer), 프로젝트옵션(String), 4000000(Integer), 옵션d(String)
+[DEBUG] [2021-06-11 18:33] <==    Updates: 1
+[DEBUG] [2021-06-11 18:45] testDataSource()
+[DEBUG] [2021-06-11 18:45] DataSource HikariDataSource (HikariPool-1)
+[DEBUG] [2021-06-11 18:45] LoginTimeout 30
+[DEBUG] [2021-06-11 18:45] testSqlSession()
+[DEBUG] [2021-06-11 18:45] session org.apache.ibatis.session.defaults.DefaultSqlSession@1c758545
+[DEBUG] [2021-06-11 18:46] testInsertAddPrjOption()
+[DEBUG] [2021-06-11 18:46] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:46] ==> Parameters: 4(Integer), 프로젝트옵션222(String), 13824(Integer), 옵션d222(String)
+[DEBUG] [2021-06-11 18:46] <==    Updates: 1
+[DEBUG] [2021-06-11 18:46] testInsertPrjOption()
+[DEBUG] [2021-06-11 18:46] ==>  Preparing: insert into prjoption (prjno, OptName, OptPrice, OptContent) values (?, ?, ?, ?)
+[DEBUG] [2021-06-11 18:46] ==> Parameters: 4(Integer), 프로젝트옵션(String), 4000000(Integer), 옵션d(String)
+[DEBUG] [2021-06-11 18:46] <==    Updates: 1

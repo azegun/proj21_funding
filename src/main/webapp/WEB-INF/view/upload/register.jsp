@@ -11,7 +11,7 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function(){	
-		/* 	$('ul.tabs li').click(function(){
+			$('ul.tabs li').click(function(){
 				var tab_id = $(this).attr('data-tab');
 
 			$('ul.tabs li').removeClass('current');
@@ -19,9 +19,9 @@
 
 			$(this).addClass('current');
 			$("#"+tab_id).addClass('current');
-	}); */
-			
-			$('#go_option').click(function(){
+	}); 
+		
+	/* 		$('#go_option').click(function(){
 				var tab_id = $(this).attr('data-tab');
 				
 				$('ul.tabs li').removeClass('current');
@@ -43,7 +43,7 @@
 				$('ul.tabs li').addClass('current');		
 				$('#tab-click2').removeClass('current');
 				$('#tab-1').addClass('current');
-			}); 
+			});  */
 });
 </script>		
 </head>
@@ -68,8 +68,8 @@
 					</div>	
 			</div>		
 			<div id="register_btns">
-					<button id = "go_option" >옵션</button>&nbsp;&nbsp; 			
-					<button id = "go_project" >프로젝트</button><br>				
+					<!-- <button id = "go_option" >옵션</button>&nbsp;&nbsp; 			
+					<button id = "go_project" >프로젝트</button><br>				 -->
 					<input type="submit" value="등록"/>&nbsp;&nbsp; 
 					<input type="reset" value="다시쓰기" />
 			</div>	

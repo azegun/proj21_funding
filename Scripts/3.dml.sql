@@ -137,8 +137,6 @@ insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
 values (2, 1, 4, 12341234 );
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
 values (2, 1, 1, 3131214 );
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
-values (2, 6, 6, 508111027);
 
 
 

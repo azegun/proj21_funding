@@ -7,16 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import proj21_funding.dto.AddPrjOption;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectAndPrjOptionService;
 
 @Controller
-public class UploadController {
-	
+public class UploadController {	
 
 	@Autowired
 	private ProjectAndPrjOptionService service;
+	
+	@Autowired
+	private PrjOptionService optionService;
 	
 	//home에서 프로젝트 올리기 광고페이지
 	@RequestMapping(value = "/upload/upload_main", method = RequestMethod.GET)
@@ -31,10 +35,13 @@ public class UploadController {
 	}
 	
 	@PostMapping("/ListSuccess")
-	public String registerSuccess(Project project, PrjOption prjoption, MultipartFile uploadfile) {	
+	public String registerSuccess(Project project, PrjOption prjoption, AddPrjOption addPrjOption, MultipartFile uploadfile) {	
 		
 	try {
 		service.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);
+		
+		addPrjOption.setPrjNo(prjoption.getPrjNo());
+		optionService.insertAddPrjOption(addPrjOption);		
 		return "upload/register_success";
 	
 		}catch (Exception e) { 
