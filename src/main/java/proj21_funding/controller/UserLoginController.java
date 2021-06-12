@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserLogin;
+import proj21_funding.exception.UserNotFoundException;
 import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.service.UserAuthService;
 
@@ -57,6 +58,9 @@ public class UserLoginController {
 			return "redirect:/main";
 		} catch (WrongIdPasswordException ex) {
 			errors.reject("idPasswordNotMatching");
+			return "account/login";
+		} catch (UserNotFoundException ex) {
+			errors.reject("userNotFound");
 			return "account/login";
 		}
 

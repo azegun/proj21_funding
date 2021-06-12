@@ -60,12 +60,12 @@ values ('admin1','0000','김상건','010-3302-1972');
 select 
 	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
 	ZipCode, Address, DetailAddress,
-	Email, BankName, BankAccount
+	Email, BankName, BankAccount, Secession
 from userinfo;
  
 insert into userinfo values(
 00001, 'test1', password('0000'), '김상건', 'ksg', '01033021972',
-'111222', '대구', '달서구', 'test@test.com', '국민', 00000001 
+'111222', '대구', '달서구', 'test@test.com', '국민', 00000001, 0 
 );
 
 #default값 제외

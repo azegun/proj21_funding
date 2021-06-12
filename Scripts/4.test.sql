@@ -50,7 +50,7 @@ from admin;
 select 
 	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
 	ZipCode, Address, DetailAddress,
-	Email, BankName, BankAccount
+	Email, BankName, BankAccount, Secession
 from userinfo;
 where userId = 'test10' and userPw = password('1111');
 where UserName = 'test10' and UserPhone = '01012345678';

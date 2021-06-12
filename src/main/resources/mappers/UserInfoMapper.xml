@@ -14,7 +14,8 @@
 		<result property="detailAddress" column="detailAddress"/>		
 		<result property="email" column="email"/>		
 		<result property="bankName" column="bankName"/>		
-		<result property="bankAccount" column="bankAccount"/>		
+		<result property="bankAccount" column="bankAccount"/>
+		<result property="secession" column="secession"/>		
 	</resultMap>
 
 	<sql id="selecSql">
@@ -40,7 +41,11 @@
 	</select>
 		
 	<select id="selectUserbylogin" resultMap="resUser">
-		<include refid="selecSql" />
+		select 
+			UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
+			ZipCode, Address, DetailAddress,
+			Email, BankName, BankAccount, secession
+		 from userinfo 
 		where userId = #{param1} and userPw = password(#{param2})	
 	</select>
 	
@@ -67,14 +72,13 @@
 	<update id="updateUserPw">
 		update userinfo
 		   set UserPw = password(#{userPw})
-		 where userId = #{userId}
+		 where userId = #{userId}	
+	</update>	
 	
+	<update id="deleteUser">
+		update userinfo
+		   set secession = True
+		 where UserNo = #{userNo}	
 	</update>
-	
-	<delete id="deleteUser">
-		delete
-		  from userinfo
-		where UserNo = #{userNo}	
-	</delete>
 
 </mapper>
