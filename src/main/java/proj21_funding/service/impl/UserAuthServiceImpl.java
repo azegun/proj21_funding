@@ -23,7 +23,7 @@ public class UserAuthServiceImpl implements UserAuthService {
 			throw new WrongIdPasswordException();
 		}
 
-		return new UserAuthInfo(userInfo.getUserNo(), userInfo.getUserId(),userInfo.getNickname());
+		return new UserAuthInfo(userInfo.getUserNo(), userInfo.getUserId(), userInfo.getUserName(), userInfo.getNickname());
 
 	}
 

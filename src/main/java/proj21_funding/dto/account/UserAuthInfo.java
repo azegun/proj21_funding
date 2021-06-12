@@ -5,15 +5,17 @@ public class UserAuthInfo {
 
 	private int userNo; // 회원번호
 	private String userId; // 회원계정
+	private String userName; // 회원성명
 	private String nickname; // 회원별명
 
 	public UserAuthInfo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserAuthInfo(int userNo, String userId, String nickname) {
+	public UserAuthInfo(int userNo, String userId, String userName, String nickname) {
 		this.userNo = userNo;
 		this.userId = userId;
+		this.userName = userName;
 		this.nickname = nickname;
 	}
 
@@ -26,6 +28,10 @@ public class UserAuthInfo {
 		return userId;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}
@@ -33,7 +39,10 @@ public class UserAuthInfo {
 
 	@Override
 	public String toString() {
-		return String.format("UserAuthInfo [userNo=%s, userId=%s, nickname=%s]", userNo, userId, nickname);
+		return String.format("UserAuthInfo [userNo=%s, userId=%s, userName=%s, nickname=%s]", userNo, userId, userName,
+				nickname);
 	}
+
+	
 
 }
