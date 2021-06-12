@@ -30,6 +30,7 @@ public class UserAuthInfo {
 		return nickname;
 	}
 
+
 	@Override
 	public String toString() {
 		return String.format("UserAuthInfo [userNo=%s, userId=%s, nickname=%s]", userNo, userId, nickname);

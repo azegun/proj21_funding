@@ -19,6 +19,9 @@
 					</script>
 </head>
 <body>
+
+${project}
+${prjOption}
 <section class="container">
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
@@ -27,6 +30,9 @@
 		<table>		
 			<thead id = "column">
 				<tr>
+				<td>
+				<input type = "checkbox" id = "allCheck" name = "allCheck" onclick="checkAll(this.form)"/>
+				</td>
 						<th>프로젝트 명</th>	<th>프로젝트 내용</th>
 						<th>목표 금액</th>
 						<th>마감일</th>	<th>결제일</th>
@@ -35,9 +41,18 @@
 				</tr>
 			</thead>
 			<tbody id= "context">
+				<c:set var="propt" value="${prjOption}"/> 
+				<%-- <c:set var="pro" value="${project}"/> --%>
+				<c:forEach var = "pro" items = "${project }" varStatus="status">
 				<tr> 
-					<c:set var="pro" value="${project}"/>
-					<c:set var="propt" value="${prjOption}"/>
+				<td>
+						<input type = "checkbox" id = "remove" name = "remove"/>
+				</td>
+		 		<td>
+						${status.index+1 } <!-- 번호값 계산 -->
+				</td>
+					
+				
 							<td>${pro.prjName}</td>
 							<td>${pro.prjContent }</td>
 							<td>${pro.prjGoal}</td>
@@ -46,6 +61,8 @@
 							<td>${propt.optName }</td>
 							<td>${propt.optPrice }</td>
 							<td>${propt.optContent }</td>	
+				</tr>
+				</c:forEach>
 				</tbody>
 		</table>
 		</section>

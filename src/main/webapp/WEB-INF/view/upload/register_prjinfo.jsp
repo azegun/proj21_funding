@@ -28,7 +28,7 @@
 							<label for = "userName" >회원 이름  </label>
 					</td>
 					<td class = "td_right">
-							  <input type="text" id = "userName" name = "userName.userName"  value ="${authInfo.userName }"  size = 40   required="required"  readonly="readonly"/> 
+							  <input type="text" id = "userName" name = "userName.userName"  value ="${authInfo.userName }"  size = 40   required="required"/> 
 					</td>
 					<td class = "td_right">
 							  <input type="hidden" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
