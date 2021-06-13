@@ -24,17 +24,6 @@
 			from project p join userinfo u on p.userno= u.userno
 		</select>	
 		
-			<!-- 프로젝트 insert (Transaction사용) -->
-		 <insert id="insertProject" parameterType="Project">
-				insert into project(
-						UserNo, PrjName, PrjContent, PrjGoal,  EndDate, PayDate) 
-				values(
-						#{userNo.userNo}, #{prjName}, #{prjContent}, #{prjGoal}, now(), now())
-					<selectKey keyProperty="prjNo" resultType="int">
-							SELECT last_insert_id()
-					</selectKey>
-		</insert>
-
 		<select id="selectProjectByNo" resultMap="resProject">
 			select PrjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			StartDate, EndDate,	PayDate, EndYN, u.UserId , u.UserName 
@@ -57,5 +46,23 @@
 			  join userinfo u on u.userno = p.userno
 			 group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
 		</select>
+		
+			<!-- 프로젝트 insert (Transaction사용) -->
+		 <insert id="insertProject" parameterType="Project">
+				insert into project(
+						UserNo, PrjName, PrjContent, PrjGoal,  EndDate, PayDate) 
+				values(
+						#{userNo.userNo}, #{prjName}, #{prjContent}, #{prjGoal}, now(), now())
+					<selectKey keyProperty="prjNo" resultType="int">
+							SELECT last_insert_id()
+					</selectKey>
+		</insert>
+		
+		<!-- 프로젝트 수정 -->
+		<update id="updateProject" >
+				update project 
+					set PrjName = #{prjName}, PrjContent =#{prjContent}, PrjGoal = #{prjGoal}, EndDate = #{endDate}, PayDate = #{payDate}
+				where prjno = #{prjNo}
+		</update>
 		
 </mapper>
