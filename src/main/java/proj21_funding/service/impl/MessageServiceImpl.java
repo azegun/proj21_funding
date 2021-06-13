@@ -58,8 +58,13 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public int removeMessage(Message message) {	
-		return mapper.deleteMessage(message);
+	public int removeReceiveMessage(Message message) {	
+		return mapper.delReceiveMessage(message);
+	}
+
+	@Override
+	public int removeSendMessage(Message message) {		
+		return mapper.delSendMessage(message);
 	}
 
 }

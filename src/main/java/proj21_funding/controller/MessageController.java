@@ -44,8 +44,13 @@ public class MessageController {
 		Message message = null;
 		
 		for (int i = 0; i < check.length; i++) {
-			message = service.showByMsgNo(Integer.parseInt(check[i]));
-			service.removeMessage(message);
+			message = service.showByMsgNo(Integer.parseInt(check[i]));			
+			if(message.getReceiveUser().equals(userAuthInfo.getUserId())) {
+				service.removeReceiveMessage(message);
+			}else {
+				service.removeSendMessage(message);
+			}
+			
 		}
 		
 		if(message.getReceiveUser().equals(userAuthInfo.getUserId())) {
@@ -93,13 +98,17 @@ public class MessageController {
 		if (errors.hasErrors()) {
 			return "redirect:/message/message-detail/{msgNo}";
 		}
-		service.removeMessage(message);		
+		
+		message = service.showByMsgNo(message.getMsgNo());
 		
 		if(message.getReceiveUser().equals(userAuthInfo.getUserId())) {
+			service.removeReceiveMessage(message);
 			return "redirect:/message/message-receive";
 		}else {
+			service.removeSendMessage(message);
 			return "redirect:/message/message-send";
-		}
+		}		
+	
 	}
 
 	@RequestMapping("/message/message-unRead")

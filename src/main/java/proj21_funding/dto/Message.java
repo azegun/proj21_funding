@@ -1,15 +1,18 @@
 package proj21_funding.dto;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 //메세지
 public class Message {
 	private int msgNo; // 메세지번호
 	private String sendUser; // 발신자
 	private String receiveUser;// 수신자
-	private String msgContent; // 내용	
-	private LocalDateTime  sendDate; // 발신일
+	private String msgContent; // 내용
+	private LocalDateTime sendDate; // 발신일
 	private boolean readYN; // 확인여부
+	private boolean delSend; //보낸메세지삭제
+	private boolean delRecevie; // 받은메세지삭제
 	private String[] check; // 확인여부
 
 	// 생성자
@@ -71,8 +74,21 @@ public class Message {
 		this.readYN = readYN;
 	}
 
-	
+	public boolean isDelSend() {
+		return delSend;
+	}
 
+	public void setDelSend(boolean delSend) {
+		this.delSend = delSend;
+	}
+
+	public boolean isDelRecevie() {
+		return delRecevie;
+	}
+
+	public void setDelRecevie(boolean delRecevie) {
+		this.delRecevie = delRecevie;
+	}
 
 	public String[] getCheck() {
 		return check;
@@ -84,8 +100,12 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return String.format("Message [msgNo=%s, sendUser=%s, receiveUser=%s, msgContent=%s, sendDate=%s, readYN=%s]",
-				msgNo, sendUser, receiveUser, msgContent, sendDate, readYN);
+		return String.format(
+				"Message [msgNo=%s, sendUser=%s, receiveUser=%s, msgContent=%s, sendDate=%s, readYN=%s, delSend=%s, delRecevie=%s, check=%s]",
+				msgNo, sendUser, receiveUser, msgContent, sendDate, readYN, delSend, delRecevie,
+				Arrays.toString(check));
 	}
+
+	
 
 }

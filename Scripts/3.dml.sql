@@ -2,11 +2,11 @@
 -- Message (메세지)
 select
 	MsgNo, SendUser, ReceiveUser,
-	MsgContent, SendDate, ReadYN
+	MsgContent, SendDate, ReadYN, DelSend, DelRecevie
 from message;
 
 insert into message values 
-(00001, 'test10', 'test2', '펀딩팀 화이팅', now(), 1);
+(00001, 'test10', 'test2', '펀딩팀 화이팅', now(), 1, 0, 0);
 
 #default값 제외
 insert into message (

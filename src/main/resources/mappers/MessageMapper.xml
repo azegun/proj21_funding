@@ -9,30 +9,32 @@
 		<result property="msgContent" column="msgContent"/>
 		<result property="sendDate" column="sendDate"/>
 		<result property="readYN" column="readYN"/>
+		<result property="delSend" column="delSend"/>
+		<result property="delRecevie" column="delRecevie"/>
 	</resultMap>
 	
 	<select id="selectBySendUser" resultMap="resMsg">
 		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
 		from message
-		where SendUser = #{sendUser}	
+		where SendUser = #{sendUser} and delSend = false	
 	</select>
 	
 	<select id="selectByreceiveUser" resultMap="resMsg">
 		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
 		from message
-		where ReceiveUser = #{receiveUser}	
+		where ReceiveUser = #{receiveUser} and delRecevie = false
 	</select>
 	
 	<select id="selectByRead" resultMap="resMsg">
 		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
 		from message
-		where ReceiveUser = #{receiveUser} and ReadYN = false	
+		where ReceiveUser = #{receiveUser} and delRecevie = false and ReadYN = false	
 	</select>
 	
 	<select id="selectByMsgNo" resultMap="resMsg">
 		select msgNo, SendUser, ReceiveUser, MsgContent
 		from message
-		where msgNo = #{msgNo}
+		where msgNo = #{msgNo} 
 	</select>
 	
 	<insert id="insertMessage">
@@ -46,10 +48,16 @@
  		 where MsgNo = #{msgNo}	
 	</update>
 	
-	<delete id="deleteMessage">
-		delete
-		  from message
-		 where MsgNo = #{msgNo}	
-	</delete>
+	<update id="delReceiveMessage">
+		update message 
+		   set delRecevie = true
+ 		 where MsgNo = #{msgNo}	
+	</update>
+	
+	<update id="delSendMessage">
+		update message 
+		   set delSend = true
+ 		 where MsgNo = #{msgNo}	
+	</update>
 	
 </mapper>

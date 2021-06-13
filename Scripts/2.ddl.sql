@@ -51,7 +51,7 @@ CREATE TABLE proj21_funding.UserInfo (
 	Email         VARCHAR(100) NULL     COMMENT '이메일', -- 이메일	
 	BankName      VARCHAR(10)  NULL     COMMENT '은행명', -- 은행명
 	BankAccount   INT(20)      NULL     COMMENT '계좌번호', -- 계좌번호
-	Secession	  TINYINT      NULL DEFAULT 0 COMMENT '탈퇴여부' -- 탈퇴여부
+	Secession	  TINYINT      NOT NULL DEFAULT 0 COMMENT '탈퇴여부' -- 탈퇴여부
 )
 COMMENT '회원정보';
 
@@ -158,7 +158,9 @@ CREATE TABLE proj21_funding.Message (
 	ReceiveUser VARCHAR(10)  NOT NULL COMMENT '수신자', -- 수신자
 	MsgContent  VARCHAR(100) NOT NULL COMMENT '내용', -- 내용
 	SendDate    DATETIME     NOT NULL DEFAULT current_timestamp COMMENT '발신일', -- 발신일
-	ReadYN      TINYINT      NOT NULL DEFAULT 0 COMMENT '확인여부' -- 확인여부
+	ReadYN      TINYINT      NOT NULL DEFAULT 0 COMMENT '확인여부', -- 확인여부
+	DelSend     TINYINT      NOT NULL DEFAULT 0 COMMENT '보낸메세지삭제', -- 보낸메세지삭제
+	DelRecevie  TINYINT      NOT NULL DEFAULT 0 COMMENT '받은메세지삭제' -- 받은메세지삭제
 )
 COMMENT '메세지';
 

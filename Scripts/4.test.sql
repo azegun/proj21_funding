@@ -3,14 +3,16 @@
 -- Message (메세지)
 select
 	MsgNo, SendUser, ReceiveUser,
-	MsgContent, SendDate, ReadYN
+	MsgContent, SendDate, ReadYN, DelSend, DelRecevie
 from message;
-select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+
+select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelRecevie
   from message
- where ReceiveUser = 'test10';
-select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+ where ReceiveUser = 'test10' and delRecevie = false;
+
+select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelRecevie
   from message
- where SendUser = 'test10';
+ where SendUser = 'test10' and delSend = false;
 
 update message 
 set ReadYN = 1
