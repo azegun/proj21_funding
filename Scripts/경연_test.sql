@@ -58,4 +58,13 @@ select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.
 		  join userinfo u on p.userno = u.userno
 		  where prjName like '%기%'
 		 group by p.prjNo;
+		
+select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  where u.Nickname LIKE CONCAT('%', 'ks' , '%')
+		 group by p.prjNo;
 		  

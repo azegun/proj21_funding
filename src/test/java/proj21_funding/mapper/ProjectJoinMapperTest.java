@@ -51,5 +51,15 @@ public class ProjectJoinMapperTest {
 			System.out.println(p);
 		}
 	}
+	
+	@Test
+	public void testSelectProjectJoinByPrjManager() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		List<ProjectJoin> list = mapper.selectProjectJoinByPrjManager("k");
+		
+		for (ProjectJoin p: list) {
+			System.out.println(p);
+		}
+	}
 
 }

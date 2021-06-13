@@ -2,6 +2,8 @@ package proj21_funding.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +34,7 @@ public class ProjectController {
 
 //	모든 프로젝트
 	@RequestMapping("/projectListAll")
-	public ModelAndView listAll(ProjectJoin projectJoin) {
+	public ModelAndView listAll() {
 		List<Project> projects = projectService.showProjectListAll();
 		List<ProjectJoin> prjs = joinService.showProjectJoinAll();
 		ModelAndView mav = new ModelAndView();
@@ -52,11 +54,17 @@ public class ProjectController {
 		return mav;
 	}
 
-	@RequestMapping("/projectListByName")
-	public String listByName(ProjectJoin projectJoin, Model model) {
-		List<ProjectJoin> prjs = joinService.showProjectJoinByPrjName(projectJoin.getPrjName());
+	@RequestMapping("/projectListSearch")
+	public String listByName(Model model, HttpServletRequest request) {
+		List<ProjectJoin> prjs = null;
+		if (request.getParameter("type").equals("prjName")) {
+			 prjs = joinService.showProjectJoinByPrjName(request.getParameter("param"));
+		} else if (request.getParameter("type").equals("prjManager")) {
+			 prjs = joinService.showProjectJoinByPrjManager(request.getParameter("param"));
+		}
 		model.addAttribute("prjs",prjs);
-		System.out.println(projectJoin.getPrjName());
+		System.out.println(request.getParameter("type"));
+		System.out.println(request.getParameter("param"));
 		return "project/list";
 	}
 	
