@@ -11,7 +11,7 @@
 					<div class="header_menu"> 						
 						<a href="<%=request.getContextPath() %>/home/menu">프로젝트 둘러보기</a>
 						
-						<a href="<%=request.getContextPath() %>/upload/upload_main">프로젝트 올리기</a>						
+						<a href="<%=request.getContextPath() %>/uploadMain">프로젝트 올리기</a>						
 					</div>	
 </body>
 </html>

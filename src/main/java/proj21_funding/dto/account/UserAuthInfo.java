@@ -37,6 +37,10 @@ public class UserAuthInfo {
 	}
 
 
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("UserAuthInfo [userNo=%s, userId=%s, userName=%s, nickname=%s]", userNo, userId, userName,

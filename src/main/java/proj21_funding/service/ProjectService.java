@@ -13,4 +13,6 @@ public interface ProjectService {
 	Project showProjectByNo(int prjNo);
 //	프로젝트 등록
 	int insertProject(Project project);
+// 프로젝트 수정
+	int updateProject(Project project);
 }

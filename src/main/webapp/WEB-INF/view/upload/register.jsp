@@ -19,7 +19,15 @@
 
 			$(this).addClass('current');
 			$("#"+tab_id).addClass('current');
-	}); 
+		}); 
+	});
+		//goback()
+		$(function(){
+			var contextPath = "<%=request.getContextPath()%>";
+			$("#return").on("click", function(){
+				window.location.href = contextPath+"/uploadListCancel";
+			});			
+		});
 		
 	/* 		$('#go_option').click(function(){
 				var tab_id = $(this).attr('data-tab');
@@ -44,16 +52,15 @@
 				$('#tab-click2').removeClass('current');
 				$('#tab-1').addClass('current');
 			});  */
-});
+
 </script>		
 </head>
 <body>
-		<section class="container">
-		
+		<section class="container">		
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
-		<form action= "<%=request.getContextPath() %>/ListSuccess" method="post" enctype="multipart/form-data">
+		<form action= "<%=request.getContextPath() %>/listSuccess" method="post" enctype="multipart/form-data">
 		<section id = "register_mid">
 			<div class="container_tab">
 					<ul class="tabs">
@@ -70,8 +77,9 @@
 			<div id="register_btns">
 					<!-- <button id = "go_option" >옵션</button>&nbsp;&nbsp; 			
 					<button id = "go_project" >프로젝트</button><br>				 -->
-					<input type="submit" value="등록"/>&nbsp;&nbsp; 
-					<input type="reset" value="다시쓰기" />
+					<input type="submit" value="등록"/>&nbsp;
+					<input type="reset" value="다시쓰기" />&nbsp; 
+					<button id= "return">뒤로</button>
 			</div>	
 		</section>
 		<footer>
@@ -82,3 +90,8 @@
 
 </body>
 </html>
+
+
+
+
+

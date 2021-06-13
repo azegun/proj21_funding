@@ -1,7 +1,6 @@
 package proj21_funding.dto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,6 +31,16 @@ public class Project {
 		this.prjName = prjName;
 		this.prjContent = prjContent;
 		this.prjGoal = prjGoal;
+	}
+	
+	//프로젝트 수정
+	public Project(int prjNo, String prjName, String prjContent, int prjGoal, LocalDate endDate, LocalDate payDate) {
+		this.prjNo = prjNo;
+		this.prjName = prjName;
+		this.prjContent = prjContent;
+		this.prjGoal = prjGoal;
+		this.endDate = endDate;
+		this.payDate = payDate;
 	}
 
 	public Project(int prjNo) {

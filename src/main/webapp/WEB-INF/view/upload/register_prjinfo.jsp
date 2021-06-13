@@ -10,7 +10,7 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
+${authInfo }
 	<h2>프로젝트 등록</h2>
 		<section id = "register_prjcontent">							
 			<table>			
@@ -24,12 +24,13 @@
 					</td>
 			</tr> -->
 			<tr>
+			<!-- 월요일에 열기 -->
 					<td class = "td_left">
 							<label for = "userName" >회원 이름  </label>
 					</td>
 					<td class = "td_right">
 							  <input type="text" id = "userName" name = "userName.userName"  value ="${authInfo.userName }"  size = 40   required="required"/> 
-					</td>
+					</td> 
 					<td class = "td_right">
 							  <input type="hidden" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
 					</td>

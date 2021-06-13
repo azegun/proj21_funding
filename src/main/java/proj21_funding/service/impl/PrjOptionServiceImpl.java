@@ -35,9 +35,12 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 
 	@Override
 	public int insertAddPrjOption(AddPrjOption addPrjOption) {
+		//사용해야됨 옵션 추가할때, 잠시 주석
 		/* addPrjOption.setPrjNo(); */
 		System.out.println("ProjectoptionService2 Impl >>  "+ addPrjOption );
 		return mapper.insertAddPrjOption(addPrjOption);
 	}
+
+
 
 }
