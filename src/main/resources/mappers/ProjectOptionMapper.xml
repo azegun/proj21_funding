@@ -20,9 +20,19 @@
 					(#{prjNo.prjNo}, #{optName},  #{optPrice}, #{optContent})
 		</insert>		
 		
+		<!-- 추가적인 아이템 -->
+		<insert id="insertAddPrjOption">
+			insert into prjoption 
+					(prjno, OptName, OptPrice, OptContent)
+			values 
+					(#{prjNo.prjNo}, #{addOptName},  #{addOptPrice}, #{addOptContent})
+		</insert>		
+		
+		
 	<select id="selectPrjOptionByAll" resultType="PrjOption">
 		select * from PrjOption
-	</select>
+	</select>	
+	
 	
 	<!--프로젝트리스트에서 클릭해서 들어가면 해당 프로젝트의 옵션까지 함께 표현  -->
 	<select id="selectPrjOptionByPrjNo" resultMap="AssociateProject" parameterType="int">

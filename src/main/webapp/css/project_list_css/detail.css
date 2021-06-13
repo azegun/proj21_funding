@@ -16,3 +16,16 @@ img{
 .content {
 	display:inline;
 }
+
+.optBox{
+	width:500px;
+	display:inline;
+}
+
+.optBox:hover{
+	background-color: yellow;
+}
+
+.price {
+	float: right;
+}

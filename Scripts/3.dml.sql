@@ -119,8 +119,6 @@ insert into project (UserNo, PrjName, PrjContent, PrjGoal,
 values (1,'성평등한 하루를 위한 양말','성평등한 하루를 위한 양말.',7000000,now(),'2021-6-10','2021-7-22');
 
 
-
-
 -- FundingInfo(후원정보) - UserInfo(회원정보), Project(프로젝트) 외래키 받음
 select
 	FundingNo, UserNo, PrjNo, OptNo, AccountNo, PayYN, EndYN
@@ -137,8 +135,6 @@ insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
 values (2, 1, 4, 12341234 );
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
 values (2, 1, 1, 3131214 );
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
-values (2, 5, 5, 508111027);
 
 
 
@@ -160,16 +156,12 @@ insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (1,'문구세트C' ,500000, '가방3개+연필 2자루');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (1,'문구세트D',100000, '연필1자루');
-/*insert into prjoption (prjno,OptName,OptPrice,OptContent)
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (3,'부루마블',100000, '부루마블세트');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (4,'사인도서',100000, '작가 친필사인이 추가된 도서');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (5,'세트1',100000, '흰색양말+파란색양말');
-insert into prjoption (prjno,OptName,OptPrice,OptContent)
-values (6,'문구세트D',100000, '연필1자루');
-insert into prjoption (prjno,OptName,OptPrice,OptContent)
-values (7,'테스트1',100000, '테스트성공');*/
 
 
 

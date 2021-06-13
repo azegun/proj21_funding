@@ -143,6 +143,13 @@ public class ProjectJoin {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	@Override
+	public String toString() {
+		return String.format(
+				"ProjectJoin [prjNo=%s, prjManager=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, payDate=%s, endYn=%s, optNo=%s, optName=%s, optPrice=%s, optContent=%s, fundingNo=%s, sponsor=%s, accountNo=%s, payYn=%s, rate=%s, totalCount=%s, totalPrice=%s]",
+				prjNo, prjManager, prjName, prjContent, prjGoal, startDate, endDate, payDate, endYn, optNo, optName,
+				optPrice, optContent, fundingNo, sponsor, accountNo, payYn, rate, totalCount, totalPrice);
+	}
 
 	
 	

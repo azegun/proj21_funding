@@ -3,7 +3,7 @@
 <mapper namespace="proj21_funding.mapper.ProjectJoinMapper">
 	<resultMap type="ProjectJoin" id="resProjectJoin">
 		<id property="prjNo" column="prjNo"/>
-		<result property="prjManager" column="userName"/>
+		<result property="prjManager" column="prjManager"/>
 		<result property="prjName" column="prjName"/>
 		<result property="prjContent" column="prjContent"/>
 		<result property="prjGoal" column="prjGoal"/>
@@ -26,12 +26,45 @@
 	</resultMap>
 	
 	<select id="selectProjectJoinAll" resultMap="resProjectJoin">
-	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.UserName
+	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
 			,count(fundingno) as totalCount
 		  from fundinginfo f 
 	      join prjoption o on o.optno= f.OptNo 
 		  right join project p on p.prjno = f.PrjNo 
 		  join userinfo u on p.userno = u.userno
+		 group by p.prjNo;
+	</select>
+	
+	<!-- 성공임박 -->
+	<select id="selectProjectSuccessImbak" resultMap="resProjectJoin">
+	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		 group by p.prjNo having sum(optprice)/PrjGoal*100>80;
+	</select>
+	
+	<select id="selectProjectJoinByPrjName" resultMap="resProjectJoin" parameterType="String">
+		select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  where prjName LIKE CONCAT('%', #{prjName}, '%')
+		 group by p.prjNo;
+	</select>
+	
+	<select id="selectProjectJoinByPrjManager" resultMap="resProjectJoin" parameterType="String">
+		select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  where u.nickname LIKE CONCAT('%', #{prjManager}, '%')
 		 group by p.prjNo;
 	</select>
 </mapper>

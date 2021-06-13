@@ -41,14 +41,30 @@ select o.prjNo ,count(*),sum(optprice)
 from fundinginfo f 
 join prjoption o on o.optno= f.OptNo group by o.prjNo;
 
-
-select f.prjNo,f.FundingNo ,p.PrjName ,sum(optprice),p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN
-		  from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo group by p.prjno;
+-- 성공임박프로젝트
+select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		 group by p.prjNo having sum(optprice)/PrjGoal*100>80;
+		
+select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  where prjName like '%기%'
+		 group by p.prjNo;
+		
+select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  where u.Nickname LIKE CONCAT('%', 'ks' , '%')
+		 group by p.prjNo;
 		  
-select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as sum, p.Prjname, u.UserName
-		,count(fundingno)
-	  from fundinginfo f 
-      join prjoption o on o.optno= f.OptNo 
-	  right join project p on p.prjno = f.PrjNo 
-	  join userinfo u on p.userno = u.userno
-	 group by p.prjNo;

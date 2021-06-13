@@ -20,4 +20,19 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 		return mapper.selectProjectJoinAll();
 	}
 
+	@Override
+	public List<ProjectJoin> showProjectSuccessImbak() {
+		return mapper.selectProjectSuccessImbak();
+	}
+
+	@Override
+	public List<ProjectJoin> showProjectJoinByPrjName(String prjName) {
+		return mapper.selectProjectJoinByPrjName(prjName);
+	}
+
+	@Override
+	public List<ProjectJoin> showProjectJoinByPrjManager(String prjManager) {
+		return mapper.selectProjectJoinByPrjManager(prjManager);
+	}
+
 }

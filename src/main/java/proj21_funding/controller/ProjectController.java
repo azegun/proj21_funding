@@ -2,9 +2,12 @@ package proj21_funding.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,13 +24,13 @@ import proj21_funding.service.ProjectService;
 public class ProjectController {
 
 	@Autowired
-	ProjectService projectService;
+	private ProjectService projectService;
 	@Autowired
-	PrjOptionService optionService;
+	private PrjOptionService optionService;
 	@Autowired
-	FundingInfoService fundingService;
+	private FundingInfoService fundingService;
 	@Autowired
-	ProjectJoinService joinService;
+	private ProjectJoinService joinService;
 
 //	모든 프로젝트
 	@RequestMapping("/projectListAll")
@@ -45,18 +48,26 @@ public class ProjectController {
 	public ModelAndView ImbakListAll() {
 
 		ModelAndView mav = new ModelAndView();
+		List<ProjectJoin> prjs = joinService.showProjectSuccessImbak();
 		mav.setViewName("project/list");
+		mav.addObject("prjs", prjs);
 		return mav;
 	}
 
-//	@RequestMapping("/projectListByName")
-//	public ModelAndView listByName(@ModelAttribute("prjName") Project project, Model model) {
-//		List<Project> projects = projectService.showProjectListAll();
-//		ModelAndView mav = new ModelAndView("project/list");
-//		model.addAttribute("prjName",new String());
-//		mav.addObject("projects",projects);
-//		return mav;
-//	}
+	@RequestMapping("/projectListSearch")
+	public String listByName(Model model, HttpServletRequest request) {
+		List<ProjectJoin> prjs = null;
+		if (request.getParameter("type").equals("prjName")) {
+			 prjs = joinService.showProjectJoinByPrjName(request.getParameter("param"));
+		} else if (request.getParameter("type").equals("prjManager")) {
+			 prjs = joinService.showProjectJoinByPrjManager(request.getParameter("param"));
+		}
+		model.addAttribute("prjs",prjs);
+		System.out.println(request.getParameter("type"));
+		System.out.println(request.getParameter("param"));
+		return "project/list";
+	}
+	
 
 //	@RequestMapping("/projectListAll")
 //	public String listAll(Model model) {

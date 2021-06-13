@@ -36,4 +36,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return mapper.insertProject(project);
 	}
 
+	@Override
+	public int updateProject(Project project) {
+		return mapper.updateProject(project);
+	}
+
 }

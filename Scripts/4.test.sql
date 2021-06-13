@@ -78,7 +78,13 @@ select
 	PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
 	StartDate, EndDate, PayDate, EndYN
 from project;
+-- 수정 프로젝트
+select PrjNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate from project;
 
+-- 업데이트 프로젝트
+update project 
+set PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, EndDate = '2021-06-13', PayDate = '2021-06-13'
+where prjno = 66;
 
 
 
@@ -92,8 +98,12 @@ from fundinginfo;
 
 -- PrjOption(프로젝트구매옵션) - Project(프로젝트) 외래키 받음
 select
-	OptNo, PrjNo, OptPrice, OptContent
+		OptNo, PrjNo, OptName, OptPrice, OptContent
 from prjoption;
+-- 옵션 프로젝트 업데이트
+update prjoption 
+set OptName ='문방사우', OptPrice = 2200000, OptContent = '먹'
+where OptNo =66;
 
 
 
