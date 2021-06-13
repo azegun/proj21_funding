@@ -13,19 +13,10 @@ public class PrjOption {
 		public PrjOption(int optNo) {
 			this.optNo = optNo;
 		}		
-
+		//insert (transaction)
 		public PrjOption(Project prjNo, String optName, int optPrice, String optContent) {
 			this.prjNo = prjNo;
 			this.optName = optName;
-			this.optPrice = optPrice;
-			this.optContent = optContent;
-		}
-		
-		
-
-		public PrjOption(int optNo, Project prjNo, int optPrice, String optContent) {
-			this.optNo = optNo;
-			this.prjNo = prjNo;
 			this.optPrice = optPrice;
 			this.optContent = optContent;
 		}
@@ -34,6 +25,8 @@ public class PrjOption {
 		public int getOptNo() {
 			return optNo;
 		}
+		
+
 		public void setOptNo(int optNo) {
 			this.optNo = optNo;
 		}

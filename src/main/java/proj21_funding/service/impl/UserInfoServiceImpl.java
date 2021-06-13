@@ -24,4 +24,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return mapper.deleteUser(userInfo);
 	}
 
+	@Override
+	public UserInfo showUserInfoById(String userId) {	
+		return mapper.selectUserbyId(userId);
+	}
+
 }

@@ -30,13 +30,11 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 		//컨트롤러에서 작성안한 이유는, 프로젝트 insert가 되어야지 prjno가 생성되므로, 여기서 파일 구현
 		
 		String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
-		System.out.println("saveName: "+ saveName);
+//		System.out.println("saveName: "+ saveName);
 		
 		File saveFile = new File(UPLOAD_PATH, saveName);
 		try {
-			System.out.println("uploadfile>>" );
 			uploadfile.transferTo(saveFile);
-			System.out.println("uploadfile succcess>>" );
 		}catch (IOException e) {
 		e.printStackTrace();
 		}		

@@ -10,6 +10,7 @@ public class Message {
 	private String msgContent; // 내용	
 	private LocalDateTime  sendDate; // 발신일
 	private boolean readYN; // 확인여부
+	private String[] check; // 확인여부
 
 	// 생성자
 	public Message() {
@@ -68,6 +69,17 @@ public class Message {
 
 	public void setReadYN(boolean readYN) {
 		this.readYN = readYN;
+	}
+
+	
+
+
+	public String[] getCheck() {
+		return check;
+	}
+
+	public void setCheck(String[] check) {
+		this.check = check;
 	}
 
 	@Override

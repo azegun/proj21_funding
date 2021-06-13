@@ -10,4 +10,6 @@ public interface UserInfoService {
 	int modifyUserInfo(UserInfo userInfo);
 
 	int removeUserInfo(String userId, String userPw);
+	
+	UserInfo showUserInfoById(String userId);
 }
