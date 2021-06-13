@@ -20,11 +20,11 @@
 		<%-- ${projects } --%>
 		<!-- 프로젝트검색 부분 개발중  -->
 		<section>
-		<!-- <select name="type">
+			<form:form  action="projectListByName"  modelAttribute="projectJoin">
+		<select name="type">
 		<option value="prjName">프로젝트명</option>
 		<option value="prjManager">제작자</option>
-		</select> -->
-			<form:form  action="projectListByName"  modelAttribute="projectJoin">
+		</select>
 				<form:input path="prjName"/><input type="submit" value="검색">
 			</form:form>
 			
