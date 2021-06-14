@@ -43,12 +43,8 @@ public class UserLoginController {
 
 		try {
 			UserAuthInfo userAuthInfo = authService.authenicate(userLogin.getUserId(), userLogin.getUserPw());
-			if(userAuthInfo.getNickName().equals("관리자")) {
-				session.setAttribute("adminAuth", userAuthInfo);
-			}else {
-				session.setAttribute("authInfo", userAuthInfo);
-			}
-
+			session.setAttribute("authInfo", userAuthInfo);
+			
 			Cookie rememberCookie = new Cookie("REMEMBER", userLogin.getUserId());
 			rememberCookie.setPath("/");
 
