@@ -2,6 +2,8 @@ package proj21_funding.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.BoardCategory;
 import proj21_funding.dto.QNA;
+import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.service.CategoryService;
 import proj21_funding.service.QNAService;
 
@@ -34,8 +37,10 @@ public class QNAController {
 	}
 
 	@RequestMapping("/board_servicecenter/servicecenter_view_user")
-	public ModelAndView qnaUser() {
-		List<QNA> qna = qnaService.showQNAByUserId(1);
+	public ModelAndView qnaUser(HttpSession session) {
+		UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
+		System.out.println(user);
+		List<QNA> qna = qnaService.showQNAByUserId(user.getUserNo());
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("board_servicecenter/servicecenter_view_user");
@@ -58,7 +63,6 @@ public class QNAController {
 	try {
 		System.out.println(qna);
 		qnaService.uploadQNA(qna);
-		System.out.println(qna);
 		return "board_servicecenter/servicecenter_write_end";
 	
 		}catch (Exception e) { 

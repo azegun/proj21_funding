@@ -13,9 +13,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
-	<c:forEach var="bc" items="${bc }">
-		<td>${bc}</td>
-	</c:forEach>
 	<section class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
@@ -35,10 +32,7 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
-					<td class="td_left"><label for="userName">작성자</label></td>
-					<td><input type="text" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/></td>
-				</tr>
+					
 				<tr>
 					<td class="td_left"><label for="qnaTitle">제목</label></td>
 					<td class="td_right"> <input type="text" name="qnaTitle" id="qnaTitle" required="required"></td>
@@ -50,6 +44,9 @@
 				<tr>
 					<td class="td_left"><label for="qnaFile">파일첨부</label></td>
 					<td class="td_right"> <input type="file" name="qnaFile" id="qnaFile"></input></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/></td>
 				</tr>
 		</table>
 		<section id="commandCell">

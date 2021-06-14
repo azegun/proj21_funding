@@ -29,7 +29,7 @@
 	<nav>
 		<ul>
 			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
-			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
+			<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
 		</ul>
 	</nav>
 	<h4>자주 묻는 질문</h4>
