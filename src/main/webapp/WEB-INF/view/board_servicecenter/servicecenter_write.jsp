@@ -13,6 +13,9 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
+	<c:forEach var="bc" items="${bc }">
+		<td>${bc}</td>
+	</c:forEach>
 	<section class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
@@ -25,7 +28,7 @@
 				<tr>
 					<td class="td_left"><label for="categoryNo">분류</label></td>
 					<td class="td_right">
-						<select>
+						<select name="categoryNo.categoryNo">
 							<c:forEach var="bc" items="${bc }">
 								<option value="${bc.categoryNo }">${bc.categoryName }</option>
 							</c:forEach>

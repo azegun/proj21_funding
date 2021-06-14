@@ -22,8 +22,8 @@
 	<p>문의 답변 시간 : 평일 09:00 ~ 17:00</p>
 	
 	<div>
-		<input type="button" value="다른 문의하기" >
-		<input type="button" value="내 문의 내역 확인하기" >
+		<a href="/proj21_funding/board_servicecenter/servicecenter_write"><input type="button" value="다른 문의하기" ></a>
+		<a href="/proj21_funding/board_servicecenter/servicecenter_view_user"><input type="button" value="내 문의 내역 확인하기" ></a>
 	</div>	
 	
 	</section>

@@ -17,6 +17,8 @@ public interface AdminMapper {
 
 	Admin selectAdminbyName(String adminName);
 
+	Admin selectAdminbylogin(String adminId, String adminPw);
+
 	int insertAdmin(Admin admin);
 
 	int updateAdmin(Admin admin);

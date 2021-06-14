@@ -57,9 +57,6 @@ public class QNAController {
 	public String qnaUpload(QNA qna, BoardCategory bc) {
 	try {
 		System.out.println(qna);
-		System.out.println(bc);
-		qna.setCategoryNo(new BoardCategory(bc.getCategoryNo()));
-		System.out.println(qna);
 		qnaService.uploadQNA(qna);
 		System.out.println(qna);
 		return "board_servicecenter/servicecenter_write_end";
