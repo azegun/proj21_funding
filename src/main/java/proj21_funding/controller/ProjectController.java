@@ -3,6 +3,7 @@ package proj21_funding.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,10 +78,11 @@ public class ProjectController {
 //	}
 
 	@RequestMapping("/prjDetail/{prjNo}")
-	public ModelAndView detail(@PathVariable("prjNo") int prjNo) {
+	public ModelAndView detail(@PathVariable("prjNo") int prjNo, HttpSession session) {
 		int count;
 		int sum;
 		List<PrjOption> prj = optionService.showPrjOptionByPrjNo(prjNo);
+		session.setAttribute("prj", prj);
 //		List<Project> prjList=projectService.showProjectListAll();
 		try {
 			count = fundingService.showCountByPrjNo(prjNo);
@@ -92,6 +94,16 @@ public class ProjectController {
 		ModelAndView mav = new ModelAndView("project/project_detail", "prj", prj);
 		mav.addObject("count", count);
 		mav.addObject("sum", sum);
+		return mav;
+	}
+	
+	@RequestMapping("/fundingProject")
+	public ModelAndView funding(HttpServletRequest request) {
+		int price = Integer.parseInt(request.getParameter("price"));
+		int optNo = Integer.parseInt(request.getParameter("optNo"));
+		ModelAndView mav = new ModelAndView("funding/fundingScreen");
+		mav.addObject("price",price);
+		mav.addObject("optNo",optNo );
 		return mav;
 	}
 }

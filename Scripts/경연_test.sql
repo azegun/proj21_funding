@@ -49,7 +49,8 @@ select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.
 		  right join project p on p.prjno = f.PrjNo 
 		  join userinfo u on p.userno = u.userno
 		 group by p.prjNo having sum(optprice)/PrjGoal*100>80;
-		
+
+-- 프로젝트명 검색
 select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
 			,count(fundingno) as totalCount
 		  from fundinginfo f 
@@ -58,13 +59,20 @@ select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.
 		  join userinfo u on p.userno = u.userno
 		  where prjName like '%기%'
 		 group by p.prjNo;
-		
+
+-- 제작자 검색
 select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
 			,count(fundingno) as totalCount
 		  from fundinginfo f 
 	      join prjoption o on o.optno= f.OptNo 
 		  right join project p on p.prjno = f.PrjNo 
 		  join userinfo u on p.userno = u.userno
-		  where u.Nickname LIKE CONCAT('%', 'ks' , '%')
+		  where u.Nickname LIKE CONCAT('%', 'ks' , '%');
 		 group by p.prjNo;
+
+-- 프로젝트 상세
+
+select * from userinfo;
+
+
 		  

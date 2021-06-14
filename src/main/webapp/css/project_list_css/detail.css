@@ -29,3 +29,11 @@ img{
 .price {
 	float: right;
 }
+
+li {
+	list-style: none;
+}
+
+.inputPrice {
+	outline: none;
+}
