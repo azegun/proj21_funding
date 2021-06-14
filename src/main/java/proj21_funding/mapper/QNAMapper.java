@@ -14,6 +14,8 @@ public interface QNAMapper {
 	List<QNA> selectQNAByUserId(int userNo);
 	
 	List<QNA> selectQNAByBC(int categoryNo);
+
+	QNA selectQNAByNo(int qnaNo);
 	
 	int insertQNA(QNA qna);
 	

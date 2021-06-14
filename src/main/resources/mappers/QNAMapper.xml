@@ -40,6 +40,11 @@
 		where categoryNo = #{categoryNo}	
 	</select>
 	
+	<select id="selectQNAByNo" resultMap="Associate">
+		<include refid="selectSql" />
+		where qnaNo = #{qnaNo}	
+	</select>
+	
 	<insert id="insertQNA" parameterType="QNA">
 		insert
 		  into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile )

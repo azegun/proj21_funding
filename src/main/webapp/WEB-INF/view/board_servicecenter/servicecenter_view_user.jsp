@@ -43,12 +43,13 @@
 			<tr>
 				<td>${qna.qnaNo }</td>
 				<td>
+					<a href="/proj21_funding/board_servicecenter/servicecenter_view_detail/${qna.qnaNo}">
 					<c:forEach var="bc" items="${bc }">
 						<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }" >
 							[${bc.categoryName }]
 						</c:if>
 					</c:forEach>
-					${qna.qnaTitle }</td>
+					${qna.qnaTitle }</a></td>
 				<td>${qna.qnaDate }</td>
 				<td>
 					<c:choose>

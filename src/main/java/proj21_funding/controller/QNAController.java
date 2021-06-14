@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,7 +40,6 @@ public class QNAController {
 	@RequestMapping("/board_servicecenter/servicecenter_view_user")
 	public ModelAndView qnaUser(HttpSession session) {
 		UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
-		System.out.println(user);
 		List<QNA> qna = qnaService.showQNAByUserId(user.getUserNo());
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
 		ModelAndView mav = new ModelAndView();
@@ -49,6 +49,15 @@ public class QNAController {
 		return mav;
 	}
 
+	@RequestMapping("/board_servicecenter/servicecenter_view_detail/{qnaNo}")
+	public ModelAndView detail(@PathVariable("qnaNo") int qnaNo) {
+		List<BoardCategory> bc = bcService.showBCByClass("qna");
+		QNA qna = qnaService.showQNAByNo(qnaNo);
+		ModelAndView mav = new ModelAndView("board_servicecenter/servicecenter_view_detail", "qna", qna);
+		mav.addObject("bc", bc);
+		return mav;
+	}
+	
 	@RequestMapping("/board_servicecenter/servicecenter_write")
 	public ModelAndView WriteAll() {
 		List<BoardCategory> bc = bcService.showBCByClass("qna");

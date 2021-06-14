@@ -18,7 +18,14 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
-	<section class = "sevicecenter_write">
+	<section class = "sevicecenter_write">	
+	<h2>고객센터</h2>
+	<nav>
+		<ul>
+			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
+		</ul>
+	</nav>
 	<h2>문의하기</h2>
 	<form action="<%=request.getContextPath() %>/qnaSuccess" method="post">
 		<table>
@@ -52,7 +59,7 @@
 		<section id="commandCell">
 			<input type="submit" value="등록">&nbsp;&nbsp;
 			<input type="reset" value="다시쓰기">
-			<button id="go_qna">돌아가기</button>
+			<a href="/proj21_funding/board_servicecenter/servicecenter_view_user"><button id="go_qna">돌아가기</button></a>
 		</section>
 	</form>
 		</section>
