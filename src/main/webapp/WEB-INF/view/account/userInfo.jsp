@@ -60,8 +60,8 @@
 				</p>
 				<p>
 					<label> 회원별명 :
-					<form:input path="nickname" value="${userInfo.nickname}"/> 
-					<form:errors path="nickname" />
+					<form:input path="nickName" value="${userInfo.nickName}"/> 
+					<form:errors path="nickName" />
 					</label>
 				</p>
 				<p>

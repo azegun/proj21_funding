@@ -43,7 +43,7 @@ select
 from board;
 
 insert into board  values
-(00001, 1, '아자아자 펀딩팀', '힘을내요! 잘할거예요', now(), 1);
+(00001, 1, '아자아자 펀딩팀', '힘을내요! 잘할거예요', now(), 1, null);
 #default값 제외
 insert into board ( CategoryNo, BoardTitle, BoardContent) values
 (2,'이벤트','경험치2배이벤트');
@@ -55,10 +55,10 @@ select
 from admin;
 
 insert into admin values
-(00001, 'admin','0000', '김경연', '010-6510-7277');
+(00001, 'admin',password('0000'), '김경연', '010-6510-7277');
 #default값제외
 insert into admin (AdminId, AdminPw, AdminName, AdminTel)
-values ('admin1','0000','김상건','010-3302-1972');
+values ('admin1', password('0000'),'김상건','010-3302-1972');
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 

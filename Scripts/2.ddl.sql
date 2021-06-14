@@ -229,7 +229,7 @@ CREATE TABLE proj21_funding.Board (
 	BoardTitle     VARCHAR(50) NOT NULL COMMENT '공지제목', -- 공지제목
 	BoardContent   LONGTEXT    NOT NULL COMMENT '공지내용', -- 공지내용
 	BoardDate      DATETIME    NOT NULL DEFAULT current_timestamp COMMENT '작성일', -- 작성일
-	BoardReadCount INTEGER(5)  NULL     default 0 COMMENT '조회수' -- 조회수
+	BoardReadCount INTEGER(5)  NULL     default 0 COMMENT '조회수', -- 조회수
 	BoardFile      VARCHAR(50) NULL     default nUll COMMENT '공지첨부파일' -- 문의첨부파일
 )
 COMMENT '사이트게시판';

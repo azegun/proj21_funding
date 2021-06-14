@@ -14,6 +14,8 @@ public interface UserInfoMapper {
 	UserInfo selectUserbyNo(int userNo);
 
 	UserInfo selectUserbyId(String userId);
+	
+	UserInfo selectUserbyNickname(String nickname);
 
 	UserInfo selectUserbylogin(String userId, String userPw);
 
