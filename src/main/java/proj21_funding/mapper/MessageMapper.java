@@ -21,4 +21,8 @@ public interface MessageMapper {
 	
 	int updateMessage(Message message);	
 	
+	int delReceiveMessage(Message message);	
+	
+	int delSendMessage(Message message);	
+	
 }

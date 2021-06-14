@@ -2,17 +2,17 @@
 -- Message (메세지)
 select
 	MsgNo, SendUser, ReceiveUser,
-	MsgContent, SendDate, ReadYN
+	MsgContent, SendDate, ReadYN, DelSend, DelRecevie
 from message;
 
 insert into message values 
-(00001, 'sgkim', 'kykim', '펀딩팀 화이팅', now(), 1);
+(00001, 'test10', 'test2', '펀딩팀 화이팅', now(), 1, 0, 0);
 
 #default값 제외
 insert into message (
 	SendUser, ReceiveUser,
 	MsgContent, ReadYN) 
-values ( 'sgkim', 'kykim', '펀딩팀 화이팅',  0);
+values ( 'test2', 'test10', '펀딩팀 화이팅',  0);
 
 
 
@@ -62,21 +62,24 @@ values ('admin1','0000','김상건','010-3302-1972');
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw,	UserName, UserPhone,
+	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
 	ZipCode, Address, DetailAddress,
-	Email, BankName, BankAccount
+	Email, BankName, BankAccount, Secession
 from userinfo;
-
+ 
 insert into userinfo values(
-00001, 'test1', password('0000'), '김상건', '010-3302-1972',
-'111222', '대구', '달서구', 'test@test.com', '국민', 00000001 
+00001, 'test1', password('0000'), '김상건', 'ksg', '01033021972',
+'111222', '대구', '달서구', 'test@test.com', '국민', 00000001, 0 
 );
 
 #default값 제외
-insert into userinfo ( UserId, UserPw, UserName,
+insert into userinfo ( UserId, UserPw, UserName, Nickname,
 	UserPhone, ZipCode, Address, DetailAddress)
-values ('test2', password(1111),'김경연', '010-1234-5678','222333', '대구','북구');
+values ('test2', password('1111'),'김경연', 'kky', '01012345678','222333', '대구','북구');
 
+insert into userinfo ( UserId, UserPw, UserName, Nickname,
+	UserPhone, ZipCode, Address, DetailAddress)
+values ('test10', password('1111'),'test10', 'ttt', '01012345678','222333', '대구','달서구');
 
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
@@ -121,8 +124,6 @@ insert into project (UserNo, PrjName, PrjContent, PrjGoal,
 values (1,'성평등한 하루를 위한 양말','성평등한 하루를 위한 양말.',7000000,now(),'2021-6-10','2021-7-22');
 
 
-
-
 -- FundingInfo(후원정보) - UserInfo(회원정보), Project(프로젝트) 외래키 받음
 select
 	FundingNo, UserNo, PrjNo, OptNo, AccountNo, PayYN, EndYN
@@ -150,16 +151,22 @@ from prjoption;
 
 
 insert into prjoption values
-(00001, 00001, '문구셋트', 30000, '가방2개+연필1자루');
+(00001, 00001, '문구세트A', 30000, '가방2개+연필1자루');
 -- default값 null값 제외
 insert into prjoption (prjno, OptName, OptPrice,OptContent)
-values (2, '필통', 300000, '옵션B');
-insert into prjoption (prjno,OptPrice,OptContent)
-values (2, 300000, '옵션B');
-insert into prjoption (prjno,OptPrice,OptContent)
-values (1, 500000, '가방3개+연필 2자루');
-insert into prjoption (prjno,OptPrice,OptContent)
-values (1, 100000, '연필1자루');
+values (1, '문구세트B', 300000, '필통');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (2,'옵션B', 300000, '메인홈페이지만');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (1,'문구세트C' ,500000, '가방3개+연필 2자루');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (1,'문구세트D',100000, '연필1자루');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (3,'부루마블',100000, '부루마블세트');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (4,'사인도서',100000, '작가 친필사인이 추가된 도서');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (5,'세트1',100000, '흰색양말+파란색양말');
 
 
 

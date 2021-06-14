@@ -11,7 +11,9 @@
 			<section>	
 				<h2>신규 프로젝트</h2>		
 				<div class="slider">
-					<div><a href=""><img src="images/bul.jpg"></a></div>
+			<%-- 	<div><a href=""><img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/></div>
+			 --%>
+				<div><a href=""><img src="images/bul.jpg"></a></div>
 					<div><a href=""><img src="images/shiba.jpg"></a></div>
 					<div><a href=""><img src="images/jin.jpg"></a></div>
 					<div><a href=""><img src="images/pu.jpg"></a></div>

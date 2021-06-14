@@ -3,26 +3,30 @@
 -- Message (메세지)
 select
 	MsgNo, SendUser, ReceiveUser,
-	MsgContent, SendDate, ReadYN
+	MsgContent, SendDate, ReadYN, DelSend, DelRecevie
 from message;
-select SendUser, MsgContent, SendDate, ReadYN
+
+select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelRecevie
   from message
- where ReceiveUser = 'test1';
-select ReceiveUser, MsgContent, SendDate, ReadYN
+ where ReceiveUser = 'test10' and delRecevie = false;
+
+select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelRecevie
   from message
- where SendUser = 'test1';
+ where SendUser = 'test10' and delSend = false;
 
 update message 
 set ReadYN = 1
 where MsgNo = 10;
 insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test1', 'test10', '펀딩팀 화이팅');
+	 values ( 'test1', 'test10', '펀딩팀 화이팅1');
 insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test1', 'test10', '펀딩팀 화이팅');
-	insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test1', '펀딩팀 화이팅');
-	insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test1', '펀딩팀 화이팅');
+	 values ( 'test1', 'test10', '펀딩팀 화이팅2');
+insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'test10', 'test1', '펀딩팀 화이팅3');
+insert into message ( SendUser, ReceiveUser, MsgContent)
+	 values ( 'test10', 'test11', '펀딩팀 화이팅4');
+	
+delete from message where MsgNo =6;
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select
 	CategoryNo, CategoryName 
@@ -46,11 +50,11 @@ from admin;
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw,	UserName, UserPhone,
+	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
 	ZipCode, Address, DetailAddress,
-	Email, BankName, BankAccount
+	Email, BankName, BankAccount, Secession
 from userinfo;
-where userId = 'test10' and userPw = password(1111);
+where userId = 'test10' and userPw = password('1111');
 where UserName = 'test10' and UserPhone = '01012345678';
 
 update userinfo
@@ -58,7 +62,7 @@ update userinfo
 		 where userId = 'test10';
 		 
 delete from userinfo where userNo >2;
-alter table userinfo auto_increment=3;
+alter table userinfo auto_increment=4;
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
@@ -74,7 +78,13 @@ select
 	PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
 	StartDate, EndDate, PayDate, EndYN
 from project;
+-- 수정 프로젝트
+select PrjNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate from project;
 
+-- 업데이트 프로젝트
+update project 
+set PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, EndDate = '2021-06-13', PayDate = '2021-06-13'
+where prjno = 66;
 
 
 
@@ -88,8 +98,12 @@ from fundinginfo;
 
 -- PrjOption(프로젝트구매옵션) - Project(프로젝트) 외래키 받음
 select
-	OptNo, PrjNo, OptPrice, OptContent
+		OptNo, PrjNo, OptName, OptPrice, OptContent
 from prjoption;
+-- 옵션 프로젝트 업데이트
+update prjoption 
+set OptName ='문방사우', OptPrice = 2200000, OptContent = '먹'
+where OptNo =66;
 
 
 
@@ -135,7 +149,7 @@ where prjno > 6;
 
 delete
 from prjoption 
-where optno > 6;
+where optno > 4;
 
 
 

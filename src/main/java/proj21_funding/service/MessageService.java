@@ -22,5 +22,8 @@ public interface MessageService {
 	int sendMessage(Message message);
 	
 	int readMessage(Message message);
+
+	int removeReceiveMessage(Message message);
 	
+	int removeSendMessage(Message message);
 }

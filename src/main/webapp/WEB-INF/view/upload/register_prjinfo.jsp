@@ -6,16 +6,15 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Register mid</title>		
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/register_prjinfo.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
+${authInfo }
 	<h2>프로젝트 등록</h2>
 		<section id = "register_prjcontent">							
 			<table>			
-			<tbody>
-			
+			<tbody>			
 		<!-- 	<tr>
 					<td class = "td_left">
 							<label for = "prjNo">프로젝트 번호 </label>
@@ -25,11 +24,15 @@
 					</td>
 			</tr> -->
 			<tr>
+			<!-- 월요일에 열기 -->
 					<td class = "td_left">
-							<label for = "userNo" >프로젝트 관리자  </label>
+							<label for = "userName" >회원 이름  </label>
 					</td>
 					<td class = "td_right">
-							  <input type="text" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
+							  <input type="text" id = "userName" name = "userName.userName"  value ="${authInfo.userName }"  size = 40   required="required"/> 
+					</td> 
+					<td class = "td_right">
+							  <input type="hidden" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
 					</td>
 			</tr>
 			<tr>
@@ -45,7 +48,7 @@
 							<label for = "prjContent">프로젝트 내용</label>
 					</td>
 					<td class = "td_right">
-							 <textarea id = "prjContent" name = "prjContent"   rows="15" cols="38" required="required"></textarea>
+							 <textarea id = "prjContent" name = "prjContent"   rows="15" cols="42" required="required"></textarea>
 					</td>
 			</tr>
 			<tr>

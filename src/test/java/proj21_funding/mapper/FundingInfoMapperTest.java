@@ -47,5 +47,13 @@ public class FundingInfoMapperTest {
 	public void testSelectSumByPrjNo() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	public void testselectFundingInfoByUserNo() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		System.out.println(mapper.selectFundingInfoByUserNo(1));
+		
+	}
 
 }

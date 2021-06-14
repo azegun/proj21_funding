@@ -12,7 +12,7 @@
 		$(function(){
 			var contextPath = "<%=request.getContextPath()%>";
 			$("#register_proj").on("click", function(){
-				window.location.href = contextPath+"/upload/register";
+				window.location.href = contextPath+"/registerForm";
 			});			
 		});
 		</script>

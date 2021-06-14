@@ -29,9 +29,14 @@ ${count }
 		<span>총 후원 금액 : ${sum}원</span>
 		<span>제작자 : ${prj[0].prjNo.userNo.userName }</span>
 		<progress value="${sum }" max = "${prj[0].prjNo.prjGoal }"></progress> <span>달성률 :  ${sum/prj[0].prjNo.prjGoal*100 }%</span>
-		<c:forEach var="prj" items="${prj }">
-			<h4>${prj.optContent } : ${prj.optPrice }</h4>
+		<c:forEach var="prj" items="${prj }" varStatus="count">
+				<fieldset class="optBox">
+					<ul>
+						<li> ${prj.optContent } : <span class="price"><c:out value="${prj.optPrice }원" /></span></li>
+					</ul>
+				</fieldset>
 		</c:forEach>
+		<span>가격 : 0원 </span>
 		
 	
 		

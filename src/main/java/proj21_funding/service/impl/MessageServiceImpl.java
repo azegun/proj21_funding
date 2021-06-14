@@ -22,14 +22,13 @@ public class MessageServiceImpl implements MessageService {
 
 	@Override
 	public int sendMessage(Message message) {
-		try {
+		try {			
 			userMapper.selectUserbyId(message.getSendUser());
 			userMapper.selectUserbyId(message.getReceiveUser());
 		} catch (NullPointerException e) {
 			throw new UserNotFoundException();
 		}
 		Message newMessage = new Message(message.getSendUser(), message.getReceiveUser(), message.getMsgContent());
-
 		return mapper.insertMessage(newMessage);
 	}
 
@@ -56,6 +55,16 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public int readMessage(Message message) {		
 		return mapper.updateMessage(message);
+	}
+
+	@Override
+	public int removeReceiveMessage(Message message) {	
+		return mapper.delReceiveMessage(message);
+	}
+
+	@Override
+	public int removeSendMessage(Message message) {		
+		return mapper.delSendMessage(message);
 	}
 
 }
