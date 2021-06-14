@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/header_account.css">
 </head>
 <body>
-	<c:if test="${empty authInfo}">
+	<c:if test="${empty authInfo && empty adminAuth}">
 		<div class= account_menu>
 				<a href ="<c:url value='/login'/>" >로그인</a>&nbsp;&colon;&nbsp;
 				<a href="<c:url value='/account/signUp1'/>">회원가입</a>
@@ -17,8 +17,14 @@
 	</c:if>
 	<c:if test="${!empty authInfo}">
 		<div class= account_menu>
-				<a href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>${authInfo.nickname}</span>님 환영합니다.</a>
+				<a href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>${authInfo.nickName}</span>님 환영합니다.</a>
 		</div>
 	</c:if>
+	<c:if test="${!empty adminAuth}">
+		<div class= account_menu>
+				<a href = "#" ><span>${adminAuth.nickName}</span>님 환영합니다.</a>
+				<a href ="<c:url value='/logout'/>" >로그아웃</a>
+		</div>
+	</c:if>	
 </body>
 </html>

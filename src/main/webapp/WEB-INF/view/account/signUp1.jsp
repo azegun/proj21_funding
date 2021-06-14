@@ -67,8 +67,8 @@
 				</p>
 				<p>
 					<label> 회원별명 :
-					<form:input path="nickname" /> 
-					<form:errors path="nickname" />
+					<form:input path="nickName" /> 
+					<form:errors path="nickName" />
 					</label>
 				</p>
 				<p>

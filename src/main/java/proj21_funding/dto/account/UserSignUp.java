@@ -17,7 +17,7 @@ public class UserSignUp {
 	@NotBlank
 	private String userName; // 회원성명
 	@NotBlank
-	private String nickname; // 회원별명
+	private String nickName; // 회원별명
 	@NotBlank
 	private String userPhone; // 회원H.P
 	@NotNull
@@ -63,12 +63,12 @@ public class UserSignUp {
 		this.userName = userName;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getUserPhone() {
@@ -135,9 +135,11 @@ public class UserSignUp {
 	@Override
 	public String toString() {
 		return String.format(
-				"UserSignUp [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, nickname=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
-				userId, userPw, confirmUserPw, userName, nickname, userPhone, zipCode, address, detailAddress, email,
+				"UserSignUp [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, nickName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
+				userId, userPw, confirmUserPw, userName, nickName, userPhone, zipCode, address, detailAddress, email,
 				bankName, bankAccount);
 	}
+
+	
 
 }
