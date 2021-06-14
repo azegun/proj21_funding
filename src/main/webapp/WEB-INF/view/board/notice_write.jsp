@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의하기 | 고객센터</title>
+<title>등록하기 | 공지사항</title>
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_write.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
@@ -22,7 +22,7 @@
 		</header>
 	<section class = "sevicecenter_write">
 	<h2>글 작성</h2>
-	<form action="<%=request.getContextPath() %>/qnaSuccess" method="post">
+	<form action="<%=request.getContextPath() %>/noticesuccess" method="post">
 		<table>
 				<tr>
 					<td class="td_left"><label for="categoryNo">분류</label></td>

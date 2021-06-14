@@ -19,7 +19,7 @@ values ( 'sgkim', 'kykim', '펀딩팀 화이팅',  0);
 
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select
-	CategoryNo, CategoryName 
+	CategoryNo, CategoryName, CategoryClass 
 from boardcategory;
 
 insert into boardcategory  values
@@ -28,6 +28,10 @@ insert into boardcategory  values
 #default값 없이
 insert into boardcategory (CategoryName, CategoryClass)
 	values ('이벤트', 'board');
+
+insert into boardcategory (CategoryName, CategoryClass)
+values ('사이트 관련', 'qna'), ('창작자 관련', 'qna'), ('후원자 관련', 'qna');
+
 
 	
 	
@@ -82,7 +86,8 @@ select
 from qna;
 
 insert into qna  values
-(1, 00001 , null, 1 , '7월졸업', '1달만 더 힘내요!',now(), '넹', now(),null);
+(1, 00001 , null, 5 , '결제는 언제 되나요?', '결제는 언제 되나요?',now(), '100펀딩에서는 후원 즉시 후원금이 결제되지 않습니다. 후원한 프로젝트가 모금에 성공하면 마감일 다음 날부터 7일 동안 결제에 성공할 때까지 출금이 시도됩니다. 결제일 오전에 카카오톡을 통해 결제에 대한 알림을 드리고 있습니다. ', now(),null),
+(2, 00001 , null, 4 , '프로젝트 주요 일정이 어떻게 되나요?', '프로젝트 주요 일정이 어떻게 되나요?',now(), '100펀딩 프로젝트의 주요 일정은 크게 공개예정 기간 - 펀딩 기간 - 결제 기간 - 정산일 - 선물 전달로 진행됩니다. 아래에서 프로젝트의 주요 일정의 설정 가능 기간을 확인해 주세요. ', now(),null);
 
 #default값 null값 제외
 insert into qna (UserNo,CategoryNo,QnaTitle,QnaContent)

@@ -2677,3 +2677,45 @@
 [TRACE] [2021-06-10 14:22] <==        Row: 1, 공지사항, board
 [TRACE] [2021-06-10 14:22] <==        Row: 2, 이벤트, board
 [DEBUG] [2021-06-10 14:22] <==      Total: 2
+[DEBUG] [2021-06-10 16:30] test01InsertQNA()
+[DEBUG] [2021-06-10 16:30] ==>  Preparing: insert into QNA( userNo, categoryNo, qnaTitle, qnaContent, qnaFile ) values(?, ?, ?, ?, ?)
+[DEBUG] [2021-06-10 16:30] ==> Parameters: 1(Integer), 2(Integer), qna 작업 진행?(String), 잘 되어 감?(String), null
+[DEBUG] [2021-06-10 16:30] <==    Updates: 1
+[DEBUG] [2021-06-10 16:30] res id >> 1
+[DEBUG] [2021-06-10 16:30] ==>  Preparing: update QNA set qnaReply = ?, replyDate = now(), adminNo = ? where qnaNo = ?
+[DEBUG] [2021-06-10 16:30] ==> Parameters: 잘 모르겠음(String), 1(Integer), 3(Integer)
+[DEBUG] [2021-06-10 16:30] <==    Updates: 1
+[DEBUG] [2021-06-10 16:30] res id >> 1
+[DEBUG] [2021-06-10 16:30] test03SelectQNAByUserId()
+[DEBUG] [2021-06-10 16:30] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where userNo = ?
+[DEBUG] [2021-06-10 16:30] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 16:30] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-10 16:30] <==        Row: 1, 1, null, 5, 결제는 언제 되나요?, <<BLOB>>, 2021-06-10 15:56:51.0, 100펀딩에서는 후원 즉시 후원금이 결제되지 않습니다. 후원한 프로젝트가 모금에 성공하면 마감일 다음 날부터 7일 동안 결제에 성공할 때까지 출금이 시도됩니다. 결제일 오전에 카카오톡을 통해 결제에 대한 알림을 드리고 있습니다. , 2021-06-10 15:56:51.0, null
+[TRACE] [2021-06-10 16:30] <==        Row: 2, 1, null, 4, 프로젝트 주요 일정이 어떻게 되나요?, <<BLOB>>, 2021-06-10 15:56:51.0, 100펀딩 프로젝트의 주요 일정은 크게 공개예정 기간 - 펀딩 기간 - 결제 기간 - 정산일 - 선물 전달로 진행됩니다. 아래에서 프로젝트의 주요 일정의 설정 가능 기간을 확인해 주세요. , 2021-06-10 15:56:51.0, null
+[TRACE] [2021-06-10 16:30] <==        Row: 4, 1, null, 2, qna 작업 진행?, <<BLOB>>, 2021-06-10 16:30:14.0, null, null, null
+[DEBUG] [2021-06-10 16:30] <==      Total: 3
+[DEBUG] [2021-06-10 16:30] [QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=결제는 언제 되나요?, qnaContent=결제는 언제 되나요?, qnaDate=Thu Jun 10 15:56:51 KST 2021, qnaReply=100펀딩에서는 후원 즉시 후원금이 결제되지 않습니다. 후원한 프로젝트가 모금에 성공하면 마감일 다음 날부터 7일 동안 결제에 성공할 때까지 출금이 시도됩니다. 결제일 오전에 카카오톡을 통해 결제에 대한 알림을 드리고 있습니다. , replyDate=Thu Jun 10 15:56:51 KST 2021, qnaFile=null], QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=프로젝트 주요 일정이 어떻게 되나요?, qnaContent=프로젝트 주요 일정이 어떻게 되나요?, qnaDate=Thu Jun 10 15:56:51 KST 2021, qnaReply=100펀딩 프로젝트의 주요 일정은 크게 공개예정 기간 - 펀딩 기간 - 결제 기간 - 정산일 - 선물 전달로 진행됩니다. 아래에서 프로젝트의 주요 일정의 설정 가능 기간을 확인해 주세요. , replyDate=Thu Jun 10 15:56:51 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna 작업 진행?, qnaContent=잘 되어 감?, qnaDate=Thu Jun 10 16:30:14 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-10 16:30] ==>  Preparing: delete from QNA where qnaNo = ?
+[DEBUG] [2021-06-10 16:30] ==> Parameters: 7(Integer)
+[DEBUG] [2021-06-10 16:30] <==    Updates: 0
+[DEBUG] [2021-06-10 16:30] test05SelectQNAByBC()
+[DEBUG] [2021-06-10 16:30] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA where categoryNo = ?
+[DEBUG] [2021-06-10 16:30] ==> Parameters: 2(Integer)
+[TRACE] [2021-06-10 16:30] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-10 16:30] <==        Row: 3, 2, 1, 2, 이벤트, <<BLOB>>, 2021-06-10 15:56:51.0, 잘 모르겠음, 2021-06-10 16:30:14.0, null
+[TRACE] [2021-06-10 16:30] <==        Row: 4, 1, null, 2, qna 작업 진행?, <<BLOB>>, 2021-06-10 16:30:14.0, null, null, null
+[DEBUG] [2021-06-10 16:30] <==      Total: 2
+[DEBUG] [2021-06-10 16:30] [QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=이벤트, qnaContent=언제시작?, qnaDate=Thu Jun 10 15:56:51 KST 2021, qnaReply=잘 모르겠음, replyDate=Thu Jun 10 16:30:14 KST 2021, qnaFile=null], QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna 작업 진행?, qnaContent=잘 되어 감?, qnaDate=Thu Jun 10 16:30:14 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]]
+[DEBUG] [2021-06-10 16:30] test06SelectQNAAll()
+[DEBUG] [2021-06-10 16:30] ==>  Preparing: select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile from QNA
+[DEBUG] [2021-06-10 16:30] ==> Parameters: 
+[TRACE] [2021-06-10 16:30] <==    Columns: qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
+[TRACE] [2021-06-10 16:30] <==        Row: 1, 1, null, 5, 결제는 언제 되나요?, <<BLOB>>, 2021-06-10 15:56:51.0, 100펀딩에서는 후원 즉시 후원금이 결제되지 않습니다. 후원한 프로젝트가 모금에 성공하면 마감일 다음 날부터 7일 동안 결제에 성공할 때까지 출금이 시도됩니다. 결제일 오전에 카카오톡을 통해 결제에 대한 알림을 드리고 있습니다. , 2021-06-10 15:56:51.0, null
+[TRACE] [2021-06-10 16:30] <==        Row: 2, 1, null, 4, 프로젝트 주요 일정이 어떻게 되나요?, <<BLOB>>, 2021-06-10 15:56:51.0, 100펀딩 프로젝트의 주요 일정은 크게 공개예정 기간 - 펀딩 기간 - 결제 기간 - 정산일 - 선물 전달로 진행됩니다. 아래에서 프로젝트의 주요 일정의 설정 가능 기간을 확인해 주세요. , 2021-06-10 15:56:51.0, null
+[TRACE] [2021-06-10 16:30] <==        Row: 3, 2, 1, 2, 이벤트, <<BLOB>>, 2021-06-10 15:56:51.0, 잘 모르겠음, 2021-06-10 16:30:14.0, null
+[TRACE] [2021-06-10 16:30] <==        Row: 4, 1, null, 2, qna 작업 진행?, <<BLOB>>, 2021-06-10 16:30:14.0, null, null, null
+[DEBUG] [2021-06-10 16:30] <==      Total: 4
+[DEBUG] [2021-06-10 16:30] QNA [qnaNo=1, userNo=null, adminNo=null, categoryNo=null, qnaTitle=결제는 언제 되나요?, qnaContent=결제는 언제 되나요?, qnaDate=Thu Jun 10 15:56:51 KST 2021, qnaReply=100펀딩에서는 후원 즉시 후원금이 결제되지 않습니다. 후원한 프로젝트가 모금에 성공하면 마감일 다음 날부터 7일 동안 결제에 성공할 때까지 출금이 시도됩니다. 결제일 오전에 카카오톡을 통해 결제에 대한 알림을 드리고 있습니다. , replyDate=Thu Jun 10 15:56:51 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-10 16:30] QNA [qnaNo=2, userNo=null, adminNo=null, categoryNo=null, qnaTitle=프로젝트 주요 일정이 어떻게 되나요?, qnaContent=프로젝트 주요 일정이 어떻게 되나요?, qnaDate=Thu Jun 10 15:56:51 KST 2021, qnaReply=100펀딩 프로젝트의 주요 일정은 크게 공개예정 기간 - 펀딩 기간 - 결제 기간 - 정산일 - 선물 전달로 진행됩니다. 아래에서 프로젝트의 주요 일정의 설정 가능 기간을 확인해 주세요. , replyDate=Thu Jun 10 15:56:51 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-10 16:30] QNA [qnaNo=3, userNo=null, adminNo=null, categoryNo=null, qnaTitle=이벤트, qnaContent=언제시작?, qnaDate=Thu Jun 10 15:56:51 KST 2021, qnaReply=잘 모르겠음, replyDate=Thu Jun 10 16:30:14 KST 2021, qnaFile=null]
+[DEBUG] [2021-06-10 16:30] QNA [qnaNo=4, userNo=null, adminNo=null, categoryNo=null, qnaTitle=qna 작업 진행?, qnaContent=잘 되어 감?, qnaDate=Thu Jun 10 16:30:14 KST 2021, qnaReply=null, replyDate=null, qnaFile=null]

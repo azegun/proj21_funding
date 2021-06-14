@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,7 +32,7 @@ public class BoardController {
 		mav.addObject("bc", bc);
 		return mav;
 	}
-
+	
 	@RequestMapping("/board/notice_write")
 	public ModelAndView WriteAll() {
 		List<BoardCategory> bc = bcService.showBCByClass("board");
@@ -40,5 +40,20 @@ public class BoardController {
 		mav.setViewName("board/notice_write");
 		mav.addObject("bc", bc);
 		return mav;
+	}
+	
+	@PostMapping("/noticesuccess")
+	public String registerSuccess(Board board) {	
+		
+	try {
+		boardService.uploadBoard(board);
+		return "board/notice_all";
+	
+		}catch (Exception e) { 
+			e.printStackTrace();
+		 
+		 return "board/notice_write"; 
+		 }
+				
 	}
 }

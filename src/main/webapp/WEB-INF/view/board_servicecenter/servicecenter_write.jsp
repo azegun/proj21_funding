@@ -1,7 +1,9 @@
+<%@ page import="proj21_funding.service.impl.CategoryServiceImpl"%>
+<%@ page import="proj21_funding.service.CategoryService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
-<%=request.getContextPath() %>
 	<section class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
@@ -25,14 +26,15 @@
 					<td class="td_left"><label for="categoryNo">분류</label></td>
 					<td class="td_right">
 						<select>
-							<option value="창작자">창작자 관련</option>
-							<option value="후원자">후원자 관련</option>
+							<c:forEach var="bc" items="${bc }">
+								<option value="${bc.categoryNo }">${bc.categoryName }</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="userName">작성자</label></td>
-					<td class="td_right" id = "userName" name = "userNo.userName"  value ="${authInfo.userNo }" size = 40   required="required"  readonly="readonly"></td>
+					<td><input type="text" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/></td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="qnaTitle">제목</label></td>
