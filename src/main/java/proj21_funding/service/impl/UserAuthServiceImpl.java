@@ -31,7 +31,7 @@ public class UserAuthServiceImpl implements UserAuthService {
 		}
 			
 		if(admin != null) {
-			return new UserAuthInfo(admin.getAdminNo(), admin.getAdminId(), admin.getAdminName(), "관리자");
+			return new UserAuthInfo(-admin.getAdminNo(), admin.getAdminId(), admin.getAdminName(), "관리자"+ admin.getAdminNo());
 		}else {
 			if(userInfo.isSecession()) {
 				throw new UserNotFoundException();
