@@ -2,12 +2,15 @@ package proj21_funding.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Board {
 
 	private int boardNo; // 게시글번호
 	private BoardCategory categoryNo; // 글 분류
 	private String boardTitle; // 공지제목
 	private String boardContent; // 공지내용
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date boardDate; // 작성일
 	private int boardReadCount; // 조회수
 

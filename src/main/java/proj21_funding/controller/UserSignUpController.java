@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import proj21_funding.dto.account.UserSignUp;
+import proj21_funding.exception.DuplicateNickNameException;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.service.UserRegisterService;
 
@@ -46,9 +47,12 @@ public class UserSignUpController {
 			service.regist(userSignUp);
 			return "account/signUp2";
 		} catch (DuplicateUserException  e) {
-			errors.rejectValue("UserName", "notSearching");
+			errors.rejectValue("userId", "duplicate");
 			return "account/signUp1";
-		}
+		} catch (DuplicateNickNameException  e) {
+			errors.rejectValue("nickName", "duplicate");
+			return "account/signUp1";
+		} 
 	}
 
 	// 회원가입 성공화면 직접입력방지

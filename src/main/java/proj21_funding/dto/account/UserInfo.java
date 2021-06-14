@@ -6,7 +6,7 @@ public class UserInfo {
 	private String userId; // 회원계정
 	private String userPw; // 비밀번호
 	private String userName; // 회원성명
-	private String nickname; // 회원별명
+	private String nickName; // 회원별명
 	private String userPhone; // 회원H.P
 	private int zipCode; // 우편번호
 	private String address; // 주소
@@ -16,12 +16,12 @@ public class UserInfo {
 	private int bankAccount; // 계좌번호
 	private boolean secession; // 탈퇴여부
 
-	public UserInfo(String userId, String userPw, String userName, String nickname, String userPhone, int zipCode,
+	public UserInfo(String userId, String userPw, String userName, String nickName, String userPhone, int zipCode,
 			String address, String detailAddress, String email, String bankName, int bankAccount) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
-		this.nickname = nickname;
+		this.nickName = nickName;
 		this.userPhone = userPhone;
 		this.zipCode = zipCode;
 		this.address = address;
@@ -78,12 +78,12 @@ public class UserInfo {
 		this.userName = userName;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getUserPhone() {
@@ -153,11 +153,9 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		return String.format(
-				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, nickname=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s, secession=%s]",
-				userNo, userId, userPw, userName, nickname, userPhone, zipCode, address, detailAddress, email, bankName,
+				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, nickName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s, secession=%s]",
+				userNo, userId, userPw, userName, nickName, userPhone, zipCode, address, detailAddress, email, bankName,
 				bankAccount, secession);
 	}
-
-	
 
 }

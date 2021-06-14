@@ -16,9 +16,10 @@
 		</div>
 	</c:if>
 	<c:if test="${!empty authInfo}">
-		<div class= account_menu>
-				<a href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>${authInfo.nickname}</span>님 환영합니다.</a>
+		<div class= account_menu>번호${authInfo.userNo}
+				<a href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>${authInfo.nickName}</span>님 환영합니다.</a>
 		</div>
 	</c:if>
+	
 </body>
 </html>

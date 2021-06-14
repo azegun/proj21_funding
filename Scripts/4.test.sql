@@ -48,6 +48,8 @@ select
 from admin;
 
 
+
+
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
 	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,

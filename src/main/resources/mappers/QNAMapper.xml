@@ -26,18 +26,23 @@
 		  from QNA	
 	</sql>
 
-	<select id="selectQNAAll" resultMap="resQNA">
+	<select id="selectQNAAll" resultMap="Associate">
 		<include refid="selectSql" />	
 	</select>
 
-	<select id="selectQNAByUserId" resultMap="resQNA">
+	<select id="selectQNAByUserId" resultMap="Associate">
 		<include refid="selectSql" />
 		where userNo = #{userNo}	
 	</select>
 	
-	<select id="selectQNAByBC" resultMap="resQNA">
+	<select id="selectQNAByBC" resultMap="Associate">
 		<include refid="selectSql" />
 		where categoryNo = #{categoryNo}	
+	</select>
+	
+	<select id="selectQNAByNo" resultMap="Associate">
+		<include refid="selectSql" />
+		where qnaNo = #{qnaNo}	
 	</select>
 	
 	<insert id="insertQNA" parameterType="QNA">

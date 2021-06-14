@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proj21_funding.dto.Project;
 import proj21_funding.dto.QNA;
 import proj21_funding.mapper.QNAMapper;
 import proj21_funding.service.QNAService;
@@ -34,6 +33,12 @@ public class QNAImpl implements QNAService {
 		return list;
 	}
 
+	@Override
+	public QNA showQNAByNo(int qnaNo) {
+		QNA qna = mapper.selectQNAByNo(qnaNo);
+		return qna;
+	}
+	
 	@Override
 	public int uploadQNA(QNA qna) {
 		return mapper.insertQNA(qna);

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.exception.DuplicateNickNameException;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserInfoService;
 
@@ -14,8 +15,23 @@ public class UserInfoServiceImpl implements UserInfoService {
 	private UserInfoMapper mapper;
 
 	@Override
-	public int modifyUserInfo(UserInfo userInfo) {
+	public int modifyUserInfo(UserInfo userInfo) {			
+		UserInfo userInfo1 = mapper.selectUserbyNickname(userInfo.getNickName());
+	
+		if(userInfo.getNickName().equals("관리자")) {			
+			throw new DuplicateNickNameException("dup nickname" + userInfo.getNickName());
+		}
+		
+		 if(userInfo1 != null) {
+			 if(userInfo.getUserId().equals(userInfo1.getUserId()) ) {					
+			 }else {
+				throw new DuplicateNickNameException("dup nickname" + userInfo.getNickName());
+			 }			
+		}
 		return mapper.updateUser(userInfo);
+		
+				
+		
 	}
 
 	@Override

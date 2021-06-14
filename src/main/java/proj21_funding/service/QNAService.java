@@ -15,6 +15,8 @@ public interface QNAService {
 	
 	List<QNA> showQNAByBC(int categoryNo);
 	
+	QNA showQNAByNo(int qnaNo);
+	
 	int uploadQNA (QNA qna);
 	
 	int replyQNA (QNA qna);

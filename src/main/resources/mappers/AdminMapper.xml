@@ -34,15 +34,20 @@
 		where adminName = #{adminName}	
 	</select>
 
+	<select id="selectAdminbylogin" resultMap="resAdmin">
+		<include refid="selectSql" />
+		where adminId = #{param1} and adminPw = PASSWORD(#{param2 })
+	</select>
+	
 	<insert id="insertAdmin" parameterType="Admin">
 		insert
 		  into admin( AdminNo, AdminId, AdminPw, AdminName, AdminTel )
-		values(#{adminNo}, #{adminId}, #{adminPw}, #{adminName}, #{adminTel})			
+		values(#{adminNo}, #{adminId}, PASSWORD(#{adminPw}), #{adminName}, #{adminTel})			
 	</insert>
 	
 	<update id="updateAdmin">
 		update admin
-		   set AdminPw = #{adminPw}, AdminName = #{adminName}, AdminTel = #{adminTel}
+		   set AdminPw = PASSWORD(#{adminPw}), AdminName = #{adminName}, AdminTel = #{adminTel}
 		 where AdminId = #{adminId}
 	</update>
 	

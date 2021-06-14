@@ -2,6 +2,8 @@ package proj21_funding.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import proj21_funding.dto.account.UserInfo;
 
 public class QNA {
@@ -12,8 +14,10 @@ public class QNA {
 	private BoardCategory categoryNo; // 글 분류
 	private String qnaTitle; // 문의제목
 	private String qnaContent; // 문의내용
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date qnaDate;//문의날짜
 	private String qnaReply; // 문의답변
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date replyDate; //답변날짜
 	private String qnaFile; // 문의첨부파일
 
