@@ -66,7 +66,7 @@
 				</tr>
 				<tr>
 					<td class="td_left"><label for="qnaReply">답변내용</label></td>
-					<td class="td_right"><p>질문이 접수되었습니다.</p>
+					<td class="td_right"><p>답변을 준비 중입니다.</p>
 						<p>질문의 답변까지는 주말을 제외하고 2~3일이 소요될 수 있습니다.</p>
 						<p>문의 답변 시간 : 평일 09:00 ~ 17:00</p>
 					</td>

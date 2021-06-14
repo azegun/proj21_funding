@@ -47,7 +47,7 @@
 						</c:if>
 					</c:forEach>
 				</td>
-				<td><a href="/board/notice_all/${board.boardNo }">${board.boardTitle }</a></td>
+				<td><a href="<%=request.getContextPath() %>/board/notice_detail/${board.boardNo }">${board.boardTitle }</a></td>
 				<td>${board.boardDate }</td>
 			</tr>
 		</c:forEach>

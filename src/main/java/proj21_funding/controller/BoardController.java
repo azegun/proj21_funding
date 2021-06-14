@@ -56,13 +56,12 @@ public class BoardController {
 		}
 	}
 	
-	@RequestMapping("/board/notice_all/{boardNo}")
+	@RequestMapping("/board/notice_detail/{boardNo}")
 	public ModelAndView detail(@PathVariable("boardNo") int boardNo) {
+		System.out.println(boardNo);
 		Board board = boardService.showBoardByNo(boardNo);
 		List<BoardCategory> bc = bcService.showBCByClass("board");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/notice_detail");
-		mav.addObject("board", board);
+		ModelAndView mav = new ModelAndView("board/notice_detail", "board", board);
 		mav.addObject("bc", bc);
 		return mav;
 	}
