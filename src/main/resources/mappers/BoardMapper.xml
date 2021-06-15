@@ -7,7 +7,6 @@
 		<result property="boardTitle" column="BoardTitle" />
 		<result property="boardContent" column="BoardContent" />
 		<result property="boardDate" column="BoardDate" />
-		<result property="boardReadCount" column="BoardReadCount" />
 	</resultMap>
 
 
@@ -18,7 +17,7 @@
 	
 
 	<sql id="selectSql">
-		select boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount
+		select boardNo, categoryNo, boardTitle, boardContent, boardDate
 		from Board
 	</sql>
 

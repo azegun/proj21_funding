@@ -25,7 +25,7 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
-	<section class = "sevicecenter_view">
+	<section class = "notice_view">
 	<h2>공지사항</h2>
 	<div>
 		<select name="category">
@@ -48,7 +48,7 @@
 						</c:if>
 					</c:forEach>
 				</td>
-				<td><a href="<%=request.getContextPath() %>/board/notice_detail/${board.boardNo }">${board.boardTitle }</a></td>
+				<td><a href="<%=request.getContextPath() %>/board/notice_detail/${board.boardNo }&${board.categoryNo.categoryNo}">${board.boardTitle }</a></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.boardDate }"/></td>
 			</tr>
 		</c:forEach>

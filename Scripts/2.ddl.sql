@@ -253,11 +253,7 @@ CREATE TABLE proj21_funding.Board (
 	CategoryNo     INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
 	BoardTitle     VARCHAR(50) NOT NULL COMMENT '공지제목', -- 공지제목
 	BoardContent   LONGTEXT    NOT NULL COMMENT '공지내용', -- 공지내용
-<<<<<<< HEAD
-	BoardDate      DATETIME    NOT NULL DEFAULT current_timestamp COMMENT '작성일', -- 작성일
-=======
 	BoardDate      DATETime    NOT NULL default now() COMMENT '작성일', -- 작성일
->>>>>>> refs/remotes/origin/master
 	BoardFile      VARCHAR(50) NULL     default nUll COMMENT '공지첨부파일' -- 문의첨부파일
 )
 COMMENT '사이트게시판';
