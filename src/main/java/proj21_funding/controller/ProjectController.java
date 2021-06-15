@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjOption;
@@ -98,12 +99,14 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/fundingProject")
-	public ModelAndView funding(HttpServletRequest request) {
-		int price = Integer.parseInt(request.getParameter("price"));
-		int optNo = Integer.parseInt(request.getParameter("optNo"));
-		ModelAndView mav = new ModelAndView("funding/fundingScreen");
-		mav.addObject("price",price);
-		mav.addObject("optNo",optNo );
+	public ModelAndView funding(/* HttpServletRequest request */@RequestParam(value="price",required=false) int price) {
+//		
+//		  int price = Integer.parseInt(request.getParameter("price")); int optNo =
+//		  Integer.parseInt(request.getParameter("optNo"));
+		 
+		ModelAndView mav = new ModelAndView("funding/fundingScreen","price",price);
+//		mav.addObject("price",price);
+//		mav.addObject("optNo",optNo );
 		return mav;
 	}
 }
