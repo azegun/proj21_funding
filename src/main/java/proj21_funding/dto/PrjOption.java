@@ -20,6 +20,21 @@ public class PrjOption {
 			this.optPrice = optPrice;
 			this.optContent = optContent;
 		}
+		
+		//update
+		public PrjOption(int optNo, String optName, int optPrice, String optContent) {
+			this.optNo = optNo;
+			this.optName = optName;
+			this.optPrice = optPrice;
+			this.optContent = optContent;
+		}
+		
+		//joinUpdate
+		public PrjOption(String optName, int optPrice, String optContent) {
+			this.optName = optName;
+			this.optPrice = optPrice;
+			this.optContent = optContent;
+		}
 
 		//getter & setter
 		public int getOptNo() {

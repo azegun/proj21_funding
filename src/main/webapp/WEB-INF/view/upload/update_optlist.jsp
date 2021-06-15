@@ -11,13 +11,7 @@
 				<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/update_opjlist.css">
 </head>
 <body>
-
-
-
-
-
-
-
+${ project[0].optNo }
 			<h2>옵션 수정</h2>	
 			<section id = "upload_opjcontent">					
 			<table>			
@@ -30,8 +24,8 @@
 									<td class = "td_right">
 											 <input type="text" id = "optName" name = "optName" value = "${ project[0].optName }" size = 40 required="required"></input>
 									</td>
-									<td class = "td_right">
-											 <input type="hidden" id = "optNo" name = "optNo" ></input>
+								<td class = "td_right">
+											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
 									</td>
 							</tr>
 							<tr>

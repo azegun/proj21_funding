@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-.container{
-	margin:0 auto;
-	width:80%;	
-}
-
-
 #loginFormArea{
 	/*정 가운데 배치 */
 	display: flex;

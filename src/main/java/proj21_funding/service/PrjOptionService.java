@@ -12,7 +12,10 @@ public interface PrjOptionService {
 	
 	List<PrjOption> showPrjOptionByPrjNo(int prjNo);
 	
-	
+	//옵션추가 + 여러개추가
 	int insertPrjOption(PrjOption prjOption);
 	int insertAddPrjOption(AddPrjOption addPrjOption);
+	
+	//옵션수정
+	int updatePrjOption(PrjOption prjoption);
 }

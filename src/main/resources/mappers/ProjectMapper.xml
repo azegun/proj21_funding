@@ -72,4 +72,15 @@
 				where prjno = #{prjNo}
 		</update>
 		
+		<!-- 프로젝트and 옵션 조인 업데이트 -->
+		<update id="joinUpdateProjectAndPrjoptionByPrjNo" parameterType="map"  >		
+				update project as p inner join prjoption as op
+					on p.PrjNo = op.PrjNo 
+						set 
+							p.PrjName = #{pName}, p.PrjContent = #{pContent}, p.PrjGoal = #{pGoal},
+							p.EndDate = #{eDate}, p.PayDate = #{pDate},
+							op.OptName = #{oName}, op.OptPrice =#{oPrice}, op.OptContent =#{oContent}
+					where p.PrjNo = #{pNo}
+		
+		</update>
 </mapper>

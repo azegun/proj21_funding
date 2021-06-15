@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 </head>
 <body>
 	<div class="container">
