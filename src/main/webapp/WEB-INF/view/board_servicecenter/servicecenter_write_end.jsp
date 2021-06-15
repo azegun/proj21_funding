@@ -15,6 +15,14 @@
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
 	<section class = "sevicecenter_write_end">
+	<h2>고객센터</h2>
+	<nav>
+		<ul>
+			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
+		</ul>
+	</nav>
+	
 	<h2>문의하기</h2>
 	
 	<p>질문이 접수되었습니다.</p>

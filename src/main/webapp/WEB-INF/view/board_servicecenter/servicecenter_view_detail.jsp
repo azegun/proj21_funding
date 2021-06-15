@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,7 @@
 		</tr>
 		<tr>
 			<td class="td_left"><label for="qnaDate">질문날짜</label></td>
-			<td class="td_right">${qna.qnaDate }</td>
+			<td class="td_right"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.qnaDate }"/></td>
 		</tr>
 		<tr>
 			<td class="td_left"><label for="qnaContent">내용</label></td>
@@ -52,7 +53,7 @@
 			<c:when test ="${qna.qnaReply ne null }">
 				<tr>
 					<td class="td_left"><label for="replyDate">답변날짜</label></td>
-					<td class="td_right">${qna.replyDate }</td>
+					<td class="td_right"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.replyDate }"/></td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="qnaReply">답변내용</label></td>
