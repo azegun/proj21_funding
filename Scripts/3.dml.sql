@@ -39,11 +39,11 @@ values ('사이트 관련', 'qna'), ('창작자 관련', 'qna'), ('후원자 관
 -- Board (사이트게시판)
 select
 	BoardNo, CategoryNo, BoardTitle, 
-	BoardContent, BoardDate, BoardReadCount
+	BoardContent, BoardDate
 from board;
 
 insert into board  values
-(00001, 1, '아자아자 펀딩팀', '힘을내요! 잘할거예요', now(), 1, null);
+(00001, 1, '아자아자 펀딩팀', '힘을내요! 잘할거예요', now(),  null);
 #default값 제외
 insert into board ( CategoryNo, BoardTitle, BoardContent) values
 (2,'이벤트','경험치2배이벤트');
@@ -96,6 +96,12 @@ insert into qna  values
 insert into qna (UserNo,CategoryNo,QnaTitle,QnaContent)
 values(2,2,'이벤트','언제시작?');
 
+-- PrjCategory(프로젝트 카테고리)
+select * from prjcategory ;
+
+insert into prjcategory (pCategoryName) 
+	values('게임'),('공연'),('디자인'),('만화'),('예술'),('공예'),('사진'),('영화(비디오)'),('푸드'),('음악'),('출판'),('테크'),('패션'),('저널리즘');
+
 
 
 
@@ -106,40 +112,40 @@ select
 from project;
 
 insert into project values(
-00001, 00001, '클라우드펀딩', '후원받아 제품만들기', 1000000,
+00001, 00001,1, '클라우드펀딩', '후원받아 제품만들기', 1000000,
 now(), now(),  now(), 1
 );
 #default값 null값 제외
-insert into project (UserNo, PrjName, PrjContent, PrjGoal,
+insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
 	StartDate, EndDate, PayDate)
-values (1,'홈페이지만들기','펀딩프로젝트만듭니다.',5000000,now(),'2021-6-30','2021-7-12');
-insert into project (UserNo, PrjName, PrjContent, PrjGoal,
+values (1,2,'홈페이지만들기','펀딩프로젝트만듭니다.',5000000,now(),'2021-6-30','2021-7-12');
+insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
 	StartDate, EndDate, PayDate)
-values (2,'보드게임','부루마블입니다.',15000000,now(),'2021-7-1','2021-7-12');
-insert into project (UserNo, PrjName, PrjContent, PrjGoal,
+values (2,3,'보드게임','부루마블입니다.',15000000,now(),'2021-7-1','2021-7-12');
+insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
 	StartDate, EndDate, PayDate)
-values (1,'UDT 훈련 수기, <내가 유디티가 된 이유> 출간','UDT 훈련 수기, <내가 유디티가 된 이유> 출간.',10000000,now(),'2021-6-30','2021-7-12');
-insert into project (UserNo, PrjName, PrjContent, PrjGoal,
+values (1,4,'UDT 훈련 수기, <내가 유디티가 된 이유> 출간','UDT 훈련 수기, <내가 유디티가 된 이유> 출간.',10000000,now(),'2021-6-30','2021-7-12');
+insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
 	StartDate, EndDate, PayDate)
-values (1,'성평등한 하루를 위한 양말','성평등한 하루를 위한 양말.',7000000,now(),'2021-6-10','2021-7-22');
+values (1,5,'성평등한 하루를 위한 양말','성평등한 하루를 위한 양말.',7000000,now(),'2021-6-10','2021-7-22');
 
 
 -- FundingInfo(후원정보) - UserInfo(회원정보), Project(프로젝트) 외래키 받음
 select
-	FundingNo, UserNo, PrjNo, OptNo, AccountNo, PayYN, EndYN
+	FundingNo, UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress, PayYN, EndYN
 from fundinginfo;
 
 insert into fundinginfo values
-(00001, 00001, 00001, 00001, 000000001, 0,0);
+(00001, 00001, 00001, 00001, 000000001,98765,'대구 달서구','영남인재교육원 201호', 0,0);
 #default값 null값 제외
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
-values (2, 2, 2, 12341234 );
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
-values (2, 1, 3, 12341234 );
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
-values (2, 1, 4, 12341234 );
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo)
-values (2, 1, 1, 3131214 );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
+values (2, 2, 2, 12341234,12345,'대구시 북구','아파트203호' );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
+values (2, 1, 3, 12341234,12345,'대구시 북구','아파트203호' );
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
+values (2, 1, 4, 12341234 ,12345,'대구시 북구','아파트203호');
+insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
+values (2, 1, 1, 3131214 ,12345,'대구시 북구','아파트203호');
 
 
 

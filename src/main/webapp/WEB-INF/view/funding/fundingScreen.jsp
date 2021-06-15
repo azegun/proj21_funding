@@ -7,7 +7,9 @@
 <title>100펀딩</title>
 </head>
 <body>
+${authInfo }
 ${prj}
+${price }
 
 
 </body>
