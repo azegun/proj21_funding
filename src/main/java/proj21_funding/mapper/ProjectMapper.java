@@ -1,6 +1,7 @@
 package proj21_funding.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,9 @@ public interface ProjectMapper {
 	int insertProject(Project project);
 // 프로젝트 수정
 	int updateProject(Project project);
-
+// 프로젝트and 옵션 조인 업데이트
+	int joinUpdateProjectAndPrjoptionByPrjNo(Map<String, Object> map);
+	
+	
 	
 }

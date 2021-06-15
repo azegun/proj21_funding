@@ -83,10 +83,22 @@ from project;
 -- 수정 프로젝트
 select PrjNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate from project;
 
+-- Join 프로젝트 + 프로젝트옵션 Update 프로젝트 수정
+update project as p inner join prjoption as op
+on p.PrjNo = op.PrjNo 
+	set 
+		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움', p.PrjGoal = 333333333,
+		p.EndDate = '2022-06-13', p.PayDate = '2021-06-13',
+		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
+where p.PrjNo = 19;
+
+
 -- 업데이트 프로젝트
 update project 
-set PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, EndDate = '2021-06-13', PayDate = '2021-06-13'
-where prjno = 66;
+	set 
+			PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, 
+			EndDate = '2021-06-13', PayDate = '2021-06-13'
+	where prjno = 66;
 
 
 
@@ -104,8 +116,8 @@ select
 from prjoption;
 -- 옵션 프로젝트 업데이트
 update prjoption 
-set OptName ='문방사우', OptPrice = 2200000, OptContent = '먹'
-where OptNo =66;
+	set OptName ='문방사우', OptPrice = 2200000, OptContent = '먹'
+where OptNo =22;
 
 
 
@@ -138,12 +150,7 @@ values(
 	SELECT last_insert_id();
 
 
-insert into prjoption 
-		(prjno, OptName, OptPrice, OptContent)
-values 
-		(4, '작가',  300000, '옵션c');
-
-	delete from member where id >91;
+delete from member where id >91;
 
 delete
 from project
@@ -179,3 +186,4 @@ insert into boardcategory(CategoryName)
 values ('창작자'), ('후원자'), ('사이트 이용');
 
 select * from boardcategory;
+

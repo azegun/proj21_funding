@@ -9,7 +9,7 @@
 				<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/update.css">
 				<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 				<script type="text/javascript">
-		$(document).ready(function(){	
+	$(document).ready(function(){	
 			$('ul.tabs li').click(function(){
 				var tab_id = $(this).attr('data-tab');
 
@@ -19,12 +19,13 @@
 			$(this).addClass('current');
 			$("#"+tab_id).addClass('current');
 		}); 
-	});	
+	});
 			//goback()
 			$(function(){
 				var contextPath = "<%=request.getContextPath()%>";
 				$("#return").on("click", function(){
-					window.location.href = contextPath+"/updateListCancel";
+					console.log(111111)
+					/* window.location.href = contextPath+"/updateListCancel"; */
 				});			
 			});
 			
@@ -46,7 +47,7 @@
 							<jsp:include page="/WEB-INF/view/upload/update_prjlist.jsp"/>
 					</div>
 					<div id="tab-2" class="register_mid">
-							<jsp:include page="/WEB-INF/view/upload/update_optlist.jsp"/>		
+							<jsp:include page="/WEB-INF/view/upload/update_optlist.jsp"/>
 					</div>	
 			</div>		
 			<div id="update_btns">
