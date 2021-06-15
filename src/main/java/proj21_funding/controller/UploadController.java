@@ -19,6 +19,7 @@ import proj21_funding.dto.AddPrjOption;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.UpdateProject;
+import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectAndPrjOptionService;
@@ -58,6 +59,47 @@ public class UploadController {
 		return "upload/upload_main";
 	}
 	
+	//수정 취소 후 리스트
+	@RequestMapping("/updateListCancel")
+	public String updateListCancel() {
+		return "upload/register_success";		
+	}	
+	
+	//업로드
+	@PostMapping("/listSuccess")
+	public String registerSuccess(Project project, PrjOption prjoption, 
+														AddPrjOption addPrjOption,  MultipartFile uploadfile) {	
+		try {
+		//트렌젝션추가
+		trservice.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);
+		//옵션 추가
+//		addPrjOption.setPrjNo(prjoption.getPrjNo());
+//		optionService.insertAddPrjOption(addPrjOption);		
+		return "upload/register_success";
+	
+		}catch (Exception e) { 
+			e.printStackTrace();
+		 
+		 return "upload/register"; 
+		 }				
+	}
+	
+	//등록완료페이지에서 -> 수정페이지
+	@RequestMapping("/updatePrj/{prjNo}")
+	public ModelAndView updateProject(@PathVariable("prjNo") int prjNo) {
+//		System.out.println("prjNo >> "+ prjNo);
+		List<PrjOption> project = optionService.showPrjOptionByPrjNo(prjNo);
+//		System.out.println("project >>>> " +project);
+		if(project == null) { 
+			throw new ProjectNotFoundException();
+		}		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("project", project);
+		mav.setViewName("upload/update");
+		
+		return mav;	
+	}
+	
 	//수정 완료 후 리스트
 	@PostMapping("/updateListSuccess")
 	public ModelAndView updateListSuccess(UpdateProject project, MultipartFile uploadfile  ) throws IOException {
@@ -65,6 +107,7 @@ public class UploadController {
 		Map<String, Object> map = new HashMap<String, Object>();
 	
 		map.put("pNo", project.getPrjNo());
+		map.put("pCategoryNo", project.getpCategoryNo());
 		map.put("pName", project.getPrjName());
 		map.put("pContent", project.getPrjContent());
 		map.put("pGoal", project.getPrjGoal());
@@ -73,7 +116,7 @@ public class UploadController {
 		map.put("oName", project.getOptName());
 		map.put("oPrice", project.getOptPrice());
 		map.put("oContent", project.getOptContent());
-//		System.out.println("map 후 >>> "+ map);
+//		System.out.println("map 후 >>> "+ map);  
 		
 		// 파일 업로드
 //		System.out.println("project.getPrjNo() >> " + project.getPrjNo());
@@ -94,50 +137,16 @@ public class UploadController {
 		mav.addObject("project", map);
 		mav.setViewName("upload/update_success");	
 
-		return mav;		
-		
-		 
+		return mav;				 
 	}
-		
-	
-	//수정 취소 후 리스트
-	@RequestMapping("/updateListCancel")
-	public String updateListCancel() {
-		return "upload/register_success";		
-	}	
-	
-	//업로드
-	@PostMapping("/listSuccess")
-	public String registerSuccess(Project project, PrjOption prjoption, AddPrjOption addPrjOption, MultipartFile uploadfile) {	
-		
-	try {
-		//트렌젝션추가
-		trservice.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);
-		//옵션 추가
-//		addPrjOption.setPrjNo(prjoption.getPrjNo());
-//		optionService.insertAddPrjOption(addPrjOption);		
-		return "upload/register_success";
-	
-		}catch (Exception e) { 
-			e.printStackTrace();
-		 
-		 return "upload/register"; 
-		 }				
-	}
-	//등록완료페이지에서 -> 수정페이지
-	@RequestMapping("/updatePrj/{prjNo}")
-	public ModelAndView updateProject(@PathVariable("prjNo") int prjNo) {
-//		System.out.println("prjNo >> "+ prjNo);
-		List<PrjOption> project = optionService.showPrjOptionByPrjNo(prjNo);
-//		System.out.println("project >>>> " +project);
-		if(project == null) { 
-			throw new ProjectNotFoundException();
+	@RequestMapping("/removeOneProject/{prjNo}")
+	public String deleteProject(@PathVariable("prjNo") int prjNo) {
+		trservice.trremovePrjAndPrjOpt(prjNo);
+		if(prjNo == 0) { 
+			throw new ProjectNotDeleteException();
 		}		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("project", project);
-		mav.setViewName("upload/update");
-		
-		return mav;	
+		return "/main";
 	}
+		
 
 }

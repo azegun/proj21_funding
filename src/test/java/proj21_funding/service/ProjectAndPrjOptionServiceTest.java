@@ -42,7 +42,7 @@ public class ProjectAndPrjOptionServiceTest {
 	public void testTrJoinPrjAndPrjOpt_Success() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
         
-    	Project project = new Project(new UserInfo(2), "트렌젝션성공!!!!!!!", "제발,,,,", 3000000);
+    	Project project = new Project(new UserInfo(2), 2,"트렌젝션성공!!!!!!!", "제발,,,,", 3000000);
     	int res = pMapper.insertProject(project);
     	System.out.println(" res" + res);
     	
@@ -50,10 +50,22 @@ public class ProjectAndPrjOptionServiceTest {
     	System.out.println(prjoption);
     	res += prjOptMapper.insertPrjOption(prjoption);
     	Assert.assertEquals(2, res);
-    	System.out.println("final res" +res);
-    	
+    	System.out.println("final res" +res);       
         
+	}
+	
+	@Test
+	public void testTrRemovePrjAndPrjOpt_Success() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
         
+        int res = prjOptMapper.removePrjOption(12);
+        System.out.println("res1 >>  " + res);
+        
+        res += pMapper.removeProject(12);
+        Assert.assertEquals(2, res);
+        System.out.println("final res >> " +res);    
+        
+
 	}
 
 }

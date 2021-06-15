@@ -26,6 +26,13 @@
 									window.location.href = contextPath+"/updatePrj/${pro.prjNo}";
 								});			
 							});
+					/* 프로젝트 삭제 */		
+							$(function(){
+								var contextPath = "<%=request.getContextPath()%>";
+								$("#delete_list").on("click", function(){
+									window.location.href = contextPath+"/removeOneProject/${pro.prjNo}";
+								});			
+							});
 					</script>
 </head>
 <body>
@@ -37,18 +44,20 @@ ${pro.prjNo}
 		<section id= "table_all">
 		<table>		
 			<thead id = "column">
-				<tr>
-						<th>프로젝트 명</th>	<th>프로젝트 내용</th>
+				<tr>	
+						<th>번호</th>
+						<th>프로젝트</th>	<th>소개</th>
 						<th>목표 금액</th>
 						<th>마감일</th>	<th>결제일</th>
 						<th>옵션이름</th><th>옵션금액</th>
 						<th>옵션내용</th>
-						<th>프로젝트수정</th><th>삭제</th>
+						<th>수정</th><th>삭제</th>
 				</tr>
 			</thead>
 			<tbody id= "context">
 					
-				<tr> 
+				<tr> 	
+							<td>${pro.prjNo }</td>						
 							<td>${pro.prjName}</td>
 							<td>${pro.prjContent }</td>
 							<td>${pro.prjGoal}</td>
@@ -57,7 +66,7 @@ ${pro.prjNo}
 							<td>${propt.optName }</td>
 							<td>${propt.optPrice }</td>
 							<td>${propt.optContent }</td>	
-							<td><button id= "update_list">프로젝트 수정</button></td>
+							<td><button id= "update_list">수정</button></td>
 							<td><button id= "delete_list">삭제</button></td>
 				</tr>
 				</tbody>

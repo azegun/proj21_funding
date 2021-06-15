@@ -4,6 +4,7 @@
 		<!-- property는 dto  column는 sql 컬럼 -->
 		<resultMap type="Project" id="resProject">
 				<id property="prjNo" column="PrjNo"/>
+				<result property="pCategoryNo" column="pCategoryNo"/>
 				<result property="prjName" column="PrjName"/>
 				<result property="prjContent" column="PrjContent"/>
 				<result property="prjGoal" column="PrjGoal"/>
@@ -51,9 +52,11 @@
 			<!-- 프로젝트 insert (Transaction사용) -->
 		 <insert id="insertProject" parameterType="Project">
 				insert into project(
-						UserNo, PrjName, PrjContent, PrjGoal,  EndDate, PayDate) 
+						UserNo, pCategoryNo, PrjName, PrjContent, PrjGoal, 
+						StartDate, EndDate, PayDate) 
 				values(
-						#{userNo.userNo}, #{prjName}, #{prjContent}, #{prjGoal}, now(), now())
+						#{userNo.userNo}, #{pCategoryNo}, #{prjName}, #{prjContent}, #{prjGoal},
+						 now(), now(), now())
 					<selectKey keyProperty="prjNo" resultType="int">
 							SELECT last_insert_id()
 					</selectKey>
@@ -62,7 +65,9 @@
 		<!-- 프로젝트 수정 -->
 		<update id="updateProject" >
 				update project 
-					set PrjName = #{prjName}, PrjContent =#{prjContent}, PrjGoal = #{prjGoal}, EndDate = #{endDate}, PayDate = #{payDate}
+					set 
+					pCategoryNo = #{pCategoryNo}, PrjName = #{prjName}, PrjContent =#{prjContent}, 
+					PrjGoal = #{prjGoal}, EndDate = #{endDate}, PayDate = #{payDate}
 				where prjno = #{prjNo}
 		</update>
 		
@@ -71,10 +76,17 @@
 				update project as p inner join prjoption as op
 					on p.PrjNo = op.PrjNo 
 						set 
+						   p.pCategoryNo = #{pCategoryNo},
 							p.PrjName = #{pName}, p.PrjContent = #{pContent}, p.PrjGoal = #{pGoal},
 							p.EndDate = #{eDate}, p.PayDate = #{pDate},
 							op.OptName = #{oName}, op.OptPrice =#{oPrice}, op.OptContent =#{oContent}
-					where p.PrjNo = #{pNo}
-		
+					where p.PrjNo = #{pNo}		
 		</update>
+		
+		<!-- 프로젝트 삭제 -->
+		<delete id="removeProject">
+				delete from project 
+					where PrjNo  = #{prjNo}		
+		</delete>
+		
 </mapper>

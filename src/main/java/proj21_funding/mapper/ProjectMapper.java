@@ -23,6 +23,8 @@ public interface ProjectMapper {
 	int updateProject(Project project);
 // 프로젝트and 옵션 조인 업데이트
 	int joinUpdateProjectAndPrjoptionByPrjNo(Map<String, Object> map);
+//	프로젝트 삭제
+	int removeProject(int prjNo);
 	
 	
 	

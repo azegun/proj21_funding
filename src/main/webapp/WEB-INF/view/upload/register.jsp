@@ -28,6 +28,16 @@
 				window.location.href = contextPath+"/uploadListCancel";
 			});			
 		});
+
+		$(function(){
+			var contextPath = "<%=request.getContextPath()%>";
+			$(".test").on("click", function(){
+					var test = $('#category').val()
+					if(test == 0){
+						alert("선택해주세요")
+					}
+			});			
+		});
 		
 	/* 		$('#go_option').click(function(){
 				var tab_id = $(this).attr('data-tab');
@@ -71,13 +81,13 @@
 							<jsp:include page="/WEB-INF/view/upload/register_prjinfo.jsp"/>
 					</div>
 					<div id="tab-2" class="register_mid">
-							<jsp:include page="/WEB-INF/view/upload/register_optinfo.jsp"/>		
+							<jsp:include page="/WEB-INF/view/upload/register_optinfo.jsp"/>
 					</div>	
 			</div>		
 			<div id="register_btns">
 					<!-- <button id = "go_option" >옵션</button>&nbsp;&nbsp; 			
 					<button id = "go_project" >프로젝트</button><br>				 -->
-					<input type="submit" value="등록"/>&nbsp;
+					<input class = "test" type="submit" value="등록"/>&nbsp;
 					<input type="reset" value="다시쓰기" />&nbsp; 
 					<button id= "return">뒤로</button>
 			</div>	
