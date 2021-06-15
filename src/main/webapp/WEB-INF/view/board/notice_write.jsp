@@ -16,6 +16,7 @@
 	href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
+${authInfo.userNo }
 	<%=request.getContextPath() %>
 	<section class="container">
 		<header>
@@ -29,19 +30,13 @@
 				<table>
 					<tr>
 						<td class="td_left"><label for="categoryNo">분류</label></td>
-						<td class="td_right"><select>
+						<td class="td_right"><select name="categoryNo.categoryNo">
 								<c:forEach var="bc" items="${bc }">
 									<c:if test="${bc.categoryClass eq 'board' }">
 										<option value="${bc.categoryNo }">${bc.categoryName }</option>
 									</c:if>
 								</c:forEach>
 						</select></td>
-					</tr>
-					<tr>
-						<td class="td_left"><label for="userName">작성자</label></td>
-						<td class="td_right" id="userName" name="userNo.userName"
-							value="${authInfo.userNo }" size=40 required="required"
-							readonly="readonly"></td>
 					</tr>
 					<tr>
 						<td class="td_left"><label for="boardTitle">제목</label></td>

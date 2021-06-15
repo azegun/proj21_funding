@@ -27,6 +27,16 @@ public class BoardController {
 	public ModelAndView noticeAll() {
 		List<Board> board = boardService.showBoardAll();
 		List<BoardCategory> bc = bcService.showBCByClass("board");
+		
+		/*
+		 * int listCnt = boardService.selectBoardListCnt(board);
+		 * 
+		 * Pagination pagination = new Pagination(listCnt, curPage);
+		 * 
+		 * board.setStartIndex(pagination.getStartIndex());
+		 * board.setCntPerPage(pagination.getPageSize());
+		 */
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("board/notice_all");
 		mav.addObject("board", board);
@@ -44,10 +54,11 @@ public class BoardController {
 	}
 
 	@PostMapping("/noticesuccess")
-	public String registerSuccess(Board board) {
+	public String registerSuccess(Board board, BoardCategory bc) {
 		try {
+			System.out.println(board);
 			boardService.uploadBoard(board);
-			return "board/notice_all";
+			return "board/notice_end";
 
 		} catch (Exception e) {
 			e.printStackTrace();
