@@ -51,7 +51,7 @@
 					</c:forEach>								
 				</table>
 			</fieldset>	
-			<button>삭제</button>
+			<form:button>삭제</form:button>>
 			</form:form>					
 		</section>
 		<footer>

@@ -13,9 +13,9 @@
 <body>
 			<%-- ${prjNo}
 			${authInfo.userNo } --%>
-			<%-- ${project }	<br> --%>
+			${project }	 
 			<%-- ${project[0] } --%>
-			 <%-- ${project[0].prjNo} --%>				
+			<%--  ${project[0].prjNo} --%>
 			
 			<h2>프로젝트 수정</h2>	
 			<section id = "upload_prjcontent">					
@@ -26,7 +26,7 @@
 							<label for = "prjNo">프로젝트 번호 </label>
 					</td>
 					<td class = "td_right" >
-							<input type="text" id = "prjNo" name = "prjNo" value="${prjNo }" size = 40 required="required" />
+							<input type="text" id = "prjNo" name = "prjNo" value="${prjNo }" size = 40 required="required" readonly="readonly" />
 					</td>
 			</tr>
 			<tr>

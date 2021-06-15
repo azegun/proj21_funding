@@ -13,21 +13,6 @@
 		<association property="prjNo" resultMap="proj21_funding.mapper.ProjectMapper.AssociateResUserInfo"></association>
 	</resultMap>
 		
-	<insert id="insertPrjOption">
-			insert into prjoption 
-					(prjno, OptName, OptPrice, OptContent)
-			values 
-					(#{prjNo.prjNo}, #{optName},  #{optPrice}, #{optContent})
-		</insert>		
-		
-		<!-- 추가적인 아이템 -->
-		<insert id="insertAddPrjOption">
-			insert into prjoption 
-					(prjno, OptName, OptPrice, OptContent)
-			values 
-					(#{prjNo.prjNo}, #{addOptName},  #{addOptPrice}, #{addOptContent})
-		</insert>		
-		
 		
 	<select id="selectPrjOptionByAll" resultType="PrjOption">
 		select * from PrjOption
@@ -52,6 +37,29 @@
 						   join prjoption o on p.PrjNo =o.PrjNo
 			where o.prjNo = #{prjNo}
 	</select>
+	
+		<!-- 옵션 등록1  -->
+		<insert id="insertPrjOption">
+			insert into prjoption 
+					(prjno, OptName, OptPrice, OptContent)
+			values 
+					(#{prjNo.prjNo}, #{optName},  #{optPrice}, #{optContent})
+		</insert>		
+		
+		<!-- 추가적인 아이템2 -->
+		<insert id="insertAddPrjOption">
+			insert into prjoption 
+					(prjno, OptName, OptPrice, OptContent)
+			values 
+					(#{prjNo.prjNo}, #{addOptName},  #{addOptPrice}, #{addOptContent})
+		</insert>		
+		
+		<!-- 프로젝트 옵션 수정 -->
+		<update id="updatePrjOption">
+			update prjoption 
+				set OptName = #{optName}, OptPrice = #{optPrice}, OptContent = #{optContent}
+			where OptNo = #{optNo}		
+		</update>
 
 
 </mapper>

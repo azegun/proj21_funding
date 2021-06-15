@@ -27,22 +27,34 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile) {
 		int res = pMapper.insertProject(project);
 		prjoption.setPrjNo(project);
+		
 		//컨트롤러에서 작성안한 이유는, 프로젝트 insert가 되어야지 prjno가 생성되므로, 여기서 파일 구현
 		
-		String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
+		
 //		System.out.println("saveName: "+ saveName);
 		
-		File saveFile = new File(UPLOAD_PATH, saveName);
-		try {
-			uploadfile.transferTo(saveFile);
-		}catch (IOException e) {
-		e.printStackTrace();
-		}		
+		
+		String result = saveFile(prjoption, uploadfile);
+//		System.out.println("result >> "+ result);
+		
 		
 		res += prjOptMapper.insertPrjOption(prjoption);
 		
 		if(res != 2) throw new RuntimeException();				
 	}
+
+	private String saveFile(PrjOption prjoption, MultipartFile uploadfile) {
+		String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
+		File saveFile = new File(UPLOAD_PATH, saveName);
+		
+		try {
+			uploadfile.transferTo(saveFile);
+		}catch (IOException e) {
+		e.printStackTrace();
+		}		
+		return null;
+	}
+
 
 		
 	

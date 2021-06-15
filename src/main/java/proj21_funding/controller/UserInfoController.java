@@ -26,6 +26,11 @@ public class UserInfoController {
 	@GetMapping("/account/userInfo")
 	public String form(UserInfo userInfo, HttpSession session, Model model) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
+		
+		if(userAuthInfo.getUserNo() < 0) {
+		         return "redirect:/main";
+		}		
+		
 		userInfo = service.showUserInfoById(userAuthInfo.getUserId());
 		model.addAttribute(userInfo);
 		return "account/userInfo";

@@ -32,6 +32,12 @@
 			where prjNo = #{prjNo};
 		</select>	
 		
+		<select id="selectProjectByUser" resultMap="resProject">
+			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
+				   StartDate, EndDate, PayDate, EndYN
+			  from project
+			 where UserNo = #{userNo.userNo}		
+		</select>		
 		
 		<!--성공임박 프로젝트 달성률 80프로이상  -->
 		<select id="selectProjectSuccessImbak" 
@@ -66,4 +72,15 @@
 				where prjno = #{prjNo}
 		</update>
 		
+		<!-- 프로젝트and 옵션 조인 업데이트 -->
+		<update id="joinUpdateProjectAndPrjoptionByPrjNo" parameterType="map"  >		
+				update project as p inner join prjoption as op
+					on p.PrjNo = op.PrjNo 
+						set 
+							p.PrjName = #{pName}, p.PrjContent = #{pContent}, p.PrjGoal = #{pGoal},
+							p.EndDate = #{eDate}, p.PayDate = #{pDate},
+							op.OptName = #{oName}, op.OptPrice =#{oPrice}, op.OptContent =#{oContent}
+					where p.PrjNo = #{pNo}
+		
+		</update>
 </mapper>

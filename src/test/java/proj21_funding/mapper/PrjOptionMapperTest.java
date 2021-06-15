@@ -50,5 +50,15 @@ public class PrjOptionMapperTest {
 	
 		Assert.assertEquals(1, res);		
 	}
+	
+	@Test
+	public void testupdateProjectOption() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		PrjOption prjoption = new PrjOption(22, "문방구", 399999, "색종이");
+		int res = mapper.updatePrjOption(prjoption);
+		
+		Assert.assertEquals(1, res);		
+	}
 
 }

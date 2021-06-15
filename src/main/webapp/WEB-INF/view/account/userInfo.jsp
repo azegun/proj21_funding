@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보관리</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/userInfo.css">
 	<script type="text/javascript">
 	function findAddr(){
@@ -29,6 +29,12 @@
 	        }
 	    }).open();
 	}
+	
+	function openCh(){		
+		window.open('userChangePw', '', 'left = 700, top = 200, width = 400, height = 300')
+	}
+	
+	
 	</script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
@@ -49,7 +55,7 @@
 				</p>
 				<p>
 					<label>비밀번호:
-					<a href="<c:url value='/account/userChangePw'/>"><form:button type = "button">비밀번호 변경</form:button></a>
+					<form:button type = "button" onclick="openCh()">비밀번호 변경</form:button>
 					</label>
 				</p>
 				<p>

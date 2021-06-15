@@ -42,7 +42,7 @@ public class UserLoginController {
 			return "account/login";
 
 		try {
-			UserAuthInfo userAuthInfo = authService.authenicate(userLogin.getUserId(), userLogin.getUserPw());
+			UserAuthInfo userAuthInfo = authService.authenicate(userLogin);
 			session.setAttribute("authInfo", userAuthInfo);
 			
 			Cookie rememberCookie = new Cookie("REMEMBER", userLogin.getUserId());

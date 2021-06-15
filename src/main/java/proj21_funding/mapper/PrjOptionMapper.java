@@ -13,6 +13,8 @@ public interface PrjOptionMapper {
 	int insertPrjOption(PrjOption prjOption);
 	//추가적인 아이템등록
 	int insertAddPrjOption(AddPrjOption addPrjOption);
+	//프로젝트옵션 수정
+	int updatePrjOption(PrjOption prjoption);
 	
 	PrjOption selectPrjOptionByOptNo(int optNo);
 	

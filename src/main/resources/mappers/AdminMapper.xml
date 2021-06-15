@@ -34,9 +34,9 @@
 		where adminName = #{adminName}	
 	</select>
 
-	<select id="selectAdminbylogin" resultMap="resAdmin">
+	<select id="selectAdminbylogin" parameterType="Admin" resultMap="resAdmin">
 		<include refid="selectSql" />
-		where adminId = #{param1} and adminPw = PASSWORD(#{param2 })
+		where adminId = #{adminId} and adminPw = PASSWORD(#{adminPw })
 	</select>
 	
 	<insert id="insertAdmin" parameterType="Admin">
