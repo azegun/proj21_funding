@@ -7,6 +7,9 @@ CREATE SCHEMA proj21_funding;
 -- 회원정보
 DROP TABLE IF EXISTS proj21_funding.UserInfo RESTRICT;
 
+-- 회원(판매자)
+DROP TABLE IF EXISTS proj21_funding.UserSeller RESTRICT;
+
 -- 프로젝트
 DROP TABLE IF EXISTS proj21_funding.Project RESTRICT;
 
@@ -37,21 +40,24 @@ DROP TABLE IF EXISTS proj21_funding.BoardCategory RESTRICT;
 -- 주소
 DROP TABLE IF EXISTS proj21_funding.addresses RESTRICT;
 
+-- 프로젝트카테고리
+DROP TABLE IF EXISTS proj21_funding.PrjCategory RESTRICT;
+
 -- 회원정보
 CREATE TABLE proj21_funding.UserInfo (
 	UserNo        INT(10)      NOT NULL COMMENT '회원번호', -- 회원번호
 	UserId        VARCHAR(10)  NOT NULL COMMENT '회원계정', -- 회원계정
 	UserPw        CHAR(41)     NOT NULL COMMENT '비밀번호', -- 비밀번호
 	UserName      VARCHAR(20)  NOT NULL COMMENT '회원성명', -- 회원성명
-	Nickname      VARCHAR(20)  NOT NULL COMMENT '별명', -- 회원성명	
-	UserPhone     VARCHAR(20)  NOT NULL COMMENT '회원H.P', -- 회원H.P
-	ZipCode		  INT(10)	   NOT NULL COMMENT '우편번호', -- 우편번호
+	Nickname      VARCHAR(20)  NULL     COMMENT '회원별명', -- 회원별명
+	UserPhone     VARCHAR(20)  NULL     COMMENT '회원H.P', -- 회원H.P
+	ZipCode       INT(10)      NOT NULL COMMENT '우편번호', -- 우편번호
 	Address       VARCHAR(100) NOT NULL COMMENT '주소', -- 주소
-	DetailAddress VARCHAR(50)  NULL     COMMENT '상세주소', -- 상세주소	
-	Email         VARCHAR(100) NULL     COMMENT '이메일', -- 이메일	
+	DetailAddress VARCHAR(100) NULL     COMMENT '상세주소', -- 상세주소
+	Email         VARCHAR(100) NULL     COMMENT '이메일', -- 이메일
 	BankName      VARCHAR(10)  NULL     COMMENT '은행명', -- 은행명
 	BankAccount   INT(20)      NULL     COMMENT '계좌번호', -- 계좌번호
-	Secession	  TINYINT      NOT NULL DEFAULT 0 COMMENT '탈퇴여부' -- 탈퇴여부
+	Secession     TINYINT      NULL     COMMENT '탈퇴여부' -- 탈퇴여부
 )
 COMMENT '회원정보';
 
@@ -65,17 +71,33 @@ ALTER TABLE proj21_funding.UserInfo
 ALTER TABLE proj21_funding.UserInfo
 	MODIFY COLUMN UserNo INT(10) NOT NULL AUTO_INCREMENT COMMENT '회원번호';
 
+-- 회원(판매자)
+CREATE TABLE proj21_funding.UserSeller (
+	UserNo      INT(10)     NOT NULL COMMENT '회원번호', -- 회원번호
+	BankAccount INT(20)     NOT NULL COMMENT '계좌번호', -- 계좌번호
+	BankName    VARCHAR(10) NOT NULL COMMENT '은행명' -- 은행명
+)
+COMMENT '회원(판매자)';
+
+-- 회원(판매자)
+ALTER TABLE proj21_funding.UserSeller
+	ADD CONSTRAINT PK_UserSeller -- 회원(판매자) 기본키
+		PRIMARY KEY (
+			UserNo -- 회원번호
+		);
+
 -- 프로젝트
 CREATE TABLE proj21_funding.Project (
-	PrjNo      INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
-	UserNo     INT(10)     NOT NULL COMMENT '프로젝트관리자', -- 프로젝트관리자
-	PrjName    VARCHAR(30) NOT NULL COMMENT '프로젝트명', -- 프로젝트명
-	PrjContent LONGTEXT    NOT NULL COMMENT '프로젝트내용', -- 프로젝트내용
-	PrjGoal    INT(10)     NOT NULL COMMENT '목표금액', -- 목표금액
-	StartDate  DATETIME    NOT NULL DEFAULT now() COMMENT '시작일', -- 시작일
-	EndDate    DATETIME    NOT NULL COMMENT '마감일', -- 마감일
-	PayDate    DATETIME    NOT NULL COMMENT '결제일', -- 결제일
-	EndYN      TINYINT     NOT NULL DEFAULT 0 COMMENT '마감여부' -- 마감여부
+	PrjNo       INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
+	UserNo      INT(10)     NOT NULL COMMENT '프로젝트관리자', -- 프로젝트관리자
+	pCategoryNo INT(3)      NOT NULL COMMENT '프로젝트 분류', -- 프로젝트 분류
+	PrjName     VARCHAR(30) NOT NULL COMMENT '프로젝트명', -- 프로젝트명
+	PrjContent  LONGTEXT    NOT NULL COMMENT '프로젝트내용', -- 프로젝트내용
+	PrjGoal     INT(10)     NOT NULL COMMENT '목표금액', -- 목표금액
+	StartDate   DATE        NOT NULL COMMENT '시작일', -- 시작일
+	EndDate     DATE        NOT NULL COMMENT '마감일', -- 마감일
+	PayDate     DATE        NOT NULL COMMENT '결제일', -- 결제일
+	EndYN       TINYINT     NOT NULL DEFAULT 0 COMMENT '마감여부' -- 마감여부
 )
 COMMENT '프로젝트';
 
@@ -91,10 +113,10 @@ ALTER TABLE proj21_funding.Project
 
 -- 프로젝트구매옵션
 CREATE TABLE proj21_funding.PrjOption (
-	OptNo      INT(10)     NOT NULL COMMENT '옵션번호', -- 옵션번호
-	PrjNo      INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
-	OptName    VARCHAR(30) NULL     COMMENT '옵션명', -- 옵션명
-	OptPrice   INT(30)     NOT NULL COMMENT '옵션금액', -- 옵션금액
+	OptNo      INT(10)      NOT NULL COMMENT '옵션번호', -- 옵션번호
+	PrjNo      INT(10)      NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
+	OptName    VARCHAR(30)  NULL     COMMENT '옵션명', -- 옵션명
+	OptPrice   INT(30)      NOT NULL COMMENT '옵션금액', -- 옵션금액
 	OptContent VARCHAR(100) NOT NULL COMMENT '옵션내용' -- 옵션내용
 )
 COMMENT '프로젝트구매옵션';
@@ -111,13 +133,16 @@ ALTER TABLE proj21_funding.PrjOption
 
 -- 후원정보
 CREATE TABLE proj21_funding.FundingInfo (
-	FundingNo INT(10) NOT NULL COMMENT '후원번호', -- 후원번호
-	UserNo    INT(10) NOT NULL COMMENT '회원번호', -- 회원번호
-	PrjNo     INT(10) NULL     COMMENT '프로젝트번호', -- 프로젝트번호
-	OptNo     INT(10) NOT NULL COMMENT '옵션번호', -- 옵션번호
-	AccountNo INT(30) NOT NULL COMMENT '계좌(카드)번호', -- 계좌(카드)번호
-	PayYN     TINYINT NOT NULL DEFAULT 0 COMMENT '결제여부', -- 결제여부
-	EndYN     TINYINT NOT NULL DEFAULT 0 COMMENT '마감여부' -- 마감여부
+	FundingNo     INT(10)      NOT NULL COMMENT '후원번호', -- 후원번호
+	UserNo        INT(10)      NOT NULL COMMENT '회원번호', -- 회원번호
+	PrjNo         INT(10)      NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
+	OptNo         INT(10)      NOT NULL COMMENT '옵션번호', -- 옵션번호
+	AccountNo     INT(20)      NOT NULL COMMENT '계좌(카드)번호', -- 계좌(카드)번호
+	ZipCode       Int(10)      NOT NULL COMMENT '우편번호', -- 우편번호
+	Address       VARCHAR(100) NOT NULL COMMENT '주소', -- 주소
+	DetailAddress VARCHAR(100) NULL     COMMENT '상세주소', -- 상세주소
+	PayYN         TINYINT      NOT NULL DEFAULT 0 COMMENT '결제여부', -- 결제여부
+	EndYN         TINYINT      NOT NULL DEFAULT 0 COMMENT '마감여부' -- 마감여부
 )
 COMMENT '후원정보';
 
@@ -157,10 +182,10 @@ CREATE TABLE proj21_funding.Message (
 	SendUser    VARCHAR(10)  NOT NULL COMMENT '발신자', -- 발신자
 	ReceiveUser VARCHAR(10)  NOT NULL COMMENT '수신자', -- 수신자
 	MsgContent  VARCHAR(100) NOT NULL COMMENT '내용', -- 내용
-	SendDate    DATETIME     NOT NULL DEFAULT current_timestamp COMMENT '발신일', -- 발신일
+	SendDate    DATETIME     NOT NULL default current_timestamp COMMENT '발신일', -- 발신일
 	ReadYN      TINYINT      NOT NULL DEFAULT 0 COMMENT '확인여부', -- 확인여부
-	DelSend     TINYINT      NOT NULL DEFAULT 0 COMMENT '보낸메세지삭제', -- 보낸메세지삭제
-	DelRecevie  TINYINT      NOT NULL DEFAULT 0 COMMENT '받은메세지삭제' -- 받은메세지삭제
+	DelSend     TINYINT      NULL     DEFAULT 0 COMMENT '보낸메세지삭제', -- 보낸메세지삭제
+	DelRecevie  TINYINT      NULL     DEFAULT 0 COMMENT '받은메세지삭제' -- 받은메세지삭제
 )
 COMMENT '메세지';
 
@@ -208,7 +233,7 @@ CREATE TABLE proj21_funding.QnA (
 	QnaDate    DATETIME     NOT NULL DEFAULT current_timestamp COMMENT '문의날짜', -- 문의날짜
 	QnaReply   VARCHAR(300) NULL     COMMENT '문의답변', -- 문의답변
 	ReplyDate  DATETIME     NULL     COMMENT '답변날짜', -- 답변날짜
-	QnaFile    VARCHAR(50)  NULL     default NUll COMMENT '문의첨부파일' -- 문의첨부파일
+	QnaFile    VARCHAR(50)  NULL     COMMENT '문의첨부파일' -- 문의첨부파일
 )
 COMMENT 'Q&A';
 
@@ -228,7 +253,11 @@ CREATE TABLE proj21_funding.Board (
 	CategoryNo     INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
 	BoardTitle     VARCHAR(50) NOT NULL COMMENT '공지제목', -- 공지제목
 	BoardContent   LONGTEXT    NOT NULL COMMENT '공지내용', -- 공지내용
+<<<<<<< HEAD
 	BoardDate      DATETIME    NOT NULL DEFAULT current_timestamp COMMENT '작성일', -- 작성일
+=======
+	BoardDate      DATETime    NOT NULL default now() COMMENT '작성일', -- 작성일
+>>>>>>> refs/remotes/origin/master
 	BoardFile      VARCHAR(50) NULL     default nUll COMMENT '공지첨부파일' -- 문의첨부파일
 )
 COMMENT '사이트게시판';
@@ -279,6 +308,32 @@ ALTER TABLE proj21_funding.addresses
 			addr_id -- 주소코드
 		);
 
+-- 프로젝트카테고리
+CREATE TABLE proj21_funding.PrjCategory (
+	pCategoryNo   INT(3)      NOT NULL COMMENT '프로젝트 분류', -- 프로젝트 분류
+	pCategoryName VARCHAR(20) NOT NULL COMMENT '분류명' -- 분류명
+)
+COMMENT '프로젝트카테고리';
+
+-- 프로젝트카테고리
+ALTER TABLE proj21_funding.PrjCategory
+	ADD CONSTRAINT PK_PrjCategory -- 프로젝트카테고리 기본키
+		PRIMARY KEY (
+			pCategoryNo -- 프로젝트 분류
+		);
+
+ALTER TABLE proj21_funding.PrjCategory
+	MODIFY COLUMN pCategoryNo INT(3) NOT NULL AUTO_INCREMENT COMMENT '프로젝트 분류';
+
+-- 회원(판매자)
+ALTER TABLE proj21_funding.UserSeller
+	ADD CONSTRAINT FK_UserInfo_TO_UserSeller -- 회원정보 -> 회원(판매자)
+		FOREIGN KEY (
+			UserNo -- 회원번호
+		)
+		REFERENCES proj21_funding.UserInfo ( -- 회원정보
+			UserNo -- 회원번호
+		);
 
 -- 프로젝트
 ALTER TABLE proj21_funding.Project
@@ -288,6 +343,16 @@ ALTER TABLE proj21_funding.Project
 		)
 		REFERENCES proj21_funding.UserInfo ( -- 회원정보
 			UserNo -- 회원번호
+		);
+
+-- 프로젝트
+ALTER TABLE proj21_funding.Project
+	ADD CONSTRAINT FK_PrjCategory_TO_Project -- 프로젝트카테고리 -> 프로젝트
+		FOREIGN KEY (
+			pCategoryNo -- 프로젝트 분류
+		)
+		REFERENCES proj21_funding.PrjCategory ( -- 프로젝트카테고리
+			pCategoryNo -- 프로젝트 분류
 		);
 
 -- 프로젝트구매옵션
