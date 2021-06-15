@@ -1,6 +1,10 @@
 package proj21_funding.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import proj21_funding.dto.AddPrjOption;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.dto.UpdateProject;
 import proj21_funding.exception.ProjectNotFoundException;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectAndPrjOptionService;
@@ -21,12 +26,18 @@ import proj21_funding.service.ProjectService;
 
 @Controller
 public class UploadController {	
+	
+	//web.xml에 있는 multipart-config 주소랑 동일시하게 
+		private static final String UPLOAD_PATH = "C:\\workspace_web\\proj21_funding\\src\\main\\webapp\\images\\project";
 
 	@Autowired
-	private ProjectAndPrjOptionService service;
+	private ProjectAndPrjOptionService trservice;
 	
 	@Autowired
 	private PrjOptionService optionService;
+	
+	@Autowired
+	private ProjectService projectService;
 	
 	
 	//home에서 프로젝트 올리기 광고페이지
@@ -48,10 +59,46 @@ public class UploadController {
 	}
 	
 	//수정 완료 후 리스트
-	@RequestMapping("/updateListSuccess")
-	public String updateListSuccess() {
-		return "upload/register_success";		
+	@PostMapping("/updateListSuccess")
+	public ModelAndView updateListSuccess(UpdateProject project, MultipartFile uploadfile  ) throws IOException {
+//		System.out.println("updateProject 전 >> " + project);
+		Map<String, Object> map = new HashMap<String, Object>();
+	
+		map.put("pNo", project.getPrjNo());
+		map.put("pName", project.getPrjName());
+		map.put("pContent", project.getPrjContent());
+		map.put("pGoal", project.getPrjGoal());
+		map.put("eDate", project.getEndDate());
+		map.put("pDate", project.getPayDate());
+		map.put("oName", project.getOptName());
+		map.put("oPrice", project.getOptPrice());
+		map.put("oContent", project.getOptContent());
+//		System.out.println("map 후 >>> "+ map);
+		
+		// 파일 업로드
+//		System.out.println("project.getPrjNo() >> " + project.getPrjNo());
+		String saveName = "project"+project.getPrjNo()+".jpg";
+//		System.out.println("saveName>> "  +saveName);
+		
+		File saveFile = new File(UPLOAD_PATH, saveName);
+		
+		try {
+			uploadfile.transferTo(saveFile);
+		}catch (IOException e) {
+		e.printStackTrace();
+		}
+		// 파일 업로드
+		projectService.joinUpdateProjectAndPrjoptionByNo(map);		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("project", map);
+		mav.setViewName("upload/update_success");	
+
+		return mav;		
+		
+		 
 	}
+		
 	
 	//수정 취소 후 리스트
 	@RequestMapping("/updateListCancel")
@@ -65,7 +112,7 @@ public class UploadController {
 		
 	try {
 		//트렌젝션추가
-		service.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);
+		trservice.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);
 		//옵션 추가
 //		addPrjOption.setPrjNo(prjoption.getPrjNo());
 //		optionService.insertAddPrjOption(addPrjOption);		
@@ -77,16 +124,15 @@ public class UploadController {
 		 return "upload/register"; 
 		 }				
 	}
-	//프로젝트 수정
+	//등록완료페이지에서 -> 수정페이지
 	@RequestMapping("/updatePrj/{prjNo}")
 	public ModelAndView updateProject(@PathVariable("prjNo") int prjNo) {
-		System.out.println("prjNo >> "+ prjNo);
+//		System.out.println("prjNo >> "+ prjNo);
 		List<PrjOption> project = optionService.showPrjOptionByPrjNo(prjNo);
-		System.out.println("project >>>> " +project);
-		if(project == null) {
+//		System.out.println("project >>>> " +project);
+		if(project == null) { 
 			throw new ProjectNotFoundException();
-		}
-		
+		}		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("project", project);
 		mav.setViewName("upload/update");

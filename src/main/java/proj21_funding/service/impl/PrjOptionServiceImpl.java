@@ -41,6 +41,12 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.insertAddPrjOption(addPrjOption);
 	}
 
+	@Override
+	public int updatePrjOption(PrjOption prjoption) {
+		System.out.println("PrjOpt수정IMPL >> "+ prjoption);
+		return mapper.updatePrjOption(prjoption);
+	}
+
 
 
 }

@@ -1,11 +1,13 @@
 package proj21_funding.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import proj21_funding.dto.Project;
 import proj21_funding.mapper.ProjectMapper;
@@ -15,13 +17,15 @@ import proj21_funding.service.ProjectService;
 public class ProjectServiceImpl implements ProjectService {
 	static final Log log = LogFactory.getLog(ProjectServiceImpl.class);
 	
+	//web.xml에 있는 multipart-config 주소랑 동일시하게 
+	
 	@Autowired
 	private ProjectMapper mapper;
+	
 
 	@Override
 	public List<Project> showProjectListAll() {
 		List<Project> list = mapper.selectProjectListAll();
-		log.debug("service - showProjectListAll() > " +list.size());
 		return list;
 	}
 
@@ -37,8 +41,13 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public int updateProject(Project project) {
+	public int updateProject(Project project, MultipartFile uploadfile) {		
 		return mapper.updateProject(project);
+	}
+
+	@Override
+	public int joinUpdateProjectAndPrjoptionByNo(Map<String, Object> map) {
+		return mapper.joinUpdateProjectAndPrjoptionByPrjNo(map);
 	}
 
 }

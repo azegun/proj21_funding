@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/signUp1.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 	<script type="text/javascript">
 	function findAddr(){
 		new daum.Postcode({

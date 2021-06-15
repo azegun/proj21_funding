@@ -1,6 +1,5 @@
 @charset "UTF-8";
 #table_all{
-	border:none;
 	display: flex;
 	justify-content: center;
 	align-items: center;
