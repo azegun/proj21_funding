@@ -72,7 +72,7 @@ select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.
 
 -- 프로젝트 상세
 
-select * from userinfo;
+select *
+ from project ;
 
-
-		  
+select * from fundinginfo f where PrjNo = 1;
