@@ -16,6 +16,27 @@ public class UserInfo {
 	private int bankAccount; // 계좌번호
 	private boolean secession; // 탈퇴여부
 
+	// 생성자
+	public UserInfo() {
+	}
+
+	// 회원번호
+	public UserInfo(int userNo) {
+		this.userNo = userNo;
+	}
+
+	// 회원아이디
+	public UserInfo(String userId) {
+		this.userId = userId;
+	}
+
+	// 아이디 찾기
+	public UserInfo(String userName, String userPhone) {
+		this.userName = userName;
+		this.userPhone = userPhone;
+	}
+
+	// 회원가입 정보저장
 	public UserInfo(String userId, String userPw, String userName, String nickName, String userPhone, int zipCode,
 			String address, String detailAddress, String email, String bankName, int bankAccount) {
 		this.userId = userId;
@@ -29,20 +50,6 @@ public class UserInfo {
 		this.email = email;
 		this.bankName = bankName;
 		this.bankAccount = bankAccount;
-	}
-
-	// 생성자
-	public UserInfo() {
-	}
-
-	// 회원번호
-	public UserInfo(int userNo) {
-		this.userNo = userNo;
-	}
-
-	// 회원아이디
-	public UserInfo(String userId) {
-		this.userId = userId;
 	}
 
 	// getter & setter

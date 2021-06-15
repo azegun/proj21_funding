@@ -33,6 +33,12 @@
 			where prjNo = #{prjNo};
 		</select>	
 		
+		<select id="selectProjectByUser" resultMap="resProject">
+			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
+				   StartDate, EndDate, PayDate, EndYN
+			  from project
+			 where UserNo = #{userNo.userNo}		
+		</select>		
 		
 		<!--성공임박 프로젝트 달성률 80프로이상  -->
 		<select id="selectProjectSuccessImbak" 

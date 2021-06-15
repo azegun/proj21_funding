@@ -11,6 +11,13 @@ public class Admin {
 		super();
 	}
 
+	
+	public Admin(String adminId, String adminPw) {
+		this.adminId = adminId;
+		this.adminPw = adminPw;
+	}
+
+
 	public Admin(String adminId, String adminPw, String adminName, String adminTel) {
 		super();
 		this.adminId = adminId;

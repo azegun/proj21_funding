@@ -18,6 +18,8 @@ public interface PrjOptionMapper {
 	//프로젝트 삭제
 	int removePrjOption(int prjNo);
 	
+	PrjOption selectPrjOptionByOptNo(int optNo);
+	
 	List<PrjOption> selectPrjOptionByAll();
 	List<PrjOption>	selectPrjOptionByPrjNo(int prjNo);
 	

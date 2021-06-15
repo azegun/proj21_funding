@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.account.UserLogin;
 
 @Component
 public interface UserInfoMapper {
@@ -17,9 +18,9 @@ public interface UserInfoMapper {
 	
 	UserInfo selectUserbyNickname(String nickname);
 
-	UserInfo selectUserbylogin(String userId, String userPw);
+	UserInfo selectUserbylogin(UserLogin userLogin);
 
-	UserInfo selectUserbySearchId(String userName, String userPhone);
+	UserInfo selectUserbySearchId(UserInfo userInfo);
 
 	int insertUser(UserInfo userInfo);
 

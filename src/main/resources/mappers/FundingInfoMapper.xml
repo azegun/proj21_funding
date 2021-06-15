@@ -52,7 +52,13 @@
 		  from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo
 		 where f.userno = #{userNo.userNo}; 
 	 </select>
-	 
+	
+	<select id="selectFundingInfoByPrjNo" resultMap="resFundingInfo">
+		select FundingNo, UserNo, PrjNo, OptNo, AccountNo, PayYN, EndYN
+		  from fundinginfo
+		 where PrjNo = #{PrjNo.PrjNo}
+	</select> 
+
 	 <!-- 테스트 -->
 	<!--  <select id="select">
 	select o.prjNo ,count(*),sum(optprice) 

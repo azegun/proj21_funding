@@ -10,4 +10,6 @@ public interface ProjectJoinService {
 	List<ProjectJoin> showProjectJoinByPrjName(String prjName);
 	List<ProjectJoin> showProjectJoinByPrjManager(String prjManager);
 	
+	ProjectJoin showProjectJoinByPrjNo(int prjNo);
+	
 }

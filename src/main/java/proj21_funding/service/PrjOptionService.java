@@ -11,6 +11,7 @@ public interface PrjOptionService {
 	List<PrjOption> showPrjOptionListAll();
 	
 	List<PrjOption> showPrjOptionByPrjNo(int prjNo);
+	PrjOption showPrjOptionByOptNo(int optNo);
 	
 	//옵션추가 + 여러개추가
 	int insertPrjOption(PrjOption prjOption);

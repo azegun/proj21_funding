@@ -46,7 +46,7 @@ public class QNAImpl implements QNAService {
 
 	@Override
 	public int replyQNA(QNA qna) {
-		return 0;
+		return mapper.updateQNA(qna);
 	}
 
 	@Override
