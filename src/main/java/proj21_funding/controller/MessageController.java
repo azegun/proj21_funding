@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import proj21_funding.dto.FundingInfo;
 import proj21_funding.dto.Message;
+import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserAuthInfo;
+import proj21_funding.dto.account.UserInfo;
 import proj21_funding.exception.UserNotFoundException;
 import proj21_funding.service.MessageService;
 
@@ -150,4 +153,28 @@ public class MessageController {
 
 	}
 
+	@RequestMapping("/message/message-search")
+	public String searchProject(HttpSession session, Model model) {
+		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");	
+		List<Project> projects = service.showProjectsByUser(userAuthInfo.getUserNo());
+		model.addAttribute("projects", projects);
+		return "message/message-search";
+	}
+	
+	@RequestMapping("/message/message-search/{prjNo}")
+	public String searchUser(@PathVariable("prjNo") int prjNo, HttpSession session, Model model) {
+		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");	
+		List<Project> projects = service.showProjectsByUser(userAuthInfo.getUserNo());
+		model.addAttribute("projects", projects);	
+		
+		List<FundingInfo> fundingInfos = service.showFundingInfosByPrjNo(prjNo);
+		for(FundingInfo funding : fundingInfos) {			
+			UserInfo userInfo= service.showUserbyNo(funding.getUserNo().getUserNo());
+			funding.setUserNo(userInfo);
+		}		
+		model.addAttribute("fundingInfos", fundingInfos);
+		return "message/message-search";
+	}
+	
+	
 }

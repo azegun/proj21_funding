@@ -5,9 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proj21_funding.dto.FundingInfo;
 import proj21_funding.dto.Message;
+import proj21_funding.dto.Project;
+import proj21_funding.dto.account.UserInfo;
 import proj21_funding.exception.UserNotFoundException;
+import proj21_funding.mapper.FundingInfoMapper;
 import proj21_funding.mapper.MessageMapper;
+import proj21_funding.mapper.ProjectMapper;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.MessageService;
 
@@ -19,7 +24,13 @@ public class MessageServiceImpl implements MessageService {
 
 	@Autowired
 	private UserInfoMapper userMapper;
+	
+	@Autowired
+	private ProjectMapper proMapper;
 
+	@Autowired
+	private FundingInfoMapper FundingMapper;
+	
 	@Override
 	public int sendMessage(Message message) {
 		try {			
@@ -67,4 +78,20 @@ public class MessageServiceImpl implements MessageService {
 		return mapper.delSendMessage(message);
 	}
 
+	@Override
+	public List<Project> showProjectsByUser(int userNo) {
+		return proMapper.selectProjectByUser(userNo);
+	}
+
+	@Override
+	public List<FundingInfo> showFundingInfosByPrjNo(int prjNo) {		
+		return FundingMapper.selectFundingInfoByPrjNo(prjNo);
+	}
+
+	@Override
+	public UserInfo showUserbyNo(int userNo) {
+		return userMapper.selectUserbyNo(userNo);
+	}
+
+	
 }
