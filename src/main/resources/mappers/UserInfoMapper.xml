@@ -45,18 +45,18 @@
 		where nickName = #{nickName}	
 	</select>	
  
-	<select id="selectUserbylogin" resultMap="resUser">
+	<select id="selectUserbylogin" parameterType="UserLogin"  resultMap="resUser" >
 		select 
 			UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
 			ZipCode, Address, DetailAddress,
 			Email, BankName, BankAccount, secession
 		 from userinfo 
-		where userId = #{param1} and userPw = password(#{param2})	
+		where userId = #{userId} and userPw = password(#{userPw})	
 	</select>
 	
-	<select id="selectUserbySearchId" resultMap="resUser">
+	<select id="selectUserbySearchId" parameterType="UserInfo" resultMap="resUser">
 		<include refid="selecSql" />
-		where userName = #{param1} and userPhone = #{param2}	
+		where userName = #{userName} and userPhone = #{userPhone}	
 	</select>
 	
 	<insert id="insertUser" parameterType="UserInfo">

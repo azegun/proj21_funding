@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.account.UserLogin;
 import proj21_funding.exception.DuplicateNickNameException;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserInfoService;
@@ -36,7 +37,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public int removeUserInfo(String userId, String userPw) {
-		UserInfo userInfo = mapper.selectUserbylogin(userId, userPw);
+		UserLogin userLogin = new UserLogin(userId, userPw);
+		UserInfo userInfo = mapper.selectUserbylogin(userLogin);
 		return mapper.deleteUser(userInfo);
 	}
 

@@ -60,7 +60,7 @@ where userId = 'test10' and userPw = password('1111');
 where UserName = 'test10' and UserPhone = '01012345678';
 
 update userinfo
-		   set UserPw = password('qwe11')
+		   set Secession = 0
 		 where userId = 'test10';
 		 
 delete from userinfo where userNo >2;

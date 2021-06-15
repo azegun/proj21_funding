@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import proj21_funding.dto.Admin;
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.account.UserLogin;
 import proj21_funding.exception.UserNotFoundException;
 import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.mapper.AdminMapper;
@@ -22,10 +23,11 @@ public class UserAuthServiceImpl implements UserAuthService {
 	private AdminMapper adminMapper;
 	
 	@Override
-	public UserAuthInfo authenicate(String userId, String userPw) {
+	public UserAuthInfo authenicate(UserLogin userLogin) {
 
-		UserInfo userInfo = userInfoMapper.selectUserbylogin(userId, userPw);
-		Admin admin = adminMapper.selectAdminbylogin(userId, userPw);
+		UserInfo userInfo = userInfoMapper.selectUserbylogin(userLogin);
+		Admin ad = new Admin(userLogin.getUserId(), userLogin.getUserPw());
+		Admin admin = adminMapper.selectAdminbylogin(ad);
 		if (userInfo == null && admin == null) {
 			throw new WrongIdPasswordException();
 		}

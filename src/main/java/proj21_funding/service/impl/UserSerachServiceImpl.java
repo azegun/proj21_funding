@@ -18,7 +18,8 @@ public class UserSerachServiceImpl implements UserSerachService {
 	@Override
 	public UserInfo searchuserId(String userName, String userPhone) {
 		try {
-			UserInfo userInfo = mapper.selectUserbySearchId(userName, userPhone);
+			UserInfo user = new UserInfo(userName, userPhone);
+			UserInfo userInfo = mapper.selectUserbySearchId(user);
 			return userInfo;
 		} catch (NullPointerException e) {
 			return null;
@@ -30,8 +31,9 @@ public class UserSerachServiceImpl implements UserSerachService {
 	public UserInfo searchuserPw(String userId, String userName, String userPhone) {
 
 		try {
+			UserInfo user = new UserInfo(userName, userPhone);
 			UserInfo userInfo1 = mapper.selectUserbyId(userId);
-			UserInfo userInfo2 = mapper.selectUserbySearchId(userName, userPhone);
+			UserInfo userInfo2 = mapper.selectUserbySearchId(user);
 						
 			if (userInfo1 != null && userInfo2 != null) {
 				return userInfo1;
