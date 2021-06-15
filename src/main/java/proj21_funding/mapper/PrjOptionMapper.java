@@ -14,6 +14,8 @@ public interface PrjOptionMapper {
 	//추가적인 아이템등록
 	int insertAddPrjOption(AddPrjOption addPrjOption);
 	
+	PrjOption selectPrjOptionByOptNo(int optNo);
+	
 	List<PrjOption> selectPrjOptionByAll();
 	List<PrjOption>	selectPrjOptionByPrjNo(int prjNo);
 	

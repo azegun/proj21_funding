@@ -11,16 +11,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.dto.account.UserAuthInfo;
+import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.ProjectJoin;
 import proj21_funding.service.FundingInfoService;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectJoinService;
 import proj21_funding.service.ProjectService;
+import proj21_funding.service.UserInfoService;
 
 @Controller
 public class ProjectController {
@@ -33,6 +35,8 @@ public class ProjectController {
 	private FundingInfoService fundingService;
 	@Autowired
 	private ProjectJoinService joinService;
+	@Autowired
+	private UserInfoService userService;
 
 //	모든 프로젝트
 	@RequestMapping("/projectListAll")
@@ -84,6 +88,7 @@ public class ProjectController {
 		int sum;
 		List<PrjOption> prj = optionService.showPrjOptionByPrjNo(prjNo);
 		session.setAttribute("prj", prj);
+		session.setAttribute("prjNo", prjNo);
 //		List<Project> prjList=projectService.showProjectListAll();
 		try {
 			count = fundingService.showCountByPrjNo(prjNo);
@@ -99,14 +104,24 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/fundingProject")
-	public ModelAndView funding(/* HttpServletRequest request */@RequestParam(value="price",required=false) int price) {
-//		
-//		  int price = Integer.parseInt(request.getParameter("price")); int optNo =
-//		  Integer.parseInt(request.getParameter("optNo"));
+	public ModelAndView funding(HttpServletRequest request,HttpSession session) {
+		System.out.println(session.getAttribute("authInfo"));
+		UserAuthInfo uai = (UserAuthInfo) session.getAttribute("authInfo");
+		String userId = uai.getUserId();
+		UserInfo ui = userService.showUserInfoById(userId);
+		System.out.println(ui);
+		int price = Integer.parseInt(request.getParameter("price"));
+		int optNo = Integer.parseInt(request.getParameter("optNo"));
+		int prjNo = (int) session.getAttribute("prjNo");
+		ProjectJoin prjInfo = joinService.showProjectJoinByPrjNo(prjNo);
+		PrjOption buyOption = optionService.showPrjOptionByOptNo(optNo);
+		
 		 
 		ModelAndView mav = new ModelAndView("funding/fundingScreen","price",price);
-//		mav.addObject("price",price);
-//		mav.addObject("optNo",optNo );
+		mav.addObject("price",price);
+		mav.addObject("buyOption",buyOption);
+		mav.addObject("prjInfo",prjInfo);
+		mav.addObject("ui",ui);
 		return mav;
 	}
 }

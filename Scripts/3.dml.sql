@@ -74,12 +74,12 @@ insert into userinfo values(
 
 #default값 제외
 insert into userinfo ( UserId, UserPw, UserName, Nickname,
-	UserPhone, ZipCode, Address, DetailAddress)
-values ('test2', password('1111'),'김경연', 'kky', '01012345678','222333', '대구','북구');
+	UserPhone, ZipCode, Address, DetailAddress,email)
+values ('test2', password('1111'),'김경연', 'kky', '01012345678','222333', '대구','북구','kymonk@naver.com');
 
 insert into userinfo ( UserId, UserPw, UserName, Nickname,
 	UserPhone, ZipCode, Address, DetailAddress)
-values ('test10', password('1111'),'test10', 'ttt', '01012345678','222333', '대구','달서구');
+values ('test10', password('1111'),'test10', 'ttt', '01012345678','222333', '대구','달서구','ttt.@naver.com');
 
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음

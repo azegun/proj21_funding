@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+img{
+	width:150px;
+	hegiht:150px;
+	margin: 25 50 25 25;
+}
+
+.prjInfo{
+	border-bottom : 1px solid grey;
+	height: 200px;
+}
+
+.achiRate{
+	color:red;
+}
+
+.divPrjInfo{
+	padding:50 60 20 60;
+}
+
+.tdTitle{
+	width:150px;
+	text-align:center;
+}
+
+.tdContent {
+	width:250px;
+}
+

@@ -35,4 +35,9 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 		return mapper.selectProjectJoinByPrjManager(prjManager);
 	}
 
+	@Override
+	public ProjectJoin showProjectJoinByPrjNo(int prjNo) {
+		return mapper.selectProjectJoinByPrjNo(prjNo);
+	}
+
 }

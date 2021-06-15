@@ -41,6 +41,11 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.insertAddPrjOption(addPrjOption);
 	}
 
+	@Override
+	public PrjOption showPrjOptionByOptNo(int optNo) {
+		return mapper.selectPrjOptionByOptNo(optNo);
+	}
+
 
 
 }
