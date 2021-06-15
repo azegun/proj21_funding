@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,7 @@
 						</c:if>
 					</c:forEach>
 					${qna.qnaTitle }</a></td>
-				<td>${qna.qnaDate }</td>
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.qnaDate }"/></td>
 				<td>
 					<c:choose>
 					<c:when test ="${qna.qnaReply eq null }">
