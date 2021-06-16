@@ -41,52 +41,51 @@
 			<form:form action="signUp2" modelAttribute="userSignUp">	
 			<form:errors />		
 			<fieldset id="signForm">
-				<p>
-					<label> 회원계정 :
-					<form:input path="userId" placeholder="4글자 이상 입력하세요" /> 
-					<form:errors path="userId" />
+				<p><label> 회원계정 :
+					<form:input path="userId" placeholder="4글자 이상 입력하세요" />					
+					<form:errors path="userId" id="errors"/>
 					</label>
 				</p>
-				<p>
-					<label> 비밀번호 :
-					<form:password path="userPw" placeholder="4자리 이상 입력하세요"/> 
-					<form:errors path="userPw" />
+								
+				<p><label> 비밀번호 :
+					<form:password path="userPw" placeholder="4자리 이상 입력하세요"/>
+					<form:errors path="userPw"  id="errors"/>
 					</label>
-				</p>
+				</p>				
 				<p>
 					<label> 비밀번호확인 :
 					<form:password path="confirmUserPw" placeholder="4자리 이상 입력하세요" /> 
-					<form:errors path="confirmUserPw" />
+					<form:errors path="confirmUserPw" id="errors"/>
 					</label>
 				</p>
 				<p>
 					<label> 회원성명 :
 					<form:input path="userName" /> 
-					<form:errors path="userName" />
+					<form:errors path="userName" id="errors"/>
 					</label>
 				</p>
 				<p>
 					<label> 회원별명 :
 					<form:input path="nickName" /> 
-					<form:errors path="nickName" />
+					<form:errors path="nickName" id="errors"/>
 					</label>
 				</p>
 				<p>
 					<label> 회원H.P :
 					<form:input path="userPhone" /> 
-					<form:errors path="userPhone" />
+					<form:errors path="userPhone" id="errors"/>
 					</label>
 				</p>
 				<p>
 					<label> 우편번호 검색하기 :
 					<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true" onclick="findAddr()" /> 
-					<form:errors path="zipCode" />					
+					<form:errors path="zipCode" id="errors"/>					
 					</label>
 				</p>
 				<p>
 					<label> 주소 :
-					<form:input path="address" id="member_addr" readonly="true" /> 
-					<form:errors path="address" />					
+					<form:input path="address" id="member_addr" readonly="true" />
+					<form:errors path="address" id="errors"/>					
 					</label>
 				</p>
 				<p>
@@ -98,7 +97,7 @@
 				<p>
 					<label> 이메일 :
 					<form:input path="email" /> 
-					<form:errors path="email" />
+					<form:errors path="email" id="errors"/>
 					</label>
 				</p>
 				<p>
@@ -114,8 +113,12 @@
 					</label>
 				</p>
 									
-				<P><a href="#" id="Terms">이용약관보기</a></P>					
-				<label><input type="checkbox" name="agree" value="true">동의하기</label>
+				<P>이용약관에 모두 동의 합니다.
+				<form:checkbox path="agree" value="true"/>				
+				<a href="#" id="Terms">
+				<form:button type="button">보기</form:button></a>
+				<form:errors path="agree" id="errors"/>		
+				</p>
 				<form:button id="submit">가입하기</form:button>
 			</fieldset>			
 			</form:form>

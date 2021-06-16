@@ -1,13 +1,10 @@
 package proj21_funding.mapper;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +15,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
+import proj21_funding.dto.FundingInfo;
+import proj21_funding.dto.PrjOption;
+import proj21_funding.dto.Project;
+import proj21_funding.dto.account.UserInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
@@ -53,6 +54,15 @@ public class FundingInfoMapperTest {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
 		System.out.println(mapper.selectFundingInfoByUserNo(1));
+		
+	}
+	
+	@Test
+	public void testInsertFundingInfo() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		FundingInfo fundinginfo = new FundingInfo(new UserInfo(2),new Project(1),new PrjOption(5),50811105,40971,"대구광역시 북구구암로49길10","702동903호");
+		mapper.insertFundingInfo(fundinginfo);
+		
 		
 	}
 

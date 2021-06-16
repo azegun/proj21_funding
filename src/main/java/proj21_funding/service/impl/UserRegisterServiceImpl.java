@@ -25,21 +25,21 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 	public int regist(UserSignUp userSignUp) {
 		Admin admin = adminMapper.selectAdminbyId(userSignUp.getUserId());
 		if(admin != null) {
-			throw new DuplicateUserException("dup id" + userSignUp.getUserId());
+			throw new DuplicateUserException();
 		}
 		
 		UserInfo userInfo = mapper.selectUserbyId(userSignUp.getUserId());
 		if (userInfo != null) {
-			throw new DuplicateUserException("dup id" + userSignUp.getUserId());
+			throw new DuplicateUserException();
 		}	
 		
 		UserInfo userInfo1 = mapper.selectUserbyNickname(userSignUp.getNickName());
 		if (userInfo1 != null) {
-			throw new DuplicateNickNameException("dup nickname" + userSignUp.getNickName());
+			throw new DuplicateNickNameException();
 		}	
 		
 		if(userSignUp.getNickName().equals("관리자")) {
-			throw new DuplicateNickNameException("dup nickname" + userSignUp.getNickName());
+			throw new DuplicateNickNameException();
 		}
 		
 		

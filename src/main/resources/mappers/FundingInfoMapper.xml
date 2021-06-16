@@ -21,28 +21,12 @@
 	 where f.prjno = #{prjNo};
 	</select>
 	
-	<!-- 프로젝트리스트별 후원자수 -->
-	<select id="selectCountGroupByPrjNo" resultType="int">
-	select count(*) as cnt
-	  from fundinginfo f 
-	  join prjoption o on o.optno= f.OptNo 
-	 where f.prjno = #{prjNo};
-	</select>
-	
 	<!--해당프로젝트 총 모인 금액  -->
 	<select id="selectSumByPrjNo" resultType="int">
 	select sum(optPrice)
 	  from fundinginfo f 
 	  join prjoption o on o.optno= f.OptNo 
 	 where f.prjno = #{prjNo};
-	</select>
-	
-	<!-- 프로젝트리스트별 모인금액 -->
-	<select id="selectSumGroupByPrjNo" resultType="int">
-	select sum(optPrice)
-	  from fundinginfo f 
-	  join prjoption o on o.optno= f.OptNo 
-	 group by f.prjNo;
 	</select>
 	
 	<!--회원별 프로젝트 후원 현황 리스트  -->
@@ -58,6 +42,11 @@
 		  from fundinginfo
 		 where PrjNo = #{PrjNo.PrjNo}
 	</select> 
+	
+	<insert id="insertFundingInfo" parameterType="FundingInfo" >
+	insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
+	values(#{userNo.userNo},#{prjNo.prjNo},#{optNo.optNo},#{accountNo},#{zipCode},#{address},#{detailAddress})
+	</insert>
 
 	 <!-- 테스트 -->
 	<!--  <select id="select">

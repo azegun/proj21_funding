@@ -14,25 +14,10 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
 		</header>
 		<section id="searchPwFormArea">
-			<form:form action="newUserPw" modelAttribute="userSearch">
-				<form:errors />
-				<fieldset id="searchPw">
-					<form:hidden path="userId" value="${userSearch.userId}" />
-					<p>
-						<label>새 비밀번호:<br>
-						<form:password path="newUserPw" />
-						<form:errors path="newUserPw" />
-						</label>
-					</p>
-					<p>
-						<label>비밀번호확인:<br>
-						<form:password path="confirmUserPw" />
-						<form:errors path="confirmUserPw" />
-						</label>
-					</p>
-					<input type="submit" value="변경하기">
-				</fieldset>
-			</form:form>
+			<fieldset id="searchId">				
+				이메일로 임시 비밀번호가 발급되었습니다.						
+			</fieldset>
+			<a href ="<c:url value='/login'/>" ><button type="button">로그인화면으로 가기</button></a>
 		</section>		
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp" />

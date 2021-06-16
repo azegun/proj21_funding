@@ -105,11 +105,11 @@ public class ProjectController {
 	
 	@RequestMapping("/fundingProject")
 	public ModelAndView funding(HttpServletRequest request,HttpSession session) {
-		System.out.println(session.getAttribute("authInfo"));
+//		System.out.println(session.getAttribute("authInfo"));
 		UserAuthInfo uai = (UserAuthInfo) session.getAttribute("authInfo");
 		String userId = uai.getUserId();
 		UserInfo ui = userService.showUserInfoById(userId);
-		System.out.println(ui);
+//		System.out.println(ui);
 		int price = Integer.parseInt(request.getParameter("price"));
 		int optNo = Integer.parseInt(request.getParameter("optNo"));
 		int prjNo = (int) session.getAttribute("prjNo");

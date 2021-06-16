@@ -10,6 +10,9 @@ import proj21_funding.dto.FundingInfo;
 public interface FundingInfoMapper {
 	int selectCountByPrjNo(int PrjNo);
 	int selectSumByPrjNo(int PrjNo);
+	
+	int insertFundingInfo(FundingInfo fundingInfo);
+	
 	List<FundingInfo> selectFundingInfoByUserNo(int userNo);
 	// 프로젝트 번호로 펀딩정보 검색
 	List<FundingInfo> selectFundingInfoByPrjNo(int prjNo);

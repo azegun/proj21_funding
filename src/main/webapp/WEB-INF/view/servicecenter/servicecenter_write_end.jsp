@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +19,15 @@
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
-			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
-			<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
+			<li><a href="/proj21_funding/servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<c:choose>
+				<c:when test="${authInfo.userNo < 0 }">
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
+				</c:when>
+				<c:otherwise>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_user">내 질문</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</nav>
 	
@@ -30,8 +38,8 @@
 	<p>문의 답변 시간 : 평일 09:00 ~ 17:00</p>
 	
 	<div>
-		<a href="/proj21_funding/board_servicecenter/servicecenter_write"><input type="button" value="다른 문의하기" ></a>
-		<a href="/proj21_funding/board_servicecenter/servicecenter_view_user"><input type="button" value="내 문의 내역 확인하기" ></a>
+		<a href="/proj21_funding/servicecenter/servicecenter_write"><input type="button" value="다른 문의하기" ></a>
+		<a href="/proj21_funding/servicecenter/servicecenter_view_user"><input type="button" value="내 문의 내역 확인하기" ></a>
 	</div>	
 	
 	</section>

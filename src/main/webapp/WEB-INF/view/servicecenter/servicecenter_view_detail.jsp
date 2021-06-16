@@ -22,8 +22,15 @@
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
-			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
-			<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
+			<li><a href="/proj21_funding/servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<c:choose>
+				<c:when test="${authInfo.userNo < 0 }">
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
+				</c:when>
+				<c:otherwise>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_user">내 질문</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</nav>	
 		<table>
@@ -40,6 +47,10 @@
 		<tr>
 			<td class="td_left"><label for="qnaTitle">제목</label></td>
 			<td class="td_right">${qna.qnaTitle }</td>
+		</tr>
+		<tr>
+			<td class="td_left"><label for="userNo">질문자</label></td>
+			<td class="td_right">${user.nickName }</td>
 		</tr>
 		<tr>
 			<td class="td_left"><label for="qnaDate">질문날짜</label></td>
@@ -75,7 +86,13 @@
 			</c:when>
 		</c:choose>
 		</table>
-		<a href="/proj21_funding/board_servicecenter/servicecenter_view_user"><button>돌아가기</button></a>
+		<a href="/proj21_funding/servicecenter/servicecenter_view_user"><button>돌아가기</button></a>
+		<c:if test="${authInfo.userNo < 0 }">
+			<a href="<%=request.getContextPath() %>/servicecenter/servicecenter_reply/${qna.qnaNo}"><input type="button" value="답변하기"></a>
+		</c:if>
+		<c:if test="${authInfo.userNo > 0 }">
+			<a href="<%=request.getContextPath() %>/servicecenter_delete/${qna.qnaNo}"><input type="button" value="삭제하기"></a>
+		</c:if>
 	<footer>
 		<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 	</footer>
