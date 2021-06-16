@@ -12,9 +12,9 @@ public interface UserSerachService {
 
 	UserInfo searchuserPw(String userId, String userName, String email);	
 	
-	UserMail createMailAndChangePassword(String userName, String email);
+	UserMail createMailAndChangePassword(UserInfo userInfo);
 	
-	void updatePassword(String str,String email);
+	void updatePassword(UserInfo userInfo);
 	
 	String getTempPassword();
 	

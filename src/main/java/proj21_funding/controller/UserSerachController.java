@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.account.UserMail;
 import proj21_funding.dto.account.UserSearch;
 import proj21_funding.service.UserSerachService;
 
 @Controller
 public class UserSerachController {
-	
+
 	@Autowired
 	private UserSerachService service;
 
@@ -58,19 +59,18 @@ public class UserSerachController {
 			return "account/searchPw";
 
 		try {
-		UserInfo userInfo = service.searchuserPw(userSearch.getUserId(), userSearch.getUserName(),
+			UserInfo userInfo = service.searchuserPw(userSearch.getUserId(), userSearch.getUserName(),
 					userSearch.getEmail());
 			userSearch.setUserId(userInfo.getUserId());
+			UserMail userMail = service.createMailAndChangePassword(userInfo);
+			service.mailSend(userMail);
 			return "account/searchPw-rs";
 		} catch (NullPointerException e) {
 			return "account/search-not";
 		}
-		
-		
-		
+
 		
 	}
-
 
 	// 아이디 찾기 결과화면 직접입력방지
 	@GetMapping("/account/searchId-rs")
@@ -83,6 +83,5 @@ public class UserSerachController {
 	public String submit_PwRs() {
 		return "redirect:/account/searchPw";
 	}
-
 
 }
