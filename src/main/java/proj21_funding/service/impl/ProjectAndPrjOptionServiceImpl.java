@@ -27,37 +27,31 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile) {
 		int res = pMapper.insertProject(project);
 		prjoption.setPrjNo(project);
-		
-		//컨트롤러에서 작성안한 이유는, 프로젝트 insert가 되어야지 prjno가 생성되므로, 여기서 파일 구현
-		
-		
-//		System.out.println("saveName: "+ saveName);
-		
-		
-		String result = saveFile(prjoption, uploadfile);
-//		System.out.println("result >> "+ result);
-		
-		
-		res += prjOptMapper.insertPrjOption(prjoption);
-		
-		if(res != 2) throw new RuntimeException();				
+	      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
+//	      System.out.println("saveName: "+ saveName);
+	      
+	      File saveFile = new File(UPLOAD_PATH, saveName);
+	      try {
+	         uploadfile.transferTo(saveFile);
+	      }catch (IOException e) {
+	      e.printStackTrace();
+	      }      
+	      
+	      res += prjOptMapper.insertPrjOption(prjoption);
+	      
+	      if(res != 2) throw new RuntimeException();            
 	}
 
-	private String saveFile(PrjOption prjoption, MultipartFile uploadfile) {
-		String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
-		File saveFile = new File(UPLOAD_PATH, saveName);
+	@Override
+	public void trremovePrjAndPrjOpt(int prjNo) {
+		int res = prjOptMapper.removePrjOption(prjNo);
+		System.out.println("trans res1 >> " + res);
 		
-		try {
-			uploadfile.transferTo(saveFile);
-		}catch (IOException e) {
-		e.printStackTrace();
-		}		
-		return null;
+		res += pMapper.removeProject(prjNo);
+		System.out.println("trans res2 >> " + res);
+		
+	    if(res != 2) throw new RuntimeException();        
+	      
+		
 	}
-
-
-		
-	
-
-
-}
+	}

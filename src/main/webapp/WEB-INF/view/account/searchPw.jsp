@@ -30,9 +30,9 @@
 						</label>
 					</p>
 					<p>
-						<label> 회원H.P :
-						<form:input path="userPhone" /> 
-						<form:errors path="userPhone" />
+						<label> 이메일 :
+						<form:input path="email" /> 
+						<form:errors path="email" />
 						</label>
 					</p>
 				</fieldset>	

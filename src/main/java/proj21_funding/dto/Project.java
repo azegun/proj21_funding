@@ -9,6 +9,7 @@ import proj21_funding.dto.account.UserInfo;
 public class Project {
 	private int prjNo;			//프로젝트번호
 	private UserInfo userNo;		//프로젝트관리자
+	private int pCategoryNo;		//프로젝트 분류
 	private String prjName;			//프로젝트명
 	private String prjContent;		//프로젝트내용
 	private int prjGoal;			//목표금액
@@ -25,17 +26,19 @@ public class Project {
 	}
 	
 	//프로젝트 등록
-	public Project(UserInfo userNo, String prjName, String prjContent, int prjGoal) {
-		super();
+	public Project(UserInfo userNo, int pCategoryNo, String prjName, String prjContent, int prjGoal) {
 		this.userNo = userNo;
+		this.pCategoryNo = pCategoryNo;
 		this.prjName = prjName;
 		this.prjContent = prjContent;
 		this.prjGoal = prjGoal;
 	}
 	
 	//프로젝트 수정
-	public Project(int prjNo, String prjName, String prjContent, int prjGoal, LocalDate endDate, LocalDate payDate) {
+	public Project(int prjNo, int pCategoryNo, String prjName, String prjContent, int prjGoal, LocalDate endDate,
+			LocalDate payDate) {
 		this.prjNo = prjNo;
+		this.pCategoryNo = pCategoryNo;
 		this.prjName = prjName;
 		this.prjContent = prjContent;
 		this.prjGoal = prjGoal;
@@ -69,6 +72,14 @@ public class Project {
 
 	public void setPrjName(String prjName) {
 		this.prjName = prjName;
+	}
+
+	public int getpCategoryNo() {
+		return pCategoryNo;
+	}
+
+	public void setpCategoryNo(int pCategoryNo) {
+		this.pCategoryNo = pCategoryNo;
 	}
 
 	public String getPrjContent() {
@@ -122,8 +133,8 @@ public class Project {
 	@Override
 	public String toString() {
 		return String.format(
-				"Project [prjNo=%s, userNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, payDate=%s, endYn=%s]",
-				prjNo, userNo, prjName, prjContent, prjGoal, startDate, endDate, payDate, endYn);
+				"Project [prjNo=%s, userNo=%s, pCategoryNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, payDate=%s, endYn=%s]",
+				prjNo, userNo, pCategoryNo, prjName, prjContent, prjGoal, startDate, endDate, payDate, endYn);
 	}
 	
 

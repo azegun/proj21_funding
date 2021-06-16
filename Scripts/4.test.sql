@@ -52,10 +52,11 @@ from admin;
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
+	UserNo, UserId, UserPw,	UserName, Nickname, Email,
 	ZipCode, Address, DetailAddress,
-	Email, BankName, BankAccount, Secession
+	UserPhone, BankName, BankAccount, Secession
 from userinfo;
+where UserName = 'test10' and Email = 'ttt@naver.com';
 where userId = 'test10' and userPw = password('1111');
 where UserName = 'test10' and UserPhone = '01012345678';
 
@@ -77,20 +78,34 @@ from qna;
 
 -- Project(프로젝트) - UserInfo(회원정보) 외래키 받음
 select
-	PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
-	StartDate, EndDate, PayDate, EndYN
+			PrjNo, UserNo, pCategoryNo, 
+			PrjName, PrjContent, PrjGoal,
+			StartDate, EndDate, PayDate, EndYN
 from project;
+
 -- 수정 프로젝트
-select PrjNo, PrjName, PrjContent, PrjGoal, StartDate, EndDate, PayDate from project;
+select 
+PrjNo, pCategoryNo, PrjName, PrjContent, PrjGoal, 
+StartDate, EndDate, PayDate 
+from project;
 
 -- Join 프로젝트 + 프로젝트옵션 Update 프로젝트 수정
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
 	set 
+	 	p.pCategoryNo = '2',
 		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움', p.PrjGoal = 333333333,
 		p.EndDate = '2022-06-13', p.PayDate = '2021-06-13',
 		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
-where p.PrjNo = 19;
+where p.PrjNo = 3;
+
+-- Project + userInfo + prjOption 조인 by prjNo
+select p.prjNo,p.UserNo, p.pCategoryNo,  PrjName, PrjContent, PrjGoal,
+				StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName,
+				o.OptNo, o.OptPrice,o.OptContent,o.optName
+			from project p join userinfo u on p.userno = u.UserNo 
+						   join prjoption o on p.PrjNo =o.PrjNo
+			where o.prjNo = 3;
 
 
 -- 업데이트 프로젝트
@@ -140,12 +155,19 @@ select  * from project;
 SELECT * FROM prjoption;
 select * from userinfo;
 
+delete from project 
+where PrjNo  = 10;
+
+delete from prjoption 
+where PrjNo = 10;
+	
+		
 insert into project(
-		UserNo, PrjName, PrjContent, PrjGoal, 
-		EndDate, PayDate) 
+		UserNo, pCategoryNo, PrjName, PrjContent, PrjGoal, 
+		StartDate, EndDate, PayDate) 
 values(
-		00001, '클라우드펀딩 올리기', '후원받아 제품 구매할수있게 만들기', 1000000,
-		now(), now());
+		00001, 2, '클라우드펀딩 올리기', '후원받아 제품 구매할수있게 만들기', 1000000,
+		now(), now(), now());
 /*insert할 때 autoincrease하면 번호 정확하게 찾지  못해서 사용하는 select*/
 	SELECT last_insert_id();
 
@@ -186,4 +208,6 @@ insert into boardcategory(CategoryName)
 values ('창작자'), ('후원자'), ('사이트 이용');
 
 select * from boardcategory;
+
+
 

@@ -15,8 +15,7 @@ public class FundingInfo {
 	private String address;		//주소
 	private String detailAddress;//상세주소
 	private boolean payYn;	 //결제여부
-	private boolean endYn;	 //마감여부
-	private String[] check;
+	private boolean endYn;	 //마감여부	
 	
 //	생성자
 	public FundingInfo() {
@@ -31,7 +30,7 @@ public class FundingInfo {
 	
 
 	
-public FundingInfo(UserInfo userNo, Project prjNo, PrjOption optNo, int accountNo, int zipCode, String address,
+	public FundingInfo(UserInfo userNo, Project prjNo, PrjOption optNo, int accountNo, int zipCode, String address,
 			String detailAddress) {
 		this.userNo = userNo;
 		this.prjNo = prjNo;
@@ -100,13 +99,6 @@ public FundingInfo(UserInfo userNo, Project prjNo, PrjOption optNo, int accountN
 		this.endYn = endYn;
 	}
 
-	public String[] getCheck() {
-		return check;
-	}
-
-	public void setCheck(String[] check) {
-		this.check = check;
-	}
 	
 	public int getZipCode() {
 		return zipCode;
@@ -142,8 +134,8 @@ public FundingInfo(UserInfo userNo, Project prjNo, PrjOption optNo, int accountN
 	public String toString() {
 		return String.format(
 				"FundingInfo [fundingNo=%s, userNo=%s, prjNo=%s, optNo=%s, accountNo=%s, zipCode=%s, Address=%s, detailAddress=%s, payYn=%s, endYn=%s, check=%s]",
-				fundingNo, userNo, prjNo, optNo, accountNo, zipCode, address, detailAddress, payYn, endYn,
-				Arrays.toString(check));
+				fundingNo, userNo, prjNo, optNo, accountNo, zipCode, address, detailAddress, payYn, endYn
+				);
 	}
 
 

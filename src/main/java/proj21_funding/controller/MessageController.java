@@ -147,7 +147,7 @@ public class MessageController {
 			service.sendMessage(message);
 			return "redirect:/message/message-receive";
 		} catch (UserNotFoundException e) {
-			errors.rejectValue("UserName", "notSearching");
+			errors.rejectValue("receiveUser", "userNotFound");
 			return "message/message-write";
 		}
 

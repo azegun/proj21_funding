@@ -25,12 +25,19 @@
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
-			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
-			<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
+			<li><a href="/proj21_funding/servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<c:choose>
+				<c:when test="${authInfo.userNo < 0 }">
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
+				</c:when>
+				<c:otherwise>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_user">내 질문</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</nav>
-	<h4>내가 한 질문</h4>
-	<p>고객님이 하신 1:1 질문내역 페이지입니다.</p>
+	<h4>전체 문의 내역 확인</h4>
+	<p>전체 문의 내역 확인</p>
 		<table class="table">
 			<thead>
 				<tr>
@@ -44,7 +51,7 @@
 			<tr>
 				<td>${qna.qnaNo }</td>
 				<td>
-					<a href="/proj21_funding/board_servicecenter/servicecenter_view_detail/${qna.qnaNo}">
+					<a href="/proj21_funding/servicecenter/servicecenter_view_detail/${qna.qnaNo}">
 					<c:forEach var="bc" items="${bc }">
 						<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }" >
 							[${bc.categoryName }]

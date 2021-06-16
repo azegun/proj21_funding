@@ -31,10 +31,10 @@
 						</label>
 					</p>
 					<p>
-						<label> 받는사람 : ${receive[1]}
+						<label> 받는사람 : 
 						<form:input path="receiveUser" id="receiveUser" value=""/> 
-						<form:errors path="receiveUser" />
 						<form:button type="button" onclick="openSearch()">검색</form:button>
+						<form:errors path="receiveUser" />
 						</label>
 					</p>
 					<p>						

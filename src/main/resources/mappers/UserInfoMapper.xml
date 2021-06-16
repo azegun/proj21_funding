@@ -56,7 +56,7 @@
 	
 	<select id="selectUserbySearchId" parameterType="UserInfo" resultMap="resUser">
 		<include refid="selecSql" />
-		where userName = #{userName} and userPhone = #{userPhone}	
+		where userName = #{userName} and email = #{email}	
 	</select>
 	
 	<insert id="insertUser" parameterType="UserInfo">

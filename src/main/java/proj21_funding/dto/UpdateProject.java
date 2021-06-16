@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class UpdateProject {
 	private int prjNo;						//프로젝트번호
+	private int pCategoryNo;		//프로젝트 분류
 	private String prjName;  			//프로젝트명
 	private String prjContent;			//프로젝트내용
 	private int prjGoal;						//목표금액
@@ -42,6 +43,16 @@ public class UpdateProject {
 
 	public void setPrjNo(int prjNo) {
 		this.prjNo = prjNo;
+	}
+
+
+	public int getpCategoryNo() {
+		return pCategoryNo;
+	}
+
+
+	public void setpCategoryNo(int pCategoryNo) {
+		this.pCategoryNo = pCategoryNo;
 	}
 
 

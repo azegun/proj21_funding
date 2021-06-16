@@ -4,31 +4,35 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.sun.istack.internal.NotNull;
+
 
 // 회원가입시 양식 제한
 public class UserSignUp {
 	@Size(min = 4)
 	private String userId; // 회원계정
+	@Size(min = 4)
 //	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\\\W).{4,20}")
 	private String userPw; // 비밀번호
+	@Size(min = 4)
 //	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\\\W).{4,20}")
 	private String confirmUserPw; // 비밀번호확인
 	@NotBlank
 	private String userName; // 회원성명
 	@NotBlank
 	private String nickName; // 회원별명
-	@NotBlank
+
 	private String userPhone; // 회원H.P
-	@NotNull
+	@NotBlank
 	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
 	private String detailAddress; // 상세주소
 	@Email
+	@NotBlank
 	private String email; // 이메일
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호
+	private Boolean agree;
 
 	// getter & setter
 	public String getUserId() {
@@ -127,6 +131,14 @@ public class UserSignUp {
 		this.bankAccount = bankAccount;
 	}
 
+	public Boolean getAgree() {
+		return agree;
+	}
+
+	public void setAgree(Boolean agree) {
+		this.agree = agree;
+	}
+	
 	// 비밀번호 일치확인
 	public boolean isPasswordEqualToComfirmPassword() {
 		return userPw.equals(confirmUserPw);

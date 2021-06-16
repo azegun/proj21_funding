@@ -2,12 +2,12 @@ package proj21_funding.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import proj21_funding.dto.account.UserInfo;
-import proj21_funding.exception.WrongIdPasswordException;
+import proj21_funding.dto.account.UserMail;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserSerachService;
+
 
 @Service
 public class UserSerachServiceImpl implements UserSerachService {
@@ -16,10 +16,10 @@ public class UserSerachServiceImpl implements UserSerachService {
 	private UserInfoMapper mapper;
 
 	@Override
-	public UserInfo searchuserId(String userName, String userPhone) {
+	public UserInfo searchuserId(String userName, String email) {
 		try {
-			UserInfo user = new UserInfo(userName, userPhone);
-			UserInfo userInfo = mapper.selectUserbySearchId(user);
+			UserInfo user = new UserInfo(userName, email);			
+			UserInfo userInfo = mapper.selectUserbySearchId(user);			
 			return userInfo;
 		} catch (NullPointerException e) {
 			return null;
@@ -28,10 +28,10 @@ public class UserSerachServiceImpl implements UserSerachService {
 	}
 
 	@Override
-	public UserInfo searchuserPw(String userId, String userName, String userPhone) {
+	public UserInfo searchuserPw(String userId, String userName, String email) {
 
 		try {
-			UserInfo user = new UserInfo(userName, userPhone);
+			UserInfo user = new UserInfo(userName, email);
 			UserInfo userInfo1 = mapper.selectUserbyId(userId);
 			UserInfo userInfo2 = mapper.selectUserbySearchId(user);
 						
@@ -44,15 +44,29 @@ public class UserSerachServiceImpl implements UserSerachService {
 			return null;
 		}
 	}
-	
-	@Transactional
-	public void changePassword(String userId, String newPwd) {
-		UserInfo userInfo = mapper.selectUserbyId(userId);
-		if (userInfo == null) {
-			throw new WrongIdPasswordException();
-		}	
-		userInfo.setUserPw(newPwd);		
-		mapper.updateUserPw(userInfo);
+
+	@Override
+	public UserMail createMailAndChangePassword(String userName, String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updatePassword(String str, String email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getTempPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void mailSend(UserMail userMail) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

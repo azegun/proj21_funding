@@ -62,24 +62,24 @@ values ('admin1', password('0000'),'김상건','010-3302-1972');
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
+	UserNo, UserId, UserPw,	UserName, Nickname, Email,
 	ZipCode, Address, DetailAddress,
-	Email, BankName, BankAccount, Secession
+	UserPhone, BankName, BankAccount, Secession
 from userinfo;
  
 insert into userinfo values(
-00001, 'test1', password('0000'), '김상건', 'ksg', '01033021972',
-'111222', '대구', '달서구', 'test@test.com', '국민', 00000001, 0 
+00001, 'test1', password('0000'), '김상건', 'ksg', 'test@test.com',
+'111222', '대구', '달서구', '01033021972', '국민', 00000001, 0 
 );
 
 #default값 제외
 insert into userinfo ( UserId, UserPw, UserName, Nickname,
-	UserPhone, ZipCode, Address, DetailAddress,email)
-values ('test2', password('1111'),'김경연', 'kky', '01012345678','222333', '대구','북구','kymonk@naver.com');
+	email, ZipCode, Address, DetailAddress, UserPhone)
+values ('test2', password('1111'),'김경연', 'kky', 'kymonk@naver.com','222333', '대구','북구','01012345678');
 
 insert into userinfo ( UserId, UserPw, UserName, Nickname,
-	UserPhone, ZipCode, Address, DetailAddress)
-values ('test10', password('1111'),'test10', 'ttt', '01012345678','222333', '대구','달서구','ttt.@naver.com');
+	email, ZipCode, Address, DetailAddress, UserPhone)
+values ('test10', password('1111'),'test10', 'ttt', 'ttt@naver.com','222333', '대구','달서구','01012345678');
 
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음

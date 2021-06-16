@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+
+
 </head>
 <body>
 	<div class="container">
@@ -14,7 +16,7 @@
 		</header>
 		<section id="searchIdFormArea">	
 			<fieldset id="searchId">				
-				회원계정은 ${userSearch.userId}입니다.							
+				회원계정은  ${userSearch.userId}입니다.							
 			</fieldset>
 			<a href ="<c:url value='/login'/>" ><button type="button">로그인화면으로 가기</button></a>
 			<a href="<c:url value='/account/searchPw'/>"><button type="button">비밀번호 찾기</button></a>

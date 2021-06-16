@@ -15,6 +15,8 @@ public interface PrjOptionMapper {
 	int insertAddPrjOption(AddPrjOption addPrjOption);
 	//프로젝트옵션 수정
 	int updatePrjOption(PrjOption prjoption);
+	//프로젝트 삭제
+	int removePrjOption(int prjNo);
 	
 	PrjOption selectPrjOptionByOptNo(int optNo);
 	

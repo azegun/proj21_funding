@@ -30,7 +30,7 @@
 	
 	<!--프로젝트리스트에서 클릭해서 들어가면 해당 프로젝트의 옵션까지 함께 표현  -->
 	<select id="selectPrjOptionByPrjNo" resultMap="AssociateProject" parameterType="int">
-			select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
+			select p.prjNo,p.UserNo,  p.pCategoryNo, PrjName, PrjContent, PrjGoal,
 				StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName,u.nickname,
 				o.OptNo, o.OptPrice,o.OptContent,o.optName
 			from project p join userinfo u on p.userno = u.UserNo 
@@ -60,6 +60,12 @@
 				set OptName = #{optName}, OptPrice = #{optPrice}, OptContent = #{optContent}
 			where OptNo = #{optNo}		
 		</update>
+		
+		<!-- 프로젝트 옵션 삭제 -->
+		<delete id="removePrjOption">
+			delete from prjoption 
+					where PrjNo = #{prjNo.prjNo}
+		</delete>
 
 
 </mapper>
