@@ -32,15 +32,21 @@ public class MessageServiceImpl implements MessageService {
 	private FundingInfoMapper FundingMapper;
 	
 	@Override
-	public int sendMessage(Message message) {
-		try {			
-			userMapper.selectUserbyId(message.getSendUser());
-			userMapper.selectUserbyId(message.getReceiveUser());
-		} catch (NullPointerException e) {
-			throw new UserNotFoundException();
+	public int sendMessage(Message message) {		
+		String receive = message.getReceiveUser();
+		String[] user = receive.split(", ");
+
+		for(int i = 0; i < user.length; i++) {			
+			message.setReceiveUser(user[i]);			
+			
+			UserInfo info =	userMapper.selectUserbyId(message.getReceiveUser());
+			if(info == null) {				
+				throw new UserNotFoundException();
+			}	
+			Message newMessage = new Message(message.getSendUser(), message.getReceiveUser(), message.getMsgContent());
+			mapper.insertMessage(newMessage);			
 		}
-		Message newMessage = new Message(message.getSendUser(), message.getReceiveUser(), message.getMsgContent());
-		return mapper.insertMessage(newMessage);
+		return 0;		
 	}
 
 	@Override

@@ -10,8 +10,7 @@ public class FundingInfo {
 	private Project prjNo;   //프로젝트번호  		ex)P00001
 	private int accountNo;	 //계좌(카드)번호
 	private boolean payYn;	 //결제여부
-	private boolean endYn;	 //마감여부
-	private String[] check;
+	private boolean endYn;	 //마감여부	
 	
 //	생성자
 	public FundingInfo() {
@@ -80,15 +79,6 @@ public class FundingInfo {
 	public void setEndYn(boolean endYn) {
 		this.endYn = endYn;
 	}
-
-	public String[] getCheck() {
-		return check;
-	}
-
-	public void setCheck(String[] check) {
-		this.check = check;
-	}
-
 
 	@Override
 	public String toString() {

@@ -21,14 +21,17 @@
 	});	
 	
 	function setReceive(){
+		var select = eval("document.selectform");
+		var checked = document.getElementsByName("check");
+		var chkList = "";
 		
-	
-		
-		
-		
-	/* 	
-		opener.document.getElementById("receiveUser").value = document.getElementById("check").value;
-		window.close(); */
+		for(var i=0; i<checked.length; i++) {
+			if(checked[i].checked == true){
+				chkList += checked[i].value+", ";
+			}			
+		}	
+		opener.document.getElementById("receiveUser").value = chkList;
+		window.close(); 
 	};
 	
 	
@@ -55,7 +58,7 @@
 					</tr>		
 					<c:forEach var="funding" items="${fundingInfos}">									
 						<tr>
-							<td><input type="checkbox" value="${funding.fundingNo}" id="check" name="check"></td>
+							<td><input type="checkbox" value="${funding.userNo.userId}" id="check" name="check"></td>
 							<td>${funding.userNo.userNo}&nbsp;&nbsp;</td>					
 							<td>${funding.userNo.userId}&nbsp;&nbsp;</td>					
 							<td>${funding.userNo.nickName}</td>							
