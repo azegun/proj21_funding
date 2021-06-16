@@ -1,14 +1,19 @@
 package proj21_funding.dto;
 
+import java.util.Arrays;
+
 import proj21_funding.dto.account.UserInfo;
 
 //후원정보
 public class FundingInfo {
 	private int fundingNo;//후원번호  		ex)F00001
 	private UserInfo userNo; //회원번호  		ex)U00001
-	private PrjOption optNo; //옵션번호		ex)O00001
 	private Project prjNo;   //프로젝트번호  		ex)P00001
+	private PrjOption optNo; //옵션번호		ex)O00001
 	private int accountNo;	 //계좌(카드)번호
+	private int zipCode;		//우편번호
+	private String address;		//주소
+	private String detailAddress;//상세주소
 	private boolean payYn;	 //결제여부
 	private boolean endYn;	 //마감여부
 	private String[] check;
@@ -22,9 +27,23 @@ public class FundingInfo {
 	public FundingInfo(int fundingNo) {
 		this.fundingNo = fundingNo;
 	}
+	
+	
 
 	
-//	getter & setter
+public FundingInfo(UserInfo userNo, Project prjNo, PrjOption optNo, int accountNo, int zipCode, String address,
+			String detailAddress) {
+		this.userNo = userNo;
+		this.prjNo = prjNo;
+		this.optNo = optNo;
+		this.accountNo = accountNo;
+		this.zipCode = zipCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+	}
+
+
+	//	getter & setter
 	public int getFundingNo() {
 		return fundingNo;
 	}
@@ -88,13 +107,45 @@ public class FundingInfo {
 	public void setCheck(String[] check) {
 		this.check = check;
 	}
+	
+	public int getZipCode() {
+		return zipCode;
+	}
+
+
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
+	}
 
 
 	@Override
 	public String toString() {
 		return String.format(
-				"FundingInfo [fundingNo=%s, userNo=%s, optNo=%s, prjNo=%s, accountNo=%s, payYn=%s, endYn=%s]",
-				fundingNo, userNo, optNo, prjNo, accountNo, payYn, endYn);
+				"FundingInfo [fundingNo=%s, userNo=%s, prjNo=%s, optNo=%s, accountNo=%s, zipCode=%s, Address=%s, detailAddress=%s, payYn=%s, endYn=%s, check=%s]",
+				fundingNo, userNo, prjNo, optNo, accountNo, zipCode, address, detailAddress, payYn, endYn,
+				Arrays.toString(check));
 	}
+
+
 	
 }
