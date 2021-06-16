@@ -20,6 +20,7 @@ public class Project {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate payDate;	//결제일
 	private boolean	endYn;			//마감여부
+	private int totalPrice;
 	
 //	생성자
 	public Project() {
@@ -49,7 +50,13 @@ public class Project {
 	public Project(int prjNo) {
 		this.prjNo = prjNo;
 	}
-//	getter & setter
+	
+	
+	public Project(UserInfo userNo) {
+		this.userNo = userNo;
+	}
+
+	//	getter & setter
 	public int getPrjNo() {
 		return prjNo;
 	}
@@ -130,11 +137,20 @@ public class Project {
 		this.endYn = endYn;
 	}
 
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	@Override
 	public String toString() {
 		return String.format(
-				"Project [prjNo=%s, userNo=%s, pCategoryNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, payDate=%s, endYn=%s]",
-				prjNo, userNo, pCategoryNo, prjName, prjContent, prjGoal, startDate, endDate, payDate, endYn);
+				"Project [prjNo=%s, userNo=%s, pCategoryNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, payDate=%s, endYn=%s, totalPrice=%s]",
+				prjNo, userNo, pCategoryNo, prjName, prjContent, prjGoal, startDate, endDate, payDate, endYn,
+				totalPrice);
 	}
 	
 

@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import proj21_funding.dto.AddPrjOption;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
-import proj21_funding.dto.UpdateProject;
+import proj21_funding.dto.project.AddPrjOption;
+import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
 import proj21_funding.service.PrjOptionService;

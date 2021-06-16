@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import proj21_funding.dto.AddPrjOption;
 import proj21_funding.dto.PrjOption;
+import proj21_funding.dto.project.AddPrjOption;
 
 @Component
 public interface PrjOptionMapper {

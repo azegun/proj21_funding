@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_funding.mapper.MyListMapper">
+
+		<!-- 고객 번호로 프로젝트 + 프로젝트옵션 + 간단한유저정보 리스트  -->
+		<select id="showAllMyList"
+		 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
+					select 
+							p.prjNo, p.UserNo,  p.pCategoryNo, PrjName, PrjContent, PrjGoal,
+							p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+							o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+							if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+					from fundinginfo f 
+					      join prjoption o on o.optno= f.OptNo 
+						  right join project p on p.prjno = f.PrjNo 
+						  join userinfo u on p.userno = u.userno
+			 	where u.userno = #{userNo.userNo}				 	
+					group by prjno
+		</select>
+		
+		
+		<!-- 프로젝트 번호로 리스트 받아오기 detail  -->
+		<select id="showDetailListByprjNo" parameterType="Project"
+			 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
+					select 
+								p.prjNo, p.UserNo,  p.pCategoryNo, p.PrjName, p.PrjContent, p.PrjGoal,
+								p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName, u.nickname,
+								o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+								if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+					from fundinginfo f 
+							 join prjoption o on o.optno= f.OptNo 
+							right join project p on p.prjno = f.PrjNo 
+							join userinfo u on p.userno = u.userno
+ 				where p.prjno = #{prjNo}		
+		</select>
+
+</mapper>

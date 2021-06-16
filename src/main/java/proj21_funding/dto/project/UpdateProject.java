@@ -1,4 +1,4 @@
-package proj21_funding.dto;
+package proj21_funding.dto.project;
 
 import java.time.LocalDate;
 

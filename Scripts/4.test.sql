@@ -181,8 +181,40 @@ delete
 from prjoption 
 where optno > 4;
 
+-- 옵션에대한 최종 금액 포함, 리스트
+select 
+			p.prjNo,p.UserNo,  p.pCategoryNo, PrjName, PrjContent, PrjGoal,
+			StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName,u.nickname,
+			o.OptNo, o.OptPrice,o.OptContent,o.optName,
+			if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+	from project p join userinfo u on p.userno = u.UserNo 
+							 join prjoption o on p.PrjNo =o.PrjNo
+					group by prjno;
 
+-- 프로젝트 올린거 조회 고객번호로, totalPrice까지 옵션
+select 
+		p.prjNo, p.UserNo,  p.pCategoryNo, PrjName, PrjContent, PrjGoal,
+		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+		o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+		if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+from fundinginfo f 
+		      join prjoption o on o.optno= f.OptNo 
+			  right join project p on p.prjno = f.PrjNo 
+			  join userinfo u on p.userno = u.userno
+ 	where u.userno = 1
+	group by prjno;
 
+-- 프로젝트 no로 검색 detail 프로젝트리스트
+select 
+		p.prjNo, p.UserNo,  p.pCategoryNo, PrjName, PrjContent, PrjGoal,
+		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+		o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+		if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+from fundinginfo f 
+		      join prjoption o on o.optno= f.OptNo 
+			  right join project p on p.prjno = f.PrjNo 
+			  join userinfo u on p.userno = u.userno
+ 	where o.PrjNo =2;
 -- qna test	
 	
 insert into qna(qnaNo, userNo, categoryNo, qnaTitle, qnaContent, qnaFile)

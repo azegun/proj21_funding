@@ -1,4 +1,6 @@
-package proj21_funding.dto;
+package proj21_funding.dto.project;
+
+import proj21_funding.dto.Project;
 
 public class AddPrjOption {
 	private Project prjNo;

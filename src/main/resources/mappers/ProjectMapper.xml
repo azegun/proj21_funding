@@ -12,6 +12,7 @@
 				<result property="endDate" column="EndDate"/>
 				<result property="payDate" column="PayDate"/>
 				<result property="endYn" column="EndYN"/>
+				<result property="totalPrice" column="totalPrice"/>				
 		</resultMap>	
 
 		<!-- UserNo 추가하기 Associate로 -->

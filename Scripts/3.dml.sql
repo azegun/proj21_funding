@@ -5,8 +5,8 @@ select
 	MsgContent, SendDate, ReadYN, DelSend, DelRecevie
 from message;
 
-insert into message values 
-(00001, 'test10', 'test2', '펀딩팀 화이팅', now(), 1, 0, 0);
+ insert into message values 
+ (00001, 'test10', 'test2', '펀딩팀 화이팅', now(), 1, 0, 0);
 
 #default값 제외
 insert into message (
@@ -77,9 +77,11 @@ insert into userinfo ( UserId, UserPw, UserName, Nickname,
 	UserPhone, ZipCode, Address, DetailAddress,email)
 values ('test2', password('1111'),'김경연', 'kky', '01012345678','222333', '대구','북구','kymonk@naver.com');
 
+
 insert into userinfo ( UserId, UserPw, UserName, Nickname,
 	UserPhone, ZipCode, Address, DetailAddress)
 values ('test10', password('1111'),'test10', 'ttt', '01012345678','222333', '대구','달서구','ttt.@naver.com');
+
 
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음

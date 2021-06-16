@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proj21_funding.dto.AddPrjOption;
 import proj21_funding.dto.PrjOption;
+import proj21_funding.dto.project.AddPrjOption;
 import proj21_funding.mapper.PrjOptionMapper;
 import proj21_funding.service.PrjOptionService;
 
