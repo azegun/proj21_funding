@@ -10,8 +10,10 @@ import com.sun.istack.internal.NotNull;
 public class UserSignUp {
 	@Size(min = 4)
 	private String userId; // 회원계정
+	@Size(min = 4)
 //	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\\\W).{4,20}")
 	private String userPw; // 비밀번호
+	@Size(min = 4)
 //	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\\\W).{4,20}")
 	private String confirmUserPw; // 비밀번호확인
 	@NotBlank
@@ -29,6 +31,7 @@ public class UserSignUp {
 	private String email; // 이메일
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호
+	private Boolean agree;
 
 	// getter & setter
 	public String getUserId() {
@@ -127,6 +130,14 @@ public class UserSignUp {
 		this.bankAccount = bankAccount;
 	}
 
+	public Boolean getAgree() {
+		return agree;
+	}
+
+	public void setAgree(Boolean agree) {
+		this.agree = agree;
+	}
+	
 	// 비밀번호 일치확인
 	public boolean isPasswordEqualToComfirmPassword() {
 		return userPw.equals(confirmUserPw);

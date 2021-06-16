@@ -39,7 +39,11 @@ public class UserSerachController {
 			return "account/searchId";
 		try {
 			UserInfo userInfo = service.searchuserId(userSearch.getUserName(), userSearch.getUserPhone());
-			userSearch.setUserId(userInfo.getUserId());
+			
+				userSearch.setUserId(userInfo.getUserId().replaceAll("(?<=.{4}).", "*"));
+
+			
+			
 			return "account/searchId-rs";
 		} catch (NullPointerException e) {
 			return "account/search-not";

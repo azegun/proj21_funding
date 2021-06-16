@@ -1,16 +1,24 @@
 package proj21_funding.dto.account;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 // 회원정보 
 public class UserInfo {
 	private int userNo; // 회원번호
 	private String userId; // 회원계정
 	private String userPw; // 비밀번호
 	private String userName; // 회원성명
+	@NotBlank
 	private String nickName; // 회원별명
+	@NotBlank
 	private String userPhone; // 회원H.P
+	@NotBlank
 	private int zipCode; // 우편번호
+	@NotBlank
 	private String address; // 주소
 	private String detailAddress;// 상세주소
+	@Email
 	private String email; // 이메일
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호
