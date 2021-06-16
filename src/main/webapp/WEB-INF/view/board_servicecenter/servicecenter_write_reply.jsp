@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,40 +34,48 @@
 			</c:choose>
 		</ul>
 	</nav>
-	<h2>문의하기</h2>
-	<form action="<%=request.getContextPath() %>/qnaSuccess" method="post">
+	<h2>답변하기</h2>
+	<form action="<%=request.getContextPath() %>/qnaRpSuccess" method="post">
 		<table>
+			<tr>
+				<td class="td_left"><label for="categoryNo">질문 분류</label></td>
+				<td class="td_right">
+					<c:forEach var="bc" items="${bc }">
+						<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }" >
+							${bc.categoryName }
+						</c:if>
+					</c:forEach>
+				</td>
+			</tr>
+			<tr>
+				<td class="td_left"><label for="qnaTitle">제목</label></td>
+				<td class="td_right">${qna.qnaTitle }</td>
+			</tr>
+			<tr>
+				<td class="td_left"><label for="userNo">질문자</label></td>
+				<td class="td_right">${qna.userNo.userNo }</td>
+			</tr>
+			<tr>
+				<td class="td_left"><label for="qnaDate">질문날짜</label></td>
+				<td class="td_right"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.qnaDate }"/></td>
+			</tr>
+			<tr>
+				<td class="td_left"><label for="qnaContent">내용</label></td>
+				<td class="td_right">${qna.qnaContent }</td>
+			</tr>
 				<tr>
-					<td class="td_left"><label for="categoryNo">분류</label></td>
-					<td class="td_right">
-						<select name="categoryNo.categoryNo">
-							<c:forEach var="bc" items="${bc }">
-								<option value="${bc.categoryNo }">${bc.categoryName }</option>
-							</c:forEach>
-						</select>
-					</td>
-				</tr>
-					
-				<tr>
-					<td class="td_left"><label for="qnaTitle">제목</label></td>
-					<td class="td_right"> <input type="text" name="qnaTitle" id="qnaTitle" required="required"></td>
-				</tr>
-				<tr>
-					<td class="td_left"><label for="qnaContent">내용</label></td>
-					<td class="td_right"> <textarea name="qnaContent" id="qnaContent" cols="40" rows="15" required="required"></textarea></td>
-				</tr>
-				<tr>
-					<td class="td_left"><label for="qnaFile">파일첨부</label></td>
-					<td class="td_right"> <input type="file" name="qnaFile" id="qnaFile"></input></td>
+					<td class="td_left"><label for="qnaReply">답변내용</label></td>
+					<td class="td_right"> <textarea name="qnaReply" id="qnaReply" cols="40" rows="15" required="required"></textarea></td>
 				</tr>
 				<tr>
 					<td><input type="hidden" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/></td>
+					<td><input type="hidden" id = "qnaNo" name = "qnaNo"  value ="${qna.qnaNo }"  size = 40   required="required"  readonly="readonly"/></td>
 				</tr>
 		</table>
 		<section id="commandCell">
 			<input type="submit" value="등록">&nbsp;&nbsp;
 			<input type="reset" value="다시쓰기">
-			<a href="/proj21_funding/board_servicecenter/servicecenter_view_user"><button id="go_qna">돌아가기</button></a>
+			<a href="/proj21_funding/board_servicecenter/servicecenter_view_admin"><button id="go_qna">돌아가기</button></a>
 		</section>
 	</form>
 		</section>

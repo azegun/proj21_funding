@@ -37,6 +37,17 @@ public class QNAController {
 		return mav;
 	}
 
+	@RequestMapping("/board_servicecenter/servicecenter_view_admin")
+	public ModelAndView qnaAllAdmin() {
+		List<QNA> qna = qnaService.showQNAAll();
+		List<BoardCategory> bc = bcService.showBCByClass("qna");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board_servicecenter/servicecenter_view_admin");
+		mav.addObject("qna", qna);
+		mav.addObject("bc", bc);
+		return mav;
+	}
+
 	@RequestMapping("/board_servicecenter/servicecenter_view_user")
 	public ModelAndView qnaUser(HttpSession session) {
 		UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
@@ -67,6 +78,14 @@ public class QNAController {
 		return mav;
 	}
 	
+	@RequestMapping("/board_servicecenter/servicecenter_reply/{qnaNo}")
+	public ModelAndView ReplyAll(@PathVariable("qnaNo") int qnaNo) {
+		QNA qna = qnaService.showQNAByNo(qnaNo);
+		System.out.println(qna);
+		ModelAndView mav = new ModelAndView("board_servicecenter/servicecenter_write_reply", "qna", qna);
+		return mav;
+	}
+	
 	@PostMapping("/qnaSuccess")
 	public String qnaUpload(QNA qna, BoardCategory bc) {
 	try {
@@ -78,6 +97,21 @@ public class QNAController {
 			e.printStackTrace();
 		 
 		 return "board_servicecenter/servicecenter_write"; 
+		 }
+				
+	}
+	
+	@PostMapping("/qnaRpSuccess")
+	public ModelAndView qnaReply(QNA qna) {
+	try {
+		System.out.println(qna);
+		qnaService.replyQNA(qna);
+		return qnaAllAdmin();
+	
+		}catch (Exception e) { 
+			e.printStackTrace();
+		 
+		 return detail(qna.getQnaNo()); 
 		 }
 				
 	}
