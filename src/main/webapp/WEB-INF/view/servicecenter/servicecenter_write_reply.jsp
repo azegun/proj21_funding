@@ -23,13 +23,13 @@
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
-			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<li><a href="/proj21_funding/servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_user">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -75,7 +75,7 @@
 		<section id="commandCell">
 			<input type="submit" value="등록">&nbsp;&nbsp;
 			<input type="reset" value="다시쓰기">
-			<a href="/proj21_funding/board_servicecenter/servicecenter_view_admin"><button id="go_qna">돌아가기</button></a>
+			<a href="/proj21_funding/servicecenter/servicecenter_view_admin"><button id="go_qna">돌아가기</button></a>
 		</section>
 	</form>
 		</section>

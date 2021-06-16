@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,58 +15,67 @@
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
-<style>
-	table{border : 1px solid;}
-	td{border : 1px solid;}
-</style>
 <body>
 	<div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
-	<section class = "sevicecenter_view">
+	<section class = "sevicecenter_view">		
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
-			<li><a href="/proj21_funding/board_servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<li><a href="/proj21_funding/servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/board_servicecenter/servicecenter_view_user">내 질문</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_user">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
 	</nav>
-	<h4>자주 묻는 질문</h4>
-	<p>고객님께서 자주 문의하시는 질문과 답변을 모았습니다.</p>
-	<input type="text" id="qnaserch" placeholder="궁금하신 점이 있다면 여기서 먼저 찾아보세요."><button>search</button>
-	<table>
-		<c:forEach var="qna" items="${qna }">
+	<h4>내가 한 질문</h4>
+	<p>고객님이 하신 1:1 질문내역 페이지입니다.</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<td id="qnaNo">번호</td>
+					<td id="qnaTitle">제목</td>
+					<td id="qnaDate">문의 날짜</td>
+					<td id="qnaState">문의 상태</td>
+				</tr>
+			</thead>
+			<c:forEach var="qna" items="${qna }">
 			<tr>
+				<td>${qna.qnaNo }</td>
 				<td>
+					<a href="/proj21_funding/servicecenter/servicecenter_view_detail/${qna.qnaNo}">
 					<c:forEach var="bc" items="${bc }">
 						<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }" >
 							[${bc.categoryName }]
 						</c:if>
 					</c:forEach>
-					${qna.qnaTitle }</td>
+					${qna.qnaTitle }</a></td>
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.qnaDate }"/></td>
+				<td>
+					<c:choose>
+					<c:when test ="${qna.qnaReply eq null }">
+						답변 대기 중
+					</c:when>
+					<c:when test = "${qna.qnaReply ne null }">
+						답변 완료
+					</c:when>
+					</c:choose>
+				</td>
 			</tr>
-			<tr>
-				<td colspan="2">${qna.qnaReply }</td>
-			</tr>
-		</c:forEach>
+			</c:forEach>
 	</table>
-	<p>궁금함을 해결하지 못하셨나요?</p>
-	<p><a href="/proj21_funding/board_servicecenter/servicecenter_write">
-	<button>1:1 문의하기</button></a>
-	</p>
-	</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>
+		</section>
 		</div>
 </body>
 </html>
