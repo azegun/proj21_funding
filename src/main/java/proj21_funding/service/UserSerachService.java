@@ -3,14 +3,20 @@ package proj21_funding.service;
 import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.account.UserMail;
 
 @Service
 public interface UserSerachService {
 
-	UserInfo searchuserId(String userName, String userPhone);
+	UserInfo searchuserId(String userName, String email);
 
-	UserInfo searchuserPw(String userId, String userName, String userPhone);
+	UserInfo searchuserPw(String userId, String userName, String email);	
 	
-	void changePassword(String userId, String newPwd);
+	UserMail createMailAndChangePassword(String userName, String email);
 	
+	void updatePassword(String str,String email);
+	
+	String getTempPassword();
+	
+	void mailSend(UserMail userMail);
 }

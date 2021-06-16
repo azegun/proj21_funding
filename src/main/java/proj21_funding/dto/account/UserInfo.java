@@ -10,8 +10,7 @@ public class UserInfo {
 	private String userPw; // 비밀번호
 	private String userName; // 회원성명
 	@NotBlank
-	private String nickName; // 회원별명
-	@NotBlank
+	private String nickName; // 회원별명	
 	private String userPhone; // 회원H.P
 	@NotBlank
 	private int zipCode; // 우편번호
@@ -19,6 +18,7 @@ public class UserInfo {
 	private String address; // 주소
 	private String detailAddress;// 상세주소
 	@Email
+	@NotBlank
 	private String email; // 이메일
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호
@@ -39,9 +39,9 @@ public class UserInfo {
 	}
 
 	// 아이디 찾기
-	public UserInfo(String userName, String userPhone) {
+	public UserInfo(String userName, @Email @NotBlank String email) {
 		this.userName = userName;
-		this.userPhone = userPhone;
+		this.email = email;
 	}
 
 	// 회원가입 정보저장
@@ -59,6 +59,8 @@ public class UserInfo {
 		this.bankName = bankName;
 		this.bankAccount = bankAccount;
 	}
+
+	
 
 	// getter & setter
 	public int getUserNo() {

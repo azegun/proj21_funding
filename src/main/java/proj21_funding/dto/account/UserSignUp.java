@@ -4,7 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.sun.istack.internal.NotNull;
+
 
 // 회원가입시 양식 제한
 public class UserSignUp {
@@ -20,14 +20,15 @@ public class UserSignUp {
 	private String userName; // 회원성명
 	@NotBlank
 	private String nickName; // 회원별명
-	@NotBlank
+
 	private String userPhone; // 회원H.P
-	@NotNull
+	@NotBlank
 	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
 	private String detailAddress; // 상세주소
 	@Email
+	@NotBlank
 	private String email; // 이메일
 	private String bankName; // 은행명
 	private int bankAccount; // 계좌번호

@@ -52,10 +52,11 @@ from admin;
 
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
-	UserNo, UserId, UserPw,	UserName, Nickname, UserPhone,
+	UserNo, UserId, UserPw,	UserName, Nickname, Email,
 	ZipCode, Address, DetailAddress,
-	Email, BankName, BankAccount, Secession
+	UserPhone, BankName, BankAccount, Secession
 from userinfo;
+where UserName = 'test10' and Email = 'ttt@naver.com';
 where userId = 'test10' and userPw = password('1111');
 where UserName = 'test10' and UserPhone = '01012345678';
 
