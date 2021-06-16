@@ -53,7 +53,7 @@
 			</tr>
 			<tr>
 				<td class="td_left"><label for="userNo">질문자</label></td>
-				<td class="td_right">${qna.userNo.userNo }</td>
+				<td class="td_right">${user.nickName }</td>
 			</tr>
 			<tr>
 				<td class="td_left"><label for="qnaDate">질문날짜</label></td>

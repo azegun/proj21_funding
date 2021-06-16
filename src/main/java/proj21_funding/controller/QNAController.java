@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import proj21_funding.dto.BoardCategory;
 import proj21_funding.dto.QNA;
 import proj21_funding.dto.account.UserAuthInfo;
+import proj21_funding.dto.account.UserInfo;
 import proj21_funding.service.CategoryService;
+import proj21_funding.service.MessageService;
 import proj21_funding.service.QNAService;
 
 @Controller
@@ -25,6 +27,9 @@ public class QNAController {
 	
 	@Autowired
 	CategoryService bcService;
+	
+	@Autowired
+	MessageService userService;
 
 	@RequestMapping("/board_servicecenter/servicecenter_view_all")
 	public ModelAndView qnaAll() {
@@ -64,8 +69,11 @@ public class QNAController {
 	public ModelAndView detail(@PathVariable("qnaNo") int qnaNo) {
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
 		QNA qna = qnaService.showQNAByNo(qnaNo);
+		UserInfo user = userService.showUserbyNo(qnaNo);
+		System.out.println(user);
 		ModelAndView mav = new ModelAndView("board_servicecenter/servicecenter_view_detail", "qna", qna);
 		mav.addObject("bc", bc);
+		mav.addObject("user", user);
 		return mav;
 	}
 	
@@ -81,8 +89,13 @@ public class QNAController {
 	@RequestMapping("/board_servicecenter/servicecenter_reply/{qnaNo}")
 	public ModelAndView ReplyAll(@PathVariable("qnaNo") int qnaNo) {
 		QNA qna = qnaService.showQNAByNo(qnaNo);
+		List<BoardCategory> bc = bcService.showBCByClass("qna");
+		UserInfo user = userService.showUserbyNo(qnaNo);
 		System.out.println(qna);
+		System.out.println(user);
 		ModelAndView mav = new ModelAndView("board_servicecenter/servicecenter_write_reply", "qna", qna);
+		mav.addObject("user", user);
+		mav.addObject("bc", bc);
 		return mav;
 	}
 	
