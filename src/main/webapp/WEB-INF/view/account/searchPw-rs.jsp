@@ -17,7 +17,7 @@
 			<fieldset id="searchId">				
 				이메일로 임시 비밀번호가 발급되었습니다.						
 			</fieldset>
-			<a href ="<c:url value='/login'/>" ><button type="button">로그인화면으로 가기</button></a>
+			<a href ="login" ><button type="button">로그인화면으로 가기</button></a>
 		</section>		
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp" />
