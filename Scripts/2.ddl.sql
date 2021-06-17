@@ -43,6 +43,12 @@ DROP TABLE IF EXISTS proj21_funding.addresses RESTRICT;
 -- 프로젝트카테고리
 DROP TABLE IF EXISTS proj21_funding.PrjCategory RESTRICT;
 
+-- proj21_funding
+DROP SCHEMA IF EXISTS proj21_funding;
+
+-- proj21_funding
+CREATE SCHEMA proj21_funding;
+
 -- 회원정보
 CREATE TABLE proj21_funding.UserInfo (
 	UserNo        INT(10)      NOT NULL COMMENT '회원번호', -- 회원번호
@@ -50,13 +56,13 @@ CREATE TABLE proj21_funding.UserInfo (
 	UserPw        CHAR(41)     NOT NULL COMMENT '비밀번호', -- 비밀번호
 	UserName      VARCHAR(20)  NOT NULL COMMENT '회원성명', -- 회원성명
 	Nickname      VARCHAR(20)  NULL     COMMENT '회원별명', -- 회원별명
-	Email         VARCHAR(100) NOT NULL COMMENT '이메일', -- 이메일	
+	UserPhone     VARCHAR(20)  NULL     COMMENT '회원H.P', -- 회원H.P
 	ZipCode       INT(10)      NOT NULL COMMENT '우편번호', -- 우편번호
 	Address       VARCHAR(100) NOT NULL COMMENT '주소', -- 주소
 	DetailAddress VARCHAR(100) NULL     COMMENT '상세주소', -- 상세주소
-	UserPhone     VARCHAR(20)  NULL     COMMENT '회원H.P', -- 회원H.P
+	Email         VARCHAR(100) NULL     COMMENT '이메일', -- 이메일
 	BankName      VARCHAR(10)  NULL     COMMENT '은행명', -- 은행명
-	BankAccount   INT(20)      NULL     COMMENT '계좌번호', -- 계좌번호
+	BankAccount   VARCHAR(20)  NULL     COMMENT '계좌번호', -- 계좌번호
 	Secession     TINYINT      NULL     COMMENT '탈퇴여부' -- 탈퇴여부
 )
 COMMENT '회원정보';
@@ -137,7 +143,7 @@ CREATE TABLE proj21_funding.FundingInfo (
 	UserNo        INT(10)      NOT NULL COMMENT '회원번호', -- 회원번호
 	PrjNo         INT(10)      NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
 	OptNo         INT(10)      NOT NULL COMMENT '옵션번호', -- 옵션번호
-	AccountNo     INT(20)      NOT NULL COMMENT '계좌(카드)번호', -- 계좌(카드)번호
+	AccountNo     VARCHAR(20)  NOT NULL COMMENT '계좌(카드)번호', -- 계좌(카드)번호
 	ZipCode       Int(10)      NOT NULL COMMENT '우편번호', -- 우편번호
 	Address       VARCHAR(100) NOT NULL COMMENT '주소', -- 주소
 	DetailAddress VARCHAR(100) NULL     COMMENT '상세주소', -- 상세주소
@@ -182,7 +188,7 @@ CREATE TABLE proj21_funding.Message (
 	SendUser    VARCHAR(10)  NOT NULL COMMENT '발신자', -- 발신자
 	ReceiveUser VARCHAR(10)  NOT NULL COMMENT '수신자', -- 수신자
 	MsgContent  VARCHAR(100) NOT NULL COMMENT '내용', -- 내용
-	SendDate    DATETIME     NOT NULL default current_timestamp COMMENT '발신일', -- 발신일
+	SendDate    DATEtime         NOT NULL default now() COMMENT '발신일', -- 발신일
 	ReadYN      TINYINT      NOT NULL DEFAULT 0 COMMENT '확인여부', -- 확인여부
 	DelSend     TINYINT      NULL     DEFAULT 0 COMMENT '보낸메세지삭제', -- 보낸메세지삭제
 	DelRecevie  TINYINT      NULL     DEFAULT 0 COMMENT '받은메세지삭제' -- 받은메세지삭제
@@ -249,12 +255,12 @@ ALTER TABLE proj21_funding.QnA
 
 -- 사이트게시판
 CREATE TABLE proj21_funding.Board (
-	BoardNo        INT(10)     NOT NULL COMMENT '게시글번호', -- 게시글번호
-	CategoryNo     INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
-	BoardTitle     VARCHAR(50) NOT NULL COMMENT '공지제목', -- 공지제목
-	BoardContent   LONGTEXT    NOT NULL COMMENT '공지내용', -- 공지내용
-	BoardDate      DATETime    NOT NULL default now() COMMENT '작성일', -- 작성일
-	BoardFile      VARCHAR(50) NULL     default nUll COMMENT '공지첨부파일' -- 문의첨부파일
+	BoardNo      INT(10)     NOT NULL COMMENT '게시글번호', -- 게시글번호
+	CategoryNo   INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
+	BoardTitle   VARCHAR(50) NOT NULL COMMENT '공지제목', -- 공지제목
+	BoardContent LONGTEXT    NOT NULL COMMENT '공지내용', -- 공지내용
+	BoardDate    DATEtime    NOT NULL default now() COMMENT '작성일', -- 작성일
+	BoardFile    VARCHAR(50) NULL     COMMENT '공지첨부파일' -- 공지첨부파일
 )
 COMMENT '사이트게시판';
 
@@ -270,9 +276,9 @@ ALTER TABLE proj21_funding.Board
 
 -- 글분류
 CREATE TABLE proj21_funding.BoardCategory (
-	CategoryNo   INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
-	CategoryName VARCHAR(10) NOT NULL COMMENT '분류명', -- 분류명
-	CategoryClass VARCHAR(10) not null COMMENT '적용 카테고리' -- 적용 카테고리 (ex. qna / notice)
+	CategoryNo    INT(1)      NOT NULL COMMENT '글 분류', -- 글 분류
+	CategoryName  VARCHAR(10) NOT NULL COMMENT '분류명', -- 분류명
+	CategoryClass VARCHAR(10) NOT NULL COMMENT '적용카테고리' -- 적용카테고리
 )
 COMMENT '글분류';
 

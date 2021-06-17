@@ -1,7 +1,5 @@
 package proj21_funding.dto;
 
-import java.util.Arrays;
-
 import proj21_funding.dto.account.UserInfo;
 
 //후원정보
@@ -10,7 +8,7 @@ public class FundingInfo {
 	private UserInfo userNo; //회원번호  		ex)U00001
 	private Project prjNo;   //프로젝트번호  		ex)P00001
 	private PrjOption optNo; //옵션번호		ex)O00001
-	private int accountNo;	 //계좌(카드)번호
+	private String accountNo;	 //계좌(카드)번호
 	private int zipCode;		//우편번호
 	private String address;		//주소
 	private String detailAddress;//상세주소
@@ -30,7 +28,7 @@ public class FundingInfo {
 	
 
 	
-	public FundingInfo(UserInfo userNo, Project prjNo, PrjOption optNo, int accountNo, int zipCode, String address,
+	public FundingInfo(UserInfo userNo, Project prjNo, PrjOption optNo, String accountNo, int zipCode, String address,
 			String detailAddress) {
 		this.userNo = userNo;
 		this.prjNo = prjNo;
@@ -80,10 +78,10 @@ public class FundingInfo {
 	}
 
 
-	public int getAccountNo() {
+	public String getAccountNo() {
 		return accountNo;
 	}
-	public void setAccountNo(int accountNo) {
+	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
 	public boolean isPayYn() {
@@ -133,11 +131,12 @@ public class FundingInfo {
 	@Override
 	public String toString() {
 		return String.format(
-				"FundingInfo [fundingNo=%s, userNo=%s, prjNo=%s, optNo=%s, accountNo=%s, zipCode=%s, Address=%s, detailAddress=%s, payYn=%s, endYn=%s, check=%s]",
-				fundingNo, userNo, prjNo, optNo, accountNo, zipCode, address, detailAddress, payYn, endYn
-				);
+				"FundingInfo [fundingNo=%s, userNo=%s, prjNo=%s, optNo=%s, accountNo=%s, zipCode=%s, address=%s, detailAddress=%s, payYn=%s, endYn=%s]",
+				fundingNo, userNo, prjNo, optNo, accountNo, zipCode, address, detailAddress, payYn, endYn);
 	}
 
+
+	
 
 	
 }

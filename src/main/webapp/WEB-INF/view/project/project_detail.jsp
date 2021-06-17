@@ -2,12 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>${prj[0].prjNo.prjName }</title>
+<link rel="shortcut icon" href="/proj21_funding/favicon.ico">
+<link rel="icon" href="/proj21_funding/favicon.ico">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet"
@@ -15,11 +16,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
 <script>
 $(function(){
+	var price = 0;
 	
 	$(".optBox").click(function(){
 		$(".optBox").css({"background-color":"white"});
-		var price = $(this).children(".resPrice").val();
-		var optNo = $(this).children(".resOptNo").val();
+		price = $(this).children(".resPrice").val();
+		optNo = $(this).children(".resOptNo").val();
 		console.log(optNo)
 		console.log(price);
 		$(this).css({"background-color":"red"});
@@ -35,9 +37,18 @@ $(function(){
 		sCont="";
 	}); 
 	
-/* 	$(".fund").click(function(){
-		
-	})  */
+	
+	$(".fund").click(function(){
+ 		console.log(price)
+		if('${authInfo}' == ''){
+			return alert('로그인을 하셔야합니다.')
+		}
+ 		if(price == 0){
+ 			return alert('옵션을 선택해주세요')
+ 		}
+ 	}) 
+	
+
 	
 	
 	/* $('.optBox').each(function(index,item){
@@ -49,6 +60,7 @@ $(function(){
 </head>
 <body>
 	${count }
+	${authInfo }
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header.jsp" />
@@ -83,7 +95,7 @@ $(function(){
 			<span class="resultPrice">가격 : 0원 </span>
 			<form action="<%=request.getContextPath() %>/fundingProject" method="post" class="fundingForm">
 
-				<input class="fund" type="submit" value="후 원" />
+				<input class="fund" type="submit" value="후 원" >
 			</form>
 
 

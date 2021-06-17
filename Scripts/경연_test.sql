@@ -11,7 +11,6 @@ select * from prjoption o ;
 select * from userinfo o ;
 update userinfo  set email = 'ttt@naver.com' where userno=3;
 
-
 -- 프로젝트별 인원수, 가격
 select count(*),sum(optprice) 
 from fundinginfo f 

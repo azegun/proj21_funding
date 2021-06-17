@@ -4,9 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="UTF-8">
-		<title>로그메뉴</title>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/header_logmenu.css">
+<meta charset="UTF-8">
+<title>로그메뉴</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/header_logmenu.css">
+<link rel="shortcut icon" href="/proj21_funding/favicon.ico">
+<link rel="icon" href="/proj21_funding/favicon.ico">
 </head>
 <body>
 		<c:if test="${empty authInfo}">
