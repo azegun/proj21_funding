@@ -1,9 +1,9 @@
 package proj21_funding.service.impl;
 
+import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Address;
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.account.UserInfo;
-import proj21_funding.dto.account.UserMail;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserSerachService;
 
@@ -23,8 +22,6 @@ public class UserSerachServiceImpl implements UserSerachService {
 
 	@Autowired
 	private UserInfoMapper mapper;
-
-	
 
 	private static final String FROM_ADDRESS = "mywns1231@gmail.com";
 
@@ -61,13 +58,9 @@ public class UserSerachServiceImpl implements UserSerachService {
 	@Override
 	public UserInfo createMailAndChangePassword(UserInfo userInfo) {
 		String str = getTempPassword();
-		userInfo.setUserPw(str);		
+		userInfo.setUserPw(str);
 		updatePassword(userInfo);
-//		UserMail userMail = new UserMail();
-//		userMail.setAddress(userInfo.getEmail());
-//		userMail.setTitle(userInfo.getUserName() + "님의 100펀딩 임시비밀번호 안내 이메일 입니다.");
-//		userMail.setMessage("안녕하세요. 100펀딩 임시비밀번호 안내 관련 이메일 입니다." + "[" + userInfo.getUserName() + "]" + "님의 임시 비밀번호는 "
-//				+ str + " 입니다.");		
+
 		return userInfo;
 	}
 
@@ -93,45 +86,38 @@ public class UserSerachServiceImpl implements UserSerachService {
 
 	@Override
 	public void mailSend(UserInfo userInfo) {
+		String server = "smtp.gmail.com";
+		int port = 587;
+
 		try {
 			Properties properties = System.getProperties();
 			properties.put("mail.smtp.starttls.enable", "true");
-			properties.put("mail.smtp.host", "smtp.gmail.com");
+			properties.put("mail.smtp.host", server);
 			properties.put("mail.smtp.auth", "true");
-			properties.put("mail.smtp.port", "587");
-			
-			Authenticator auth = new UserMail();
-			Session s = Session.getDefaultInstance(properties, auth);
+			properties.put("mail.smtp.port", port);
+
+			Session s = Session.getDefaultInstance(properties);
 			Message message = new MimeMessage(s);
-//			String charset = "UTF-8";
-//			String name ="임준엽";
-//			InternetAddress sender_address =new InternetAddress(new String(name.getBytes(charset), "8859_1")+sender);
+
 			Address sender_address = new InternetAddress(FROM_ADDRESS);
 			Address receiver_address = new InternetAddress(userInfo.getEmail());
+
 			message.setHeader("content-type", "text/html;charset=utf-8");
 			message.setFrom(sender_address);
 			message.addRecipient(Message.RecipientType.TO, receiver_address);
 			message.setSubject(userInfo.getUserName() + "님의 100펀딩 임시비밀번호 안내 이메일 입니다.");
-			String content = "안녕하세요. 100펀딩 임시비밀번호 안내 관련 이메일 입니다.[" + userInfo.getUserName() + "]님의 임시 비밀번호는 "+ userInfo.getUserPw()+ "입니다.";
+			String content = "안녕하세요. 100펀딩 임시비밀번호 안내 관련 이메일 입니다.[" + userInfo.getUserName() + "]님의 임시 비밀번호는 "
+					+ userInfo.getUserPw() + "입니다.";
 			message.setContent(content, "text/html;charset=utf-8");
-			message.setSentDate(new java.util.Date());
-			System.out.println("message >>>>" + message);	
-			
-		
-			Transport.send(message);			
-		} catch (Exception e) {			
+			message.setSentDate(new Date());
+
+			Transport transport = s.getTransport("smtp");
+			transport.connect(server, "mywns1231@gmail.com", "비밀번호");
+			transport.sendMessage(message, message.getAllRecipients());
+			transport.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-//		SimpleMailMessage message = new SimpleMailMessage();
-//		message.setTo(userMail.getAddress());
-//		message.setFrom(UserSerachServiceImpl.FROM_ADDRESS);
-//		message.setSubject(userMail.getTitle());
-//		message.setText(userMail.getMessage());
-//		System.out.println("message >>>>" + message);
-//		mailSender.send(message);
-//		System.out.println("이메일 전송 완료!");
-
 	}
 
 }
