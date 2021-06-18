@@ -11,26 +11,21 @@
 <script type="text/javascript" src="/proj21_funding/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/proj21_funding/css/admin_css/adminSide.css">
 
-<script>
-</script>
 </head>
 <body>
-<div id="page-wrapper">
-<header>
-	<jsp:include page="/WEB-INF/view/admin/adminSide.jsp"/>
-</header>
-  <!-- 본문 -->
-  <div id="page-content-wrapper">
-    <div class="container-fluid">
-	<%-- <jsp:include page="/WEB-INF/view/home/header.jsp"/> --%>
-    	
-    	<h1>메인화면</h1>
-    </div>
+  <!-- 사이드바 -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">100펀딩 관리자 페이지</a>
+      </li>
+      <li><a href="adminMember">회원관리</a></li>
+      <li><a href="adminProject">프로젝트관리</a></li>
+      <li><a href="#">게시판관리</a></li>
+      <li><a href="#">메뉴 4</a></li>
+      <li><a href="#">메뉴 5</a></li>
+    </ul>
   </div>
-</div>
-  <!-- /본문 -->
-
-
- 
+  <!-- /사이드바 -->
 </body>
 </html>

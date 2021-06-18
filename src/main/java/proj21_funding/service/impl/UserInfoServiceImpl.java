@@ -1,5 +1,7 @@
 package proj21_funding.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public UserInfo showUserInfoById(String userId) {	
 		return mapper.selectUserbyId(userId);
+	}
+
+	@Override
+	public List<UserInfo> showUserAll() {
+		return mapper.selectUserAll();
 	}
 
 }
