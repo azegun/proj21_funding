@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
    	<c:set var="propt" value="${prjOption}"/> 
 				<c:set var="pro" value="${project}"/>		
 <!DOCTYPE html>
@@ -36,45 +37,98 @@
 					</script>
 </head>
 <body>
-${pro.prjNo}
+${pro}
+${uploadfile }
+${Uploadfile }
+
+
+<%-- ${pro } --%>
+<%-- ${category[0] } --%>
+<%=request.getContextPath() %>/images/project/
 <section class="container">
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
+		<c:if test="${pro == null}">
+				<h2>등록된 프로젝트이 존재하지 않습니다.</h2>
+				<div id ="foot_btn">		
+				<button id = "go_list">리스트</button>
+				</div>	
+		</c:if>
+		<c:if test = "${pro != null}">
+		<h2>프로젝트 등록</h2>
 		<section id= "table_all">
-		<table>		
-			<thead id = "column">
-				<tr>	
-						<th>번호</th>
-						<th>프로젝트</th>	<th>소개</th>
-						<th>목표 금액</th>
-						<th>마감일</th>	<th>결제일</th>
-						<th>옵션이름</th><th>옵션금액</th>
-						<th>옵션내용</th>
-						<th>수정</th><th>삭제</th>
-				</tr>
-			</thead>
-			<tbody id= "context">
+			<div id ="foot_btn">	
 					
-				<tr> 	
-							<td>${pro.prjNo }</td>						
-							<td>${pro.prjName}</td>
-							<td>${pro.prjContent }</td>
-							<td>${pro.prjGoal}</td>
-							<td>${pro.endDate }</td>
-							<td>${pro.payDate }</td>
-							<td>${propt.optName }</td>
-							<td>${propt.optPrice }</td>
-							<td>${propt.optContent }</td>	
-							<td><button id= "update_list">수정</button></td>
-							<td><button id= "delete_list">삭제</button></td>
-				</tr>
+			</div>
+		<table border= 1>		
+				<tbody>
+					<tr class = "col1">
+										<td class="td_left"><label for="prjNo">프로젝트번호</label></td>
+										<td class="td_right" ><span id="prjNo">${pro.prjNo }</span></td>
+					</tr>
+					<tr class = "col2">
+										<td class="td_left"><label for="pCategoryName">카테고리</label></td>
+										<td class="td_right" ><span id="pCategoryName">${category[0].pCategoryName }</span></td>	
+					</tr>
+					<tr class = "col3">
+										<td class="td_left"><label for="prjName">프로젝트</label></td>
+										<td class="td_right" ><span id="prjName">${pro.prjName}</span></td>
+					</tr>
+					<tr class = "col4">
+										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
+										<td class="td_right" ><span id="prjContent">${pro.prjContent }</span></td>
+					</tr>	
+					<tr class = "col5">
+										<td class="td_left"><label for="prjGoal">목표금액</label></td>
+										<td class="td_right" >
+												<span id="prjGoal">
+														<fmt:formatNumber value="${pro.prjGoal}" pattern="\\#,###"/>
+												 </span>
+										 </td>										
+					</tr>			
+					<tr class = "col6">
+										<td class="td_left"><label for="endDate">마감일</label></td>
+										<td class="td_right" ><span id="endDate">${pro.endDate }</span></td>
+					</tr>	
+					<tr class = "col7">
+										<td class="td_left"><label for="payDate">결제일</label></td>
+										<td class="td_right" ><span id="payDate">${pro.payDate}</span></td>
+					</tr>
+					<tr class = "col8">
+										<td class="td_left"><label for="optName">옵션이름</label></td>
+										<td class="td_right" ><span id="optName">${propt.optName }</span></td>
+					</tr>
+					<tr class = "col9">
+										<td class="td_left"><label for="optPrice">옵션금액</label></td>
+										<td class="td_right" >
+												<span id="optPrice">													
+														<fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
+												</span>
+										</td>
+					</tr>
+					<tr class = "col10">
+										<td class="td_left"><label for="optContent">옵션내용</label></td>
+										<td class="td_right" ><span id="optContent">${propt.optContent}</span></td>
+					</tr>
+					<tr class = "col11">
+										<td class="td_left"><label for="uploadfile">사진</label></td>
+										<td class="td_right" >
+											<%-- <c:if test="<%=request.getContextPath() %>/images/project/ == ${prj.prjNo }.jpg"></c:if> --%>
+											<img id="uploadfile" src = "<%=request.getContextPath() %>/images/project/project${pro.prjNo }.jpg"/>
+										</td>
+					</tr>
+										
+					
 				</tbody>
 		</table>
 		</section>
-				<div id ="foot_btn">
+				<div id ="foot_btn">					
+						<button id= "update_list">수정</button>
 						<button id = "go_list">리스트</button>
+						<button id= "delete_list">삭제</button>
 				</div>
+				</c:if>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 		</footer>

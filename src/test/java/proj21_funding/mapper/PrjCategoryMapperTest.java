@@ -16,36 +16,31 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
-import proj21_funding.dto.Project;
+import proj21_funding.dto.PrjCategory;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
 @WebAppConfiguration
-public class MyListMapperTest {
-
-	protected static final Log log = LogFactory.getLog(ProjectMapperTest.class);
+public class PrjCategoryMapperTest {
 	
+	protected static final Log log = LogFactory.getLog(PrjCategoryMapperTest.class);
 	
 	@Autowired
-	private MyListMapper mapper;
-	
+	private PrjCategoryMapper mapper;
+
 	@After
 	public void tearDown() throws Exception {
 		System.out.println();
 	}
 
 	@Test
-	public void testShowAllMyList() {
+	public void testShowCategory() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		List<Project> list = mapper.showAllMyList(1);
+		
+		List<PrjCategory> list =mapper.showCategory();
+		System.out.println(list);
+		
 		Assert.assertNotNull(list);
-	}	
-	
-	@Test
-	public void testShowDetailListAddTarget() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		List<Project> list = mapper.showDetailListByprjNo(1);
-		Assert.assertNotNull(list);
-	}	
+	}
 
 }

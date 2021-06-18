@@ -1,19 +1,23 @@
 @charset "UTF-8";
+#mydetail_header{
+	margin-bottom: 40px;
+}
 h2{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
-	margin-top: 40px;
 	margin-bottom: 30px;
 }
-#table_all{
+#detaillist_content{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
 }
-#column{
+#btns{
+margin-top:20px;
+ text-align: center;	
 }
 td{
 	text-align: center;
@@ -25,16 +29,12 @@ td{
 .td_right{
 	width: 380px;
 }
-
-#foot_btn{	
-	margin-top:20px;
-	text-align: center;	
-}
 /* 프로젝트 소개 */
  .col4 td:nth-of-type(2) {
 	height: 270px;
 }
 /* 옵션 소개 */
- .col10 td:nth-of-type(2) {
+ .col12 td:nth-of-type(2) {
 	height: 270px;
 }
+

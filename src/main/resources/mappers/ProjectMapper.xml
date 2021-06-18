@@ -4,7 +4,6 @@
 		<!-- property는 dto  column는 sql 컬럼 -->
 		<resultMap type="Project" id="resProject">
 				<id property="prjNo" column="PrjNo"/>
-				<result property="pCategoryNo" column="pCategoryNo"/>
 				<result property="prjName" column="PrjName"/>
 				<result property="prjContent" column="PrjContent"/>
 				<result property="prjGoal" column="PrjGoal"/>
@@ -14,9 +13,10 @@
 				<result property="endYn" column="EndYN"/>
 				<result property="totalPrice" column="totalPrice"/>				
 		</resultMap>	
-
+		
 		<!-- UserNo 추가하기 Associate로 -->
 		<resultMap type="Project" id="AssociateResUserInfo" extends="resProject">
+			<association property="pCategoryNo" resultMap="proj21_funding.mapper.PrjCategoryMapper.resPrjCategory"></association>	
 			<association property="userNo" resultMap="proj21_funding.mapper.UserInfoMapper.resUser" ></association>
 		</resultMap>
 	 
@@ -62,7 +62,7 @@
 						UserNo, pCategoryNo, PrjName, PrjContent, PrjGoal, 
 						StartDate, EndDate, PayDate) 
 				values(
-						#{userNo.userNo}, #{pCategoryNo}, #{prjName}, #{prjContent}, #{prjGoal},
+						#{userNo.userNo}, #{pCategoryNo.pCategoryNo}, #{prjName}, #{prjContent}, #{prjGoal},
 						 now(), now(), now())
 					<selectKey keyProperty="prjNo" resultType="int">
 							SELECT last_insert_id()
@@ -73,7 +73,7 @@
 		<update id="updateProject" >
 				update project 
 					set 
-					pCategoryNo = #{pCategoryNo}, PrjName = #{prjName}, PrjContent =#{prjContent}, 
+					pCategoryNo = #{pCategoryNo.pCategoryNo}, PrjName = #{prjName}, PrjContent =#{prjContent}, 
 					PrjGoal = #{prjGoal}, EndDate = #{endDate}, PayDate = #{payDate}
 				where prjno = #{prjNo}
 		</update>

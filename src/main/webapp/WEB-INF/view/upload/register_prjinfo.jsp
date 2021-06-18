@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +12,13 @@
 <link rel="stylesheet"
 	href=" <%=request.getContextPath()%>/css/upload_css/register_prjinfo.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-	
+<script type="text/javascript">	
 </script>
 </head>
 <body>
-	<%-- ${authInfo } --%>
+	 <%-- ${authInfo } --%>
+	 ${ category}	
+	 ${category[0].pCategoryNo }
 	<h2>프로젝트 등록</h2>
 	<section id="register_prjcontent">
 		<table>
@@ -28,16 +31,13 @@
 						required="required" readonly="readonly" /></td>
 				</tr>
 				<tr>
-					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
-					<td class="td_right">
-						<select id="category" name="pCategoryNo">						
-								<option value="0">----선택하세요-----</option>
-								<option value="1">게임</option>
-								<option value="2">공연</option>
-								<option value="3">패션</option>
-								<option value="4">식음료</option>
-								<option value="5">도서</option>
-								<option value="6">IT</option>
+					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>					
+					<td class="td_right" >
+						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo"  >		
+									<option value = "0">----선택해주세요---</option>
+							<c:forEach var = "c"  items="${category }" >
+									<option  value = " ${c.pCategoryNo }">${c.pCategoryName }</option>										
+							</c:forEach>									
 						</select>
 					</td>
 				</tr>
@@ -54,8 +54,7 @@
 				</tr>
 				<tr>
 					<td class="td_left"><label for="prjGoal">목표금액</label></td>
-					<td class="td_right"><input type="text" id="prjGoal"
-						name="prjGoal" size=40 required="required"></input></td>
+					<td class="td_right"><input type="text" id="prjGoal"	name="prjGoal" size=40 required="required" ></input></td>						
 				</tr>
 				<tr>
 					<td class="td_left"><label for="uploadFile">프로젝트 파일첨부</label>

@@ -4,9 +4,11 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import proj21_funding.dto.PrjCategory;
+
 public class UpdateProject {
 	private int prjNo;						//프로젝트번호
-	private int pCategoryNo;		//프로젝트 분류
+	private PrjCategory pCategoryNo;		//프로젝트 분류
 	private String prjName;  			//프로젝트명
 	private String prjContent;			//프로젝트내용
 	private int prjGoal;						//목표금액
@@ -46,12 +48,13 @@ public class UpdateProject {
 	}
 
 
-	public int getpCategoryNo() {
+
+	public PrjCategory getpCategoryNo() {
 		return pCategoryNo;
 	}
 
 
-	public void setpCategoryNo(int pCategoryNo) {
+	public void setpCategoryNo(PrjCategory pCategoryNo) {
 		this.pCategoryNo = pCategoryNo;
 	}
 

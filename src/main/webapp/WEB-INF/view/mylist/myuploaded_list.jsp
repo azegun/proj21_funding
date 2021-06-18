@@ -9,22 +9,11 @@
 		<meta charset="UTF-8">
 		<title>등록된 리스트</title>
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/main.css">
-						<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/mylist.css/myuploaded_list.css">			
+						<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/mylist_css/myuploaded_list.css">			
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		
-		<script type="text/javascript">
-				
-		
-	function checkAll(theForm){
-		if(theForm.remove.length == undefined){
-			theForm.remove.checked = theForm.allCheck.checked;
-		}else{
-			for(var i =0; i <theForm.remove.length; i++){
-				theForm.remove[i].checked = theForm.allCheck.checked;
-			}
-		}
-	}	
-	
+		<script type="text/javascript">			
+		/* 메인홈으로 */
 	$(function(){
 		var contextPath = "<%=request.getContextPath()%>";
 		$("#go_main").on("click", function(){
@@ -41,6 +30,7 @@
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
+			<h4>프로젝트 제목을 선택하시면 자세한 프로젝트 정보를 확인하실 수 있습니다.</h4>
 		<section id= "table_all">
 		<table border= 1>		
 			<thead id = "column">
@@ -63,16 +53,18 @@
 				<c:forEach var = "list" items = "${myList}" varStatus="status">	
 				<tr class = "size"> 
 							<td>${status.index+1 } </td>
-							<td><a href = "<%=request.getContextPath() %>/selectDetailList/${list.prjNo.prjNo }" >${list.prjNo.prjName }</a></td>
+							<td>
+									<a class = "pointer" href = "<%=request.getContextPath() %>/selectDetailList/${list.prjNo.prjNo }" >${list.prjNo.prjName }</a>
+							</td>
 							<td id = "prjGoal"><fmt:formatNumber value="${list.prjNo.prjGoal }" pattern="\\#,###"/> </td>	
-							<td>${list.prjNo.totalPrice/list.prjNo.prjGoal*100}%</td>
-							 <jsp:useBean id="now" class = "java.util.Date"></jsp:useBean>
-							 <fmt:formatDate  var="today"  value="${now}" pattern="yyyy-MM-dd"/>  
+							<td>${list.prjNo.totalPrice/list.prjNo.prjGoal*100}%</td>									
 							<td>${list.prjNo.startDate }</td>
 							<td>${list.prjNo.endDate }</td>
 							<td>${list.prjNo.payDate } </td>
-							<td>
 								
+						 <jsp:useBean id="now" class = "java.util.Date"></jsp:useBean>
+						 <fmt:formatDate  var="today"  value="${now}" pattern="yyyy-MM-dd"/>  
+							<td>
 							<c:choose>
 										<c:when test="${ list.prjNo.endDate < today  }">
 											<span>진행완료</span><br>
@@ -87,6 +79,7 @@
 							<c:if test = "${list.prjNo.totalPrice< list.prjNo.prjGoal}">
 											<span></span>
 							</c:if>		
+							</td>
 				</tr>
 				</c:forEach>
 				</tbody>
@@ -100,12 +93,5 @@
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 		</footer>
 	</section>
-<%-- 
-<c:if test= "${list.prjNo.payDate > today }">
-											<span>결제진행중</span>
-									</c:if>
-									<c:if test= "${list.prjNo.payDate < today }">
-										<span>결제완료</span>
-									</c:if> --%>
 </body>
 </html>

@@ -9,17 +9,24 @@
 				<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/main.css">
 				<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/update_prjlist.css">
 								<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-								<!-- <script type="text/javascript">
-								$(function setSelectBox(){
-									var schField = $("#category option:selected").val();
-									console.log("${project[0].prjNo.pCategoryNo}")
-									
-									if(schField == ${project[0].prjNo.pCategoryNo})
-										$("#category").val("${project[0].prjNo.pCategoryNo}").prop("selected", true);									
-								});
-							
+								<script type="text/javascript">
 								
-								</script> -->
+								$(function setSelectBox(){
+									var schField = $("#pCategoryNo option:selected").val();
+									console.log(schField)
+									
+									if(schField == 0)
+										
+									$("input:submit[name='tkdrjs7']").on("click",function(){
+										if($("#pCategoryNo option:selected").val() == 0){
+											return 			
+											alert("결제 실패")
+										}else{
+										}
+									})
+								});
+								
+								</script>
 </head>
 <body>
 			<%-- ${authInfo.userNo } --%>
@@ -27,8 +34,10 @@
 			 
 			<%--  ${project[0].prjNo.prjName} --%>
 			<%--  ${project[0].prjNo} --%>
-			${project[0].prjNo.pCategoryNo}
-			
+		<%-- 	${project[0].prjNo.pCategoryNo.pCategoryName}
+			${category }
+ --%>			
+ ${project[0].prjNo.pCategoryNo.pCategoryName}
 			<h2>프로젝트 수정</h2>	
 			<section id = "upload_prjcontent">					
 			<table>			
@@ -56,14 +65,11 @@
 			<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
 					<td class="td_right">
-						<select id="category" name="pCategoryNo" onchange="SetSelectBox();" >						
-								<option value="0">----선택하세요-----</option>
-								<option value="1">게임</option>
-								<option value="2">공연</option>
-								<option value="3">패션</option>
-								<option value="4">식음료</option>
-								<option value="5">도서</option>
-								<option value="6">IT</option>
+						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo"  >		
+									<option value = "0">---선택해주세요---- </option>
+							<c:forEach var = "c"  items="${category }" >
+									<option  value = " ${c.pCategoryNo }">${c.pCategoryName }</option>					
+							</c:forEach>									
 						</select>
 					</td>
 			</tr>

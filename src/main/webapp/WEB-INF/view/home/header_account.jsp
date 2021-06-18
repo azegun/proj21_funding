@@ -11,13 +11,13 @@
 <body>
 	<c:if test="${empty authInfo}">
 		<div class= account_menu>
-				<a href ="<c:url value='/login'/>" >로그인</a>&nbsp;&colon;&nbsp;
-				<a href="<c:url value='/account/signUp1'/>">회원가입</a>
+				<a class= "pointer_header" href ="<c:url value='/login'/>" >로그인</a>&nbsp;&colon;&nbsp;
+				<a class= "pointer_header" href="<c:url value='/account/signUp1'/>">회원가입</a>
 		</div>
 	</c:if>
 	<c:if test="${!empty authInfo}">
 		<div class= account_menu>
-				<a href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>${authInfo.nickName}</span>님 환영합니다.</a>
+				<a  class= "pointer_header" href = "<%=request.getContextPath() %>/home/header_logmenu" ><span>${authInfo.nickName}</span>님 환영합니다.</a>
 		</div>
 	</c:if>
 	

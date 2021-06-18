@@ -24,7 +24,6 @@
 			$(function(){
 				var contextPath = "<%=request.getContextPath()%>";
 				$("#return").on("click", function(){
-					console.log(111111)
 					/* window.location.href = contextPath+"/updateListCancel"; */
 				});			
 			});
@@ -36,7 +35,7 @@
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
-		<form action= "<%=request.getContextPath() %>/updateListSuccess" method="post" enctype="multipart/form-data">
+		<form  action= "<%=request.getContextPath() %>/updateListSuccess" method="post" enctype="multipart/form-data">
 		<section id = "register_center">
 			<div class="container_tab">
 					<ul class="tabs">
@@ -51,7 +50,7 @@
 					</div>	
 			</div>		
 			<div id="update_btns">
-					<input type="submit" value="등록"/>&nbsp;
+					<input type="submit" name ="tkdrjs7" value="등록"/>&nbsp;
 					<input type="reset" value="다시쓰기" />&nbsp; 
 					<button id = "return">뒤로</button>
 			</div>	

@@ -5,9 +5,14 @@
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
-	margin-top: 50px;
+}
+h4{
+	 	margin-left: 100px;
+	 	margin-top: 30px;
+	 	margin-bottom: 10px;
 }
 #column{
+
 }
 th, td{
 	text-align: center;
@@ -20,6 +25,9 @@ th{
 td{
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+.pointer{
+	color: #3f72af;
 }
 #context{
 }
@@ -36,6 +44,7 @@ td{
 .size td:nth-of-type(2) {
 	padding-left:15px;
 	padding-right:15px;
+	
 }
 /* 금액 */
 .size td:nth-of-type(3) {
