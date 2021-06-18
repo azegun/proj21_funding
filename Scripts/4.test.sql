@@ -12,7 +12,19 @@ select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelR
 
 select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelRecevie
   from message
- where SendUser = 'test10' and delSend = false;
+ where SendUser = 'test1' and delSend = false;
+
+select count(*)
+  from message
+ where SendUser = 'test1' and delSend = false;
+
+
+select R1.* FROM(
+	SELECT * 
+		FROM message 
+		where SendUser = 'test1' and delSend = false	
+	) R1
+	LIMIT 0, 10;
 
 update message 
 set ReadYN = 1

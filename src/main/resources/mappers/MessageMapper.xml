@@ -13,10 +13,19 @@
 		<result property="delRecevie" column="delRecevie"/>
 	</resultMap>
 	
-	<select id="selectBySendUser" resultMap="resMsg">
-		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
-		from message
-		where SendUser = #{sendUser} and delSend = false	
+	<select id="countBySendUser" resultType="int">
+		select count(*)
+		  from message
+		 where SendUser = #{sendUser} and delSend = false;	
+	</select>
+	
+	<select id="selectBySendUser"  resultMap="resMsg">
+	select R1.* FROM(
+			select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+			from message
+			where SendUser = #{sendUser} and delSend = false	
+		   ) R1
+			LIMIT #{pageSearch}, #{cntPerPage }
 	</select>
 	
 	<select id="selectByreceiveUser" resultMap="resMsg">
