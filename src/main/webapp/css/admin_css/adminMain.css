@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.sidenav {
+	background-color: #f1f1f1;
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	margin-left: -20px;
+	margin-top:50px
+}
+/* 본문 */
+.page {
+	margin-top:50px;
+	margin-left: 250px;
+}

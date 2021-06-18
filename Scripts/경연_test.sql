@@ -9,7 +9,6 @@ join prjoption o on p.PrjNo =o.PrjNo
 select * from fundinginfo f ;
 select * from prjoption o ;
 select * from userinfo o ;
-update userinfo  set email = 'ttt@naver.com' where userno=3;
 
 -- 프로젝트별 인원수, 가격
 select count(*),sum(optprice) 
@@ -24,7 +23,6 @@ select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			where o.prjNo = 1;
 
 
-select * from prjoption p group by prjno;
 
 -- 80%넘은 성공임박프로젝트  
 select p.prjno, p.userno, p.prjname, p.prjcontent, p.startdate, p.enddate,p.PayDate ,u.UserId , u.UserName ,
@@ -35,7 +33,6 @@ join project p on o.prjno = p.PrjNo
 join userinfo u on u.userno = p.userno
 group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
 
-select * from prjoption p2; 
 -- 번호별 
 select o.prjNo ,count(*),sum(optprice) 
 from fundinginfo f 
@@ -87,4 +84,4 @@ select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 						   join prjoption o on p.PrjNo =o.PrjNo
 			where o.optNo = 6;
 			
-		
+select * from admin;

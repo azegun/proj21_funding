@@ -34,7 +34,7 @@
 		select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, 
 				o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN
 		  from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo
-		 where f.userno = #{userNo.userNo}; 
+		 where f.userno = #{userNo.userNo} order by f.fundingno desc; 
 	 </select>
 	
 	<select id="selectFundingInfoByPrjNo" resultMap="resFundingInfo">

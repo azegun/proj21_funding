@@ -60,7 +60,7 @@ public class FundingInfoMapperTest {
 	@Test
 	public void testInsertFundingInfo() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		FundingInfo fundinginfo = new FundingInfo(new UserInfo(2),new Project(1),new PrjOption(5),50811105,40971,"대구광역시 북구구암로49길10","702동903호");
+		FundingInfo fundinginfo = new FundingInfo(new UserInfo(2),new Project(1),new PrjOption(5),"50811105",40971,"대구광역시 북구구암로49길10","702동903호");
 		mapper.insertFundingInfo(fundinginfo);
 		
 		

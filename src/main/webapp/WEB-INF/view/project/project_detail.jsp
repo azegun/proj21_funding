@@ -9,10 +9,8 @@
 <title>${prj[0].prjNo.prjName }</title>
 <link rel="shortcut icon" href="/proj21_funding/favicon.ico">
 <link rel="icon" href="/proj21_funding/favicon.ico">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/home_css/main.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/project_list_css/detail.css">
+<link rel="stylesheet"	href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet"	href="<%=request.getContextPath()%>/css/project_list_css/detail.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
 <script>
 $(function(){

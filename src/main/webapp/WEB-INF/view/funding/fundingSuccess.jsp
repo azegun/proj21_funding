@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>100펀딩-후원완료</title>
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="icon" href="favicon.ico">
+<link rel="shortcut icon" href="/proj21_funding/favicon.ico">
+<link rel="icon" href="/proj21_funding/favicon.ico">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
