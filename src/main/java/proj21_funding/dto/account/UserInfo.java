@@ -2,23 +2,27 @@ package proj21_funding.dto.account;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 // 회원정보 
 public class UserInfo {
 	private int userNo; // 회원번호
+	@Size(min = 4)
 	private String userId; // 회원계정
+	@Size(min = 4)
 	private String userPw; // 비밀번호
+	@NotBlank
 	private String userName; // 회원성명
 	@NotBlank
-	private String nickName; // 회원별명	
-	private String userPhone; // 회원H.P	
+	private String nickName; // 회원별명
+	@Email
+	@NotBlank
+	private String email; // 이메일	
 	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
 	private String detailAddress;// 상세주소
-	@Email
-	@NotBlank
-	private String email; // 이메일
+	private String userPhone; // 회원H.P
 	private String bankName; // 은행명
 	private String bankAccount; // 계좌번호
 	private boolean secession; // 탈퇴여부
@@ -43,23 +47,23 @@ public class UserInfo {
 		this.email = email;
 	}
 
-	// 회원가입 정보저장
-	public UserInfo(String userId, String userPw, String userName, String nickName, String userPhone, int zipCode,
-			String address, String detailAddress, String email, String bankName, String bankAccount) {
+	
+
+	public UserInfo(String userId, String userPw, String userName, @NotBlank String nickName,
+			@Email @NotBlank String email, int zipCode, @NotBlank String address, String detailAddress,
+			String userPhone, String bankName, String bankAccount) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
 		this.nickName = nickName;
-		this.userPhone = userPhone;
+		this.email = email;
 		this.zipCode = zipCode;
 		this.address = address;
 		this.detailAddress = detailAddress;
-		this.email = email;
+		this.userPhone = userPhone;
 		this.bankName = bankName;
 		this.bankAccount = bankAccount;
 	}
-
-	
 
 	// getter & setter
 	public int getUserNo() {
@@ -169,8 +173,8 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		return String.format(
-				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, nickName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s, secession=%s]",
-				userNo, userId, userPw, userName, nickName, userPhone, zipCode, address, detailAddress, email, bankName,
+				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, nickName=%s, email=%s, bankName=%s, zipCode=%s, address=%s, detailAddress=%s, userPhone=%s, bankAccount=%s, secession=%s]",
+				userNo, userId, userPw, userName, nickName, email, bankName, zipCode, address, detailAddress, userPhone,
 				bankAccount, secession);
 	}
 

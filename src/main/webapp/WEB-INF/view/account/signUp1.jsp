@@ -71,11 +71,11 @@
 					</label>
 				</p>
 				<p>
-					<label> 회원H.P :
-					<form:input path="userPhone" /> 
-					<form:errors path="userPhone" id="errors"/>
+					<label> 이메일 :
+					<form:input path="email" /> 
+					<form:errors path="email" id="errors"/>
 					</label>
-				</p>
+				</p>			
 				<p>
 					<label> 우편번호 검색하기 :
 					<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true" onclick="findAddr()" /> 
@@ -95,9 +95,9 @@
 					</label>
 				</p>				
 				<p>
-					<label> 이메일 :
-					<form:input path="email" /> 
-					<form:errors path="email" id="errors"/>
+					<label> 회원H.P :
+					<form:input path="userPhone" /> 
+					<form:errors path="userPhone" id="errors"/>
 					</label>
 				</p>
 				<p>
