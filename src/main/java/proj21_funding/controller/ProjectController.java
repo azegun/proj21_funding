@@ -3,7 +3,9 @@ package proj21_funding.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.account.UserLogin;
 import proj21_funding.dto.project.ProjectJoin;
 import proj21_funding.service.FundingInfoService;
 import proj21_funding.service.PrjOptionService;
@@ -104,24 +107,32 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/fundingProject")
-	public ModelAndView funding(HttpServletRequest request,HttpSession session) {
-//		System.out.println(session.getAttribute("authInfo"));
-		UserAuthInfo uai = (UserAuthInfo) session.getAttribute("authInfo");
+	public ModelAndView funding(@Valid UserLogin userLogin,
+			HttpServletRequest request,HttpSession session, HttpServletResponse response) {
+		UserAuthInfo uai;
+		int prjNo = (int) session.getAttribute("prjNo");
+		try{
+		uai = (UserAuthInfo) session.getAttribute("authInfo");
+		System.out.println(uai);
+		 
 		String userId = uai.getUserId();
 		UserInfo ui = userService.showUserInfoById(userId);
 //		System.out.println(ui);
 		int price = Integer.parseInt(request.getParameter("price"));
 		int optNo = Integer.parseInt(request.getParameter("optNo"));
-		int prjNo = (int) session.getAttribute("prjNo");
 		ProjectJoin prjInfo = joinService.showProjectJoinByPrjNo(prjNo);
 		PrjOption buyOption = optionService.showPrjOptionByOptNo(optNo);
-		
-		 
 		ModelAndView mav = new ModelAndView("funding/fundingScreen","price",price);
 		mav.addObject("price",price);
 		mav.addObject("buyOption",buyOption);
 		mav.addObject("prjInfo",prjInfo);
 		mav.addObject("ui",ui);
 		return mav;
+		} catch (NullPointerException e) {
+			return new ModelAndView("redirect:/login");
+		} catch (NumberFormatException e) {
+			System.out.println("들어옴");
+			return new ModelAndView("redirect:/prjDetail/"+prjNo);
+		}
 	}
 }

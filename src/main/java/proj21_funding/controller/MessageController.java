@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import proj21_funding.dto.FundingInfo;
 import proj21_funding.dto.Message;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.paging.Pagination;
 import proj21_funding.exception.UserNotFoundException;
 import proj21_funding.service.MessageService;
 
@@ -47,7 +49,8 @@ public class MessageController {
 		Message message = null;
 		
 		for (int i = 0; i < check.length; i++) {
-			message = service.showByMsgNo(Integer.parseInt(check[i]));			
+			message = service.showByMsgNo(Integer.parseInt(check[i]));
+			System.out.println(message);
 			if(message.getReceiveUser().equals(userAuthInfo.getUserId())) {
 				service.removeReceiveMessage(message);
 			}else {
@@ -124,10 +127,17 @@ public class MessageController {
 	}
 
 	@RequestMapping("/message/message-send")
-	public String send(Message message, HttpSession session, Model model) {
+	public String send(Message message, HttpSession session, Model model,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+            @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
-		List<Message> messages = service.showBySendUser(userAuthInfo.getUserId());
-
+		int listCnt = service.countBySendUser(userAuthInfo.getUserId());
+	    Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+	    pagination.setTotalRecordCount(listCnt);
+		
+	    model.addAttribute("pagination",pagination);
+		List<Message> messages = service.showBySendUser(userAuthInfo.getUserId(),pagination);
 		model.addAttribute("messages", messages);
 		return "message/message-send";
 	}

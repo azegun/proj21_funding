@@ -20,18 +20,16 @@ public class UserSignUp {
 	private String userName; // 회원성명
 	@NotBlank
 	private String nickName; // 회원별명
-
-	private String userPhone; // 회원H.P
+	@Email
 	@NotBlank
+	private String email; // 이메일	
 	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
-	private String detailAddress; // 상세주소
-	@Email
-	@NotBlank
-	private String email; // 이메일
+	private String detailAddress; // 상세주소	
+	private String userPhone; // 회원H.P	
 	private String bankName; // 은행명
-	private int bankAccount; // 계좌번호
+	private String bankAccount; // 계좌번호
 	private Boolean agree;
 
 	// getter & setter
@@ -123,11 +121,11 @@ public class UserSignUp {
 		this.bankName = bankName;
 	}
 
-	public int getBankAccount() {
+	public String getBankAccount() {
 		return bankAccount;
 	}
 
-	public void setBankAccount(int bankAccount) {
+	public void setBankAccount(String bankAccount) {
 		this.bankAccount = bankAccount;
 	}
 
@@ -147,11 +145,12 @@ public class UserSignUp {
 	@Override
 	public String toString() {
 		return String.format(
-				"UserSignUp [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, nickName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
-				userId, userPw, confirmUserPw, userName, nickName, userPhone, zipCode, address, detailAddress, email,
-				bankName, bankAccount);
+				"UserSignUp [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, nickName=%s, email=%s, zipCode=%s, address=%s, detailAddress=%s, userPhone=%s, bankName=%s, bankAccount=%s, agree=%s]",
+				userId, userPw, confirmUserPw, userName, nickName, email, zipCode, address, detailAddress, userPhone,
+				bankName, bankAccount, agree);
 	}
 
+	
 	
 
 }

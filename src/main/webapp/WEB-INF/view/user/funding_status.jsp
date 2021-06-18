@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
-${fundingList }
-후원현황
+<%-- ${fundingList }
+후원현황 --%>
 <div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/>

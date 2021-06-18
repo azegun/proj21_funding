@@ -13,28 +13,28 @@
 				<div class="slider">
 			<%-- 	<div><a href=""><img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/></div>
 			 --%>
-				<div><a href=""><img src="images/bul.jpg"></a></div>
-					<div><a href=""><img src="images/shiba.jpg"></a></div>
-					<div><a href=""><img src="images/jin.jpg"></a></div>
-					<div><a href=""><img src="images/pu.jpg"></a></div>
+				<div><a href=""><img src="images/Shin.jpg"></a></div>
+					<div><a href=""><img src="images/Shin2.jpg"></a></div>
+					<div><a href=""><img src="images/Shin3.jpg"></a></div>
+					<div><a href=""><img src="images/Shin4.jpg"></a></div>
 				</div>
 			</section>
 			<section>
 			<h2>주목할 만한 프로젝트</h2>
 				<div class="slider">				
-					<div><a href=""><img src="images/bul.jpg"></a></div>
-					<div><a href=""><img src="images/shiba.jpg"></a></div>
-					<div><a href=""><img src="images/jin.jpg"></a></div>
-					<div><a href=""><img src="images/pu.jpg"></a></div>
+					<div><a href=""><img src="images/Shin.jpg"></a></div>
+					<div><a href=""><img src="images/Shin2.jpg"></a></div>
+					<div><a href=""><img src="images/Shin3.jpg"></a></div>
+					<div><a href=""><img src="images/Shin4.jpg"></a></div>
 				</div>
 			</section>
 			<section>
 			<h2>마감 임박 프로젝트</h2>
 				<div class="slider">				
-					<div><a href=""><img src="images/bul.jpg"></a></div>
-					<div><a href=""><img src="images/shiba.jpg"></a></div>
-					<div><a href=""><img src="images/jin.jpg"></a></div>
-					<div><a href=""><img src="images/pu.jpg"></a></div>
+					<div><a href=""><img src="images/Shin.jpg"></a></div>
+					<div><a href=""><img src="images/Shin2.jpg"></a></div>
+					<div><a href=""><img src="images/Shin3.jpg"></a></div>
+					<div><a href=""><img src="images/Shin4.jpg"></a></div>
 				</div>
 			</section>
 </body>

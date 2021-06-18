@@ -10,6 +10,8 @@
 <title>100펀딩 - 크리에이터를 위한 크라우드펀딩</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico">
+<link rel="icon" href="<%=request.getContextPath()%>/favicon.ico">
 </head>
 <body>
 

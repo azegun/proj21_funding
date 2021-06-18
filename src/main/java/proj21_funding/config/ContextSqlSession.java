@@ -25,6 +25,8 @@ public class ContextSqlSession {
 		factoryBean.setConfigLocation(applicationContext.getResource("classpath:/mybatis-config.xml"));
 		// mapper 사용할 때 주석 풀기.
 		factoryBean.setMapperLocations(applicationContext.getResources("classpath:/mappers/*Mapper.xml"));
+		// 페이징때문에
+		factoryBean.setTypeAliasesPackage("com.board.*");
 		return factoryBean;
 	}
 

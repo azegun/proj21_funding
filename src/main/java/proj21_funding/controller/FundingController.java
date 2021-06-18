@@ -1,6 +1,7 @@
 package proj21_funding.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,12 +23,12 @@ public class FundingController {
 
 	@RequestMapping(value={"/fundingSuccess/{userNo}/{optNo}"})
 	ModelAndView fundingSuccess(@PathVariable("userNo") int userNo,
-			 @PathVariable("optNo")int optNo,  HttpServletRequest request) {
+			 @PathVariable("optNo")int optNo,  HttpServletRequest request, HttpSession session) {
 		UserInfo userNo1 = new UserInfo(userNo);
 		int prj = Integer.parseInt(request.getParameter("prjNo"));
 		Project prjNo = new Project(prj);
 		PrjOption optNo1 = new PrjOption(optNo);
-		int accountNo = Integer.parseInt(request.getParameter("accountNo"));
+		String accountNo = request.getParameter("accountNo");
 		int zipCode = Integer.parseInt(request.getParameter("zipCode"));
 		String address = request.getParameter("address");
 		String detailAddress = request.getParameter("detailAddress");

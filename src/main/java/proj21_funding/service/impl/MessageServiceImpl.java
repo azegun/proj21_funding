@@ -9,6 +9,7 @@ import proj21_funding.dto.FundingInfo;
 import proj21_funding.dto.Message;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.paging.Pagination;
 import proj21_funding.exception.UserNotFoundException;
 import proj21_funding.mapper.FundingInfoMapper;
 import proj21_funding.mapper.MessageMapper;
@@ -50,8 +51,14 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public List<Message> showBySendUser(String sendUser) {		
-		return mapper.selectBySendUser(sendUser);
+	public int countBySendUser(String sendUser) {		
+		return mapper.countBySendUser(sendUser);
+	}
+	
+	
+	@Override
+	public List<Message> showBySendUser(String sendUser, Pagination pagination) {		
+		return mapper.selectBySendUser(sendUser, pagination.getPageSearch(), pagination.getCntPerPage() );
 	}
 
 	@Override
@@ -98,6 +105,8 @@ public class MessageServiceImpl implements MessageService {
 	public UserInfo showUserbyNo(int userNo) {
 		return userMapper.selectUserbyNo(userNo);
 	}
+
+	
 
 	
 }

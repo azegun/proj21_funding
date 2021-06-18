@@ -12,7 +12,19 @@ select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelR
 
 select MsgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelRecevie
   from message
- where SendUser = 'test10' and delSend = false;
+ where SendUser = 'test1' and delSend = false;
+
+select count(*)
+  from message
+ where SendUser = 'test1' and delSend = false;
+
+
+select R1.* FROM(
+	SELECT * 
+		FROM message 
+		where SendUser = 'test1' and delSend = false	
+	) R1
+	LIMIT 0, 10;
 
 update message 
 set ReadYN = 1
@@ -61,7 +73,7 @@ where userId = 'test10' and userPw = password('1111');
 where UserName = 'test10' and UserPhone = '01012345678';
 
 update userinfo
-		   set Secession = 0
+		   set userPw = password('1111')
 		 where userId = 'test10';
 		 
 delete from userinfo where userNo >2;
@@ -238,5 +250,56 @@ values ('창작자'), ('후원자'), ('사이트 이용');
 
 select * from boardcategory;
 
+-- 페이징
+select R1.* FROM(
+SELECT * FROM BOARD order by boardno desc
+) R1
+LIMIT 0, 10;
 
+SELECT count(*) FROM Board;
 
+insert Board(categoryNo, boardTitle, boardContent)
+values (1, "210618 업데이트 내용", "안내하는 중"),
+(1, "210618 서버 안정화", "안내하는 중"),
+(2, "210618", "안내하는 중"),
+(1, "로그인 오류 관련 보상", "안내하는 중"),
+(2, "해당 이벤트 종료 일정 안내", "안내하는 중"),
+(1, "여름 업데이트", "안내하는 중"),
+(2, "210618 이벤트 사전안내1", "안내하는 중"),
+(2, "210618 이벤트 사전안내2", "안내하는 중"),
+(1, "210618 업데이트 내용1", "안내하는 중"),
+(1, "210618 업데이트 내용2", "안내하는 중"),
+(1, "210618 업데이트 내용3", "안내하는 중"),
+(2, "210618 후원금 페이백 이벤트", "안내하는 중"),
+(1, "210618 업데이트 내용4", "안내하는 중"),
+(1, "210618 업데이트 내용5", "안내하는 중"),
+(1, "210618 업데이트 내용6", "안내하는 중"),
+(2, "210618 이벤트 사전안내3", "안내하는 중"),
+(2, "210618 이벤트 사전안내4", "안내하는 중"),
+(1, "210618 업데이트 내용7", "안내하는 중"),
+(1, "210618 업데이트 내용8", "안내하는 중"),
+(1, "210618 업데이트 내용9", "안내하는 중"),
+(2, "210618 이벤트 사전안내5", "안내하는 중"),
+(1, "210618 업데이트 내용10", "안내하는 중"),
+(1, "210618 업데이트 내용11", "안내하는 중"),
+(2, "210618 이벤트 사전안내6", "안내하는 중"),
+(1, "210618 업데이트 내용12", "안내하는 중"),
+(2, "210618 이벤트 사전안내3", "안내하는 중"),
+(2, "210618 이벤트 사전안내4", "안내하는 중"),
+(1, "210618 업데이트 내용7", "안내하는 중"),
+(1, "210618 업데이트 내용8", "안내하는 중"),
+(1, "210618 업데이트 내용9", "안내하는 중"),
+(2, "210618 이벤트 사전안내5", "안내하는 중"),
+(1, "210618 업데이트 내용10", "안내하는 중"),
+(1, "210618 업데이트 내용11", "안내하는 중"),
+(2, "210618 이벤트 사전안내6", "안내하는 중"),
+(1, "210618 업데이트 내용12", "안내하는 중");
+
+  SELECT *
+        FROM (
+        SELECT @rownum:=@rownum+1, b.* OVER(ORDER by boardNo DESC) AS
+        row_num
+        ,boardNo
+        ,boardTitle
+        FROM board
+        );

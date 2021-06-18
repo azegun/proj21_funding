@@ -8,9 +8,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import proj21_funding.dto.account.UserSignUp;
+import proj21_funding.exception.DuplicateEmailException;
 import proj21_funding.exception.DuplicateNickNameException;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.service.UserRegisterService;
@@ -52,6 +52,9 @@ public class UserSignUpController {
 			return "account/signUp1";
 		} catch (DuplicateNickNameException  e) {
 			errors.rejectValue("nickName", "duplicate");
+			return "account/signUp1";
+		} catch (DuplicateEmailException  e) {
+			errors.rejectValue("email", "duplicate");
 			return "account/signUp1";
 		} 
 	}
