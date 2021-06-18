@@ -33,9 +33,10 @@
 			<jsp:include page="/WEB-INF/view/project/list_section.jsp" />
 		</section>
 
-	</div>
+	
 	<footer>
 		<jsp:include page="/WEB-INF/view/home/footer.jsp" />
 	</footer>
+	</div>
 </body>
 </html>

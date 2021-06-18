@@ -7,9 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import proj21_funding.dto.account.UserInfo;
 
 public class Project {
-	private int prjNo;			//프로젝트번호
+	private int prjNo;			//프로젝트번호	
 	private UserInfo userNo;		//프로젝트관리자
-	private int pCategoryNo;		//프로젝트 분류
+	private PrjCategory pCategoryNo;		//프로젝트 분류
 	private String prjName;			//프로젝트명
 	private String prjContent;		//프로젝트내용
 	private int prjGoal;			//목표금액
@@ -26,18 +26,18 @@ public class Project {
 	public Project() {
 	}
 	
-	//프로젝트 등록
-	public Project(UserInfo userNo, int pCategoryNo, String prjName, String prjContent, int prjGoal) {
+	//프로젝트 등록	
+	public Project(UserInfo userNo, PrjCategory pCategoryNo, String prjName, String prjContent, int prjGoal) {
 		this.userNo = userNo;
 		this.pCategoryNo = pCategoryNo;
 		this.prjName = prjName;
 		this.prjContent = prjContent;
 		this.prjGoal = prjGoal;
 	}
-	
+
 	//프로젝트 수정
-	public Project(int prjNo, int pCategoryNo, String prjName, String prjContent, int prjGoal, LocalDate endDate,
-			LocalDate payDate) {
+	public Project(int prjNo, PrjCategory pCategoryNo, String prjName, String prjContent, int prjGoal,
+			LocalDate endDate, LocalDate payDate) {
 		this.prjNo = prjNo;
 		this.pCategoryNo = pCategoryNo;
 		this.prjName = prjName;
@@ -81,11 +81,12 @@ public class Project {
 		this.prjName = prjName;
 	}
 
-	public int getpCategoryNo() {
+
+	public PrjCategory getpCategoryNo() {
 		return pCategoryNo;
 	}
 
-	public void setpCategoryNo(int pCategoryNo) {
+	public void setpCategoryNo(PrjCategory pCategoryNo) {
 		this.pCategoryNo = pCategoryNo;
 	}
 

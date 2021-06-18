@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
+import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
@@ -42,7 +43,7 @@ public class ProjectAndPrjOptionServiceTest {
 	public void testTrJoinPrjAndPrjOpt_Success() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
         
-    	Project project = new Project(new UserInfo(2), 2,"트렌젝션성공!!!!!!!", "제발,,,,", 3000000);
+    	Project project = new Project(new UserInfo(2), new PrjCategory(2),"트렌젝션성공!!!!!!!", "제발,,,,", 3000000);
     	int res = pMapper.insertProject(project);
     	System.out.println(" res" + res);
     	
@@ -58,10 +59,10 @@ public class ProjectAndPrjOptionServiceTest {
 	public void testTrRemovePrjAndPrjOpt_Success() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
         
-        int res = prjOptMapper.removePrjOption(12);
+        int res = prjOptMapper.removePrjOption(6);
         System.out.println("res1 >>  " + res);
         
-        res += pMapper.removeProject(12);
+        res += pMapper.removeProject(6);
         Assert.assertEquals(2, res);
         System.out.println("final res >> " +res);    
         

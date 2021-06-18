@@ -7,8 +7,13 @@
 		<meta charset="UTF-8">
 		<title>로그메뉴</title>
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/header_logmenu.css">
+			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/main.css">
+		
 </head>
 <body>
+			<header>		   
+					<jsp:include page="/WEB-INF/view/home/header_top.jsp"/>
+			</header>
 		<c:if test="${empty authInfo}">
 	         <section id = "logon_infomation">
 		         <div><a href =   "" >마이페이지</a></div>

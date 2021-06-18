@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_funding.config.ContextRoot;
+import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
 
@@ -68,7 +69,7 @@ public class ProjectMapperTest {
 	public void testinsertProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		Project project = new Project(new UserInfo(3), 3, "인서트성공", "제발,,,,", 3000000);
+		Project project = new Project(new UserInfo(3), new PrjCategory(3), "인서트성공", "제발,,,,", 3000000);
 		int res = mapper.insertProject(project);
 		
 		Assert.assertEquals(1, res);		
@@ -78,7 +79,7 @@ public class ProjectMapperTest {
 	public void testupdateProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		Project project = new Project(3, 2, "업데이트테스트", "제발성공,,,,", 2000000, date,  date);
+		Project project = new Project(3, new PrjCategory(2), "업데이트테스트", "제발성공,,,,", 2000000, date,  date);
 		int res = mapper.updateProject(project);
 		
 		Assert.assertEquals(1, res);		
@@ -90,7 +91,7 @@ public void testjoinUpdateProjectAndPrjOption() {
 	Map<String, Object> map = new HashMap<String, Object>();
 	map.put("pNo",2);
 	map.put("pCategoryNo", 2);
-	map.put("pName", "맵테스트");
+	map.put("pName", "맵테스트1");
 	map.put("pContent", "조인업데이트업데이트");
 	map.put("pGoal", 2000000);
 	map.put("eDate", date);
@@ -107,7 +108,7 @@ public void testjoinUpdateProjectAndPrjOption() {
 public void testremoveProjectOption() {
 	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 	
-	int res = mapper.removeProject(9);
+	int res = mapper.removeProject(8);
 	
 	Assert.assertEquals(1, res);		
 }

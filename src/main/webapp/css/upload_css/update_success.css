@@ -1,26 +1,37 @@
 @charset "UTF-8";
+h2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
 #table_all{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
-	margin-top: 50px;
 }
-#column{
-}
-th, td{
-	padding-left:15px;
-	padding-right:15px;
-	text-align: center;
-}
-#context{
-}
-
 #foot_btn{	
-	margin-top:30px;
+	margin-top:20px;
 	text-align: center;	
 }
-#go_list{
-	
-	
+td{
+	text-align: center;
+	padding: 5px;
+}
+.td_left{
+	width: 150px;
+}
+.td_right{
+	width: 380px;
+}
+/* 프로젝트 소개 */
+ .col4 td:nth-of-type(2) {
+	height: 270px;
+}
+/* 옵션 소개 */
+ .col10 td:nth-of-type(2) {
+	height: 270px;
 }

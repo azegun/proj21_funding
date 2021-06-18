@@ -6,31 +6,33 @@
 		<select id="showAllMyList"
 		 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
 					select 
-							p.prjNo, p.UserNo,  p.pCategoryNo, PrjName, PrjContent, PrjGoal,
+							p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
 							p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
 							o.OptNo, o.optName,  o.OptPrice, o.OptContent,
 							if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
 					from fundinginfo f 
-					      join prjoption o on o.optno= f.OptNo 
-						  right join project p on p.prjno = f.PrjNo 
-						  join userinfo u on p.userno = u.userno
-			 	where u.userno = #{userNo.userNo}				 	
+						      join prjoption o on o.optno= f.OptNo 
+							  right join project p on p.prjno = f.PrjNo 
+							  join userinfo u on p.userno = u.userno
+							  join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
+					where u.userno = #{userNo.userNo}				 	
 					group by prjno
 		</select>
 		
 		
 		<!-- 프로젝트 번호로 리스트 받아오기 detail  -->
-		<select id="showDetailListByprjNo" parameterType="Project"
+		<select id="showDetailListByprjNo" 
 			 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
 					select 
-								p.prjNo, p.UserNo,  p.pCategoryNo, p.PrjName, p.PrjContent, p.PrjGoal,
-								p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName, u.nickname,
+								p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryNo, PrjName, PrjContent, PrjGoal,
+								p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
 								o.OptNo, o.optName,  o.OptPrice, o.OptContent,
 								if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
 					from fundinginfo f 
-							 join prjoption o on o.optno= f.OptNo 
-							right join project p on p.prjno = f.PrjNo 
-							join userinfo u on p.userno = u.userno
+						      join prjoption o on o.optno= f.OptNo 
+							  right join project p on p.prjno = f.PrjNo 
+							  join userinfo u on p.userno = u.userno
+							  join prjcategory pc on p.pCategoryNo =pc.pCategoryNo 
  				where p.prjno = #{prjNo}		
 		</select>
 

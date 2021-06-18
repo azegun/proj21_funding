@@ -9,7 +9,7 @@
 </head>
 <body>
 		<div class = "main_frame">
-		<a href= "/proj21_funding/main" >100펀딩</a>
+			<a class= "pointer_header" href= "/proj21_funding/main" >100펀딩</a>
 		</div>
 </body>
 </html>

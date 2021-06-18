@@ -310,7 +310,6 @@ CREATE TABLE proj21_funding.PrjCategory (
 	pCategoryName VARCHAR(20) NOT NULL COMMENT '분류명' -- 분류명
 )
 COMMENT '프로젝트카테고리';
-
 -- 프로젝트카테고리
 ALTER TABLE proj21_funding.PrjCategory
 	ADD CONSTRAINT PK_PrjCategory -- 프로젝트카테고리 기본키

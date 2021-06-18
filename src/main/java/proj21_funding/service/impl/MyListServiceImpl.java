@@ -20,7 +20,7 @@ public class MyListServiceImpl implements MyListService {
 	}
 
 	@Override
-	public Project showDetailListByprjNo(int prjNo) {
+	public 	List<Project> showDetailListByprjNo(int prjNo) {
 		return mapper.showDetailListByprjNo(prjNo);
 	}
 

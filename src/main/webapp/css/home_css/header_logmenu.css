@@ -2,12 +2,15 @@
 #logon_infomation{
 }
 
-div a {
+#logon_infomation div a {
 	text-decoration: none;
-	color: black;	
 	font-weight: bold;	
 	font-size: 30px;
+	color: black;
 }
 div{
 		margin-top: 20px;
+}
+.pointer_header{
+	color: black;
 }
