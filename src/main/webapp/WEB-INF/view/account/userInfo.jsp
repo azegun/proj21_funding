@@ -71,11 +71,11 @@
 					</label>
 				</p>
 				<p>
-					<label> 회원H.P :
-					<form:input path="userPhone" value="${userInfo.userPhone}"/> 
-					<form:errors path="userPhone" />
+					<label> 이메일 :
+					<form:input path="email" value="${userInfo.email}"/> 
+					<form:errors path="email" />
 					</label>
-				</p>
+				</p>				
 				<p>
 					<label> 우편번호 검색하기 :
 					<form:input path="zipCode" id="member_post"  readonly="true" onclick="findAddr()" value="${userInfo.zipCode}"/>					 
@@ -93,13 +93,13 @@
 					<form:input path="detailAddress" value="${userInfo.detailAddress}"/> 
 					<form:errors path="detailAddress" />					
 					</label>
-				</p>				
-				<p>
-					<label> 이메일 :
-					<form:input path="email" value="${userInfo.email}"/> 
-					<form:errors path="email" />
-					</label>
 				</p>
+				<p>
+					<label> 회원H.P :
+					<form:input path="userPhone" value="${userInfo.userPhone}"/> 
+					<form:errors path="userPhone" />
+					</label>
+				</p>				
 				<p>
 					<label> 은행명 :
 					<form:input path="bankName" value="${userInfo.bankName}"/> 
@@ -112,8 +112,7 @@
 					<form:errors path="bankAccount" />
 					</label>
 				</p>
-				<form:button id="submit" value="submit">수정하기</form:button>
-											
+				<form:button id="submit" value="submit">수정하기</form:button>											
 			</form:form>
 			<a href="<c:url value='/account/userReSign'/>"><button value="del">탈퇴하기</button></a>
 		</section>			

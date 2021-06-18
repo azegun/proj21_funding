@@ -8,11 +8,14 @@ import proj21_funding.dto.FundingInfo;
 import proj21_funding.dto.Message;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.paging.Pagination;
 
 @Service
 public interface MessageService {
 
-	List<Message> showBySendUser(String sendUser);
+	int countBySendUser(String sendUser);	
+	
+	List<Message> showBySendUser(String sendUser, Pagination pagination);
 
 	List<Message> showByreceiveUser(String receiveUser);
 

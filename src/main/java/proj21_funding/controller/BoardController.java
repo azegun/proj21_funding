@@ -1,6 +1,9 @@
 package proj21_funding.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,10 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.Board;
 import proj21_funding.dto.BoardCategory;
+import proj21_funding.dto.paging.Pagination;
 import proj21_funding.service.BoardService;
 import proj21_funding.service.CategoryService;
 
@@ -28,23 +33,13 @@ public class BoardController {
 	public ModelAndView noticeAll() {
 		List<Board> board = boardService.showBoardAll();
 		List<BoardCategory> bc = bcService.showBCByClass("board");
-		
-		/*
-		 * int listCnt = boardService.selectBoardListCnt(board);
-		 * 
-		 * Pagination pagination = new Pagination(listCnt, curPage);
-		 * 
-		 * board.setStartIndex(pagination.getStartIndex());
-		 * board.setCntPerPage(pagination.getPageSize());
-		 */
-		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("board/notice_all");
 		mav.addObject("board", board);
 		mav.addObject("bc", bc);
 		return mav;
 	}
-
+	
 	@RequestMapping("/board/notice_write")
 	public ModelAndView WriteAll() {
 		List<BoardCategory> bc = bcService.showBCByClass("board");
@@ -116,4 +111,24 @@ public class BoardController {
 			return noticeAll();
 		}
 	}
+
+    @RequestMapping(value = "/board/list")
+    public ModelAndView AllListView(
+            @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+            @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
+            Map<String, Object> map, HttpServletRequest request) throws Exception {
+        ModelAndView mav = new ModelAndView();
+        
+        int listCnt = boardService.BoardCount();
+        Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+        pagination.setTotalRecordCount(listCnt);
+		List<BoardCategory> bc = bcService.showBCByClass("board");
+ 
+        mav.addObject("pagination",pagination);
+        mav.addObject("board",boardService.SelectAllList(pagination));
+		mav.addObject("bc", bc);
+        mav.setViewName("/board/list");
+        return mav;
+    }
 }

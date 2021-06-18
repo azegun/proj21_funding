@@ -40,10 +40,15 @@
 <body>	
 		<div>
 			<h2>진행중인 프로젝트</h2>
-			<fieldset>			
-				<c:forEach var="pro" items="${projects}">					
-					<a href="<c:url value="/message/message-search/${pro.prjNo}" />">${pro.prjNo}</a><br>
-				</c:forEach>
+			<fieldset>
+				<c:if test="${!empty projects}">
+					<c:forEach var="pro" items="${projects}">					
+						<a href="<c:url value="/message/message-search/${pro.prjNo}" />">${pro.prjNo}</a><br>
+					</c:forEach>
+				</c:if>	
+				<c:if test="${empty projects}">
+					없음
+				</c:if>						
 			</fieldset>
 		</div>		
 		<div>

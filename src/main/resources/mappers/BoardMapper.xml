@@ -9,13 +9,11 @@
 		<result property="boardDate" column="BoardDate" />
 	</resultMap>
 
-
 	<resultMap type="Board" id="AssociateResCategory" extends="resBoard">
 		<association property="categoryNo"
 			resultMap="proj21_funding.mapper.BoardCategoryMapper.resBC"></association>
 	</resultMap>
 	
-
 	<sql id="selectSql">
 		select boardNo, categoryNo, boardTitle, boardContent, boardDate
 		from Board
@@ -24,6 +22,45 @@
 	<select id="selectBoardAll" resultType="Board" resultMap="AssociateResCategory">
 		<include refid="selectSql" />
 	</select>
+	
+	<!-- 페이징 시도중 -->
+	
+	<select id="selectBoardList" parameterType="Criteria" resultType="Board">
+		SELECT
+			boardNo, categoryNo, boardTitle, boardDate
+		FROM
+			board
+		WHERE
+			delete_yn = 'N'
+		ORDER BY
+			notice_yn ASC,
+			idx DESC,
+			insert_time DESC
+		LIMIT
+			#{startPage}, #{recordsPerPage}
+	</select>
+			
+	<select id="selectBoardTotalCount" parameterType="Criteria" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			board
+		WHERE
+			delete_yn = 'N'
+	</select>
+	
+	<select id="SelectAllList" resultType="map">
+    	select R1.* FROM(
+			SELECT * FROM BOARD order by boardNo desc
+		) R1
+		LIMIT #{pageSearch}, #{cntPerPage };
+    </select>
+    
+    <select id="BoardCount" resultType="int">
+        SELECT count(*) FROM Board
+    </select>
+	
+	<!--  -->
 
 	<select id="selectBoardByNo" resultMap="resBoard">
 		<include refid="selectSql" />

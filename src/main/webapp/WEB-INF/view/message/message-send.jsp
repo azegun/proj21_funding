@@ -20,19 +20,40 @@
 		});			
 		
 	});
+	
+	//10,20,30개씩 selectBox 클릭 이벤트
+	function changeSelectBox(currentPage, cntPerPage, pageSize){
+	    var selectValue = $("#cntSelectBox").children("option:selected").val();
+	    movePage(currentPage, selectValue, pageSize);
+	    
+	}
+	
+	//페이지 이동
+	function movePage(currentPage, cntPerPage, pageSize){
+	    
+	    var url = "${pageContext.request.contextPath}/message/message-send";
+	    url = url + "?currentPage="+currentPage;
+	    url = url + "&cntPerPage="+cntPerPage;
+	    url = url + "&pageSize="+pageSize;
+	    
+	    location.href=url;
+	}
+	
+	
 </script>
 </head>
 <body>
 	<div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
 		<section id="messageFormArea">
 			
 			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>	
-			<h2>보낸 메세지(${fn:length(messages)})</h2>	
+			<h2>보낸 메세지(${pagination.totalRecordCount})</h2>	
 			<form:form modelAttribute="message" action="dels">		
 			<fieldset>
 				<table>
@@ -50,8 +71,35 @@
 							<td><tf:formatDateTime value="${msg.sendDate}" pattern="yyyy-MM-dd" /></td>																			
 						</tr>
 					</c:forEach>					
-				</table>
+				</table>				
 			</fieldset>
+			
+			<!--paginate -->
+		    <div class="paginate">
+		        <div class="paging">
+		            <a class="direction prev" href="javascript:void(0);"
+		                onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">
+		                &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+		                onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
+		                &lt; </a>
+		 
+		            <c:forEach begin="${pagination.firstPage}"
+		                end="${pagination.lastPage}" var="idx">
+		                <a
+		                    style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+		                    href="javascript:void(0);"
+		                    onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});"><c:out
+		                        value="${idx}" /></a>
+		            </c:forEach>
+		            <a class="direction next" href="javascript:void(0);"
+		                onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
+		                &gt; </a> <a class="direction next" href="javascript:void(0);"
+		                onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize});">
+		                &gt;&gt; </a>
+		        </div>
+		    </div>
+		    <!-- /paginate -->			
+			
 			<form:button>삭제</form:button>
 			</form:form>		 
 		</section>

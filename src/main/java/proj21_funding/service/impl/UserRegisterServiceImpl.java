@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import proj21_funding.dto.Admin;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserSignUp;
+import proj21_funding.exception.DuplicateEmailException;
 import proj21_funding.exception.DuplicateNickNameException;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.mapper.AdminMapper;
@@ -42,11 +43,16 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 			throw new DuplicateNickNameException();
 		}
 		
+		UserInfo userInfo2 = mapper.selectUserbyEmail(userSignUp.getEmail());
+		if (userInfo2 != null) {
+			throw new DuplicateEmailException();
+		}
+		
 		
 		UserInfo newUserInfo = new UserInfo(
 				userSignUp.getUserId(), userSignUp.getUserPw(), userSignUp.getUserName(),
-				userSignUp.getNickName(), userSignUp.getUserPhone(), userSignUp.getZipCode(),
-				userSignUp.getAddress(), userSignUp.getDetailAddress(), userSignUp.getEmail(),
+				userSignUp.getNickName(), userSignUp.getEmail(), userSignUp.getZipCode(),
+				userSignUp.getAddress(), userSignUp.getDetailAddress(), userSignUp.getUserPhone(),
 				userSignUp.getBankName(), userSignUp.getBankAccount());
 
 		mapper.insertUser(newUserInfo);

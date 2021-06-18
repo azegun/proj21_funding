@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 			<fieldset id="searchId">				
 				이메일로 임시 비밀번호가 발급되었습니다.						
 			</fieldset>
-			<a href ="login" ><button type="button">로그인화면으로 가기</button></a>
+			<a href ="<c:url value='/login'/>" ><button type="button">로그인화면으로 가기</button></a>
 		</section>		
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp" />
