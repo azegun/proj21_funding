@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.exception.DuplicateEmailException;
 import proj21_funding.exception.DuplicateNickNameException;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.service.UserInfoService;
@@ -49,8 +50,8 @@ public class UserInfoController {
 			
 			session.setAttribute("authInfo", userAuthInfo);
 			return "account/userInfo";
-		} catch (DuplicateUserException e) {
-			errors.rejectValue("userId", "duplicate");
+		} catch (DuplicateEmailException e) {
+			errors.rejectValue("email", "duplicate");
 			return "account/userInfo";
 		} catch (DuplicateNickNameException  e) {
 			errors.rejectValue("nickName", "duplicate");

@@ -62,7 +62,7 @@ where UserName = 'test10' and UserPhone = '01012345678';
 
 update userinfo
 		   set userPw = password('1111')
-		 where userId = 'test11';
+		 where userId = 'test10';
 		 
 delete from userinfo where userNo >2;
 alter table userinfo auto_increment=4;

@@ -9,6 +9,6 @@
 </head>
 <body>
 	<p>비밀번호가 변경되었습니다.</p>
-	<a href="<c:url value='/main'/>"><button type="button">메인화면으로가기</button></a>
+	<button type="button" onclick="window.close();">확인</button>
 </body>
 </html>

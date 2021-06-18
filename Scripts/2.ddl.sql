@@ -55,12 +55,12 @@ CREATE TABLE proj21_funding.UserInfo (
 	UserId        VARCHAR(10)  NOT NULL COMMENT '회원계정', -- 회원계정
 	UserPw        CHAR(41)     NOT NULL COMMENT '비밀번호', -- 비밀번호
 	UserName      VARCHAR(20)  NOT NULL COMMENT '회원성명', -- 회원성명
-	Nickname      VARCHAR(20)  NULL     COMMENT '회원별명', -- 회원별명
-	UserPhone     VARCHAR(20)  NULL     COMMENT '회원H.P', -- 회원H.P
+	Nickname      VARCHAR(20)  NOT NULL COMMENT '회원별명', -- 회원별명
+	Email         VARCHAR(100) NOT NULL COMMENT '이메일', -- 이메일
 	ZipCode       INT(10)      NOT NULL COMMENT '우편번호', -- 우편번호
 	Address       VARCHAR(100) NOT NULL COMMENT '주소', -- 주소
-	DetailAddress VARCHAR(100) NULL     COMMENT '상세주소', -- 상세주소
-	Email         VARCHAR(100) NULL     COMMENT '이메일', -- 이메일
+	DetailAddress VARCHAR(100) NULL     COMMENT '상세주소', -- 상세주소	
+	UserPhone     VARCHAR(20)  NULL     COMMENT '회원H.P', -- 회원H.P
 	BankName      VARCHAR(10)  NULL     COMMENT '은행명', -- 은행명
 	BankAccount   VARCHAR(20)  NULL     COMMENT '계좌번호', -- 계좌번호
 	Secession     TINYINT      NULL     COMMENT '탈퇴여부' -- 탈퇴여부
