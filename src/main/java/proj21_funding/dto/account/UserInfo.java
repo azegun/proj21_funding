@@ -11,8 +11,7 @@ public class UserInfo {
 	private String userName; // 회원성명
 	@NotBlank
 	private String nickName; // 회원별명	
-	private String userPhone; // 회원H.P
-	@NotBlank
+	private String userPhone; // 회원H.P	
 	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
@@ -21,7 +20,7 @@ public class UserInfo {
 	@NotBlank
 	private String email; // 이메일
 	private String bankName; // 은행명
-	private int bankAccount; // 계좌번호
+	private String bankAccount; // 계좌번호
 	private boolean secession; // 탈퇴여부
 
 	// 생성자
@@ -46,7 +45,7 @@ public class UserInfo {
 
 	// 회원가입 정보저장
 	public UserInfo(String userId, String userPw, String userName, String nickName, String userPhone, int zipCode,
-			String address, String detailAddress, String email, String bankName, int bankAccount) {
+			String address, String detailAddress, String email, String bankName, String bankAccount) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
@@ -151,11 +150,11 @@ public class UserInfo {
 		this.bankName = bankName;
 	}
 
-	public int getBankAccount() {
+	public String getBankAccount() {
 		return bankAccount;
 	}
 
-	public void setBankAccount(int bankAccount) {
+	public void setBankAccount(String bankAccount) {
 		this.bankAccount = bankAccount;
 	}
 

@@ -80,7 +80,7 @@ values ('test2', password('1111'),'김경연', 'kky', 'kymonk@naver.com','222333
 
 insert into userinfo ( UserId, UserPw, UserName, Nickname,
 	email, ZipCode, Address, DetailAddress, UserPhone)
-values ('test10', password('1111'),'test10', 'ttt', 'ttt@naver.com','222333', '대구','달서구','01012345678');
+values ('test10', password('1111'),'test10', 'ttt', 'mywns123@gmail.com','222333', '대구','달서구','01012345678');
 
 
 

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import proj21_funding.dto.account.UserInfo;
-import proj21_funding.dto.account.UserMail;
 import proj21_funding.dto.account.UserSearch;
 import proj21_funding.service.UserSerachService;
 
@@ -62,10 +61,11 @@ public class UserSerachController {
 			UserInfo userInfo = service.searchuserPw(userSearch.getUserId(), userSearch.getUserName(),
 					userSearch.getEmail());
 			userSearch.setUserId(userInfo.getUserId());
-			UserMail userMail = service.createMailAndChangePassword(userInfo);
-			service.mailSend(userMail);
+			userInfo = service.createMailAndChangePassword(userInfo);
+			service.mailSend(userInfo);
 			return "account/searchPw-rs";
 		} catch (NullPointerException e) {
+			e.printStackTrace();
 			return "account/search-not";
 		}
 

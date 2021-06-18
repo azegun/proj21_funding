@@ -20,9 +20,7 @@ public class UserSignUp {
 	private String userName; // 회원성명
 	@NotBlank
 	private String nickName; // 회원별명
-
-	private String userPhone; // 회원H.P
-	@NotBlank
+	private String userPhone; // 회원H.P	
 	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
@@ -31,7 +29,7 @@ public class UserSignUp {
 	@NotBlank
 	private String email; // 이메일
 	private String bankName; // 은행명
-	private int bankAccount; // 계좌번호
+	private String bankAccount; // 계좌번호
 	private Boolean agree;
 
 	// getter & setter
@@ -123,11 +121,11 @@ public class UserSignUp {
 		this.bankName = bankName;
 	}
 
-	public int getBankAccount() {
+	public String getBankAccount() {
 		return bankAccount;
 	}
 
-	public void setBankAccount(int bankAccount) {
+	public void setBankAccount(String bankAccount) {
 		this.bankAccount = bankAccount;
 	}
 

@@ -61,8 +61,8 @@ where userId = 'test10' and userPw = password('1111');
 where UserName = 'test10' and UserPhone = '01012345678';
 
 update userinfo
-		   set Secession = 0
-		 where userId = 'test10';
+		   set userPw = password('1111')
+		 where userId = 'test11';
 		 
 delete from userinfo where userNo >2;
 alter table userinfo auto_increment=4;
