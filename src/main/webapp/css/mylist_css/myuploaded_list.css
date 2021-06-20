@@ -76,7 +76,7 @@ td{
 }
 /* 진행상황 */
 .size td:nth-of-type(8) {
-	width: 80px;
+	width: 100px;
 	height:60px;
 	padding-left:5px;
 	padding-right:5px;

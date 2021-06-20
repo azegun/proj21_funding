@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +17,6 @@ import proj21_funding.dto.Project;
 import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.service.MyListService;
 import proj21_funding.service.PrjCategoryService;
-import proj21_funding.service.ProjectService;
 
 @Controller
 public class MyListController {
@@ -88,12 +86,11 @@ public class MyListController {
 			map.put("oName", project.getOptName());
 			map.put("oContent", project.getOptContent());
 			System.out.println("map Service 전 > " + map);
-			
+			 
 			myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
 			List<Project> list = listService.showAllMyList(userNo);
 			ModelAndView mav = new ModelAndView();		
 			mav.addObject("myList", list);
-//			mav.addObject("myList", list);
 			mav.setViewName("mylist/myuploaded_list");	
 			
 			return mav;

@@ -16,4 +16,7 @@ public interface UserInfoService {
 	UserInfo showUserInfoById(String userId);
 	
 	List<UserInfo> showUserAll();
+	//	계좌 확인
+	UserInfo showBankAccount(int userNo);
+
 }

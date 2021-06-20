@@ -24,6 +24,9 @@ public interface UserInfoMapper {
 
 	UserInfo selectUserbySearchId(UserInfo userInfo);
 
+	//	계좌 확인
+	UserInfo showBankAccount(int userNo);
+
 	int insertUser(UserInfo userInfo);
 
 	int updateUser(UserInfo userInfo);

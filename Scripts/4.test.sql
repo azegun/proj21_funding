@@ -79,6 +79,16 @@ update userinfo
 delete from userinfo where userNo >2;
 alter table userinfo auto_increment=4;
 
+-- 계좌 등록 여부 확인
+select BankName, BankAccount 
+from userinfo 
+where UserNo = 1;
+
+select * from userinfo u ;
+
+insert into userinfo(UserId,BankName, BankAccount) values
+("test20","국민", "030");
+
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
 	QnaNo, UserNo, AdminNo, CategoryNo,

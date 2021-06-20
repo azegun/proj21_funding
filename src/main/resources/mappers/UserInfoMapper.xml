@@ -89,6 +89,13 @@
 		update userinfo
 		   set secession = True
 		 where UserNo = #{userNo}	
-	</update>
-
+	</update>	
+	
+	<!-- 계좌 확인  -->
+	<select id="showBankAccount" resultMap="resUser">
+				select BankName, BankAccount 
+				from userinfo
+					where userNo = #{userNo}	
+	
+	</select>
 </mapper>

@@ -62,4 +62,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return mapper.selectUserAll();
 	}
 
+	@Override
+	public UserInfo showBankAccount(int userNo) {
+		return mapper.showBankAccount(userNo);
+	}
+
 }

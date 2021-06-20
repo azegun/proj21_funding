@@ -6,32 +6,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
- <style>
-  .toggler { width: 500px; height: 200px; position: relative; }
-  #button { padding: .5em 1em; text-decoration: none; }
-  #effect {position: relative;  width: 240px;  padding: 1em; letter-spacing: 0; font-size: 1.2em; border: 1px solid #000; background: #eee; color: #333; }
-  .newClass { text-indent: 40px; letter-spacing: .4em; width: 410px; height: 100px; padding: 30px; margin: 10px; font-size: 1.6em; }
-  </style>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-$( function() {
-			    $( "#button" ).on( "click", function() {
-			      $( "#effect" ).toggleClass( "newClass", 1000 );
-			    });
-			  } );
-			  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/proj21_funding/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/proj21_funding/bootstrap/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="/proj21_funding/bootstrap/js/bootstrap.min.js"></script>
 			</head>
 			<body>
-			 
-			<div class="toggler">
-			  <div id="effect" class="newClass ui-corner-all">
-			      Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede.
-			  </div>
-			</div>
-			 
-			<button id="button" class="ui-state-default ui-corner-all">Run Effect</button>
-			 
-			 
+	
+<table class="table table-hover">
+<thead>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+
+<tbody>
+    <tr data-toggle="collapse" data-target="#accordion" class="clickable">
+        <td>Some Stuff</td>
+        <td>Some more stuff</td>
+        <td>And some more</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <div id="accordion" class="collapse">Hidden by default</div>
+        </td>
+    </tr>
+</tbody>
+</table>
 			</body>
 			</html>
