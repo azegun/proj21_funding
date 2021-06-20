@@ -49,34 +49,6 @@
 		<section id= "table_all">
 			<table border = 1>
 						<tbody>
-							<%-- 	<thead id = "column">
-			<tr>	
-						<th>번호</th>
-						<th>카테고리</th>
-						<th>프로젝트</th>	<th>소개</th>
-						<th>목표 금액</th>
-						<th>마감일</th>	<th>결제일</th>
-						<th>옵션이름</th><th>옵션금액</th>
-						<th>옵션내용</th>
-						<th>수정</th><th>삭제</th>
-				</tr>
-			</thead>
-			<tbody id= "context">
-					
-				<tr> 					
-							<td>${pro.prjNo }</td>		
-							<td>${category[0].pCategoryName }</td>
-							<td>${pro.prjName}</td>
-							<td>${pro.prjContent }</td>
-							<td><fmt:formatNumber value="${pro.prjGoal}" pattern="\\#,###"/></td>
-							<td>${pro.endDate }</td>
-							<td>${pro.payDate }</td>
-							<td>${propt.optName }</td>
-							<td><fmt:formatNumber value="${propt.optPrice }" pattern="\\#,###"/></td>
-							<td>${propt.optContent }</td>	
-							<td><button id= "update_list">수정</button></td>
-							<td><button id= "delete_list">삭제</button></td>
-				</tr> --%>
 								<tr class = "col1">
 										<td class="td_left"><label for="userName">작성자</label></td>
 										<td class="td_right" ><span id="userName">${authInfo.userName }</span></td>
@@ -129,13 +101,6 @@
 								<tr class = "col10">
 										<td class="td_left"><label for="optContent">옵션내용</label></td>
 										<td class="td_right" ><span id="optContent">${project.oContent}</span></td>
-								</tr>
-								<tr class = "col11">
-										<td class="td_left"><label for="uploadfile">사진</label></td>
-										<td class="td_right" >
-											<%-- <c:if test="<%=request.getContextPath() %>/images/project/ == ${prj.prjNo }.jpg"></c:if> --%>
-											<img id="uploadfile" src = "<%=request.getContextPath() %>/images/project/project${pro.prjNo }.jpg"/>
-										</td>
 								</tr>
 						</tbody>
 				</table>

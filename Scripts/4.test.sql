@@ -105,12 +105,21 @@ from project;
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
 	set 
-	 	p.pCategoryNo = '2',
+	 	p.pCategoryNo = '1', 
 		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움', p.PrjGoal = 333333333,
 		p.EndDate = '2022-06-13', p.PayDate = '2021-06-13',
 		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
 where p.PrjNo = 3;
 
+-- Mylist에 수정 
+update project as p inner join prjoption as op
+on p.PrjNo = op.PrjNo 
+	set 
+		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움',
+		op.OptName = '1주일쨰 파일올리기,수정', op.OptContent ='화이팅하자'
+where p.PrjNo = 4;
+
+select * from project p2 ;
 -- Project + userInfo + prjOption 조인 by prjNo
 select p.prjNo,p.UserNo, p.pCategoryNo, pc.pCategoryName,  PrjName, PrjContent, PrjGoal,
 				StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName,
@@ -203,28 +212,45 @@ where optno > 4;
 select 
 		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
 		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-		o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+		op.OptNo, op.optName,  op.OptPrice, op.OptContent,
 		if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-from fundinginfo f 
-		      join prjoption o on o.optno= f.OptNo 
-			  right join project p on p.prjno = f.PrjNo 
-			  join userinfo u on p.userno = u.userno
-			  join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
+from project p
+		join prjoption op  on p.PrjNo = op.PrjNo 
+		join userinfo u on p.UserNo = u.UserNo 
+		join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
  	where u.userno = 1
 	group by prjno;
 
 -- 프로젝트 no로 검색 detail 프로젝트리스트
 select 
-		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryNo, PrjName, PrjContent, PrjGoal,
+		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName, p.PrjName, p.PrjContent, p.PrjGoal,
 		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-		o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+		op.OptNo, op.optName,  op.OptPrice, op.OptContent,
 		if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-from fundinginfo f 
-		      join prjoption o on o.optno= f.OptNo 
-			  right join project p on p.prjno = f.PrjNo 
-			  join userinfo u on p.userno = u.userno
-			  join prjcategory pc on p.pCategoryNo =pc.pCategoryNo 
- 	where o.PrjNo =2;
+from project p
+	join prjoption op  on p.PrjNo = op.PrjNo 
+	join userinfo u on p.UserNo = u.UserNo 
+	join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
+ 	where p.PrjNo =4;
+ 
+ 
+ select * from prjoption p ;
+select * from project p ;
+ 
+ 
+ 	select 
+								p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryNo, PrjName, PrjContent, PrjGoal,
+								p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+								o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+								if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+					from fundinginfo f 
+						      join prjoption o on o.optno= f.OptNo 
+							  right join project p on p.prjno = f.PrjNo 
+							  join userinfo u on p.userno = u.userno
+							  join prjcategory pc on p.pCategoryNo =pc.pCategoryNo 
+ 				where o.prjno = 2;	
+ 
+ 
 -- qna test	
 	
 insert into qna(qnaNo, userNo, categoryNo, qnaTitle, qnaContent, qnaFile)

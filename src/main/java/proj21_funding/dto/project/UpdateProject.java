@@ -8,7 +8,8 @@ import proj21_funding.dto.PrjCategory;
 
 public class UpdateProject {
 	private int prjNo;						//프로젝트번호
-	private PrjCategory pCategoryNo;		//프로젝트 분류
+	private PrjCategory pCategoryNo; //프로젝트 분류
+	private String pCategoryName;		//프로젝트 분류이름
 	private String prjName;  			//프로젝트명
 	private String prjContent;			//프로젝트내용
 	private int prjGoal;						//목표금액
@@ -23,10 +24,12 @@ public class UpdateProject {
 	
 	public UpdateProject() {}
 
-
-	public UpdateProject(int prjNo, String prjName, String prjContent, int prjGoal, LocalDate endDate,
-			LocalDate payDate, String optName, int optPrice, String optContent) {
+	public UpdateProject(int prjNo, PrjCategory pCategoryNo, String pCategoryName, String prjName, String prjContent,
+			int prjGoal, LocalDate endDate, LocalDate payDate, String optName, int optPrice, String optContent) {
+		super();
 		this.prjNo = prjNo;
+		this.pCategoryNo = pCategoryNo;
+		this.pCategoryName = pCategoryName;
 		this.prjName = prjName;
 		this.prjContent = prjContent;
 		this.prjGoal = prjGoal;
@@ -37,6 +40,21 @@ public class UpdateProject {
 		this.optContent = optContent;
 	}
 
+	public UpdateProject(int prjNo, String prjName, String prjContent, String optName, String optContent) {
+		this.prjNo = prjNo;
+		this.prjName = prjName;
+		this.prjContent = prjContent;
+		this.optName = optName;
+		this.optContent = optContent;
+	}
+
+	public PrjCategory getpCategoryNo() {
+		return pCategoryNo;
+	}
+
+	public void setpCategoryNo(PrjCategory pCategoryNo) {
+		this.pCategoryNo = pCategoryNo;
+	}
 
 	public int getPrjNo() {
 		return prjNo;
@@ -49,13 +67,14 @@ public class UpdateProject {
 
 
 
-	public PrjCategory getpCategoryNo() {
-		return pCategoryNo;
+
+	public String getpCategoryName() {
+		return pCategoryName;
 	}
 
 
-	public void setpCategoryNo(PrjCategory pCategoryNo) {
-		this.pCategoryNo = pCategoryNo;
+	public void setpCategoryName(String pCategoryName) {
+		this.pCategoryName = pCategoryName;
 	}
 
 
@@ -142,8 +161,9 @@ public class UpdateProject {
 	@Override
 	public String toString() {
 		return String.format(
-				"UpdateProject [prjNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, endDate=%s, payDate=%s, optName=%s, optPrice=%s, optContent=%s]",
-				prjNo, prjName, prjContent, prjGoal, endDate, payDate, optName, optPrice, optContent);
+				"UpdateProject [prjNo=%s, pCategoryNo=%s, pCategoryName=%s, prjName=%s, prjContent=%s, prjGoal=%s, endDate=%s, payDate=%s, optName=%s, optPrice=%s, optContent=%s]",
+				prjNo, pCategoryNo, pCategoryName, prjName, prjContent, prjGoal, endDate, payDate, optName, optPrice,
+				optContent);
 	}
 	
 

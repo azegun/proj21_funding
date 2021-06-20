@@ -5,35 +5,45 @@
 		<!-- 고객 번호로 프로젝트 + 프로젝트옵션 + 간단한유저정보 리스트  -->
 		<select id="showAllMyList"
 		 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
-					select 
-							p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
-							p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-							o.OptNo, o.optName,  o.OptPrice, o.OptContent,
-							if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-					from fundinginfo f 
-						      join prjoption o on o.optno= f.OptNo 
-							  right join project p on p.prjno = f.PrjNo 
-							  join userinfo u on p.userno = u.userno
-							  join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
-					where u.userno = #{userNo.userNo}				 	
-					group by prjno
+				select 
+						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
+						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
+						if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+				from project p
+						join prjoption op  on p.PrjNo = op.PrjNo 
+						join userinfo u on p.UserNo = u.UserNo 
+						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
+				where u.userno = #{userNo.userNo}				 	
+				group by prjno
 		</select>
 		
 		
 		<!-- 프로젝트 번호로 리스트 받아오기 detail  -->
 		<select id="showDetailListByprjNo" 
 			 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
-					select 
-								p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryNo, PrjName, PrjContent, PrjGoal,
-								p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-								o.OptNo, o.optName,  o.OptPrice, o.OptContent,
-								if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-					from fundinginfo f 
-						      join prjoption o on o.optno= f.OptNo 
-							  right join project p on p.prjno = f.PrjNo 
-							  join userinfo u on p.userno = u.userno
-							  join prjcategory pc on p.pCategoryNo =pc.pCategoryNo 
+				select 
+							p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName, p.PrjName, p.PrjContent, p.PrjGoal,
+							p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+							op.OptNo, op.optName,  op.OptPrice, op.OptContent,
+							if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+				from project p
+						join prjoption op  on p.PrjNo = op.PrjNo 
+						join userinfo u on p.UserNo = u.UserNo 
+						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
  				where p.prjno = #{prjNo}		
 		</select>
+		
+			<!-- 프로젝트and 옵션 조인 업데이트 -->
+		<update id="joinUpdateProjectAndPrjOptionByPrjNoInMyLIst" parameterType="map">
+				update project as p inner join prjoption as op
+						on p.PrjNo = op.PrjNo 
+				set 
+						p.PrjName = #{pName}, p.PrjContent = #{pContent},
+						op.OptName = #{oName}, op.OptContent = #{oContent}
+				where p.PrjNo = #{pNo}		
+		</update>
+		
+		
 
 </mapper>

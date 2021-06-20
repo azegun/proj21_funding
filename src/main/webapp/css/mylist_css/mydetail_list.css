@@ -29,12 +29,16 @@ td{
 .td_right{
 	width: 380px;
 }
+#uploadfile{
+	width: 380px;
+	height: 270px;
+}
 /* 프로젝트 소개 */
- .col4 td:nth-of-type(2) {
+ .col5 td:nth-of-type(2) {
 	height: 270px;
 }
 /* 옵션 소개 */
- .col12 td:nth-of-type(2) {
+ .col14 td:nth-of-type(2) {
 	height: 270px;
 }
 

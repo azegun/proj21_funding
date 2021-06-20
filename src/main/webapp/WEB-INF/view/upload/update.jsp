@@ -55,10 +55,10 @@
 					<button id = "return">뒤로</button>
 			</div>	
 		</section>
+		</form>		
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
-		</footer>
-		</form>			
+		</footer>		
 		</section>
 
 </body>

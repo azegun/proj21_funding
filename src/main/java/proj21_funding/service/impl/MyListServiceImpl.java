@@ -1,6 +1,7 @@
 package proj21_funding.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,11 @@ public class MyListServiceImpl implements MyListService {
 	@Override
 	public 	List<Project> showDetailListByprjNo(int prjNo) {
 		return mapper.showDetailListByprjNo(prjNo);
+	}
+
+	@Override
+	public int joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(Map<String, Object> map) {
+		return mapper.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
 	}
 
 }

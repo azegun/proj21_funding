@@ -54,8 +54,7 @@ public class UploadController {
 	
 	//광고페이지에서 등록 html
 	@GetMapping("/registerForm")
-	public ModelAndView uploadRegister() {
-	
+	public ModelAndView uploadRegister() {	
 		List<PrjCategory> list = prjCategoryService.showCategory();
 //		System.out.println("prjcategory >>" + list);
 		ModelAndView mav = new ModelAndView();

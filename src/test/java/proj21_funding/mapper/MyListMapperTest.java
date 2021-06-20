@@ -1,5 +1,6 @@
 package proj21_funding.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.logging.Log;
@@ -47,5 +48,22 @@ public class MyListMapperTest {
 		List<Project> list = mapper.showDetailListByprjNo(1);
 		Assert.assertNotNull(list);
 	}	
+	
+	@Test
+	public void testJoinUpdateProjectAndPrjOptionInMyList() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		java.util.Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pNo", 3);
+		map.put("pName", "프로젝트테스트");
+		map.put("pContent", "업데이트");
+		map.put("oName", "연필5자루");
+		map.put("oContent", "문방사우");
+		
+		System.out.println("map  >> "+ map);
+		int res = mapper.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
+		Assert.assertEquals(2, res);
+		
+		
+	}
 
 }

@@ -51,7 +51,6 @@
 					</td>
 			</tr>
 			<tr>
-			<!-- 월요일에 열기 -->
 				<td class = "td_left">
 							<label for = "userName" >작성자</label>
 					</td>
