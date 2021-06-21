@@ -105,7 +105,7 @@ public class UserInfoMapperTest {
 	
 	@Test
 	public void test05UpdateMember() {
-		UserInfo userInfo = new UserInfo(4, "농협", "22222222-222-222");
+		UserInfo userInfo = new UserInfo(4, "농협", "22222222-222-222", "kk");
 		int res = mapper.updateBankAccount(userInfo);
 		Assert.assertEquals(1, res);
 		

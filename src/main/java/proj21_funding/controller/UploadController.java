@@ -2,10 +2,12 @@ package proj21_funding.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.AddPrjOption;
 import proj21_funding.dto.project.UpdateProject;
+import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
 import proj21_funding.service.PrjCategoryService;
@@ -92,10 +95,12 @@ public class UploadController {
 	//광고페이지에서 등록 html
 	@GetMapping("/registerForm")
 	public ModelAndView uploadRegister() {	
+		List<Project> proList = projectService.showProjectListAll();
 		List<PrjCategory> list = prjCategoryService.showCategory();
 //		System.out.println("prjcategory >>" + list);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("category", list);
+		mav.addObject("prjList", proList);		
 		mav.setViewName("upload/register");			
 		return mav;
 	}
@@ -114,15 +119,11 @@ public class UploadController {
 	
 	//업로드
 	@PostMapping("/listSuccess")
-	public ModelAndView registerSuccess(@Valid Project project, @Valid PrjOption prjoption, 
-														@Valid AddPrjOption addPrjOption, Errors errors, MultipartFile uploadfile) {	
+	public ModelAndView registerSuccess(Project project,  PrjOption prjoption, 
+														AddPrjOption addPrjOption, MultipartFile uploadfile,  HttpServletResponse response) throws IOException {	
 		ModelAndView mav = new ModelAndView();
-		
-		if(errors.hasErrors()) {
-			mav.setViewName("upload/register");
-			return mav;
-		}
-		
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
 		List<PrjCategory> list = prjCategoryService.showCategory();		
 		mav.addObject("category", list);
@@ -130,16 +131,18 @@ public class UploadController {
 		try {
 		//트렌젝션추가
 		trservice.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);	
-	
+
 		mav.setViewName("upload/register_success");			
 		//옵션 추가
 //		addPrjOption.setPrjNo(prjoption.getPrjNo());
 //		optionService.insertAddPrjOption(addPrjOption);		
-		return mav;
-	
-		}catch (Exception e) { 
-			e.printStackTrace();
-		 
+		return mav;	
+		}catch (DateTimeOverException e) { 	
+			out.println("<script type='text/javascript'>");
+			out.println("alert('결재일이 마감일보다 빠를 수 없습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
 		 return mav; 
 		 }				
 	}
@@ -164,7 +167,8 @@ public class UploadController {
 	
 	//수정 완료 후 리스트
 	@PostMapping("/updateListSuccess")
-	public ModelAndView updateListSuccess(UpdateProject project, MultipartFile uploadfile  ) throws IOException {
+	public ModelAndView updateListSuccess(UpdateProject project, MultipartFile uploadfile,
+			HttpServletResponse response  ) throws IOException {
 //		System.out.println("updateProject 전 >> " + project);
 		Map<String, Object> map = new HashMap<String, Object>();	
 		map.put("pNo", project.getPrjNo());
@@ -191,14 +195,27 @@ public class UploadController {
 		}catch (IOException e) {
 		e.printStackTrace();
 		}
-		// 파일 업로드
-		projectService.joinUpdateProjectAndPrjoptionByNo(map);		
-		List<PrjCategory> list = prjCategoryService.showCategory();
+		// 프로젝트 수정
 		ModelAndView mav = new ModelAndView();
+		try {
+		projectService.joinUpdateProjectAndPrjoptionByNo(map);	
+		
+		}catch (DateTimeOverException e) {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('결재일이 마감일보다 빠를 수 없습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}
+		List<PrjCategory> list = prjCategoryService.showCategory();		
 		mav.addObject("project", map);
 		mav.addObject("category", list);
 		mav.setViewName("upload/update_success");	
+	
 		return mav;				 
+	
 	}
 //	삭제
 	@RequestMapping("/removeOneProject/{prjNo}")

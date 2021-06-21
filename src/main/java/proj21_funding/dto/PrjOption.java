@@ -6,11 +6,8 @@ import javax.validation.constraints.NotBlank;
 public class PrjOption {
 		private int optNo; //옵션번호
 		private Project prjNo;//프로젝트번호
-		@NotBlank
 		private String optName; //옵션명
-		@NotBlank
 		private int optPrice;//옵션급액
-		@NotBlank
 		private String optContent;//옵션내용
 		//기본 생성자
 		public PrjOption() {}

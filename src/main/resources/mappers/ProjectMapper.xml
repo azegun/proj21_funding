@@ -63,7 +63,7 @@
 						StartDate, EndDate, PayDate) 
 				values(
 						#{userNo.userNo}, #{pCategoryNo.pCategoryNo}, #{prjName}, #{prjContent}, #{prjGoal},
-						 now(), now(), now())
+						 now(), #{endDate}, #{payDate})
 					<selectKey keyProperty="prjNo" resultType="int">
 							SELECT last_insert_id()
 					</selectKey>

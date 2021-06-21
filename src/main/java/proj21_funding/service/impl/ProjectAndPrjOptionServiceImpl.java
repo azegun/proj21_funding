@@ -2,6 +2,7 @@ package proj21_funding.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.mapper.PrjOptionMapper;
 import proj21_funding.mapper.ProjectMapper;
 import proj21_funding.service.ProjectAndPrjOptionService;
@@ -25,7 +27,21 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 
 	@Override
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile) {
-		int res = pMapper.insertProject(project);
+		LocalDate EndDate = project.getEndDate();
+		LocalDate PayDate = project.getPayDate();
+		
+		int compareEtoP = EndDate.compareTo(PayDate);
+			
+		int res;
+		if(compareEtoP <= 0) {
+			 res = pMapper.insertProject(project);
+		}else {
+			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
+		}
+	
+		
+	
+		
 		prjoption.setPrjNo(project);
 	      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
 //	      System.out.println("saveName: "+ saveName);

@@ -6,11 +6,8 @@ import proj21_funding.dto.Project;
 
 public class AddPrjOption {
 	private Project prjNo;
-	@NotBlank
 	private String addOptName;
-	@NotBlank
 	private int addOptPrice;
-	@NotBlank
 	private String addOptContent;
 	
 	public AddPrjOption() {}

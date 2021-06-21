@@ -66,9 +66,12 @@ public class UserInfo {
 	}
 	
 // 계좌 등록
-	public UserInfo(int userNo, String bankName, String bankAccount) {
+
+	public UserInfo(int userNo, String bankName, String accountHolder, String bankAccount) {
+		super();
 		this.userNo = userNo;
 		this.bankName = bankName;
+		this.accountHolder = accountHolder;
 		this.bankAccount = bankAccount;
 	}
 
