@@ -2,6 +2,9 @@ package proj21_funding.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import proj21_funding.dto.account.UserInfo;
@@ -10,8 +13,11 @@ public class Project {
 	private int prjNo;			//프로젝트번호	
 	private UserInfo userNo;		//프로젝트관리자
 	private PrjCategory pCategoryNo;		//프로젝트 분류
+	@Size(max = 30)
 	private String prjName;			//프로젝트명
+	@NotBlank
 	private String prjContent;		//프로젝트내용
+	@NotBlank
 	private int prjGoal;			//목표금액
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate startDate;//시작일

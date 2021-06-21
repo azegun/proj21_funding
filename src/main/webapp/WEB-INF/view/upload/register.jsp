@@ -37,31 +37,7 @@
 						alert("선택해주세요")
 					}
 			});			
-		});
-		
-	/* 		$('#go_option').click(function(){
-				var tab_id = $(this).attr('data-tab');
-				
-				$('ul.tabs li').removeClass('current');
-				$('.register_mid').removeClass('current');
-				
-				
-				$('ul.tabs li').addClass('current');		
-				$('#tab-click').removeClass('current');
-				$('#tab-2').addClass('current');
-			}); 
-	
-			$('#go_project').click(function(){
-				var tab_id = $(this).attr('data-tab');
-				
-				$('ul.tabs li').removeClass('current');
-				$('.register_mid').removeClass('current');
-				
-				
-				$('ul.tabs li').addClass('current');		
-				$('#tab-click2').removeClass('current');
-				$('#tab-1').addClass('current');
-			});  */
+		});		
 
 </script>		
 </head>
@@ -85,8 +61,6 @@
 					</div>	
 			</div>		
 			<div id="register_btns">
-					<!-- <button id = "go_option" >옵션</button>&nbsp;&nbsp; 			
-					<button id = "go_project" >프로젝트</button><br>				 -->
 					<input class = "test" type="submit" value="등록"/>&nbsp;
 					<input type="reset" value="다시쓰기" />&nbsp; 
 					<button id= "return">뒤로</button>
@@ -95,7 +69,7 @@
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 		</footer>
-		</form>			
+		</form>
 		</section>
 
 </body>

@@ -102,5 +102,13 @@ public class UserInfoMapperTest {
 		System.out.println("userInfo >> "+ userInfo);
 		Assert.assertNotNull(userInfo);
 	}
+	
+	@Test
+	public void test05UpdateMember() {
+		UserInfo userInfo = new UserInfo(4, "농협", "22222222-222-222");
+		int res = mapper.updateBankAccount(userInfo);
+		Assert.assertEquals(1, res);
+		
+	}
 
 }

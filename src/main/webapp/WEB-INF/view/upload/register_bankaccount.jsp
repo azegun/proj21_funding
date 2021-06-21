@@ -20,13 +20,13 @@
 					
 </head>
 <body>
-${authInfo.userId}
+${authInfo.userNo}
 		<section class="container">
 			<header id = "bankaccount" >		   
 					<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 			</header>
 				<h2>계좌등록</h2>
-						<form  action= "<%=request.getContextPath() %>/registerBank/${authInfo.userId}" method="post">
+						<form  action= "<%=request.getContextPath() %>/registerBank/${authInfo.userNo}" method="post">
 								<section id = "bankaccount_content">
 										<table>
 												<tbody>
@@ -56,7 +56,7 @@ ${authInfo.userId}
 																	<td class="td_left"><label for="bankAccount">계좌번호</label></td>
 																	<td class="td_right" >
 																			<input type="text" id="bankAccount" name="bankAccount" 
-																					size=21	required="required" readonly="readonly"/>																								
+																					size=21	required="required" />																								
 																	</td>
 															</tr>											
 												</tbody>

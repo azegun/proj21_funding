@@ -95,7 +95,17 @@
 	<select id="showBankAccount" resultMap="resUser">
 				select BankName, BankAccount 
 				from userinfo
-					where userNo = #{userNo}	
-	
+					where userNo = #{userNo}		
 	</select>
+	<!-- 계좌 등록 업데이트  -->
+	<update id="updateBankAccount">
+			update userinfo 
+					set BankName =#{bankName}, BankAccount =#{bankAccount}
+			where UserNo =#{userNo}	
+	</update>
+	
+	
+	
+	
+	
 </mapper>

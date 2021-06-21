@@ -6,8 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,6 +53,8 @@ public class UploadController {
 	@Autowired
 	private UserInfoService userService;
 	
+	
+//	업로드 할 시 계좌 등록 안되어있으면 계좌 등록
 	@GetMapping("/registerAccount")
 	public String registerAccount() {
 		return "upload/register_bankaccount";
@@ -60,7 +65,7 @@ public class UploadController {
 	public String uploadMain() {		
 		return "upload/upload_main";
 	}
-	
+//	로그인 되어있을 시 파일 업로드 가능.
 	@GetMapping("/uploadMain/{authInfo.userNo}")
 	public ModelAndView uploadMainByNo(@PathVariable("authInfo.userNo") int userNo) {
 		UserInfo list = userService.showBankAccount(userNo);
@@ -68,6 +73,18 @@ public class UploadController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("upload/upload_main");	
+		
+		return mav;
+	}
+//  계좌 등록 페이지
+	@PostMapping("/registerBank/{authInfo.userNo}")
+	public ModelAndView updateBankAccount(@PathVariable("authInfo.userNo") int userNo, UserInfo userInfo ) {
+		userService.updateBankAccount(userInfo);
+		List<PrjCategory> list = prjCategoryService.showCategory();
+
+		ModelAndView mav = new ModelAndView();		
+		mav.addObject("category", list);
+		mav.setViewName("upload/register");
 		
 		return mav;
 	}
@@ -97,9 +114,16 @@ public class UploadController {
 	
 	//업로드
 	@PostMapping("/listSuccess")
-	public ModelAndView registerSuccess(Project project, PrjOption prjoption, 
-														AddPrjOption addPrjOption, MultipartFile uploadfile) {	
+	public ModelAndView registerSuccess(@Valid Project project, @Valid PrjOption prjoption, 
+														@Valid AddPrjOption addPrjOption, Errors errors, MultipartFile uploadfile) {	
 		ModelAndView mav = new ModelAndView();
+		
+		if(errors.hasErrors()) {
+			mav.setViewName("upload/register");
+			return mav;
+		}
+		
+		
 		List<PrjCategory> list = prjCategoryService.showCategory();		
 		mav.addObject("category", list);
 		mav.setViewName("upload/register");			

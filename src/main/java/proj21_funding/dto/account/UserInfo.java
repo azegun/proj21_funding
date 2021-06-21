@@ -46,7 +46,6 @@ public class UserInfo {
 		this.userName = userName;
 		this.email = email;
 	}
-
 	
 
 	public UserInfo(String userId, String userPw, String userName, @NotBlank String nickName,
@@ -61,6 +60,13 @@ public class UserInfo {
 		this.address = address;
 		this.detailAddress = detailAddress;
 		this.userPhone = userPhone;
+		this.bankName = bankName;
+		this.bankAccount = bankAccount;
+	}
+	
+// 계좌 등록
+	public UserInfo(int userNo, String bankName, String bankAccount) {
+		this.userNo = userNo;
 		this.bankName = bankName;
 		this.bankAccount = bankAccount;
 	}

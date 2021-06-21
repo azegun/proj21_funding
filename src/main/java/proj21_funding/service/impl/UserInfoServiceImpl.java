@@ -67,4 +67,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return mapper.showBankAccount(userNo);
 	}
 
+	@Override
+	public int updateBankAccount(UserInfo userInfo) {
+		return mapper.updateBankAccount(userInfo);
+	}
+
 }

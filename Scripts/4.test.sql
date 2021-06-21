@@ -86,8 +86,9 @@ where UserNo = 1;
 
 select * from userinfo u ;
 
-insert into userinfo(UserId,BankName, BankAccount) values
-("test20","국민", "030");
+update userinfo 
+set BankName = '', BankAccount = ''
+where UserNo = 4;
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
