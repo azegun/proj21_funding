@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <!DOCTYPE html>
@@ -37,9 +36,7 @@
 	    url = url + "&pageSize="+pageSize;
 	    
 	    location.href=url;
-	}
-	
-	
+	}	
 </script>
 </head>
 <body>
@@ -48,8 +45,7 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>
-		<section id="messageFormArea">
-			
+		<section id="messageFormArea">			
 			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>	
@@ -65,9 +61,10 @@
 					</tr>
 					<c:forEach var="msg" items="${messages}">
 						<tr>	
+							
 							<td><form:checkbox path="check" value="${msg.msgNo}"/></td>	
-							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}" />">${msg.receiveUser}</a></td>		
-							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}" />">${msg.msgContent}</a></td>							
+							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}?currentPage=${pagination.currentPage}&readYN=${msg.readYN}" />">${msg.receiveUser}</a></td>		
+							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}?currentPage=${pagination.currentPage}&readYN=${msg.readYN}" />">${msg.msgContent}</a></td>							
 							<td><tf:formatDateTime value="${msg.sendDate}" pattern="yyyy-MM-dd" /></td>																			
 						</tr>
 					</c:forEach>					
@@ -99,7 +96,8 @@
 		        </div>
 		    </div>
 		    <!-- /paginate -->			
-			
+			<form:hidden path="readYN"  value="false"/> 
+			<form:hidden path="currentPage" value="${pagination.currentPage}"/>
 			<form:button>삭제</form:button>
 			</form:form>		 
 		</section>

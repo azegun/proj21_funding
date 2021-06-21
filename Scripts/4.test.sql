@@ -22,9 +22,11 @@ select count(*)
 select R1.* FROM(
 	SELECT * 
 		FROM message 
-		where SendUser = 'test1' and delSend = false	
+		where SendUser = 'test1' and delSend = false
+		order by MsgNo desc
 	) R1
 	LIMIT 0, 10;
+
 
 update message 
 set ReadYN = 1

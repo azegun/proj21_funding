@@ -64,7 +64,7 @@ CREATE TABLE proj21_funding.UserInfo (
 	BankName      VARCHAR(10)  NULL     COMMENT '은행명', -- 은행명
 	AccountHolder VARCHAR(20)  NULL		COMMENT '예금주', -- 예금주
 	BankAccount   VARCHAR(20)  NULL     COMMENT '계좌번호', -- 계좌번호
-	Secession     TINYINT      NULL     COMMENT '탈퇴여부' -- 탈퇴여부
+	Secession     TINYINT      NULL     DEFAULT 0 COMMENT '탈퇴여부' -- 탈퇴여부
 )
 COMMENT '회원정보';
 
