@@ -26,6 +26,8 @@ td {
 </style>
 </head>
 <body>
+페이지 ${pagination }
+유저 ${authInfo }
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
@@ -51,10 +53,10 @@ td {
 					<td>${board.boardContent }</td>
 				</tr>
 			</table>
-			<a href="<%=request.getContextPath()%>/board/notice_all"><button id="go_notice">목록보기</button></a>
+			<a href="<%=request.getContextPath()%>/board/list?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button id="go_notice">목록보기</button></a>
 			<c:if test="${authInfo.userNo < 0 }">
 				<a href="<%=request.getContextPath()%>/noticeupdate/${board.boardNo }&${board.categoryNo.categoryNo }"><button id="noticeUpdate">수정</button></a>
-				<a href="<%=request.getContextPath()%>/noticedelete/${board.boardNo }"><button id="noticeDelete">삭제</button></a>
+				<a href="<%=request.getContextPath()%>/noticedelete/${board.boardNo }&${board.categoryNo.categoryNo }"><button id="noticeDelete">삭제</button></a>
 			</c:if>
 		</section>
 		<footer>

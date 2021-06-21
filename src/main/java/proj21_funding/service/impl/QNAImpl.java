@@ -1,11 +1,13 @@
 package proj21_funding.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.QNA;
+import proj21_funding.dto.paging.Pagination;
 import proj21_funding.mapper.QNAMapper;
 import proj21_funding.service.QNAService;
 
@@ -52,6 +54,26 @@ public class QNAImpl implements QNAService {
 	@Override
 	public int removeQNA(int qnaNo) {
 		return mapper.deleteQNA(qnaNo);
+	}
+
+	@Override
+	public List<Map<String, Object>> SelectAllList(Pagination pagination) throws Exception {
+		return mapper.SelectAllList(pagination);
+	}
+
+	@Override
+	public int QNACount() throws Exception {
+		return mapper.QNACount();
+	}
+
+	@Override
+	public List<Map<String, Object>> SelectUserList(int userNo, Pagination pagination) throws Exception {
+		return mapper.SelectUserList(userNo, pagination.getPageSearch(), pagination.getCntPerPage());
+	}
+
+	@Override
+	public int QNAUserCount(int userNo) throws Exception {
+		return mapper.QNAUserCount(userNo);
 	}
 
 }

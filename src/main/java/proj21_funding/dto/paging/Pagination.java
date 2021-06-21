@@ -1,6 +1,7 @@
 package proj21_funding.dto.paging;
 
 public class Pagination {
+	private Criteria criteria;
 	// 현재페이지
 	private int currentPage;
 	// 페이지당 출력할 페이지 갯수
@@ -25,6 +26,10 @@ public class Pagination {
 	private boolean hasNextPage;
 	//출력하고자 하는 페이지 양
 	private int pageSearch;
+
+	public Pagination() {
+		super();
+	}
 
 	public Pagination(int currentPage, int cntPerPage, int pageSize) {
 		// 강제입력방지
@@ -98,7 +103,14 @@ public class Pagination {
 		}
 	}
 
-	
+	public Criteria getCriteria() {
+		return criteria;
+	}
+
+	public void setCriteria(Criteria criteria) {
+		this.criteria = criteria;
+	}
+
 	public int getPageSearch() {
 		pageSearch=(currentPage-1)*cntPerPage;
 		return pageSearch;
@@ -191,6 +203,10 @@ public class Pagination {
 	public int getTotalRecordCount() {
 		return totalRecordCount;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Pagination [currentPage=" + currentPage + ", cntPerPage=" + cntPerPage + ", pageSize=" + pageSize + "]";
+	}
 	
 }

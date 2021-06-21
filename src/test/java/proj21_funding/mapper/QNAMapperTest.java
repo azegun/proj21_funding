@@ -1,6 +1,8 @@
 package proj21_funding.mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -20,6 +22,7 @@ import proj21_funding.dto.Admin;
 import proj21_funding.dto.BoardCategory;
 import proj21_funding.dto.QNA;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.paging.Pagination;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
@@ -37,7 +40,7 @@ public class QNAMapperTest {
 		System.out.println();
 	}
 
-	@Test
+	//@Test
 	public void test06SelectQNAAll() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
@@ -46,7 +49,7 @@ public class QNAMapperTest {
 		list.stream().forEach(s -> log.debug(s.toString()));
 	}
 	
-	@Test
+	//@Test
 	public void test03SelectQNAByUserId() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
@@ -56,7 +59,7 @@ public class QNAMapperTest {
 		Assert.assertNotNull(qna);
 	}
 	
-	@Test
+	//@Test
 	public void test05SelectQNAByBC() {
 
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
@@ -67,7 +70,7 @@ public class QNAMapperTest {
 		Assert.assertNotNull(qna);
 	}
 
-	@Test
+	//@Test
 	public void test01InsertQNA() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
@@ -77,7 +80,7 @@ public class QNAMapperTest {
 		log.debug("res id >> " + res);
 	}
 
-	@Test
+	//@Test
 	public void test02UpdateQNA() {
 		QNA qna = new QNA(3, new Admin(1), "잘 모르겠음");
 		int res = mapper.updateQNA(qna);
@@ -85,12 +88,11 @@ public class QNAMapperTest {
 		log.debug("res id >> " + res);
 	}
 
-	@Test
+	//@Test
 	public void test04DeleteQNA() {
 		int qnaNo = 7;
 		int res = mapper.deleteQNA(qnaNo);
 		Assert.assertEquals(1, res);
 		log.debug("res id >> " + res);
 	}
-
 }

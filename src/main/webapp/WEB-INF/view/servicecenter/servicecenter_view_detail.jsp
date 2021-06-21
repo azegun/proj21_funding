@@ -86,11 +86,12 @@
 			</c:when>
 		</c:choose>
 		</table>
-		<a href="/proj21_funding/servicecenter/servicecenter_view_user"><button>돌아가기</button></a>
 		<c:if test="${authInfo.userNo < 0 }">
+			<a href="/proj21_funding/servicecenter/servicecenter_view_admin?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button>돌아가기</button></a>
 			<a href="<%=request.getContextPath() %>/servicecenter/servicecenter_reply/${qna.qnaNo}"><input type="button" value="답변하기"></a>
 		</c:if>
 		<c:if test="${authInfo.userNo > 0 }">
+			<a href="/proj21_funding/servicecenter/servicecenter_view_user?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button>돌아가기</button></a>
 			<a href="<%=request.getContextPath() %>/servicecenter_delete/${qna.qnaNo}"><input type="button" value="삭제하기"></a>
 		</c:if>
 	<footer>

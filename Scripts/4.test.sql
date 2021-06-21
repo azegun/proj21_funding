@@ -22,9 +22,11 @@ select count(*)
 select R1.* FROM(
 	SELECT * 
 		FROM message 
-		where SendUser = 'test1' and delSend = false	
+		where SendUser = 'test1' and delSend = false
+		order by MsgNo desc
 	) R1
 	LIMIT 0, 10;
+
 
 update message 
 set ReadYN = 1
@@ -315,11 +317,13 @@ select * from boardcategory;
 
 -- 페이징
 select R1.* FROM(
-SELECT * FROM BOARD order by boardno desc
+SELECT * FROM QNA where userno = 3 order by qnaNo desc
 ) R1
-LIMIT 0, 10;
+LIMIT 0, 10
+;
 
-SELECT count(*) FROM Board;
+SELECT count(*) FROM qna;
+SELECT count(*) FROM qna where userno = 3;
 
 insert Board(categoryNo, boardTitle, boardContent)
 values (1, "210618 업데이트 내용", "안내하는 중"),
