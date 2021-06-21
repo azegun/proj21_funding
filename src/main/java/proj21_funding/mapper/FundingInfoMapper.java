@@ -8,8 +8,12 @@ import proj21_funding.dto.FundingInfo;
 
 @Component
 public interface FundingInfoMapper {
+//	프로젝트별 통계
 	int selectCountByPrjNo(int PrjNo);
 	int selectSumByPrjNo(int PrjNo);
+//	회원별 통계
+	int selectCountByUserNo(int userNo);
+	int selectSumByUserNo(int userNo);
 	
 	int insertFundingInfo(FundingInfo fundingInfo);
 	

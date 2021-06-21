@@ -1,4 +1,4 @@
-package proj21_funding.controller;
+package proj21_funding.controller.admin;
 
 import java.util.List;
 
@@ -23,7 +23,13 @@ public class AdminController {
 	@RequestMapping("/adminMember")
 	public ModelAndView adminMember() {
 		List<UserInfo> userList = userService.showUserAll();
+		int count =userService.userCount();
+		int currentCount=userService.currentUserCount();
+		int prdCount=userService.prdcount();
 		ModelAndView mav = new ModelAndView("admin/adminMember","userList",userList);
+		mav.addObject("count",count);
+		mav.addObject("prdCount",prdCount);
+		mav.addObject("currentCount", currentCount);
 		return mav;
 	}
 	
@@ -33,7 +39,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/accordion")
-	public String adminTest() {
-		return "admin/accordion";
+	public ModelAndView adminTest() {
+		List<UserInfo> userList = userService.showUserAll();
+		ModelAndView mav = new ModelAndView("admin/accordion","userList",userList);
+		return mav;
 	}
+	
+	
 }

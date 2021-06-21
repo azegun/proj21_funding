@@ -22,7 +22,7 @@
 		select 
 			UserNo, UserId, UserPw,	UserName, Nickname, Email,
 			ZipCode, Address, DetailAddress,
-			UserPhone, BankName, BankAccount
+			UserPhone, BankName, BankAccount, secession
 		 from userinfo
 	</sql>
 
@@ -39,11 +39,26 @@
 		<include refid="selecSql" />
 		where userId = #{userId}	
 	</select>
+	
+	<select id="selectUserListbyId" resultMap="resUser">
+		<include refid="selecSql" />
+		 where userId LIKE CONCAT('%', #{userId}, '%');
+	</select>
 		
 	<select id="selectUserbyNickname" resultMap="resUser">
 		<include refid="selecSql" />
 		where nickName = #{nickName}	
-	</select>	
+	</select>
+	
+	<select id="selectUserListbyNickname" resultMap="resUser">
+		<include refid="selecSql" />
+		 where nickName LIKE CONCAT('%', #{nickName}, '%');
+	</select>
+	
+	<select id="selectUserListbyName" resultMap="resUser">
+		<include refid="selecSql" />
+		 where userName LIKE CONCAT('%', #{userName}, '%');
+	</select>
 	
 	<select id="selectUserbyEmail" resultMap="resUser">
 		<include refid="selecSql" />
@@ -90,5 +105,41 @@
 		   set secession = True
 		 where UserNo = #{userNo}	
 	</update>
+	
+	<select id="userCount" resultType="int">
+		select count(*) as count from userInfo
+	</select>
+	
+	<select id="currentUserCount" resultType="int">
+		select count(*) as count from userInfo where Secession is null  or Secession is false
+	</select>	
+	
+	<select id="prdCount" resultType="int">
+		select count(*) as count from userInfo where BankAccount is not null and BankName is not null;
+	</select>
+	
+	<select id="selectUserListByMap" resultMap="resUser">
+		<include refid="selecSql" />
+		<where>
+			<if test="delYn != null">
+				 ( Secession is null or Secession is false)
+			</if>
+			<if test="deleYn == null">
+			</if>
+		<choose>
+			<when test="keyword.equals('total')">
+			</when>
+			<when test="keyword.equals('memberAccount')">
+				and userId LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+			<when test="keyword.equals('memberName')">
+				and userName LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+			<when test="keyword.equals('nickname')">
+				 and nickName LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+		</choose>
+		</where>
+	</select>
 
 </mapper>

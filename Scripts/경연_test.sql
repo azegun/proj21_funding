@@ -8,7 +8,11 @@ join prjoption o on p.PrjNo =o.PrjNo
 		
 select * from fundinginfo f ;
 select * from prjoption o ;
-select * from userinfo o ;
+select * from userinfo u2 ;
+select * from userinfo o where Secession is null  or Secession is false;
+select * from userinfo where BankAccount is not null and BankName is not null;
+
+update userInfo set Secession = true where userno=3;
 
 -- 프로젝트별 인원수, 가격
 select count(*),sum(optprice) 

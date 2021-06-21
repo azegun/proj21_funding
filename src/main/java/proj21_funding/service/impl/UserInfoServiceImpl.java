@@ -1,6 +1,7 @@
 package proj21_funding.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,41 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public List<UserInfo> showUserAll() {
 		return mapper.selectUserAll();
+	}
+
+	@Override
+	public List<UserInfo> showUserListbyId(String userId) {
+		return mapper.selectUserListbyId(userId);
+	}
+
+	@Override
+	public List<UserInfo> showUserListbyName(String userName) {
+		return mapper.selectUserListbyName(userName);
+	}
+
+	@Override
+	public List<UserInfo> showUserListbyNickname(String nickName) {
+		return mapper.selectUserListbyNickname(nickName);
+	}
+
+	@Override
+	public int userCount() {
+		return mapper.userCount();
+	}
+
+	@Override
+	public int currentUserCount() {
+		return mapper.currentUserCount() ;
+	}
+
+	@Override
+	public int prdcount() {
+		return mapper.prdCount();
+	}
+
+	@Override
+	public List<UserInfo> showUserListByMap(Map<String, Object> listMap) {
+		return mapper.selectUserListByMap(listMap);
 	}
 
 }
