@@ -30,13 +30,36 @@ update message
 set ReadYN = 1
 where MsgNo = 10;
 insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test1', 'test10', '펀딩팀 화이팅1');
-insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test1', 'test10', '펀딩팀 화이팅2');
-insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test1', '펀딩팀 화이팅3');
-insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test11', '펀딩팀 화이팅4');
+	 values ( 'test1', 'test10', '펀딩팀 화이팅1'),
+	  ('test1', 'test10', '펀딩팀 화이팅2'),
+	  ('test1', 'test10', '펀딩팀 화이팅3'),
+	  ('test1', 'test10', '펀딩팀 화이팅4'),
+	  ('test1', 'test10', '펀딩팀 화이팅5'),
+	  ('test1', 'test10', '펀딩팀 화이팅6'),
+	  ('test1', 'test10', '펀딩팀 화이팅7'),
+	  ('test1', 'test10', '펀딩팀 화이팅8'),
+	  ('test1', 'test10', '펀딩팀 화이팅9'),
+	  ('test1', 'test10', '펀딩팀 화이팅10'),
+	  ('test1', 'test10', '펀딩팀 화이팅11'),
+	  ('test1', 'test10', '펀딩팀 화이팅12'),
+	  ('test1', 'test10', '펀딩팀 화이팅13'),
+	  ('test1', 'test10', '펀딩팀 화이팅14'),
+	  ('test1', 'test10', '펀딩팀 화이팅15'),
+	  ('test10', 'test1', '펀딩팀 화이팅1'),
+	  ('test10', 'test1', '펀딩팀 화이팅2'),
+	  ('test10', 'test1', '펀딩팀 화이팅3'),
+	  ('test10', 'test1', '펀딩팀 화이팅4'),
+	  ('test10', 'test1', '펀딩팀 화이팅5'),
+	  ('test10', 'test1', '펀딩팀 화이팅6'),
+	  ('test10', 'test1', '펀딩팀 화이팅7'),
+	  ('test10', 'test1', '펀딩팀 화이팅8'),
+	  ('test10', 'test1', '펀딩팀 화이팅9'),
+	  ('test10', 'test1', '펀딩팀 화이팅10'),
+	  ('test10', 'test1', '펀딩팀 화이팅11'),
+	  ('test10', 'test1', '펀딩팀 화이팅12'),
+	  ('test10', 'test1', '펀딩팀 화이팅13'),
+	  ('test10', 'test1', '펀딩팀 화이팅14'),
+	  ('test10', 'test1', '펀딩팀 화이팅15');
 	
 delete from message where MsgNo =6;
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
@@ -65,8 +88,8 @@ from admin;
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
 	UserNo, UserId, UserPw,	UserName, Nickname, Email,
-	ZipCode, Address, DetailAddress,
-	UserPhone, BankName, BankAccount, Secession
+	UserPhone, ZipCode, Address, DetailAddress, 
+	BankName, AccountHolder, BankAccount, Secession
 from userinfo;
 where UserName = 'test10' and Email = 'ttt@naver.com';
 where userId = 'test10' and userPw = password('1111');

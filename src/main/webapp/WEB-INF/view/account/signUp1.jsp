@@ -75,6 +75,12 @@
 					<form:input path="email" /> 
 					<form:errors path="email" id="errors"/>
 					</label>
+				</p>
+				<p>
+					<label> 회원H.P :
+					<form:input path="userPhone" /> 
+					<form:errors path="userPhone" id="errors"/>
+					</label>
 				</p>			
 				<p>
 					<label> 우편번호 검색하기 :
@@ -93,17 +99,17 @@
 					<form:input path="detailAddress" placeholder="상세주소를 입력하세요" /> 
 					<form:errors path="detailAddress" />					
 					</label>
-				</p>				
-				<p>
-					<label> 회원H.P :
-					<form:input path="userPhone" /> 
-					<form:errors path="userPhone" id="errors"/>
-					</label>
-				</p>
+				</p>					
 				<p>
 					<label> 은행명 :
 					<form:input path="bankName" /> 
 					<form:errors path="bankName" />
+					</label>
+				</p>
+				<p>
+					<label> 예금주 :
+					<form:input path="accountHolder" /> 
+					<form:errors path="accountHolder" />
 					</label>
 				</p>	
 				<p>
