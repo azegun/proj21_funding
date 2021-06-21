@@ -2,6 +2,9 @@ package proj21_funding.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import proj21_funding.dto.account.UserInfo;

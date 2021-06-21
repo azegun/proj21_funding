@@ -1,4 +1,7 @@
 package proj21_funding.dto;
+
+import javax.validation.constraints.NotBlank;
+
 //프로젝트구매옵션
 public class PrjOption {
 		private int optNo; //옵션번호

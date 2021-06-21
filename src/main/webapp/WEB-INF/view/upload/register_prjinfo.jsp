@@ -3,6 +3,10 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+  
+   <jsp:useBean id="now" class = "java.util.Date"></jsp:useBean>
+	<fmt:formatDate  var="today"  value="${now}" pattern="yyyy-MM-dd"/>
 
 <!DOCTYPE html>
 <html>
@@ -17,18 +21,23 @@
 </head>
 <body>
 	 <%-- ${authInfo } --%>
-	 ${ category}	
-	 ${category[0].pCategoryNo }
+	<%--  ${ category}	
+	 ${category[0].pCategoryNo } --%>
+	 ${today }
 	<h2>프로젝트 등록</h2>
 	<section id="register_prjcontent">
 		<table>
 			<tbody>
 				<tr>
 					<td class="td_left"><label for="userName">작성자</label></td>
-					<td class="td_right"><input type="text" id="userName" 	name="userName.userName" value="${authInfo.userName }" size=40
-						required="required" /></td>
-					<td class="td_right"><input type="hidden" id="userNo"		name="userNo.userNo" value="${authInfo.userNo }" size=40
-						required="required" readonly="readonly" /></td>
+					<td class="td_right">
+							<input type="text" id="userName" 	name="userName.userName"
+									value="${authInfo.userName }" size=40	required="required" />
+					</td>
+					<td class="td_right">
+								<input type="hidden" id="userNo" name="userNo.userNo" 
+								value="${authInfo.userNo }" size=40 required="required" readonly="readonly" />
+					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>					
@@ -43,34 +52,42 @@
 				</tr>
 				<tr>
 					<td class="td_left"><label for="prjName">프로젝트 명</label></td>
-					<td class="td_right"><input type="text" id="prjName"
-						name="prjName" size=40 required="required" /></td>
+					<td class="td_right">
+								<input type="text" id="prjName"
+										name="prjName" size=40 required="required" />
+					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
-					<td class="td_right"><textarea id="prjContent"
-							name="prjContent" rows="15" cols="42" required="required"></textarea>
+					<td class="td_right">
+									<textarea id="prjContent"
+											name="prjContent" rows="15" cols="42" required="required"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="prjGoal">목표금액</label></td>
-					<td class="td_right"><input type="text" id="prjGoal"	name="prjGoal" size=40 required="required" ></input></td>						
+					<td class="td_right">
+								<input type="text" id="prjGoal"	name="prjGoal" size=40 required="required"/>
+					</td>						
 				</tr>
 				<tr>
 					<td class="td_left"><label for="uploadFile">프로젝트 파일첨부</label>
 					</td>
-					<td class="td_right"><input type="file" name="uploadfile"
-						placeholder="파일 선택"></td>
+					<td class="td_right">
+								<input type="file" name="uploadfile"	placeholder="파일 선택">
+					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="endDate">마감일</label></td>
-					<td class="td_right"><input type="date" id="endDate"
-						name="endDate" required="required"></input></td>
+					<td class="td_right">
+						<input type="date" id="endDate"  name="endDate"  required="required"/>
+					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="payDate">결제일</label></td>
-					<td class="td_right"><input type="date" id="payDate"
-						name="payDate" required="required"></input></td>
+					<td class="td_right">
+									<input type="date" id="payDate"	 name="payDate" required="required"/>
+					</td>
 				</tr>
 
 			</tbody>

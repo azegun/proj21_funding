@@ -151,4 +151,12 @@
 					where userNo = #{userNo}		
 	</select>
 	
+	<!-- 계좌 등록 업데이트  -->
+	<update id="updateBankAccount">
+			update userinfo 
+					set BankName =#{bankName}, BankAccount =#{bankAccount},
+							AccountHolder =#{accountHolder}					
+			where UserNo =#{userNo}	
+	</update>
+	
 </mapper>

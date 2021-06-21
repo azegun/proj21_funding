@@ -11,7 +11,10 @@
 								<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 								<script type="text/javascript">
 								
-								$(function setSelectBox(){
+								$(function() {
+									$( '.datepicker').datepicker({ 	minDate: 0	});
+									});
+								/* $(function setSelectBox(){
 									var schField = $("#pCategoryNo option:selected").val();
 									console.log(schField)
 									
@@ -25,7 +28,7 @@
 										}
 									})
 								});
-								
+								 */
 								</script>
 </head>
 <body>
@@ -34,10 +37,11 @@
 			 
 			<%--  ${project[0].prjNo.prjName} --%>
 			<%--  ${project[0].prjNo} --%>
-		<%-- 	${project[0].prjNo.pCategoryNo.pCategoryName}
+		<%-- 	${project[0].prjNo.pCategoryNo.pCategoryNo}
 			${category }
  --%>			
- ${project[0].prjNo.pCategoryNo.pCategoryName}
+ ${project[0]}
+<%--  ${project[0].prjNo.pCategoryNo.pCategoryName} --%>
 			<h2>프로젝트 수정</h2>	
 			<section id = "upload_prjcontent">					
 			<table>			
@@ -67,7 +71,15 @@
 						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo"  >		
 									<option value = "0">---선택해주세요---- </option>
 							<c:forEach var = "c"  items="${category }" >
-									<option  value = " ${c.pCategoryNo }">${c.pCategoryName }</option>					
+									<c:choose>
+									<!-- 반복으로 같은거 찾는 조건  -->
+									<c:when test="${c.pCategoryNo eq project[0].prjNo.pCategoryNo.pCategoryNo }" >
+											<option  value = " ${c.pCategoryNo }" selected>${c.pCategoryName }</option>
+									</c:when>
+									<c:otherwise>
+											<option  value = " ${c.pCategoryNo }" >${c.pCategoryName }</option>
+									</c:otherwise>
+									</c:choose>
 							</c:forEach>									
 						</select>
 					</td>
@@ -109,7 +121,7 @@
 							<label for = "endDate">마감일</label>
 					</td>
 					<td class = "td_right">
-							 <input type="date" id = "endDate" name = "endDate" value = "${project[0].prjNo.endDate}" required="required" ></input>
+							 <input type="date" id = "endDate" class = "datepicker" name = "endDate" value = "${project[0].prjNo.endDate}" required="required" ></input>
 					</td>
 			</tr>
 			<tr>
@@ -117,7 +129,7 @@
 							<label for = "payDate">결제일</label>
 					</td>
 					<td class = "td_right">
-							 <input type="date" id = "payDate" name = "payDate" value = "${project[0].prjNo.payDate}" required="required"></input>
+							 <input type="date" id = "payDate" class = "datepicker" name = "payDate" value = "${project[0].prjNo.payDate}" required="required"></input>
 					</td>
 			</tr>			
 			</tbody>	

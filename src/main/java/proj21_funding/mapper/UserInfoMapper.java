@@ -28,7 +28,9 @@ public interface UserInfoMapper {
 
 	//	계좌 확인
 	UserInfo showBankAccount(int userNo);
-
+	// 계좌 등록 업데이트
+	int updateBankAccount(UserInfo userInfo);
+	
 	int insertUser(UserInfo userInfo);
 
 	int updateUser(UserInfo userInfo);
@@ -47,4 +49,6 @@ public interface UserInfoMapper {
 	int prdCount();
 //	회원찾기 Map이용
 	List<UserInfo> selectUserListByMap(Map<String, Object> listMap);
+	
+
 }

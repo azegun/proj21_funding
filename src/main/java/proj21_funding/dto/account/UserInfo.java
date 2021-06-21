@@ -64,6 +64,16 @@ public class UserInfo {
 		this.accountHolder = accountHolder;
 		this.bankAccount = bankAccount;
 	}
+	
+// 계좌 등록
+
+	public UserInfo(int userNo, String bankName, String accountHolder, String bankAccount) {
+		super();
+		this.userNo = userNo;
+		this.bankName = bankName;
+		this.accountHolder = accountHolder;
+		this.bankAccount = bankAccount;
+	}
 
 	// getter & setter
 	public int getUserNo() {

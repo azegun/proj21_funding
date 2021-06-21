@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-
 import proj21_funding.dto.Project;
 @Component
 public interface MyListMapper {

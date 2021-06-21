@@ -20,24 +20,31 @@
 					
 </head>
 <body>
-${authInfo.userId}
+${authInfo.userNo}
 		<section class="container">
 			<header id = "bankaccount" >		   
 					<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 			</header>
 				<h2>계좌등록</h2>
-						<form  action= "<%=request.getContextPath() %>/registerBank/${authInfo.userId}" method="post">
+						<form  action= "<%=request.getContextPath() %>/registerBank/${authInfo.userNo}" method="post">
 								<section id = "bankaccount_content">
 										<table>
 												<tbody>
 															<tr class = "col1">
 																	<td></td>
-																	<td class="td_right" >
+																	<td class="td_right"  colspan="2">
 																			<input type="hidden" id="userNo" name="userNo" value="${authInfo.userNo}" 
 																					size=49	required="required" readonly="readonly"/>																			
 																	</td>					
 															</tr>
 															<tr class = "col2">
+																	<td class="td_left"><label for="accountHolder">예금주</label></td>
+																	<td class="td_right" >
+																			<input type="text" id="accountHolder" name="accountHolder" 
+																					size=21	required="required" />																								
+																	</td>
+															</tr>	
+															<tr class = "col3">
 																	<td class="td_left"><label for="bankName">은행명</label></td>
 																	<td class="td_right" >
 																			<select id = "bankName" name = "bankName">
@@ -52,13 +59,13 @@ ${authInfo.userId}
 																			</select>
 																	</td>					
 															</tr>
-																<tr class = "col3">
+																<tr class = "col4">
 																	<td class="td_left"><label for="bankAccount">계좌번호</label></td>
 																	<td class="td_right" >
 																			<input type="text" id="bankAccount" name="bankAccount" 
-																					size=21	required="required" readonly="readonly"/>																								
+																					size=21	required="required" />																								
 																	</td>
-															</tr>											
+																</tr>											
 												</tbody>
 										</table>
 								</section>						

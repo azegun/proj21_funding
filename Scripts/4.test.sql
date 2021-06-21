@@ -111,8 +111,9 @@ where UserNo = 1;
 
 select * from userinfo u ;
 
-insert into userinfo(UserId,BankName, BankAccount) values
-("test20","국민", "030");
+update userinfo 
+set BankName = '', BankAccount = '', AccountHolder = ''
+where UserNo = 4;
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
@@ -171,6 +172,9 @@ update project
 			PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, 
 			EndDate = '2021-06-13', PayDate = '2021-06-13'
 	where prjno = 66;
+
+select * from project p 
+where PrjNo  = 27;
 
 
 

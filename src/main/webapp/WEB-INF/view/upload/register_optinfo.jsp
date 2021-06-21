@@ -12,9 +12,8 @@
 </head>
 <body>
 		<section id = "register_optcontent">
-			<table>
+			<table >
 					<tbody>
-						<div id = "option1">			
 							<tr>											
 									<td class = "td_left">
 											<label for = "optName">옵션이름</label>
@@ -42,11 +41,12 @@
 											 <textarea id = "optContent" name = "optContent"	rows="11" cols="42" required="required"></textarea>
 									</td>
 							</tr>
-							</div>
-							<div id = "addOption">
-									<button id = "optionPlus">+</button>
-									<button id = "optionMinus">-</button>
-							</div>
+							<tr>
+									<td id= "addBtns" colspan="2">
+										<button id = "optionPlus">+</button>
+										<button id = "optionMinus">-</button>
+									</td>									
+							</tr>
 							<!--  월요일에 열기-->
 						<!-- 	<div id = "option2">
 								<tr>
