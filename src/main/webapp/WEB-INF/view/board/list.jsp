@@ -21,6 +21,7 @@
 </style>
 </head>
 <body>
+${pagination}
 	<div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 

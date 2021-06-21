@@ -25,30 +25,6 @@
 	
 	<!-- 페이징 시도중 -->
 	
-	<select id="selectBoardList" parameterType="Criteria" resultType="Board">
-		SELECT
-			boardNo, categoryNo, boardTitle, boardDate
-		FROM
-			board
-		WHERE
-			delete_yn = 'N'
-		ORDER BY
-			notice_yn ASC,
-			idx DESC,
-			insert_time DESC
-		LIMIT
-			#{startPage}, #{recordsPerPage}
-	</select>
-			
-	<select id="selectBoardTotalCount" parameterType="Criteria" resultType="int">
-		SELECT
-			COUNT(*)
-		FROM
-			board
-		WHERE
-			delete_yn = 'N'
-	</select>
-	
 	<select id="SelectAllList" resultType="map">
     	select R1.* FROM(
 			SELECT * FROM BOARD order by boardNo desc
