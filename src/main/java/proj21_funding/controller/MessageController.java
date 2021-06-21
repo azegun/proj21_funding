@@ -21,6 +21,7 @@ import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.paging.Pagination;
+import proj21_funding.exception.SameUserException;
 import proj21_funding.exception.UserNotFoundException;
 import proj21_funding.service.MessageService;
 
@@ -31,45 +32,58 @@ public class MessageController {
 	private MessageService service;
 
 	@RequestMapping("/message/message-receive")
-	public String receive(Message message, HttpSession session, Model model) {
+	public String receive(Message message, HttpSession session, Model model,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+            @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
-		List<Message> messages = service.showByreceiveUser(userAuthInfo.getUserId());
-
+		int listCnt = service.countByReceiveUser(userAuthInfo.getUserId());
+	    Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+	    pagination.setTotalRecordCount(listCnt);
+		
+	    model.addAttribute("pagination",pagination);
+		List<Message> messages = service.showByReceiveUser(userAuthInfo.getUserId(),pagination);
 		model.addAttribute("messages", messages);
+	
 		return "message/message-receive";
 	}
 
 	@RequestMapping("/message/dels")
-	public String receive(String[] check, HttpSession session) {
+	public String receive(String[] check, HttpSession session, @RequestParam(value = "currentPage") int currentPage,
+			@RequestParam(value = "readYN") boolean readYN) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
-
 		if (check == null) {
 			return "redirect:/message/message-receive";
 		}
-		Message message = null;
-		
+		Message message = null;		
 		for (int i = 0; i < check.length; i++) {
 			message = service.showByMsgNo(Integer.parseInt(check[i]));
-			System.out.println(message);
 			if(message.getReceiveUser().equals(userAuthInfo.getUserId())) {
-				service.removeReceiveMessage(message);
+				service.removeReceiveMessage(message);				
 			}else {
 				service.removeSendMessage(message);
-			}
-			
-		}
+			}			
+		}			
 		
-		if(message.getReceiveUser().equals(userAuthInfo.getUserId())) {
-			return "redirect:/message/message-receive";
+		if(message.getReceiveUser().equals(userAuthInfo.getUserId())) {	
+			if(readYN != false) {
+				return "redirect:/message/message-receive?currentPage="+currentPage;
+			}else {
+				return "redirect:/message/message-unRead?currentPage="+currentPage;
+			}
 		}else {
-			return "redirect:/message/message-send";
+			return "redirect:/message/message-send?currentPage="+currentPage;
 		}
 		
 	}
 
 	@GetMapping("/message/message-receive/{msgNo}")
-	public String receiveDetail(@PathVariable("msgNo") int msgNo, Message message, Model model) {
+	public String receiveDetail(@PathVariable("msgNo") int msgNo, Message message, Model model,
+			@RequestParam(value = "currentPage") int currentPage,
+			@RequestParam(value = "readYN") boolean readYN) {
+		model.addAttribute("currentPage", currentPage);
 		message = service.showByMsgNo(msgNo);
+		model.addAttribute("readYN", readYN);		
 
 		service.readMessage(message);
 		model.addAttribute("msgNo", message.getMsgNo());
@@ -86,10 +100,13 @@ public class MessageController {
 			throw new UserNotFoundException();
 		}
 		try {
+			System.out.println(message);
 			Message message1 = new Message(message.getReceiveUser(), message.getSendUser(), message.getMsgContent());
 			service.sendMessage(message1);
 
-			return "redirect:/message/message-receive";
+			return "redirect:/message/message-receive/"+ msgNo
+					+"?currentPage=" +message.getCurrentPage()
+					+"&readYN="+message.isReadYN();
 		} catch (UserNotFoundException e) {
 			errors.rejectValue("UserName", "notSearching");
 			return "message/message-detail";
@@ -98,31 +115,40 @@ public class MessageController {
 	}
 
 	@GetMapping("/message/message-receive/delete/{msgNo}")
-	public String delete(@PathVariable("msgNo") int msgNo, Message message, Errors errors, HttpSession session) {
+	public String delete(@PathVariable("msgNo") int msgNo, Message message, HttpSession session,
+			@RequestParam(value = "currentPage") int currentPage,
+			@RequestParam(value = "readYN") boolean readYN) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
-		
-		if (errors.hasErrors()) {
-			return "redirect:/message/message-detail/{msgNo}";
-		}
-		
-		message = service.showByMsgNo(message.getMsgNo());
+		message = service.showByMsgNo(msgNo);		
 		
 		if(message.getReceiveUser().equals(userAuthInfo.getUserId())) {
-			service.removeReceiveMessage(message);
-			return "redirect:/message/message-receive";
+			service.removeReceiveMessage(message);	
+			if(readYN == true) {
+				return "redirect:/message/message-receive?currentPage="+currentPage;
+			}else {
+				return "redirect:/message/message-unRead?currentPage="+currentPage;
+			}
 		}else {
 			service.removeSendMessage(message);
-			return "redirect:/message/message-send";
+			return "redirect:/message/message-send?currentPage="+currentPage;
 		}		
 	
 	}
 
 	@RequestMapping("/message/message-unRead")
-	public String unRead(Message message, HttpSession session, Model model) {
+	public String unRead(Message message, HttpSession session, Model model,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+            @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize) {
 		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
-		List<Message> messages = service.showByreceiveUserUnRead(userAuthInfo.getUserId());
-
+		int listCnt = service.countByReceiveUserUnRead(userAuthInfo.getUserId());
+	    Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+	    pagination.setTotalRecordCount(listCnt);
+		
+	    model.addAttribute("pagination",pagination);
+		List<Message> messages = service.showByReceiveUserUnRead(userAuthInfo.getUserId(),pagination);
 		model.addAttribute("messages", messages);
+
 		return "message/message-unRead";
 	}
 
@@ -158,6 +184,9 @@ public class MessageController {
 			return "redirect:/message/message-receive";
 		} catch (UserNotFoundException e) {
 			errors.rejectValue("receiveUser", "userNotFound");
+			return "message/message-write";
+		}catch (SameUserException e) {
+			errors.rejectValue("receiveUser", "SameUserImpossible");
 			return "message/message-write";
 		}
 

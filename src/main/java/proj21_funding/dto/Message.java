@@ -13,8 +13,8 @@ public class Message {
 	private boolean readYN; // 확인여부
 	private boolean delSend; //보낸메세지삭제
 	private boolean delRecevie; // 받은메세지삭제
-	private String[] check; // 확인여부
-
+	private String[] check; // 체크여부	
+	private int currentPage; // 현재페이지
 	// 생성자
 	public Message() {
 	}
@@ -96,6 +96,15 @@ public class Message {
 
 	public void setCheck(String[] check) {
 		this.check = check;
+	}
+
+	
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 
 	@Override
