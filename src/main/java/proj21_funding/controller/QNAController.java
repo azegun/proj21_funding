@@ -10,25 +10,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.BoardCategory;
 import proj21_funding.dto.QNA;
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.paging.Pagination;
 import proj21_funding.service.CategoryService;
 import proj21_funding.service.MessageService;
 import proj21_funding.service.QNAService;
 
 @Controller
 public class QNAController {
-	
+
 	@Autowired
 	QNAService qnaService;
-	
+
 	@Autowired
 	CategoryService bcService;
-	
+
 	@Autowired
 	MessageService userService;
 
@@ -44,24 +46,46 @@ public class QNAController {
 	}
 
 	@RequestMapping("/servicecenter/servicecenter_view_admin")
-	public ModelAndView qnaAllAdmin() {
-		List<QNA> qna = qnaService.showQNAAll();
+	public ModelAndView qnaAllAdmin(
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session)
+			throws Exception {
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
+
 		ModelAndView mav = new ModelAndView();
+
+		int listCnt = qnaService.QNACount();
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		pagination.setTotalRecordCount(listCnt);
+		session.setAttribute("pagination", pagination);
+
 		mav.setViewName("servicecenter/servicecenter_view_admin");
-		mav.addObject("qna", qna);
+		mav.addObject("pagination", pagination);
+		mav.addObject("qna", qnaService.SelectAllList(pagination));
 		mav.addObject("bc", bc);
 		return mav;
 	}
 
 	@RequestMapping("/servicecenter/servicecenter_view_user")
-	public ModelAndView qnaUser(HttpSession session) {
+	public ModelAndView qnaUser(
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session) throws Exception {
 		UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
-		List<QNA> qna = qnaService.showQNAByUserId(user.getUserNo());
+		
+		int listCnt = qnaService.QNAUserCount(user.getUserNo());
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		pagination.setTotalRecordCount(listCnt);
+		session.setAttribute("pagination", pagination);
+		System.out.println(pagination.getTotalRecordCount());
+		
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("servicecenter/servicecenter_view_user");
-		mav.addObject("qna", qna);
+		mav.addObject("pagination", pagination);
+		mav.addObject("qna", qnaService.SelectUserList(user.getUserNo(),pagination));
 		mav.addObject("bc", bc);
 		return mav;
 	}
@@ -77,7 +101,7 @@ public class QNAController {
 		mav.addObject("user", user);
 		return mav;
 	}
-	
+
 	@RequestMapping("/servicecenter/servicecenter_write")
 	public ModelAndView WriteAll() {
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
@@ -86,7 +110,7 @@ public class QNAController {
 		mav.addObject("bc", bc);
 		return mav;
 	}
-	
+
 	@RequestMapping("/servicecenter/servicecenter_reply/{qnaNo}")
 	public ModelAndView ReplyAll(@PathVariable("qnaNo") int qnaNo) {
 		QNA qna = qnaService.showQNAByNo(qnaNo);
@@ -99,37 +123,37 @@ public class QNAController {
 		mav.addObject("bc", bc);
 		return mav;
 	}
-	
+
 	@PostMapping("/qnaSuccess")
 	public String qnaUpload(QNA qna, BoardCategory bc) {
-	try {
-		System.out.println(qna);
-		qnaService.uploadQNA(qna);
-		return "servicecenter/servicecenter_write_end";
-	
-		}catch (Exception e) { 
+		try {
+			System.out.println(qna);
+			qnaService.uploadQNA(qna);
+			return "servicecenter/servicecenter_write_end";
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		 
-		 return "servicecenter/servicecenter_write"; 
-		 }
-				
+
+			return "servicecenter/servicecenter_write";
+		}
+
 	}
-	
+
 	@PostMapping("/qnaRpSuccess")
 	public ModelAndView qnaReply(QNA qna) {
-	try {
-		System.out.println(qna);
-		qnaService.replyQNA(qna);
-		return qnaAllAdmin();
-	
-		}catch (Exception e) { 
+		try {
+			System.out.println(qna);
+			qnaService.replyQNA(qna);
+			return detail(qna.getQnaNo());
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		 
-		 return detail(qna.getQnaNo()); 
-		 }
-				
+
+			return detail(qna.getQnaNo());
+		}
+
 	}
-	
+
 	@GetMapping("/servicecenter_delete/{qnaNo}")
 	public String deleteSuccess(@PathVariable("qnaNo") int qnaNo) {
 		try {
