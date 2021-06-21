@@ -29,8 +29,7 @@ public class UserSignUpController {
 
 	// 가입성공화면가기
 	@PostMapping("/account/signUp2")
-	public String signUp2(/* @RequestParam(value = "agree", defaultValue = "false") Boolean agree, */
-			@Valid UserSignUp userSignUp, Errors errors) {
+	public String signUp2(@Valid UserSignUp userSignUp, Errors errors) {
 		if (errors.hasErrors()) {
 			return "account/signUp1";
 		}

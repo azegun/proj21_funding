@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 			
 		</header>
 		<section id="loginFormArea">
 			<h1>로그인</h1>
@@ -22,28 +22,25 @@
 				<fieldset id="loginUser">
 					<p>
 						<label>회원계정:<br>
-						<form:input path="userId"/>
-						<form:errors path="userId" />
-						</label>
-					</p>					
+						<form:input path="userId" id="input"/></label>
+					</p>
+					<p id="errors"><form:errors path="userId" />&nbsp;</p>										
 					<p>
 						<label>비밀번호:<br>
-						<form:password path="userPw"/>
-						<form:errors path="userPw" />
-						</label>
-					</p>		
-					<p>
-						<label>아이디 기억하기:<br>
-						<form:checkbox path="rememberUserId"/></label>
+						<form:password path="userPw" id="input"/></label>
+					</p>
+					<p id="errors"><form:errors path="userPw"/>&nbsp;</p>							
+					<p id="remember">
+						<label><form:checkbox path="rememberUserId"/>아이디 기억하기</label>
 					</p>
 					<form:button id="login">로그인</form:button>				
 				</fieldset>	
 			</form:form>					
-			<fieldset id="loginBtn">
+			<fieldset id="hrefBtn">
 				<p>아직 계정이 없으신가요??<a href="<c:url value='/account/signUp1'/>">회원가입하기</a></p>
 				<p><a href="<c:url value='/account/searchAccount'/>">아이디/비밀번호를 잊으셨나요??</a>
 			</fieldset>					
-		</section>		
+		</section>
 	</div>
 </body>
 </html>

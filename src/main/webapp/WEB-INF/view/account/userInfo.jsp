@@ -41,7 +41,7 @@
 <body>
 <div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
 		<section id="userInfoArea">
 			<h1>회원정보</h1>
@@ -83,9 +83,10 @@
 					</label>
 				</p>				
 				<p>
-					<label> 우편번호 검색하기 :
-					<form:input path="zipCode" id="member_post"  readonly="true" onclick="findAddr()" value="${userInfo.zipCode}"/>					 
-					<form:errors path="zipCode" />										
+					<label> 우편번호 :
+					<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true"/> 
+					<form:button type="button" onclick="findAddr()">검색</form:button>
+					<form:errors path="zipCode" id="errors"/>					
 					</label>
 				</p>
 				<p>
