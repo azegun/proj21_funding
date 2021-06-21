@@ -16,32 +16,53 @@
 	<select id="countBySendUser" resultType="int">
 		select count(*)
 		  from message
-		 where SendUser = #{sendUser} and delSend = false;	
+		 where SendUser = #{sendUser} and delSend = false	
 	</select>
 	
 	<select id="selectBySendUser"  resultMap="resMsg">
-	select R1.* FROM(
-			select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
-			from message
-			where SendUser = #{sendUser} and delSend = false	
-		   ) R1
-			LIMIT #{pageSearch}, #{cntPerPage }
+		select R1.* FROM(
+				select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+				from message
+				where SendUser = #{sendUser} and delSend = false
+				order by MsgNo desc	
+		) R1
+		LIMIT #{pageSearch}, #{cntPerPage}
 	</select>
+	
+	<select id="countByReceiveUser" resultType="int">
+		select count(*)
+		  from message
+		 where ReceiveUser = #{receiveUser} and delRecevie = false	
+	</select>	
 	
 	<select id="selectByreceiveUser" resultMap="resMsg">
-		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
-		from message
-		where ReceiveUser = #{receiveUser} and delRecevie = false
+		select R1.* FROM(
+			select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+			from message
+			where ReceiveUser = #{receiveUser} and delRecevie = false
+			order by MsgNo desc
+		) R1
+		LIMIT #{pageSearch}, #{cntPerPage}	
 	</select>
-	
+
+	<select id="countByRead" resultType="int">
+		select count(*)
+		  from message
+		 where ReceiveUser = #{receiveUser} and delRecevie = false and ReadYN = false	
+	</select>	
+
 	<select id="selectByRead" resultMap="resMsg">
-		select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
-		from message
-		where ReceiveUser = #{receiveUser} and delRecevie = false and ReadYN = false	
+		select R1.* FROM(
+			select msgNo, SendUser, ReceiveUser, MsgContent, SendDate, ReadYN
+			from message
+			where ReceiveUser = #{receiveUser} and delRecevie = false and ReadYN = false
+			order by MsgNo desc
+		) R1
+		LIMIT #{pageSearch}, #{cntPerPage}		
 	</select>
 	
 	<select id="selectByMsgNo" resultMap="resMsg">
-		select msgNo, SendUser, ReceiveUser, MsgContent
+		select msgNo, SendUser, ReceiveUser, MsgContent, ReadYN
 		from message
 		where msgNo = #{msgNo} 
 	</select>

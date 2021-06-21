@@ -22,21 +22,46 @@ select count(*)
 select R1.* FROM(
 	SELECT * 
 		FROM message 
-		where SendUser = 'test1' and delSend = false	
+		where SendUser = 'test1' and delSend = false
+		order by MsgNo desc
 	) R1
 	LIMIT 0, 10;
+
 
 update message 
 set ReadYN = 1
 where MsgNo = 10;
 insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test1', 'test10', '펀딩팀 화이팅1');
-insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test1', 'test10', '펀딩팀 화이팅2');
-insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test1', '펀딩팀 화이팅3');
-insert into message ( SendUser, ReceiveUser, MsgContent)
-	 values ( 'test10', 'test11', '펀딩팀 화이팅4');
+	 values ( 'test1', 'test10', '펀딩팀 화이팅1'),
+	  ('test1', 'test10', '펀딩팀 화이팅2'),
+	  ('test1', 'test10', '펀딩팀 화이팅3'),
+	  ('test1', 'test10', '펀딩팀 화이팅4'),
+	  ('test1', 'test10', '펀딩팀 화이팅5'),
+	  ('test1', 'test10', '펀딩팀 화이팅6'),
+	  ('test1', 'test10', '펀딩팀 화이팅7'),
+	  ('test1', 'test10', '펀딩팀 화이팅8'),
+	  ('test1', 'test10', '펀딩팀 화이팅9'),
+	  ('test1', 'test10', '펀딩팀 화이팅10'),
+	  ('test1', 'test10', '펀딩팀 화이팅11'),
+	  ('test1', 'test10', '펀딩팀 화이팅12'),
+	  ('test1', 'test10', '펀딩팀 화이팅13'),
+	  ('test1', 'test10', '펀딩팀 화이팅14'),
+	  ('test1', 'test10', '펀딩팀 화이팅15'),
+	  ('test10', 'test1', '펀딩팀 화이팅1'),
+	  ('test10', 'test1', '펀딩팀 화이팅2'),
+	  ('test10', 'test1', '펀딩팀 화이팅3'),
+	  ('test10', 'test1', '펀딩팀 화이팅4'),
+	  ('test10', 'test1', '펀딩팀 화이팅5'),
+	  ('test10', 'test1', '펀딩팀 화이팅6'),
+	  ('test10', 'test1', '펀딩팀 화이팅7'),
+	  ('test10', 'test1', '펀딩팀 화이팅8'),
+	  ('test10', 'test1', '펀딩팀 화이팅9'),
+	  ('test10', 'test1', '펀딩팀 화이팅10'),
+	  ('test10', 'test1', '펀딩팀 화이팅11'),
+	  ('test10', 'test1', '펀딩팀 화이팅12'),
+	  ('test10', 'test1', '펀딩팀 화이팅13'),
+	  ('test10', 'test1', '펀딩팀 화이팅14'),
+	  ('test10', 'test1', '펀딩팀 화이팅15');
 	
 delete from message where MsgNo =6;
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
@@ -65,8 +90,8 @@ from admin;
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
 	UserNo, UserId, UserPw,	UserName, Nickname, Email,
-	ZipCode, Address, DetailAddress,
-	UserPhone, BankName, BankAccount, Secession
+	UserPhone, ZipCode, Address, DetailAddress, 
+	BankName, AccountHolder, BankAccount, Secession
 from userinfo;
 where UserName = 'test10' and Email = 'ttt@naver.com';
 where userId = 'test10' and userPw = password('1111');
@@ -78,6 +103,16 @@ update userinfo
 		 
 delete from userinfo where userNo >2;
 alter table userinfo auto_increment=4;
+
+-- 계좌 등록 여부 확인
+select BankName, BankAccount 
+from userinfo 
+where UserNo = 1;
+
+select * from userinfo u ;
+
+insert into userinfo(UserId,BankName, BankAccount) values
+("test20","국민", "030");
 
 -- QnA(QnA) - UserInfo(회원정보), Admin(관리자) 외래키 받음
 select 
@@ -105,12 +140,21 @@ from project;
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
 	set 
-	 	p.pCategoryNo = '2',
+	 	p.pCategoryNo = '1', 
 		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움', p.PrjGoal = 333333333,
 		p.EndDate = '2022-06-13', p.PayDate = '2021-06-13',
 		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
 where p.PrjNo = 3;
 
+-- Mylist에 수정 
+update project as p inner join prjoption as op
+on p.PrjNo = op.PrjNo 
+	set 
+		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움',
+		op.OptName = '1주일쨰 파일올리기,수정', op.OptContent ='화이팅하자'
+where p.PrjNo = 4;
+
+select * from project p2 ;
 -- Project + userInfo + prjOption 조인 by prjNo
 select p.prjNo,p.UserNo, p.pCategoryNo, pc.pCategoryName,  PrjName, PrjContent, PrjGoal,
 				StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName,
@@ -203,28 +247,45 @@ where optno > 4;
 select 
 		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
 		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-		o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+		op.OptNo, op.optName,  op.OptPrice, op.OptContent,
 		if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-from fundinginfo f 
-		      join prjoption o on o.optno= f.OptNo 
-			  right join project p on p.prjno = f.PrjNo 
-			  join userinfo u on p.userno = u.userno
-			  join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
+from project p
+		join prjoption op  on p.PrjNo = op.PrjNo 
+		join userinfo u on p.UserNo = u.UserNo 
+		join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
  	where u.userno = 1
 	group by prjno;
 
 -- 프로젝트 no로 검색 detail 프로젝트리스트
 select 
-		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryNo, PrjName, PrjContent, PrjGoal,
+		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName, p.PrjName, p.PrjContent, p.PrjGoal,
 		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-		o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+		op.OptNo, op.optName,  op.OptPrice, op.OptContent,
 		if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-from fundinginfo f 
-		      join prjoption o on o.optno= f.OptNo 
-			  right join project p on p.prjno = f.PrjNo 
-			  join userinfo u on p.userno = u.userno
-			  join prjcategory pc on p.pCategoryNo =pc.pCategoryNo 
- 	where o.PrjNo =2;
+from project p
+	join prjoption op  on p.PrjNo = op.PrjNo 
+	join userinfo u on p.UserNo = u.UserNo 
+	join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
+ 	where p.PrjNo =4;
+ 
+ 
+ select * from prjoption p ;
+select * from project p ;
+ 
+ 
+ 	select 
+								p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryNo, PrjName, PrjContent, PrjGoal,
+								p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+								o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+								if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+					from fundinginfo f 
+						      join prjoption o on o.optno= f.OptNo 
+							  right join project p on p.prjno = f.PrjNo 
+							  join userinfo u on p.userno = u.userno
+							  join prjcategory pc on p.pCategoryNo =pc.pCategoryNo 
+ 				where o.prjno = 2;	
+ 
+ 
 -- qna test	
 	
 insert into qna(qnaNo, userNo, categoryNo, qnaTitle, qnaContent, qnaFile)
@@ -252,11 +313,13 @@ select * from boardcategory;
 
 -- 페이징
 select R1.* FROM(
-SELECT * FROM BOARD order by boardno desc
+SELECT * FROM QNA where userno = 3 order by qnaNo desc
 ) R1
-LIMIT 0, 10;
+LIMIT 0, 10
+;
 
-SELECT count(*) FROM Board;
+SELECT count(*) FROM qna;
+SELECT count(*) FROM qna where userno = 3;
 
 insert Board(categoryNo, boardTitle, boardContent)
 values (1, "210618 업데이트 내용", "안내하는 중"),

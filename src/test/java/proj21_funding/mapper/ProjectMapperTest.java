@@ -104,7 +104,7 @@ public void testjoinUpdateProjectAndPrjOption() {
 	Assert.assertEquals(2, res);		
 }
 
-@Test
+//@Test
 public void testremoveProjectOption() {
 	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 	

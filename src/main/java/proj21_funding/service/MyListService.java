@@ -1,6 +1,7 @@
 package proj21_funding.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -12,4 +13,7 @@ public interface MyListService {
 	List<Project> showAllMyList(int userNo);
 	// 프로젝트 번호로 디테일하게 검색
 	List<Project> showDetailListByprjNo(int prjNo);
+	// 프로젝트 and 옵션 조인 디테일리스트
+		int joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(Map<String, Object> map);
+	
 }

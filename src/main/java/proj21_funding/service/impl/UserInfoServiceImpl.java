@@ -97,5 +97,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public List<UserInfo> showUserListByMap(Map<String, Object> listMap) {
 		return mapper.selectUserListByMap(listMap);
 	}
+	
+	public UserInfo showBankAccount(int userNo) {
+		return mapper.showBankAccount(userNo);
+	}
 
 }

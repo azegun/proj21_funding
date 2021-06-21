@@ -4,8 +4,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-
-
 // 회원가입시 양식 제한
 public class UserSignUp {
 	@Size(min = 4)
@@ -22,13 +20,14 @@ public class UserSignUp {
 	private String nickName; // 회원별명
 	@Email
 	@NotBlank
-	private String email; // 이메일	
+	private String email; // 이메일
+	private String userPhone; // 회원H.P
 	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
-	private String detailAddress; // 상세주소	
-	private String userPhone; // 회원H.P	
+	private String detailAddress; // 상세주소
 	private String bankName; // 은행명
+	private String accountHolder; // 예금주
 	private String bankAccount; // 계좌번호
 	private Boolean agree;
 
@@ -136,7 +135,15 @@ public class UserSignUp {
 	public void setAgree(Boolean agree) {
 		this.agree = agree;
 	}
-	
+
+	public String getAccountHolder() {
+		return accountHolder;
+	}
+
+	public void setAccountHolder(String accountHolder) {
+		this.accountHolder = accountHolder;
+	}
+
 	// 비밀번호 일치확인
 	public boolean isPasswordEqualToComfirmPassword() {
 		return userPw.equals(confirmUserPw);
@@ -145,12 +152,13 @@ public class UserSignUp {
 	@Override
 	public String toString() {
 		return String.format(
-				"UserSignUp [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, nickName=%s, email=%s, zipCode=%s, address=%s, detailAddress=%s, userPhone=%s, bankName=%s, bankAccount=%s, agree=%s]",
-				userId, userPw, confirmUserPw, userName, nickName, email, zipCode, address, detailAddress, userPhone,
-				bankName, bankAccount, agree);
+				"UserSignUp [userId=%s, userPw=%s, confirmUserPw=%s, userName=%s, nickName=%s, email=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, bankName=%s, accountHolder=%s, bankAccount=%s, agree=%s]",
+				userId, userPw, confirmUserPw, userName, nickName, email, userPhone, zipCode, address, detailAddress,
+				bankName, accountHolder, bankAccount, agree);
 	}
 
-	
+
+
 	
 
 }

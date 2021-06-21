@@ -25,4 +25,7 @@ public interface UserInfoService {
 	int currentUserCount();
 	int prdcount();
 	List<UserInfo> showUserListByMap(Map<String,Object> listMap);
+	//	계좌 확인
+	UserInfo showBankAccount(int userNo);
+
 }

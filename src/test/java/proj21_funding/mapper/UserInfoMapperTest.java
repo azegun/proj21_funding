@@ -40,23 +40,29 @@ public class UserInfoMapperTest {
 //		list.stream().forEach(s -> log.debug(s.toString()));
 //	}
 
-////	@Test
-//	public void test01SelectUserbyNo() {
-//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-//
-//		int userNo = 1;
-//		UserInfo userInfo = mapper.selectUserbyNo(userNo);
-//		log.debug(userInfo.toString());
-//		Assert.assertNotNull(userInfo);
-//	}
-
 	@Test
 	public void test02SelectUserbyId() {
 		String userId = "test10";
 		UserInfo userInfo = mapper.selectUserbyId(userId);
+	}
+		
+	@Test
+	public void test01SelectUserbyNo() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		int userNo = 1;
+		UserInfo userInfo = mapper.selectUserbyNo(userNo);
 		log.debug(userInfo.toString());
 		Assert.assertNotNull(userInfo);
 	}
+
+//	@Test
+//	public void test02SelectUserbyId() {
+//		String userId = "test1";
+//		UserInfo userInfo = mapper.selectUserbyId(userId);
+//		log.debug(userInfo.toString());
+//		Assert.assertNotNull(userInfo);
+//	}
 
 ////	@Test
 //	public void test03SelectUserbyEmail() {
@@ -93,5 +99,14 @@ public class UserInfoMapperTest {
 //		Assert.assertEquals(1, res);
 //		log.debug("res id >> " + res);
 //	}
+	@Test
+	public void testShowBankAccount() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		int userNo = 1;
+		UserInfo userInfo = mapper.showBankAccount(userNo);
+		System.out.println("userInfo >> "+ userInfo);
+		Assert.assertNotNull(userInfo);
+	}
 
 }

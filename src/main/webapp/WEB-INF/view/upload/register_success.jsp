@@ -111,14 +111,6 @@ ${Uploadfile }
 										<td class="td_left"><label for="optContent">옵션내용</label></td>
 										<td class="td_right" ><span id="optContent">${propt.optContent}</span></td>
 					</tr>
-					<tr class = "col11">
-										<td class="td_left"><label for="uploadfile">사진</label></td>
-										<td class="td_right" >
-											<%-- <c:if test="<%=request.getContextPath() %>/images/project/ == ${prj.prjNo }.jpg"></c:if> --%>
-											<img id="uploadfile" src = "<%=request.getContextPath() %>/images/project/project${pro.prjNo }.jpg"/>
-										</td>
-					</tr>
-										
 					
 				</tbody>
 		</table>

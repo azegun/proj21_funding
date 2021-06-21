@@ -19,74 +19,97 @@
 		});			
 	});
 		
-	/* 수정 */
-	$(function(){
-		var contextPath = "<%=request.getContextPath()%>";
-		$("#list_update").on("click", function(){
-			window.location.href = contextPath+"/myListUpdate/${myList[0].prjNo.prjNo}";
-		});			
-	});
 </script>
 </head>
 <body>
+${myList[0]}
+${myList[0].prjNo.prjNo}
 
 	<section class="container">
 			<header id = "mydetail_header">		   
 					<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 			</header>
 			<h2>프로젝트</h2>
+		<form  action= "<%=request.getContextPath() %>/myListUpdate/${authInfo.userNo}" method="post">
 			<section id = "detaillist_content">
-				<table border = 1>
+				<table>
 						<tbody>
 								<tr class = "col1">
-										<td class="td_left"><label for="userName">작성자</label></td>
-										<td class="td_right" ><span id="userName">${authInfo.userName }</span></td>
+										<td class="td_left"><label for="prjNo">프로젝트번호</label></td>
+										<td class="td_right" >
+												<input type="text" id="prjNo" name="prjNo" value="${myList[0].prjNo.prjNo}" 
+														size=49	required="required" readonly="readonly"/>																			
+										</td>					
 								</tr>
 								<tr class = "col2">
-										<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
-										<td class="td_right" ><span id="pCategoryNo">${categoryList[0].pCategoryName }</span></td>
+										<td class="td_left"><label for="userName">작성자</label></td>
+										<td class="td_right" >
+												<span id="userName">${authInfo.userName}</span>																					
+										</td>					
 								</tr>
 								<tr class = "col3">
-										<td class="td_left"><label for="prjName">프로젝트</label></td>
-										<td class="td_right" ><span id="prjName">${myList[0].prjNo.prjName}</span></td>
+										<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
+										<td class="td_right" >
+												<span id="pCategoryName">${categoryList[0].pCategoryName }</span>
+										</td>
 								</tr>
 								<tr class = "col4">
-										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
-										<td class="td_right" ><span id="prjContent">${myList[0].prjNo.prjContent}</span></td>
-								</tr>								
+										<td class="td_left"><label for="prjName">프로젝트</label></td>
+										<td class="td_right" >
+											<input type="text" id="prjName" name="prjName" value="${myList[0].prjNo.prjName}" 
+														size=49	required="required"/>			
+										</td>
+								</tr>
 								<tr class = "col5">
+										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
+										<td class="td_right" >
+											<textarea id="prjContent" name="prjContent"
+														rows="18" cols="51"	required="required" >${myList[0].prjNo.prjContent}</textarea>
+										</td>
+								</tr>								
+								<tr class = "col6">
 										<td class="td_left"><label for="prjGoal">목표금액</label></td>
 										<td class="td_right" >
-												<span id="prjGoal">
+												 <span id="prjGoal">
 														<fmt:formatNumber value="${myList[0].prjNo.prjGoal}" pattern="\\#,###"/>
 												 </span>
 										 </td>										
 								</tr>
-								<tr class = "col6">
+								<tr class = "col7">
 										<td class="td_left"><label for="prjTagetPercent">달성률</label></td>
 										<td class="td_right" >
-												<span id="prjTagetPercent">${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100}%</span>
+												<progress value="${myList[0].prjNo.totalPrice}" max = "${myList[0].prjNo.prjGoal }"></progress><br> 
+													<fmt:formatNumber value="${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100}" pattern = ".0" /><span>%</span>
 										</td>
 								</tr>
 								
-								<tr class = "col7">
+								<tr class = "col8">
 										<td class="td_left"><label for="startDate">시작일</label></td>
 										<td class="td_right" ><span id="startDate">${myList[0].prjNo.startDate}</span></td>
 								</tr>
-								<tr class = "col8">
+								<tr class = "col9">
 										<td class="td_left"><label for="endDate">마감일</label></td>
 										<td class="td_right" ><span id="endDate">${myList[0].prjNo.endDate}</span></td>
 								</tr>
-								<tr class = "col9">
+								<tr class = "col10">
 										<td class="td_left"><label for="payDate">결제일</label></td>
 										<td class="td_right" ><span id="payDate">${myList[0].prjNo.payDate}</span></td>
 								</tr>
-								
-								<tr class = "col10">
-										<td class="td_left"><label for="optName">옵션이름</label></td>
-										<td class="td_right" ><span id="optName">${myList[0].optName}</span></td>
-								</tr>
 								<tr class = "col11">
+										<td class="td_left"><label for="uploadfile">첨부사진</label></td>
+										<td class="td_right" >
+											<img id = "uploadfile" src="<%=request.getContextPath() %>/images/project/project${myList[0].prjNo.prjNo}.jpg" />
+										</td>
+								</tr>
+								
+								<tr class = "col12">
+										<td class="td_left"><label for="optName">옵션이름</label></td>
+										<td class="td_right" >
+												<input type="text" id="optName"	name="optName"
+																value="${myList[0].optName}"	 size=49 required="required" ></input>
+										</td>									
+								</tr>
+								<tr class = "col13">
 										<td class="td_left"><label for="optPrice">옵션금액</label></td>
 										<td class="td_right" >
 												<span id="optPrice">													
@@ -94,17 +117,21 @@
 												</span>
 										</td>
 								</tr>
-								<tr class = "col12">
+								<tr class = "col14">
 										<td class="td_left"><label for="optContent">옵션내용</label></td>
-										<td class="td_right" ><span id="optContent">${myList[0].optContent}</span></td>
+										<td class="td_right" >
+												<textarea id="optContent" name="optContent"
+														rows="18" cols="51"	required="required" >${myList[0].optContent}</textarea>
+										</td>											
 								</tr>
 						</tbody>
 				</table>
-				</section>
+				</section>						
 						<div id = "btns">
-								<button id = "list_update">수정</button>
+								<input type="submit"  value="수정"/>&nbsp;
 								<button id = "back">뒤로</button>								
-						</div>					
+						</div>		
+					</form>				
 			<footer>
 					<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 			</footer>

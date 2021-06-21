@@ -1,16 +1,20 @@
 package proj21_funding.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.Project;
+import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.service.MyListService;
 import proj21_funding.service.PrjCategoryService;
 
@@ -18,15 +22,19 @@ import proj21_funding.service.PrjCategoryService;
 public class MyListController {
 
 		@Autowired
-		private MyListService listService;
+		private MyListService listService;		
 		
 		@Autowired
-		private PrjCategoryService prjCategoryService;
+		private PrjCategoryService prjCategoryService;		
+		
+		@Autowired
+		private MyListService myListService;
 		
 //		파일등록에서 수정완료시 버튼
 		@GetMapping("/myUploadedlist/{authInfo.userNo}")
 		public ModelAndView myUploadedList(@PathVariable("authInfo.userNo") int userNo) {			
-			List<Project> list = listService.showAllMyList(userNo);			
+			List<Project> list = listService.showAllMyList(userNo);		
+			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("myList", list);
 			mav.setViewName("mylist/myuploaded_list");
@@ -57,7 +65,6 @@ public class MyListController {
 //		마이리스트에서 디테일리스트
 		@RequestMapping("/selectDetailList/{prjNo}")
 		public ModelAndView	showDetailList(@PathVariable("prjNo") int prjNo) {		
-			System.out.println("prjNo >>" + prjNo);
 			List<Project> list = listService.showDetailListByprjNo(prjNo);
 			List<PrjCategory> categorylist = prjCategoryService.showCategory();
 			
@@ -69,10 +76,24 @@ public class MyListController {
 			return mav;
 		}
 //		디테일리스트에서 수정
-		@RequestMapping("/myListUpdate/{prjNo}")
-		public String myListUpdate(@PathVariable("prjNo") int prjNo) {
-			System.out.println("prjNo >> "+ prjNo);
-			return "mylist/mydetail_update";
+		@PostMapping("/myListUpdate/{authInfo.userNo}")
+		public ModelAndView myListUpdate(@PathVariable("authInfo.userNo") int userNo, UpdateProject project) {
+			
+			Map<String, Object> map = new HashMap<String, Object>();	
+			map.put("pNo", project.getPrjNo());
+			map.put("pName", project.getPrjName());
+			map.put("pContent", project.getPrjContent());
+			map.put("oName", project.getOptName());
+			map.put("oContent", project.getOptContent());
+			System.out.println("map Service 전 > " + map);
+			 
+			myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
+			List<Project> list = listService.showAllMyList(userNo);
+			ModelAndView mav = new ModelAndView();		
+			mav.addObject("myList", list);
+			mav.setViewName("mylist/myuploaded_list");	
+			
+			return mav;
 		}
 
 }

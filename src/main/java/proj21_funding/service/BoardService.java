@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.Board;
-import proj21_funding.dto.paging.Criteria;
 import proj21_funding.dto.paging.Pagination;
 
 @Service
@@ -27,8 +26,6 @@ public interface BoardService {
 	int removeBoard (int boardNo);
 	
 //	페이징 시도중
-	List<Board> getBoardList(Criteria criteria);
-	
 	List<Map<String, Object>> SelectAllList (Pagination pagination) throws Exception;
 	
 	int BoardCount() throws Exception;

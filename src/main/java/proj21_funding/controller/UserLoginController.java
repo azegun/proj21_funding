@@ -47,7 +47,7 @@ public class UserLoginController {
 			
 			Cookie rememberCookie = new Cookie("REMEMBER", userLogin.getUserId());
 			rememberCookie.setPath("/");
-
+ 
 			if (userLogin.isRememberUserId()) {
 				rememberCookie.setMaxAge(60 * 60 * 24 * 30);
 			} else {

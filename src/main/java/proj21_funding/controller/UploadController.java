@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.AddPrjOption;
 import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.exception.ProjectNotDeleteException;
@@ -26,6 +27,7 @@ import proj21_funding.service.PrjCategoryService;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectAndPrjOptionService;
 import proj21_funding.service.ProjectService;
+import proj21_funding.service.UserInfoService;
 
 @Controller
 public class UploadController {	
@@ -45,17 +47,34 @@ public class UploadController {
 	@Autowired
 	private PrjCategoryService prjCategoryService;
 	
+	@Autowired
+	private UserInfoService userService;
 	
-	//home에서 프로젝트 올리기 광고페이지
+	@GetMapping("/registerAccount")
+	public String registerAccount() {
+		return "upload/register_bankaccount";
+	}
+	
+//	home에서 프로젝트 올리기 광고페이지
 	@GetMapping("/uploadMain")
-	public String uploadMain() {
+	public String uploadMain() {		
 		return "upload/upload_main";
+	}
+	
+	@GetMapping("/uploadMain/{authInfo.userNo}")
+	public ModelAndView uploadMainByNo(@PathVariable("authInfo.userNo") int userNo) {
+		UserInfo list = userService.showBankAccount(userNo);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("upload/upload_main");	
+		
+		return mav;
 	}
 	
 	//광고페이지에서 등록 html
 	@GetMapping("/registerForm")
-	public ModelAndView uploadRegister() {
-	
+	public ModelAndView uploadRegister() {	
 		List<PrjCategory> list = prjCategoryService.showCategory();
 //		System.out.println("prjcategory >>" + list);
 		ModelAndView mav = new ModelAndView();

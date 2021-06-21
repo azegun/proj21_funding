@@ -1,9 +1,8 @@
 package proj21_funding.controller;
 
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,17 +28,6 @@ public class BoardController {
 	@Autowired
 	private CategoryService bcService;
 
-	@RequestMapping("/board/notice_all")
-	public ModelAndView noticeAll() {
-		List<Board> board = boardService.showBoardAll();
-		List<BoardCategory> bc = bcService.showBCByClass("board");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/notice_all");
-		mav.addObject("board", board);
-		mav.addObject("bc", bc);
-		return mav;
-	}
-	
 	@RequestMapping("/board/notice_write")
 	public ModelAndView WriteAll() {
 		List<BoardCategory> bc = bcService.showBCByClass("board");
@@ -50,11 +38,15 @@ public class BoardController {
 	}
 	
 	@PostMapping("/noticesuccess")
-	public ModelAndView registerSuccess(Board board, BoardCategory bc) {
+	public ModelAndView registerSuccess(Board board, BoardCategory bc, HttpSession session) {
 		try {
 			System.out.println(board);
 			boardService.uploadBoard(board);
-			return noticeAll();
+			Pagination pagination = new Pagination();
+			pagination.setCurrentPage(1);
+			pagination.setCntPerPage(10);
+			pagination.setPageSize(10);
+			return noticeAll(pagination.getCurrentPage(), pagination.getCntPerPage(), pagination.getPageSize(), session);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,12 +56,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/notice_detail/{boardNo}&{categoryNo}")
-	public ModelAndView detail(@PathVariable("boardNo") int boardNo, @PathVariable("categoryNo") int categoryNo) {
+	public ModelAndView detail(@PathVariable("boardNo") int boardNo, @PathVariable("categoryNo") int categoryNo, HttpSession session) {
+		session.getAttribute("pagination");
 		List<BoardCategory> bc = bcService.showBCByClass("board");
 		Board board = boardService.showBoardByNo(boardNo);
 		board.setCategoryNo(new BoardCategory(categoryNo));
 		ModelAndView mav = new ModelAndView("board/notice_detail", "board", board);
 		mav.addObject("bc", bc);
+		mav.addObject("pagination", session.getAttribute("pagination"));
 		return mav;
 	}
 
@@ -85,11 +79,15 @@ public class BoardController {
 	}
 	
 	@PostMapping("/noticeupsuccess")
-	public ModelAndView updateSuccess(Board board, BoardCategory bc) {
+	public ModelAndView updateSuccess(Board board, BoardCategory bc, HttpSession session) {
+		Pagination pagination = new Pagination();
+		pagination.setCurrentPage(1);
+		pagination.setCntPerPage(10);
+		pagination.setPageSize(10);
 		try {
 			System.out.println(board);
 			boardService.modifyBoard(board);
-			return noticeAll();
+			return detail(board.getBoardNo(), board.getCategoryNo().getCategoryNo(), session);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -98,32 +96,36 @@ public class BoardController {
 		}
 	}
 	
-	@GetMapping("/noticedelete/{boardNo}")
-	public ModelAndView deleteSuccess(@PathVariable("boardNo") int boardNo) {
+	@GetMapping("/noticedelete/{boardNo}&{categoryNo}")
+	public ModelAndView deleteSuccess(@PathVariable("boardNo") int boardNo, @PathVariable("categoryNo") int categoryNo, HttpSession session) {
+		Pagination pagination = new Pagination();
+		pagination = (Pagination) session.getAttribute("pagination");
+		
 		try {
 			System.out.println(boardNo);
 			boardService.removeBoard(boardNo);
-			return noticeAll();
+			return noticeAll(pagination.getCurrentPage(), pagination.getCntPerPage(), pagination.getPageSize(), session);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 
-			return noticeAll();
+			return detail(boardNo, categoryNo, session);
 		}
 	}
 
     @RequestMapping(value = "/board/list")
-    public ModelAndView AllListView(
+    public ModelAndView noticeAll(
             @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
             @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
             @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
-            Map<String, Object> map, HttpServletRequest request) throws Exception {
+            HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView();
         
         int listCnt = boardService.BoardCount();
         Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
         pagination.setTotalRecordCount(listCnt);
 		List<BoardCategory> bc = bcService.showBCByClass("board");
+        session.setAttribute("pagination", pagination);
  
         mav.addObject("pagination",pagination);
         mav.addObject("board",boardService.SelectAllList(pagination));

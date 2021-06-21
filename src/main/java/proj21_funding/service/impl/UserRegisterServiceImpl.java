@@ -51,9 +51,9 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 		
 		UserInfo newUserInfo = new UserInfo(
 				userSignUp.getUserId(), userSignUp.getUserPw(), userSignUp.getUserName(),
-				userSignUp.getNickName(), userSignUp.getEmail(), userSignUp.getZipCode(),
-				userSignUp.getAddress(), userSignUp.getDetailAddress(), userSignUp.getUserPhone(),
-				userSignUp.getBankName(), userSignUp.getBankAccount());
+				userSignUp.getNickName(), userSignUp.getEmail(), userSignUp.getUserPhone(),
+				userSignUp.getZipCode(), userSignUp.getAddress(), userSignUp.getDetailAddress(),
+				userSignUp.getBankName(), userSignUp.getAccountHolder(), userSignUp.getBankAccount());
 
 		mapper.insertUser(newUserInfo);
 		return newUserInfo.getUserNo();

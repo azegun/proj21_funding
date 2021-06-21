@@ -25,6 +25,32 @@
 		select qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile
 		  from QNA	
 	</sql>
+	
+	<!-- 페이징 시도중 -->
+	
+	<select id="SelectAllList" resultType="map">
+    	select R1.* FROM(
+			SELECT * FROM QNA order by qnaNo desc
+		) R1
+		LIMIT #{pageSearch}, #{cntPerPage };
+    </select>
+    
+    <select id="QNACount" resultType="int">
+        SELECT count(*) FROM QNA
+    </select>
+	
+	<select id="SelectUserList" resultMap="resQNA">
+    	select R1.* FROM(
+			SELECT * FROM QNA where userNo = #{userNo} order by qnaNo desc
+		) R1
+		LIMIT #{pageSearch}, #{cntPerPage };
+		
+    </select>
+    
+    <select id="QNAUserCount" resultType="int">
+        SELECT count(*) FROM QNA where userNo = #{userNo}
+    </select>
+	<!--  -->
 
 	<select id="selectQNAAll" resultMap="Associate">
 		<include refid="selectSql" />	

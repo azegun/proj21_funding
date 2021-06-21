@@ -17,9 +17,13 @@ public interface MessageService {
 	
 	List<Message> showBySendUser(String sendUser, Pagination pagination);
 
-	List<Message> showByreceiveUser(String receiveUser);
+	int countByReceiveUser(String receiveUser);
+	
+	List<Message> showByReceiveUser(String receiveUser, Pagination pagination);
+	
+	int countByReceiveUserUnRead(String receiveUser);
 
-	List<Message> showByreceiveUserUnRead(String receiveUser);
+	List<Message> showByReceiveUserUnRead(String receiveUser, Pagination pagination);
 	
 	Message showByMsgNo(int msgNo);
 	
