@@ -17,13 +17,14 @@ public class UserInfo {
 	private String nickName; // 회원별명
 	@Email
 	@NotBlank
-	private String email; // 이메일	
+	private String email; // 이메일
+	private String userPhone; // 회원H.P
 	private int zipCode; // 우편번호
 	@NotBlank
 	private String address; // 주소
 	private String detailAddress;// 상세주소
-	private String userPhone; // 회원H.P
 	private String bankName; // 은행명
+	private String accountHolder; // 예금주	
 	private String bankAccount; // 계좌번호
 	private boolean secession; // 탈퇴여부
 
@@ -47,21 +48,20 @@ public class UserInfo {
 		this.email = email;
 	}
 
-	
-
-	public UserInfo(String userId, String userPw, String userName, @NotBlank String nickName,
-			@Email @NotBlank String email, int zipCode, @NotBlank String address, String detailAddress,
-			String userPhone, String bankName, String bankAccount) {
+	public UserInfo(@Size(min = 4) String userId, @Size(min = 4) String userPw, @NotBlank String userName,
+			@NotBlank String nickName, @Email @NotBlank String email, String userPhone, int zipCode,
+			@NotBlank String address, String detailAddress, String bankName, String accountHolder, String bankAccount) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
 		this.nickName = nickName;
 		this.email = email;
+		this.userPhone = userPhone;
 		this.zipCode = zipCode;
 		this.address = address;
 		this.detailAddress = detailAddress;
-		this.userPhone = userPhone;
 		this.bankName = bankName;
+		this.accountHolder = accountHolder;
 		this.bankAccount = bankAccount;
 	}
 
@@ -170,12 +170,22 @@ public class UserInfo {
 		this.secession = secession;
 	}
 
+	public String getAccountHolder() {
+		return accountHolder;
+	}
+
+	public void setAccountHolder(String accountHolder) {
+		this.accountHolder = accountHolder;
+	}
+
 	@Override
 	public String toString() {
 		return String.format(
-				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, nickName=%s, email=%s, bankName=%s, zipCode=%s, address=%s, detailAddress=%s, userPhone=%s, bankAccount=%s, secession=%s]",
-				userNo, userId, userPw, userName, nickName, email, bankName, zipCode, address, detailAddress, userPhone,
-				bankAccount, secession);
+				"UserInfo [userNo=%s, userId=%s, userPw=%s, userName=%s, nickName=%s, email=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, bankName=%s, accountHolder=%s, bankAccount=%s, secession=%s]",
+				userNo, userId, userPw, userName, nickName, email, userPhone, zipCode, address, detailAddress, bankName,
+				accountHolder, bankAccount, secession);
 	}
+
+
 
 }

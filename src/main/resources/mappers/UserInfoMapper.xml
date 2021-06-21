@@ -8,12 +8,13 @@
 		<result property="userPw" column="userPw"/>		
 		<result property="userName" column="userName"/>		
 		<result property="nickName" column="nickName"/>	
-		<result property="email" column="email"/>				
+		<result property="email" column="email"/>	
+		<result property="userPhone" column="userPhone"/>			
 		<result property="zipCode" column="zipCode"/>		
 		<result property="address" column="address"/>		
 		<result property="detailAddress" column="detailAddress"/>		
-		<result property="userPhone" column="userPhone"/>	
-		<result property="bankName" column="bankName"/>		
+		<result property="bankName" column="bankName"/>				
+		<result property="accountHolder" column="accountHolder"/>			
 		<result property="bankAccount" column="bankAccount"/>
 		<result property="secession" column="secession"/>		
 	</resultMap>
@@ -21,8 +22,8 @@
 	<sql id="selecSql">
 		select 
 			UserNo, UserId, UserPw,	UserName, Nickname, Email,
-			ZipCode, Address, DetailAddress,
-			UserPhone, BankName, BankAccount
+			UserPhone, ZipCode, Address, DetailAddress,
+			BankName, accountHolder, BankAccount
 		 from userinfo
 	</sql>
 
@@ -53,8 +54,8 @@
 	<select id="selectUserbylogin" parameterType="UserLogin"  resultMap="resUser" >
 		select 
 			UserNo, UserId, UserPw,	UserName, Nickname, Email,
-			ZipCode, Address, DetailAddress,
-			UserPhone, BankName, BankAccount, secession
+			UserPhone, ZipCode, Address, DetailAddress,
+			BankName, accountHolder, BankAccount, secession
 		 from userinfo 
 		where userId = #{userId} and userPw = password(#{userPw})	
 	</select>
@@ -66,16 +67,16 @@
 	
 	<insert id="insertUser" parameterType="UserInfo">
 		insert
-		  into userinfo( UserId, UserPw, UserName, Nickname, Email,
-		 		 ZipCode, Address, DetailAddress, UserPhone, BankName, BankAccount)
-		values(#{userId}, password(#{userPw}), #{userName}, #{nickName}, #{email},
-			   #{zipCode}, #{address}, #{detailAddress}, #{userPhone}, #{bankName}, #{bankAccount})			
+		  into userinfo( UserId, UserPw, UserName, Nickname, Email, UserPhone,
+		 		 ZipCode, Address, DetailAddress, BankName, AccountHolder, BankAccount)
+		values(#{userId}, password(#{userPw}), #{userName}, #{nickName}, #{email}, #{userPhone},
+			   #{zipCode}, #{address}, #{detailAddress}, #{bankName}, #{accountHolder}, #{bankAccount})			
 	</insert>
 	
 	<update id="updateUser">
 		update userinfo
-		   set Nickname = #{nickName}, Email = #{email}, ZipCode = #{zipCode}, Address = #{address},
-		    DetailAddress = #{detailAddress}, UserPhone = #{userPhone}, BankName = #{bankName}, BankAccount = #{bankAccount}
+		   set Nickname = #{nickName}, Email = #{email}, UserPhone = #{userPhone}, ZipCode = #{zipCode}, Address = #{address},
+		    DetailAddress = #{detailAddress}, BankName = #{bankName}, AccountHolder = #{accountHolder}, BankAccount = #{bankAccount}
 		 where userId = #{userId}
 	</update>
 	
@@ -95,7 +96,7 @@
 	<select id="showBankAccount" resultMap="resUser">
 				select BankName, BankAccount 
 				from userinfo
-					where userNo = #{userNo}	
-	
+					where userNo = #{userNo}		
 	</select>
+	
 </mapper>

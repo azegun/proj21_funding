@@ -63,24 +63,20 @@ values ('admin1', password('0000'),'김상건','010-3302-1972');
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
 	UserNo, UserId, UserPw,	UserName, Nickname, Email,
-	ZipCode, Address, DetailAddress,
-	UserPhone, BankName, BankAccount, Secession
+	UserPhone, ZipCode, Address, DetailAddress,
+	BankName, AccountHolder, BankAccount, Secession
 from userinfo;
  
 insert into userinfo values(
 00001, 'test1', password('0000'), '김상건', 'ksg', 'test@test.com',
-'111222', '대구', '달서구', '01033021972', '국민', 00000001, 0 
+'01033021972', '111222', '대구', '달서구', '국민', '김상건', 00000001, 0 
 );
 
 #default값 제외
 insert into userinfo ( UserId, UserPw, UserName, Nickname,
-	email, ZipCode, Address, DetailAddress, UserPhone)
-values ('test2', password('1111'),'김경연', 'kky', 'kymonk@naver.com','222333', '대구','북구','01012345678');
-
-
-insert into userinfo ( UserId, UserPw, UserName, Nickname,
-	email, ZipCode, Address, DetailAddress, UserPhone)
-values ('test10', password('1111'),'test10', 'ttt', 'mywns123@gmail.com','222333', '대구','달서구','01012345678');
+	email, UserPhone, ZipCode, Address, DetailAddress)
+values ('test2', password('1111'),'김경연', 'kky', 'kymonk@naver.com', '01012345678', '222333', '대구','북구'),
+		('test10', password('1111'),'test10', 'ttt', 'mywns123@gmail.com', '01012345678', '222333', '대구', '달서구');
 
 
 
