@@ -1,27 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-$( function() {
-    $( "#datepicker" ).datepicker({
-    	  dateFormat: 'yy-mm-dd',
-    	  minDate: 0
-    });
-  } );
-</script>
-</head>
-	</head>
-			<body>
-		<p>Date: <input type="text" id="datepicker"></p>
- 
-			</body>
-			</html>
+  <head>
+    <style>
+      .container {
+        width: 500px;
+        height: 140px;
+        overflow: auto;
+      }
+      /*스크롤바  */
+       .container::-webkit-scrollbar{
+       width: 10px;
+       /*스크롤바 확인 
+       background-color: black; */
+       }
+       .container::-webkit-scrollbar-thumb{
+       border-radius:10px;
+       background-color:crimson; 
+       }
+       .container::-webkit-scrollbar-track{
+        border-radius:10px;
+       background-color:gold;
+       box-shadow: inset 0px 0px 5px white;
+       }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim modi in
+      exercitationem explicabo, at rem officia autem non porro soluta dolorum
+      officiis ipsa repellat, laudantium ea unde labore, temporibus quas?Lorem
+      ipsum dolor sit amet, consectetur adipisicing elit. Eveniet eius totam
+      quam pariatur ratione, in voluptatem dignissimos laboriosam sint aut!
+      Repudiandae consectetur odit quo corrupti quidem perferendis aut dolores
+      quis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nam
+      optio dolore recusandae fuga voluptatibus. Ea quam deserunt consectetur
+      quo aut eligendi, molestiae incidunt molestias ullam? Repellendus ratione
+      repellat
+    </div>
+  </body>
+</html>

@@ -11,17 +11,23 @@
 <head>
 		<meta charset="UTF-8">
 		<title>upload register</title>	
+		
+		<!--CSS  -->
 		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/main.css">
 		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/register.css">
-		<link rel="stylesheet" href=" <%=request.getContextPath()%>/css/upload_css/register_prjinfo.css">
-		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/register_optinfo.css">
+		<!--CSS  -->
+		
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		
 		<!--datepicker 소스api  -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		  <link rel="stylesheet" href="/resources/demos/style.css">
+		  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  		<!--datepicker 소스api  -->
+  		
 		<script type="text/javascript">	
+		/*탭   */
 		$(document).ready(function(){   
 	         $('ul.tabs li').click(function(){
 	            var tab_id = $(this).attr('data-tab');
@@ -33,6 +39,7 @@
 	         $("#"+tab_id).addClass('current');
 	      }); 
 	   });
+		
 	      //goback()
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
@@ -40,7 +47,16 @@
 	            window.location.href = contextPath+"/uploadListCancel";
 	         });         
 	      });
-		
+	      
+	      //datepicker
+			$(function(){
+				$(".datepicker").datepicker({
+					dateFormat: 'yy-mm-dd',
+					minDate: 0
+				});
+			});
+	      
+		//진행해야함.
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
 	         $(".test").on("click", function(){
@@ -50,13 +66,8 @@
 	               }
 	         });         
 	      });   
-	    //datepicker
-		$(function(){
-			$(".datepicker").datepicker({
-				dateFormat: 'yy-mm-dd',
-				minDate: 0
-			});
-		});
+	      
+	
 
 </script>		
 </head>
@@ -83,21 +94,23 @@
 		<table>
 			<tbody>
 				<tr>
+					<td class= "td_right" colspan="2">
+								<input type="hidden" id="userNo" name="userNo.userNo" 
+								value="${authInfo.userNo }" size=15 required="required" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>
 					<td class="td_left"><label for="userName">작성자</label></td>
 					<td class="td_right">
 							<input type="text" id="userName" 	name="userName.userName"
-									value="${authInfo.userName }" size=40	required="required" />
-					</td>
-					<td class="td_right">
-								<input type="hidden" id="userNo" name="userNo.userNo" 
-								value="${authInfo.userNo }" size=40 required="required" readonly="readonly" />
-					</td>
+									value="${authInfo.userName }" size= 17	required="required" />
+					</td>			
 				</tr>
 				<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>					
 					<td class="td_right" >
-						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo"  >		
-									<option value = "0">----선택해주세요---</option>
+						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo" >		
+									<option value = "0">-------선택해주세요-----------</option>
 							<c:forEach var = "c"  items="${category }" >
 									<option  value = " ${c.pCategoryNo }">${c.pCategoryName }</option>										
 							</c:forEach>									
@@ -108,20 +121,22 @@
 					<td class="td_left"><label for="prjName">프로젝트 명</label></td>
 					<td class="td_right">
 								<input type="text" id="prjName"
-										name="prjName" size=40 required="required" />
+										name="prjName" size=45 required="required" />
 					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
 					<td class="td_right">
-									<textarea id="prjContent"
-											name="prjContent" rows="15" cols="42" required="required"></textarea>
+							<div class= "sboption">
+									<textarea id="textContent"
+											name="prjContent" rows="11" cols="38" required="required"  ></textarea>
+							</div>	
 					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="prjGoal">목표금액</label></td>
 					<td class="td_right">
-								<input type="text" id="prjGoal"	name="prjGoal" size=40 required="required"/>
+								<input type="text" id="prjGoal"	name="prjGoal" size=17 required="required"/>
 					</td>						
 				</tr>
 				<tr>
@@ -131,40 +146,43 @@
 								<input type="file" name="uploadfile"	placeholder="파일 선택">
 					</td>
 				</tr>
+			
 				<tr>
-
+					<td class="td_right" colspan="2">
+							<h4>마감 후에 결제를 할 수 있으니, 결제일은 마감일보다 늦게 선택해주세요	</h4>								
+					</td>
+				</tr>				
+				<tr>
 					<td class="td_left"><label for="endDate">마감일</label></td>
 					<td class="td_right">						
-							<input type="text" class="datepicker" name = "endDate" required="required">
+							<input type="text" class="datepicker" name = "endDate" required="required" placeholder="ex)2021-06-22">
 					</td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="payDate">결제일</label></td>
 					<td class="td_right">
-						<input type="text" class="datepicker" name = "payDate" required="required">
+						<input type="text" class="datepicker" name = "payDate" required="required" placeholder="ex)2021-06-23">
 					</td>
-				</tr>
+			   </tr>
 
 			</tbody>
 		</table>
 	</section>
 		</div>
-		<!--탭1 프로젝트부분  -->
-		
-	
+		<!--탭1 프로젝트부분  -->	
 				
 		<!--탭2 옵션부분  -->
 					<div id="tab-2" class="register_mid">
 						<h2>옵션</h2>	
 			<section id = "register_optcontent">
-				<table >
+				<table>
 					<tbody>
 							<tr>											
 									<td class = "td_left">
 											<label for = "optName">옵션이름</label>
 									</td>									
 									<td class = "td_right">
-											 <input type="text" id = "optName" name = "optName"  size = 40 required="required"></input>
+											 <input type="text" id = "optName" name = "optName"  size = 17 required="required"></input>
 									</td>
 									<!-- <td class = "td_right">
 											 <input type="hidden" id = "optNo" name = "optNo" ></input>
@@ -175,7 +193,7 @@
 											<label for = "optPrice">옵션금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "optPrice" name = "optPrice"  size = 40 required="required"></input>
+											 <input type="text" id = "optPrice" name = "optPrice"  size = 17 required="required"></input>
 									</td>
 							</tr>
 							<tr>
@@ -183,7 +201,7 @@
 											<label for = "optContent">옵션내용</label>
 									</td>
 									<td class = "td_right">
-											 <textarea id = "optContent" name = "optContent"	rows="11" cols="42" required="required"></textarea>
+											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38" required="required"></textarea>
 									</td>
 							</tr>
 							<tr>
@@ -214,7 +232,7 @@
 											<label for = "addOptContent">옵션내용</label>
 									</td>						
 									<td class = "td_right">
-											 <textarea id = "addOptContent" name = "addOptContent"	rows="11" cols="42" ></textarea>
+											 <textarea id = "textContent" name = "addOptContent"	rows="11" cols="42" ></textarea>
 									</td>
 							</tr>			 -->
 						</tbody>			

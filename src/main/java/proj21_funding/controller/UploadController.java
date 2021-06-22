@@ -210,6 +210,7 @@ public class UploadController {
 			out.flush();
 		}
 		List<PrjCategory> list = prjCategoryService.showCategory();		
+		mav.addObject("uploadfile", uploadfile);
 		mav.addObject("project", map);
 		mav.addObject("category", list);
 		mav.setViewName("upload/update_success");	

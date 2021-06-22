@@ -60,8 +60,8 @@ ${Uploadfile }
 		<section id= "table_all">
 			<div id ="foot_btn">	
 					
-			</div>
-		<table border= 1>		
+			</div>	
+		<table border=1>		
 				<tbody>
 					<tr class = "col1">
 										<td class="td_left"><label for="prjNo">프로젝트번호</label></td>
@@ -76,8 +76,10 @@ ${Uploadfile }
 										<td class="td_right" ><span id="prjName">${pro.prjName}</span></td>
 					</tr>
 					<tr class = "col4">
-										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
-										<td class="td_right" ><span id="prjContent">${pro.prjContent }</span></td>
+										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>							
+										<td class="td_right" >
+												<div class ="sboption">${pro.prjContent }</div>
+										</td>							
 					</tr>	
 					<tr class = "col5">
 										<td class="td_left"><label for="prjGoal">목표금액</label></td>
@@ -109,7 +111,7 @@ ${Uploadfile }
 					</tr>
 					<tr class = "col10">
 										<td class="td_left"><label for="optContent">옵션내용</label></td>
-										<td class="td_right" ><span id="optContent">${propt.optContent}</span></td>
+										<td class="td_right" ><div class ="sboption">${propt.optContent}</div></td>
 					</tr>
 					
 				</tbody>

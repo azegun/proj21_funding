@@ -9,18 +9,23 @@
 <head>
 		<meta charset="UTF-8">
 		<title>수정</title>
+		
+				<!--CSS  -->
 				<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/main.css">
 				<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/update.css">
-				<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/update_prjlist.css">
-				<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/update_opjlist.css">
+				<!--CSS  -->
+				
 				<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+				
 				<!--datepicker  -->
 				  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 				  <link rel="stylesheet" href="/resources/demos/style.css">
 				  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 				  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-				<script type="text/javascript">
-				<!--datepicker  -->
+				 <!--datepicker  -->
+				 
+				<script type="text/javascript">			
+		
 	$(document).ready(function(){	
 			$('ul.tabs li').click(function(){
 				var tab_id = $(this).attr('data-tab');
@@ -69,13 +74,20 @@
 					<h2>프로젝트 수정</h2>	
 		<section id = "upload_prjcontent">					
 			<table>			
-				<tbody>									
+				<tbody>						
+			<tr>
+					<td class = "td_right" colspan="2">
+							 <input type="hidden" id = "userNo" name = "userNo.userNo" 
+										value ="${authInfo.userNo }"  size = 15   required="required"  readonly="readonly"/> 
+					</td>
+			</tr>			
 			<tr>
 					<td class = "td_left">
 							<label for = "prjNo">프로젝트 번호</label>
 					</td>
 					<td class = "td_right" >
-							<input type="text" id = "prjNo" name = "prjNo" value="${prjNo }" size = 40 required="required" readonly="readonly" />
+							<input type="text" id = "prjNo" name = "prjNo"
+									 value="${prjNo }" size = 17 required="required" readonly="readonly" />
 					</td>
 			</tr>
 			<tr>
@@ -83,11 +95,9 @@
 							<label for = "userName" >작성자</label>
 					</td>
 					<td class = "td_right">
-							  <input type="text" id = "userName" name = "userName"  value ="${ project[0].prjNo.userNo.userName} "  size = 40   required="required"/> 
-					</td>
-					<td class = "td_right">
-							  <input type="hidden" id = "userNo" name = "userNo.userNo"  value ="${authInfo.userNo }"  size = 40   required="required"  readonly="readonly"/> 
-					</td>
+							  <input type="text" id = "userName" name = "userName" 
+							 		  value ="${ project[0].prjNo.userNo.userName} "  size = 17   required="required"/> 
+					</td>					
 			</tr>
 			<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
@@ -113,7 +123,8 @@
 							<label for = "prjName">프로젝트 명</label>
 					</td>
 					<td class = "td_right"	>
-							  <input type="text" id = "prjName" name = "prjName" size = 40  value = "${project[0].prjNo.prjName}"  required="required"/>
+							  <input type="text" id = "prjName" name = "prjName" size = 45 
+							 		  value = "${project[0].prjNo.prjName}"  required="required"/>
 					</td>
 			</tr>
 			<tr>
@@ -121,7 +132,8 @@
 							<label for = "prjContent">프로젝트 소개</label>
 					</td>
 					<td class = "td_right">
-							 <textarea id = "prjContent" name = "prjContent"   rows="15" cols="42" required="required"> ${project[0].prjNo.prjContent}</textarea>
+							 <textarea id = "textContent" name = "prjContent"   rows="11" cols="38" 
+							 			required="required"> ${project[0].prjNo.prjContent}</textarea>
 					</td>
 			</tr>
 			<tr>
@@ -129,7 +141,8 @@
 							<label for = "prjGoal">목표금액</label>
 					</td>
 					<td class = "td_right">
-							 <input type="text" id = "prjGoal" name = "prjGoal" value =  "${project[0].prjNo.prjGoal}" size = 40 required="required"></input>
+							 <input type="text" id = "prjGoal" name = "prjGoal" 
+							 			value =  "${project[0].prjNo.prjGoal}" size = 17 required="required"></input>
 					</td>
 			</tr>
 			<tr>
@@ -141,11 +154,17 @@
 					</td>
 			</tr> 
 			<tr>
+					<td class="td_right" colspan="2">
+							<h4>마감 후에 결제를 할 수 있으니, 결제일은 마감일보다 늦게 선택해주세요	</h4>								
+					</td>
+				</tr>			
+			<tr>
 					<td class = "td_left">
 							<label for = "endDate">마감일</label>
 					</td>
 					<td class = "td_right">
-							<input type="text" class="datepicker" name = "endDate"  value = "${project[0].prjNo.endDate}" required="required">
+							<input type="text" class="datepicker" name = "endDate" 
+										 value = "${project[0].prjNo.endDate}" required="required">
 					</td>
 			</tr>
 			<tr>
@@ -153,7 +172,8 @@
 							<label for = "payDate">결제일</label>
 					</td>
 					<td class = "td_right">
-							<input type="text" class="datepicker" name = "payDate" value = "${project[0].prjNo.payDate}" required="required">
+							<input type="text" class="datepicker" name = "payDate"
+										 value = "${project[0].prjNo.payDate}" required="required">
 					</td>
 			</tr>			
 				</tbody>	
@@ -168,24 +188,28 @@
 			<section id = "upload_opjcontent">					
 				<table>			
 					<tbody>			
-				<!-- <div id = "option1">	 -->								
+				<!-- <div id = "option1">	 -->					
+							<tr>
+									<td class = "td_right" colspan="2">
+											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
+									</td>
+							</tr>			
 							<tr>											
 									<td class = "td_left">
 											<label for = "optName">옵션이름</label>
 									</td>									
 									<td class = "td_right">
-											 <input type="text" id = "optName" name = "optName" value = "${ project[0].optName }" size = 40 required="required"></input>
-									</td>
-								<td class = "td_right">
-											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
-									</td>
+											 <input type="text" id = "optName" name = "optName" 
+											 			value = "${ project[0].optName }" size = 17 required="required"></input>
+									</td>									
 							</tr>
 							<tr>
 									<td class = "td_left">
 											<label for = "optPrice">옵션금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "optPrice" name = "optPrice" value = "${ project[0].optPrice }"  size = 40 required="required"></input>
+											 <input type="text" id = "optPrice" name = "optPrice" 
+											 			value = "${ project[0].optPrice }"  size = 17 required="required"></input>
 									</td>
 							</tr>
 							<tr>
@@ -193,7 +217,8 @@
 											<label for = "optContent">옵션내용</label>
 									</td>
 									<td class = "td_right">
-											 <textarea id = "optContent" name = "optContent"	rows="11" cols="42" required="required">${ project[0].optContent }</textarea>
+											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38"
+											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
 							</tr>
 						<!-- 	</div>
