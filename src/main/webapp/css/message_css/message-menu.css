@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#logon_infomation{	
+	width: 200px;
+	font-size: 20px;
+	font-weight: bold;	
+	text-align: center;	
+	line-height: 40px;	
+}

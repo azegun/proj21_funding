@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+#messageFormArea{	
+	display: flex;
+}
+
+#menu{
+	border: none;	
+	padding-top: 30px;	
+}
+
+#message{	
+	width: 850px;
+}
+
+#messageForm{
+	border: none;	
+	width: 80%;
+	
+}
+label{
+	text-align: left;
+	width: 30%;	
+}
+#input1{
+	width: 75%;	
+}
+#receiveUser{
+	width: 70%;	
+}
+#input2{
+	width: 90%;	
+}
+#errors{
+	margin-top: -15px;
+	margin-bottom: -15px;
+	padding-left: 45%;
+	line-height: 13px;
+	color: red;
+	font-size: 13px;
+}
+#btn{
+	text-align: center;
+}
