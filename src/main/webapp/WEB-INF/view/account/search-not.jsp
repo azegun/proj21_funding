@@ -13,9 +13,9 @@
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>	
-		<section id="searchnotFormArea">
-			<fieldset id="searchnot">				
-					회원계정을 찾을 수 없습니다.
+		<section id="searchnotArea">
+			<fieldset id="searchnotForm">				
+				입력 된 정보로 등록된<br> 회원을 찾을 수 없습니다.
 			</fieldset>	
 			<div id="btn">					
 				<a href="<c:url value='/main'/>"><button>메인화면으로</button></a>

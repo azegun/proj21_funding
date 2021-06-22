@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>보낸 메세지</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-send.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -42,16 +44,16 @@
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 			
 		</header>
 		<section id="messageFormArea">			
 			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>	
+			<div id="message">
 			<h2>보낸 메세지(${pagination.totalRecordCount})</h2>	
 			<form:form modelAttribute="message" action="dels">		
-			<fieldset>
+			<fieldset id="messageForm">
 				<table>
 					<tr>
 						<th><input type="checkbox" id="checkAll"/></th>						
@@ -98,8 +100,11 @@
 		    <!-- /paginate -->			
 			<form:hidden path="readYN"  value="false"/> 
 			<form:hidden path="currentPage" value="${pagination.currentPage}"/>
-			<form:button>삭제</form:button>
-			</form:form>		 
+			<div id="btn">
+				<form:button>삭제</form:button>
+			</div>
+			</form:form>
+		</div>		 
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
