@@ -6,18 +6,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/signUp2.css">
 </head>
 <body>
 <div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
-		<section id="signUpForm">		
-			<fieldset>
-				<h1> 가입이 완료되었습니다.</h1>				
+		<section id="signUpArea">		
+			<fieldset id="signUpForm">
+				<h1>회원가입에 성공하였습니다.</h1>				
 			</fieldset>			
-			<a href="<c:url value='/login'/>"><button>로그인화면으로</button></a>
-			<a href="<c:url value='/main'/>"><button>메인으로</button></a>			
+			<div id="btn">
+				<a href="<c:url value='/login'/>"><button>로그인하기</button></a>
+				<a href="<c:url value='/main'/>"><button>메인화면으로</button></a>	
+			</div>	
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 

@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/signUp1.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/signUp1.css">
 	<script type="text/javascript">
 	function findAddr(){
 		new daum.Postcode({
@@ -37,11 +37,11 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/>
 		</header>
-		<section id="signUpForm">
+		<section id="signUpArea">
 			<h2>회원 가입</h2>		
 			<form:form action="signUp2" modelAttribute="userSignUp">	
 			<form:errors />		
-			<fieldset id="signForm">
+			<fieldset id="signUpForm">
 				<p>
 					<label >회 원 계 정</label>:
 					<form:input path="userId" placeholder="4글자 이상 입력하세요" />
@@ -112,8 +112,8 @@
 					<form:checkbox path="agree" value="true"/>				
 					<a href="#"><form:button type="button">보기</form:button></a>
 				</p>
-				<p id="errors"><form:errors path="agree"/>&nbsp;</p>				
-				<form:button id="submit">가입하기</form:button>
+				<p id="agreeEerrors"><form:errors path="agree"/>&nbsp;</p>							
+				<form:button id="submit">회 원 가 입</form:button>
 			</fieldset>			
 			</form:form>
 		</section>		

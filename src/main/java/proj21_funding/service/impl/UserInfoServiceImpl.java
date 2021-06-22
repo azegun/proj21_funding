@@ -10,6 +10,7 @@ import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
 import proj21_funding.exception.DuplicateEmailException;
 import proj21_funding.exception.DuplicateNickNameException;
+import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserInfoService;
 
@@ -50,6 +51,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public int removeUserInfo(String userId, String userPw) {
 		UserLogin userLogin = new UserLogin(userId, userPw);
 		UserInfo userInfo = mapper.selectUserbylogin(userLogin);
+		if(userInfo == null) {
+			throw new WrongIdPasswordException();
+		}
 		return mapper.deleteUser(userInfo);
 	}
 
