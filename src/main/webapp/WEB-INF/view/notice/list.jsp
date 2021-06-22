@@ -16,14 +16,9 @@
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/notice_css/list.css">
 <style>
-table {
-	border: 1px solid;
-}
-
-td {
-	border: 1px solid;
-}
 </style>
 </head>
 <body>
@@ -33,9 +28,8 @@ td {
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp" />
 		</header>
 		<section class="notice_view">
-			<h2>공지사항</h2>
-			<div>
-				<select name="category">
+			<div class="top">
+				<span class="notice">공지사항</span> <select name="category">
 					<c:forEach var="bc" items="${bc }">
 						<c:if test="${bc.categoryClass eq 'board' }">
 							<option value="${bc.categoryNo }">${bc.categoryName }</option>
@@ -43,39 +37,30 @@ td {
 					</c:forEach>
 				</select> <input type="button" value="조회">
 			</div>
-			<table>
-				<tr>
-					<td>번호</td>
-					<td>분류</td>
-					<td>제목</td>
-					<td>작성일</td>
-				</tr>
-				<c:choose>
-					<c:when test="${fn:length(board) > 0}">
-						<c:forEach items="${board}" var="board">
-							<%-- <c:forEach var="board" items="${board }"> --%>
-							<tr>
-								<td>${board.BoardNo }</td>
-								<td><c:forEach var="bc" items="${bc }">
-										<c:if test="${bc.categoryNo eq board.CategoryNo }">
+			<div class="list">
+				<ul>
+					<c:choose>
+						<c:when test="${fn:length(board) > 0}">
+							<c:forEach items="${board}" var="board">
+								<%-- <c:forEach var="board" items="${board }"> --%>
+								<li class="title-box"><a
+									href="<%=request.getContextPath() %>/notice/detail/${board.BoardNo }&${board.CategoryNo}"
+									class="notice"><span class="title-box"><span
+											class="group"><c:forEach var="bc" items="${bc }">
+													<c:if test="${bc.categoryNo eq board.CategoryNo }">
 							${bc.categoryName }
 						</c:if>
-									</c:forEach></td>
-								<td><a
-									href="<%=request.getContextPath() %>/notice/detail/${board.BoardNo }&${board.CategoryNo}">${board.BoardTitle }</a></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${board.BoardDate }" /></td>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="4">조회된 결과가 없습니다.</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</table>
-
+												</c:forEach></span> <span class="title">${board.BoardTitle }</span> <span
+											class="date"><fmt:formatDate
+													pattern="yyyy-MM-dd HH:mm" value="${board.BoardDate }" /></span></span></a></li>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<span>조회된 결과가 없습니다.</span>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</div>
 			<!--paginate -->
 			<div class="paginate">
 				<div class="paging">
@@ -114,13 +99,7 @@ td {
 	</div>
 </body>
 <script>
-//10,20,30개씩 selectBox 클릭 이벤트
-function changeSelectBox(currentPage, cntPerPage, pageSize){
-    var selectValue = $("#cntSelectBox").children("option:selected").val();
-    movePage(currentPage, selectValue, pageSize);
-    
-}
- 
+
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize){
     
