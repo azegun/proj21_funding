@@ -12,11 +12,11 @@
 <body>
 	<div class="container">
 		<header>
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
+			<jsp:include page="/WEB-INF/view/home/header.jsp" />
 		</header>
-		<section id="searchPwFormArea">
-			<fieldset id="searchId">				
-				이메일로 임시 비밀번호가 발급되었습니다.						
+		<section id="searchPwArea">
+			<fieldset id="searchPwForm">				
+				이메일로 임시 비밀번호가<br> 발급되었습니다.						
 			</fieldset>
 			<div id="btn">
 				<a href ="<c:url value='/login'/>" ><button>로그인화면으로</button></a>

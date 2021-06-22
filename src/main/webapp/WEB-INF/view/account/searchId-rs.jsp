@@ -11,11 +11,11 @@
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
 		<section id="searchIdFormArea">	
 			<fieldset id="searchId">				
-				회원계정은  ${userSearch.userId}입니다.							
+				회원계정은  [${userSearch.userId}]입니다.							
 			</fieldset>
 			<div id="btn">
 				<a href ="<c:url value='/login'/>" ><button>로그인화면으로</button></a>
