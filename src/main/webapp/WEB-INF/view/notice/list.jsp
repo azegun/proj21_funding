@@ -27,7 +27,6 @@ td {
 </style>
 </head>
 <body>
-	${pagination}
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
@@ -63,7 +62,7 @@ td {
 						</c:if>
 									</c:forEach></td>
 								<td><a
-									href="<%=request.getContextPath() %>/board/notice_detail/${board.BoardNo }&${board.CategoryNo}">${board.BoardTitle }</a></td>
+									href="<%=request.getContextPath() %>/notice/detail/${board.BoardNo }&${board.CategoryNo}">${board.BoardTitle }</a></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${board.BoardDate }" /></td>
 							</tr>
@@ -105,7 +104,7 @@ td {
 
 
 			<c:if test="${authInfo.userNo < 0 }">
-				<a href="<%=request.getContextPath()%>/board/notice_write"><input
+				<a href="<%=request.getContextPath()%>/notice/write"><input
 					type="button" value="공지글 작성"></a>
 			</c:if>
 		</section>
@@ -125,7 +124,7 @@ function changeSelectBox(currentPage, cntPerPage, pageSize){
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize){
     
-    var url = "${pageContext.request.contextPath}/board/list";
+    var url = "${pageContext.request.contextPath}/notice/list";
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;

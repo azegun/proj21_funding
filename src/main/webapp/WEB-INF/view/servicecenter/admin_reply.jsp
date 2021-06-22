@@ -26,10 +26,10 @@
 			<li><a href="/proj21_funding/servicecenter/all_view">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/admin_view">모든 질문 보기</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/user_view">내 질문</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -75,9 +75,9 @@
 		<section id="commandCell">
 			<input type="submit" value="등록">&nbsp;&nbsp;
 			<input type="reset" value="다시쓰기">
-			<a href="/proj21_funding/servicecenter/admin_view"><button id="go_qna">돌아가기</button></a>
 		</section>
 	</form>
+		<a href="/proj21_funding/qnaadminview"><button id="go_qna">돌아가기</button></a>
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer_menu.jsp"/> 

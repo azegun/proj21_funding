@@ -19,13 +19,13 @@
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
-			<li><a href="/proj21_funding/servicecenter/all_view">자주 묻는 질문</a></li>
+			<li><a href="/proj21_funding/qnaallview">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/admin_view">모든 질문 보기</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/user_view">내 질문</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -37,8 +37,8 @@
 	<p>감사합니다.</p>
 	
 	<div>
-		<a href="/proj21_funding/servicecenter/user_write"><input type="button" value="다른 문의하기" ></a>
-		<a href="/proj21_funding/servicecenter/user_view"><input type="button" value="내 문의 내역 확인하기" ></a>
+		<a href="/proj21_funding/qnawrite"><input type="button" value="다른 문의하기" ></a>
+		<a href="/proj21_funding/qnauserview"><input type="button" value="내 문의 내역 확인하기" ></a>
 	</div>	
 	
 	</section>

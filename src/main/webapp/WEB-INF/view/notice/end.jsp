@@ -26,8 +26,6 @@ td {
 </style>
 </head>
 <body>
-페이지 ${pagination }
-유저 ${authInfo }
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
@@ -40,7 +38,7 @@ td {
 					<td>제목</td>
 					<td><c:forEach var="bc" items="${bc }">
 							<c:if test="${bc.categoryNo eq board.categoryNo.categoryNo }">
-							[${bc.categoryName }]
+							${bc.categoryName }
 						</c:if>
 						</c:forEach> ${board.boardTitle }</td>
 				</tr>
@@ -53,11 +51,7 @@ td {
 					<td>${board.boardContent }</td>
 				</tr>
 			</table>
-			<a href="<%=request.getContextPath()%>/board/list?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button id="go_notice">목록보기</button></a>
-			<c:if test="${authInfo.userNo < 0 }">
-				<a href="<%=request.getContextPath()%>/noticeupdate/${board.boardNo }&${board.categoryNo.categoryNo }"><button id="noticeUpdate">수정</button></a>
-				<a href="<%=request.getContextPath()%>/noticedelete/${board.boardNo }&${board.categoryNo.categoryNo }"><button id="noticeDelete">삭제</button></a>
-			</c:if>
+			<a href="<%=request.getContextPath()%>/notice/list"><button id="go_notice">목록보기</button></a>
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp" />
