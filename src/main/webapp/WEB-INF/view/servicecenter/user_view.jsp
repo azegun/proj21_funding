@@ -28,17 +28,17 @@
 			<nav>
 				<ul>
 					<li><a
-						href="/proj21_funding/servicecenter/servicecenter_view_all">자주
+						href="/proj21_funding/servicecenter/all_view">자주
 							묻는 질문</a></li>
 					<c:choose>
 						<c:when test="${authInfo.userNo < 0 }">
 							<li value="${authInfo.userNo }"><a
-								href="/proj21_funding/servicecenter/servicecenter_view_admin">모든
+								href="/proj21_funding/servicecenter/admin_view">모든
 									질문 보기</a></li>
 						</c:when>
 						<c:otherwise>
 							<li value="${authInfo.userNo }"><a
-								href="/proj21_funding/servicecenter/servicecenter_view_user">내
+								href="/proj21_funding/servicecenter/user_view">내
 									질문</a></li>
 						</c:otherwise>
 					</c:choose>
@@ -63,7 +63,7 @@
 								<tr>
 									<td>${qna.qnaNo }</td>
 									<td><a
-										href="/proj21_funding/servicecenter/servicecenter_view_detail/${qna.qnaNo}">
+										href="/proj21_funding/servicecenter/view_detail/${qna.qnaNo}">
 											<c:forEach var="bc" items="${bc }">
 												<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }">
 							[${bc.categoryName }]
@@ -128,7 +128,7 @@
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize){
     
-    var url = "${pageContext.request.contextPath}/servicecenter/servicecenter_view_user";
+    var url = "${pageContext.request.contextPath}/servicecenter/user_view";
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;

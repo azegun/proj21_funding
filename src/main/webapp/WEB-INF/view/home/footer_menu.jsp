@@ -11,7 +11,7 @@
 				<div class = "go_menu">
 				<a href = "<%=request.getContextPath() %>/board/list">공지사항</a>
 				<a href = "">이용약관</a>
-				<a href = "<%=request.getContextPath() %>/servicecenter/servicecenter_view_all" id = "go_center">고객센터</a>
+				<a href = "<%=request.getContextPath() %>/servicecenter/all_view" id = "go_center">고객센터</a>
 				</div>
 </body>
 </html>

@@ -28,13 +28,13 @@
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
-			<li><a href="/proj21_funding/servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<li><a href="/proj21_funding/servicecenter/all_view">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/admin_view">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_user">내 질문</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/user_view">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -59,7 +59,7 @@
 		</c:forEach>
 	</table>
 	<p>궁금함을 해결하지 못하셨나요?</p>
-	<p><a href="/proj21_funding/servicecenter/servicecenter_write">
+	<p><a href="/proj21_funding/servicecenter/user_write">
 	<button>1:1 문의하기</button></a>
 	</p>
 	</section>
