@@ -7,50 +7,51 @@
 <head>
 <meta charset="UTF-8">
 <title>상세 메세지</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-detail.css">
 </head>
 <body>
 	<div class="container">
 		<header>
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
+			<jsp:include page="/WEB-INF/view/home/header.jsp" />
 		</header>
 		<section id="messageFormArea">
 			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp" />
-			</fieldset>
-			<h2>메세지</h2>
-			<fieldset>
-				<form:form modelAttribute="message" >
+			</fieldset>	
+			<div id="message">
+			<h2>메세지</h2>	
+			<fieldset id="messageForm">					
+				<form:form modelAttribute="message" >					
 					<p>
-						<label> 보내는사람 : <form:input path="sendUser"
-								readonly="true" value="${seUser}" /> <form:errors
-								path="sendUser" />
-						</label>
+						<label>보내는회원</label>:
+						<form:input path="sendUser" readonly="true" value="${seUser}" id="input"/>
 					</p>
 					<p>
-						<label> 받는사람 : <form:input path="receiveUser"
-								readonly="true" value="${rcUser}" /> <form:errors
-								path="receiveUser" />
-						</label>
+						<label>받는회원</label>:
+						<form:input path="receiveUser" readonly="true" value="${rcUser}" id="input"/>
 					</p>
 					<p>
 						<textarea rows="15" cols="40" readonly="readonly">${content}</textarea>
 					</p>
 					<c:if test="${rcUser eq authInfo.userId}">
-						<p>
-							<form:textarea path="msgContent" />
-							<form:errors path="msgContent" />
-						</p>
+						<p><form:textarea path="msgContent" id="text"/></p>
+						<p id="errors"><form:errors path="msgContent" />&nbsp;</p>
 						<form:hidden path="readYN" value="${readYN}"/>						
 						<form:hidden path="currentPage" value="${currentPage}"/>						
-						<form:button>답장하기</form:button>
 					</c:if>		
-					${readYN},${currentPage}			
-					<a href="<c:url value="/message/message-receive/delete/${msgNo}?readYN=${readYN}&currentPage=${currentPage}" />"><form:button
-							type="button">삭제</form:button></a>
-					<button type="button" onclick="history.back(-1);">뒤로가기</button>
+					<div id="btn">
+						<c:if test="${rcUser eq authInfo.userId}">	
+							<form:button>답장하기</form:button>
+						</c:if>						
+						<a href="<c:url value="/message/message-receive/delete/${msgNo}?readYN=${readYN}&currentPage=${currentPage}" />">
+							<form:button type="button">삭제</form:button></a>
+						<button type="button" onclick="history.back(-1);">뒤로가기</button>
+					</div>
 				</form:form>
 			</fieldset>
-		</section>
+			</div>
+		</section>		
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp" />
 		</footer>

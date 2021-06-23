@@ -28,12 +28,12 @@
 				<form:errors />
 					<fieldset id="messageForm">
 						<p>
-							<label> 보내는사람 </label>:
+							<label>보내는회원</label>:
 							<form:input path="sendUser" readonly="true" value="${authInfo.userId}"  id="input1"/> 
 						</p>
-						<p id="errors"><form:errors path="sendUser"/>&nbsp;</p>
+						<p id="errors">&nbsp;</p>
 						<p>
-							<label> 받는사람 </label>: 
+							<label>받는회원</label>: 
 							<form:input path="receiveUser" id="receiveUser" /> 
 							<form:button type="button" onclick="openSearch()">검색</form:button>
 						</p>
