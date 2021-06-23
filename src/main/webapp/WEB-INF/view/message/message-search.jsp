@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원 찾기</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-search.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -26,52 +26,63 @@
 		var chkList = "";
 		
 		for(var i=0; i<checked.length; i++) {
-			if(checked[i].checked == true){
+			if(checked[i].checked == true){				
 				chkList += checked[i].value+", ";
 			}			
 		}	
+		
 		opener.document.getElementById("receiveUser").value = chkList;
 		window.close(); 
-	};
-	
-	
+	};	
 </script>
 </head>
 <body>	
-		<div>
-			<h2>진행중인 프로젝트</h2>
-			<fieldset>
-				<c:if test="${!empty projects}">
-					<c:forEach var="pro" items="${projects}">					
-						<a href="<c:url value="/message/message-search/${pro.prjNo}" />">${pro.prjNo}</a><br>
-					</c:forEach>
-				</c:if>	
-				<c:if test="${empty projects}">
-					없음
-				</c:if>						
+	<section id="searchArea">
+		<div id="proceeding">
+			<h2>진행중인 프로젝트</h2>			
+			<fieldset id="projects">
+				<table>
+					<tr>
+						<th>번호</th>
+						<th>프로젝트 명</th>
+						<th>마감일</th>						
+					</tr>
+					<c:forEach var="pro" items="${projects}">
+						<tr>					
+							<td><a href="<c:url value="/message/message-search/${pro.prjNo}" />">${pro.prjNo}</a></td>
+							<td><a href="<c:url value="/message/message-search/${pro.prjNo}" />">${pro.prjName}</a></td>
+							<td><a href="<c:url value="/message/message-search/${pro.prjNo}" />"><tf:formatDateTime value="${pro.endDate}" pattern="yyyy-MM-dd" /></a></td>
+						</tr>
+					</c:forEach>						
+				</table>				
 			</fieldset>
 		</div>		
-		<div>
-			<h2>후원참여중인 회원</h2>
-			<fieldset>		
+		<div id="empty">>></div>
+		<div id="support">
+			<h2>후원참여 회원</h2>			
+			<fieldset id="members">		
 				<table>
 					<tr>
 						<th><input type="checkbox" id="checkAll"/></th>										
 						<th>회원번호</th>						
-						<th>회원아이디</th>						
+						<th>회원계정</th>						
 						<th>회원닉네임</th>												
 					</tr>		
 					<c:forEach var="funding" items="${fundingInfos}">									
 						<tr>
 							<td><input type="checkbox" value="${funding.userNo.userId}" id="check" name="check"></td>
-							<td>${funding.userNo.userNo}&nbsp;&nbsp;</td>					
-							<td>${funding.userNo.userId}&nbsp;&nbsp;</td>					
+							<td>${funding.userNo.userNo}</td>					
+							<td>${funding.userNo.userId}</td>					
 							<td>${funding.userNo.nickName}</td>							
 						</tr>									
 					</c:forEach>
-				</table>			
-			</fieldset>
-		</div>		
-		<input type="button" value="선택하기" onclick="setReceive()">	
+				</table>		
+			</fieldset>			
+		</div>						
+	</section>
+	<div id="btn">
+		<button onclick="setReceive()">선택하기</button>
+		<button onclick="window.close();">닫기</button>
+	</div>
 </body>
 </html>

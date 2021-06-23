@@ -96,22 +96,19 @@ public class MessageController {
 
 	@PostMapping("/message/message-receive/{msgNo}")
 	public String receiveReply(@PathVariable("msgNo") int msgNo, Message message, Errors errors, Model model) {
-		if (message == null) {
-			throw new UserNotFoundException();
+		if (errors.hasErrors()) {
 		}
-		try {
-			System.out.println(message);
+		
+		try {			
 			Message message1 = new Message(message.getReceiveUser(), message.getSendUser(), message.getMsgContent());
-			service.sendMessage(message1);
-
-			return "redirect:/message/message-receive/"+ msgNo
-					+"?currentPage=" +message.getCurrentPage()
-					+"&readYN="+message.isReadYN();
-		} catch (UserNotFoundException e) {
-			errors.rejectValue("UserName", "notSearching");
-			return "message/message-detail";
+			service.sendMessage(message1);		
+		} catch (NullPointerException e) {
+			errors.rejectValue("msgContent", "nullContent");		
 		}
 
+		return "redirect:/message/message-receive/"+ msgNo
+				+"?currentPage=" +message.getCurrentPage()
+				+"&readYN="+message.isReadYN();
 	}
 
 	@GetMapping("/message/message-receive/delete/{msgNo}")
@@ -182,8 +179,11 @@ public class MessageController {
 		try {
 			service.sendMessage(message);
 			return "redirect:/message/message-receive";
-		} catch (UserNotFoundException e) {
+		}catch (UserNotFoundException e) {
 			errors.rejectValue("receiveUser", "userNotFound");
+			return "message/message-write";
+		}catch (NullPointerException e) {
+			errors.rejectValue("msgContent", "nullContent");
 			return "message/message-write";
 		}catch (SameUserException e) {
 			errors.rejectValue("receiveUser", "SameUserImpossible");

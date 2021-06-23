@@ -36,7 +36,14 @@ table tr th:nth-of-type(3){
 table tr th:nth-of-type(4){
 	width: 200px;
 }
-
+table tr td:nth-of-type(3){	
+	white-space: nomal;
+	overflow:hidden;
+	word-wrap:break-word;
+	display:-webkit-box;
+	 -webkit-line-clamp:1;
+	 -webkit-box-orient:vertical;
+}
 #btn{
 	text-align: right;
 }
