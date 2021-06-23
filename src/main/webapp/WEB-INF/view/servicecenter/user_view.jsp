@@ -1,5 +1,5 @@
-<%@ page import="proj21_funding.service.impl.BoardServiceImpl"%>
-<%@ page import="proj21_funding.service.BoardService"%>
+<%@ page import="proj21_funding.service.impl.QNAImpl"%>
+<%@ page import="proj21_funding.service.QNAService"%>
 <%@ page import="proj21_funding.service.impl.CategoryServiceImpl"%>
 <%@ page import="proj21_funding.service.CategoryService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,69 +12,84 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>고객센터</title>
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
-<style>
-table {
-	border: 1px solid;
-}
-
-td {
-	border: 1px solid;
-}
-</style>
 </head>
 <body>
-	${pagination}
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
 			<jsp:include page="/WEB-INF/view/home/header_account.jsp" />
 		</header>
-		<section class="notice_view">
-			<h2>공지사항</h2>
-			<div>
-				<select name="category">
-					<c:forEach var="bc" items="${bc }">
-						<c:if test="${bc.categoryClass eq 'board' }">
-							<option value="${bc.categoryNo }">${bc.categoryName }</option>
+		<section class="sevicecenter_view">
+			<h2>고객센터</h2>
+			<nav>
+				<ul>
+					<li><a
+						href="/proj21_funding/qnaallview">자주
+							묻는 질문</a></li>
+					<c:choose>
+						<c:when test="${authInfo.userNo < 0 }">
+							<li value="${authInfo.userNo }"><a
+								href="/proj21_funding/qnaadminview">모든
+									질문 보기</a></li>
+						</c:when>
+						<c:otherwise>
+							<li value="${authInfo.userNo }"><a
+								href="/proj21_funding/qnauserview">내
+									질문</a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</nav>
+			<h4>내가 한 질문</h4>
+			<p>고객님이 하신 1:1 질문내역 페이지입니다.</p>
+			<table class="table">
+				<thead>
+					<tr>
+						<td id="qnaNo">번호</td>
+						<td id="qnaTitle">제목</td>
+						<td id="qnaDate">문의 날짜</td>
+						<td id="qnaState">문의 상태</td>
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${fn:length(qna) > 0}">
+							<c:forEach items="${qna}" var="qna">
+								<%-- <c:forEach var="qna" items="${qna }"> --%>
+								<tr>
+									<td>${qna.qnaNo }</td>
+									<td><a
+										href="/proj21_funding/qnadetail/${qna.qnaNo}">
+											<c:forEach var="bc" items="${bc }">
+												<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }">
+							[${bc.categoryName }]
 						</c:if>
-					</c:forEach>
-				</select> <input type="button" value="조회">
-			</div>
-			<table>
-				<tr>
-					<td>번호</td>
-					<td>분류</td>
-					<td>제목</td>
-					<td>작성일</td>
-				</tr>
-				<c:choose>
-					<c:when test="${fn:length(board) > 0}">
-						<c:forEach items="${board}" var="board">
-							<%-- <c:forEach var="board" items="${board }"> --%>
-							<tr>
-								<td>${board.BoardNo }</td>
-								<td><c:forEach var="bc" items="${bc }">
-										<c:if test="${bc.categoryNo eq board.CategoryNo }">
-							${bc.categoryName }
-						</c:if>
-									</c:forEach></td>
-								<td><a
-									href="<%=request.getContextPath() %>/board/notice_detail/${board.BoardNo }&${board.CategoryNo}">${board.BoardTitle }</a></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${board.BoardDate }" /></td>
-							</tr>
-						</c:forEach>
+											</c:forEach> ${qna.qnaTitle }
+									</a></td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+											value="${qna.qnaDate }" /></td>
+									<td><c:choose>
+											<c:when test="${qna.qnaReply eq null }">
+						답변 대기 중
 					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="4">조회된 결과가 없습니다.</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
+											<c:when test="${qna.qnaReply ne null }">
+						답변 완료
+					</c:when>
+										</c:choose></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="4">조회된 결과가 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
 			</table>
 
 			<!--paginate -->
@@ -103,29 +118,17 @@ td {
 			</div>
 			<!-- /paginate -->
 
-
-			<c:if test="${authInfo.userNo < 0 }">
-				<a href="<%=request.getContextPath()%>/board/notice_write"><input
-					type="button" value="공지글 작성"></a>
-			</c:if>
+			<footer>
+				<jsp:include page="/WEB-INF/view/home/footer.jsp" />
+			</footer>
 		</section>
-		<footer>
-			<jsp:include page="/WEB-INF/view/home/footer.jsp" />
-		</footer>
 	</div>
 </body>
 <script>
-//10,20,30개씩 selectBox 클릭 이벤트
-function changeSelectBox(currentPage, cntPerPage, pageSize){
-    var selectValue = $("#cntSelectBox").children("option:selected").val();
-    movePage(currentPage, selectValue, pageSize);
-    
-}
- 
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize){
     
-    var url = "${pageContext.request.contextPath}/board/list";
+    var url = "${pageContext.request.contextPath}/qnauserview";
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;

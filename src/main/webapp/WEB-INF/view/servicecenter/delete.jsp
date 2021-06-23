@@ -19,13 +19,13 @@
 	<h2>고객센터</h2>
 	<nav>
 		<ul>
-			<li><a href="/proj21_funding/servicecenter/servicecenter_view_all">자주 묻는 질문</a></li>
+			<li><a href="/proj21_funding/qnaallview">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_admin">모든 질문 보기</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/servicecenter/servicecenter_view_user">내 질문</a></li>
+					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -33,13 +33,12 @@
 	
 	<h2>문의하기</h2>
 	
-	<p>질문이 접수되었습니다.</p>
-	<p>질문의 답변까지는 주말을 제외하고 2~3일이 소요될 수 있습니다.</p>
-	<p>문의 답변 시간 : 평일 09:00 ~ 17:00</p>
+	<p>질문이 취소되었습니다.</p>
+	<p>감사합니다.</p>
 	
 	<div>
-		<a href="/proj21_funding/servicecenter/servicecenter_write"><input type="button" value="다른 문의하기" ></a>
-		<a href="/proj21_funding/servicecenter/servicecenter_view_user"><input type="button" value="내 문의 내역 확인하기" ></a>
+		<a href="/proj21_funding/qnawrite"><input type="button" value="다른 문의하기" ></a>
+		<a href="/proj21_funding/qnauserview"><input type="button" value="내 문의 내역 확인하기" ></a>
 	</div>	
 	
 	</section>

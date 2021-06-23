@@ -1,7 +1,10 @@
 package proj21_funding.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,91 +37,129 @@ public class QNAController {
 	@Autowired
 	MessageService userService;
 
-	@RequestMapping("/servicecenter/servicecenter_view_all")
+	@RequestMapping("/qnaallview")
 	public ModelAndView qnaAll() {
 		List<QNA> qna = qnaService.showQNAByUserId(1);
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("servicecenter/servicecenter_view_all");
+		mav.setViewName("servicecenter/all_view");
 		mav.addObject("qna", qna);
 		mav.addObject("bc", bc);
 		return mav;
 	}
 
-	@RequestMapping("/servicecenter/servicecenter_view_admin")
+	@RequestMapping("/qnaadminview")
 	public ModelAndView qnaAllAdmin(
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
 			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
-			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session)
-			throws Exception {
-		List<BoardCategory> bc = bcService.showBCByClass("qna");
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session,
+			HttpServletResponse response) throws Exception {
+		UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
 
 		ModelAndView mav = new ModelAndView();
+
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		if (user.getUserNo() >= 0 || session.getAttribute("authInfo") == null) {
+			out.println("<script type='text/javascript'>");
+			out.println("alert('잘못된 접근입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+			
+			mav.setViewName("servicecenter/all_view");
+			return mav;
+		}
+
+		List<BoardCategory> bc = bcService.showBCByClass("qna");
 
 		int listCnt = qnaService.QNACount();
 		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
 		pagination.setTotalRecordCount(listCnt);
 		session.setAttribute("pagination", pagination);
 
-		mav.setViewName("servicecenter/servicecenter_view_admin");
+		mav.setViewName("servicecenter/admin_view");
 		mav.addObject("pagination", pagination);
 		mav.addObject("qna", qnaService.SelectAllList(pagination));
 		mav.addObject("bc", bc);
 		return mav;
 	}
 
-	@RequestMapping("/servicecenter/servicecenter_view_user")
+	@RequestMapping("/qnauserview")
 	public ModelAndView qnaUser(
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
 			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
-			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session) throws Exception {
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session,
+			HttpServletResponse response) throws Exception {
 		UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
-		
+		System.out.println(session.getAttribute("authInfo"));
+
+		List<BoardCategory> bc = bcService.showBCByClass("qna");
+		ModelAndView mav = new ModelAndView();
 		int listCnt = qnaService.QNAUserCount(user.getUserNo());
 		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
 		pagination.setTotalRecordCount(listCnt);
 		session.setAttribute("pagination", pagination);
+
 		System.out.println(pagination.getTotalRecordCount());
-		
-		List<BoardCategory> bc = bcService.showBCByClass("qna");
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("servicecenter/servicecenter_view_user");
+
+		mav.setViewName("servicecenter/user_view");
 		mav.addObject("pagination", pagination);
-		mav.addObject("qna", qnaService.SelectUserList(user.getUserNo(),pagination));
+		mav.addObject("qna", qnaService.SelectUserList(user.getUserNo(), pagination));
 		mav.addObject("bc", bc);
 		return mav;
 	}
 
-	@RequestMapping("/servicecenter/servicecenter_view_detail/{qnaNo}")
+	@RequestMapping("/qnadetail/{qnaNo}")
 	public ModelAndView detail(@PathVariable("qnaNo") int qnaNo) {
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
 		QNA qna = qnaService.showQNAByNo(qnaNo);
 		UserInfo user = userService.showUserbyNo(qnaNo);
 		System.out.println(user);
-		ModelAndView mav = new ModelAndView("servicecenter/servicecenter_view_detail", "qna", qna);
+		ModelAndView mav = new ModelAndView("servicecenter/view_detail", "qna", qna);
 		mav.addObject("bc", bc);
 		mav.addObject("user", user);
 		return mav;
 	}
 
-	@RequestMapping("/servicecenter/servicecenter_write")
+	@RequestMapping("/qnawrite")
 	public ModelAndView WriteAll() {
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("servicecenter/servicecenter_write");
+		mav.setViewName("servicecenter/user_write");
 		mav.addObject("bc", bc);
 		return mav;
 	}
 
-	@RequestMapping("/servicecenter/servicecenter_reply/{qnaNo}")
-	public ModelAndView ReplyAll(@PathVariable("qnaNo") int qnaNo) {
+	@RequestMapping("/qnareply/{qnaNo}")
+	public ModelAndView ReplyAll(@PathVariable("qnaNo") int qnaNo, HttpSession session, HttpServletResponse response)
+			throws IOException {
 		QNA qna = qnaService.showQNAByNo(qnaNo);
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
 		UserInfo user = userService.showUserbyNo(qnaNo);
+		UserAuthInfo admin = (UserAuthInfo) session.getAttribute("authInfo");
+
+		ModelAndView mav = new ModelAndView();
+		
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		if (admin.getUserNo() >= 0 || session.getAttribute("authInfo") == null) {
+			out.println("<script type='text/javascript'>");
+			out.println("alert('잘못된 접근입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+			
+			mav.setViewName("servicecenter/all_view");
+			return mav;
+		}
+
+		mav.setViewName("servicecenter/admin_reply");
 		System.out.println(qna);
 		System.out.println(user);
-		ModelAndView mav = new ModelAndView("servicecenter/servicecenter_write_reply", "qna", qna);
+		mav.addObject("qna", qna);
 		mav.addObject("user", user);
 		mav.addObject("bc", bc);
 		return mav;
@@ -129,42 +170,78 @@ public class QNAController {
 		try {
 			System.out.println(qna);
 			qnaService.uploadQNA(qna);
-			return "servicecenter/servicecenter_write_end";
+			return "servicecenter/user_write_end";
 
 		} catch (Exception e) {
 			e.printStackTrace();
 
-			return "servicecenter/servicecenter_write";
+			return "servicecenter/user_write";
 		}
 
 	}
 
 	@PostMapping("/qnaRpSuccess")
-	public ModelAndView qnaReply(QNA qna) {
+	public ModelAndView qnaReply(QNA qna, HttpSession session, HttpServletResponse response) {
 		try {
 			System.out.println(qna);
+
+			UserAuthInfo admin = (UserAuthInfo) session.getAttribute("authInfo");
+
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			
+			if (admin.getUserNo() >= 0 || session.getAttribute("authInfo") == null) {
+				out.println("<script type='text/javascript'>");
+				out.println("alert('잘못된 접근입니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+				out.flush();
+
+				return detail(qna.getQnaNo());
+			}
+
 			qnaService.replyQNA(qna);
+			
 			return detail(qna.getQnaNo());
 
 		} catch (Exception e) {
 			e.printStackTrace();
-
 			return detail(qna.getQnaNo());
 		}
-
 	}
 
-	@GetMapping("/servicecenter_delete/{qnaNo}")
-	public String deleteSuccess(@PathVariable("qnaNo") int qnaNo) {
+	@GetMapping("/qnadelete/{qnaNo}")
+	public String deleteSuccess(@PathVariable("qnaNo") int qnaNo, HttpSession session, HttpServletResponse response) {
 		try {
 			System.out.println(qnaNo);
+			QNA qna = qnaService.showQNAByNo(qnaNo);
+			
+			UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
+			UserInfo resUser = userService.showUserbyNo(qna.getUserNo().getUserNo());
+			
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			
+			System.out.println(user.getUserNo());
+			System.out.println(resUser.getUserNo());
+			
+			if (user.getUserNo() != resUser.getUserNo()) {
+				out.println("<script type='text/javascript'>");
+				out.println("alert('잘못된 접근입니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+				out.flush();
+
+				return "/";
+			}
+
 			qnaService.removeQNA(qnaNo);
-			return "servicecenter/servicecenter_delete";
+			
+			return "servicecenter/delete";
 
 		} catch (Exception e) {
 			e.printStackTrace();
-
-			return "servicecenter/servicecenter_view_detail/{qnaNo}";
+			return "servicecenter/view_detail/{qnaNo}";
 		}
 	}
 }

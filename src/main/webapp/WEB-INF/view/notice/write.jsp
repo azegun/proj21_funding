@@ -51,7 +51,7 @@ ${authInfo.userNo }
 				</table>
 				<section id="commandCell">
 					<input type="submit" value="등록">&nbsp;&nbsp; <input
-						type="reset" value="다시쓰기"> <a href="/board/notice_all"><button
+						type="reset" value="다시쓰기"> <a href="/notice/list"><button
 							id="go_qna">돌아가기</button></a>
 				</section>
 			</form>

@@ -58,7 +58,7 @@ ${board }<br>
 				</table>
 				<section id="commandCell">
 					<input type="submit" value="등록">&nbsp;&nbsp;
-					<a href="<%=request.getContextPath()%>/board/notice_all"><button id="go_notice">취소</button></a>
+					<a href="<%=request.getContextPath()%>/notice/list"><button id="go_notice">취소</button></a>
 				</section>
 			</form>
 		</section>

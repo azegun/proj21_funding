@@ -11,8 +11,7 @@
 	font-size: 16px;
 }
 
-#loginUser{	
-	font-size: 20px;
+#loginUser{		
 	width: 200px;
 }
 
@@ -37,7 +36,10 @@
 
 #login{
 	line-height: 30px;
-	width: 100%;}
+	width: 100%;
+	background-color: red;
+	font-weight: bold; 
+	}
 
 #hrefBtn{		
 	font-size: 15px;

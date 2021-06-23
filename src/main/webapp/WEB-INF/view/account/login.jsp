@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 화면</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/login.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/login.css">
 </head>
 <body>
 	<div class="container">
@@ -33,7 +33,7 @@
 					<p id="remember">
 						<label><form:checkbox path="rememberUserId"/>아이디 기억하기</label>
 					</p>
-					<form:button id="login">로그인</form:button>				
+					<form:button id="login">로 그 인</form:button>				
 				</fieldset>	
 			</form:form>					
 			<fieldset id="hrefBtn">

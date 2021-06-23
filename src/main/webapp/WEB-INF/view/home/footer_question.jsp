@@ -10,7 +10,7 @@
 </head>
 <body>
 		<div class = "go_question">
-		<a href = "<%=request.getContextPath() %>/servicecenter/servicecenter_write">문의하기</a>
+		<a href = "<%=request.getContextPath() %>/qnawrite">문의하기</a>
 		</div>
 </body>
 </html>
