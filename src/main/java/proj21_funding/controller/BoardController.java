@@ -53,6 +53,27 @@ public class BoardController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/notice/list/{categoryNo}")
+	public ModelAndView noticeCategory(@PathVariable("categoryNo") int categoryNo,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session)
+			throws Exception {
+		ModelAndView mav = new ModelAndView();
+
+		int listCnt = boardService.BoardCategoryCount(categoryNo);
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		pagination.setTotalRecordCount(listCnt);
+		List<BoardCategory> bc = bcService.showBCByClass("board");
+		session.setAttribute("pagination", pagination);
+
+		mav.addObject("pagination", pagination);
+		mav.addObject("board", boardService.SelectCategoryList(categoryNo, pagination));
+		mav.addObject("bc", bc);
+		mav.setViewName("/notice/list");
+		return mav;
+	}
+
 	@RequestMapping("/notice/write")
 	public ModelAndView WriteAll(HttpSession session, HttpServletResponse response) throws IOException {
 		List<BoardCategory> bc = bcService.showBCByClass("board");
