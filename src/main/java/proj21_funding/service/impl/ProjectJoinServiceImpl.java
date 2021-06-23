@@ -40,4 +40,20 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 		return mapper.selectProjectJoinByPrjNo(prjNo);
 	}
 
+
+	@Override
+	public List<ProjectJoin> showSumCountGroupByUserNo() {
+		return mapper.selectSumCountGroupByUserNo();
+	}
+
+	@Override
+	public List<ProjectJoin> showProjectGroupByUserNo() {
+		return mapper.selectProjectGroupByUserNo();
+	}
+
+	@Override
+	public List<ProjectJoin> showSucessProjectGroupByUserNo() {
+		return mapper.selectSuccessProjectGroupByUserNo();
+	}
+
 }

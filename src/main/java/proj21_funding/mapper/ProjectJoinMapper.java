@@ -11,4 +11,9 @@ public interface ProjectJoinMapper {
 	List<ProjectJoin> selectProjectJoinByPrjManager(String prjManager);
 	
 	ProjectJoin selectProjectJoinByPrjNo(int prjNo);
+	
+	List<ProjectJoin> selectSumCountGroupByUserNo();
+	
+	List<ProjectJoin> selectProjectGroupByUserNo();
+	List<ProjectJoin> selectSuccessProjectGroupByUserNo();
 }

@@ -89,3 +89,12 @@ select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			where o.optNo = 6;
 			
 select * from admin;
+
+select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount, c.pcategoryno, c.pcategoryname
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo;

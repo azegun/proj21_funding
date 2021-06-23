@@ -1,6 +1,9 @@
 package proj21_funding.dto.project;
 
+import java.time.LocalDate;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class ProjectJoin {
 	private int prjNo;
@@ -8,9 +11,12 @@ public class ProjectJoin {
 	private String prjName;
 	private String prjContent;
 	private int prjGoal;
-	private Date startDate;
-	private Date endDate;
-	private Date payDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate startDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate endDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate payDate;
 	private boolean endYn;
 	private int optNo;
 	private String optName;
@@ -23,6 +29,9 @@ public class ProjectJoin {
 	private double rate;
 	private int totalCount;
 	private int totalPrice;
+	private int pCategoryNo;
+	private String pCategoryName;
+	
 	public int getPrjNo() {
 		return prjNo;
 	}
@@ -53,22 +62,23 @@ public class ProjectJoin {
 	public void setPrjGoal(int prjGoal) {
 		this.prjGoal = prjGoal;
 	}
-	public Date getStartDate() {
+	
+	public LocalDate getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-	public Date getPayDate() {
+	public LocalDate getPayDate() {
 		return payDate;
 	}
-	public void setPayDate(Date payDate) {
+	public void setPayDate(LocalDate payDate) {
 		this.payDate = payDate;
 	}
 	public boolean isEndYn() {
@@ -143,13 +153,29 @@ public class ProjectJoin {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	public int getpCategoryNo() {
+		return pCategoryNo;
+	}
+	public void setpCategoryNo(int pCategoryNo) {
+		this.pCategoryNo = pCategoryNo;
+	}
+	public String getpCategoryName() {
+		return pCategoryName;
+	}
+	public void setpCategoryName(String pCategoryName) {
+		this.pCategoryName = pCategoryName;
+	}
+	
 	@Override
 	public String toString() {
 		return String.format(
-				"ProjectJoin [prjNo=%s, prjManager=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, payDate=%s, endYn=%s, optNo=%s, optName=%s, optPrice=%s, optContent=%s, fundingNo=%s, sponsor=%s, accountNo=%s, payYn=%s, rate=%s, totalCount=%s, totalPrice=%s]",
+				"ProjectJoin [prjNo=%s, prjManager=%s, prjName=%s, prjContent=%s, prjGoal=%s, startDate=%s, endDate=%s, payDate=%s, endYn=%s, optNo=%s, optName=%s, optPrice=%s, optContent=%s, fundingNo=%s, sponsor=%s, accountNo=%s, payYn=%s, rate=%s, totalCount=%s, totalPrice=%s, pCategoryNo=%s, pCategoryName=%s]",
 				prjNo, prjManager, prjName, prjContent, prjGoal, startDate, endDate, payDate, endYn, optNo, optName,
-				optPrice, optContent, fundingNo, sponsor, accountNo, payYn, rate, totalCount, totalPrice);
+				optPrice, optContent, fundingNo, sponsor, accountNo, payYn, rate, totalCount, totalPrice, pCategoryNo,
+				pCategoryName);
 	}
+	
+	
 
 	
 	

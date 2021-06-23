@@ -26,6 +26,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    
   }
   
   .sidebar-nav li {
@@ -37,6 +38,10 @@
     display: block;
     text-decoration: none;
     color: #999;
+  }
+  
+  .menu{
+  margin-right:50px;
   }
   
   .sidebar-nav li a:hover {
