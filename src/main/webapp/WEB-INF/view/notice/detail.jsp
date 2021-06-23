@@ -50,6 +50,7 @@ td {
 					</c:forEach>
 				</div>
 			</div>
+			
 			<div class="detail">
 				<header class="header_title">
 					<c:forEach var="bc" items="${bc }">
@@ -71,11 +72,13 @@ td {
 				</header>
 				<div class="content">${board.boardContent }</div>
 			</div>
+			
 			<div class="bottommenu">
 				<a
 					href="<%=request.getContextPath()%>/notice/list?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button
 						id="go_notice" class="returnlist">목록보기</button></a>
 			</div>
+			
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp" />

@@ -44,12 +44,13 @@
 					</c:forEach>
 				</div>
 			</div>
+			
+			
 			<div class="list">
 				<ul class="cont">
 					<c:choose>
 						<c:when test="${fn:length(board) > 0}">
 							<c:forEach items="${board}" var="board">
-								<%-- <c:forEach var="board" items="${board }"> --%>
 								<li class="title-box"><a
 									href="<%=request.getContextPath() %>/notice/detail/${board.BoardNo }&${board.CategoryNo}"
 									class="notice"><span class="title-box"><span
@@ -68,6 +69,8 @@
 					</c:choose>
 				</ul>
 			</div>
+			
+			
 			<!--paginate -->
 			<div class="paginate">
 				<div class="paging">

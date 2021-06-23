@@ -75,7 +75,6 @@
 	function submitContents(elClickedObj) {
 		oEditors.getById["boardContent"].exec("UPDATE_CONTENTS_FIELD", []);
 
-
 		var categoryNo = $("#categoryNo > option:selected").val();
 		var boardTitle = $("#boardTitle").val();
 		var boardContent = document.getElementById("boardContent").value;;
@@ -106,7 +105,6 @@
 		}else{
 			return;
 		}
-		
 		
 		try {
 			elClickedObj.form.submit();
