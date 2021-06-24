@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상세 메세지</title>
+<title>상세 쪽지</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-detail.css">
 </head>
@@ -20,7 +20,7 @@
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp" />
 			</fieldset>	
 			<div id="message">
-			<h2>메세지</h2>	
+			<h2>상세 쪽지</h2>	
 			<fieldset id="messageForm">					
 				<form:form modelAttribute="message" >					
 					<p>
@@ -36,7 +36,7 @@
 					</p>
 					<c:if test="${rcUser eq authInfo.userId}">
 						<p><form:textarea path="msgContent" id="text"/></p>
-						<p id="errors"><form:errors path="msgContent" />&nbsp;</p>
+						<p id="errors">${err}&nbsp;</p>
 						<form:hidden path="readYN" value="${readYN}"/>						
 						<form:hidden path="currentPage" value="${currentPage}"/>						
 					</c:if>		

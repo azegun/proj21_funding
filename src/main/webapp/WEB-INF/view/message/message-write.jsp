@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메세지</title>
+<title>쪽지</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-write.css">
 <script type="text/javascript">
@@ -23,7 +23,7 @@
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<div id="message">
-				<h2>메세지 보내기</h2>		
+				<h2>쪽지 보내기</h2>		
 				<form:form modelAttribute="message">	
 				<form:errors />
 					<fieldset id="messageForm">
