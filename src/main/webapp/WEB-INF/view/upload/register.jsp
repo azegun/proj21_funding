@@ -6,6 +6,7 @@
   
      <jsp:useBean id="now" class = "java.util.Date"></jsp:useBean>
 					<fmt:formatDate  var="today"  value="${now}" pattern="yyyy-MM-dd"/>
+					<c:set var = "project" value="${prjList}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +80,9 @@
 </script>		
 </head>
 <body>
-${optList }
+<%-- ${optList } --%>
+<%-- ${prjList} --%>
+${project[0].prjNo }
 		<section class="container">		
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
@@ -216,7 +219,7 @@ ${optList }
 									</td>									
 							</tr>
 							<!--  월요일에 열기-->
-					<tr>
+						 <tr>
 									<td class = "td_left">
 											<label for = "addOptName">옵션이름</label>
 									</td>

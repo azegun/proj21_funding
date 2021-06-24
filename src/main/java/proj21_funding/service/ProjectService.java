@@ -19,5 +19,8 @@ public interface ProjectService {
 	int updateProject(Project project, MultipartFile uploadfile);
 //	프로젝트and 옵션 조인 업데이트by Map
 	int joinUpdateProjectAndPrjoptionByNo(Map<String, Object> map);
+//  프로젝트 + 카테고리 출력
+	Project showJoinPrjAndCategory(int prjNo);
+	
 
 }

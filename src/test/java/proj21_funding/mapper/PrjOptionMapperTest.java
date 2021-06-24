@@ -57,11 +57,21 @@ public class PrjOptionMapperTest {
 	public void testupdateProjectOption() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		PrjOption prjoption = new PrjOption(2, "문방구", 399999, "색종이");
+		PrjOption prjoption = new PrjOption(147, "문방구", 399999, "색종이");
 		int res = mapper.updatePrjOption(prjoption);
 		
 		Assert.assertEquals(1, res);		
 	}
+	
+	@Test
+	public void testupdateAddProjectOption() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		AddPrjOption addprjoption = new AddPrjOption(148, "양말셋트", 3004432, "두셋트");
+		int res = mapper.updateAddOption(addprjoption);
+		Assert.assertEquals(1, res);		
+	}
+	
 	
 //	@Test
 	public void testremoveProjectOption() {

@@ -27,6 +27,7 @@ import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
+import proj21_funding.service.MyListService;
 import proj21_funding.service.PrjCategoryService;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectAndPrjOptionService;
@@ -37,10 +38,10 @@ import proj21_funding.service.UserInfoService;
 public class UploadController {	
 	
 	//web.xml에 있는 multipart-config 주소랑 동일시하게 
-		private static final String UPLOAD_PATH = "C:\\workspace_web\\proj21_funding\\src\\main\\webapp\\images\\project";
+	private static final String UPLOAD_PATH = "C:\\workspace_web\\proj21_funding\\src\\main\\webapp\\images\\project";
 
 	@Autowired
-	private ProjectAndPrjOptionService trservice;
+	private ProjectAndPrjOptionService trService;
 	
 	@Autowired
 	private PrjOptionService optionService;
@@ -53,7 +54,7 @@ public class UploadController {
 	
 	@Autowired
 	private UserInfoService userService;
-
+	
 	private List<PrjOption> optList;
 	
 //	업로드 할 시 계좌 등록 안되어있으면 계좌 등록
@@ -91,7 +92,7 @@ public class UploadController {
 		return mav;
 	}
 	
-	//광고페이지에서 등록 html
+	//광고페이지에서 등록 html 여기
 	@GetMapping("/registerForm")
 	public ModelAndView uploadRegister() {	
 		List<Project> proList = projectService.showProjectListAll();
@@ -118,27 +119,25 @@ public class UploadController {
 	
 	//업로드
 	@PostMapping("/listSuccess")
-	public ModelAndView registerSuccess(Project project,  PrjOption prjoption, 
-														AddPrjOption addPrjOption, MultipartFile uploadfile,  HttpServletResponse response) throws IOException {	
+	public ModelAndView registerSuccess(Project project,  PrjOption prjoption, 	AddPrjOption addPrjOption,
+										MultipartFile uploadfile,  HttpServletResponse response) throws IOException {	
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		List<PrjCategory> list = prjCategoryService.showCategory();	
-		
 		try {
 			//트렌젝션추가
-			trservice.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);		
+			trService.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);		
 			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
-			
+			System.out.println("optList >> "+  optList);
 			//두개 이상이면 작동옵션
 			if(addPrjOption.getAddOptName() != null) {
 				addPrjOption.setPrjNo(prjoption.getPrjNo());
 				optionService.insertAddPrjOption(addPrjOption);
 			}
-				
+			Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());
 			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
-
+			System.out.println("list>>> "+ list);
 		
 			mav.addObject("optList", optList);		
 			mav.addObject("category", list);				
@@ -159,12 +158,11 @@ public class UploadController {
 	//등록완료페이지에서 -> 수정페이지
 	@RequestMapping("/updatePrj/{prjNo}")
 	public ModelAndView updateProject(@PathVariable("prjNo") int prjNo) {
-//		System.out.println("prjNo >> "+ prjNo);
 		optList = optionService.selectSimplePrjOptionByPrjNo(prjNo);
-		System.out.println("optList > > " +optList );
 		List<PrjOption> project = optionService.showPrjOptionByPrjNo(prjNo);
+		
 		List<PrjCategory> list = prjCategoryService.showCategory();
-//		System.out.println("project >>>> " +project);
+		
 		if(project == null) { 
 			throw new ProjectNotFoundException();
 		}		
@@ -179,11 +177,11 @@ public class UploadController {
 	
 	//수정 완료 후 리스트
 	@PostMapping("/updateListSuccess")
-	public ModelAndView updateListSuccess(UpdateProject project, MultipartFile uploadfile,
-			HttpServletResponse response  ) throws IOException {
-//		System.out.println("updateProject 전 >> " + project);
+	public ModelAndView updateListSuccess(UpdateProject project, PrjOption prjoption,
+		AddPrjOption addprjoption,	MultipartFile uploadfile, 	HttpServletResponse response  ) throws IOException {
+		
 		Map<String, Object> map = new HashMap<String, Object>();	
-		map.put("pNo", project.getPrjNo());
+		map.put("pNo", project.getPrjNo().getPrjNo());
 		map.put("pCategoryNo", project.getpCategoryNo().getpCategoryNo());
 		map.put("pName", project.getPrjName());
 		map.put("pContent", project.getPrjContent());
@@ -193,14 +191,12 @@ public class UploadController {
 		map.put("oName", project.getOptName());
 		map.put("oPrice", project.getOptPrice());
 		map.put("oContent", project.getOptContent());
-//		System.out.println("map 후 >>> "+ map);  
 		
 		// 파일 업로드
-//		System.out.println("project.getPrjNo() >> " + project.getPrjNo());
-		String saveName = "project"+project.getPrjNo()+".jpg";
-//		System.out.println("saveName>> "  +saveName);
+		String saveName = "project"+project.getPrjNo().getPrjNo()+".jpg";
 		
 		File saveFile = new File(UPLOAD_PATH, saveName);
+		//카테고리 리스트
 		
 		try {
 			uploadfile.transferTo(saveFile);
@@ -210,7 +206,21 @@ public class UploadController {
 		// 프로젝트 수정
 		ModelAndView mav = new ModelAndView();
 		try {
+		//리스트 조인
 		projectService.joinUpdateProjectAndPrjoptionByNo(map);	
+		
+		if(addprjoption.getAddOptName() !=null) {
+			System.out.println("ddd");
+			//추가적인 업데이트
+			prjoption.setOptNo(optList.get(0).getOptNo());
+			optionService.updatePrjOption(prjoption);
+			
+			addprjoption.setAddOptNo(optList.get(1).getOptNo());
+			optionService.updateAddOption(addprjoption);		
+		}
+		
+		//옵션리스트 받기
+		optList = optionService.selectSimplePrjOptionByPrjNo(prjoption.getPrjNo().getPrjNo());	
 		
 		}catch (DateTimeOverException e) {
 			response.setContentType("text/html;charset=utf-8");
@@ -221,8 +231,10 @@ public class UploadController {
 			out.println("</script>");
 			out.flush();
 		}
-		List<PrjCategory> list = prjCategoryService.showCategory();		
-		mav.addObject("uploadfile", uploadfile);
+		
+		Project list = projectService.showJoinPrjAndCategory(project.getPrjNo().getPrjNo());
+			
+		mav.addObject("optList", optList);
 		mav.addObject("project", map);
 		mav.addObject("category", list);
 		mav.setViewName("upload/update_success");	
@@ -233,7 +245,7 @@ public class UploadController {
 //	삭제
 	@RequestMapping("/removeOneProject/{prjNo}")
 	public String deleteProject(@PathVariable("prjNo") int prjNo) {
-		trservice.trremovePrjAndPrjOpt(prjNo);
+		trService.trremovePrjAndPrjOpt(prjNo);
 		if(prjNo == 0) { 
 			throw new ProjectNotDeleteException();
 		}		

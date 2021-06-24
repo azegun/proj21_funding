@@ -70,6 +70,14 @@
 			where OptNo = #{optNo}		
 		</update>
 		
+		<!-- 프로젝트 추가 옵션 수정 -->
+		<update id="updateAddOption">
+			update prjoption 
+				set OptName = #{addOptName}, OptPrice = #{addOptPrice}, 
+							OptContent = #{addOptContent}
+			where OptNo = #{addOptNo}		
+		</update>
+		
 		<!-- 프로젝트 옵션 삭제 -->
 		<delete id="removePrjOption">
 			delete from prjoption 

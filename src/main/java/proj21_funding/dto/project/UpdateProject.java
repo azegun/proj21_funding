@@ -5,11 +5,12 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import proj21_funding.dto.PrjCategory;
+import proj21_funding.dto.Project;
 
 public class UpdateProject {
-	private int prjNo;						//프로젝트번호
+	private Project prjNo;						//프로젝트번호
+	private int optNo; //옵션번호
 	private PrjCategory pCategoryNo; //프로젝트 분류
-	private String pCategoryName;		//프로젝트 분류이름
 	private String prjName;  			//프로젝트명
 	private String prjContent;			//프로젝트내용
 	private int prjGoal;						//목표금액
@@ -19,17 +20,16 @@ public class UpdateProject {
 	private LocalDate payDate;	//결제일
 	private String optName;			 //옵션명
 	private int optPrice;				//옵션급액
-	private String optContent;		//옵션내용
-		
+	private String optContent;		//옵션내용		
 	
 	public UpdateProject() {}
+	
+//	프로젝트 넘버로 수정	
 
-	public UpdateProject(int prjNo, PrjCategory pCategoryNo, String pCategoryName, String prjName, String prjContent,
-			int prjGoal, LocalDate endDate, LocalDate payDate, String optName, int optPrice, String optContent) {
-		super();
+	public UpdateProject(Project prjNo, PrjCategory pCategoryNo, String prjName, String prjContent, int prjGoal,
+			LocalDate endDate, LocalDate payDate, String optName, int optPrice, String optContent) {
 		this.prjNo = prjNo;
 		this.pCategoryNo = pCategoryNo;
-		this.pCategoryName = pCategoryName;
 		this.prjName = prjName;
 		this.prjContent = prjContent;
 		this.prjGoal = prjGoal;
@@ -38,14 +38,28 @@ public class UpdateProject {
 		this.optName = optName;
 		this.optPrice = optPrice;
 		this.optContent = optContent;
-	}
+	}	
+	
 
-	public UpdateProject(int prjNo, String prjName, String prjContent, String optName, String optContent) {
+	//myList에서 수정
+	public UpdateProject(Project prjNo, String prjName, String prjContent, String optName, String optContent) {
 		this.prjNo = prjNo;
 		this.prjName = prjName;
 		this.prjContent = prjContent;
 		this.optName = optName;
 		this.optContent = optContent;
+	}
+	
+	public UpdateProject(Project prjNo) {
+		this.prjNo = prjNo;
+	}
+
+	public int getOptNo() {
+		return optNo;
+	}
+
+	public void setOptNo(int optNo) {
+		this.optNo = optNo;
 	}
 
 	public PrjCategory getpCategoryNo() {
@@ -56,27 +70,15 @@ public class UpdateProject {
 		this.pCategoryNo = pCategoryNo;
 	}
 
-	public int getPrjNo() {
+
+
+	public Project getPrjNo() {
 		return prjNo;
 	}
 
-
-	public void setPrjNo(int prjNo) {
+	public void setPrjNo(Project prjNo) {
 		this.prjNo = prjNo;
 	}
-
-
-
-
-	public String getpCategoryName() {
-		return pCategoryName;
-	}
-
-
-	public void setpCategoryName(String pCategoryName) {
-		this.pCategoryName = pCategoryName;
-	}
-
 
 	public String getPrjName() {
 		return prjName;
@@ -161,8 +163,8 @@ public class UpdateProject {
 	@Override
 	public String toString() {
 		return String.format(
-				"UpdateProject [prjNo=%s, pCategoryNo=%s, pCategoryName=%s, prjName=%s, prjContent=%s, prjGoal=%s, endDate=%s, payDate=%s, optName=%s, optPrice=%s, optContent=%s]",
-				prjNo, pCategoryNo, pCategoryName, prjName, prjContent, prjGoal, endDate, payDate, optName, optPrice,
+				"UpdateProject [prjNo=%s, optNo=%s, pCategoryNo=%s, prjName=%s, prjContent=%s, prjGoal=%s, endDate=%s, payDate=%s, optName=%s, optPrice=%s, optContent=%s]",
+				prjNo, optNo, pCategoryNo, prjName, prjContent, prjGoal, endDate, payDate, optName, optPrice,
 				optContent);
 	}
 	

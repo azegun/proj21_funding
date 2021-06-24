@@ -38,8 +38,11 @@
 					</script>
 </head>
 <body>
-	
-		${project }
+<%-- ${optList }
+${project } --%>
+${optList }
+
+		
 <%-- ${project } --%>
 <section class="container">
 		<header>		   
@@ -57,7 +60,7 @@
 										<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
 										<td class="td_right" >
 												<span id="pCategoryNo">												
-												${category[0].pCategoryName }
+														${category.pCategoryNo.pCategoryName }
 												</span>
 										</td>
 								</tr>

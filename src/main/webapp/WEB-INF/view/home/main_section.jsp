@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>main_center_section</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main_section.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main_section.css">
 </head>
 <body>
 			<section>	

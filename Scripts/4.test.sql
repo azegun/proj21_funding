@@ -141,13 +141,15 @@ from project;
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
 	set 
-	 	p.pCategoryNo = '1', 
+	 	p.pCategoryNo = '1',
 		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움', p.PrjGoal = 333333333,
 		p.EndDate = '2022-06-13', p.PayDate = '2021-06-13',
 		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
-where p.PrjNo = 3;
+where p.PrjNo =59;
 
--- Mylist에 수정 
+select  * from project ;
+select * from prjoption p ;
+
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
 	set 
@@ -163,9 +165,14 @@ select p.prjNo,p.UserNo, p.pCategoryNo, pc.pCategoryName,  PrjName, PrjContent, 
 			from project p join userinfo u on p.userno = u.UserNo 
 						   join prjoption o on p.PrjNo =o.PrjNo
 						   join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
-			where o.prjNo = 14;
+			where o.prjNo = 8;
 		
-
+-- 		카테고리 join 리스트
+select 
+		p.PrjNo, p.UserNo, pc.pCategoryNo, pc.pCategoryName, 
+		p.PrjName, p.PrjContent, p.PrjGoal, p.EndDate, p.PayDate
+from project p join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
+	where  p.PrjNo =21;
 
 -- 업데이트 프로젝트
 update project 
@@ -198,7 +205,7 @@ where OptNo =22;
 -- 프로젝트옵션  프로젝트번호로 검색
 select OptNo, PrjNo, OptName, OptPrice, OptContent
 		from prjoption
-where PrjNo =53;
+where PrjNo =57;
 
 
 

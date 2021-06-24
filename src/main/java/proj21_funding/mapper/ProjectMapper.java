@@ -18,6 +18,9 @@ public interface ProjectMapper {
 	
 //  성공임박 프로젝트 출력
 	List<Project>selectProjectSuccessImbak();
+//  프로젝트 + 카테고리 출력
+	Project showJoinPrjAndCategory(int prjNo);
+	
 
 //	프로젝트 등록
 	int insertProject(Project project);

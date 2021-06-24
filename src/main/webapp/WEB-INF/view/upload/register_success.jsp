@@ -37,9 +37,11 @@
 					</script>
 </head>
 <body>
-${optList[0].prjNo.prjNo}
+<%-- ${optList[0].prjNo.prjNo}
 ${optList[1].prjNo.prjNo}
-${optList[1].optName}
+${optList[1].optName} --%>
+${category.pCategoryNo.pCategoryName }
+${optList }
 <%-- ${pro } --%>
 <%-- ${category[0] } --%>
 <section class="container">
@@ -64,9 +66,9 @@ ${optList[1].optName}
 										<td class="td_left"><label for="prjNo">프로젝트번호</label></td>
 										<td class="td_right" ><span id="prjNo">${pro.prjNo }</span></td>
 					</tr>
-					<tr class = "col2">
+			 		<tr class = "col2">
 										<td class="td_left"><label for="pCategoryName">카테고리</label></td>
-										<td class="td_right" ><span id="pCategoryName">${category[0].pCategoryName }</span></td>	
+										<td class="td_right" ><span id="pCategoryName">${category.pCategoryNo.pCategoryName }</span></td>	
 					</tr>
 					<tr class = "col3">
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
@@ -98,24 +100,28 @@ ${optList[1].optName}
 							<c:when test="${optList[0].prjNo.prjNo eq optList[1].prjNo.prjNo}">
 								 <tr class = "col8">
 											<td class="td_left"><label for="opt1">옵션1</label></td>
-											<td class="td_right" ><span id="opt1">${propt.optName }  : <fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/></span></td>
+											<td class="td_right" >
+												<span id="opt1">${propt.optName }<br>
+											   			<fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
+											   	</span>
+											</td>
 								</tr>
 								<tr class = "col10">
-											<td class="td_left"><label for="optContent">옵션1 내용</label></td>
-											<td class="td_right" >
+											<!-- <td class="td_left"><label for="optContent">옵션1 내용</label></td> -->
+											<td class="td_right"  colspan="2">
 															<div class ="sb2option">${propt.optContent}</div>
 											</td>	
 								<tr class = "col9">
 											<td class="td_left"><label for="opt2">옵션2</label></td>
 											<td class="td_right" >
-														<span id="opt2">													
-																	${optList[1].optName} :  <fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>
+														<span id="opt2">	${optList[1].optName}<br>
+																	  <fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>
 														</span>
 											</td>
 								</tr>
 								<tr class = "col10">
-											<td class="td_left"><label for="optContent">옵션2 내용</label></td>
-											<td class="td_right" >
+										<!-- 	<td class="td_left"><label for="optContent">옵션2 내용</label></td> -->
+											<td class="td_right" colspan="2" >
 															<div class ="sb2option">${optList[1].optContent}</div>
 										  	</td>								
 							</c:when>
