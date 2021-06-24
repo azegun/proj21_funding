@@ -9,10 +9,31 @@
 	font-style: normal;
 }
 @font-face {
-    font-family: 'RIDIBatang';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 400;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 700;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+}
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 300;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+.nanumbarungothic * {
+ font-family: 'NanumBarunGothic', sans-serif;
 }
 
 .header {
@@ -23,7 +44,7 @@
 	-webkit-box-align: center;
 	align-items: center;
 	position: relative;
-	box-shadow: rgb(10 10 10/ 10%) 0px 1px 2px 0px;
+/* 	box-shadow: rgb(10 10 10/ 10%) 0px 1px 2px 0px; */
 	z-index: 999;
 	margin: 0px auto;
 }
@@ -45,7 +66,7 @@
 	line-height: 60px;
 	padding: 0px 1rem;
 	text-decoration: none;
-	font-family: 'RIDIBatang';
+	font-family: 'NanumBarunGothic';
 }
 
 .main_frame {
@@ -90,5 +111,6 @@
 .login {
 	color: black;
 	text-decoration: none;
-	font-family: 'RIDIBatang';
+	font-family: 'NanumBarunGothic';
+	font-weight: 700;
 }
