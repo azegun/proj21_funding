@@ -29,7 +29,6 @@
 	<section class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp" />
 		</header>
 		<section class="sevicecenter_write">
 			<h2>글 작성</h2>

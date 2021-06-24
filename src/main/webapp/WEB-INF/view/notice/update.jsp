@@ -33,7 +33,6 @@ response.setContentType("text/html; charset=UTF-8");
 	<section class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp" />
 		</header>
 		<section class="sevicecenter_write">
 			<h2>글 수정</h2>

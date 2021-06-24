@@ -16,7 +16,7 @@
 				id="go_center">고객센터</a>
 		</div>
 		<div class="go_question">
-			<a href="<%=request.getContextPath()%>/qnawrite">문의하기</a>
+			<a href="<%=request.getContextPath()%>/qnawrite"><span class="ques">문의하기</span></a>
 		</div>
 	</div>
 </body>

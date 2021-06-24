@@ -21,7 +21,6 @@
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp" />
 		</header>
 		<section class="sevicecenter_view">
 			<h2>고객센터</h2>

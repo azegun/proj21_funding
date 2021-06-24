@@ -12,7 +12,6 @@
 <div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/> 
 		</header>		
 		<section id="reSignArea">
 		<h1>회 원 탈 퇴</h1>			
