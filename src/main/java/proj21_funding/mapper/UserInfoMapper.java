@@ -1,8 +1,10 @@
 package proj21_funding.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
+
 
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
@@ -37,6 +39,16 @@ public interface UserInfoMapper {
 
 	int deleteUser(UserInfo userInfo);
 	
+//	회원 검색시 리스트로 리턴
+	List<UserInfo> selectUserListbyId(String userId);
+	List<UserInfo> selectUserListbyName(String userName);
+	List<UserInfo> selectUserListbyNickname(String nickName);
+//	회원수
+	int userCount();
+	int currentUserCount();
+	int prdCount();
+//	회원찾기 Map이용
+	List<UserInfo> selectUserListByMap(Map<String, Object> listMap);
 	
 
 }

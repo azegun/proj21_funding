@@ -65,6 +65,16 @@ public class BoardServiceImpl implements BoardService {
 	public int BoardCount() throws Exception {
 		return mapper.BoardCount();
 	}
+
+	@Override
+	public List<Map<String, Object>> SelectCategoryList(int categoryNo, Pagination pagination) throws Exception {
+		return mapper.SelectCategoryList(categoryNo, pagination.getPageSearch(), pagination.getCntPerPage());
+	}
+
+	@Override
+	public int BoardCategoryCount(int categoryNo) throws Exception {
+		return mapper.BoardCategoryCount(categoryNo);
+	}
 	
 // 끝
 }

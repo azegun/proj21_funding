@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjOption;
@@ -53,6 +55,15 @@ public class ProjectController {
 		return mav;
 	}
 
+	@RequestMapping("/categoryByProject")
+	public String category(@RequestParam("pCategoryNo")int pCategoryNo, Model model) {
+		List<ProjectJoin> prjs = joinService.showProjectJoinByPcategoryno(pCategoryNo);
+		model.addAttribute("prjs", prjs);
+		return "project/list";		
+	}
+	
+	
+	
 	@RequestMapping("/sucessImbakProject")
 	public ModelAndView ImbakListAll() {
 

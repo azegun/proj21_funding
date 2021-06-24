@@ -305,8 +305,8 @@ select * from project p ;
  
 -- qna test	
 	
-insert into qna(qnaNo, userNo, categoryNo, qnaTitle, qnaContent, qnaFile)
-values (3, 1, 1, "오늘의 질문", "왜 업데이트시 날짜 자동 업데이트가 안 될까?", null);
+insert into qna(userNo, categoryNo, qnaTitle, qnaContent, qnaFile)
+values (3, 3, "오늘의 질문", "질문", null);
 
 select * from qna;
 

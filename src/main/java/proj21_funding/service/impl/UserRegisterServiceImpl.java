@@ -23,7 +23,7 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 	private AdminMapper adminMapper;
 	
 	@Override
-	public int regist(UserSignUp userSignUp) {
+	public int regist(UserSignUp userSignUp) {		
 		Admin admin = adminMapper.selectAdminbyId(userSignUp.getUserId());
 		if(admin != null) {
 			throw new DuplicateUserException();

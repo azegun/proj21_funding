@@ -31,96 +31,93 @@
 	}
 	
 	function openCh(){		
-		window.open('userChangePw', '', 'left = 700, top = 200, width = 400, height = 300')
-	}
-	
-	
+		var popupWidth = 400;
+		var popupHeight = 300;
+		var popupX = (window.screen.width / 2) - (popupWidth / 2);
+		var popupY= (window.screen.height / 2) - (popupHeight / 2);
+		window.open('userChangePw', '', 'width = ' + popupWidth + ', height = '+ popupHeight
+				+ ', left =' + popupX + ', top =' + popupY);
+	}	
 	</script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 <div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
 		<section id="userInfoArea">
-			<h1>회원정보</h1>
+			<h1>회 원 정 보</h1>
 			<form:form modelAttribute="userInfo">
 			<form:errors />			
+				<fieldset id="userInfoForm">
 				<p>
-					<label>아이디:
+					<label>회 원 계 정</label>:
 					<form:input path="userId" readonly="true" value="${userInfo.userId}" />
-					<form:errors path="userId" />
-					</label>
 				</p>
+				<p id="errors">&nbsp;</p>
 				<p>
-					<label>비밀번호:
+					<label>비 밀 번 호 </label>:
 					<form:button type = "button" onclick="openCh()">비밀번호 변경</form:button>
-					</label>
 				</p>
+				<p id="errors">&nbsp;</p>
 				<p>
-					<label> 회원성명 :
+					<label>회 원 성 명</label>:
 					<form:input path="userName" readonly="true" value="${userInfo.userName}" /> 
-					<form:errors path="userName" />
-					</label>
 				</p>
+				<p id="errors">&nbsp;</p>				
 				<p>
-					<label> 회원별명 :
+					<label>회 원 별 명</label>:
 					<form:input path="nickName" value="${userInfo.nickName}"/> 
-					<form:errors path="nickName" />
-					</label>
 				</p>
+				<p id="errors"><form:errors path="nickName"/>&nbsp;</p>
 				<p>
-					<label> 이메일 :
+					<label> 이 메 일 </label>:
 					<form:input path="email" value="${userInfo.email}"/> 
-					<form:errors path="email" />
-					</label>
 				</p>
+				<p id="errors"><form:errors path="email"/>&nbsp;</p>
 				<p>
-					<label> 회원H.P :
+					<label>회 원 H.P</label>:
 					<form:input path="userPhone" value="${userInfo.userPhone}"/> 
-					<form:errors path="userPhone" />
-					</label>
-				</p>				
-				<p>
-					<label> 우편번호 검색하기 :
-					<form:input path="zipCode" id="member_post"  readonly="true" onclick="findAddr()" value="${userInfo.zipCode}"/>					 
-					<form:errors path="zipCode" />										
-					</label>
 				</p>
+				<p id="errors">&nbsp;</p>				
 				<p>
-					<label> 주소 :
+					<label>우 편 번 호</label>:
+					<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true"/> 
+					<form:button type="button" onclick="findAddr()">검색</form:button>
+				</p>
+				<p id="errors">&nbsp;</p>
+				<p>
+					<label>주  소</label>:
 					<form:input path="address" id="member_addr" readonly="true" value="${userInfo.address}"/> 
-					<form:errors path="address" />					
-					</label>
 				</p>
+				<p id="errors"><form:errors path="address"/>&nbsp;</p>	
 				<p>
-					<label> 상세주소 :
+					<label>상 세 주 소</label>:
 					<form:input path="detailAddress" value="${userInfo.detailAddress}"/> 
-					<form:errors path="detailAddress" />					
-					</label>
 				</p>
+				<p id="errors">&nbsp;</p>
 				<p>
-					<label> 은행명 :
+					<label>은 행 명</label>:
 					<form:input path="bankName" value="${userInfo.bankName}"/> 
-					<form:errors path="bankName" />
-					</label>
 				</p>
+				<p id="errors">&nbsp;</p>
 				<p>
-					<label> 예금주 :
+					<label>예 금 주</label>:
 					<form:input path="accountHolder" /> 
-					<form:errors path="accountHolder" />
-					</label>
-				</p>	
-				<p>
-					<label> 계좌번호 :
-					<form:input path="bankAccount" value="${userInfo.bankAccount}"/> 									
-					<form:errors path="bankAccount" />
-					</label>
 				</p>
-				<form:button id="submit" value="submit">수정하기</form:button>											
+				<p id="errors">&nbsp;</p>	
+				<p>
+					<label>계 좌 번 호</label>:
+					<form:input path="bankAccount" value="${userInfo.bankAccount}"/> 									
+				</p>
+				<p id="errors">&nbsp;</p>
+				<div id="btn">
+					<form:button id="sub" value="submit">수정하기</form:button>											
+					<a href="<c:url value='/account/userReSign'/>"><form:button id="sub" type="button" value="del">탈퇴하기</form:button></a>
+				</div>
+				</fieldset>
 			</form:form>
-			<a href="<c:url value='/account/userReSign'/>"><button value="del">탈퇴하기</button></a>
 		</section>			
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 

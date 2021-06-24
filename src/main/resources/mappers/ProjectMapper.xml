@@ -35,10 +35,9 @@
 		</select>	
 		
 		<select id="selectProjectByUser" resultMap="resProject">
-			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
-				   StartDate, EndDate, PayDate, EndYN
+			select PrjNo, UserNo, PrjName, EndDate
 			  from project
-			 where UserNo = #{userNo.userNo}		
+			 where UserNo = #{userNo.userNo} and EndDate >= now()
 		</select>		
 		
 		<select id="showJoinPrjAndCategory" resultMap="AssociateResUserInfo">

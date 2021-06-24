@@ -25,12 +25,25 @@ public class UserAuthServiceImpl implements UserAuthService {
 	@Override
 	public UserAuthInfo authenicate(UserLogin userLogin) {
 
+		if(userLogin == null) {
+			throw new UserNotFoundException();
+		}
+		
+		UserInfo id =userInfoMapper.selectUserbyId(userLogin.getUserId());
+		Admin ad =adminMapper.selectAdminbyId(userLogin.getUserId());
+		
+		if(id == null && ad == null ) {
+			throw new UserNotFoundException();
+		}
+		
 		UserInfo userInfo = userInfoMapper.selectUserbylogin(userLogin);
-		Admin ad = new Admin(userLogin.getUserId(), userLogin.getUserPw());
-		Admin admin = adminMapper.selectAdminbylogin(ad);
-		if (userInfo == null && admin == null) {
+		Admin ad1 = new Admin(userLogin.getUserId(), userLogin.getUserPw());
+		Admin admin = adminMapper.selectAdminbylogin(ad1);
+		
+		if( userInfo == null && admin == null) {
 			throw new WrongIdPasswordException();
 		}
+		
 			
 		if(admin != null) {
 			return new UserAuthInfo(-admin.getAdminNo(), admin.getAdminId(), admin.getAdminName(), "관리자"+ admin.getAdminNo());

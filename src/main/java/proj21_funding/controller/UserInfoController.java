@@ -14,7 +14,7 @@ import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.exception.DuplicateEmailException;
 import proj21_funding.exception.DuplicateNickNameException;
-import proj21_funding.exception.DuplicateUserException;
+import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.service.UserInfoService;
 
 @Controller
@@ -74,8 +74,8 @@ public class UserInfoController {
 			service.removeUserInfo(userAuthInfo.getUserId(), userInfo.getUserPw());
 			session.invalidate();
 			return "redirect:/main";
-		} catch (DuplicateUserException e) {
-			errors.rejectValue("currentUserPw", "notMatching");
+		} catch (WrongIdPasswordException e) {
+			errors.rejectValue("userPw", "notMatching");
 			return "account/userReSign";
 		}
 	}

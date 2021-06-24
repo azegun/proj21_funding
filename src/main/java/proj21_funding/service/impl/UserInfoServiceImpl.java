@@ -1,6 +1,7 @@
 package proj21_funding.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
 import proj21_funding.exception.DuplicateEmailException;
 import proj21_funding.exception.DuplicateNickNameException;
+import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserInfoService;
 
@@ -49,6 +51,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public int removeUserInfo(String userId, String userPw) {
 		UserLogin userLogin = new UserLogin(userId, userPw);
 		UserInfo userInfo = mapper.selectUserbylogin(userLogin);
+		if(userInfo == null) {
+			throw new WrongIdPasswordException();
+		}
 		return mapper.deleteUser(userInfo);
 	}
 
@@ -63,6 +68,40 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
+	public List<UserInfo> showUserListbyId(String userId) {
+		return mapper.selectUserListbyId(userId);
+	}
+
+	@Override
+	public List<UserInfo> showUserListbyName(String userName) {
+		return mapper.selectUserListbyName(userName);
+	}
+
+	@Override
+	public List<UserInfo> showUserListbyNickname(String nickName) {
+		return mapper.selectUserListbyNickname(nickName);
+	}
+
+	@Override
+	public int userCount() {
+		return mapper.userCount();
+	}
+
+	@Override
+	public int currentUserCount() {
+		return mapper.currentUserCount() ;
+	}
+
+	@Override
+	public int prdcount() {
+		return mapper.prdCount();
+	}
+
+	@Override
+	public List<UserInfo> showUserListByMap(Map<String, Object> listMap) {
+		return mapper.selectUserListByMap(listMap);
+	}
+	
 	public UserInfo showBankAccount(int userNo) {
 		return mapper.showBankAccount(userNo);
 	}

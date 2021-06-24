@@ -55,14 +55,17 @@ public class UserLoginController {
 			}
 			response.addCookie(rememberCookie);
 
-			return "redirect:/main";
-		} catch (WrongIdPasswordException ex) {
-			errors.reject("idPasswordNotMatching");
-			return "account/login";
+			if(userAuthInfo.getUserNo() < 0) {
+				return "redirect:/admin";
+			}
+			return "redirect:/main";			
 		} catch (UserNotFoundException ex) {
-			errors.reject("userNotFound");
+			errors.rejectValue("userId","userNotFound");
 			return "account/login";
-		}
+		}catch (WrongIdPasswordException ex) {
+			errors.rejectValue("userPw", "idPasswordNotMatching");
+			return "account/login";
+		} 
 
 	}
 

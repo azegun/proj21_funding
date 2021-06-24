@@ -1,14 +1,15 @@
-  @charset "UTF-8";
- h2{
- margin-left: 50px;
- }
-.slider {	
-	margin:0 auto;
+@charset "UTF-8";
+
+.bx-wrapper {
+	width: 100%;
 }
+
+.slider {
+	margin: 0 auto;
+	width: 100%;
+}
+
 img {
 	width: 250px;
-	height:250px;
-}
-.bx-wrapper {
-	margin-left: 50px;
+	height: 250px;
 }

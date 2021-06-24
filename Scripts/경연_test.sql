@@ -8,7 +8,11 @@ join prjoption o on p.PrjNo =o.PrjNo
 		
 select * from fundinginfo f ;
 select * from prjoption o ;
-select * from userinfo o ;
+select * from userinfo u2 ;
+select * from userinfo o where Secession is null  or Secession is false;
+select * from userinfo where BankAccount is not null and BankName is not null;
+
+update userInfo set Secession = true where userno=3;
 
 -- 프로젝트별 인원수, 가격
 select count(*),sum(optprice) 
@@ -85,3 +89,12 @@ select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			where o.optNo = 6;
 			
 select * from admin;
+
+select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount, c.pcategoryno, c.pcategoryname
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo;

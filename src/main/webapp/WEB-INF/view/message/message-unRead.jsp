@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>안 읽은 쪽지 모아보기</title>
+<title>안 읽은 쪽지함</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-unRead.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -42,63 +44,66 @@
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/>
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp"/>			 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/>					 
 		</header>
 		<section id="messageFormArea">		
 			<fieldset id="menu">
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
-			<h2>안 읽은 쪽지 모아보기(${pagination.totalRecordCount})</h2>
-			<form:form modelAttribute="message"  action="dels">
-			<fieldset>
-				<table>
-					<tr>	
-						<th><input type="checkbox" id="checkAll"/></th>					
-						<th>발신자</th>						
-						<th>내용</th>
-						<th>발신일</th>						
-					</tr>
-					<c:forEach var="msg" items="${messages}">
-						<tr>
-							<td><form:checkbox path="check" value="${msg.msgNo}"/></td>		
-							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}?currentPage=${pagination.currentPage}&readYN=${msg.readYN}" />">${msg.sendUser}</a></td>		
-							<td><a href="<c:url value="/message/message-receive/${msg.msgNo}?currentPage=${pagination.currentPage}&readYN=${msg.readYN}" />">${msg.msgContent}</a></td>									
-							<td><tf:formatDateTime value="${msg.sendDate}" pattern="yyyy-MM-dd" /></td>																			
+			<div id="message">
+				<h2>안 읽은 쪽지함${pagination.totalRecordCount})</h2>
+				<form:form modelAttribute="message"  action="dels">
+				<fieldset id="messageForm">
+					<table>
+						<tr>	
+							<th><input type="checkbox" id="checkAll"/></th>					
+							<th>발신자</th>						
+							<th>내용</th>
+							<th>발신일</th>						
 						</tr>
-					</c:forEach>					
-				</table>
-			</fieldset>
-			
-			<!--paginate -->
-		    <div class="paginate">
-		        <div class="paging">
-		            <a class="direction prev" href="javascript:void(0);"
-		                onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">
-		                &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
-		                onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
-		                &lt; </a>
-		 
-		            <c:forEach begin="${pagination.firstPage}"
-		                end="${pagination.lastPage}" var="idx">
-		                <a
-		                    style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
-		                    href="javascript:void(0);"
-		                    onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});"><c:out
-		                        value="${idx}" /></a>
-		            </c:forEach>
-		            <a class="direction next" href="javascript:void(0);"
-		                onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
-		                &gt; </a> <a class="direction next" href="javascript:void(0);"
-		                onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize});">
-		                &gt;&gt; </a>
-		        </div>
-		    </div>
-		    <!-- /paginate -->
-		   <form:hidden path="readYN"  value="false"/> 
-		   <form:hidden path="currentPage" value="${pagination.currentPage}"/>
-		   <form:button>삭제</form:button>
-			</form:form>				
+						<c:forEach var="msg" items="${messages}">
+							<tr>
+								<td><form:checkbox path="check" value="${msg.msgNo}"/></td>		
+								<td><a href="<c:url value="/message/message-receive/${msg.msgNo}?currentPage=${pagination.currentPage}&readYN=${msg.readYN}" />">${msg.sendUser}</a></td>		
+								<td><a href="<c:url value="/message/message-receive/${msg.msgNo}?currentPage=${pagination.currentPage}&readYN=${msg.readYN}" />">${msg.msgContent}</a></td>									
+								<td><tf:formatDateTime value="${msg.sendDate}" pattern="yyyy-MM-dd" /></td>																			
+							</tr>
+						</c:forEach>					
+					</table>
+				</fieldset>
+				
+				<!--paginate -->
+			    <div class="paginate">
+			        <div class="paging">
+			            <a class="direction prev" href="javascript:void(0);"
+			                onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">
+			                &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+			                onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
+			                &lt; </a>
+			 
+			            <c:forEach begin="${pagination.firstPage}"
+			                end="${pagination.lastPage}" var="idx">
+			                <a
+			                    style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+			                    href="javascript:void(0);"
+			                    onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});"><c:out
+			                        value="${idx}" /></a>
+			            </c:forEach>
+			            <a class="direction next" href="javascript:void(0);"
+			                onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
+			                &gt; </a> <a class="direction next" href="javascript:void(0);"
+			                onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize});">
+			                &gt;&gt; </a>
+			        </div>
+			    </div>
+			    <!-- /paginate -->
+			   <form:hidden path="readYN"  value="false"/> 
+			   <form:hidden path="currentPage" value="${pagination.currentPage}"/>
+			   <div id="btn">
+			  	 <form:button>삭제</form:button>
+			   </div>
+			</form:form>
+		</div>				
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 

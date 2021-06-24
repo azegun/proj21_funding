@@ -49,7 +49,8 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/account/user**");
 		registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/message/**");
-
+		registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/qnauserview");
+		registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/qnawrite");
 	}
 
 	@Bean

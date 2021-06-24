@@ -6,31 +6,30 @@
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/searchId.css">
 </head>
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
-		<section id="searchIdFormArea">
-			<h1>아이디 찾기</h1>
+		<section id="searchIdArea">
+			<h1>회원계정 찾기</h1>
 			<form:form action="searchId-rs" modelAttribute="userSearch">
 			<form:errors />
-				<fieldset id="searchBtn">
+				<fieldset id="searchIdForm">
 					<p>
-						<label> 회원성명 :
-						<form:input path="userName" /> 
-						<form:errors path="userName" />
-						</label>
+						<label>회 원 성 명</label>:<br>
+						<form:input path="userName" id="input"/> 					
 					</p>
+					<p id="errors"><form:errors path="userName"/>&nbsp;</p>
 					<p>
-						<label> 이메일 :
-						<form:input path="email" /> 
-						<form:errors path="email" />
-						</label>
+						<label> 이 메 일 </label>:<br>
+						<form:input path="email" id="input"/> 
 					</p>
-				</fieldset>	
-				<form:button id="search">아이디 찾기</form:button>
+					<p id="errors"><form:errors path="email"/>&nbsp;</p>
+				</fieldset>				
+				<form:button>아이디 찾기</form:button>					
 			</form:form>				
 		</section>
 		<footer>

@@ -34,5 +34,15 @@ public class FundingInfoServiceImpl implements FundingInfoService {
 		return mapper.insertFundingInfo(fundingInfo);
 	}
 
+	@Override
+	public int showCountByUserNo(int userNo) {
+		return mapper.selectCountByUserNo(userNo);
+	}
+
+	@Override
+	public int showSumByUserNo(int userNo) {
+		return mapper.selectSumByUserNo(userNo);
+	}
+
 
 }

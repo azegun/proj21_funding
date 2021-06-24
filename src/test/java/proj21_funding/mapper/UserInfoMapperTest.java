@@ -41,6 +41,12 @@ public class UserInfoMapperTest {
 //	}
 
 	@Test
+	public void test02SelectUserbyId() {
+		String userId = "test10";
+		UserInfo userInfo = mapper.selectUserbyId(userId);
+	}
+		
+	@Test
 	public void test01SelectUserbyNo() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 

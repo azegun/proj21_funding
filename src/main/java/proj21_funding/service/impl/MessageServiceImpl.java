@@ -1,5 +1,6 @@
 package proj21_funding.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +36,27 @@ public class MessageServiceImpl implements MessageService {
 
 	@Override
 	public int sendMessage(Message message) {
+		
 		String receive = message.getReceiveUser();
 		String[] user = receive.split(", ");
+		
+		List<String> reUser =  new ArrayList<>();	
+		for(String item : user) {
+			if(!reUser.contains(item))
+				reUser.add(item);
+		}
+		
 
-		for (int i = 0; i < user.length; i++) {
-			message.setReceiveUser(user[i]);
+		if(receive.equals("")) {
+			throw new UserNotFoundException();
+		}
+		
+		if(message.getMsgContent().equals("")) {
+			throw new NullPointerException();
+		}	
+		
+		for (String reList : reUser) {
+			message.setReceiveUser(reList);
 
 			UserInfo info = userMapper.selectUserbyId(message.getReceiveUser());
 			if (info == null) {

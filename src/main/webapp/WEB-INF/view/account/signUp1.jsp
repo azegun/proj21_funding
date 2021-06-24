@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/signUp1.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/signUp1.css">
 	<script type="text/javascript">
 	function findAddr(){
 		new daum.Postcode({
@@ -36,96 +36,83 @@
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
-		<section id="signUpForm">
+		<section id="signUpArea">
 			<h2>회원 가입</h2>		
 			<form:form action="signUp2" modelAttribute="userSignUp">	
 			<form:errors />		
-			<fieldset id="signForm">
-				<p><label> 회원계정 :
-					<form:input path="userId" placeholder="4글자 이상 입력하세요" />					
-					<form:errors path="userId" id="errors"/>
-					</label>
-				</p>
-								
-				<p><label> 비밀번호 :
-					<form:password path="userPw" placeholder="4자리 이상 입력하세요"/>
-					<form:errors path="userPw"  id="errors"/>
-					</label>
-				</p>				
+			<fieldset id="signUpForm">
 				<p>
-					<label> 비밀번호확인 :
-					<form:password path="confirmUserPw" placeholder="4자리 이상 입력하세요" /> 
-					<form:errors path="confirmUserPw" id="errors"/>
-					</label>
-				</p>
-				<p>
-					<label> 회원성명 :
-					<form:input path="userName" /> 
-					<form:errors path="userName" id="errors"/>
-					</label>
-				</p>
-				<p>
-					<label> 회원별명 :
-					<form:input path="nickName" /> 
-					<form:errors path="nickName" id="errors"/>
-					</label>
-				</p>
-				<p>
-					<label> 이메일 :
-					<form:input path="email" /> 
-					<form:errors path="email" id="errors"/>
-					</label>
-				</p>
-				<p>
-					<label> 회원H.P :
-					<form:input path="userPhone" /> 
-					<form:errors path="userPhone" id="errors"/>
-					</label>
-				</p>			
-				<p>
-					<label> 우편번호 검색하기 :
-					<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true" onclick="findAddr()" /> 
-					<form:errors path="zipCode" id="errors"/>					
-					</label>
-				</p>
-				<p>
-					<label> 주소 :
-					<form:input path="address" id="member_addr" readonly="true" />
-					<form:errors path="address" id="errors"/>					
-					</label>
-				</p>
-				<p>
-					<label> 상세주소 :
-					<form:input path="detailAddress" placeholder="상세주소를 입력하세요" /> 
-					<form:errors path="detailAddress" />					
-					</label>
+					<label >회 원 계 정</label>:
+					<form:input path="userId" placeholder="4글자 이상 입력하세요" />
 				</p>					
+				<p id="errors"><form:errors path="userId"/>&nbsp;</p>
 				<p>
-					<label> 은행명 :
-					<form:input path="bankName" /> 
-					<form:errors path="bankName" />
-					</label>
-				</p>
-				<p>
-					<label> 예금주 :
-					<form:input path="accountHolder" /> 
-					<form:errors path="accountHolder" />
-					</label>
+					<label>비밀번호입력 </label>:
+					<form:password path="userPw" placeholder="4자리 이상 입력하세요"/>
 				</p>	
+				<p id="errors"><form:errors path="userPw"/>&nbsp;</p>				
 				<p>
-					<label> 계좌번호 :
-					<form:input path="bankAccount" /> 									
-					<form:errors path="bankAccount" />
-					</label>
+					<label>비밀번호확인</label>:
+					<form:password path="confirmUserPw" placeholder="4자리 이상 입력하세요" />
+				</p>				
+				<p id="errors"><form:errors path="confirmUserPw"/>&nbsp;</p>
+				<p>
+					<label>회 원 성 명</label>:
+					<form:input path="userName" /> 
 				</p>
-									
-				<P>이용약관에 모두 동의 합니다.
-				<form:checkbox path="agree" value="true"/>				
-				<a href="#" id="Terms">
-				<form:button type="button">보기</form:button></a>
-				<form:errors path="agree" id="errors"/>		
+				<p id="errors"><form:errors path="userName"/>&nbsp;</p>				
+				<p>
+					<label>회 원 별 명</label>:
+					<form:input path="nickName"/>
+				</p> 
+				<p id="errors"><form:errors path="nickName"/>&nbsp;</p>
+				<p>
+					<label> 이 메 일 </label>:
+					<form:input path="email"/>
+				</p> 
+				<p id="errors"><form:errors path="email"/>&nbsp;</p>
+				<p>
+					<label>회 원 H.P</label>:
+					<form:input path="userPhone" />
+				</p>		 
+				<p id="errors">&nbsp;</p>						
+				<p>
+					<label>우 편 번 호</label>:
+					<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true" /> 
+					<form:button type="button" onclick="findAddr()">검색</form:button>
 				</p>
-				<form:button id="submit">가입하기</form:button>
+				<p id="errors">&nbsp;</p>					
+				<p>
+					<label>주  소</label>:
+					<form:input path="address" id="member_addr" readonly="true" />
+				</p>
+				<p id="errors"><form:errors path="address"/>&nbsp;</p>					
+				<p>
+					<label>상 세 주 소</label>:
+					<form:input path="detailAddress" placeholder="상세주소를 입력하세요" />
+				</p>		 
+				<p id="errors">&nbsp;</p>								
+				<p>
+					<label>은 행 명</label>:
+					<form:input path="bankName" />
+				</p>
+				<p id="errors">&nbsp;</p>
+				<p>
+					<label>예 금 주</label>:
+					<form:input path="accountHolder" />
+				</p>
+				<p id="errors">&nbsp;</p>	
+				<p>
+					<label>계 좌 번 호</label>:
+					<form:input path="bankAccount" />
+				</p>
+				<p id="errors">&nbsp;</p>									
+				<P id="Terms">이용약관에 모두 동의 합니다.
+					<form:checkbox path="agree" value="true"/>				
+					<a href="#"><form:button type="button">보기</form:button></a>
+				</p>
+				<p id="agreeEerrors"><form:errors path="agree"/>&nbsp;</p>							
+				<form:button id="submit">회 원 가 입</form:button>
 			</fieldset>			
 			</form:form>
 		</section>		
