@@ -28,7 +28,11 @@ public interface BoardService {
 //	페이징 시도중
 	List<Map<String, Object>> SelectAllList (Pagination pagination) throws Exception;
 	
+	List<Map<String, Object>> SelectCategoryList (int categoryNo, Pagination pagination) throws Exception;
+	
 	int BoardCount() throws Exception;
+	
+	int BoardCategoryCount(int categoryNo) throws Exception;
 //	
 	
 }

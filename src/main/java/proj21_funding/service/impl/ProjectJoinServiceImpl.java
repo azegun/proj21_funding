@@ -60,5 +60,10 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 	public List<ProjectJoin> showSponsorListByPrjNo(int prjNo) {
 		return mapper.selectSponsorListByPrjNo(prjNo);
 	}
+		
+	@Override
+	public List<ProjectJoin> showProjectJoinByPcategoryno(int pcategoryno) {
+		return mapper.selectProjectJoinByPcategoryno(pcategoryno);
+	}
 
 }

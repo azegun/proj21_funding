@@ -3,6 +3,7 @@ package proj21_funding.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import proj21_funding.dto.Board;
@@ -15,8 +16,12 @@ public interface BoardMapper {
 //	페이징 시도중
 		
 	List<Map<String, Object>> SelectAllList (Pagination pagination);
+
+	List<Map<String, Object>> SelectCategoryList(@Param("categoryNo") int categoryNo, @Param("pageSearch") int pageSearch, @Param("cntPerPage") int cntPerPage);
 	
 	int BoardCount();
+
+	int BoardCategoryCount(int categoryNo);
 	
 //	여기까지
 	

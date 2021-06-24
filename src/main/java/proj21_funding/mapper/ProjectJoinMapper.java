@@ -9,6 +9,7 @@ public interface ProjectJoinMapper {
 	List<ProjectJoin> selectProjectSuccessImbak();
 	List<ProjectJoin> selectProjectJoinByPrjName(String prjName);
 	List<ProjectJoin> selectProjectJoinByPrjManager(String prjManager);
+	List<ProjectJoin> selectProjectJoinByPcategoryno(int pcategoryno);
 	
 	ProjectJoin selectProjectJoinByPrjNo(int prjNo);
 	

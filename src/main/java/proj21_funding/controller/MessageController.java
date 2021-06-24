@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import proj21_funding.dto.FundingInfo;
 import proj21_funding.dto.Message;
@@ -95,23 +96,22 @@ public class MessageController {
 	}
 
 	@PostMapping("/message/message-receive/{msgNo}")
-	public String receiveReply(@PathVariable("msgNo") int msgNo, Message message, Errors errors, Model model) {
-		if (message == null) {
-			throw new UserNotFoundException();
+	public String receiveReply(@PathVariable("msgNo") int msgNo, Message message, Errors errors, RedirectAttributes rttr, Model model) {
+		if (errors.hasErrors()) {
 		}
-		try {
-			System.out.println(message);
+		
+		try {			
 			Message message1 = new Message(message.getReceiveUser(), message.getSendUser(), message.getMsgContent());
-			service.sendMessage(message1);
-
-			return "redirect:/message/message-receive/"+ msgNo
-					+"?currentPage=" +message.getCurrentPage()
-					+"&readYN="+message.isReadYN();
-		} catch (UserNotFoundException e) {
-			errors.rejectValue("UserName", "notSearching");
-			return "message/message-detail";
+			service.sendMessage(message1);	
+			
+					
+		} catch (NullPointerException e) {			
+			rttr.addFlashAttribute("err","전달하고 싶은 내용을 적어주세요.");			
 		}
-
+		return "redirect:/message/message-receive/"+ msgNo
+				+"?currentPage=" +message.getCurrentPage()
+				+"&readYN="+message.isReadYN();	
+		
 	}
 
 	@GetMapping("/message/message-receive/delete/{msgNo}")
@@ -182,8 +182,11 @@ public class MessageController {
 		try {
 			service.sendMessage(message);
 			return "redirect:/message/message-receive";
-		} catch (UserNotFoundException e) {
+		}catch (UserNotFoundException e) {
 			errors.rejectValue("receiveUser", "userNotFound");
+			return "message/message-write";
+		}catch (NullPointerException e) {
+			errors.rejectValue("msgContent", "nullContent");
 			return "message/message-write";
 		}catch (SameUserException e) {
 			errors.rejectValue("receiveUser", "SameUserImpossible");

@@ -5,63 +5,67 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page import="proj21_funding.service.impl.CategoryServiceImpl"%>
 <%@ page import="proj21_funding.service.CategoryService"%>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
+<%
+response.setContentType("text/html; charset=UTF-8");
+%>
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>등록하기 | 공지사항</title>
-<link rel="stylesheet" href="/proj21_funding/css/servicecenter_write.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
+<link rel="stylesheet"
+	href="/proj21_funding/css/servicecenter_write.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/notice_css/write.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">	
-</script>
+<!-- SmartEditor2 라이브러리 -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/nse_files/js/HuskyEZCreator.js"
+	charset="utf-8"></script>
 </head>
 <body>
-${board }<br>
 	<section class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp" />
 		</header>
 		<section class="sevicecenter_write">
-		<h2>글 수정</h2>
-		<form action="<%=request.getContextPath() %>/noticeupsuccess" method="post">
-				<table>
-					<tr>
-						<td><input type="hidden" name="boardNo" id="boardNo" value="${board.boardNo }" /></td>
-					</tr>
-					<tr>
-						<td class="td_left"><label for="categoryNo">분류</label></td>
-						<td class="td_right">
-							<select id="categoryNo.categoryNo" name="categoryNo.categoryNo">
-								<c:forEach var="bc" items="${bc }" varStatus="status">
-									<c:if test="${bc.categoryClass eq 'board' }">
-										<c:choose>
-											<c:when test="${bc.categoryNo eq board.categoryNo.categoryNo}"><option class="bc" value="${bc.categoryNo }" selected>${bc.categoryName }</option></c:when>
-											<c:otherwise><option class="bc" value="${bc.categoryNo }">${bc.categoryName }</option></c:otherwise>
-										</c:choose>
-									</c:if>
-								</c:forEach>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td class="td_left"><label for="boardTitle">제목</label></td>
-						<td class="td_right"><input type="text" name="boardTitle"
-							id="boardTitle" required="required" value="${board.boardTitle }"></td>
-					</tr>
-					<tr>
-						<td class="td_left"><label for="boardContent">내용</label></td>
-						<td class="td_right"><textarea name="boardContent"
-								id="boardContent" cols="40" rows="15" required="required">${board.boardContent }</textarea></td>
-					</tr>
-				</table>
-				<section id="commandCell">
-					<input type="submit" value="등록">&nbsp;&nbsp;
-					<a href="<%=request.getContextPath()%>/notice/list"><button id="go_notice">취소</button></a>
-				</section>
+			<h2>글 수정</h2>
+			<form action="<%=request.getContextPath()%>/noticeupsuccess" method="post">
+				<input type="hidden" name="boardNo" id="boardNo" value="${board.boardNo }" />
+				<select id="categoryNo" name="categoryNo.categoryNo" class="category">
+					<c:forEach var="bc" items="${bc }">
+						<c:if test="${bc.categoryClass eq 'board' }">
+							<c:choose>
+								<c:when test="${bc.categoryNo eq board.categoryNo.categoryNo}">
+									<option class="bc" value="${bc.categoryNo }" selected>${bc.categoryName }</option>
+								</c:when>
+								<c:otherwise>
+									<option class="bc" value="${bc.categoryNo }">${bc.categoryName }</option>
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+				</select>
+				<input type="text" name="boardTitle" id="boardTitle"
+					required="required" class="boardTitle"
+					value="${board.boardTitle }">
+				<textarea name="boardContent" id="boardContent" id="ir1"
+					style="width: 100%; height: 400px;">${board.boardContent }</textarea>
+					
+				<div class="commandCell">
+					<input type="submit" value="등록" onclick="submitContents(this)" class="menubutton">&nbsp;&nbsp;
+					<a href="<%=request.getContextPath()%>/notice/list"><button
+							id="go_notice" class="menubutton">취소</button></a>
+				</div>
 			</form>
 		</section>
+
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer_menu.jsp" />
 			<jsp:include page="/WEB-INF/view/home/footer_info.jsp" />
@@ -70,4 +74,58 @@ ${board }<br>
 
 	</section>
 </body>
+<script type="text/javascript">
+	var contextpath = "${contextPath}";
+	console.log(contextpath);
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef : oEditors,
+		elPlaceHolder : "boardContent",
+		sSkinURI : contextpath + "/nse_files/SmartEditor2Skin.html",
+		fCreator : "createSEditor2"
+	});
+
+	function submitContents(elClickedObj) {
+		oEditors.getById["boardContent"].exec("UPDATE_CONTENTS_FIELD", []);
+
+
+		var categoryNo = $("#categoryNo > option:selected").val();
+		var boardTitle = $("#boardTitle").val();
+		var boardContent = document.getElementById("boardContent").value;;
+
+		if (categoryNo == "") {
+			alert("카테고리를 선택해주세요.");
+			return;
+		}
+		
+		if (boardTitle == null || boardTitle == "") {
+			alert("제목을 입력해주세요.");
+			$("#boardTitle").focus();
+			return;
+		}
+		
+		if(boardContent == "" || boardContent == null || boardContent == '&nbsp;' || 
+				boardContent == '<br>' || boardContent == '<br/>' || boardContent == '<p>&nbsp;</p>'){
+			alert("본문을 작성해주세요.");
+			oEditors.getById["boardContent"].exec("FOCUS"); //포커싱
+			return;
+		} //이 부분은 스마트에디터 유효성 검사 부분이니 참고하시길 바랍니다.
+		
+		var result = confirm("발행 하시겠습니까?");
+		
+		if(result){
+			alert("발행 완료!");
+			$("#noticeWriteForm").submit();
+		}else{
+			return;
+		}
+		
+		
+		try {
+			elClickedObj.form.submit();
+		} catch (e) {
+		}
+	}
+	
+</script>
 </html>

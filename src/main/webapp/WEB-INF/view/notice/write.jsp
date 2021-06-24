@@ -5,6 +5,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page import="proj21_funding.service.impl.CategoryServiceImpl"%>
 <%@ page import="proj21_funding.service.CategoryService"%>
+<% request.setCharacterEncoding("UTF-8");%>
+<% response.setContentType("text/html; charset=UTF-8");%>
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,46 +17,38 @@
 	href="/proj21_funding/css/servicecenter_write.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath() %>/css/home_css/main.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/notice_css/write.css">
+	
+<!-- SmartEditor2 라이브러리 -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/nse_files/js/HuskyEZCreator.js"
+	charset="utf-8"></script>
 </head>
 <body>
-${authInfo.userNo }
-	<%=request.getContextPath() %>
 	<section class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp" />
 		</header>
 		<section class="sevicecenter_write">
 			<h2>글 작성</h2>
 			<form action="<%=request.getContextPath() %>/noticesuccess"
 				method="post">
-				<table>
-					<tr>
-						<td class="td_left"><label for="categoryNo">분류</label></td>
-						<td class="td_right"><select name="categoryNo.categoryNo">
+						<select name="categoryNo.categoryNo" class="category">
 								<c:forEach var="bc" items="${bc }">
 									<c:if test="${bc.categoryClass eq 'board' }">
 										<option value="${bc.categoryNo }">${bc.categoryName }</option>
 									</c:if>
 								</c:forEach>
-						</select></td>
-					</tr>
-					<tr>
-						<td class="td_left"><label for="boardTitle">제목</label></td>
-						<td class="td_right"><input type="text" name="boardTitle"
-							id="boardTitle" required="required"></td>
-					</tr>
-					<tr>
-						<td class="td_left"><label for="boardContent">내용</label></td>
-						<td class="td_right"><textarea name="boardContent"
-								id="boardContent" cols="40" rows="15" required="required"></textarea></td>
-					</tr>
-				</table>
-				<section id="commandCell">
-					<input type="submit" value="등록">&nbsp;&nbsp; <input
-						type="reset" value="다시쓰기"> <a href="/notice/list"><button
-							id="go_qna">돌아가기</button></a>
-				</section>
+						</select>
+						<input type="text" name="boardTitle" id="boardTitle" required="required" class="boardTitle" placeholder="제목을 입력해 주세요.">
+			<textarea name="boardContent" id="boardContent" id="ir1" style="width:100%; height:400px;" placeholder="내용을 입력하세요."></textarea>
+
+				<div class="commandCell">
+					<input type="submit" value="등록" onclick="submitContents(this)" class="menubutton">&nbsp;&nbsp;
+					<input type="reset" value="다시쓰기" class="menubutton">&nbsp;&nbsp;
+					<a href="/notice/list"><button id="go_notice" class="menubutton">돌아가기</button></a>
+				</div>
 			</form>
 		</section>
 		<footer>
@@ -64,4 +59,56 @@ ${authInfo.userNo }
 
 	</section>
 </body>
+<script type="text/javascript">
+	var contextpath = "${contextPath}";
+	console.log(contextpath);
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef : oEditors,
+		elPlaceHolder : "boardContent",
+		sSkinURI : contextpath + "/nse_files/SmartEditor2Skin.html",
+		fCreator : "createSEditor2"
+	});
+
+
+	function submitContents(elClickedObj) {
+		oEditors.getById["boardContent"].exec("UPDATE_CONTENTS_FIELD", []);
+
+		var categoryNo = $("#categoryNo > option:selected").val();
+		var boardTitle = $("#boardTitle").val();
+		var boardContent = document.getElementById("boardContent").value;;
+
+		if (categoryNo == "") {
+			alert("카테고리를 선택해주세요.");
+			return;
+		}
+		
+		if (boardTitle == null || boardTitle == "") {
+			alert("제목을 입력해주세요.");
+			$("#boardTitle").focus();
+			return;
+		}
+		
+		if(boardContent == "" || boardContent == null || boardContent == '&nbsp;' || 
+				boardContent == '<br>' || boardContent == '<br/>' || boardContent == '<p>&nbsp;</p>'){
+			alert("본문을 작성해주세요.");
+			oEditors.getById["boardContent"].exec("FOCUS"); //포커싱
+			return;
+		} //이 부분은 스마트에디터 유효성 검사 부분이니 참고하시길 바랍니다.
+		
+		var result = confirm("발행 하시겠습니까?");
+		
+		if(result){
+			alert("발행 완료!");
+			$("#noticeWriteForm").submit();
+		}else{
+			return;
+		}
+		
+		try {
+			elClickedObj.form.submit();
+		} catch (e) {
+		}
+	}
+</script>
 </html>

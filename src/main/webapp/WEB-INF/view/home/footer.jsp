@@ -12,9 +12,6 @@
 			<div class = "footer_menu">
 					<jsp:include page="/WEB-INF/view/home/footer_menu.jsp"/>			
 			</div>
-			<div class= "footer_question">
-					<jsp:include page="/WEB-INF/view/home/footer_question.jsp"/>
-			</div>			
 			<div class ="footer_info">
 					<jsp:include page="/WEB-INF/view/home/footer_info.jsp"/>
 			</div>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메세지</title>
+<title>쪽지</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-write.css">
 <script type="text/javascript">
@@ -23,17 +23,17 @@
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<div id="message">
-				<h2>메세지 보내기</h2>		
+				<h2>쪽지 보내기</h2>		
 				<form:form modelAttribute="message">	
 				<form:errors />
 					<fieldset id="messageForm">
 						<p>
-							<label> 보내는사람 </label>:
+							<label>보내는회원</label>:
 							<form:input path="sendUser" readonly="true" value="${authInfo.userId}"  id="input1"/> 
 						</p>
-						<p id="errors"><form:errors path="sendUser"/>&nbsp;</p>
+						<p id="errors">&nbsp;</p>
 						<p>
-							<label> 받는사람 </label>: 
+							<label>받는회원</label>: 
 							<form:input path="receiveUser" id="receiveUser" /> 
 							<form:button type="button" onclick="openSearch()">검색</form:button>
 						</p>

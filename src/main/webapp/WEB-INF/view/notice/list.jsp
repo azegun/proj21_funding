@@ -25,24 +25,31 @@
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
-			<jsp:include page="/WEB-INF/view/home/header_account.jsp" />
 		</header>
 		<section class="notice_view">
 			<div class="top">
-				<span class="notice">공지사항</span> <select name="category">
+				<div class="top_title">
+					<span class="notice">공지사항</span>
+				</div>
+				<div class="top_category">
+					<span class="cate"><a
+						href="<%=request.getContextPath()%>/notice/list" class="catetext">전체보기</a></span>
 					<c:forEach var="bc" items="${bc }">
 						<c:if test="${bc.categoryClass eq 'board' }">
-							<option value="${bc.categoryNo }">${bc.categoryName }</option>
+							<span class="cate"><a
+								href="<%=request.getContextPath()%>/notice/list/${bc.categoryNo }"
+								class="catetext">${bc.categoryName }</a></span>
 						</c:if>
 					</c:forEach>
-				</select> <input type="button" value="조회">
+				</div>
 			</div>
+			
+			
 			<div class="list">
-				<ul>
+				<ul class="cont">
 					<c:choose>
 						<c:when test="${fn:length(board) > 0}">
 							<c:forEach items="${board}" var="board">
-								<%-- <c:forEach var="board" items="${board }"> --%>
 								<li class="title-box"><a
 									href="<%=request.getContextPath() %>/notice/detail/${board.BoardNo }&${board.CategoryNo}"
 									class="notice"><span class="title-box"><span
@@ -61,6 +68,8 @@
 					</c:choose>
 				</ul>
 			</div>
+			
+			
 			<!--paginate -->
 			<div class="paginate">
 				<div class="paging">
@@ -87,11 +96,12 @@
 			</div>
 			<!-- /paginate -->
 
-
-			<c:if test="${authInfo.userNo < 0 }">
-				<a href="<%=request.getContextPath()%>/notice/write"><input
-					type="button" value="공지글 작성"></a>
-			</c:if>
+			<div class="bottommenu">
+				<c:if test="${authInfo.userNo < 0 }">
+					<a href="<%=request.getContextPath()%>/notice/write"><input
+						type="button" value="공지글 작성" class="writenotice"></a>
+				</c:if>
+			</div>
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp" />
