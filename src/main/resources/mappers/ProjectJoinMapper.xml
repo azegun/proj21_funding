@@ -4,7 +4,9 @@
 	<resultMap type="ProjectJoin" id="resProjectJoin">
 		<id property="prjNo" column="prjNo"/>
 		<result property="prjManager" column="prjManager"/>
+		<result property="managerName" column="managerName"/>
 		<result property="prjName" column="prjName"/>
+		<result property="userId" column="userId"/>
 		<result property="prjContent" column="prjContent"/>
 		<result property="prjGoal" column="prjGoal"/>
 		<result property="startDate" column="startDate"/>
@@ -17,6 +19,7 @@
 		<result property="optContent" column="optContent"/>
 		<result property="fundingNo" column="fundingNo"/>
 		<result property="sponsor" column="fundingUser"/>
+		<result property="sponsorName" column="fundingUserName"/>
 		<result property="accountNo" column="accountNo"/>
 		<result property="payYn" column="payYn"/>
 		<result property="rate" column="rate"/>
@@ -28,7 +31,7 @@
 	
 	<select id="selectProjectJoinAll" resultMap="resProjectJoin">
 	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
-			,count(fundingno) as totalCount, c.pcategoryno, c.pcategoryname, endDate, round(sum(optprice)/prjgoal*100,2) as rate
+			,count(fundingno) as totalCount,prjContent, c.pcategoryno, c.pcategoryname, startDate, endDate, round(sum(optprice)/prjgoal*100,2) as rate
 		  from fundinginfo f 
 	      join prjoption o on o.optno= f.OptNo 
 		  right join project p on p.prjno = f.PrjNo 
@@ -71,8 +74,8 @@
 	</select>
 	
 	<select id="selectProjectJoinByPrjNo" resultMap="resProjectJoin" parameterType="int">
-	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
-			,count(fundingno) as totalCount
+	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname,p.prjContent, p.prjgoal, u.nickname as prjManager,u.userName as managerName
+			,count(fundingno) as totalCount, round(sum(optprice)/prjgoal*100,2) as rate
 		  from fundinginfo f
 	      join prjoption o on o.optno= f.OptNo 
 		  right join project p on p.prjno = f.PrjNo 
@@ -99,6 +102,13 @@
 	select count(p.prjno) as totalCount,u.userno as prjManager
 		from project p right join userinfo u on p.userno = u.userno 
 		group by u.userno; 
+	</select>
+	<!--프로젝트 별 후원자 리스트  -->
+	<select id="selectSponsorListByPrjNo" resultMap="resProjectJoin">
+	select fundingNo, prjName , f.optNo as optNo , optPrice,optName,optContent, u.username as fundingUserName ,u.nickname as fundingUser ,u.userid as userId
+	from userinfo u left join fundinginfo f on u.userno = f.userno
+					join project p on p.prjno = f.PrjNo 
+					join prjoption o on o.optno= f.optno where p.prjNo= #{prjNo};
 	</select>
 	
 		<select id="selectProjectJoinByPcategoryno" resultMap="resProjectJoin">

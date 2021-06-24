@@ -55,7 +55,10 @@ public class UserLoginController {
 			}
 			response.addCookie(rememberCookie);
 
-			return "redirect:/main";
+			if(userAuthInfo.getUserNo() < 0) {
+				return "redirect:/admin";
+			}
+			return "redirect:/main";			
 		} catch (UserNotFoundException ex) {
 			errors.rejectValue("userId","userNotFound");
 			return "account/login";
