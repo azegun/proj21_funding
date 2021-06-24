@@ -54,6 +54,12 @@
 	font-family: 'NanumBarunGothic', sans-serif;
 }
 
+.cate_title{
+	color: gray;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+
 .project_menu {
 	margin-bottom: 15px;
 }
