@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +31,12 @@
 				<div class="project_menu">
 					<a href="">신규 프로젝트</a>
 				</div>
+			</div>					
+			<div>
+				<div>카테고리</div>
+				<c:forEach items="${prjCategory}" var="prjCategory">
+					<div><a href="<c:url value='/categoryByProject?pCategoryNo=${prjCategory.pCategoryNo}'/>">${prjCategory.pCategoryName}</a></div>
+				</c:forEach>
 			</div>
 		</section>
 	</div>
