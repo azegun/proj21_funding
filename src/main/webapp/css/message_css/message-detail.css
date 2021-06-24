@@ -2,11 +2,14 @@
 
 #messageFormArea{	
 	display: flex;
+
 }
 
 #menu{
 	border: none;	
-	padding-top: 30px;	
+	padding-top: 30px;
+
+	
 }
 
 #message{	

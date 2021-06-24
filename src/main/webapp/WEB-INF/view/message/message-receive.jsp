@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>받은 메세지함</title>
+<title>받은 쪽지함</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-receive.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -51,7 +51,7 @@
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<div id="message">
-				<h2>받은 메세지(${pagination.totalRecordCount})</h2>
+				<h2>받은 쪽지함(${pagination.totalRecordCount})</h2>
 				<form:form modelAttribute="message" action="dels">										
 				<fieldset id="messageForm">
 					<table>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>안 읽은 쪽지 보기</title>
+<title>안 읽은 쪽지함</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/message_css/message-unRead.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -51,7 +51,7 @@
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<div id="message">
-				<h2>안 읽은 쪽지 보기(${pagination.totalRecordCount})</h2>
+				<h2>안 읽은 쪽지함${pagination.totalRecordCount})</h2>
 				<form:form modelAttribute="message"  action="dels">
 				<fieldset id="messageForm">
 					<table>

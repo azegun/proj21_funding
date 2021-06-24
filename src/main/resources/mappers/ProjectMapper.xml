@@ -35,10 +35,9 @@
 		</select>	
 		
 		<select id="selectProjectByUser" resultMap="resProject">
-			select PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
-				   StartDate, EndDate, PayDate, EndYN
+			select PrjNo, UserNo, PrjName, EndDate
 			  from project
-			 where UserNo = #{userNo.userNo}		
+			 where UserNo = #{userNo.userNo} and EndDate >= now()
 		</select>		
 		
 		<!--성공임박 프로젝트 달성률 80프로이상  -->
