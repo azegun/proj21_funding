@@ -8,6 +8,10 @@
 		<result property="optPrice" column="OptPrice"/>
 		<result property="optContent" column="OptContent"/>
 	</resultMap>
+	
+	<!-- <resultMap type="PrjOption" id="AssciatePrjAndPrjOpt">
+		<association property="prjNo" resultMap="proj21_funding.mapper.ProjectMapper.resProject"></association>	
+	</resultMap> -->
 			
 	<!--프로젝트 + 프로젝트옵션 + 유저정보 -->
 	<resultMap type="PrjOption" id="AssociateProject" extends="resOption">
@@ -71,6 +75,13 @@
 			delete from prjoption 
 					where PrjNo = #{prjNo.prjNo}
 		</delete>
+		
+		<!--간단한 프로젝트옵션 리스트 -->
+		<select id="selectSimplePrjOptionByPrjNo" resultMap="AssociateProject">
+				select OptNo, PrjNo, OptName, OptPrice, OptContent
+					from prjoption
+				where PrjNo =#{prjNo.prjNo}		
+		</select>
 
 
 </mapper>

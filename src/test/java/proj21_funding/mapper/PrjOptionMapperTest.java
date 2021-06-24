@@ -1,5 +1,7 @@
 package proj21_funding.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.junit.After;
@@ -61,13 +63,21 @@ public class PrjOptionMapperTest {
 		Assert.assertEquals(1, res);		
 	}
 	
-	@Test
+//	@Test
 	public void testremoveProjectOption() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
 		int res = mapper.removePrjOption(9);
 		
 		Assert.assertEquals(1, res);		
+	}
+	@Test
+	public void testselectPrjAndPrjOpt() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		List<PrjOption> list = mapper.selectSimplePrjOptionByPrjNo(14);
+		Assert.assertNotNull(list);
+		System.out.println("list >> " + list);
 	}
 
 }

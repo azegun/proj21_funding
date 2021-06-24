@@ -163,7 +163,8 @@ select p.prjNo,p.UserNo, p.pCategoryNo, pc.pCategoryName,  PrjName, PrjContent, 
 			from project p join userinfo u on p.userno = u.UserNo 
 						   join prjoption o on p.PrjNo =o.PrjNo
 						   join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
-			where o.prjNo = 3;
+			where o.prjNo = 14;
+		
 
 
 -- 업데이트 프로젝트
@@ -194,6 +195,11 @@ from prjoption;
 update prjoption 
 	set OptName ='문방사우', OptPrice = 2200000, OptContent = '먹'
 where OptNo =22;
+-- 프로젝트옵션  프로젝트번호로 검색
+select OptNo, PrjNo, OptName, OptPrice, OptContent
+		from prjoption
+where PrjNo =53;
+
 
 
 

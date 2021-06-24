@@ -73,30 +73,12 @@ td{
 #textContent{
 		font-size:20px;
 }
-/* .sboption {
-     width: 450px;
-     height: 330px;
-   	 overflow: auto;
-}
-      스크롤바 
- .sboption::-webkit-scrollbar{
-     width: 10px;
-     스크롤바 확인 
-     background-color: black; 
-}
-.sboption::-webkit-scrollbar-thumb{
-	 background-color:crimson;
-    border-radius:10px;
-}
-.sboption::-webkit-scrollbar-track{
-    background-color:gold;
-    box-shadow: inset 0px 0px 5px white;
- } */
 #pCategoryNo{
 	width: 175px;
 	font-size: 15px;
 }
-#userName, #optPrice, #optName, #prjName, #prjGoal{
+#userName, #optPrice, #optName, #prjName, 
+#prjGoal, #addOptPrice, #addOptName{
 	font-size: 15px;
 }
 .datepicker{

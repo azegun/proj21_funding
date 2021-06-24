@@ -27,20 +27,19 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 
 	@Override
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile) {
+//		날짜비교
 		LocalDate EndDate = project.getEndDate();
 		LocalDate PayDate = project.getPayDate();
 		
 		int compareEtoP = EndDate.compareTo(PayDate);
-			
+//		날짜비교
+		
 		int res;
 		if(compareEtoP <= 0) {
 			 res = pMapper.insertProject(project);
 		}else {
 			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
-		}
-	
-		
-	
+		}	
 		
 		prjoption.setPrjNo(project);
 	      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
@@ -54,6 +53,8 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	      }      
 	      
 	      res += prjOptMapper.insertPrjOption(prjoption);
+	      
+//	      System.err.println("prjOption IMPL >> " + prjoption);
 	      
 	      if(res != 2) throw new RuntimeException();            
 	}

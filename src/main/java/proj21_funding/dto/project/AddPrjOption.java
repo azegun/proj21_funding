@@ -1,7 +1,5 @@
 package proj21_funding.dto.project;
 
-import javax.validation.constraints.NotBlank;
-
 import proj21_funding.dto.Project;
 
 public class AddPrjOption {
@@ -19,8 +17,6 @@ public class AddPrjOption {
 		this.addOptPrice = addOptPrice;
 		this.addOptContent = addOptContent;
 	}
-
-
 
 	public AddPrjOption(Project prjNo, String addOptName, int addOptPrice, String addOptContent) {
 		this.prjNo = prjNo;

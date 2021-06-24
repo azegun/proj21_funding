@@ -55,6 +55,8 @@
 	</script>		
 </head>
 <body>	
+${optList}
+
 <section class="container">		
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
@@ -221,19 +223,14 @@
 											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
 							</tr>
-						<!-- 	</div>
-							<div id = "addOption"> -->
-									<!--  <span id = "optionPlus">+</span>
-									<span id = "optionMinus">-</span> -->
-							<!-- </div> -->
-							<!--  월요일에 열기-->
-						<!-- 	<div id = "option2">
-								<tr>
+						<c:choose>
+							<c:when test="${optList[0].prjNo.prjNo eq optList[1].prjNo.prjNo}">
+							<tr>
 									<td class = "td_left">
 											<label for = "addOptName">옵션이름</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "addOptName" name = "addOptName"  size = 40 ></input>
+											 <input type="text" id = "addOptName" name = "addOptName"  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -241,7 +238,7 @@
 											<label for = "addOptPrice">옵션금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "addOptPrice" name = "addOptPrice"  size = 40 ></input>
+											 <input type="text" id = "addOptPrice" name = "addOptPrice"  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -249,9 +246,11 @@
 											<label for = "addOptContent">옵션내용</label>
 									</td>						
 									<td class = "td_right">
-											 <textarea id = "addOptContent" name = "addOptContent"	rows="11" cols="42" ></textarea>
+											 <textarea id = "textContent" name = "addOptContent"	rows="8" cols="38" ></textarea>
 									</td>
-							</tr>			 -->
+							</c:when>
+						</c:choose>
+								
 					</tbody>	
 				</table>					
 			</section>			

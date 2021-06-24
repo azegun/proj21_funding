@@ -17,6 +17,10 @@ public interface PrjOptionService {
 	int insertPrjOption(PrjOption prjOption);
 	int insertAddPrjOption(AddPrjOption addPrjOption);
 	
+	//옵션만 리스트
+	List<PrjOption> selectSimplePrjOptionByPrjNo(int prjNo);
+		
 	//옵션수정
 	int updatePrjOption(PrjOption prjoption);
+
 }

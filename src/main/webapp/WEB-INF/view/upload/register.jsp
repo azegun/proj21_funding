@@ -66,12 +66,20 @@
 	               }
 	         });         
 	      });   
+		
+	      $(function(){
+		         var contextPath = "<%=request.getContextPath()%>";
+		         $(".btnTest").on("click", function(){
+		          console.log(5);
+		         });         
+		      });
 	      
 	
 
 </script>		
 </head>
 <body>
+${optList }
 		<section class="container">		
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
@@ -184,9 +192,6 @@
 									<td class = "td_right">
 											 <input type="text" id = "optName" name = "optName"  size = 17 required="required"></input>
 									</td>
-									<!-- <td class = "td_right">
-											 <input type="hidden" id = "optNo" name = "optNo" ></input>
-									</td> -->
 							</tr>
 							<tr>
 									<td class = "td_left">
@@ -206,17 +211,17 @@
 							</tr>
 							<tr>
 									<td id= "addBtns" colspan="2">
-										<button id = "optionPlus">+</button>
+										<button id = "optionPlus" >+</button>
 										<button id = "optionMinus">-</button>
 									</td>									
 							</tr>
 							<!--  월요일에 열기-->
-							<!--  <tr>
+					<tr>
 									<td class = "td_left">
 											<label for = "addOptName">옵션이름</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "addOptName" name = "addOptName"  size = 40 ></input>
+											 <input type="text" id = "addOptName" name = "addOptName"  size = 17 required="required" ></input>
 									</td>
 							</tr>
 							<tr>
@@ -224,7 +229,7 @@
 											<label for = "addOptPrice">옵션금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "addOptPrice" name = "addOptPrice"  size = 40 ></input>
+											 <input type="text" id = "addOptPrice" name = "addOptPrice"  size = 17 required="required" ></input>
 									</td>
 							</tr>
 							<tr>
@@ -232,9 +237,9 @@
 											<label for = "addOptContent">옵션내용</label>
 									</td>						
 									<td class = "td_right">
-											 <textarea id = "textContent" name = "addOptContent"	rows="11" cols="42" ></textarea>
+											 <textarea id = "textContent" name = "addOptContent"	rows="8" cols="38" required="required" ></textarea>
 									</td>
-							</tr>			 -->
+							</tr>
 						</tbody>			
 					</table>	
 			</section>

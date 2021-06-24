@@ -102,7 +102,7 @@
 								</tr>
 								<tr class = "col10">
 										<td class="td_left"><label for="optContent">옵션내용</label></td>
-										<td class="td_right" ><div class ="sboption">${project.oContent}</div></td>
+										<td class="td_right" ><div class ="sb2option">${project.oContent}</div></td>
 								</tr>
 						</tbody>
 				</table>

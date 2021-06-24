@@ -8,11 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,7 +53,8 @@ public class UploadController {
 	
 	@Autowired
 	private UserInfoService userService;
-	
+
+	private List<PrjOption> optList;
 	
 //	업로드 할 시 계좌 등록 안되어있으면 계좌 등록
 	@GetMapping("/registerAccount")
@@ -125,24 +124,34 @@ public class UploadController {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		List<PrjCategory> list = prjCategoryService.showCategory();		
-		mav.addObject("category", list);
-		mav.setViewName("upload/register");			
+		List<PrjCategory> list = prjCategoryService.showCategory();	
+		
 		try {
-		//트렌젝션추가
-		trservice.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);	
+			//트렌젝션추가
+			trservice.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);		
+			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
+			
+			//두개 이상이면 작동옵션
+			if(addPrjOption.getAddOptName() != null) {
+				addPrjOption.setPrjNo(prjoption.getPrjNo());
+				optionService.insertAddPrjOption(addPrjOption);
+			}
+				
+			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
 
-		mav.setViewName("upload/register_success");			
-		//옵션 추가
-//		addPrjOption.setPrjNo(prjoption.getPrjNo());
-//		optionService.insertAddPrjOption(addPrjOption);		
-		return mav;	
+		
+			mav.addObject("optList", optList);		
+			mav.addObject("category", list);				
+			mav.setViewName("upload/register_success");	
+			return mav;	
+		
 		}catch (DateTimeOverException e) { 	
 			out.println("<script type='text/javascript'>");
 			out.println("alert('결재일이 마감일보다 빠를 수 없습니다.');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
+			mav.setViewName("upload/register");
 		 return mav; 
 		 }				
 	}
@@ -151,6 +160,8 @@ public class UploadController {
 	@RequestMapping("/updatePrj/{prjNo}")
 	public ModelAndView updateProject(@PathVariable("prjNo") int prjNo) {
 //		System.out.println("prjNo >> "+ prjNo);
+		optList = optionService.selectSimplePrjOptionByPrjNo(prjNo);
+		System.out.println("optList > > " +optList );
 		List<PrjOption> project = optionService.showPrjOptionByPrjNo(prjNo);
 		List<PrjCategory> list = prjCategoryService.showCategory();
 //		System.out.println("project >>>> " +project);
@@ -158,6 +169,7 @@ public class UploadController {
 			throw new ProjectNotFoundException();
 		}		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("optList", optList);
 		mav.addObject("project", project);
 		mav.addObject("category", list);
 		mav.setViewName("upload/update");
