@@ -46,17 +46,23 @@ public class AdminProjectController {
 			@RequestParam(value="keyword") String keyword,
 			@RequestParam(value="searchKeyword", required = false) String searchKeyword,
 			@RequestParam(value="successYn", required = false) String successYn) {
+		System.out.println(successYn);
 		System.out.println(keyword);
-		System.out.println(category);
 		System.out.println(searchKeyword);
-		
+		System.out.println(category);
+		List<PrjCategory> categoryList = categoryService.showCategory();
+
 		Map<String,Object> listMap = new HashMap<String,Object>();
 		listMap.put("category", category);
 		listMap.put("keyword", keyword);
 		listMap.put("searchKeyword", searchKeyword);
+		listMap.put("successYn",successYn);
+		List<ProjectJoin> prjList = joinService.showProjectJoinByMap(listMap);
 		
 		ModelAndView mav= new ModelAndView();
 		mav.setViewName("admin/adminProject");
+		mav.addObject("prjList",prjList);
+		mav.addObject("categoryList",categoryList);
 		return mav;
 	}
 	

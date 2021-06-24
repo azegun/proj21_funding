@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,7 +82,6 @@
 </script>
 </head>
 <body>
-${categoryList }
 <c:set var="now" value="<%=new java.util.Date()%>" />
 <c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 
 	<div id="page-wrapper">
@@ -121,7 +121,7 @@ ${categoryList }
 				<label><input type="checkbox" name="successYn" value="1">성공프로젝트만 보기  </label>
 				<div class="col-md-4">
 					<select name="category" class="selectpicker">
-						<option value="total" selected="selected">검색키워드</option>
+						<option value="total" selected="selected">카테고리명</option>
 						<c:forEach var="category" items="${categoryList }" varStatus="status">
 						<option value="${category.pCategoryNo }">${category.pCategoryName }</option>
 						</c:forEach>
@@ -196,7 +196,7 @@ ${categoryList }
 										  </span>
 										</div>
 										<span class="userDetail"><strong>달성률 : </strong><input type="text" class="prjRate" value="${prj.rate }%"size="10px" readonly/>
-										</span>
+										</span><br>
 										<span class="userDetail"><strong>시작일 :</strong> 
 										<input type="text" value="${prj.startDate }" size="10px" readonly/></span>
 										<span class="userDetail"><strong>마감일 :</strong> 

@@ -1,6 +1,7 @@
 package proj21_funding.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,12 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 	@Override
 	public List<ProjectJoin> showProjectJoinByPcategoryno(int pcategoryno) {
 		return mapper.selectProjectJoinByPcategoryno(pcategoryno);
+	}
+
+	@Override
+	public List<ProjectJoin> showProjectJoinByMap(Map<String, Object> listMap) {
+		System.out.println(listMap);
+		return mapper.selectProjectJoinByMap(listMap);
 	}
 
 }

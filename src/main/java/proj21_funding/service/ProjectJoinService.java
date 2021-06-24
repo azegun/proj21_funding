@@ -1,6 +1,7 @@
 package proj21_funding.service;
 
 import java.util.List;
+import java.util.Map;
 
 import proj21_funding.dto.project.ProjectJoin;
 
@@ -17,5 +18,7 @@ public interface ProjectJoinService {
 	List<ProjectJoin> showProjectGroupByUserNo();
 	List<ProjectJoin> showSucessProjectGroupByUserNo();
 	List<ProjectJoin> showSponsorListByPrjNo(int prjNo);
+	
+	List<ProjectJoin> showProjectJoinByMap(Map<String,Object> listMap);
 	
 }
