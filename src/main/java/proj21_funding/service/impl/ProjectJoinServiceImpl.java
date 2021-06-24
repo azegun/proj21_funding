@@ -56,4 +56,9 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 		return mapper.selectSuccessProjectGroupByUserNo();
 	}
 
+	@Override
+	public List<ProjectJoin> showSponsorListByPrjNo(int prjNo) {
+		return mapper.selectSponsorListByPrjNo(prjNo);
+	}
+
 }

@@ -15,5 +15,6 @@ public interface ProjectJoinService {
 	List<ProjectJoin> showSumCountGroupByUserNo();
 	List<ProjectJoin> showProjectGroupByUserNo();
 	List<ProjectJoin> showSucessProjectGroupByUserNo();
+	List<ProjectJoin> showSponsorListByPrjNo(int prjNo);
 	
 }

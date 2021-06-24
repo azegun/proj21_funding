@@ -15,5 +15,8 @@ public interface ProjectJoinMapper {
 	List<ProjectJoin> selectSumCountGroupByUserNo();
 	
 	List<ProjectJoin> selectProjectGroupByUserNo();
+	//제작자별 성공프로젝트리스트
 	List<ProjectJoin> selectSuccessProjectGroupByUserNo();
+	//프로젝트별 후원자 리스트
+	List<ProjectJoin> selectSponsorListByPrjNo(int prjNo);
 }

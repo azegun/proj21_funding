@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.ProjectJoin;
+import proj21_funding.service.PrjCategoryService;
 import proj21_funding.service.ProjectJoinService;
 import proj21_funding.service.UserInfoService;
 
@@ -19,6 +21,9 @@ public class AdminController {
 	
 	@Autowired
 	private ProjectJoinService joinService;
+	
+	@Autowired
+	private PrjCategoryService categoryService;
 	
 	@RequestMapping("/admin")
 	public String adminMain() {
@@ -53,8 +58,11 @@ public class AdminController {
 	
 	@RequestMapping("/adminProject")
 	public ModelAndView adminProject() {
+//		카테고리 콤보박스 리스트
+		List<PrjCategory> categoryList = categoryService.showCategory();
 		List<ProjectJoin> prjList = joinService.showProjectJoinAll();
 		ModelAndView mav = new ModelAndView("admin/adminProject","prjList",prjList);
+		mav.addObject("categoryList",categoryList);
 		return mav;
 	}
 	

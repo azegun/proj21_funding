@@ -7,7 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class ProjectJoin {
 	private int prjNo;
+	private String userId;
 	private String prjManager;
+	private String managerName;
 	private String prjName;
 	private String prjContent;
 	private int prjGoal;
@@ -24,6 +26,7 @@ public class ProjectJoin {
 	private String optContent;
 	private int fundingNo;
 	private String sponsor;
+	private String sponsorName;
 	private int accountNo;
 	private boolean payYn;
 	private double rate;
@@ -43,6 +46,13 @@ public class ProjectJoin {
 	}
 	public void setPrjManager(String prjManager) {
 		this.prjManager = prjManager;
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getPrjName() {
 		return prjName;
@@ -165,7 +175,18 @@ public class ProjectJoin {
 	public void setpCategoryName(String pCategoryName) {
 		this.pCategoryName = pCategoryName;
 	}
-	
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getSponsorName() {
+		return sponsorName;
+	}
+	public void setSponsorName(String sponsorName) {
+		this.sponsorName = sponsorName;
+	}
 	@Override
 	public String toString() {
 		return String.format(
