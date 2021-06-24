@@ -9,6 +9,7 @@ public interface ProjectJoinService {
 	List<ProjectJoin> showProjectSuccessImbak();
 	List<ProjectJoin> showProjectJoinByPrjName(String prjName);
 	List<ProjectJoin> showProjectJoinByPrjManager(String prjManager);
+	List<ProjectJoin> showProjectJoinByPcategoryno(int pcategoryno);
 	
 	ProjectJoin showProjectJoinByPrjNo(int prjNo);
 	
