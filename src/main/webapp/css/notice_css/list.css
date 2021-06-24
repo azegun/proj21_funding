@@ -38,6 +38,7 @@ span.notice{
 .catetext {
 	font-weight: bold;
 	color: rgb(61, 61, 61);
+	text-decoration: none;
 }
 
 a.notice {
@@ -48,6 +49,7 @@ a.notice {
 	font-size: 30px;
 	line-height: 45px;
 	letter-spacing: -0.03em;
+	text-decoration: none;
 }
 
 div.list {
@@ -128,6 +130,7 @@ li.title-box {
 	flex-wrap: wrap;
 	-webkit-box-pack: center;
 	justify-content: center;
+	text-decoration: none;
 }
 
 .writenotice { /* 공지글 작성하기 */

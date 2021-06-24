@@ -70,7 +70,7 @@ public class BoardController {
 		mav.addObject("pagination", pagination);
 		mav.addObject("board", boardService.SelectCategoryList(categoryNo, pagination));
 		mav.addObject("bc", bc);
-		mav.setViewName("/notice/list");
+		mav.setViewName("/notice/list_cate");
 		return mav;
 	}
 
