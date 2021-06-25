@@ -73,13 +73,36 @@
 		
 		 //아이템 추가
 	   $(function(){
-	   $('.optionPlusMinus').on("click", function(){		
-   		   $('.optionPlusMinus').parent().parent().parent().parent().next().toggleClass('hidden');
-   		   console.log(555)
-	   })
-      });		
-	
-	
+		   
+			var sCont = "";		
+			sCont += "<tbody class = 'addAll'>";
+			sCont += "<tr>";
+			sCont += "<td class = 'td_left'><label for = 'addOptName'>옵션이름</label></td>";
+			sCont += "<td class = 'td_right'> <input type='text' id = 'addOptName' class = 'addtext' name = 'addOptName'  required   size = 17/></td>";
+			sCont += "</tr>";
+			sCont += "	<tr>";
+			sCont += "	<td class = 'td_left'><label for = 'addOptPrice'>옵션금액</label></td>";
+			sCont += "	<td class = 'td_right'><input type='text' id = 'addOptPrice'   class = 'addtext' name = 'addOptPrice'   required  size = 17 /></td>";
+			sCont += "</tr>";
+			sCont += "	<tr>";
+			sCont += "	<td class = 'td_left'><label for = 'addOptContent'>옵션내용</label></td>	";
+			sCont += "	<td class = 'td_right'> <textarea id = 'textContent'  class = 'addtext' name = 'addOptContent'  required 	rows='8' cols='38' ></textarea></td>";
+			sCont += "</tr>";					
+			sCont += "</tbody>";					
+			//옵션추가
+			$('.optionPlus').on("click", function(){		
+				 $('.addOption:last-child').append(sCont);   				 
+		 			
+		   		   if($('.addtext').attr('required') == true){
+		   			$(".addtext").prop('required',false);
+		   		   }
+			   });
+			//옵션삭제
+			$('.optionMinus').on("click", function(){
+				$('.addAll:last-child').remove();
+			});	
+	  
+	   });
 
 </script>		
 </head>
@@ -106,7 +129,7 @@ ${project[0].prjNo }
 			<div id="tab-1" class="register_mid current">
 			<h2>프로젝트 등록</h2>
 	<section id="register_prjcontent">
-		<table>
+		<table border="1">
 			<tbody>
 				<tr>
 					<td class= "td_right" colspan="2">
@@ -124,7 +147,7 @@ ${project[0].prjNo }
 				<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>					
 					<td class="td_right" >
-						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo" >		
+						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo"  >		
 									<option value = "0">-------선택해주세요-----------</option>
 							<c:forEach var = "c"  items="${category }" >
 									<option  value = " ${c.pCategoryNo }">${c.pCategoryName }</option>										
@@ -136,7 +159,7 @@ ${project[0].prjNo }
 					<td class="td_left"><label for="prjName">프로젝트 명</label></td>
 					<td class="td_right">
 								<input type="text" id="prjName"
-										name="prjName" size=45 required="required" />
+										name="prjName" size=45 required />
 					</td>
 				</tr>
 				<tr>
@@ -218,38 +241,17 @@ ${project[0].prjNo }
 							</tr>
 							<tr>
 									<td class ="td_right" colspan="2">
-											  <div id="register_btns"><button type = "button" class = "optionPlusMinus" >옵션추가/삭제</button></div>
+											  <div id="register_btns">
+											  		<button type = "button" class = "optionPlus" >옵션추가</button>
+											  		<button type = "button" class = "optionMinus" >옵션삭제</button>
+											  </div>
 									</td>
 							</tr>	
-							</tbody>	
-							<!-- <tbody class = "addOption hidden">		
-							 월요일에 열기
-						   <tr>
-									<td class = "td_left">
-											<label for = "addOptName">옵션이름</label>
-									</td>
-									<td class = "td_right">
-											 <input type="text" id = "addOptName" name = "addOptName"  size = 17 ></input>
-									</td>
-							</tr>
-							<tr>
-									<td class = "td_left">
-											<label for = "addOptPrice">옵션금액</label>
-									</td>
-									<td class = "td_right">
-											 <input type="text" id = "addOptPrice" name = "addOptPrice"  size = 17 ></input>
-									</td>
-							</tr>
-							<tr>
-									<td class = "td_left">
-											<label for = "addOptContent">옵션내용</label>
-									</td>						
-									<td class = "td_right">
-											 <textarea id = "textContent" name = "addOptContent"	rows="8" cols="38" ></textarea>
-									</td>
-							</tr>
-						</tbody> -->
+							</tbody>						
+							<!-- <tbody class = "addOption">	</tbody> -->
 					</table>	
+					<table class = "addOption">
+					</table>
 			</section>
 				</div>				
 			<!--탭2 옵션부분  -->			

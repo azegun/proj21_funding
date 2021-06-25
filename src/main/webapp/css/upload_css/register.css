@@ -37,7 +37,6 @@ ul.tabs li.current{
 }	
 /*탭 */
 
-
 /*태이블  */
  h2{
 	display: flex;
@@ -58,8 +57,12 @@ ul.tabs li.current{
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
+	flex-direction: column;
 }
-
+.addOption{
+	display: flex;
+    flex-direction: column;
+}
 .td_left{
 	width: 170px;
 }
@@ -84,9 +87,6 @@ td{
 .datepicker{
 	font-size: 15px;
 	width: 170px;
-}
-.hidden {
-    display: none;
 }
 /*태이블  */
 
