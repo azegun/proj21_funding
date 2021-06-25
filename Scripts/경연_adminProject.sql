@@ -52,3 +52,14 @@ select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.
 		  join userinfo u on p.userno = u.userno
 		  join prjCategory c on p.pcategoryno = c.pcategoryno
 		 group by p.prjNo;
+		 
+select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
+				StartDate, EndDate, PayDate, EndYN, u.UserId , u.UserName,u.nickname,
+				o.OptNo, o.OptPrice,o.OptContent,o.optName
+			from project p join userinfo u on p.userno = u.UserNo 
+						   join prjoption o on p.PrjNo =o.PrjNo
+			where p.prjNO = 1
+
+			
+		
+select * from prjoption  where prjno =4;

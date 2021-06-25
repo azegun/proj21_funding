@@ -49,9 +49,7 @@
 					<li class="sidebar-brand"><a href="#">100펀딩 관리자 페이지</a></li>
 					<li><a class="menu" href="adminMember">회원관리</a></li>
 					<li><a class="menu" href="adminProject">프로젝트관리</a></li>
-					<li><a class="menu" href="#">게시판관리</a></li>
-					<li><a class="menu" href   ="#">메뉴 4</a></li>
-					<li><a class="menu" href="#">메뉴 5</a></li>
+					<li><a class="menu" href="adminBoard">게시판관리</a></li>
 				</ul>
 			</div>
 			<!-- /사이드바 -->
@@ -59,6 +57,7 @@
 		<!-- 본문 -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
+			<button class="goMain" onclick="location.href='<%=request.getContextPath()%>'">메인으로 이동</button>
 				<section>
 				<h1>회원관리</h1>
 				</section>

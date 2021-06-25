@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjCategory;
+import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.ProjectJoin;
 import proj21_funding.service.PrjCategoryService;
+import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectJoinService;
 import proj21_funding.service.UserInfoService;
 
@@ -24,6 +26,9 @@ public class AdminController {
 	
 	@Autowired
 	private PrjCategoryService categoryService;
+	
+	@Autowired
+	private PrjOptionService optionService;
 	
 	@RequestMapping("/admin")
 	public String adminMain() {
@@ -61,8 +66,18 @@ public class AdminController {
 //		카테고리 콤보박스 리스트
 		List<PrjCategory> categoryList = categoryService.showCategory();
 		List<ProjectJoin> prjList = joinService.showProjectJoinAll();
+		ProjectJoin sumCount =joinService.showProjectSumCountAll();
+		
 		ModelAndView mav = new ModelAndView("admin/adminProject","prjList",prjList);
 		mav.addObject("categoryList",categoryList);
+		mav.addObject("sumCount",sumCount);
+		return mav;
+	}
+	
+	@RequestMapping("/adminBoard")
+	public ModelAndView adminBoard() {
+		
+		ModelAndView mav = new ModelAndView("admin/adminBoard");
 		return mav;
 	}
 	

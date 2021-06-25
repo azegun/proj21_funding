@@ -27,4 +27,6 @@ public interface PrjOptionMapper {
 	//옵션만 리스트
 	List<PrjOption> selectSimplePrjOptionByPrjNo(int prjNo);
 	
+	List<PrjOption>	selectSimpleOptionByPrjNo(int prjNo);
+	
 }

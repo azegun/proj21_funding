@@ -55,5 +55,8 @@ dependencies {
 	
 	implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
 	
+	//Jackson : JSON library
+	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.12.3'
+	
     testImplementation 'junit:junit:4.13'
 }
