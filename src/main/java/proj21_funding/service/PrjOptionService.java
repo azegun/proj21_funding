@@ -19,4 +19,6 @@ public interface PrjOptionService {
 	
 	//옵션수정
 	int updatePrjOption(PrjOption prjoption);
+	
+	List<PrjOption> showSimpleOptionByPrjNo(int prjNo);
 }

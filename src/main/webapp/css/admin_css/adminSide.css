@@ -1,5 +1,8 @@
 @charset "UTF-8";
   /* 사이드바 래퍼 스타일 */
+  .goMain{
+  	float:right;
+  }
   
   #page-wrapper {
     padding-left: 250px;

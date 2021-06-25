@@ -23,4 +23,6 @@ public interface PrjOptionMapper {
 	List<PrjOption> selectPrjOptionByAll();
 	List<PrjOption>	selectPrjOptionByPrjNo(int prjNo);
 	
+	List<PrjOption>	selectSimpleOptionByPrjNo(int prjNo);
+	
 }

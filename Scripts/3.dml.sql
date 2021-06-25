@@ -137,9 +137,9 @@ insert into fundinginfo values
 (00001, 00001, 00001, 00001, 000000001,98765,'대구 달서구','영남인재교육원 201호', 0,0);
 #default값 null값 제외
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
-values (2, 2, 2, '12341234',12345,'대구시 북구','아파트203호' );
+values (2, 1, 2, '12341234',12345,'대구시 북구','아파트203호' );
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
-values (2, 1, 3, '12341234',12345,'대구시 북구','아파트203호' );
+values (2, 2, 3, '12341234',12345,'대구시 북구','아파트203호' );
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
 values (2, 1, 4, '12341234' ,12345,'대구시 북구','아파트203호');
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)

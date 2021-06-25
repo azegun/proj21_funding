@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="contextPath" value="<%= request.getContextPath()%>"/>
 
 <!DOCTYPE html>
 <html>
@@ -24,14 +25,44 @@
 	href="/proj21_funding/css/admin_css/adminProject.css">
 <script>
 	$(function() {
-		/* $(window).scroll(function() {
-			if ($(this).scrollTop() < 500) {
-				$('#MOVE_TOP_BTN').fadeOut();
-			} else {
-				$('#MOVE_TOP_BTN').fadeIn();
+		
+		$(".btnOption").click(function(){
+			if($(this).html()=='옵션보기'){
+				$(this).html('옵션닫기')
+			
+			var prjNo = $(this).val();
+			var contextPath = "${contextPath}"
+			$.ajax({
+				type :"Get",
+				url:contextPath +"/getOptList/"+prjNo,
+				contentType:"application/json; charset=utf-8",
+				dataType: 'json',
+				cache : false,
+				success: function(json){
+					console.log(prjNo)
+					var dataLength = json.length;
+					var sCont="";
+						sCont +="<h3 class='optTable'>옵션리스트</h3><table class='table optTable'><thead><th>번호</th><th>옵션명</th><th>가격</th><th>설명</th></thead><tr>";
+					for ( i = 0; i < dataLength; i++) {
+						sCont += "<tr>";
+						sCont += "<td>"+(i+1) +"</td>";
+						sCont += "<td>" +json[i].optName +"</td>";
+						sCont += "<td>" +json[i].optPrice +"</td>";
+						sCont += "<td>" +json[i].optContent +"</td>";
+						sCont += "</tr>";
+					}
+						sCont +="</table>";
+					console.log(sCont)
+					$(".btnOption"+prjNo).parent().append(sCont);
+				}
+			})
+			} else{
+				$(this).html('옵션보기')
+				$('.optTable').remove();
 			}
-		}); */
-
+		})
+		
+		
 		$("#MOVE_TOP_BTN").click(function() {
 			$('html, body').animate({
 				scrollTop : 0
@@ -39,6 +70,7 @@
 			return false;
 		});
 		
+		}); 
 		/* $('.btn-example').click(function(){
 	        var $href = $(this).attr('href');
 	        layer_popup($href);
@@ -78,7 +110,6 @@
 	            return false;
 	        });
  */
-	});
 </script>
 </head>
 <body>
@@ -92,16 +123,16 @@
 					<li class="sidebar-brand"><a href="#">100펀딩 관리자 페이지</a></li>
 					<li><a href="adminMember">회원관리</a></li>
 					<li><a href="adminProject">프로젝트관리</a></li>
-					<li><a href="#">게시판관리</a></li>
-					<li><a href="#">메뉴 4</a></li>
-					<li><a href="#">메뉴 5</a></li>
+					<li><a href="adminBoard">게시판관리</a></li>
 				</ul>
+				
 			</div>
 			<!-- /사이드바 -->
 		</header>
 		<!-- 본문 -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
+				<button class="goMain" onclick="location.href='<%=request.getContextPath()%>'">메인으로 이동</button>
 				<section>
 					<h1>프로젝트관리</h1>
 				</section>
@@ -111,9 +142,9 @@
 					</div>
 					<div class="panel-body">
 						<ul>
-							<li><strong>누적 프로젝트 수</strong> : 개</li>
-							<li><strong>성공한 프로젝트 수</strong> : 개</li>
-							<li><strong>제작자 수</strong> : ${prdCount }명</li>
+							<li><strong>누적 프로젝트 수 :</strong> ${sumCount.prjNo } 개</li>
+							<li><strong>누적 후원 수 :</strong> ${sumCount.totalCount} 회</li>
+							<li><strong>누적 후원금액 :</strong> <fmt:formatNumber value="${sumCount.totalPrice }" pattern="#,###"/>원</li>
 						</ul>
 					</div>
 				</div>
@@ -177,24 +208,24 @@
 									<div class="panel panel-default">
 										<div class="panel-heading"><strong>프로젝트 정보</strong></div>
 										<div class="panel-body">
-										<div style="float:left">
+										<div class="prjDetail" style="float:left">
 										<span class="prjTitle"><strong>제 목 : </strong> <input type="text" value="${prj.prjName }" size="50" readonly/></span><br>
 										<strong>내 용 : </strong><br>
-										<textarea rows="5" cols="50" readonly="readonly">${prj.prjContent }</textarea>
+										<textarea id="prjContent" rows="5"  readonly="readonly">${prj.prjContent }</textarea>
 										</div>
-										<div>
+										<div class="prjDetail">
 										<span class="userDetail"><strong>분 류 : </strong><input type="text" value="${prj.pCategoryName }" size="10px" readonly/></span>
 										<span class="userDetail"><strong>제작자 : </strong><input type="text" value="${prj.prjManager }" size="10px" readonly/></span><br>
-										<span class="userDetail"><strong>목표금액 : </strong>
-										<input type="text" value="<fmt:formatNumber value="${prj.prjGoal }" pattern="#,###"/> 원" size="10px" readonly/>
-										</span>
-										<span class="userDetail"><strong>현재금액 :</strong> 
-										<input type="text" value="<fmt:formatNumber value="${prj.totalPrice }" pattern="#,###"/> 원" size="10px" readonly/></span><br>
 										<div class="progress1">
 										  <span class="progress-bar" role="progressbar" aria-valuenow="${prj.rate }" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width:${prj.rate}%">
 										    ${prj.rate }
 										  </span>
 										</div>
+										<span class="userDetail"><strong>목표금액 : </strong>
+										<input type="text" value="<fmt:formatNumber value="${prj.prjGoal }" pattern="#,###"/> 원" size="10px" readonly/>
+										</span>
+										<span class="userDetail"><strong>현재금액 :</strong> 
+										<input type="text" value="<fmt:formatNumber value="${prj.totalPrice }" pattern="#,###"/> 원" size="10px" readonly/></span>
 										<span class="userDetail"><strong>달성률 : </strong><input type="text" class="prjRate" value="${prj.rate }%"size="10px" readonly/>
 										</span><br>
 										<span class="userDetail"><strong>시작일 :</strong> 
@@ -204,7 +235,10 @@
 										<span class="userDetail"><strong>진행 상태 :</strong> 
 										<input type="text" value="<c:if test='${prj.prjGoal<=prj.totalPrice }'>목표 달성</c:if><c:if test='${prj.prjGoal>prj.totalPrice and sysYear>prj.endDate}'>달성 실패</c:if><c:if test="${prj.prjGoal>prj.totalPrice and sysYear<prj.endDate}">진행중</c:if>" size="15px" readonly/></span>
 										<!--레이어관련  -->
-											<a href="#" onclick="window.open('sponsorList/${prj.prjNo }','후원자 리스트','width=1000, height=800, location=no, top=100, left=100')">후원자 리스트 보기</a><br>
+										<a href="#" onclick="window.open('sponsorList/${prj.prjNo }','후원자 리스트','width=1000, height=800, location=no, top=100, left=100')">후원자 리스트 보기</a><br>
+										</div>
+										<div class='optList'>
+										<button class="btnOption btnOption${prj.prjNo }" value="${prj.prjNo }">옵션보기</button>
 										</div>
 											<%-- 
 											<div class="dim-layer">

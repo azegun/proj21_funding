@@ -71,6 +71,10 @@
 			delete from prjoption 
 					where PrjNo = #{prjNo.prjNo}
 		</delete>
+		
+		<select id = "selectSimpleOptionByPrjNo" resultMap="AssociateProject">
+			select * from prjoption  where prjno =#{prjNo}
+		</select>
 
 
 </mapper>

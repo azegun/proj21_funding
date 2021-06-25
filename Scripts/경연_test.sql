@@ -51,6 +51,7 @@ select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.
 		  join userinfo u on p.userno = u.userno
 		 group by p.prjNo having sum(optprice)/PrjGoal*100>80;
 
+		
 -- 프로젝트명 검색
 select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
 			,count(fundingno) as totalCount
@@ -98,3 +99,18 @@ select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.
 		  join userinfo u on p.userno = u.userno
 		  join prjCategory c on p.pcategoryno = c.pcategoryno
 		 group by p.prjNo;
+
+select * from prjoption o join fundinginfo f on o.optno = f.optNo;
+		
+select o.optno,o.prjno from prjoption o left join fundinginfo f on o.optno = f.optNo group by f.optno having o.prjno=1;
+
+select ifnull(count(f.optno),0),o.optno,p.prjno from prjoption o join fundinginfo f on o.optno = f.optNo
+                                                right join project p on f.prjno = p.prjno group by f.optno having p.prjno = 1;
+                                               
+                                               
+select ifnull(sum(optprice),0) as totalprice, ifnull(count(fundingno),0) as totalcount , ifnull(count(distinct (p.prjNo)),0) as prjno
+from project p left join fundinginfo f on p.prjno = f.prjno
+			   left	join prjoption o on o.optno = f.optno; 
+			  
+select * from fundinginfo f join prjoption o on f.optno = o.optno where f.prjno = 2;
+s
