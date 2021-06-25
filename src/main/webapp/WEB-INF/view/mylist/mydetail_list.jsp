@@ -22,8 +22,9 @@
 </script>
 </head>
 <body>
-${myList[0]}
-${myList[0].prjNo.prjNo}
+<%-- ${myList[0]}
+${myList[0].prjNo.prjNo} --%>
+${uploadfile }
 
 	<section class="container">
 			<header id = "mydetail_header">		   
@@ -35,10 +36,9 @@ ${myList[0].prjNo.prjNo}
 				<table>
 						<tbody>
 								<tr class = "col1">
-										<td class="td_left"><label for="prjNo">프로젝트번호</label></td>
-										<td class="td_right" >
-												<input type="text" id="prjNo" name="prjNo" value="${myList[0].prjNo.prjNo}" 
-														size=49	required="required" readonly="readonly"/>																			
+										<td class="td_right" colspan="2" >
+												<input type="hidden" id="prjNo" name="prjNo" value="${myList[0].prjNo.prjNo}" 
+														size=49	readonly="readonly"/>																			
 										</td>					
 								</tr>
 								<tr class = "col2">
@@ -57,14 +57,15 @@ ${myList[0].prjNo.prjNo}
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
 										<td class="td_right" >
 											<input type="text" id="prjName" name="prjName" value="${myList[0].prjNo.prjName}" 
-														size=49	required="required"/>			
+														size=46	required="required"/>			
 										</td>
 								</tr>
 								<tr class = "col5">
 										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
 										<td class="td_right" >
-											<textarea id="prjContent" name="prjContent"
-														rows="18" cols="51"	required="required" >${myList[0].prjNo.prjContent}</textarea>
+													<textarea id="textContent" name="prjContent" class="sboption"
+																rows="13" cols="35"	required="required" >${myList[0].prjNo.prjContent}
+													</textarea>
 										</td>
 								</tr>								
 								<tr class = "col6">
@@ -120,8 +121,8 @@ ${myList[0].prjNo.prjNo}
 								<tr class = "col14">
 										<td class="td_left"><label for="optContent">옵션내용</label></td>
 										<td class="td_right" >
-												<textarea id="optContent" name="optContent"
-														rows="18" cols="51"	required="required" >${myList[0].optContent}</textarea>
+													<textarea id="textContent" name="optContent"  class="sboption"
+															rows="8" cols="35"	required="required" >${myList[0].optContent}</textarea>
 										</td>											
 								</tr>
 						</tbody>

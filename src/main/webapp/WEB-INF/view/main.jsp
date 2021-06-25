@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
 </head>
 <body>
 	<!-- 페이지마다 .container해서 main.css에 있는 css비율대로 마진이랑 맞추기 -->

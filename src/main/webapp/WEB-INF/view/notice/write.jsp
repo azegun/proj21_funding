@@ -70,24 +70,13 @@
 		fCreator : "createSEditor2"
 	});
 
-
 	function submitContents(elClickedObj) {
 		oEditors.getById["boardContent"].exec("UPDATE_CONTENTS_FIELD", []);
+
 
 		var categoryNo = $("#categoryNo > option:selected").val();
 		var boardTitle = $("#boardTitle").val();
 		var boardContent = document.getElementById("boardContent").value;;
-
-		if (categoryNo == "") {
-			alert("카테고리를 선택해주세요.");
-			return;
-		}
-		
-		if (boardTitle == null || boardTitle == "") {
-			alert("제목을 입력해주세요.");
-			$("#boardTitle").focus();
-			return;
-		}
 		
 		if(boardContent == "" || boardContent == null || boardContent == '&nbsp;' || 
 				boardContent == '<br>' || boardContent == '<br/>' || boardContent == '<p>&nbsp;</p>'){
@@ -104,6 +93,7 @@
 		}else{
 			return;
 		}
+		
 		
 		try {
 			elClickedObj.form.submit();

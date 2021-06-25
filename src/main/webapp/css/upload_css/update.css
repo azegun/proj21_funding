@@ -5,7 +5,7 @@ body{
 	line-height: 1.6
 }
 .container_tab{
-	width: 500px;
+	width: 650px;
 	margin: 0 auto;
 	margin-top: 20px;
 	border-collapse: collapse;	
@@ -38,7 +38,63 @@ ul.tabs li.current{
 .register_mid.current{
 	display: inherit;
 }	
+/*탭 */
+
+/*태이블  */
+h2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#upload_prjcontent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}
+#upload_opjcontent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}
+.td_left{
+	width: 170px;
+}
+.td_right{
+	width: 330px;
+}
+td{
+	text-align: center;
+	padding: 5px;
+}
+#textContent{
+	font-size:20px;
+	overflow: auto;
+}
+#pCategoryNo{
+	width: 175px;
+	font-size: 15px;
+}
+#prjNo, #userName, #optPrice, #optName, #prjName, #prjGoal{
+	font-size: 15px;
+}
+.datepicker{
+	font-size: 15px;
+	width: 170px;
+}
+/*태이블  */
+
+/*버튼  */
 #update_btns{
 	margin-top:20px;
 	text-align: center;	
 }
+#update_opjBtns{
+	margin-top:20px;
+	text-align: center;	
+}
+/*버튼  */

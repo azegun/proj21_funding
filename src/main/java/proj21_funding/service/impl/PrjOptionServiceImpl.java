@@ -36,8 +36,7 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 	@Override
 	public int insertAddPrjOption(AddPrjOption addPrjOption) {
 		//사용해야됨 옵션 추가할때, 잠시 주석
-		/* addPrjOption.setPrjNo(); */
-		System.out.println("ProjectoptionService2 Impl >>  "+ addPrjOption );
+//		System.err.println("ProjectoptionADDDDDDDDService Impl >>  "+ addPrjOption );
 		return mapper.insertAddPrjOption(addPrjOption);
 	}
 
@@ -45,10 +44,20 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 	public PrjOption showPrjOptionByOptNo(int optNo) {
 		return mapper.selectPrjOptionByOptNo(optNo);
 	}
+	
 	@Override
 	public int updatePrjOption(PrjOption prjoption) {
-		System.out.println("PrjOpt수정IMPL >> "+ prjoption);
 		return mapper.updatePrjOption(prjoption);
+	}
+
+	@Override
+	public List<PrjOption> selectSimplePrjOptionByPrjNo(int prjNo) {
+		return mapper.selectSimplePrjOptionByPrjNo(prjNo);
+	}
+
+	@Override
+	public int updateAddOption(AddPrjOption addprjoption) {
+		return mapper.updateAddOption(addprjoption);
 	}
 
 

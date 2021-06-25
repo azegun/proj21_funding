@@ -50,11 +50,11 @@
 }
 
 .menulist2 {
-	padding: 15px;
+	margin-top: 60px;
 	font-family: 'NanumBarunGothic', sans-serif;
 }
 
-.cate_title{
+.cate_title {
 	color: gray;
 	margin-bottom: 15px;
 	font-weight: bold;

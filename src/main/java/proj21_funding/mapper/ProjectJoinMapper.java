@@ -1,6 +1,7 @@
 package proj21_funding.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import proj21_funding.dto.project.ProjectJoin;
 
@@ -20,4 +21,6 @@ public interface ProjectJoinMapper {
 	List<ProjectJoin> selectSuccessProjectGroupByUserNo();
 	//프로젝트별 후원자 리스트
 	List<ProjectJoin> selectSponsorListByPrjNo(int prjNo);
+	
+	List<ProjectJoin> selectProjectJoinByMap(Map<String,Object> listMap);
 }

@@ -77,6 +77,10 @@
 	display: flex;
 }
 
+.prjcate:nth-child(1) {
+	padding-left: 0;
+}
+
 .prjcate {
 	border: none;
 	background: transparent;

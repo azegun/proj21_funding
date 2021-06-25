@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -20,10 +19,7 @@
 	      slidesToShow: 1,
 	      slidesToScroll: 1
 	});
-  
-	
-	
-	
+ 
 	$('.slider').slick({
       dots: false,
       arrows: false,     
@@ -48,8 +44,7 @@
    });
 </script>
 </head>
-<body>
-																					
+<body>																					
 				<div class="title">						
 					<c:forEach items="${maxprj}" var="maxprj">
 						<div id="title-post">
@@ -61,11 +56,11 @@
 									${maxprj.totalCount}명 / ${maxprj.rate}% 
 							</div>
 						</div>																	
-					</c:forEach>																				
+					</c:forEach>							
 				</div>
 				<div id="title-btn">
 					<button type="button" class="title-prev"><</button>
-					<button type="button" class="title-next">></button>	
+					<button type="button" class="title-next">></button>					
 				</div>
 
 			<div class="mainSlid">	
@@ -80,8 +75,7 @@
 			</div>			
 						
 			<div class="mainSlid">
-				<h2>주목할 만한 프로젝트</h2>
-																
+				<h2>주목할 만한 프로젝트</h2>																
 				<div class="slider">								
 					<c:forEach items="${recommendPrjs}" var="rePrjs">
 						<div class="post">
@@ -101,5 +95,6 @@
 					</c:forEach>					
 				</div>					
 			</div>
+
 </body>
 </html>

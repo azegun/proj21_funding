@@ -57,6 +57,13 @@ public class ProjectMapperTest {
 		Assert.assertNotNull(list);
 	}
 	
+	@Test
+	public void testShowJoinPrjAndCategory() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Project list = mapper.showJoinPrjAndCategory(21);
+		Assert.assertNotNull(list);
+	}
+	
 //	@Test
 	public void testselectProjectSuccessImbak() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
@@ -65,7 +72,7 @@ public class ProjectMapperTest {
 		
 	}
 	
-	@Test
+//	@Test
 	public void testinsertProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -75,7 +82,7 @@ public class ProjectMapperTest {
 		Assert.assertEquals(1, res);		
 	}
 	
-@Test
+//@Test
 	public void testupdateProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -85,23 +92,23 @@ public class ProjectMapperTest {
 		Assert.assertEquals(1, res);		
 	}
 
-@Test
+//@Test
 public void testjoinUpdateProjectAndPrjOption() {
 	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 	Map<String, Object> map = new HashMap<String, Object>();
-	map.put("pNo",2);
+	map.put("pNo", 59);
 	map.put("pCategoryNo", 2);
 	map.put("pName", "맵테스트1");
-	map.put("pContent", "조인업데이트업데이트");
+	map.put("pContent", "조인업데이트업4343데이트");
 	map.put("pGoal", 2000000);
 	map.put("eDate", date);
 	map.put("pDate", date);
-	map.put("oName", "제발");
-	map.put("oPrice", 30000000);
-	map.put("oContent", "진짜");
+	map.put("oName", "제발33333333");
+	map.put("oPrice", 300002200);
+	map.put("oContent", "진55짜111");
 	System.out.println("map >> "+ map );
 	int res = mapper.joinUpdateProjectAndPrjoptionByPrjNo(map);
-	Assert.assertEquals(2, res);		
+	Assert.assertEquals(3, res);		
 }
 
 //@Test

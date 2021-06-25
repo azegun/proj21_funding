@@ -37,14 +37,13 @@
 					</script>
 </head>
 <body>
-${pro}
-${uploadfile }
-${Uploadfile }
-
-
+<%-- ${optList[0].prjNo.prjNo}
+${optList[1].prjNo.prjNo}
+${optList[1].optName} --%>
+${category.pCategoryNo.pCategoryName }
+${optList }
 <%-- ${pro } --%>
 <%-- ${category[0] } --%>
-<%=request.getContextPath() %>/images/project/
 <section class="container">
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
@@ -60,24 +59,26 @@ ${Uploadfile }
 		<section id= "table_all">
 			<div id ="foot_btn">	
 					
-			</div>
-		<table border= 1>		
+			</div>	
+		<table border=1>		
 				<tbody>
 					<tr class = "col1">
 										<td class="td_left"><label for="prjNo">프로젝트번호</label></td>
 										<td class="td_right" ><span id="prjNo">${pro.prjNo }</span></td>
 					</tr>
-					<tr class = "col2">
+			 		<tr class = "col2">
 										<td class="td_left"><label for="pCategoryName">카테고리</label></td>
-										<td class="td_right" ><span id="pCategoryName">${category[0].pCategoryName }</span></td>	
+										<td class="td_right" ><span id="pCategoryName">${category.pCategoryNo.pCategoryName }</span></td>	
 					</tr>
 					<tr class = "col3">
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
 										<td class="td_right" ><span id="prjName">${pro.prjName}</span></td>
 					</tr>
 					<tr class = "col4">
-										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
-										<td class="td_right" ><span id="prjContent">${pro.prjContent }</span></td>
+										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>							
+										<td class="td_right" >
+												<div class ="sboption">${pro.prjContent }</div>
+										</td>							
 					</tr>	
 					<tr class = "col5">
 										<td class="td_left"><label for="prjGoal">목표금액</label></td>
@@ -94,24 +95,56 @@ ${Uploadfile }
 					<tr class = "col7">
 										<td class="td_left"><label for="payDate">결제일</label></td>
 										<td class="td_right" ><span id="payDate">${pro.payDate}</span></td>
-					</tr>
-					<tr class = "col8">
-										<td class="td_left"><label for="optName">옵션이름</label></td>
-										<td class="td_right" ><span id="optName">${propt.optName }</span></td>
-					</tr>
-					<tr class = "col9">
-										<td class="td_left"><label for="optPrice">옵션금액</label></td>
-										<td class="td_right" >
-												<span id="optPrice">													
-														<fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
-												</span>
-										</td>
-					</tr>
-					<tr class = "col10">
-										<td class="td_left"><label for="optContent">옵션내용</label></td>
-										<td class="td_right" ><span id="optContent">${propt.optContent}</span></td>
-					</tr>
-					
+					</tr>				
+					<c:choose>
+							<c:when test="${optList[0].prjNo.prjNo eq optList[1].prjNo.prjNo}">
+								 <tr class = "col8">
+											<td class="td_left"><label for="opt1">옵션1</label></td>
+											<td class="td_right" >
+												<span id="opt1">${propt.optName }<br>
+											   			<fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
+											   	</span>
+											</td>
+								</tr>
+								<tr class = "col10">
+											<!-- <td class="td_left"><label for="optContent">옵션1 내용</label></td> -->
+											<td class="td_right"  colspan="2">
+															<div class ="sb2option">${propt.optContent}</div>
+											</td>	
+								<tr class = "col9">
+											<td class="td_left"><label for="opt2">옵션2</label></td>
+											<td class="td_right" >
+														<span id="opt2">	${optList[1].optName}<br>
+																	  <fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>
+														</span>
+											</td>
+								</tr>
+								<tr class = "col10">
+										<!-- 	<td class="td_left"><label for="optContent">옵션2 내용</label></td> -->
+											<td class="td_right" colspan="2" >
+															<div class ="sb2option">${optList[1].optContent}</div>
+										  	</td>								
+							</c:when>
+							<c:otherwise>
+								 <tr class = "col8">
+											<td class="td_left"><label for="optName">옵션이름</label></td>
+											<td class="td_right" ><span id="optName">${propt.optName }</span></td>
+								</tr>
+								<tr class = "col9">
+											<td class="td_left"><label for="optPrice">옵션금액</label></td>
+											<td class="td_right" >
+														<span id="optPrice">													
+																	<fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
+														</span>
+											</td>
+								</tr>
+								<tr class = "col10">
+											<td class="td_left"><label for="optContent">옵션내용</label></td>
+											<td class="td_right" >
+															<div class ="sb2option">${propt.optContent}</div>
+											</td>								
+							</c:otherwise>					
+					</c:choose>						
 				</tbody>
 		</table>
 		</section>

@@ -1,7 +1,5 @@
 package proj21_funding.dto;
 
-import javax.validation.constraints.NotBlank;
-
 //프로젝트구매옵션
 public class PrjOption {
 		private int optNo; //옵션번호
@@ -16,6 +14,7 @@ public class PrjOption {
 		public PrjOption(int optNo) {
 			this.optNo = optNo;
 		}		
+		
 		//insert (transaction)
 		public PrjOption(Project prjNo, String optName, int optPrice, String optContent) {
 			this.prjNo = prjNo;
@@ -77,7 +76,7 @@ public class PrjOption {
 
 		@Override
 		public String toString() {
-			return String.format("PrjOption [optNo=%s, prjNo=%s, optName=%s, optPrice=%s, optContent=%s]", optNo, prjNo,
+			return String.format("PrjOption [optNo=%s, prjNo=%s, optName=%s, optPrice=%s, optContent=%s]", optNo, prjNo.getPrjNo(),
 					optName, optPrice, optContent);
 		}
 		
