@@ -92,18 +92,7 @@ response.setContentType("text/html; charset=UTF-8");
 		var categoryNo = $("#categoryNo > option:selected").val();
 		var boardTitle = $("#boardTitle").val();
 		var boardContent = document.getElementById("boardContent").value;;
-
-		if (categoryNo == "") {
-			alert("카테고리를 선택해주세요.");
-			return;
-		}
-		
-		if (boardTitle == null || boardTitle == "") {
-			alert("제목을 입력해주세요.");
-			$("#boardTitle").focus();
-			return;
-		}
-		
+	
 		if(boardContent == "" || boardContent == null || boardContent == '&nbsp;' || 
 				boardContent == '<br>' || boardContent == '<br/>' || boardContent == '<p>&nbsp;</p>'){
 			alert("본문을 작성해주세요.");
