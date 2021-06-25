@@ -95,9 +95,12 @@ $(function(){
 
 				<input class="fund" type="submit" value="후 원" >
 			</form>
-
-
-
+			<div id="projectUserInfo">
+				<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />
+			</div>
+			<div id="prjBoard">
+				<jsp:include page="/WEB-INF/view/project/prjBoard.jsp" />
+			</div>
 		</div>
 	</div>
 </body>

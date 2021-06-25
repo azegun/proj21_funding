@@ -179,6 +179,7 @@ select
 	PostNo, PrjNo, UserNo,
 	PostTitle, PostContent ,PostDate ,PostFile 
 from prjboard;
+where PrjNo = 1 and UserNo = 1;
 
 insert into prjboard values
 (00001, 00001, 00001, '마지막인서트', '고생들했어요', now(), null );
