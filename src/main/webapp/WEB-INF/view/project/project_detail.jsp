@@ -98,6 +98,9 @@ $(function(){
 			<div id="projectUserInfo">
 				<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />
 			</div>
+			<div id="prjBoard">
+				<jsp:include page="/WEB-INF/view/project/prjBoard.jsp" />
+			</div>
 		</div>
 	</div>
 </body>

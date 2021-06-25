@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_funding.mapper.PrjBoardMapper">
+
+	<resultMap type="PrjBoard" id="resPb">
+		<id property="postNo" column="postNo"/>
+		<result property="userNo" column="userNo"/>
+		<result property="postTitle" column="postTitle"/>
+		<result property="postContent" column="postContent"/>
+		<result property="postDate" column="postDate"/>
+		<result property="postFile" column="postFile"/>
+		<association property="prjNo" resultMap="proj21_funding.mapper.ProjectMapper.resProject" ></association>
+	</resultMap>
+	
+	<select id="selectPrjBoardbyPrjNo" resultMap="resPb">
+		select PostNo, PrjNo, UserNo, PostTitle, PostContent ,PostDate ,PostFile 
+		  from prjboard
+		 where PrjNo = #{PrjNo.PrjNo}
+	</select>
+	
+	<select id="selectPrjBoardbyUserNo" parameterType="PrjBoard" resultMap="resPb">
+		select PostNo, PrjNo, UserNo, PostTitle, PostContent ,PostDate ,PostFile 
+		  from prjboard
+		 where PrjNo = #{PrjNo.PrjNo} and UserNo = #{userNo} 	
+	</select>
+
+	<insert id="insertPrjBoard">
+		insert
+		  into prjboard(PrjNo, UserNo, PostTitle, PostContent,PostFile)
+		  values (#{PrjNo.PrjNo}, #{userNo}, #{postTitle}, #{postContent}, #{postFile})
+	</insert>
+	
+	<update id="updatePrjBoard">
+		update prjboard
+		   set PrjNo = #{PrjNo.PrjNo}, UserNo = #{userNo}, PostTitle = #{postTitle}, PostContent=#{postContent},PostFile = #{postFile}
+	     where PostNo = #{postNo}
+	</update>
+	
+	<delete id="deletePrjBoard">
+		delete
+		  from prjboard
+		 where PostNo = #{postNo}
+	</delete>
+
+</mapper>
