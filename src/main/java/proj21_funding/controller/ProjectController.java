@@ -7,16 +7,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_funding.dto.Message;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserAuthInfo;
@@ -24,6 +27,7 @@ import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
 import proj21_funding.dto.project.ProjectJoin;
 import proj21_funding.service.FundingInfoService;
+import proj21_funding.service.MessageService;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectJoinService;
 import proj21_funding.service.ProjectService;
@@ -42,6 +46,8 @@ public class ProjectController {
 	private ProjectJoinService joinService;
 	@Autowired
 	private UserInfoService userService;
+	@Autowired
+	private MessageService service;
 
 //	모든 프로젝트
 	@RequestMapping("/projectListAll")
@@ -100,7 +106,7 @@ public class ProjectController {
 	public ModelAndView detail(@PathVariable("prjNo") int prjNo, HttpSession session) {
 		int count;
 		int sum;
-		List<PrjOption> prj = optionService.showPrjOptionByPrjNo(prjNo);
+		List<PrjOption> prj = optionService.showPrjOptionByPrjNo(prjNo);		
 		session.setAttribute("prj", prj);
 		session.setAttribute("prjNo", prjNo);
 //		List<Project> prjList=projectService.showProjectListAll();
@@ -146,4 +152,29 @@ public class ProjectController {
 			return new ModelAndView("redirect:/prjDetail/"+prjNo);
 		}
 	}
+	
+	
+	//창작자에게 문의하기
+	@GetMapping("/project/question-write")
+	public String Question(Message message) {
+		return "project/question-write";
+	}
+	
+	@PostMapping("/project/question-write")
+	public String Question1(@Valid Message message, Errors errors, Model model) {
+		if(message.getSendUser().equals("")) {
+			String complet = "로그인이 필요합니다.";
+			model.addAttribute("complet",complet);
+			return "project/question-write";
+		}
+		try {
+			service.sendMessage(message);
+			String complet = "전송되었습니다.";
+			model.addAttribute("complet",complet);
+		}catch (NullPointerException e) {
+			errors.rejectValue("msgContent", "nullContent");			
+		}
+		return "project/question-write";
+	}
+	
 }
