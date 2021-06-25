@@ -85,6 +85,9 @@ td{
 	font-size: 15px;
 	width: 170px;
 }
+.hidden {
+    display: none;
+}
 /*태이블  */
 
 #register_btns{

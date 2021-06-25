@@ -61,20 +61,24 @@
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
 	         $(".test").on("click", function(){
-	               var test = $('#category').val()
+	               var test = $('#pCategoryNo').val()
 	               if(test == 0){
-	                  alert("선택해주세요")
+	            	   console.log("확인")
+	                  alert("카테고리를 	선택해주세요")
+	                 /*   window.location.href = contextPath+"/emptyCategory"; */
+	           		   history.back() 
 	               }
 	         });         
 	      });   
 		
-	      $(function(){
-		         var contextPath = "<%=request.getContextPath()%>";
-		         $(".btnTest").on("click", function(){
-		          console.log(5);
-		         });         
-		      });
-	      
+		 //아이템 추가
+	   $(function(){
+	   $('.optionPlusMinus').on("click", function(){		
+   		   $('.optionPlusMinus').parent().parent().parent().parent().next().toggleClass('hidden');
+   		   console.log(555)
+	   })
+      });		
+	
 	
 
 </script>		
@@ -91,7 +95,7 @@ ${project[0].prjNo }
 	
 		<section id = "register_mid">
 		<!--탭 부분  -->
-			<div class="container_tab">
+			<section class="container_tab">
 					<ul class="tabs">
 							<li class="tab-link current"  id = "tab-click" data-tab="tab-1">프로젝트 정보</li>
 							<li class="tab-link"   id = "tab-click2" data-tab="tab-2">옵션</li>
@@ -182,8 +186,8 @@ ${project[0].prjNo }
 		</div>
 		<!--탭1 프로젝트부분  -->	
 				
-		<!--탭2 옵션부분  -->
-					<div id="tab-2" class="register_mid">
+<!--탭2 옵션부분  -->
+			<div id="tab-2" class="register_mid">
 						<h2>옵션</h2>	
 			<section id = "register_optcontent">
 				<table>
@@ -213,18 +217,19 @@ ${project[0].prjNo }
 									</td>
 							</tr>
 							<tr>
-									<td id= "addBtns" colspan="2">
-										<button id = "optionPlus" >+</button>
-										<button id = "optionMinus">-</button>
-									</td>									
-							</tr>
-							<!--  월요일에 열기-->
-						 <tr>
+									<td class ="td_right" colspan="2">
+											  <div id="register_btns"><button type = "button" class = "optionPlusMinus" >옵션추가/삭제</button></div>
+									</td>
+							</tr>	
+							</tbody>	
+							<!-- <tbody class = "addOption hidden">		
+							 월요일에 열기
+						   <tr>
 									<td class = "td_left">
 											<label for = "addOptName">옵션이름</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "addOptName" name = "addOptName"  size = 17 required="required" ></input>
+											 <input type="text" id = "addOptName" name = "addOptName"  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -232,7 +237,7 @@ ${project[0].prjNo }
 											<label for = "addOptPrice">옵션금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "addOptPrice" name = "addOptPrice"  size = 17 required="required" ></input>
+											 <input type="text" id = "addOptPrice" name = "addOptPrice"  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -240,32 +245,28 @@ ${project[0].prjNo }
 											<label for = "addOptContent">옵션내용</label>
 									</td>						
 									<td class = "td_right">
-											 <textarea id = "textContent" name = "addOptContent"	rows="8" cols="38" required="required" ></textarea>
+											 <textarea id = "textContent" name = "addOptContent"	rows="8" cols="38" ></textarea>
 									</td>
 							</tr>
-						</tbody>			
+						</tbody> -->
 					</table>	
 			</section>
 				</div>				
 			<!--탭2 옵션부분  -->			
 				
-			</div>		
+			</section>		
 			<div id="register_btns">
 					<input class = "test" type="submit" value="등록"/>&nbsp;
 					<input type="reset" value="다시쓰기" />&nbsp; 
-					<button id= "return">뒤로</button>
+					<button type="button" id= "return">뒤로</button>
 			</div>	
-		</section>
-		<footer>
-			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
-		</footer>
+		</section>	
 		</form>
+			<footer>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
+			</footer>
 		</section>
 
 </body>
 </html>
-
-
-
-
 

@@ -27,7 +27,6 @@ import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
-import proj21_funding.service.MyListService;
 import proj21_funding.service.PrjCategoryService;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectAndPrjOptionService;
@@ -210,7 +209,6 @@ public class UploadController {
 		projectService.joinUpdateProjectAndPrjoptionByNo(map);	
 		
 		if(addprjoption.getAddOptName() !=null) {
-			System.out.println("ddd");
 			//추가적인 업데이트
 			prjoption.setOptNo(optList.get(0).getOptNo());
 			optionService.updatePrjOption(prjoption);
