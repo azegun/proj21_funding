@@ -42,7 +42,7 @@
 	
 	<!-- 성공임박 -->
 	<select id="selectProjectSuccessImbak" resultMap="resProjectJoin">
-	select p.prjno, if(sum(optPrice)>0,sum(optPzzrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
 			,count(fundingno) as totalCount
 		  from fundinginfo f 
 	      join prjoption o on o.optno= f.OptNo 
