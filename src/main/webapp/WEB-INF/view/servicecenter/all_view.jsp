@@ -11,8 +11,8 @@
 <head>
 <meta charset="UTF-8">
 <title>고객센터</title>
-<link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
 </head>
 <style>
 	table{border : 1px solid;}
@@ -24,22 +24,25 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
 	<section class = "sevicecenter_view">
-	<h2>고객센터</h2>
-	<nav>
-		<ul>
-			<li><a href="/proj21_funding/qnaallview">자주 묻는 질문</a></li>
+	<div id="top">
+		<div id="top_title">
+			<span class="faq">고객센터</span>
+		</div>
+		<div id="top_category">
+		<ul id="titlename">
+			<li id="cate"><a href="/proj21_funding/qnaallview" class="catetext">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview">모든 질문 보기</a></li>
+					<li id="cate" value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview" class="catetext">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview">내 질문</a></li>
+					<li id="cate" value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview" class="catetext">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</nav>
-	<h4>자주 묻는 질문</h4>
-	<p>고객님께서 자주 문의하시는 질문과 답변을 모았습니다.</p>
+		</div>
+	</div>
+	<p class="seolmyoung">고객님께서 자주 문의하시는 질문과 답변을 모았습니다.</p>
 	<input type="text" id="qnaserch" placeholder="궁금하신 점이 있다면 여기서 먼저 찾아보세요."><button>search</button>
 	<table>
 		<c:forEach var="qna" items="${qna }">
@@ -57,9 +60,9 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<p>궁금함을 해결하지 못하셨나요?</p>
-	<p><a href="/proj21_funding/qnawrite">
-	<button>1:1 문의하기</button></a>
+	<p class="seolmyoung">궁금함을 해결하지 못하셨나요?</p>
+	<p class="seolmyoung"><a href="/proj21_funding/qnawrite">
+	1:1 문의</a>를 이용해주세요.
 	</p>
 	</section>
 		<footer>

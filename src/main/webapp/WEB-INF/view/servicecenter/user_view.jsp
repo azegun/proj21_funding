@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <title>고객센터</title>
-<link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
 </head>
@@ -23,28 +23,25 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
 		</header>
 		<section class="sevicecenter_view">
-			<h2>고객센터</h2>
-			<nav>
-				<ul>
-					<li><a
-						href="/proj21_funding/qnaallview">자주
-							묻는 질문</a></li>
-					<c:choose>
-						<c:when test="${authInfo.userNo < 0 }">
-							<li value="${authInfo.userNo }"><a
-								href="/proj21_funding/qnaadminview">모든
-									질문 보기</a></li>
-						</c:when>
-						<c:otherwise>
-							<li value="${authInfo.userNo }"><a
-								href="/proj21_funding/qnauserview">내
-									질문</a></li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
-			</nav>
-			<h4>내가 한 질문</h4>
-			<p>고객님이 하신 1:1 질문내역 페이지입니다.</p>
+	<div id="top">
+		<div id="top_title">
+			<span class="faq">고객센터</span>
+		</div>
+		<div id="top_category">
+		<ul id="titlename">
+			<li id="cate"><a href="/proj21_funding/qnaallview" class="catetext">자주 묻는 질문</a></li>
+			<c:choose>
+				<c:when test="${authInfo.userNo < 0 }">
+					<li id="cate" value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview" class="catetext">모든 질문 보기</a></li>
+				</c:when>
+				<c:otherwise>
+					<li id="cate" value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview" class="catetext">내 질문</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+		</div>
+	</div>
+			<p class="seolmyoung">고객님이 하신 1:1 질문내역 페이지입니다.</p>
 			<table class="table">
 				<thead>
 					<tr>
@@ -93,30 +90,19 @@
 
 			<!--paginate -->
 			<div class="paginate">
-				<div class="paging">
-					<a class="direction prev" href="javascript:void(0);"
-						onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">
-						&lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
-						onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
-						&lt; </a>
+				<ul class="paging">
+					<li><a class="direction prev" href="javascript:void(0);" onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">&lt;&lt;</a></li>
+					<li><a class="direction prev" href="javascript:void(0);" onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">&lt;</a></li>
 
-					<c:forEach begin="${pagination.firstPage}"
-						end="${pagination.lastPage}" var="idx">
-						<a
-							style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
-							href="javascript:void(0);"
-							onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});"><c:out
-								value="${idx}" /></a>
+					<c:forEach begin="${pagination.firstPage}" end="${pagination.lastPage}" var="idx">
+						<li><a style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> " href="javascript:void(0);" onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});">
+						<c:out value="${idx}" /></a></li>
 					</c:forEach>
-					<a class="direction next" href="javascript:void(0);"
-						onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
-						&gt; </a> <a class="direction next" href="javascript:void(0);"
-						onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize});">
-						&gt;&gt; </a>
-				</div>
+					<li><a class="direction next" href="javascript:void(0);" onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">&gt; </a></li>
+					<li><a class="direction next" href="javascript:void(0);" onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize});">&gt;&gt;</a></li>
+				</ul>
 			</div>
 			<!-- /paginate -->
-
 			<footer>
 				<jsp:include page="/WEB-INF/view/home/footer.jsp" />
 			</footer>
