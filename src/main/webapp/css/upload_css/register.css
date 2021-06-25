@@ -1,16 +1,15 @@
 @charset "UTF-8";
-/* 탭 */
 body{
 	margin-top: 100px;
 	line-height: 1.6
 }
+/*탭 */
 .container_tab{
-	width: 500px;
+	width: 650px;
 	margin: 0 auto;
 	margin-top: 20px;
 	border-collapse: collapse;	
 }
-
 ul.tabs{
 	margin: 0px;
 	padding: 0px;
@@ -28,16 +27,66 @@ ul.tabs li.current{
 	background: #e4e4e4;
 	color: #222;
 }
-
 .register_mid{	
 	display: none;
 	background: #e4e4e4;
 	padding: 15px;
 }
-
 .register_mid.current{
 	display: inherit;
 }	
+/*탭 */
+
+
+/*태이블  */
+ h2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+} 
+#register_prjcontent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}
+#register_optcontent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}
+
+.td_left{
+	width: 170px;
+}
+.td_right{
+	width: 330px;
+}
+td{
+	text-align: center;
+	padding: 5px;
+}
+#textContent{
+		font-size:20px;
+}
+#pCategoryNo{
+	width: 175px;
+	font-size: 15px;
+}
+#userName, #optPrice, #optName, #prjName, 
+#prjGoal, #addOptPrice, #addOptName{
+	font-size: 15px;
+}
+.datepicker{
+	font-size: 15px;
+	width: 170px;
+}
+/*태이블  */
+
 #register_btns{
 	margin-top:20px;
 	text-align: center;	

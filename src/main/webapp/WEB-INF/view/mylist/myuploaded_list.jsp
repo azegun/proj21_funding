@@ -20,6 +20,7 @@
 			window.location.href = contextPath+"/";
 		});			
 	});
+		
 		/* 프로젝트 보기 */
 	$(function(){
 		var contextPath = "<%=request.getContextPath()%>";

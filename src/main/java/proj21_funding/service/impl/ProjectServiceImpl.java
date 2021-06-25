@@ -51,9 +51,11 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public int joinUpdateProjectAndPrjoptionByNo(Map<String, Object> map) {
-		System.out.println("map >> " + map);
-		System.out.println("eDate map>> " +  map.get("eDate"));
-		System.out.println("pDate map>>" + map.get("pDate") );
+//		System.out.println("map >> " + map);
+		/*
+		 * System.out.println("eDate map>> " + map.get("eDate"));
+		 * System.out.println("pDate map>>" + map.get("pDate") );
+		 */
 		
 		LocalDate EndDate =  (LocalDate) map.get("eDate");
 		LocalDate PayDate = (LocalDate) map.get("pDate");
@@ -67,6 +69,11 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 		
 	
+	}
+
+	@Override
+	public Project showJoinPrjAndCategory(int prjNo) {
+		return mapper.showJoinPrjAndCategory(prjNo);
 	}
 
 }

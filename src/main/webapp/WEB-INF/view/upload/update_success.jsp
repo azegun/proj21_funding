@@ -38,8 +38,11 @@
 					</script>
 </head>
 <body>
-	
-		${project }
+<%-- ${optList }
+${project } --%>
+${optList }
+
+		
 <%-- ${project } --%>
 <section class="container">
 		<header>		   
@@ -57,7 +60,7 @@
 										<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
 										<td class="td_right" >
 												<span id="pCategoryNo">												
-												${category[0].pCategoryName }
+														${category.pCategoryNo.pCategoryName }
 												</span>
 										</td>
 								</tr>
@@ -67,7 +70,9 @@
 								</tr>
 								<tr class = "col4">
 										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
-										<td class="td_right" ><span id="prjContent">${project.pContent }</span></td>
+										<td class="td_right" >
+												<div class ="sboption">${project.pContent }</div>
+										</td>
 								</tr>								
 								<tr class = "col5">
 										<td class="td_left"><label for="prjGoal">목표금액</label></td>
@@ -100,7 +105,7 @@
 								</tr>
 								<tr class = "col10">
 										<td class="td_left"><label for="optContent">옵션내용</label></td>
-										<td class="td_right" ><span id="optContent">${project.oContent}</span></td>
+										<td class="td_right" ><div class ="sb2option">${project.oContent}</div></td>
 								</tr>
 						</tbody>
 				</table>

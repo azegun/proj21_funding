@@ -1,32 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-		$(function(){
-			var dateSelector = document.querySelector('.dateSelector');
-			dateSelector.flatpicker();
-		});
-		
-
-</script>
-</head>
-<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<link rel="stylesheet" href="/proj21_funding/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/proj21_funding/bootstrap/css/bootstrap-theme.min.css">
-<script type="text/javascript" src="/proj21_funding/bootstrap/js/bootstrap.min.js"></script> -->
-	</head>
-			<body>
-			<div class = "reservation">
-				<div>
-					<p>예약일</p>
-					<input class = "dateSelector" placeholder = "ex)2020-09-01"/>
-				</div>
-			</div>
-			
-			</body>
-			</html>
+  <head>
+    <style>
+      .container {
+        width: 500px;
+        height: 140px;
+        overflow: auto;
+      }
+      /*스크롤바  */
+       .container::-webkit-scrollbar{
+       width: 10px;
+       /*스크롤바 확인 
+       background-color: black; */
+       }
+       .container::-webkit-scrollbar-thumb{
+       border-radius:10px;
+       background-color:crimson; 
+       }
+       .container::-webkit-scrollbar-track{
+        border-radius:10px;
+       background-color:gold;
+       box-shadow: inset 0px 0px 5px white;
+       }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim modi in
+      exercitationem explicabo, at rem officia autem non porro soluta dolorum
+      officiis ipsa repellat, laudantium ea unde labore, temporibus quas?Lorem
+      ipsum dolor sit amet, consectetur adipisicing elit. Eveniet eius totam
+      quam pariatur ratione, in voluptatem dignissimos laboriosam sint aut!
+      Repudiandae consectetur odit quo corrupti quidem perferendis aut dolores
+      quis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nam
+      optio dolore recusandae fuga voluptatibus. Ea quam deserunt consectetur
+      quo aut eligendi, molestiae incidunt molestias ullam? Repellendus ratione
+      repellat
+    </div>
+  </body>
+</html>
