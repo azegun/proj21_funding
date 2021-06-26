@@ -218,10 +218,11 @@ insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
 update prjoption as op1 inner join prjoption as op2
 on op1.PrjNo = op2.PrjNo 
 	set 
-		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움',
-		op.OptName = '1주일쨰 파일올리기,수정', op.OptContent ='화이팅하자'
-where p.PrjNo = 4;
+		op1.OptName ='test성공하자', op1.OptPrice =20000, op1.OptContent ='제발',
+		op2.OptName = '업데이트', op2.OptPrice = 30000, op2.OptContent = '하자'
+where op1.OptNo =286  and op2.OptNo  =287;
 
+select * from prjoption p ;
 
 
 
