@@ -70,33 +70,39 @@
 	               }
 	         });         
 	      });   
-		
-		 //아이템 추가
-	   $(function(){
-		   
-			var sCont = "";		
+		function addopt(i){
+			var sCont = "";	
 			sCont += "<tbody class = 'addAll'>";
 			sCont += "<tr>";
 			sCont += "<td class = 'td_left'><label for = 'addOptName'>옵션이름</label></td>";
-			sCont += "<td class = 'td_right'> <input type='text' id = 'addOptName' class = 'addtext' name = 'addOptName'  required   size = 17/></td>";
+			sCont += "<td class = 'td_right'> <input type='text' id = 'addOptName' class = 'addtext' name = 'addOptName"+ i +"'  required   size = 17/></td>";
 			sCont += "</tr>";
 			sCont += "	<tr>";
 			sCont += "	<td class = 'td_left'><label for = 'addOptPrice'>옵션금액</label></td>";
-			sCont += "	<td class = 'td_right'><input type='text' id = 'addOptPrice'   class = 'addtext' name = 'addOptPrice'   required  size = 17 /></td>";
+			sCont += "	<td class = 'td_right'><input type='text' id = 'addOptPrice'   class = 'addtext' name = 'addOptPrice"+ i +"'   required  size = 17 /></td>";
 			sCont += "</tr>";
 			sCont += "	<tr>";
 			sCont += "	<td class = 'td_left'><label for = 'addOptContent'>옵션내용</label></td>	";
-			sCont += "	<td class = 'td_right'> <textarea id = 'textContent'  class = 'addtext' name = 'addOptContent'  required 	rows='8' cols='38' ></textarea></td>";
+			sCont += "	<td class = 'td_right'> <textarea id = 'textContent'  class = 'addtext' name = 'addOptContent"+ i +"'+  required 	rows='8' cols='38' ></textarea></td>";
 			sCont += "</tr>";					
-			sCont += "</tbody>";					
+			sCont += "</tbody>";
+			
+			 $('.addOption:last-child').append(sCont);  
+		}
+		 //아이템 추가
+	   $(function(){
+		   
+			var i = 0;		
 			//옵션추가
-			$('.optionPlus').on("click", function(){		
-				 $('.addOption:last-child').append(sCont);   				 
-		 			
-		   		   if($('.addtext').attr('required') == true){
+			$('.optionPlus').on("click", function(){	
+				i += 1
+				addopt(i)
+				 				 
+						 			
+/* 		   		   if($('.addtext').attr('required') == true){
 		   			$(".addtext").prop('required',false);
 		   		   }
-			   });
+ */			   });
 			//옵션삭제
 			$('.optionMinus').on("click", function(){
 				$('.addAll:last-child').remove();

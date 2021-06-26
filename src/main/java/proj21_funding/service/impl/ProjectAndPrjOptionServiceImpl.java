@@ -26,7 +26,7 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	private PrjOptionMapper prjOptMapper;
 
 	@Override
-	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile) {
+	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile ) {
 //		날짜비교
 		LocalDate EndDate = project.getEndDate();
 		LocalDate PayDate = project.getPayDate();
@@ -41,9 +41,9 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
 		}	
 		
-		prjoption.setPrjNo(project);
+		  prjoption.setPrjNo(project);
 	      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
-//	      System.out.println("saveName: "+ saveName);
+	      System.out.println("saveName: "+ saveName);
 	      
 	      File saveFile = new File(UPLOAD_PATH, saveName);
 	      try {
@@ -54,7 +54,6 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	      
 	      res += prjOptMapper.insertPrjOption(prjoption);
 	      
-//	      System.err.println("prjOption IMPL >> " + prjoption);
 	      
 	      if(res != 2) throw new RuntimeException();            
 	}

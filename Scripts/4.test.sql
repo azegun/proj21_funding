@@ -180,7 +180,7 @@ update project
 			PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, 
 			EndDate = '2021-06-13', PayDate = '2021-06-13'
 	where prjno = 66;
-
+select * from prjoption p2 ;
 select * from project p 
 where PrjNo  = 27;
 
@@ -206,6 +206,11 @@ where OptNo =22;
 select OptNo, PrjNo, OptName, OptPrice, OptContent
 		from prjoption
 where PrjNo =57;
+
+insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
+(3, 'test2', 20000, 'test2'),
+(3, 'test3', 30000, 'test3');
+
 
 
 

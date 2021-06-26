@@ -3,7 +3,10 @@ package proj21_funding.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjCategory;
@@ -55,6 +59,7 @@ public class UploadController {
 	private UserInfoService userService;
 	
 	private List<PrjOption> optList;
+
 	
 //	업로드 할 시 계좌 등록 안되어있으면 계좌 등록
 	@GetMapping("/registerAccount")
@@ -118,26 +123,71 @@ public class UploadController {
 	
 	//업로드
 	@PostMapping("/listSuccess")
-	public ModelAndView registerSuccess(Project project,  PrjOption prjoption, 	AddPrjOption addPrjOption,
-										MultipartFile uploadfile,  HttpServletResponse response) throws IOException {	
+	public ModelAndView registerSuccess(Project project,  PrjOption prjoption,
+			MultipartFile uploadfile,
+			/* MultipartHttpServletRequest multipartRequest, */ HttpServletResponse response) throws IOException {	
+		
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html;charset=utf-8");
+//		multipartRequest.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
+		Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());
+	
 		try {
 			//트렌젝션추가
-			trService.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);		
+			
+			trService.trJoinPrjAndPrjOpt(project, prjoption , uploadfile);		
 			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
-			System.out.println("optList >> "+  optList);
-			//두개 이상이면 작동옵션
-			if(addPrjOption.getAddOptName() != null) {
-				addPrjOption.setPrjNo(prjoption.getPrjNo());
-				optionService.insertAddPrjOption(addPrjOption);
-			}
-			Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());
+			
+			System.err.println("---------------------------------");
+			System.out.println("optList 트렌젝션 후 >> "+  optList);
+			System.err.println("---------------------------------");
+			System.out.println("prjoption  1 >> " + prjoption);
+			Map<String, Object>	map = new HashMap<String, Object>();	
+
+			  map.put("pNo", prjoption.getPrjNo().getPrjNo());
+			  map.put("addOptName1",  prjoption.getAddOptName1());
+			  map.put("addOptPrice1",	  prjoption.getAddOptPrice1()); 
+			  map.put("addOptContent1",  prjoption.getAddOptContent1());
+			  map.put("addOptName2",  prjoption.getAddOptName2()); 
+			  map.put("addOptPrice2",  prjoption.getAddOptPrice2()) ; 
+			  map.put("addOptContent2",  prjoption.getAddOptContent2());
+			 
+			   optionService.insertPrjOptionsByMap(map);
+			    
+			   
+//			Enumeration enu = multipartRequest.getParameterNames();
+//				System.out.println("enu >> "+ enu);
+//			      while (enu.hasMoreElements()) {
+//			         String name = (String) enu.nextElement();
+//			         String value = multipartRequest.getParameter(name);
+//			         map.put(name, value);
+//			         System.out.println("enu >> "+ map);
+//			      }
+			      
+//			List fileList = fileProcess(multipartRequest);
+//			map.put("fileupload", fileList);
+					System.out.println("prjoption  2 >> " + prjoption);
+				
+					System.out.println("map size3 >> "+ map.size());
+					System.out.println("추가옵션 서비스 전 >> "+  map);
+
+				
+	
+			
+			System.err.println("---------------------------------");
+			System.out.println("추가옵션 등록 후 >> "+  map);
+			System.err.println("---------------------------------");
+			
 			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
-			System.out.println("list>>> "+ list);
+			
 		
+		      
+			System.err.println("---------------------------------");
+			System.out.println("작업끝 >> "+  optList);
+			System.err.println("---------------------------------");
+			
 			mav.addObject("optList", optList);		
 			mav.addObject("category", list);				
 			mav.setViewName("upload/register_success");	
@@ -154,6 +204,28 @@ public class UploadController {
 		 }				
 	}
 	
+//	private List fileProcess(MultipartHttpServletRequest multipartRequest) throws IOException {
+//		List<String> fileList = new ArrayList<String>();
+//		Iterator<String> fileNames = multipartRequest.getFileNames();
+//		
+//		while(fileNames.hasNext()) {
+//			String fileName = fileNames.next();
+//			MultipartFile mFile = multipartRequest.getFile(fileName);
+//			String originalFileName = mFile.getOriginalFilename();
+//			fileList.add(originalFileName);
+//			File file = new  File(UPLOAD_PATH + "\\"  + fileName);
+//			if(mFile.getSize() != 0) {
+//				if(!file.exists()) {
+//					if(file.getParentFile().mkdir()) {
+//						file.createNewFile();
+//					}
+//				}
+//				mFile.transferTo(new File(UPLOAD_PATH + "\\" + originalFileName));
+//			}
+//		}
+//		return fileList;		
+//	}
+
 	//등록완료페이지에서 -> 수정페이지
 	@RequestMapping("/updatePrj/{prjNo}")
 	public ModelAndView updateProject(@PathVariable("prjNo") int prjNo) {
@@ -208,12 +280,12 @@ public class UploadController {
 		//리스트 조인
 		projectService.joinUpdateProjectAndPrjoptionByNo(map);	
 		
-		if(addprjoption.getAddOptName() !=null) {
+		if(addprjoption.getAddOptName1() !=null) {
 			//추가적인 업데이트
 			prjoption.setOptNo(optList.get(0).getOptNo());
 			optionService.updatePrjOption(prjoption);
 			
-			addprjoption.setAddOptNo(optList.get(1).getOptNo());
+			addprjoption.setAddOptNo1(optList.get(1).getOptNo());
 			optionService.updateAddOption(addprjoption);		
 		}
 		

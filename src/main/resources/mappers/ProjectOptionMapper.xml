@@ -55,12 +55,27 @@
 					(#{prjNo.prjNo}, #{optName},  #{optPrice}, #{optContent})
 		</insert>		
 		
-		<!-- 추가적인 아이템2 -->
+		<!-- 옵션들 추가  -->
+		<insert id="insertPrjOptionsByMap" parameterType="map">
+				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
+						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1}),
+						(#{pNo}, #{addOptName2}, #{addOptPrice2},  #{addOptContent2});		
+		</insert>
+		
+		<!-- 추가적인 아이템 -->
 		<insert id="insertAddPrjOption">
 			insert into prjoption 
 					(prjno, OptName, OptPrice, OptContent)
 			values 
-					(#{prjNo.prjNo}, #{addOptName},  #{addOptPrice}, #{addOptContent})
+					(#{prjNo.prjNo}, #{addOptName1},  #{addOptPrice1}, #{addOptContent1})
+		</insert>		
+		
+				<!-- 추가적인 아이템2 -->
+		<insert id="insertAddSecPrjOption">
+			insert into prjoption 
+					(prjno, OptName, OptPrice, OptContent)
+			values 
+					(#{prjNo.prjNo}, #{addOptName2},  #{addOptPrice2}, #{addOptContent2})
 		</insert>		
 		
 		<!-- 프로젝트 옵션 수정 -->

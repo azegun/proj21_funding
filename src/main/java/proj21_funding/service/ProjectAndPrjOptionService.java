@@ -7,6 +7,6 @@ import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 @Service
 public interface ProjectAndPrjOptionService {	
-	void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile);	
+	void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption , MultipartFile uploadfile);	
 	void trremovePrjAndPrjOpt(int prjNo);
 }

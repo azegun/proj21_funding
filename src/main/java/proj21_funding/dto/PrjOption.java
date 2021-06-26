@@ -7,6 +7,13 @@ public class PrjOption {
 		private String optName; //옵션명
 		private int optPrice;//옵션급액
 		private String optContent;//옵션내용
+		private String addOptName1;
+		private String addOptName2;
+		private int addOptPrice1;
+		private int addOptPrice2;
+		private String addOptContent1;
+		private String addOptContent2;
+		
 		//기본 생성자
 		public PrjOption() {}
 		
@@ -72,6 +79,54 @@ public class PrjOption {
 		}
 		public void setOptContent(String optContent) {
 			this.optContent = optContent;
+		}
+
+		public String getAddOptName1() {
+			return addOptName1;
+		}
+
+		public void setAddOptName1(String addOptName1) {
+			this.addOptName1 = addOptName1;
+		}
+
+		public String getAddOptName2() {
+			return addOptName2;
+		}
+
+		public void setAddOptName2(String addOptName2) {
+			this.addOptName2 = addOptName2;
+		}
+
+		public int getAddOptPrice1() {
+			return addOptPrice1;
+		}
+
+		public void setAddOptPrice1(int addOptPrice1) {
+			this.addOptPrice1 = addOptPrice1;
+		}
+
+		public int getAddOptPrice2() {
+			return addOptPrice2;
+		}
+
+		public void setAddOptPrice2(int addOptPrice2) {
+			this.addOptPrice2 = addOptPrice2;
+		}
+
+		public String getAddOptContent1() {
+			return addOptContent1;
+		}
+
+		public void setAddOptContent1(String addOptContent1) {
+			this.addOptContent1 = addOptContent1;
+		}
+
+		public String getAddOptContent2() {
+			return addOptContent2;
+		}
+
+		public void setAddOptContent2(String addOptContent2) {
+			this.addOptContent2 = addOptContent2;
 		}
 
 		@Override
