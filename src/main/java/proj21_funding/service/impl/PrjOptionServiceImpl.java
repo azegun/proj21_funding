@@ -46,6 +46,10 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 	}
 
 	@Override
+	public List<PrjOption> showSimpleOptionByPrjNo(int prjNo) {
+		return mapper.selectSimpleOptionByPrjNo(prjNo);
+	}
+	
 	public List<PrjOption> selectSimplePrjOptionByPrjNo(int prjNo) {
 		return mapper.selectSimplePrjOptionByPrjNo(prjNo);
 	}

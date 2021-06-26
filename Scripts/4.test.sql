@@ -232,7 +232,12 @@ select
 	PostTitle, PostContent 
 from prjboard;
 
+delete from prjboard
+where PostNo = 1;
 
+update prjboard
+	set  PrjNo, UserNo, PostTitle, PostContent
+	where PostNo;
 
 -- addresses(주소)
 select 

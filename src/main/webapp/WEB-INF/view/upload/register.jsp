@@ -109,16 +109,13 @@
 
 </script>		
 </head>
-<body>
-<%-- ${optList } --%>
-<%-- ${prjList} --%>
-${project[0].prjNo }
-		<section class="container">		
+<body>	
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
 		<form action= "<%=request.getContextPath() %>/listSuccess" method="post" enctype="multipart/form-data">
 	
+		<section class="container">	
 		<section id = "register_mid">
 		<!--탭 부분  -->
 			<section class="container_tab">

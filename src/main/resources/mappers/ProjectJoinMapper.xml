@@ -30,8 +30,18 @@
 	</resultMap>
 	
 	<select id="selectProjectJoinAll" resultMap="resProjectJoin">
-	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
-			,count(fundingno) as totalCount,prjContent, c.pcategoryno, c.pcategoryname, startDate, endDate, round(sum(optprice)/prjgoal*100,2) as rate
+	select p.prjno,
+			 if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
+			  p.Prjname,
+			  p.prjgoal,
+			  u.nickname as prjManager
+			,count(fundingno) as totalCount,
+			prjContent,
+			 c.pcategoryno,
+			  c.pcategoryname,
+			   startDate,
+			    endDate,
+			     round(sum(optprice)/prjgoal*100,2) as rate
 		  from fundinginfo f 
 	      join prjoption o on o.optno= f.OptNo 
 		  right join project p on p.prjno = f.PrjNo 
@@ -42,7 +52,7 @@
 	
 	<!-- 성공임박 -->
 	<select id="selectProjectSuccessImbak" resultMap="resProjectJoin">
-	select p.prjno, if(sum(optPrice)>0,sum(optPzzrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+	select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
 			,count(fundingno) as totalCount
 		  from fundinginfo f 
 	      join prjoption o on o.optno= f.OptNo 
@@ -161,5 +171,11 @@
 		 <if test="listMap == null">
 		 </if> -->
 	
+	</select>
+	
+	<select id="selectProjectSumCountAll" resultMap="resProjectJoin">														<!-- prjno : 프로젝트 갯수  -->
+	select ifnull(sum(optprice),0) as totalprice, ifnull(count(fundingno),0) as totalcount , ifnull(count(distinct (p.prjNo)),0) as prjno
+				from project p left join fundinginfo f on p.prjno = f.prjno
+			   left	join prjoption o on o.optno = f.optno;
 	</select>
 </mapper>

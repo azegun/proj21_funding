@@ -33,6 +33,7 @@ public class AdminProjectController {
 		ProjectJoin prjDetail = joinService.showProjectJoinByPrjNo(prjNo);
 		List<ProjectJoin> sponsorList = joinService.showSponsorListByPrjNo(prjNo);
 		List<PrjCategory> categoryList = categoryService.showCategory();
+		
 		ModelAndView mav= new ModelAndView();
 		mav.setViewName("admin/sponsorList");
 		mav.addObject("prjDetail",prjDetail);
@@ -51,6 +52,7 @@ public class AdminProjectController {
 		System.out.println(searchKeyword);
 		System.out.println(category);
 		List<PrjCategory> categoryList = categoryService.showCategory();
+		ProjectJoin sumCount =joinService.showProjectSumCountAll();
 
 		Map<String,Object> listMap = new HashMap<String,Object>();
 		listMap.put("category", category);
@@ -62,6 +64,7 @@ public class AdminProjectController {
 		ModelAndView mav= new ModelAndView();
 		mav.setViewName("admin/adminProject");
 		mav.addObject("prjList",prjList);
+		mav.addObject("sumCount",sumCount);
 		mav.addObject("categoryList",categoryList);
 		return mav;
 	}

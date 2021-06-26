@@ -99,6 +99,10 @@
 					where PrjNo = #{prjNo.prjNo}
 		</delete>
 		
+		<select id = "selectSimpleOptionByPrjNo" resultMap="AssociateProject">
+			select * from prjoption  where prjno =#{prjNo}
+		</select>
+		
 		<!--간단한 프로젝트옵션 리스트 -->
 		<select id="selectSimplePrjOptionByPrjNo" resultMap="AssociateProject">
 				select OptNo, PrjNo, OptName, OptPrice, OptContent

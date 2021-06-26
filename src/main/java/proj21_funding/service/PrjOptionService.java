@@ -31,4 +31,9 @@ public interface PrjOptionService {
 	int updateOptionByMap(Map<String, Object> map);
 	//프로젝트 추가옵션1,2  수정
 	int updateAllAddOptionsByMap(Map<String, Object> map);
+	
+	List<PrjOption> showSimpleOptionByPrjNo(int prjNo);
+	
+	//프로젝트 추가옵션 수정
+	int updateAddOption(AddPrjOption addprjoption);
 }
