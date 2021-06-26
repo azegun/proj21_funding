@@ -40,7 +40,7 @@
 <%-- ${optList[0].prjNo.prjNo}
 ${optList[1].prjNo.prjNo}
 ${optList[1].optName} --%>
-${category.pCategoryNo.pCategoryName }
+<%-- ${category.pCategoryNo.pCategoryName } --%>
 ${optList }
 <%-- ${pro } --%>
 <%-- ${category[0] } --%>

@@ -56,6 +56,12 @@
 		</insert>		
 		
 		<!-- 옵션들 추가  -->
+		<insert id="insertOptionByMap" parameterType="map">
+				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
+						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1});					
+		</insert>
+		
+		<!-- 옵션들 추가  -->
 		<insert id="insertPrjOptionsByMap" parameterType="map">
 				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
 						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1}),

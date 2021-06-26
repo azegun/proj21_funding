@@ -89,6 +89,7 @@
 			
 			 $('.addOption:last-child').append(sCont);  
 		}
+		
 		 //아이템 추가
 	   $(function(){
 		   
@@ -96,13 +97,9 @@
 			//옵션추가
 			$('.optionPlus').on("click", function(){	
 				i += 1
-				addopt(i)
-				 				 
-						 			
-/* 		   		   if($('.addtext').attr('required') == true){
-		   			$(".addtext").prop('required',false);
-		   		   }
- */			   });
+				addopt(i)				 				 
+			   });
+			
 			//옵션삭제
 			$('.optionMinus').on("click", function(){
 				$('.addAll:last-child').remove();

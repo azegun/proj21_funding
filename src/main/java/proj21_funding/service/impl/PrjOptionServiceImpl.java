@@ -34,12 +34,12 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.insertPrjOption(prjOption);
 	}
 
-	@Override
-	public int insertAddPrjOption(AddPrjOption addPrjOption) {
-		//사용해야됨 옵션 추가할때, 잠시 주석
-//		System.err.println("ProjectoptionADDDDDDDDService Impl >>  "+ addPrjOption );
-		return mapper.insertAddPrjOption(addPrjOption);
-	}
+//	@Override
+//	public int insertAddPrjOption(AddPrjOption addPrjOption) {
+//		//사용해야됨 옵션 추가할때, 잠시 주석
+////		System.err.println("ProjectoptionADDDDDDDDService Impl >>  "+ addPrjOption );
+//		return mapper.insertAddPrjOption(addPrjOption);
+//	}
 
 	@Override
 	public PrjOption showPrjOptionByOptNo(int optNo) {
@@ -60,14 +60,19 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 	public int updateAddOption(AddPrjOption addprjoption) {
 		return mapper.updateAddOption(addprjoption);
 	}
-	@Override
-	public int insertAddSecPrjOption(AddPrjOption addPrjOption) {
-		return mapper.insertAddSecPrjOption(addPrjOption);
-	}
+//	@Override
+//	public int insertAddSecPrjOption(AddPrjOption addPrjOption) {
+//		return mapper.insertAddSecPrjOption(addPrjOption);
+//	}
 
 	@Override
 	public int insertPrjOptionsByMap(Map<String, Object> map) {
 		return mapper.insertPrjOptionsByMap(map);
+	}
+
+	@Override
+	public int insertOptionByMap(Map<String, Object> map) {
+		return mapper.insertOptionByMap(map);
 	}
 
 

@@ -40,12 +40,13 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 		}else {
 			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
 		}	
-		
+			
 		  prjoption.setPrjNo(project);
 	      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
 	      System.out.println("saveName: "+ saveName);
 	      
 	      File saveFile = new File(UPLOAD_PATH, saveName);
+	      
 	      try {
 	         uploadfile.transferTo(saveFile);
 	      }catch (IOException e) {

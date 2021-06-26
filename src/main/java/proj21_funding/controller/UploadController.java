@@ -3,13 +3,12 @@ package proj21_funding.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjCategory;
@@ -101,7 +99,7 @@ public class UploadController {
 	public ModelAndView uploadRegister() {	
 		List<Project> proList = projectService.showProjectListAll();
 		List<PrjCategory> list = prjCategoryService.showCategory();
-//		System.out.println("prjcategory >>" + list);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("category", list);
 		mav.addObject("prjList", proList);		
@@ -125,68 +123,38 @@ public class UploadController {
 	@PostMapping("/listSuccess")
 	public ModelAndView registerSuccess(Project project,  PrjOption prjoption,
 			MultipartFile uploadfile,
-			/* MultipartHttpServletRequest multipartRequest, */ HttpServletResponse response) throws IOException {	
+			HttpServletRequest request, HttpServletResponse response) throws IOException {	
 		
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html;charset=utf-8");
-//		multipartRequest.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
-		Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());
-	
-		try {
+		try {		
 			//트렌젝션추가
-			
 			trService.trJoinPrjAndPrjOpt(project, prjoption , uploadfile);		
-			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
-			
-			System.err.println("---------------------------------");
-			System.out.println("optList 트렌젝션 후 >> "+  optList);
-			System.err.println("---------------------------------");
-			System.out.println("prjoption  1 >> " + prjoption);
-			Map<String, Object>	map = new HashMap<String, Object>();	
-
-			  map.put("pNo", prjoption.getPrjNo().getPrjNo());
-			  map.put("addOptName1",  prjoption.getAddOptName1());
-			  map.put("addOptPrice1",	  prjoption.getAddOptPrice1()); 
-			  map.put("addOptContent1",  prjoption.getAddOptContent1());
-			  map.put("addOptName2",  prjoption.getAddOptName2()); 
-			  map.put("addOptPrice2",  prjoption.getAddOptPrice2()) ; 
-			  map.put("addOptContent2",  prjoption.getAddOptContent2());
-			 
-			   optionService.insertPrjOptionsByMap(map);
-			    
-			   
-//			Enumeration enu = multipartRequest.getParameterNames();
-//				System.out.println("enu >> "+ enu);
-//			      while (enu.hasMoreElements()) {
-//			         String name = (String) enu.nextElement();
-//			         String value = multipartRequest.getParameter(name);
-//			         map.put(name, value);
-//			         System.out.println("enu >> "+ map);
-//			      }
-			      
-//			List fileList = fileProcess(multipartRequest);
-//			map.put("fileupload", fileList);
-					System.out.println("prjoption  2 >> " + prjoption);
-				
-					System.out.println("map size3 >> "+ map.size());
-					System.out.println("추가옵션 서비스 전 >> "+  map);
-
-				
-	
-			
-			System.err.println("---------------------------------");
-			System.out.println("추가옵션 등록 후 >> "+  map);
-			System.err.println("---------------------------------");
-			
-			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
-			
 		
+			//map들어오는거 확인하는 방법 (강추)			
+			Map<String, Object>	map = new HashMap<String, Object>();	
+	
+			Enumeration enu = request.getParameterNames();
+		      while (enu.hasMoreElements()) {
+		         String name = (String) enu.nextElement();
+		         String value = request.getParameter(name);
+		         map.put(name, value);
+		      }
+		     
+		      if(map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == false) {
+		    	  //추가가 2개일떄
+		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
+		    	  optionService.insertOptionByMap(map);
+		      }else if (map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == true) {
+		    	  //추가가 3개일떄
+		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
+		    	  optionService.insertPrjOptionsByMap(map);
+		      }		      
 		      
-			System.err.println("---------------------------------");
-			System.out.println("작업끝 >> "+  optList);
-			System.err.println("---------------------------------");
+			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());		
+			Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());
 			
 			mav.addObject("optList", optList);		
 			mav.addObject("category", list);				
@@ -202,29 +170,7 @@ public class UploadController {
 			mav.setViewName("upload/register");
 		 return mav; 
 		 }				
-	}
-	
-//	private List fileProcess(MultipartHttpServletRequest multipartRequest) throws IOException {
-//		List<String> fileList = new ArrayList<String>();
-//		Iterator<String> fileNames = multipartRequest.getFileNames();
-//		
-//		while(fileNames.hasNext()) {
-//			String fileName = fileNames.next();
-//			MultipartFile mFile = multipartRequest.getFile(fileName);
-//			String originalFileName = mFile.getOriginalFilename();
-//			fileList.add(originalFileName);
-//			File file = new  File(UPLOAD_PATH + "\\"  + fileName);
-//			if(mFile.getSize() != 0) {
-//				if(!file.exists()) {
-//					if(file.getParentFile().mkdir()) {
-//						file.createNewFile();
-//					}
-//				}
-//				mFile.transferTo(new File(UPLOAD_PATH + "\\" + originalFileName));
-//			}
-//		}
-//		return fileList;		
-//	}
+	}	
 
 	//등록완료페이지에서 -> 수정페이지
 	@RequestMapping("/updatePrj/{prjNo}")
