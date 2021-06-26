@@ -73,27 +73,6 @@ public class PrjOptionMapperTest {
 		Assert.assertEquals(1, res);		
 	}
 	
-////	@Test
-//	public void testInsertAddPrjOption() {
-//	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-//		
-//    	AddPrjOption prjOption = new AddPrjOption(new Project(4), "프로젝트옵션222", 22222, "옵션d222" );
-//				
-//		int res = mapper.insertAddPrjOption(prjOption);
-//	
-//		Assert.assertEquals(1, res);		
-//	}
-//	
-////	@Test
-//	public void testInsertAddSecPrjOption() {
-//	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-//		
-//		AddPrjOption prjOption = new AddPrjOption(new Project(4), "프로젝트옵션3333", 3333, "옵션d222" );
-//				
-//		int res = mapper.insertAddSecPrjOption(prjOption);
-//	
-//		Assert.assertEquals(1, res);		
-//	}
 	
 //	@Test
 	public void testupdateProjectOption() {
@@ -112,10 +91,7 @@ public class PrjOptionMapperTest {
 		AddPrjOption addprjoption = new AddPrjOption(148, "양말셋트", 3004432, "두셋트");
 		int res = mapper.updateAddOption(addprjoption);
 		Assert.assertEquals(1, res);		
-	}
-	
-	
-	
+	}	
 	
 //	@Test
 	public void testremoveProjectOption() {

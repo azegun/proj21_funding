@@ -32,7 +32,7 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 		LocalDate PayDate = project.getPayDate();
 		
 		int compareEtoP = EndDate.compareTo(PayDate);
-//		날짜비교
+//		날짜비교		
 		
 		int res;
 		if(compareEtoP <= 0) {
@@ -40,21 +40,22 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 		}else {
 			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
 		}	
-			
-		  prjoption.setPrjNo(project);
-	      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
-	      System.out.println("saveName: "+ saveName);
+		//트렌젝션 prjNo 찾아오기 위함.
+		prjoption.setPrjNo(project);
+		
+		  if(uploadfile.getSize() !=0) {
+			  
+		      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";	     
+		      
+		      File saveFile = new File(UPLOAD_PATH, saveName);
+		      try {
+		         uploadfile.transferTo(saveFile);
+		      }catch (IOException e) {
+		      e.printStackTrace();
+		      }      
+		  }		
 	      
-	      File saveFile = new File(UPLOAD_PATH, saveName);
-	      
-	      try {
-	         uploadfile.transferTo(saveFile);
-	      }catch (IOException e) {
-	      e.printStackTrace();
-	      }      
-	      
-	      res += prjOptMapper.insertPrjOption(prjoption);
-	      
+	      res += prjOptMapper.insertPrjOption(prjoption);	      
 	      
 	      if(res != 2) throw new RuntimeException();            
 	}

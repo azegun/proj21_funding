@@ -180,6 +180,7 @@ update project
 			PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, 
 			EndDate = '2021-06-13', PayDate = '2021-06-13'
 	where prjno = 66;
+
 select * from prjoption p2 ;
 select * from project p 
 where PrjNo  = 27;
@@ -198,18 +199,28 @@ from fundinginfo;
 select
 		OptNo, PrjNo, OptName, OptPrice, OptContent
 from prjoption;
+
 -- 옵션 프로젝트 업데이트
 update prjoption 
 	set OptName ='문방사우', OptPrice = 2200000, OptContent = '먹'
 where OptNo =22;
+
 -- 프로젝트옵션  프로젝트번호로 검색
 select OptNo, PrjNo, OptName, OptPrice, OptContent
 		from prjoption
 where PrjNo =57;
 
+-- 추가 2개
 insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
 (3, 'test2', 20000, 'test2'),
 (3, 'test3', 30000, 'test3');
+
+update prjoption as op1 inner join prjoption as op2
+on op1.PrjNo = op2.PrjNo 
+	set 
+		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움',
+		op.OptName = '1주일쨰 파일올리기,수정', op.OptContent ='화이팅하자'
+where p.PrjNo = 4;
 
 
 

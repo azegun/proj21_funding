@@ -209,17 +209,20 @@ public class UploadController {
 		map.put("oPrice", project.getOptPrice());
 		map.put("oContent", project.getOptContent());
 		
-		// 파일 업로드
-		String saveName = "project"+project.getPrjNo().getPrjNo()+".jpg";
-		
-		File saveFile = new File(UPLOAD_PATH, saveName);
-		//카테고리 리스트
-		
-		try {
-			uploadfile.transferTo(saveFile);
-		}catch (IOException e) {
-		e.printStackTrace();
+		//파일 존재 여부
+		if(uploadfile.getSize() !=0) {
+			// 파일 업로드
+			String saveName = "project"+project.getPrjNo().getPrjNo()+".jpg";
+			
+			File saveFile = new File(UPLOAD_PATH, saveName);
+			
+			try {
+				uploadfile.transferTo(saveFile);
+			}catch (IOException e) {
+			e.printStackTrace();
+			}
 		}
+	
 		// 프로젝트 수정
 		ModelAndView mav = new ModelAndView();
 		try {

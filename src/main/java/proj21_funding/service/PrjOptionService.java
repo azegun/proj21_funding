@@ -16,9 +16,6 @@ public interface PrjOptionService {
 	
 	//옵션추가 + 여러개추가
 	int insertPrjOption(PrjOption prjOption);
-//	int insertAddPrjOption(AddPrjOption addPrjOption);
-//	//2번쨰 옵션추가
-//	int insertAddSecPrjOption(AddPrjOption addPrjOption);
 	//프로젝트 옵션들 추가1
 	int insertOptionByMap(Map<String, Object> map);
 	//프로젝트 옵션들 추가
