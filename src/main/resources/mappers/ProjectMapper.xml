@@ -77,13 +77,14 @@
 					</selectKey>
 		</insert>
 		
-		<!-- 프로젝트 수정 -->
+	 	<!-- 프로젝트 수정 -->
 		<update id="updateProject" >
 				update project 
 					set 
-					pCategoryNo = #{pCategoryNo.pCategoryNo}, PrjName = #{prjName}, PrjContent =#{prjContent}, 
+					pCategoryNo = #{pCategoryNo.pCategoryNo}, 
+					PrjName = #{prjName}, PrjContent =#{prjContent}, 
 					PrjGoal = #{prjGoal}, EndDate = #{endDate}, PayDate = #{payDate}
-				where prjno = #{prjNo}
+				where prjno = #{prjNo.prjNo}
 		</update>
 		
 		<!-- 프로젝트and 옵션 조인 업데이트 -->
@@ -91,11 +92,11 @@
 				update project as p inner join prjoption as op
 					on p.PrjNo = op.PrjNo 
 						set 
-						   p.pCategoryNo = #{pCategoryNo},
-							p.PrjName = #{pName}, p.PrjContent = #{pContent}, p.PrjGoal = #{pGoal},
-							p.EndDate = #{eDate}, p.PayDate = #{pDate},
-							op.OptName = #{oName}, op.OptPrice =#{oPrice}, op.OptContent =#{oContent}
-					where p.PrjNo = #{pNo}	
+						   p.pCategoryNo = #{pCategoryNo.pCategoryNo},
+							p.PrjName = #{prjName}, p.PrjContent = #{prjContent}, p.PrjGoal = #{prjGoal},
+							p.EndDate = #{endDate}, p.PayDate = #{payDate},
+							op.OptName = #{optName}, op.OptPrice =#{optPrice}, op.OptContent =#{optContent}
+					where op.PrjNo = #{prjNo.prjNo}	
 		</update>
 		
 		<!-- 프로젝트 삭제 -->

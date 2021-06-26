@@ -3,6 +3,7 @@ package proj21_funding.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -24,8 +25,6 @@ import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
-import proj21_funding.dto.project.AddPrjOption;
-import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
@@ -193,26 +192,15 @@ public class UploadController {
 	}
 	
 	//수정 완료 후 리스트
-	@PostMapping("/updateListSuccess")
-	public ModelAndView updateListSuccess(UpdateProject project, PrjOption prjoption,
-		AddPrjOption addprjoption,	MultipartFile uploadfile, 	HttpServletResponse response  ) throws IOException {
-		
-		Map<String, Object> map = new HashMap<String, Object>();	
-		map.put("pNo", project.getPrjNo().getPrjNo());
-		map.put("pCategoryNo", project.getpCategoryNo().getpCategoryNo());
-		map.put("pName", project.getPrjName());
-		map.put("pContent", project.getPrjContent());
-		map.put("pGoal", project.getPrjGoal());
-		map.put("eDate", project.getEndDate());
-		map.put("pDate", project.getPayDate());
-		map.put("oName", project.getOptName());
-		map.put("oPrice", project.getOptPrice());
-		map.put("oContent", project.getOptContent());
-		
+	@PostMapping("/updateList")
+	public ModelAndView updateListSuccess(PrjOption prjoption, Project project,
+		HttpServletRequest request, MultipartFile uploadfile, HttpServletResponse response  ) throws IOException {
+		System.out.println("1111111");
+		System.out.println("Project 1> >" + prjoption);
 		//파일 존재 여부
 		if(uploadfile.getSize() !=0) {
 			// 파일 업로드
-			String saveName = "project"+project.getPrjNo().getPrjNo()+".jpg";
+			String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
 			
 			File saveFile = new File(UPLOAD_PATH, saveName);
 			
@@ -222,21 +210,46 @@ public class UploadController {
 			e.printStackTrace();
 			}
 		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();	
+		
+		Enumeration enu = request.getParameterNames();
 	
-		// 프로젝트 수정
-		ModelAndView mav = new ModelAndView();
+		while (enu.hasMoreElements()) {
+	         String name = (String) enu.nextElement();
+	         String value = request.getParameter(name);
+	         map.put(name, value);
+	         System.out.println("map>> " + map);
+	      }
+//		System.out.println("project.getpCategoryNo().getpCategoryNo()>> " + project.getpCategoryNo().getpCategoryNo());
+//		map.put("pCategoryNo", project.getpCategoryNo().getpCategoryNo());
+//		map.put("prjNo", project.getPrjNo());
+		
+//		map.put("prjName", project.getPrjName());
+//		map.put("prjContent", project.getPrjContent());
+//		map.put("prjGoal", project.getPrjGoal());
+//		map.put("endDate", project.getEndDate());
+//		map.put("payDate", project.getPayDate());
+//		map.put("optName", project.getOptName());
+//		map.put("optPrice", project.getOptPrice());
+//		map.put("optContent", project.getOptContent());	
+		
+		
+		
+	
+	
 		try {
 		//리스트 조인
-		projectService.joinUpdateProjectAndPrjoptionByNo(map);	
-		
-		if(addprjoption.getAddOptName1() !=null) {
-			//추가적인 업데이트
-			prjoption.setOptNo(optList.get(0).getOptNo());
-			optionService.updatePrjOption(prjoption);
+			projectService.joinUpdateProjectAndPrjoptionByNo(map);	
+			System.out.println("map12121>>" + map);
+//		if(addprjoption.getAddOptName1() !=null) {
+//			//추가적인 업데이트
+//			prjoption.setOptNo(optList.get(0).getOptNo());
+//			optionService.updatePrjOption(prjoption);
 			
-			addprjoption.setAddOptNo1(optList.get(1).getOptNo());
-			optionService.updateAddOption(addprjoption);		
-		}
+//			addprjoption.setAddOptNo1(optList.get(1).getOptNo());
+//			optionService.updateAddOption(addprjoption);		
+//		}
 		
 		//옵션리스트 받기
 		optList = optionService.selectSimplePrjOptionByPrjNo(prjoption.getPrjNo().getPrjNo());	
@@ -251,8 +264,9 @@ public class UploadController {
 			out.flush();
 		}
 		
-		Project list = projectService.showJoinPrjAndCategory(project.getPrjNo().getPrjNo());
-			
+		Project list = projectService.showJoinPrjAndCategory(prjoption.getPrjNo().getPrjNo());
+		System.out.println("cateogry>> " + list);
+		ModelAndView mav = new ModelAndView();
 		mav.addObject("optList", optList);
 		mav.addObject("project", map);
 		mav.addObject("category", list);

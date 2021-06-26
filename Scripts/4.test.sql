@@ -147,15 +147,14 @@ on p.PrjNo = op.PrjNo
 		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
 where p.PrjNo =59;
 
-select  * from project ;
-select * from prjoption p ;
+select  * from project where PrjNo =4;
 
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
 	set 
 		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움',
-		op.OptName = '1주일쨰 파일올리기,수정', op.OptContent ='화이팅하자'
-where p.PrjNo = 4;
+		op.OptName = '1주일쨰 파일올리23123기,수정', op.OptContent ='화이팅하자'
+where op.PrjNo = 4;
 
 select * from project p2 ;
 -- Project + userInfo + prjOption 조인 by prjNo

@@ -7,6 +7,8 @@ public class PrjOption {
 		private String optName; //옵션명
 		private int optPrice;//옵션급액
 		private String optContent;//옵션내용
+		private int addOptNo1;
+		private int addOptNo2;
 		private String addOptName1;
 		private String addOptName2;
 		private int addOptPrice1;
@@ -50,6 +52,22 @@ public class PrjOption {
 			return optNo;
 		}
 		
+
+		public int getAddOptNo1() {
+			return addOptNo1;
+		}
+
+		public void setAddOptNo1(int addOptNo1) {
+			this.addOptNo1 = addOptNo1;
+		}
+
+		public int getAddOptNo2() {
+			return addOptNo2;
+		}
+
+		public void setAddOptNo2(int addOptNo2) {
+			this.addOptNo2 = addOptNo2;
+		}
 
 		public void setOptNo(int optNo) {
 			this.optNo = optNo;

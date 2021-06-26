@@ -40,8 +40,11 @@
 <body>
 <%-- ${optList }
 ${project } --%>
-${optList[0].prjNo.prjNo}
+<%-- ${optList[0].prjNo.prjNo}
 ${optList[1].prjNo.prjNo }
+${project }
+${project.prjGoal }
+ --%>${category }
 
 		
 <%-- ${project } --%>
@@ -67,29 +70,29 @@ ${optList[1].prjNo.prjNo }
 								</tr>
 								<tr class = "col3">
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
-										<td class="td_right" ><span id="prjName">${project.pName }</span></td>
+										<td class="td_right" ><span id="prjName">${project.prjName }</span></td>
 								</tr>
 								<tr class = "col4">
 										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
 										<td class="td_right" >
-												<div class ="sboption">${project.pContent }</div>
+												<div class ="sboption">${project.prjContent }</div>
 										</td>
 								</tr>								
 								<tr class = "col5">
 										<td class="td_left"><label for="prjGoal">목표금액</label></td>
 										<td class="td_right" >
 												<span id="prjGoal">
-														<fmt:formatNumber value="${project.pGoal }" pattern="\\#,###"/>
+														<fmt:formatNumber value="${project.prjGoal }" pattern="\\#,###"/>
 												 </span>
 										 </td>										
 								</tr>								
 								<tr class = "col6">
 										<td class="td_left"><label for="endDate">마감일</label></td>
-										<td class="td_right" ><span id="endDate">${project.eDate}</span></td>
+										<td class="td_right" ><span id="endDate">${project.endDate}</span></td>
 								</tr>
 								<tr class = "col7">
 										<td class="td_left"><label for="payDate">결제일</label></td>
-										<td class="td_right" ><span id="payDate">${project.pDate}</span></td>
+										<td class="td_right" ><span id="payDate">${project.payDate}</span></td>
 								</tr>
 							
 								<c:choose>
@@ -130,19 +133,19 @@ ${optList[1].prjNo.prjNo }
 										<tr class = "col8">
 							<!-- 옵션이 1개일때 -->
 												<td class="td_left"><label for="optName">옵션이름</label></td>
-												<td class="td_right" ><span id="optName">${project.oName}</span></td>
+												<td class="td_right" ><span id="optName">${project.optName}</span></td>
 										</tr>
 										<tr class = "col9">
 												<td class="td_left"><label for="optPrice">옵션금액</label></td>
 												<td class="td_right" >
 														<span id="optPrice">													
-																<fmt:formatNumber value="${project.oPrice}" pattern="\\#,###"/>
+																<fmt:formatNumber value="${project.optPrice}" pattern="\\#,###"/>
 														</span>
 												</td>
 										</tr>
 										<tr class = "col10">
 												<td class="td_left"><label for="optContent">옵션내용</label></td>
-												<td class="td_right" ><div class ="sb2option">${project.oContent}</div></td>
+												<td class="td_right" ><div class ="sb2option">${project.optContent}</div></td>
 							<!-- 옵션이 1개일때 -->			
 										</tr>									
 									</c:otherwise>					

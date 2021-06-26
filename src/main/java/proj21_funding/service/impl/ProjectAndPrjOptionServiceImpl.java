@@ -63,10 +63,8 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	@Override
 	public void trremovePrjAndPrjOpt(int prjNo) {
 		int res = prjOptMapper.removePrjOption(prjNo);
-		System.out.println("trans res1 >> " + res);
 		
 		res += pMapper.removeProject(prjNo);
-		System.out.println("trans res2 >> " + res);
 		
 	    if(res != 2) throw new RuntimeException();        
 	      

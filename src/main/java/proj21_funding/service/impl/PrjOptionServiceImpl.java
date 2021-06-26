@@ -50,10 +50,6 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.selectSimplePrjOptionByPrjNo(prjNo);
 	}
 
-	@Override
-	public int updateAddOption(AddPrjOption addprjoption) {
-		return mapper.updateAddOption(addprjoption);
-	}
 
 	@Override
 	public int insertPrjOptionsByMap(Map<String, Object> map) {
@@ -63,6 +59,16 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 	@Override
 	public int insertOptionByMap(Map<String, Object> map) {
 		return mapper.insertOptionByMap(map);
+	}
+
+	@Override
+	public int updateOptionByMap(Map<String, Object> map) {
+		return mapper.updateOptionByMap(map);
+	}
+
+	@Override
+	public int updateAllAddOptionsByMap(Map<String, Object> map) {
+		return mapper.updateAllAddOptionsByMap(map);
 	}
 
 }

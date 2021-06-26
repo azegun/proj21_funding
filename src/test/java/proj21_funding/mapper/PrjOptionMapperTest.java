@@ -33,7 +33,7 @@ public class PrjOptionMapperTest {
 	public void tearDown() throws Exception {
 		System.out.println();
 	}
-	@Test
+//	@Test
 	public void testInsertOptionByMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -46,7 +46,7 @@ public class PrjOptionMapperTest {
 		Assert.assertEquals(1, res);		
 	}
 	
-	@Test
+//	@Test
 	public void testInsertPrjOptionsByMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -85,12 +85,34 @@ public class PrjOptionMapperTest {
 	}
 	
 //	@Test
-	public void testupdateAddProjectOption() {
+	public void testupdateOptionByMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		AddPrjOption addprjoption = new AddPrjOption(148, "양말셋트", 3004432, "두셋트");
-		int res = mapper.updateAddOption(addprjoption);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo1", 286);
+		map.put("addOptName1", "ㄱㄱㄱㄱ");
+		map.put("addOptPrice1", 10000000);
+		map.put("addOptContent1", "map2222");
+		
+		int res = mapper.updateOptionByMap(map);
 		Assert.assertEquals(1, res);		
+	}	
+	@Test
+	public void testupdateAllAddOptionsByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo1", 286);
+		map.put("addOptName1", "111111");
+		map.put("addOptPrice1", 20000);
+		map.put("addOptContent1", "2222");
+		map.put("addOptNo2", 287);
+		map.put("addOptName2", "ddd");
+		map.put("addOptPrice2", 850000);
+		map.put("addOptContent2", "ma22");
+		
+		int res = mapper.updateAllAddOptionsByMap(map);
+		Assert.assertEquals(2, res);		
 	}	
 	
 //	@Test
