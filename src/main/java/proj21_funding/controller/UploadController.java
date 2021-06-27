@@ -3,10 +3,13 @@ package proj21_funding.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +25,9 @@ import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
-import proj21_funding.dto.project.AddPrjOption;
-import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
-import proj21_funding.service.MyListService;
 import proj21_funding.service.PrjCategoryService;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectAndPrjOptionService;
@@ -56,6 +56,7 @@ public class UploadController {
 	private UserInfoService userService;
 	
 	private List<PrjOption> optList;
+
 	
 //	업로드 할 시 계좌 등록 안되어있으면 계좌 등록
 	@GetMapping("/registerAccount")
@@ -97,7 +98,7 @@ public class UploadController {
 	public ModelAndView uploadRegister() {	
 		List<Project> proList = projectService.showProjectListAll();
 		List<PrjCategory> list = prjCategoryService.showCategory();
-//		System.out.println("prjcategory >>" + list);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("category", list);
 		mav.addObject("prjList", proList);		
@@ -119,26 +120,41 @@ public class UploadController {
 	
 	//업로드
 	@PostMapping("/listSuccess")
-	public ModelAndView registerSuccess(Project project,  PrjOption prjoption, 	AddPrjOption addPrjOption,
-										MultipartFile uploadfile,  HttpServletResponse response) throws IOException {	
+	public ModelAndView registerSuccess(Project project,  PrjOption prjoption,
+			MultipartFile uploadfile,
+			HttpServletRequest request, HttpServletResponse response) throws IOException {	
+		
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		try {
+		try {		
 			//트렌젝션추가
-			trService.trJoinPrjAndPrjOpt(project, prjoption, uploadfile);		
-			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
-			System.out.println("optList >> "+  optList);
-			//두개 이상이면 작동옵션
-			if(addPrjOption.getAddOptName() != null) {
-				addPrjOption.setPrjNo(prjoption.getPrjNo());
-				optionService.insertAddPrjOption(addPrjOption);
-			}
-			Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());
-			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());
-			System.out.println("list>>> "+ list);
+			trService.trJoinPrjAndPrjOpt(project, prjoption , uploadfile);		
 		
+			//map들어오는거 확인하는 방법 (강추)			
+			Map<String, Object>	map = new HashMap<String, Object>();	
+	
+			Enumeration enu = request.getParameterNames();
+		      while (enu.hasMoreElements()) {
+		         String name = (String) enu.nextElement();
+		         String value = request.getParameter(name);
+		         map.put(name, value);
+		      }
+		     
+		      if(map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == false) {
+		    	  //추가가 2개일떄
+		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
+		    	  optionService.insertOptionByMap(map);
+		      }else if (map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == true) {
+		    	  //추가가 3개일떄
+		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
+		    	  optionService.insertPrjOptionsByMap(map);
+		      }		      
+		      
+			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());		
+			Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());
+			
 			mav.addObject("optList", optList);		
 			mav.addObject("category", list);				
 			mav.setViewName("upload/register_success");	
@@ -153,8 +169,8 @@ public class UploadController {
 			mav.setViewName("upload/register");
 		 return mav; 
 		 }				
-	}
-	
+	}	
+
 	//등록완료페이지에서 -> 수정페이지
 	@RequestMapping("/updatePrj/{prjNo}")
 	public ModelAndView updateProject(@PathVariable("prjNo") int prjNo) {
@@ -176,48 +192,64 @@ public class UploadController {
 	}
 	
 	//수정 완료 후 리스트
-	@PostMapping("/updateListSuccess")
-	public ModelAndView updateListSuccess(UpdateProject project, PrjOption prjoption,
-		AddPrjOption addprjoption,	MultipartFile uploadfile, 	HttpServletResponse response  ) throws IOException {
+	@PostMapping("/updateList")
+	public ModelAndView updateListSuccess(PrjOption prjoption, Project project,
+		HttpServletRequest request, MultipartFile uploadfile, HttpServletResponse response  ) throws IOException {
+		System.out.println("1111111");
+		System.out.println("Project 1> >" + prjoption);
+		//파일 존재 여부
+		if(uploadfile.getSize() !=0) {
+			// 파일 업로드
+			String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
+			
+			File saveFile = new File(UPLOAD_PATH, saveName);
+			
+			try {
+				uploadfile.transferTo(saveFile);
+			}catch (IOException e) {
+			e.printStackTrace();
+			}
+		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();	
-		map.put("pNo", project.getPrjNo().getPrjNo());
-		map.put("pCategoryNo", project.getpCategoryNo().getpCategoryNo());
-		map.put("pName", project.getPrjName());
-		map.put("pContent", project.getPrjContent());
-		map.put("pGoal", project.getPrjGoal());
-		map.put("eDate", project.getEndDate());
-		map.put("pDate", project.getPayDate());
-		map.put("oName", project.getOptName());
-		map.put("oPrice", project.getOptPrice());
-		map.put("oContent", project.getOptContent());
 		
-		// 파일 업로드
-		String saveName = "project"+project.getPrjNo().getPrjNo()+".jpg";
+		Enumeration enu = request.getParameterNames();
+	
+		while (enu.hasMoreElements()) {
+	         String name = (String) enu.nextElement();
+	         String value = request.getParameter(name);
+	         map.put(name, value);
+	         System.out.println("map>> " + map);
+	      }
+//		System.out.println("project.getpCategoryNo().getpCategoryNo()>> " + project.getpCategoryNo().getpCategoryNo());
+//		map.put("pCategoryNo", project.getpCategoryNo().getpCategoryNo());
+//		map.put("prjNo", project.getPrjNo());
 		
-		File saveFile = new File(UPLOAD_PATH, saveName);
-		//카테고리 리스트
+//		map.put("prjName", project.getPrjName());
+//		map.put("prjContent", project.getPrjContent());
+//		map.put("prjGoal", project.getPrjGoal());
+//		map.put("endDate", project.getEndDate());
+//		map.put("payDate", project.getPayDate());
+//		map.put("optName", project.getOptName());
+//		map.put("optPrice", project.getOptPrice());
+//		map.put("optContent", project.getOptContent());	
 		
-		try {
-			uploadfile.transferTo(saveFile);
-		}catch (IOException e) {
-		e.printStackTrace();
-		}
-		// 프로젝트 수정
-		ModelAndView mav = new ModelAndView();
+		
+		
+	
+	
 		try {
 		//리스트 조인
-		projectService.joinUpdateProjectAndPrjoptionByNo(map);	
-		
-		if(addprjoption.getAddOptName() !=null) {
-			System.out.println("ddd");
-			//추가적인 업데이트
-			prjoption.setOptNo(optList.get(0).getOptNo());
-			optionService.updatePrjOption(prjoption);
+			projectService.joinUpdateProjectAndPrjoptionByNo(map);	
+			System.out.println("map12121>>" + map);
+//		if(addprjoption.getAddOptName1() !=null) {
+//			//추가적인 업데이트
+//			prjoption.setOptNo(optList.get(0).getOptNo());
+//			optionService.updatePrjOption(prjoption);
 			
-			addprjoption.setAddOptNo(optList.get(1).getOptNo());
-			optionService.updateAddOption(addprjoption);		
-		}
+//			addprjoption.setAddOptNo1(optList.get(1).getOptNo());
+//			optionService.updateAddOption(addprjoption);		
+//		}
 		
 		//옵션리스트 받기
 		optList = optionService.selectSimplePrjOptionByPrjNo(prjoption.getPrjNo().getPrjNo());	
@@ -232,8 +264,9 @@ public class UploadController {
 			out.flush();
 		}
 		
-		Project list = projectService.showJoinPrjAndCategory(project.getPrjNo().getPrjNo());
-			
+		Project list = projectService.showJoinPrjAndCategory(prjoption.getPrjNo().getPrjNo());
+		System.out.println("cateogry>> " + list);
+		ModelAndView mav = new ModelAndView();
 		mav.addObject("optList", optList);
 		mav.addObject("project", map);
 		mav.addObject("category", list);

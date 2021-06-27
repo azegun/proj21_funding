@@ -1,8 +1,11 @@
 package proj21_funding.controller;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.Project;
-import proj21_funding.dto.project.UpdateProject;
 import proj21_funding.service.MyListService;
 import proj21_funding.service.PrjCategoryService;
 
@@ -77,16 +79,17 @@ public class MyListController {
 		}
 //		디테일리스트에서 수정
 		@PostMapping("/myListUpdate/{authInfo.userNo}")
-		public ModelAndView myListUpdate(@PathVariable("authInfo.userNo") int userNo, UpdateProject project) {
+		public ModelAndView myListUpdate(@PathVariable("authInfo.userNo") int userNo, HttpServletRequest request) {
 			
 			Map<String, Object> map = new HashMap<String, Object>();	
-			map.put("pNo", project.getPrjNo());
-			map.put("pName", project.getPrjName());
-			map.put("pContent", project.getPrjContent());
-			map.put("oName", project.getOptName());
-			map.put("oContent", project.getOptContent());
-			System.out.println("map Service 전 > " + map);
-			 
+			
+			Enumeration enu = request.getParameterNames();
+		      while (enu.hasMoreElements()) {
+		         String name = (String) enu.nextElement();
+		         String value = request.getParameter(name);
+		         map.put(name, value);
+		      }
+		      
 			myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
 			List<Project> list = listService.showAllMyList(userNo);
 			ModelAndView mav = new ModelAndView();		

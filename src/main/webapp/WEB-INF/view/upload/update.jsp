@@ -57,12 +57,15 @@
 <body>	
 ${optList}
 <%-- ${project } --%>
+${ project} 
+
+${project[0].prjNo.prjNo}
 
 <section class="container">		
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
-		<form  action= "<%=request.getContextPath() %>/updateListSuccess" method="post" enctype="multipart/form-data">
+		<form  action= "<%=request.getContextPath() %>/updateList" method="post" enctype="multipart/form-data">
 		<section id = "register_center">
 		<!--탭 부분  -->
 			<div class="container_tab">
@@ -78,19 +81,19 @@ ${optList}
 		<section id = "upload_prjcontent">					
 			<table border=1>			
 				<tbody>						
-			<tr>
+			<%-- <tr>
 					<td class = "td_right" colspan="2">
 							 <input type="hidden" id = "userNo" name = "userNo.userNo" 
 										value ="${authInfo.userNo }"  size = 15   required="required"  readonly="readonly"/> 
 					</td>
-			</tr>			
+			</tr>			 --%>
 			<tr>
 					 <td class = "td_left">
 							<label for = "prjNo" >번호</label>
 					</td>
 					<td class = "td_right"  >
 							<input type="text" id = "prjNo" name = "prjNo.prjNo"
-									 value="${prjNo }" size = 17 required="required" readonly="readonly" />
+									 value="${prjNo}" size = 17 required="required" readonly="readonly" />
 					</td>
 			</tr>
 			<tr>
@@ -99,14 +102,14 @@ ${optList}
 					</td>
 					<td class = "td_right">
 							  <input type="text" id = "userName" name = "userName" 
-							 		  value ="${ project[0].prjNo.userNo.userName} "  size = 17   required="required"/> 
+							 		  value ="${ project[0].prjNo.userNo.userName} "  size = 17  readonly="readonly" required="required"/> 
 					</td>					
 			</tr>
 			<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
 					<td class="td_right">
 					<!-- 반복으로 같은거 찾는 조건  -->
-						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo"  >		
+						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo" >		
 									<option value = "0">---선택해주세요---- </option>
 							<c:forEach var = "c"  items="${category }" >
 									<c:choose>									

@@ -1,6 +1,7 @@
 package proj21_funding.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -15,13 +16,21 @@ public interface PrjOptionService {
 	
 	//옵션추가 + 여러개추가
 	int insertPrjOption(PrjOption prjOption);
-	int insertAddPrjOption(AddPrjOption addPrjOption);
+	//프로젝트 옵션들 추가1
+	int insertOptionByMap(Map<String, Object> map);
+	//프로젝트 옵션들 추가
+	int insertPrjOptionsByMap(Map<String, Object> map);
+	
 	
 	//옵션만 리스트
 	List<PrjOption> selectSimplePrjOptionByPrjNo(int prjNo);
 		
 	//옵션수정 
 	int updatePrjOption(PrjOption prjoption);
+	//프로젝트 추가옵션1 수정
+	int updateOptionByMap(Map<String, Object> map);
+	//프로젝트 추가옵션1,2  수정
+	int updateAllAddOptionsByMap(Map<String, Object> map);
 	
 	List<PrjOption> showSimpleOptionByPrjNo(int prjNo);
 	

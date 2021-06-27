@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import proj21_funding.dto.Project;
-import proj21_funding.dto.project.UpdateProject;
-import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.mapper.ProjectMapper;
 import proj21_funding.service.ProjectService;
 
@@ -50,30 +48,33 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public int joinUpdateProjectAndPrjoptionByNo(Map<String, Object> map) {
+	public int joinUpdateProjectAndPrjoptionByNo(Map<String, Object>map) {
 //		System.out.println("map >> " + map);
 		/*
 		 * System.out.println("eDate map>> " + map.get("eDate"));
 		 * System.out.println("pDate map>>" + map.get("pDate") );
 		 */
-		
-		LocalDate EndDate =  (LocalDate) map.get("eDate");
-		LocalDate PayDate = (LocalDate) map.get("pDate");
-		
-		int compareEtoP = EndDate.compareTo(PayDate);
-		
-		if(compareEtoP <= 0) {
-			return mapper.joinUpdateProjectAndPrjoptionByPrjNo(map);
-		}else {
-			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
+//		System.out.println(" map impl>> " + map.get("endDate"));
+//		
+		System.out.println("end >> " + map.get("endDate"));
+		System.out.println("pay >> " +map.get("payDate"));
+//		LocalDate EndDate = LocalDate.parse("map.get('endDate')", yyyy-mm-dd) ;
+//		LocalDate PayDate = map.get("payDate");
+		System.out.println("end >> " + map.get("EndDate"));
+		System.out.println("pay >> " +map.get("PayDate"));
+//		int compareEtoP = EndDate.compareTo(PayDate);
+//		
+//		if(compareEtoP <= 0) {
+				return mapper.joinUpdateProjectAndPrjoptionByPrjNo(map);
+//		}else {
+//				throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
+//			}	
 		}
-		
-	
-	}
 
 	@Override
 	public Project showJoinPrjAndCategory(int prjNo) {
 		return mapper.showJoinPrjAndCategory(prjNo);
 	}
+
 
 }

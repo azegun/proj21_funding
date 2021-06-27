@@ -1,6 +1,8 @@
 package proj21_funding.mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -31,8 +33,36 @@ public class PrjOptionMapperTest {
 	public void tearDown() throws Exception {
 		System.out.println();
 	}
+//	@Test
+	public void testInsertOptionByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pNo", 5);
+		map.put("addOptName1", "test1");
+		map.put("addOptPrice1", 10000);
+		map.put("addOptContent1", "map1");
+		int res = mapper.insertOptionByMap(map);
+		Assert.assertEquals(1, res);		
+	}
+	
+//	@Test
+	public void testInsertPrjOptionsByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pNo", 5);
+		map.put("addOptName1", "test1");
+		map.put("addOptPrice1", 10000);
+		map.put("addOptContent1", "map1");
+		map.put("addOptName2", "test2");
+		map.put("addOptPrice2", 20000);
+		map.put("addOptContent2", "map2");
+		int res = mapper.insertPrjOptionsByMap(map);
+		Assert.assertEquals(2, res);		
+	}
 
-	@Test
+//	@Test
 	public void testInsertPrjOption() {
 	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -42,18 +72,9 @@ public class PrjOptionMapperTest {
 	
 		Assert.assertEquals(1, res);		
 	}
-	@Test
-	public void testInsertAddPrjOption() {
-	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		
-    	AddPrjOption prjOption = new AddPrjOption(new Project(4), "프로젝트옵션222", 00033000, "옵션d222" );
-				
-		int res = mapper.insertAddPrjOption(prjOption);
 	
-		Assert.assertEquals(1, res);		
-	}
 	
-	@Test
+//	@Test
 	public void testupdateProjectOption() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -63,15 +84,36 @@ public class PrjOptionMapperTest {
 		Assert.assertEquals(1, res);		
 	}
 	
-	@Test
-	public void testupdateAddProjectOption() {
+//	@Test
+	public void testupdateOptionByMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		AddPrjOption addprjoption = new AddPrjOption(148, "양말셋트", 3004432, "두셋트");
-		int res = mapper.updateAddOption(addprjoption);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo1", 286);
+		map.put("addOptName1", "ㄱㄱㄱㄱ");
+		map.put("addOptPrice1", 10000000);
+		map.put("addOptContent1", "map2222");
+		
+		int res = mapper.updateOptionByMap(map);
 		Assert.assertEquals(1, res);		
-	}
-	
+	}	
+	@Test
+	public void testupdateAllAddOptionsByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo1", 286);
+		map.put("addOptName1", "111111");
+		map.put("addOptPrice1", 20000);
+		map.put("addOptContent1", "2222");
+		map.put("addOptNo2", 287);
+		map.put("addOptName2", "ddd");
+		map.put("addOptPrice2", 850000);
+		map.put("addOptContent2", "ma22");
+		
+		int res = mapper.updateAllAddOptionsByMap(map);
+		Assert.assertEquals(2, res);		
+	}	
 	
 //	@Test
 	public void testremoveProjectOption() {
@@ -81,7 +123,7 @@ public class PrjOptionMapperTest {
 		
 		Assert.assertEquals(1, res);		
 	}
-	@Test
+//	@Test
 	public void testselectPrjAndPrjOpt() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		

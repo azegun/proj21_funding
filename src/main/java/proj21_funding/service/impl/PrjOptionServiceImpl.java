@@ -1,6 +1,7 @@
 package proj21_funding.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,12 +34,6 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.insertPrjOption(prjOption);
 	}
 
-	@Override
-	public int insertAddPrjOption(AddPrjOption addPrjOption) {
-		//사용해야됨 옵션 추가할때, 잠시 주석
-//		System.err.println("ProjectoptionADDDDDDDDService Impl >>  "+ addPrjOption );
-		return mapper.insertAddPrjOption(addPrjOption);
-	}
 
 	@Override
 	public PrjOption showPrjOptionByOptNo(int optNo) {
@@ -59,11 +54,25 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.selectSimplePrjOptionByPrjNo(prjNo);
 	}
 
+
 	@Override
-	public int updateAddOption(AddPrjOption addprjoption) {
-		return mapper.updateAddOption(addprjoption);
+	public int insertPrjOptionsByMap(Map<String, Object> map) {
+		return mapper.insertPrjOptionsByMap(map);
 	}
 
+	@Override
+	public int insertOptionByMap(Map<String, Object> map) {
+		return mapper.insertOptionByMap(map);
+	}
 
+	@Override
+	public int updateOptionByMap(Map<String, Object> map) {
+		return mapper.updateOptionByMap(map);
+	}
+
+	@Override
+	public int updateAllAddOptionsByMap(Map<String, Object> map) {
+		return mapper.updateAllAddOptionsByMap(map);
+	}
 
 }

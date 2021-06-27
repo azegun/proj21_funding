@@ -147,15 +147,14 @@ on p.PrjNo = op.PrjNo
 		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
 where p.PrjNo =59;
 
-select  * from project ;
-select * from prjoption p ;
+select  * from project where PrjNo =4;
 
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
 	set 
 		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움',
-		op.OptName = '1주일쨰 파일올리기,수정', op.OptContent ='화이팅하자'
-where p.PrjNo = 4;
+		op.OptName = '1주일쨰 파일올리23123기,수정', op.OptContent ='화이팅하자'
+where op.PrjNo = 4;
 
 select * from project p2 ;
 -- Project + userInfo + prjOption 조인 by prjNo
@@ -181,6 +180,7 @@ update project
 			EndDate = '2021-06-13', PayDate = '2021-06-13'
 	where prjno = 66;
 
+select * from prjoption p2 ;
 select * from project p 
 where PrjNo  = 27;
 
@@ -198,14 +198,30 @@ from fundinginfo;
 select
 		OptNo, PrjNo, OptName, OptPrice, OptContent
 from prjoption;
+
 -- 옵션 프로젝트 업데이트
 update prjoption 
 	set OptName ='문방사우', OptPrice = 2200000, OptContent = '먹'
 where OptNo =22;
+
 -- 프로젝트옵션  프로젝트번호로 검색
 select OptNo, PrjNo, OptName, OptPrice, OptContent
 		from prjoption
 where PrjNo =57;
+
+-- 추가 2개
+insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
+(3, 'test2', 20000, 'test2'),
+(3, 'test3', 30000, 'test3');
+
+update prjoption as op1 inner join prjoption as op2
+on op1.PrjNo = op2.PrjNo 
+	set 
+		op1.OptName ='test성공하자', op1.OptPrice =20000, op1.OptContent ='제발',
+		op2.OptName = '업데이트', op2.OptPrice = 30000, op2.OptContent = '하자'
+where op1.OptNo =286  and op2.OptNo  =287;
+
+select * from prjoption p ;
 
 
 

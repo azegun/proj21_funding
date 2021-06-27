@@ -92,23 +92,23 @@ public class ProjectMapperTest {
 		Assert.assertEquals(1, res);		
 	}
 
-//@Test
+@Test
 public void testjoinUpdateProjectAndPrjOption() {
 	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 	Map<String, Object> map = new HashMap<String, Object>();
-	map.put("pNo", 59);
+	map.put("prjNo", 59);
 	map.put("pCategoryNo", 2);
-	map.put("pName", "맵테스트1");
-	map.put("pContent", "조인업데이트업4343데이트");
-	map.put("pGoal", 2000000);
-	map.put("eDate", date);
-	map.put("pDate", date);
-	map.put("oName", "제발33333333");
-	map.put("oPrice", 300002200);
-	map.put("oContent", "진55짜111");
+	map.put("prjName", "맵테스트1");
+	map.put("prjContent", "조인업데이트업4343데이트");
+	map.put("prjGoal", 2000000);
+	map.put("endDate", date);
+	map.put("payDate", date);
+	map.put("optName", "제발33333333");
+	map.put("optPrice", 300002200);
+	map.put("optContent", "진55짜111");
 	System.out.println("map >> "+ map );
 	int res = mapper.joinUpdateProjectAndPrjoptionByPrjNo(map);
-	Assert.assertEquals(3, res);		
+	Assert.assertEquals(2, res);		
 }
 
 //@Test

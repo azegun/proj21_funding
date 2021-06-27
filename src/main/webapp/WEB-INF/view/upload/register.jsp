@@ -61,21 +61,51 @@
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
 	         $(".test").on("click", function(){
-	               var test = $('#category').val()
+	               var test = $('#pCategoryNo').val()
 	               if(test == 0){
-	                  alert("선택해주세요")
+	            	   console.log("확인")
+	                  alert("카테고리를 	선택해주세요")
+	                 /*   window.location.href = contextPath+"/emptyCategory"; */
+	           		   history.back() 
 	               }
 	         });         
 	      });   
+		function addopt(i){
+			var sCont = "";	
+			sCont += "<tbody class = 'addAll'>";
+			sCont += "<tr>";
+			sCont += "<td class = 'td_left'><label for = 'addOptName'>옵션이름</label></td>";
+			sCont += "<td class = 'td_right'> <input type='text' id = 'addOptName' class = 'addtext' name = 'addOptName"+ i +"'  required   size = 17/></td>";
+			sCont += "</tr>";
+			sCont += "	<tr>";
+			sCont += "	<td class = 'td_left'><label for = 'addOptPrice'>옵션금액</label></td>";
+			sCont += "	<td class = 'td_right'><input type='text' id = 'addOptPrice'   class = 'addtext' name = 'addOptPrice"+ i +"'   required  size = 17 /></td>";
+			sCont += "</tr>";
+			sCont += "	<tr>";
+			sCont += "	<td class = 'td_left'><label for = 'addOptContent'>옵션내용</label></td>	";
+			sCont += "	<td class = 'td_right'> <textarea id = 'textContent'  class = 'addtext' name = 'addOptContent"+ i +"'+  required 	rows='8' cols='38' ></textarea></td>";
+			sCont += "</tr>";					
+			sCont += "</tbody>";
+			
+			 $('.addOption:last-child').append(sCont);  
+		}
 		
-	      $(function(){
-		         var contextPath = "<%=request.getContextPath()%>";
-		         $(".btnTest").on("click", function(){
-		          console.log(5);
-		         });         
-		      });
-	      
-	
+		 //아이템 추가
+	   $(function(){
+		   
+			var i = 0;		
+			//옵션추가
+			$('.optionPlus').on("click", function(){	
+				i += 1
+				addopt(i)				 				 
+			   });
+			
+			//옵션삭제
+			$('.optionMinus').on("click", function(){
+				$('.addAll:last-child').remove();
+			});	
+	  
+	   });
 
 </script>		
 </head>
@@ -88,7 +118,7 @@
 		<section class="container">	
 		<section id = "register_mid">
 		<!--탭 부분  -->
-			<div class="container_tab">
+			<section class="container_tab">
 					<ul class="tabs">
 							<li class="tab-link current"  id = "tab-click" data-tab="tab-1">프로젝트 정보</li>
 							<li class="tab-link"   id = "tab-click2" data-tab="tab-2">옵션</li>
@@ -99,7 +129,7 @@
 			<div id="tab-1" class="register_mid current">
 			<h2>프로젝트 등록</h2>
 	<section id="register_prjcontent">
-		<table>
+		<table border="1">
 			<tbody>
 				<tr>
 					<td class= "td_right" colspan="2">
@@ -117,7 +147,7 @@
 				<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>					
 					<td class="td_right" >
-						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo" >		
+						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo"  >		
 									<option value = "0">-------선택해주세요-----------</option>
 							<c:forEach var = "c"  items="${category }" >
 									<option  value = " ${c.pCategoryNo }">${c.pCategoryName }</option>										
@@ -129,7 +159,7 @@
 					<td class="td_left"><label for="prjName">프로젝트 명</label></td>
 					<td class="td_right">
 								<input type="text" id="prjName"
-										name="prjName" size=45 required="required" />
+										name="prjName" size=45 required />
 					</td>
 				</tr>
 				<tr>
@@ -179,8 +209,8 @@
 		</div>
 		<!--탭1 프로젝트부분  -->	
 				
-		<!--탭2 옵션부분  -->
-					<div id="tab-2" class="register_mid">
+<!--탭2 옵션부분  -->
+			<div id="tab-2" class="register_mid">
 						<h2>옵션</h2>	
 			<section id = "register_optcontent">
 				<table>
@@ -210,59 +240,35 @@
 									</td>
 							</tr>
 							<tr>
-									<td id= "addBtns" colspan="2">
-										<button id = "optionPlus" >+</button>
-										<button id = "optionMinus">-</button>
-									</td>									
-							</tr>
-							<!--  월요일에 열기-->
-						 <tr>
-									<td class = "td_left">
-											<label for = "addOptName">옵션이름</label>
+									<td class ="td_right" colspan="2">
+											  <div id="register_btns">
+											  		<button type = "button" class = "optionPlus" >옵션추가</button>
+											  		<button type = "button" class = "optionMinus" >옵션삭제</button>
+											  </div>
 									</td>
-									<td class = "td_right">
-											 <input type="text" id = "addOptName" name = "addOptName"  size = 17 required="required" ></input>
-									</td>
-							</tr>
-							<tr>
-									<td class = "td_left">
-											<label for = "addOptPrice">옵션금액</label>
-									</td>
-									<td class = "td_right">
-											 <input type="text" id = "addOptPrice" name = "addOptPrice"  size = 17 required="required" ></input>
-									</td>
-							</tr>
-							<tr>
-									<td class = "td_left">
-											<label for = "addOptContent">옵션내용</label>
-									</td>						
-									<td class = "td_right">
-											 <textarea id = "textContent" name = "addOptContent"	rows="8" cols="38" required="required" ></textarea>
-									</td>
-							</tr>
-						</tbody>			
+							</tr>	
+							</tbody>						
+							<!-- <tbody class = "addOption">	</tbody> -->
 					</table>	
+					<table class = "addOption">
+					</table>
 			</section>
 				</div>				
 			<!--탭2 옵션부분  -->			
 				
-			</div>		
+			</section>		
 			<div id="register_btns">
 					<input class = "test" type="submit" value="등록"/>&nbsp;
 					<input type="reset" value="다시쓰기" />&nbsp; 
-					<button id= "return">뒤로</button>
+					<button type="button" id= "return">뒤로</button>
 			</div>	
-		</section>
-		<footer>
-			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
-		</footer>
+		</section>	
 		</form>
+			<footer>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
+			</footer>
 		</section>
 
 </body>
 </html>
-
-
-
-
 
