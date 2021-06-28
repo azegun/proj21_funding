@@ -36,4 +36,11 @@ public interface BoardMapper {
 	int updateBoard (Board board);
 	
 	int deleteBoard (int boardNo);
+	
+//	List<Map<String, Object>> selectBoardCategoryList(Pagination pagination);
+	List<Board> selectBoardCategoryList(Pagination pagination);
+	List<Board> selectBoardCategoryListForCount();
+	List<Board> selectSearchBoardList(Map<String,Object> map);
+	int selectSearchBoardListCount(Map<String,Object> map);
+
 }

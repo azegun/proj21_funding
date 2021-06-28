@@ -75,4 +75,10 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.updateAllAddOptionsByMap(map);
 	}
 
+	@Override
+	public int updateAddOption(AddPrjOption addprjoption) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

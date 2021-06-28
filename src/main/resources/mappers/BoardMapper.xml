@@ -80,4 +80,63 @@
 		from Board
 		where boardNo = #{boardNo}
 	</delete>
+	
+	    
+    <select id="selectBoardCategoryList" resultMap="AssociateResCategory"> <!-- resultType="map" -->
+    	select R1.*,bc.categoryName FROM(
+			SELECT * FROM BOARD 
+		) R1 join boardcategory bc on r1.categoryNo = bc.CategoryNo order by boardNo desc
+		LIMIT #{pageSearch}, #{cntPerPage } ;
+    </select>
+    
+    <select id="selectBoardCategoryListForCount" resultMap="AssociateResCategory"> <!-- resultType="map" -->
+    	select R1.*,bc.categoryName FROM(
+			SELECT * FROM BOARD 
+		) R1 join boardcategory bc on r1.categoryNo = bc.CategoryNo order by boardNo desc
+    </select>
+    
+     <select id="selectSearchBoardList" resultMap="AssociateResCategory">
+    	select R1.*,categoryName FROM board R1 join boardcategory bc on r1.categoryNo = bc.CategoryNo
+		<where>
+			<choose>
+				<when test="category.equals('total')"></when>
+				<when test="!category.equals('total')">
+					R1.categoryNo=#{category}
+				</when>
+			</choose>
+			<choose>
+				<when test="keyword.equals('total')"></when>
+				<when test="keyword.equals('boardTitle')">
+					and boardTitle LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+				<when test="keyword.equals('boardContent')">
+					and boardContent LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+			</choose>
+		</where>
+		 order by boardNo desc LIMIT #{pageSearch}, #{cntPerPage } ;
+    </select>
+    
+     <select id="selectSearchBoardListCount" resultType="int">
+    	select count(*) FROM(
+			SELECT * FROM BOARD 
+		) R1 join boardcategory bc on R1.categoryNo = bc.categoryNo
+		<where>
+			<choose>
+				<when test="category.equals('total')"></when>
+				<when test="!category.equals('total')">
+					R1.categoryNo=#{category}
+				</when>
+			</choose>
+			<choose>
+				<when test="keyword.equals('total')"></when>
+				<when test="keyword.equals('boardTitle')">
+					and boardTitle LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+				<when test="keyword.equals('boardContent')">
+					and boardContent LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+			</choose>
+		</where>
+    </select>
 </mapper>
