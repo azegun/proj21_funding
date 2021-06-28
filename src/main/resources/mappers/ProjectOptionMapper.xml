@@ -58,14 +58,22 @@
 		<!-- 옵션들 추가  -->
 		<insert id="insertOptionByMap" parameterType="map">
 				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
-						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1});					
+						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1})	;			
 		</insert>
 		
 		<!-- 옵션들 추가  -->
 		<insert id="insertPrjOptionsByMap" parameterType="map">
 				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
 						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1}),
-						(#{pNo}, #{addOptName2}, #{addOptPrice2},  #{addOptContent2});		
+						(#{pNo}, #{addOptName2}, #{addOptPrice2},  #{addOptContent2});
+		</insert>
+		
+		<!-- 옵션3개 추가  -->
+		<insert id="insertPrjOptionsOfFourByMap" parameterType="map">
+				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
+						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1}),
+						(#{pNo}, #{addOptName2}, #{addOptPrice2},  #{addOptContent2}),
+						(#{pNo}, #{addOptName3}, #{addOptPrice3},  #{addOptContent3});
 		</insert>
 		
 		<!-- 프로젝트  추가 옵션  수정 -->
@@ -92,6 +100,7 @@
 					op2.OptName = #{addOptName2} , op2.OptPrice = #{addOptPrice2} , op2.OptContent = #{addOptContent2} 
 			where op1.OptNo =#{addOptNo1}  and op2.OptNo  =#{addOptNo2} 
 		</update>
+		
 		
 		<!-- 프로젝트 옵션 삭제 -->
 		<delete id="removePrjOption">

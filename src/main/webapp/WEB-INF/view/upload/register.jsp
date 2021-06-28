@@ -92,13 +92,17 @@
 		
 		 //아이템 추가
 	   $(function(){
-		   
 			var i = 0;		
 			//옵션추가
 			$('.optionPlus').on("click", function(){	
+			//개수 제한걸기
+			if(i < 3){
 				i += 1
-				addopt(i)				 				 
-			   });
+				addopt(i)	
+			}else if (i == 3){
+				i = 0;
+			}						 				 
+			});
 			
 			//옵션삭제
 			$('.optionMinus').on("click", function(){
@@ -113,8 +117,8 @@
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
+		
 		<form action= "<%=request.getContextPath() %>/listSuccess" method="post" enctype="multipart/form-data">
-	
 		<section class="container">	
 		<section id = "register_mid">
 		<!--탭 부분  -->
@@ -128,6 +132,7 @@
 		<!--탭1 프로젝트부분  -->			
 			<div id="tab-1" class="register_mid current">
 			<h2>프로젝트 등록</h2>
+			
 	<section id="register_prjcontent">
 		<table border="1">
 			<tbody>
@@ -248,11 +253,11 @@
 									</td>
 							</tr>	
 							</tbody>						
-							<!-- <tbody class = "addOption">	</tbody> -->
 					</table>	
 					<table class = "addOption">
 					</table>
 			</section>
+			
 				</div>				
 			<!--탭2 옵션부분  -->			
 				
@@ -262,12 +267,14 @@
 					<input type="reset" value="다시쓰기" />&nbsp; 
 					<button type="button" id= "return">뒤로</button>
 			</div>	
-		</section>	
-		</form>
+		
+		</section>		
 			<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 			</footer>
-		</section>
+				</section>
+			</form>
+	
 
 </body>
 </html>

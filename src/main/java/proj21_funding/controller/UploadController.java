@@ -141,16 +141,22 @@ public class UploadController {
 		         String value = request.getParameter(name);
 		         map.put(name, value);
 		      }
+		      boolean addOptName1 = map.containsKey("addOptName1");
+		      boolean addOptName2 = map.containsKey("addOptName2");
+		      boolean addOptName3 = map.containsKey("addOptName3");
 		     
-		      if(map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == false) {
+		      if(addOptName1 == true && addOptName2   == false) {
 		    	  //추가가 2개일떄
 		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
 		    	  optionService.insertOptionByMap(map);
-		      }else if (map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == true) {
+		      }else if (addOptName1 == true && addOptName2 == true && addOptName3 == false) {
 		    	  //추가가 3개일떄
 		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
 		    	  optionService.insertPrjOptionsByMap(map);
-		      }		      
+		      }else if(addOptName1 == true && addOptName2 == true && addOptName3 == true) {
+		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
+		    	  optionService.insertPrjOptionsOfFourByMap(map);
+		      }
 		      
 			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());		
 			Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());

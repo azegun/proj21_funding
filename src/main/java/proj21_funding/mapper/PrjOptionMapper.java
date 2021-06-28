@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import proj21_funding.dto.PrjOption;
-import proj21_funding.dto.project.AddPrjOption;
 
 @Component
 public interface PrjOptionMapper {
@@ -17,6 +16,8 @@ public interface PrjOptionMapper {
 	int insertOptionByMap(Map<String, Object> map);
 	//프로젝트 옵션들 추가2
 	int insertPrjOptionsByMap(Map<String, Object> map);
+	//프로젝트 옵션들 추가3
+	int insertPrjOptionsOfFourByMap(Map<String, Object> map);
 	
 	//프로젝트옵션 수정
 	int updatePrjOption(PrjOption prjoption);
@@ -24,8 +25,10 @@ public interface PrjOptionMapper {
 	int updateOptionByMap(Map<String, Object> map);
 	//프로젝트 추가옵션1,2  수정
 	int updateAllAddOptionsByMap(Map<String, Object> map);
-	
+	//프로젝트 추가옵션1,2,3  수정
+	int updateAllAddOptionsOfFourByMap(Map<String, Object> map);
 	//프로젝트 삭제
+	
 	int removePrjOption(int prjNo);
 	
 	PrjOption selectPrjOptionByOptNo(int optNo);

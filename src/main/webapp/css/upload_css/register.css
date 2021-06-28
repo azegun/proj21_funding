@@ -59,10 +59,10 @@ ul.tabs li.current{
 	margin:0 auto;
 	flex-direction: column;
 }
-.addOption{
+/* .addOption{
 	display: flex;
     flex-direction: column;
-}
+} */
 .td_left{
 	width: 170px;
 }

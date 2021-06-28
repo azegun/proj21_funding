@@ -51,7 +51,13 @@
 					minDate: 0
 				});
 			});
-			
+			//옵션삭제
+			$(function(){				
+			$('.optionMinus').on("click", function(){
+				console.log(55)
+				$('.addAll:last-child').remove();
+			});	
+		});
 	</script>		
 </head>
 <body>	
@@ -81,12 +87,6 @@ ${project[0].prjNo.prjNo}
 		<section id = "upload_prjcontent">					
 			<table border=1>			
 				<tbody>						
-			<%-- <tr>
-					<td class = "td_right" colspan="2">
-							 <input type="hidden" id = "userNo" name = "userNo.userNo" 
-										value ="${authInfo.userNo }"  size = 15   required="required"  readonly="readonly"/> 
-					</td>
-			</tr>			 --%>
 			<tr>
 					 <td class = "td_left">
 							<label for = "prjNo" >번호</label>
@@ -228,7 +228,15 @@ ${project[0].prjNo.prjNo}
 											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38"
 											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
-							</tr>						
+							</tr>	
+							<tr>
+									<td class ="td_right" colspan="2">
+											  <div id="update_btns">
+											  		<button type = "button" class = "optionMinus" >옵션삭제</button>
+											  </div>
+									</td>
+							</tr>	
+							<tbody class= 'addAll'>					
 							<tr>
 									<td class = "td_right" colspan="2">
 											 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" ></input>
@@ -240,7 +248,7 @@ ${project[0].prjNo.prjNo}
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptName1" name = "addOptName1"
-											 		value = "${ project[1].optName }"   size = 17 ></input>
+											 		value = "${ project[1].optName }"  required  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -249,18 +257,20 @@ ${project[0].prjNo.prjNo}
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice1" name = "addOptPrice1"
-											 		value = "${ project[1].optPrice }"  size = 17 ></input>
+											 		value = "${ project[1].optPrice }" required  size = 17 ></input>
 									</td>
-							</tr>
+							</tr>						
 							<tr>
 									<td class = "td_left">
 											<label for = "addOptContent1">옵션2 내용</label>
 									</td>						
 									<td class = "td_right">
-											 <textarea id = "textContent" name = "addOptContent1"	
+											 <textarea id = "textContent" name = "addOptContent1"	 required
 											 		rows="8" cols="38" >${ project[1].optContent }</textarea>
 									</td>
 							</tr>
+							</tbody>
+							<tbody class= 'addAll'>
 								<tr>
 									<td class = "td_right" colspan="2">
 											 <input type="hidden" id = "addOptNo2" name = "addOptNo2" value= "${ project[2].optNo }" ></input>
@@ -272,7 +282,7 @@ ${project[0].prjNo.prjNo}
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptName2" name = "addOptName2"
-											 		value = "${ project[2].optName }"   size = 17 ></input>
+											 		value = "${ project[2].optName }" required  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -281,7 +291,7 @@ ${project[0].prjNo.prjNo}
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice2" name = "addOptPrice2"
-											 		value = "${ project[2].optPrice }"  size = 17 ></input>
+											 		value = "${ project[2].optPrice }" required  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -290,9 +300,10 @@ ${project[0].prjNo.prjNo}
 									</td>						
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "addOptContent2"	
-											 		rows="8" cols="38" >${ project[2].optContent }</textarea>
+											 		rows="8" cols="38" required >${ project[2].optContent }</textarea>
 									</td>
 							</tr>
+							</tbody>
 								<!--옵션 2개 추가가 있을 시 보여주는view  -->	
 							</c:when>					
 														
@@ -329,19 +340,27 @@ ${project[0].prjNo.prjNo}
 											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38"
 											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
+							</tr>	
+							<tr>
+									<td class ="td_right" colspan="2">
+											  <div id="update_btns">
+											  		<button type = "button" class = "optionMinus" >옵션삭제</button>
+											  </div>
+									</td>
 							</tr>						
 							<tr>
 									<td class = "td_right" colspan="2">
 											 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" ></input>
 									</td>
 							</tr>	
+							<tbody class= 'addAll'>
 							<tr>
 									<td class = "td_left">
 											<label for = "addOptName">옵션2 이름</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptName" name = "addOptName"
-											 		value = "${ project[1].optName }"   size = 17 ></input>
+											 		value = "${ project[1].optName }"  required  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -350,7 +369,7 @@ ${project[0].prjNo.prjNo}
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice" name = "addOptPrice"
-											 		value = "${ project[1].optPrice }"  size = 17 ></input>
+											 		value = "${ project[1].optPrice }" required  size = 17 ></input>
 									</td>
 							</tr>
 							<tr>
@@ -359,18 +378,15 @@ ${project[0].prjNo.prjNo}
 									</td>						
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "addOptContent"	
-											 		rows="8" cols="38" >${ project[1].optContent }</textarea>
+											 		rows="8" cols="38" required >${ project[1].optContent }</textarea>
 									</td>
+							</tr>
+							</tbody>
 								<!--옵션 추가가 있을 시 보여주는view  -->	
 							</c:when>					
 					
 							<c:otherwise>
 									<!--옵션 추가가 없을 시 보여주는view  -->	
-								<%-- <tr>
-									<td class = "td_right" colspan="2">
-											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
-									</td>
-								</tr> --%>
 							<tr>											
 									<td class = "td_left">
 											<label for = "optName">옵션이름</label>

@@ -73,5 +73,10 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.updateAllAddOptionsByMap(map);
 	}
 
+	@Override
+	public int insertPrjOptionsOfFourByMap(Map<String, Object> map) {
+		return mapper.insertPrjOptionsOfFourByMap(map);
+	}
+
 
 }

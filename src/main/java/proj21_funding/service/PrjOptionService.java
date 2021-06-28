@@ -18,8 +18,11 @@ public interface PrjOptionService {
 	int insertPrjOption(PrjOption prjOption);
 	//프로젝트 옵션들 추가1
 	int insertOptionByMap(Map<String, Object> map);
-	//프로젝트 옵션들 추가
+	//프로젝트 옵션들 추가2
 	int insertPrjOptionsByMap(Map<String, Object> map);
+	//프로젝트 옵션들 추가3
+	int insertPrjOptionsOfFourByMap(Map<String, Object> map);
+	
 	
 	
 	//옵션만 리스트

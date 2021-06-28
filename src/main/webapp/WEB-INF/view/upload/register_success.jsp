@@ -40,6 +40,7 @@
 ${optList[0].prjNo.prjNo}
 ${optList[1].prjNo.prjNo}
 ${optList[2].prjNo.prjNo}
+${optList }
 <%-- ${optList[1].optName} --%>
 <%-- ${category.pCategoryNo.pCategoryName } --%>
 <%-- ${optList } --%>
@@ -99,6 +100,63 @@ ${optList[2].prjNo.prjNo}
 					</tr>				
 
 					<c:choose>
+							<c:when test="${optList[0].prjNo.prjNo eq optList[3].prjNo.prjNo}">
+									<tr class = "col8">					
+									 		<!-- 추가적인 옵션3개 있을시 -->			 
+											<td class="td_left"><label for="opt1">옵션1</label></td>
+											<td class="td_right" >
+												<span id="opt1">아이템 : ${propt.optName }<br>
+											   		금액 : <fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
+											   	</span>
+											</td>
+								</tr>
+								<tr class = "col10">
+											<!-- <td class="td_left"><label for="optContent">옵션1 내용</label></td> -->
+											<td class="td_right"  colspan="2">
+															<div class ="sb2option">${propt.optContent}</div>
+											</td>
+								</tr>	
+								<tr class = "col9">
+											<td class="td_left"><label for="opt2">옵션2</label></td>
+											<td class="td_right" >
+														<span id="opt2">아이템 :	${optList[1].optName}<br>
+																금액 : <fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>
+														</span>
+											</td>
+								</tr>
+								<tr class = "col10">
+											<td class="td_right" colspan="2" >
+															<div class ="sb2option">${optList[1].optContent}</div>
+										  	</td>	
+								</tr>
+								<tr class = "col9">
+											<td class="td_left"><label for="opt2">옵션3</label></td>
+											<td class="td_right" >
+														<span id="opt2">아이템 : ${optList[2].optName}<br>
+																	  금액 : <fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>
+														</span>
+											</td>
+								</tr>
+								<tr class = "col10">
+											<td class="td_right" colspan="2" >
+															<div class ="sb2option">${optList[2].optContent}</div>
+										  	</td>										  										  			
+								</tr>			
+								<tr class = "col9">
+											<td class="td_left"><label for="opt2">옵션4</label></td>
+											<td class="td_right" >
+														<span id="opt2">아이템 : ${optList[3].optName}<br>
+																	  금액 : <fmt:formatNumber value="${optList[3].optPrice}" pattern="\\#,###"/>
+														</span>
+											</td>
+								</tr>
+								<tr class = "col10">
+											<td class="td_right" colspan="2" >
+															<div class ="sb2option">${optList[3].optContent}</div>
+										  	</td>	
+										  		<!-- 추가적인 옵션3개 있을시 -->		
+								</tr>																		
+							</c:when>					
 							<c:when test="${optList[0].prjNo.prjNo eq optList[2].prjNo.prjNo}">
 									<tr class = "col8">					
 									 		<!-- 추가적인 옵션2개 있을시 -->			 
