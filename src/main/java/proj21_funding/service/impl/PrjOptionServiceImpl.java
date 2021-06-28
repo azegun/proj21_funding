@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.PrjOption;
-import proj21_funding.dto.project.AddPrjOption;
 import proj21_funding.mapper.PrjOptionMapper;
 import proj21_funding.service.PrjOptionService;
 
@@ -30,7 +29,6 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 
 	@Override
 	public int insertPrjOption(PrjOption prjOption) {
-		System.out.println("ProjectoptionService1 Impl >>  "+prjOption );
 		return mapper.insertPrjOption(prjOption);
 	}
 
@@ -74,5 +72,6 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 	public int updateAllAddOptionsByMap(Map<String, Object> map) {
 		return mapper.updateAllAddOptionsByMap(map);
 	}
+
 
 }

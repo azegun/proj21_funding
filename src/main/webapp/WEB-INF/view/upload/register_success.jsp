@@ -104,8 +104,8 @@ ${optList[2].prjNo.prjNo}
 									 		<!-- 추가적인 옵션2개 있을시 -->			 
 											<td class="td_left"><label for="opt1">옵션1</label></td>
 											<td class="td_right" >
-												<span id="opt1">${propt.optName }<br>
-											   			<fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
+												<span id="opt1">아이템 : ${propt.optName }<br>
+											   		금액 : <fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
 											   	</span>
 											</td>
 								</tr>
@@ -118,8 +118,8 @@ ${optList[2].prjNo.prjNo}
 								<tr class = "col9">
 											<td class="td_left"><label for="opt2">옵션2</label></td>
 											<td class="td_right" >
-														<span id="opt2">	${optList[1].optName}<br>
-																	  <fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>
+														<span id="opt2">아이템 :	${optList[1].optName}<br>
+																금액 : <fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>
 														</span>
 											</td>
 								</tr>
@@ -131,8 +131,8 @@ ${optList[2].prjNo.prjNo}
 								<tr class = "col9">
 											<td class="td_left"><label for="opt2">옵션3</label></td>
 											<td class="td_right" >
-														<span id="opt2">	${optList[2].optName}<br>
-																	  <fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>
+														<span id="opt2">아이템 : ${optList[2].optName}<br>
+																	  금액 : <fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>
 														</span>
 											</td>
 								</tr>
@@ -149,8 +149,8 @@ ${optList[2].prjNo.prjNo}
 					<!-- 추가적인 옵션1개 있을시 -->				 
 											<td class="td_left"><label for="opt1">옵션1</label></td>
 											<td class="td_right" >
-												<span id="opt1">${propt.optName }<br>
-											   			<fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
+												<span id="opt1">아이템 : ${propt.optName }<br>
+											   			금액 : <fmt:formatNumber value="${propt.optPrice}" pattern="\\#,###"/>
 											   	</span>
 											</td>
 								</tr>
@@ -163,8 +163,8 @@ ${optList[2].prjNo.prjNo}
 								<tr class = "col9">
 											<td class="td_left"><label for="opt2">옵션2</label></td>
 											<td class="td_right" >
-														<span id="opt2">	${optList[1].optName}<br>
-																	  <fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>
+														<span id="opt2"> 아이템 : ${optList[1].optName}<br>
+																	금액 :  <fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>
 														</span>
 											</td>
 								</tr>

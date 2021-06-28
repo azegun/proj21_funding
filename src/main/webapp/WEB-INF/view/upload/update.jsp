@@ -194,7 +194,108 @@ ${project[0].prjNo.prjNo}
 			<section id = "upload_opjcontent">					
 				<table>			
 					<tbody>											
-						<c:choose>									
+						<c:choose>		
+							<c:when test="${optList[0].prjNo.prjNo eq optList[2].prjNo.prjNo}">
+							<!--옵션 2개 추가가 있을 시 보여주는view  -->		
+								<tr>
+									<td class = "td_right" colspan="2">
+											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
+									</td>
+								</tr>	
+								<tr>											
+									<td class = "td_left">
+											<label for = "optName">옵션1 이름</label>
+									</td>									
+									<td class = "td_right">
+											 <input type="text" id = "optName" name = "optName" 
+											 			value = "${ project[0].optName }" size = 17 required="required"></input>
+									</td>									
+							</tr>
+							<tr>
+									<td class = "td_left">
+											<label for = "optPrice">옵션1 금액</label>
+									</td>
+									<td class = "td_right">
+											 <input type="text" id = "optPrice" name = "optPrice" 
+											 			value = "${ project[0].optPrice }"  size = 17 required="required"></input>
+									</td>
+							</tr>							
+							<tr>
+									<td class = "td_left">
+											<label for = "optContent">옵션1 내용</label>
+									</td>
+									<td class = "td_right">
+											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38"
+											 			 required="required">${ project[0].optContent }</textarea>
+									</td>
+							</tr>						
+							<tr>
+									<td class = "td_right" colspan="2">
+											 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" ></input>
+									</td>
+							</tr>	
+							<tr>
+									<td class = "td_left">
+											<label for = "addOptName1">옵션2 이름</label>
+									</td>
+									<td class = "td_right">
+											 <input type="text" id = "addOptName1" name = "addOptName1"
+											 		value = "${ project[1].optName }"   size = 17 ></input>
+									</td>
+							</tr>
+							<tr>
+									<td class = "td_left">
+											<label for = "addOptPrice1">옵션2 금액</label>
+									</td>
+									<td class = "td_right">
+											 <input type="text" id = "addOptPrice1" name = "addOptPrice1"
+											 		value = "${ project[1].optPrice }"  size = 17 ></input>
+									</td>
+							</tr>
+							<tr>
+									<td class = "td_left">
+											<label for = "addOptContent1">옵션2 내용</label>
+									</td>						
+									<td class = "td_right">
+											 <textarea id = "textContent" name = "addOptContent1"	
+											 		rows="8" cols="38" >${ project[1].optContent }</textarea>
+									</td>
+							</tr>
+								<tr>
+									<td class = "td_right" colspan="2">
+											 <input type="hidden" id = "addOptNo2" name = "addOptNo2" value= "${ project[2].optNo }" ></input>
+									</td>
+							</tr>	
+							<tr>
+									<td class = "td_left">
+											<label for = "addOptName2">옵션3 이름</label>
+									</td>
+									<td class = "td_right">
+											 <input type="text" id = "addOptName2" name = "addOptName2"
+											 		value = "${ project[2].optName }"   size = 17 ></input>
+									</td>
+							</tr>
+							<tr>
+									<td class = "td_left">
+											<label for = "addOptPrice2">옵션3 금액</label>
+									</td>
+									<td class = "td_right">
+											 <input type="text" id = "addOptPrice2" name = "addOptPrice2"
+											 		value = "${ project[2].optPrice }"  size = 17 ></input>
+									</td>
+							</tr>
+							<tr>
+									<td class = "td_left">
+											<label for = "addOptContent2">옵션3 내용</label>
+									</td>						
+									<td class = "td_right">
+											 <textarea id = "textContent" name = "addOptContent2"	
+											 		rows="8" cols="38" >${ project[2].optContent }</textarea>
+									</td>
+							</tr>
+								<!--옵션 2개 추가가 있을 시 보여주는view  -->	
+							</c:when>					
+														
 							<c:when test="${optList[0].prjNo.prjNo eq optList[1].prjNo.prjNo}">
 							<!--옵션 추가가 있을 시 보여주는view  -->		
 								<tr>
@@ -231,7 +332,7 @@ ${project[0].prjNo.prjNo}
 							</tr>						
 							<tr>
 									<td class = "td_right" colspan="2">
-											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[1].optNo }" ></input>
+											 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" ></input>
 									</td>
 							</tr>	
 							<tr>
@@ -265,11 +366,11 @@ ${project[0].prjNo.prjNo}
 					
 							<c:otherwise>
 									<!--옵션 추가가 없을 시 보여주는view  -->	
-								<tr>
+								<%-- <tr>
 									<td class = "td_right" colspan="2">
 											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
 									</td>
-								</tr>
+								</tr> --%>
 							<tr>											
 									<td class = "td_left">
 											<label for = "optName">옵션이름</label>

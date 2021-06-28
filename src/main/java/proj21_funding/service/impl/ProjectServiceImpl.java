@@ -60,8 +60,6 @@ public class ProjectServiceImpl implements ProjectService {
 		System.out.println("pay >> " +map.get("payDate"));
 //		LocalDate EndDate = LocalDate.parse("map.get('endDate')", yyyy-mm-dd) ;
 //		LocalDate PayDate = map.get("payDate");
-		System.out.println("end >> " + map.get("EndDate"));
-		System.out.println("pay >> " +map.get("PayDate"));
 //		int compareEtoP = EndDate.compareTo(PayDate);
 //		
 //		if(compareEtoP <= 0) {
