@@ -46,7 +46,7 @@ public class PrjOptionMapperTest {
 		Assert.assertEquals(1, res);		
 	}
 	
-	@Test
+//	@Test
 	public void testInsertPrjOptionsByMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -62,7 +62,7 @@ public class PrjOptionMapperTest {
 		Assert.assertEquals(2, res);		
 	}
 	
-	@Test
+//	@Test
 	public void testInsertPrjOptionsOfFourByMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -121,17 +121,31 @@ public class PrjOptionMapperTest {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("addOptNo1", 286);
+		map.put("addOptNo1", 518);
 		map.put("addOptName1", "111111");
 		map.put("addOptPrice1", 20000);
 		map.put("addOptContent1", "2222");
-		map.put("addOptNo2", 287);
+		map.put("addOptNo2", 519);
 		map.put("addOptName2", "ddd");
 		map.put("addOptPrice2", 850000);
 		map.put("addOptContent2", "ma22");
 		
 		int res = mapper.updateAllAddOptionsByMap(map);
 		Assert.assertEquals(2, res);		
+	}	
+	@Test
+	public void testupdateSubOptionByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo3", 520);
+		map.put("addOptName3", "ㄱㄱㄱㄱ");
+		map.put("addOptPrice3", 10000000);
+		map.put("addOptContent3", "map2222");
+		System.out.println(map);
+		
+		int res = mapper.updateSubOptByMap(map);
+		Assert.assertEquals(1, res);		
 	}	
 	
 //	@Test

@@ -16,7 +16,7 @@ public interface PrjOptionMapper {
 	int insertOptionByMap(Map<String, Object> map);
 	//프로젝트 옵션들 추가2
 	int insertPrjOptionsByMap(Map<String, Object> map);
-	//프로젝트 옵션들 추가3
+	//프로젝트 옵션들 추가3 
 	int insertPrjOptionsOfFourByMap(Map<String, Object> map);
 	
 	//프로젝트옵션 수정
@@ -25,10 +25,10 @@ public interface PrjOptionMapper {
 	int updateOptionByMap(Map<String, Object> map);
 	//프로젝트 추가옵션1,2  수정
 	int updateAllAddOptionsByMap(Map<String, Object> map);
-	//프로젝트 추가옵션1,2,3  수정
-	int updateAllAddOptionsOfFourByMap(Map<String, Object> map);
-	//프로젝트 삭제
+	//프로젝트 추가옵션1,2,3  부속 수정
+	int updateSubOptByMap(Map<String, Object> map);
 	
+	//프로젝트 삭제	
 	int removePrjOption(int prjNo);
 	
 	PrjOption selectPrjOptionByOptNo(int optNo);

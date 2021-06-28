@@ -230,13 +230,19 @@ public class UploadController {
 		//리스트 조인
 			projectService.joinUpdateProjectAndPrjoptionByNo(map);	
 			
-		    if(map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == false) {
+		    boolean addOptName1 = map.containsKey("addOptName1");
+		    boolean addOptName2 = map.containsKey("addOptName2");
+		    boolean addOptName3 = map.containsKey("addOptName3");
+		    if(addOptName1 == true && addOptName2 == false) {
 		    	  //수정이 2개일떄
 		    	  optionService.updateOptionByMap(map);
-		    }else if (map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == true) {
+		    }else if (addOptName1 == true && addOptName2== true && addOptName3 == false) {
 		    	  //수정이 3개일떄
 		    	  optionService.updateAllAddOptionsByMap(map);
-		    }		      				
+		    }else if(addOptName1 == true && addOptName2 == true && addOptName3 == true) {
+			  	  //수정이 4개일떄
+			      trService.trUpdateAddOptionsOfFourTimes(map);
+		    }
 		//옵션리스트 받기		
 		
 		}catch (DateTimeOverException e) {

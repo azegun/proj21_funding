@@ -3,6 +3,7 @@ package proj21_funding.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,5 +70,14 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	    if(res != 2) throw new RuntimeException();        
 	      
 		
+	}
+
+	@Override
+	public void trUpdateAddOptionsOfFourTimes(Map<String, Object> map) {
+		int res = prjOptMapper.updateAllAddOptionsByMap(map);
+		System.out.println("map >> "+ map);
+		res += prjOptMapper.updateSubOptByMap(map);
+		System.out.println("res >> "+ res);
+		if(res != 3) throw new RuntimeException();
 	}
 	}

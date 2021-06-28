@@ -214,6 +214,7 @@ insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
 (3, 'test2', 20000, 'test2'),
 (3, 'test3', 30000, 'test3');
 
+-- 업데이트 2개
 update prjoption as op1 inner join prjoption as op2
 on op1.PrjNo = op2.PrjNo 
 	set 
@@ -221,7 +222,19 @@ on op1.PrjNo = op2.PrjNo
 		op2.OptName = '업데이트', op2.OptPrice = 30000, op2.OptContent = '하자'
 where op1.OptNo =286  and op2.OptNo  =287;
 
+--  업데이트 3개
+update prjoption as op1 inner join prjoption as op2 inner join prjoption  as op3
+on op1.PrjNo = op2.PrjNo =op3.PrjNo 
+	set 
+		op1.OptName ='test성공하23자', op1.OptPrice =204000, op1.OptContent ='제발',
+		op2.OptName = '업데이2트', op2.OptPrice = 300400, op2.OptContent = '하자',
+		op3.OptName = '업데이2트', op3.OptPrice = 300400, op3.OptContent = '하자'
+where op1.OptNo =518  and op2.OptNo  =519 and op3.OptNo = 520;
+
+
 select * from prjoption p ;
+select *from prjoption p 
+where PrjNo =217;
 
 
 

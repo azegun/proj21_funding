@@ -76,7 +76,7 @@ public class ProjectMapperTest {
 	public void testinsertProject() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
-		Project project = new Project(new UserInfo(3), new PrjCategory(3), "인서트성공", "제발,,,,", 3000000);
+		Project project = new Project(new UserInfo(3), new PrjCategory(3), "인서트성공", "제발,,,,", 3000000,  date, date);
 		int res = mapper.insertProject(project);
 		
 		Assert.assertEquals(1, res);		
