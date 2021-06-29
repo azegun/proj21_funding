@@ -76,4 +76,19 @@ public class QNAImpl implements QNAService {
 		return mapper.QNAUserCount(userNo);
 	}
 
+	@Override
+	public List<QNA> selectQnaListByMap(Map<String, Object> map) {
+		return mapper.selectQnaListByMap(map);
+	}
+
+	@Override
+	public int selectQnaCountByMap(Map<String, Object> map) {
+		return mapper.selectQnaCountByMap(map);
+	}
+
+	@Override
+	public int updateQNA(QNA qna) {
+		return mapper.updateQNA(qna);
+	}
+
 }

@@ -38,4 +38,9 @@ public interface QNAMapper {
 	
 	int deleteQNA(int qnaNo);
 	
+//admin에서 리스트
+	
+	List<QNA> selectQnaListByMap(Map<String,Object> map);
+	int selectQnaCountByMap(Map<String,Object> map);
+	
 }

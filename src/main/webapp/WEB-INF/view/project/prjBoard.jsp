@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +9,19 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/project_list_css/prjBoard.css">
 </head>
 <body>
-${authInfo }<br>
-${prj[0]}
 	<fieldset id="prjBoardArea">
 		<button>글쓰기</button>
-		<c:forEach items="" var="">
-		
-		
-		
-		</c:forEach>	
+		<section>
+			<c:forEach items="${board}" var="board">
+				<fieldset>
+				<%-- postNo = "${board.postNo}"<br> --%>
+				userNo = ${board.userNo.nickName}<br>
+				postDate = ${board.postDate}<br>
+				postFile = ${board.postFile}<br>
+				postContent = ${board.postContent}<br>	
+				</fieldset>	
+			</c:forEach>
+		</section>
 	</fieldset>
 </body>
 </html>

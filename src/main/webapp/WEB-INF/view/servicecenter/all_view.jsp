@@ -13,6 +13,8 @@
 <title>고객센터</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_content.css">
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
 <style>
 	table{border : 1px solid;}
@@ -43,23 +45,22 @@
 		</div>
 	</div>
 	<p class="seolmyoung">고객님께서 자주 문의하시는 질문과 답변을 모았습니다.</p>
-	<input type="text" id="qnaserch" placeholder="궁금하신 점이 있다면 여기서 먼저 찾아보세요."><button>search</button>
-	<table>
+	<input type="text" id="qnasearch" placeholder="궁금하신 점이 있다면 여기서 먼저 찾아보세요."><button id="search">search</button>
+	<br><br>
+	<div id="currentqnaall">
 		<c:forEach var="qna" items="${qna }">
-			<tr>
-				<td>
-					<c:forEach var="bc" items="${bc }">
-						<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }" >
-							[${bc.categoryName }]
-						</c:if>
-					</c:forEach>
-					${qna.qnaTitle }</td>
-			</tr>
-			<tr>
-				<td colspan="2">${qna.qnaReply }</td>
-			</tr>
+			<ul class="currentqna">
+				<li class="question">
+				<c:forEach var="bc" items="${bc }">
+					<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }" >
+						<span id="ct">[${bc.categoryName }]</span>
+					</c:if>
+				</c:forEach>
+				<span id="q">Q.</span> ${qna.qnaTitle }</li>
+				<li class="reply" style="display: none;">${qna.qnaReply }</li>
+			</ul>
 		</c:forEach>
-	</table>
+	</div>
 	<p class="seolmyoung">궁금함을 해결하지 못하셨나요?</p>
 	<p class="seolmyoung"><a href="/proj21_funding/qnawrite">
 	1:1 문의</a>를 이용해주세요.
@@ -70,6 +71,16 @@
 		</footer>
 		</div>
 </body>
+<script>
+$(".question").click(function(){ 
+    if($(this).siblings('.reply').is(":visible")){
+    	$(this).siblings('.reply').slideUp();
+    }
+    else{
+    	$(this).siblings('.reply').slideDown();
+    }
+})
+</script>
 </html>
 
 <!-- 참고사이트 : https://www.cjlogistics.com/ko/support/faq -->

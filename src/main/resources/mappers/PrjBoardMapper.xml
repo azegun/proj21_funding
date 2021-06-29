@@ -3,36 +3,35 @@
 <mapper namespace="proj21_funding.mapper.PrjBoardMapper">
 
 	<resultMap type="PrjBoard" id="resPb">
-		<id property="postNo" column="postNo"/>
-		<result property="userNo" column="userNo"/>
-		<result property="postTitle" column="postTitle"/>
+		<id property="postNo" column="postNo"/>		
+		<result property="prjNo" column="prjNo"/>		
 		<result property="postContent" column="postContent"/>
 		<result property="postDate" column="postDate"/>
 		<result property="postFile" column="postFile"/>
-		<association property="prjNo" resultMap="proj21_funding.mapper.ProjectMapper.resProject" ></association>
+		<association property="userNo" resultMap="proj21_funding.mapper.UserInfoMapper.resUser" ></association>
 	</resultMap>
 	
 	<select id="selectPrjBoardbyPrjNo" resultMap="resPb">
-		select PostNo, PrjNo, UserNo, PostTitle, PostContent ,PostDate ,PostFile 
+		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile 
 		  from prjboard
-		 where PrjNo = #{PrjNo.PrjNo}
+		 where PrjNo = #{PrjNo}
 	</select>
 	
 	<select id="selectPrjBoardbyUserNo" parameterType="PrjBoard" resultMap="resPb">
-		select PostNo, PrjNo, UserNo, PostTitle, PostContent ,PostDate ,PostFile 
+		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile 
 		  from prjboard
-		 where PrjNo = #{PrjNo.PrjNo} and UserNo = #{userNo} 	
+		 where PrjNo = #{PrjNo} and UserNo = #{userNo.userNo} 	
 	</select>
 
 	<insert id="insertPrjBoard">
 		insert
-		  into prjboard(PrjNo, UserNo, PostTitle, PostContent,PostFile)
-		  values (#{PrjNo.PrjNo}, #{userNo}, #{postTitle}, #{postContent}, #{postFile})
+		  into prjboard(PrjNo, UserNo, PostContent,PostFile)
+		  values (#{PrjNo}, #{userNo.userNo}, #{postContent}, #{postFile})
 	</insert>
 	
 	<update id="updatePrjBoard">
 		update prjboard
-		   set PrjNo = #{PrjNo.PrjNo}, UserNo = #{userNo}, PostTitle = #{postTitle}, PostContent=#{postContent},PostFile = #{postFile}
+		   set PrjNo = #{PrjNo}, UserNo = #{userNo.userNo}, PostContent=#{postContent}, PostFile = #{postFile}
 	     where PostNo = #{postNo}
 	</update>
 	

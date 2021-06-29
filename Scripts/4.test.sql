@@ -243,15 +243,17 @@ where PrjNo =222;
 
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
 select 
-	PostNo, PrjNo, UserNo,
-	PostTitle, PostContent 
+	PostNo, PrjNo, UserNo, PostContent 
 from prjboard;
+
+insert into prjboard (PrjNo, UserNo, PostContent )
+values (2, 2, '잘되고있어요'), (2, 2, '잘되고있어요'), (2, 2, '잘되고있어요');
 
 delete from prjboard
 where PostNo = 1;
 
 update prjboard
-	set  PrjNo, UserNo, PostTitle, PostContent
+	set  PrjNo, UserNo, PostContent
 	where PostNo;
 
 -- addresses(주소)

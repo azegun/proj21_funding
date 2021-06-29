@@ -62,8 +62,8 @@
 										href="/proj21_funding/qnadetail/${qna.QnaNo}">
 											<c:forEach var="bc" items="${bc }">
 												<c:if test="${bc.categoryNo eq qna.CategoryNo }">
-							[${bc.categoryName }]
-						</c:if>
+													[${bc.categoryName }]
+												</c:if>
 											</c:forEach> ${qna.QnaTitle }
 									</a></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"

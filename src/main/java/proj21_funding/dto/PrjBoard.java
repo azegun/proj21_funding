@@ -1,10 +1,11 @@
 package proj21_funding.dto;
 
+import proj21_funding.dto.account.UserInfo;
+
 public class PrjBoard {
 		private int postNo;   //게시글번호
-		private Project prjNo;//프로젝트번호
-		private int userNo;//글작성자
-		private String postTitle;//게시글제목
+		private int prjNo;//프로젝트번호
+		private UserInfo userNo;//글작성자		
 		private String postContent;//게시글내용
 		private String postDate;//게시글날짜
 		private String postFile;//첨부파일
@@ -17,6 +18,7 @@ public class PrjBoard {
 			this.postNo = postNo;
 		}
 		//Getter &Setter
+
 		public int getPostNo() {
 			return postNo;
 		}
@@ -25,28 +27,28 @@ public class PrjBoard {
 			this.postNo = postNo;
 		}
 
-		public Project getPrjNo() {
+		public int getPrjNo() {
 			return prjNo;
 		}
 
-		public void setPrjNo(Project prjNo) {
+		public void setPrjNo(int prjNo) {
 			this.prjNo = prjNo;
 		}
 
-		public int getUserNo() {
+		public UserInfo getUserNo() {
 			return userNo;
 		}
 
-		public void setUserNo(int userNo) {
+		public void setUserNo(UserInfo userNo) {
 			this.userNo = userNo;
 		}
 
-		public String getPostTitle() {
-			return postTitle;
+		public String getPostContent() {
+			return postContent;
 		}
 
-		public void setPostTitle(String postTitle) {
-			this.postTitle = postTitle;
+		public void setPostContent(String postContent) {
+			this.postContent = postContent;
 		}
 
 		public String getPostDate() {
@@ -65,21 +67,11 @@ public class PrjBoard {
 			this.postFile = postFile;
 		}
 
-		public String getPostContent() {
-			return postContent;
-		}
-
-		public void setPostContent(String postContent) {
-			this.postContent = postContent;
-		}
-
 		@Override
 		public String toString() {
-			return String.format(
-					"PrjBoard [postNo=%s, prjNo=%s, userNo=%s, postTitle=%s, postContent=%s, postDate=%s, postFile=%s]",
-					postNo, prjNo, userNo, postTitle, postContent, postDate, postFile);
+			return String.format("PrjBoard [postNo=%s, prjNo=%s, userNo=%s, postContent=%s, postDate=%s, postFile=%s]",
+					postNo, prjNo, userNo, postContent, postDate, postFile);
 		}
-		
 		
 		
 		
