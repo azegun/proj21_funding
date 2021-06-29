@@ -24,6 +24,8 @@ public interface QNAService {
 	int replyQNA (QNA qna);
 	
 	int removeQNA (int qnaNo);
+	
+	int updateQNA(QNA qna);
 
 //	페이징 시도중
 	List<Map<String, Object>> SelectAllList (Pagination pagination) throws Exception;
@@ -33,5 +35,9 @@ public interface QNAService {
 	int QNACount() throws Exception;
 	
 	int QNAUserCount(int userNo) throws Exception;
-//	
+//	adminQna
+	List<QNA> selectQnaListByMap(Map<String,Object> map);
+	int selectQnaCountByMap(Map<String,Object> map);
+
+
 }

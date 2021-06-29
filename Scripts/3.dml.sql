@@ -92,7 +92,14 @@ insert into qna  values
 
 #default값 null값 제외
 insert into qna (UserNo,CategoryNo,QnaTitle,QnaContent)
-values(2,2,'이벤트','언제시작?');
+values
+(2,2,'이벤트','언제시작?'),
+(2,2,'이벤트','언제시작?'),
+(2,2,'이벤트','언제시작?'),
+(2,2,'이벤트','언제시작?'),
+(2,2,'이벤트','언제시작?'),
+(2,2,'이벤트','언제시작?');
+
 
 -- PrjCategory(프로젝트 카테고리)
 select * from prjcategory ;

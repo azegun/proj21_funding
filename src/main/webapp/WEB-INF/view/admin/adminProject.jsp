@@ -120,10 +120,12 @@
 			<!-- 사이드바 -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li class="sidebar-brand"><a href="#">100펀딩 관리자 페이지</a></li>
+					<li class="sidebar-brand"><a href="admin">100펀딩 관리자 페이지</a></li>
 					<li><a href="adminMember">회원관리</a></li>
 					<li><a href="adminProject">프로젝트관리</a></li>
 					<li><a href="adminBoard">게시판관리</a></li>
+					<li><a class="menu" href="adminQna">QnA관리</a></li>
+
 				</ul>
 				
 			</div>
@@ -198,7 +200,7 @@
 								<td>
 									<c:if test="${prj.prjGoal<=prj.totalPrice }">목표 달성</c:if>
 									<c:if test="${prj.prjGoal>prj.totalPrice and sysYear>prj.endDate}">달성 실패</c:if>
-									<c:if test="${prj.prjGoal>prj.totalPrice and sysYear<prj.endDate}">진행중</c:if>
+									<c:if test="${prj.prjGoal>prj.totalPrice and sysYear<=prj.endDate}">진행중</c:if>
 								</td>
 							</tr>
 							<tr>

@@ -46,10 +46,12 @@
 			<!-- 사이드바 -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li class="sidebar-brand"><a href="#">100펀딩 관리자 페이지</a></li>
+					<li class="sidebar-brand"><a href="admin">100펀딩 관리자 페이지</a></li>
 					<li><a class="menu" href="adminMember">회원관리</a></li>
 					<li><a class="menu" href="adminProject">프로젝트관리</a></li>
 					<li><a class="menu" href="adminBoard">게시판관리</a></li>
+					<li><a class="menu" href="adminBoard">QnA관리</a></li>
+
 				</ul>
 			</div>
 			<!-- /사이드바 -->
@@ -141,8 +143,8 @@
 									<div class="panel panel-default">
 										<div class="panel-heading"><strong>프로젝트 관련정보</strong></div>
 										<div class="panel-body">
-										<span class="userDetail"><strong>후원한 프로젝트 수 : </strong><input type="text" value="${fundingStatic[user.userNo-1].totalCount } 개" size="10px" readonly/></span>
-										<span class="userDetail"><strong>총 후원 금액 : </strong><input type="text" value="${fundingStatic[user.userNo-1].totalPrice } 원" size="10px" readonly/></span><br>
+										<span class="userDetail"><strong>후원한 프로젝트 수 : </strong><input type="text" value="${fundingStat[user.userNo-1].totalCount } 개" size="10px" readonly/></span>
+										<span class="userDetail"><strong>총 후원 금액 : </strong><input type="text" value="${fundingStat[user.userNo-1].totalPrice } 원" size="10px" readonly/></span><br>
 										<span class="userDetail"><strong>등록한 프로젝트 수 : </strong><input type="text" value="${regProject[user.userNo-1].totalCount } 개" size="10px" readonly/></span>
 										<span class="userDetail"><strong>성공한 프로젝트 수 : </strong><input type="text" value="${successProject[user.userNo-1].totalCount } 개" size="10px" readonly/></span>
 										</div>

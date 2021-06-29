@@ -5,7 +5,7 @@ from project p
 join userinfo u on p.userno = u.UserNo		   
 join prjoption o on p.PrjNo =o.PrjNo 
 			where p.PrjNo =1;
-		
+		select * from project;
 select * from fundinginfo f ;
 select * from prjoption o ;
 select * from userinfo u2 ;

@@ -17,12 +17,21 @@
 <body>
 <div id="page-wrapper">
 <header>
-	<jsp:include page="/WEB-INF/view/admin/adminSide.jsp"/>
-</header>
+			<!-- 사이드바 -->
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand"><a href="admin">100펀딩 관리자 페이지</a></li>
+					<li><a class="menu" href="adminMember">회원관리</a></li>
+					<li><a class="menu" href="adminProject">프로젝트관리</a></li>
+					<li><a class="menu" href="adminBoard">게시판관리</a></li>
+					<li><a class="menu" href="adminQna">QnA관리</a></li>
+				</ul>
+			</div>
+			<!-- /사이드바 -->
+		</header>
   <!-- 본문 -->
   <div id="page-content-wrapper">
     <div class="container-fluid">
-	<%-- <jsp:include page="/WEB-INF/view/home/header.jsp"/> --%>
     	
     	<h1>메인화면</h1>
     </div>

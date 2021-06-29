@@ -28,10 +28,11 @@
 			<!-- 사이드바 -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li class="sidebar-brand"><a href="#">100펀딩 관리자 페이지</a></li>
+					<li class="sidebar-brand"><a href="admin">100펀딩 관리자 페이지</a></li>
 					<li><a href="adminMember">회원관리</a></li>
 					<li><a href="adminProject">프로젝트관리</a></li>
 					<li><a href="adminBoard">게시판관리</a></li>
+					<li><a class="menu" href="adminQna">QnA관리</a></li>
 				</ul>
 				
 			</div>
@@ -45,13 +46,12 @@
 				</section>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong>프로젝트 통계</strong>
+						<strong>게시판 통계</strong>
 					</div>
 					<div class="panel-body">
 						<ul>
 							<li><strong>공지사항 수</strong> : 개</li>
 							<li><strong>이벤트 수</strong> : 개</li>
-							<li><strong>QnA 수</strong> : 명</li>
 						</ul>
 					</div>
 				</div>
@@ -105,8 +105,8 @@
 											<button onclick="window.open('adminNoticeUpdate/${board.boardNo}&${board.categoryNo.categoryNo }','수정하기','width=1000,height=800,location=no,status=no')" style="float:right">수 정</button>
 										</div>
 										<div class="panel panel-default">
-											<div class="panel-heading"><strong>제목 : ${board.boardTitle }</strong><span style="float:right">
-											<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.boardDate }" /></span></div>
+											<div class="panel-heading"><strong>제목 : ${board.boardTitle }</strong>
+											<span style="float:right"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.boardDate }" /></span></div>
 											<div class="panel-body">
 											<p><strong>내 용 : </strong></p>
 											<div><p>${board.boardContent }</p></div>
