@@ -187,7 +187,7 @@ values (2, 2, '진행','잘되고있어요');
 select 
 	PostNo, PrjNo, UserNo,
 	PostTitle, PostContent ,PostDate ,PostFile 
-from prjboard;
+from prjboard
 where PrjNo = 1 and UserNo = 1;
 
 
