@@ -1,5 +1,9 @@
 package proj21_funding.service;
 
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.junit.After;
@@ -27,6 +31,7 @@ import proj21_funding.mapper.ProjectMapper;
 public class ProjectAndPrjOptionServiceTest {
     protected static final Log log = LogFactory.getLog(ProjectAndPrjOptionServiceTest.class);
 	
+	private LocalDate date =LocalDate.of(2021, 06, 14);
 	@Autowired
 	private ProjectMapper pMapper;
 	
@@ -43,7 +48,7 @@ public class ProjectAndPrjOptionServiceTest {
 	public void testTrJoinPrjAndPrjOpt_Success() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
         
-    	Project project = new Project(new UserInfo(2), new PrjCategory(2),"트렌젝션성공!!!!!!!", "제발,,,,", 3000000);
+    	Project project = new Project(new UserInfo(2), new PrjCategory(2),"트렌젝션성공!!!!!!!", "제발,,,,", 3000000, date, date);
     	int res = pMapper.insertProject(project);
     	System.out.println(" res" + res);
     	
@@ -65,6 +70,31 @@ public class ProjectAndPrjOptionServiceTest {
         res += pMapper.removeProject(6);
         Assert.assertEquals(2, res);
         System.out.println("final res >> " +res);    
+        
+
+	}
+	@Test
+	public void testTrUpdateOptionByMap_Success() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        
+    	Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo1", 518);
+		map.put("addOptName1", "111111");
+		map.put("addOptPrice1", 20000);
+		map.put("addOptContent1", "2222");
+		map.put("addOptNo2", 519);
+		map.put("addOptName2", "ddd");
+		map.put("addOptPrice2", 850000);
+		map.put("addOptContent2", "ma22");
+		
+		int res = prjOptMapper.updateAllAddOptionsByMap(map);
+		
+		map.put("addOptNo3", 520);
+		map.put("addOptName3", "ㄱㄱㄱㄱ");
+		map.put("addOptPrice3", 10000000);
+		map.put("addOptContent3", "map2222");
+		res += prjOptMapper.updateSubOptByMap(map);
+		Assert.assertEquals(3, res);
         
 
 	}

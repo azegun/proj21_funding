@@ -27,12 +27,15 @@ public class Project {
 	}
 	
 	//프로젝트 등록	
-	public Project(UserInfo userNo, PrjCategory pCategoryNo, String prjName, String prjContent, int prjGoal) {
+	public Project(UserInfo userNo, PrjCategory pCategoryNo, String prjName, String prjContent, int prjGoal, 
+			LocalDate endDate, LocalDate payDate) {
 		this.userNo = userNo;
 		this.pCategoryNo = pCategoryNo;
 		this.prjName = prjName;
 		this.prjContent = prjContent;
 		this.prjGoal = prjGoal;
+		this.endDate = endDate;
+		this.payDate = payDate;
 	}
 
 	//프로젝트 수정
@@ -55,6 +58,7 @@ public class Project {
 	public Project(UserInfo userNo) {
 		this.userNo = userNo;
 	}
+
 
 	//	getter & setter
 	public int getPrjNo() {

@@ -130,7 +130,7 @@ ${uploadfile }
 				</section>						
 						<div id = "btns">
 								<input type="submit"  value="수정"/>&nbsp;
-								<button id = "back">뒤로</button>								
+								<button type="button" id = "back">뒤로</button>								
 						</div>		
 					</form>				
 			<footer>
