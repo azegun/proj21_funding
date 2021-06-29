@@ -114,6 +114,24 @@
 					where PrjNo = #{prjNo.prjNo}
 		</delete>
 		
+		<!--addOptNo1맵으로 제거  -->
+		<delete id="removeOptNumOne" parameterType="map">
+			delete from prjoption 
+					where OptNo = #{addOptNo1}		
+		</delete>
+		
+		<!--addOptNo2맵으로 제거  -->
+		<delete id="removeOptNumTwo" parameterType="map">
+				delete from prjoption 
+					where OptNo = #{addOptNo2}		
+		</delete>
+		
+		<!--addOptNo3맵으로 제거  -->
+		<delete id="removeOptNumThree" parameterType="map">
+				delete from prjoption 
+					where OptNo = #{addOptNo3}		
+		</delete>
+		
 		<select id = "selectSimpleOptionByPrjNo" resultMap="AssociateProject">
 			select * from prjoption  where prjno =#{prjNo}
 		</select>

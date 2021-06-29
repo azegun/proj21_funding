@@ -175,11 +175,7 @@ values (5,'세트1',100000, '흰색양말+파란색양말');
 
 
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
-select 
-	PostNo, PrjNo, UserNo,
-	PostTitle, PostContent ,PostDate ,PostFile 
-from prjboard;
-where PrjNo = 1 and UserNo = 1;
+
 
 insert into prjboard values
 (00001, 00001, 00001, '마지막인서트', '고생들했어요', now(), null );
@@ -187,6 +183,12 @@ insert into prjboard values
 insert into prjboard (PrjNo, UserNo,
 	PostTitle, PostContent )
 values (2, 2, '진행','잘되고있어요');
+
+select 
+	PostNo, PrjNo, UserNo,
+	PostTitle, PostContent ,PostDate ,PostFile 
+from prjboard;
+where PrjNo = 1 and UserNo = 1;
 
 
 

@@ -46,7 +46,7 @@ ${project }
 ${project.prjGoal }
 ${category } --%>
 <%--  ${project } --%>
- ${optList }
+${optList}
 
 		
 <%-- ${project } --%>
@@ -244,24 +244,24 @@ ${category } --%>
 										<tr class = "col8">
 							<!-- 옵션이 1개일때 -->
 												<td class="td_left"><label for="optName">옵션이름</label></td>
-												<td class="td_right" ><span id="optName">${project.optName}</span></td>
+												<td class="td_right" ><span id="optName">${optList[0].optName}</span></td>
 										</tr>
 										<tr class = "col9">
 												<td class="td_left"><label for="optPrice">옵션금액</label></td>
 												<td class="td_right" >
 														<span id="optPrice">													
-																<fmt:formatNumber value="${project.optPrice}" pattern="\\#,###"/>
+																<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>
 														</span>
 												</td>
 										</tr>
 										<tr class = "col10">
 												<td class="td_left"><label for="optContent">옵션내용</label></td>
-												<td class="td_right" ><div class ="sb2option">${project.optContent}</div></td>
+												<td class="td_right" ><div class ="sb2option">${optList[0].optContent}</div></td>
+												
 							<!-- 옵션이 1개일때 -->			
 										</tr>									
 									</c:otherwise>					
 							</c:choose>			
-							
 						</tbody>
 				</table>
 		</section>

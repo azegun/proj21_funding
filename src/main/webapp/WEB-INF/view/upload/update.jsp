@@ -61,17 +61,16 @@
 	</script>		
 </head>
 <body>	
-${optList}
 <%-- ${project } --%>
-${ project} 
+<%-- ${ project}  --%>
 
-${project[0].prjNo.prjNo}
-
+${ project[0].prjNo.prjNo}
+${project[0].optNo}
 <section class="container">		
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
-		<form  action= "<%=request.getContextPath() %>/updateList" method="post" enctype="multipart/form-data">
+		<form  action= "<%=request.getContextPath() %>/updateList" method="post"  enctype="multipart/form-data" >
 		<section id = "register_center">
 		<!--탭 부분  -->
 			<div class="container_tab">
@@ -93,10 +92,10 @@ ${project[0].prjNo.prjNo}
 					</td>
 					<td class = "td_right"  >
 							<input type="text" id = "prjNo" name = "prjNo.prjNo"
-									 value="${prjNo}" size = 17 required="required" readonly="readonly" />
+									 value="${ project[0].prjNo.prjNo}" size = 17 required="required" readonly="readonly" />
 					</td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<td class = "td_left">
 							<label for = "userName" >작성자</label>
 					</td>
@@ -104,7 +103,7 @@ ${project[0].prjNo.prjNo}
 							  <input type="text" id = "userName" name = "userName" 
 							 		  value ="${ project[0].prjNo.userNo.userName} "  size = 17  readonly="readonly" required="required"/> 
 					</td>					
-			</tr>
+			</tr> --%>
 			<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
 					<td class="td_right">
@@ -199,7 +198,7 @@ ${project[0].prjNo.prjNo}
 							<!--옵션 3개 추가가 있을 시 보여주는view  -->		
 								<tr>
 									<td class = "td_right" colspan="2">
-											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
+											 <input type="hidden" id = "optNo" name = "optNo" value= "${project[0].optNo}" ></input>
 									</td>
 								</tr>	
 								<tr>											
@@ -570,9 +569,9 @@ ${project[0].prjNo.prjNo}
 		
 			</div>		
 			<div id="update_btns">
-					<input type="submit" name ="tkdrjs7" value="등록"/>&nbsp;
+					<input type="submit"  value="등록"/>&nbsp;
 					<input type="reset" value="다시쓰기" />&nbsp; 
-					<button id = "return">뒤로</button>
+					<button type="button"  id = "return">뒤로</button>
 			</div>	
 		</section>
 		</form>		

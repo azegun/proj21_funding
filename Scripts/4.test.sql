@@ -147,7 +147,9 @@ on p.PrjNo = op.PrjNo
 		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
 where p.PrjNo =59;
 
-select  * from project where PrjNo =4;
+select * from prjoption p 
+where PrjNo =225;
+select  * from prjoption p ;
 
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
@@ -165,6 +167,7 @@ select p.prjNo,p.UserNo, p.pCategoryNo, pc.pCategoryName,  PrjName, PrjContent, 
 						   join prjoption o on p.PrjNo =o.PrjNo
 						   join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
 			where o.prjNo = 8;
+	
 		
 -- 		카테고리 join 리스트
 select 
@@ -232,9 +235,8 @@ on op1.PrjNo = op2.PrjNo =op3.PrjNo
 where op1.OptNo =518  and op2.OptNo  =519 and op3.OptNo = 520;
 
 
-select * from prjoption p ;
 select *from prjoption p 
-where PrjNo =217;
+where PrjNo =222;
 
 
 

@@ -18,7 +18,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import proj21_funding.config.ContextRoot;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
-import proj21_funding.dto.project.AddPrjOption;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {ContextRoot.class})
 @WebAppConfiguration
@@ -133,7 +132,7 @@ public class PrjOptionMapperTest {
 		int res = mapper.updateAllAddOptionsByMap(map);
 		Assert.assertEquals(2, res);		
 	}	
-	@Test
+//	@Test
 	public void testupdateSubOptionByMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		
@@ -156,6 +155,34 @@ public class PrjOptionMapperTest {
 		
 		Assert.assertEquals(1, res);		
 	}
+	@Test
+	public void testremovePrjOptionOne() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo1", 519);
+		int res = mapper.removeOptNumOne(map);
+		
+		Assert.assertEquals(1, res);		
+	}
+	@Test
+	public void testremovePrjOptionTwo() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo2", 520);
+		int res = mapper.removeOptNumTwo(map);
+		
+		Assert.assertEquals(1, res);		
+	}
+	@Test
+	public void testremovePrjOptionThree() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("addOptNo3", 521);
+		int res = mapper.removeOptNumThree(map);
+		
+		Assert.assertEquals(1, res);		
+	}
+	
 //	@Test
 	public void testselectPrjAndPrjOpt() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");

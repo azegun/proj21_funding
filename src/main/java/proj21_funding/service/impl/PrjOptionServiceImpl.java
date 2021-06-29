@@ -78,5 +78,20 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.insertPrjOptionsOfFourByMap(map);
 	}
 
+	@Override
+	public int removeOptNumOne(Map<String, Object> map) {
+		return mapper.removeOptNumOne(map);
+	}
+
+	@Override
+	public int removeOptNumTwo(Map<String, Object> map) {
+		return mapper.removeOptNumTwo(map);
+	}
+
+	@Override
+	public int removeOptNumThree(Map<String, Object> map) {
+		return mapper.removeOptNumThree(map);
+	}
+
 
 }

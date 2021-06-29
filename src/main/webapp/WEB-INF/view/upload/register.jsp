@@ -97,16 +97,23 @@
 			$('.optionPlus').on("click", function(){	
 			//개수 제한걸기
 			if(i < 3){
+				console.log(111)
 				i += 1
 				addopt(i)	
-			}else if (i == 3){
-				i = 0;
-			}						 				 
+			
+			}
 			});
 			
 			//옵션삭제
 			$('.optionMinus').on("click", function(){
 				$('.addAll:last-child').remove();
+				if(i == 3){
+					i = 0
+				}else if(i ==2){
+					i =1
+				}else if(i ==1){
+					i =2
+				}
 			});	
 	  
 	   });
