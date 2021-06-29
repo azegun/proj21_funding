@@ -75,6 +75,31 @@ public class BoardServiceImpl implements BoardService {
 	public int BoardCategoryCount(int categoryNo) throws Exception {
 		return mapper.BoardCategoryCount(categoryNo);
 	}
+
+//	@Override
+//	public List<Map<String, Object>> selectBoardCategoryList(Pagination pagination) throws Exception {
+//		return mapper.selectBoardCategoryList(pagination);
+//	}
 	
+	@Override
+	public List<Board> selectBoardCategoryList(Pagination pagination) throws Exception {
+		return mapper.selectBoardCategoryList(pagination);
+	}
+
+	@Override
+	public List<Board> selectBoardCategoryListForCount() throws Exception {
+		return mapper.selectBoardCategoryListForCount();
+	}
+
+	@Override
+	public List<Board> selectSearchBoardList(Map<String,Object> map) {
+		return mapper.selectSearchBoardList(map);
+	}
+
+	@Override
+	public int selectSearchBoardListCount(Map<String, Object> map) {
+		return mapper.selectSearchBoardListCount(map);
+	}
+
 // 끝
 }

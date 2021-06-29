@@ -1,16 +1,25 @@
 package proj21_funding.controller.admin;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_funding.dto.BoardCategory;
 import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.paging.Pagination;
 import proj21_funding.dto.project.ProjectJoin;
+import proj21_funding.service.BoardService;
+import proj21_funding.service.CategoryService;
 import proj21_funding.service.PrjCategoryService;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectJoinService;
@@ -29,6 +38,12 @@ public class AdminController {
 	
 	@Autowired
 	private PrjOptionService optionService;
+	
+	@Autowired
+	private BoardService boardService;
+	
+	@Autowired
+	private CategoryService bcService;
 	
 	@RequestMapping("/admin")
 	public String adminMain() {
@@ -75,11 +90,70 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminBoard")
-	public ModelAndView adminBoard() {
+	public ModelAndView searchProject(@RequestParam(value="category",required=false,defaultValue = "total") String category,
+			@RequestParam(value="keyword",required=false, defaultValue = "total") String keyword,
+			@RequestParam(value="searchKeyword", required = false, defaultValue = "") String searchKeyword,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session) throws Exception {
 		
-		ModelAndView mav = new ModelAndView("admin/adminBoard");
+		int pageSearch = (currentPage-1)*cntPerPage;
+		
+		Map<String,Object> listMap = new HashMap<String,Object>();
+		listMap.put("category", category);
+		listMap.put("keyword", keyword);
+		listMap.put("searchKeyword", searchKeyword);
+		listMap.put("currentPage",currentPage );
+		listMap.put("cntPerPage", cntPerPage);
+		listMap.put("pageSize",pageSize );
+		listMap.put("pageSearch",pageSearch);
+		
+		System.out.println(category);
+		System.out.println(keyword);
+		System.out.println(searchKeyword);
+		System.out.println(listMap);
+		
+		int listCnt = boardService.selectSearchBoardListCount(listMap);
+		System.out.println(listCnt);
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		pagination.setTotalRecordCount(listCnt);
+		List<BoardCategory> bc = bcService.showBCByClass("board");
+		session.setAttribute("pagination", pagination);
+		session.setAttribute("keyword", keyword);
+		session.setAttribute("searchKeyword", searchKeyword);
+		session.setAttribute("category", category);
+		
+		ModelAndView mav= new ModelAndView();
+		mav.setViewName("admin/adminBoard");
+		mav.addObject("pagination", pagination);
+		mav.addObject("listCnt", listCnt);
+		mav.addObject("board", boardService.selectSearchBoardList(listMap));
+		mav.addObject("bc", bc);
+
 		return mav;
 	}
+	
+//	@RequestMapping("/adminBoard")
+//	public ModelAndView adminBoard(
+//			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+//			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+//			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session)
+//					throws Exception {
+//		ModelAndView mav = new ModelAndView("admin/adminBoard");
+//		
+//		int listCnt = boardService.BoardCount();
+//		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+//		pagination.setTotalRecordCount(listCnt);
+//		List<BoardCategory> bc = bcService.showBCByClass("board");
+//		session.setAttribute("pagination", pagination);
+//		
+//		mav.addObject("pagination", pagination);
+//		mav.addObject("board", boardService.selectBoardCategoryList(pagination));
+//		mav.addObject("boardCount", boardService.selectBoardCategoryListForCount());
+//		mav.addObject("listCnt", listCnt);
+//		mav.addObject("bc", bc);
+//		return mav;
+//	}
 	
 	@RequestMapping("/accordion")
 	public ModelAndView adminTest() {
