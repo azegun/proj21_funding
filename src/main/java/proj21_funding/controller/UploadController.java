@@ -3,7 +3,6 @@ package proj21_funding.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -136,21 +135,29 @@ public class UploadController {
 			Map<String, Object>	map = new HashMap<String, Object>();	
 	
 			Enumeration enu = request.getParameterNames();
+			
 		      while (enu.hasMoreElements()) {
 		         String name = (String) enu.nextElement();
 		         String value = request.getParameter(name);
 		         map.put(name, value);
 		      }
+		      
+		      boolean addOptName1 = map.containsKey("addOptName1");
+		      boolean addOptName2 = map.containsKey("addOptName2");
+		      boolean addOptName3 = map.containsKey("addOptName3");
 		     
-		      if(map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == false) {
+		      if(addOptName1 == true && addOptName2   == false) {
 		    	  //추가가 2개일떄
 		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
 		    	  optionService.insertOptionByMap(map);
-		      }else if (map.containsKey("addOptName1") == true && map.containsKey("addOptName2") == true) {
+		      }else if (addOptName1 == true && addOptName2 == true && addOptName3 == false) {
 		    	  //추가가 3개일떄
 		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
 		    	  optionService.insertPrjOptionsByMap(map);
-		      }		      
+		      }else if(addOptName1 == true && addOptName2 == true && addOptName3 == true) {
+		    	  map.put("pNo", prjoption.getPrjNo().getPrjNo());
+		    	  optionService.insertPrjOptionsOfFourByMap(map);
+		      }
 		      
 			optList = optionService.selectSimplePrjOptionByPrjNo(project.getPrjNo());		
 			Project list = projectService.showJoinPrjAndCategory(project.getPrjNo());
@@ -195,8 +202,7 @@ public class UploadController {
 	@PostMapping("/updateList")
 	public ModelAndView updateListSuccess(PrjOption prjoption, Project project,
 		HttpServletRequest request, MultipartFile uploadfile, HttpServletResponse response  ) throws IOException {
-		System.out.println("1111111");
-		System.out.println("Project 1> >" + prjoption);
+		
 		//파일 존재 여부
 		if(uploadfile.getSize() !=0) {
 			// 파일 업로드
@@ -219,40 +225,57 @@ public class UploadController {
 	         String name = (String) enu.nextElement();
 	         String value = request.getParameter(name);
 	         map.put(name, value);
-	         System.out.println("map>> " + map);
 	      }
-//		System.out.println("project.getpCategoryNo().getpCategoryNo()>> " + project.getpCategoryNo().getpCategoryNo());
-//		map.put("pCategoryNo", project.getpCategoryNo().getpCategoryNo());
-//		map.put("prjNo", project.getPrjNo());
 		
-//		map.put("prjName", project.getPrjName());
-//		map.put("prjContent", project.getPrjContent());
-//		map.put("prjGoal", project.getPrjGoal());
-//		map.put("endDate", project.getEndDate());
-//		map.put("payDate", project.getPayDate());
-//		map.put("optName", project.getOptName());
-//		map.put("optPrice", project.getOptPrice());
-//		map.put("optContent", project.getOptContent());	
+		// 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
+		optList = optionService.selectSimplePrjOptionByPrjNo(prjoption.getPrjNo().getPrjNo());
 		
-		
-		
-	
-	
 		try {
 		//리스트 조인
 			projectService.joinUpdateProjectAndPrjoptionByNo(map);	
-			System.out.println("map12121>>" + map);
-//		if(addprjoption.getAddOptName1() !=null) {
-//			//추가적인 업데이트
-//			prjoption.setOptNo(optList.get(0).getOptNo());
-//			optionService.updatePrjOption(prjoption);
 			
-//			addprjoption.setAddOptNo1(optList.get(1).getOptNo());
-//			optionService.updateAddOption(addprjoption);		
-//		}
-		
-		//옵션리스트 받기
-		optList = optionService.selectSimplePrjOptionByPrjNo(prjoption.getPrjNo().getPrjNo());	
+		    boolean addOptName1 = map.containsKey("addOptName1");
+		    boolean addOptName2 = map.containsKey("addOptName2");
+		    boolean addOptName3 = map.containsKey("addOptName3");
+		    		    
+		    if(addOptName1 == false) {
+		    	//수정이 1개일떄
+		    	//지어진값은 데이터 삭제
+		    	map.put("addOptNo1", optList.get(1).getOptNo());
+		    	map.put("addOptNo2", optList.get(2).getOptNo());
+	    		map.put("addOptNo3", optList.get(3).getOptNo());
+	    		
+		    	optionService.removeOptNumOne(map);
+		    	optionService.removeOptNumThree(map);
+	    		optionService.removeOptNumTwo(map);		    		
+
+		    }
+		    
+		    if(addOptName1 == true && addOptName2 == false) {
+		    	  //수정이 2개일떄
+		    	  if(addOptName2 ==false && addOptName3 ==false) {
+		    		  //지어진값은 데이터 삭제
+		    		  map.put("addOptNo2", optList.get(2).getOptNo());
+		    		  map.put("addOptNo3", optList.get(3).getOptNo());
+		    		  
+		    		  optionService.removeOptNumThree(map);
+		    		  optionService.removeOptNumTwo(map);		    		  
+		    	  }
+		    	 
+		    	  optionService.updateOptionByMap(map);
+
+		    }else if (addOptName1 == true && addOptName2== true && addOptName3 == false) {
+		    	  //수정이 3개일떄
+		    	  if(addOptName3 == false) {
+		    		  //지어진값은 데이터 삭제
+		    		  optionService.removeOptNumThree(map);
+		    	  }
+		    	  
+		    	  optionService.updateAllAddOptionsByMap(map);
+		    }else if(addOptName1 == true && addOptName2 == true && addOptName3 == true) {
+			  	  //수정이 4개일떄
+			      trService.trUpdateAddOptionsOfFourTimes(map);
+		    }
 		
 		}catch (DateTimeOverException e) {
 			response.setContentType("text/html;charset=utf-8");
@@ -263,9 +286,10 @@ public class UploadController {
 			out.println("</script>");
 			out.flush();
 		}
-		
+		//리스트 받기 (1. 옵션들 2. 카테고리들)
+		optList = optionService.selectSimplePrjOptionByPrjNo(prjoption.getPrjNo().getPrjNo());
 		Project list = projectService.showJoinPrjAndCategory(prjoption.getPrjNo().getPrjNo());
-		System.out.println("cateogry>> " + list);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("optList", optList);
 		mav.addObject("project", map);

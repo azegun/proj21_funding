@@ -42,8 +42,6 @@
 						p.PrjName = #{prjName}, p.PrjContent = #{prjContent},
 						op.OptName = #{optName}, op.OptContent = #{optContent}
 				where p.PrjNo = #{prjNo}		
-		</update>
-		
-		
+		</update>		
 
 </mapper>

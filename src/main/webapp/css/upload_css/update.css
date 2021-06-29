@@ -60,6 +60,7 @@ h2{
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
+	flex-direction: column;
 }
 .td_left{
 	width: 170px;

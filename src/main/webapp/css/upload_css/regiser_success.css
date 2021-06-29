@@ -16,7 +16,7 @@ h2{
 /* 프로젝트 소개 스크롤  */
 .sboption {
      width: 400px;
-     height: 330px;
+     height: 280px;
    	 overflow: auto;
 }
      /*  스크롤바  */
@@ -39,7 +39,7 @@ h2{
 /* 옵션 소개 스크롤  */
 .sb2option {
      width: 400px;
-     height: 200px;
+     height: 100px;
    	 overflow: auto;
 }
      /*  스크롤바  */
@@ -58,8 +58,6 @@ h2{
     background-color:#ffffff;
     box-shadow: inset 0px 0px 5px white;
 }
-
-
 td{
 	text-align: center;
 	padding: 5px;
@@ -83,5 +81,4 @@ td{
 }
 /* 옵션 소개 */
  .col10 td:nth-of-type(2) {
-	height: 200px;
 }

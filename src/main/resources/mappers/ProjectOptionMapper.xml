@@ -55,17 +55,24 @@
 					(#{prjNo.prjNo}, #{optName},  #{optPrice}, #{optContent})
 		</insert>		
 		
-		<!-- 옵션들 추가  -->
+		<!-- 옵션 추가  -->
 		<insert id="insertOptionByMap" parameterType="map">
 				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
 						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1});					
 		</insert>
 		
-		<!-- 옵션들 추가  -->
+		<!-- 옵션2개 추가  -->
 		<insert id="insertPrjOptionsByMap" parameterType="map">
 				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
 						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1}),
 						(#{pNo}, #{addOptName2}, #{addOptPrice2},  #{addOptContent2});		
+		</insert>
+		<!-- 옵션 3개추가  -->
+		<insert id="insertPrjOptionsOfFourByMap" parameterType="map">
+				insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
+						(#{pNo}, #{addOptName1}, #{addOptPrice1}, #{addOptContent1}),
+						(#{pNo}, #{addOptName2}, #{addOptPrice2},  #{addOptContent2}),	
+						(#{pNo}, #{addOptName3}, #{addOptPrice3},  #{addOptContent3});		
 		</insert>
 		
 		<!-- 프로젝트  추가 옵션  수정 -->
@@ -93,10 +100,36 @@
 			where op1.OptNo =#{addOptNo1}  and op2.OptNo  =#{addOptNo2} 
 		</update>
 		
+		<!-- 프로젝트 추가 옵션 수정 -->
+		<update id="updateSubOptByMap" parameterType="map">
+			update prjoption 
+				set OptName = #{addOptName3}, OptPrice = #{addOptPrice3}, 
+							OptContent = #{addOptContent3}
+			where OptNo = #{addOptNo3}		
+		</update>
+		
 		<!-- 프로젝트 옵션 삭제 -->
 		<delete id="removePrjOption">
 			delete from prjoption 
 					where PrjNo = #{prjNo.prjNo}
+		</delete>
+		
+		<!--addOptNo1맵으로 제거  -->
+		<delete id="removeOptNumOne" parameterType="map">
+			delete from prjoption 
+					where OptNo = #{addOptNo1}		
+		</delete>
+		
+		<!--addOptNo2맵으로 제거  -->
+		<delete id="removeOptNumTwo" parameterType="map">
+				delete from prjoption 
+					where OptNo = #{addOptNo2}		
+		</delete>
+		
+		<!--addOptNo3맵으로 제거  -->
+		<delete id="removeOptNumThree" parameterType="map">
+				delete from prjoption 
+					where OptNo = #{addOptNo3}		
 		</delete>
 		
 		<select id = "selectSimpleOptionByPrjNo" resultMap="AssociateProject">

@@ -69,6 +69,13 @@
 		sSkinURI : contextpath + "/nse_files/SmartEditor2Skin.html",
 		fCreator : "createSEditor2"
 	});
+	
+	$("#savebutton").click(function(){
+		//id가 boardContentdls textarea에 에디터에서 대입
+		oEditors.getById["boardContent"].exec("UPDATE_CONTENTS_FIELD", []);
+		
+		$("#frm").submit();
+	})
 
 	function submitContents(elClickedObj) {
 		oEditors.getById["boardContent"].exec("UPDATE_CONTENTS_FIELD", []);

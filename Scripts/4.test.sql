@@ -147,7 +147,9 @@ on p.PrjNo = op.PrjNo
 		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
 where p.PrjNo =59;
 
-select  * from project where PrjNo =4;
+select * from prjoption p 
+where PrjNo =225;
+select  * from prjoption p ;
 
 update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
@@ -165,6 +167,7 @@ select p.prjNo,p.UserNo, p.pCategoryNo, pc.pCategoryName,  PrjName, PrjContent, 
 						   join prjoption o on p.PrjNo =o.PrjNo
 						   join prjcategory pc on p.pCategoryNo = pc.pCategoryNo 
 			where o.prjNo = 8;
+	
 		
 -- 		카테고리 join 리스트
 select 
@@ -214,6 +217,7 @@ insert into prjoption(PrjNo , OptName, OptPrice,OptContent) values
 (3, 'test2', 20000, 'test2'),
 (3, 'test3', 30000, 'test3');
 
+-- 업데이트 2개
 update prjoption as op1 inner join prjoption as op2
 on op1.PrjNo = op2.PrjNo 
 	set 
@@ -221,22 +225,35 @@ on op1.PrjNo = op2.PrjNo
 		op2.OptName = '업데이트', op2.OptPrice = 30000, op2.OptContent = '하자'
 where op1.OptNo =286  and op2.OptNo  =287;
 
-select * from prjoption p ;
+--  업데이트 3개
+update prjoption as op1 inner join prjoption as op2 inner join prjoption  as op3
+on op1.PrjNo = op2.PrjNo =op3.PrjNo 
+	set 
+		op1.OptName ='test성공하23자', op1.OptPrice =204000, op1.OptContent ='제발',
+		op2.OptName = '업데이2트', op2.OptPrice = 300400, op2.OptContent = '하자',
+		op3.OptName = '업데이2트', op3.OptPrice = 300400, op3.OptContent = '하자'
+where op1.OptNo =518  and op2.OptNo  =519 and op3.OptNo = 520;
+
+
+select *from prjoption p 
+where PrjNo =222;
 
 
 
 
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
 select 
-	PostNo, PrjNo, UserNo,
-	PostTitle, PostContent 
+	PostNo, PrjNo, UserNo, PostContent 
 from prjboard;
+
+insert into prjboard (PrjNo, UserNo, PostContent )
+values (2, 2, '잘되고있어요'), (2, 2, '잘되고있어요'), (2, 2, '잘되고있어요');
 
 delete from prjboard
 where PostNo = 1;
 
 update prjboard
-	set  PrjNo, UserNo, PostTitle, PostContent
+	set  PrjNo, UserNo, PostContent
 	where PostNo;
 
 -- addresses(주소)
