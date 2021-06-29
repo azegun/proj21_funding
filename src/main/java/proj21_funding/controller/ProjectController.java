@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.Message;
+import proj21_funding.dto.PrjBoard;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserAuthInfo;
@@ -28,6 +29,7 @@ import proj21_funding.dto.account.UserLogin;
 import proj21_funding.dto.project.ProjectJoin;
 import proj21_funding.service.FundingInfoService;
 import proj21_funding.service.MessageService;
+import proj21_funding.service.PrjBoardService;
 import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectJoinService;
 import proj21_funding.service.ProjectService;
@@ -48,7 +50,9 @@ public class ProjectController {
 	private UserInfoService userService;
 	@Autowired
 	private MessageService service;
-
+	@Autowired
+	private PrjBoardService boardService;
+	
 //	모든 프로젝트
 	@RequestMapping("/projectListAll")
 	public ModelAndView listAll() {
@@ -110,6 +114,12 @@ public class ProjectController {
 		session.setAttribute("prj", prj);
 		session.setAttribute("prjNo", prjNo);
 //		List<Project> prjList=projectService.showProjectListAll();
+		List<PrjBoard> prBd= boardService.showPrjBoardbyPrjNo(prjNo);
+		for(PrjBoard board : prBd){
+			UserInfo user= service.showUserbyNo(board.getUserNo().getUserNo());
+			board.setUserNo(user);
+		}		
+		session.setAttribute("board", prBd);
 		try {
 			count = fundingService.showCountByPrjNo(prjNo);
 			sum = fundingService.showSumByPrjNo(prjNo);

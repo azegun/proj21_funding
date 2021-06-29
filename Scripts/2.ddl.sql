@@ -211,7 +211,6 @@ CREATE TABLE proj21_funding.PrjBoard (
 	PostNo      INT(10)     NOT NULL COMMENT '게시글번호', -- 게시글번호
 	PrjNo       INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
 	UserNo      INT(10)     NOT NULL COMMENT '글작성자', -- 글작성자
-	PostTitle   VARCHAR(50) NOT NULL COMMENT '게시글제목', -- 게시글제목
 	PostContent LONGTEXT    NOT NULL COMMENT '게시글내용', -- 게시글내용
 	PostDate    DATETIME    NOT NULL DEFAULT current_timestamp COMMENT '게시글날짜', -- 게시글날짜
 	PostFile    VARCHAR(50) NULL     COMMENT '첨부파일' -- 첨부파일
