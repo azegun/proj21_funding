@@ -184,6 +184,7 @@ values (5,'세트1',100000, '흰색양말+파란색양말');
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
 select 
 	PostNo, PrjNo, UserNo,
+	PostTitle, PostContent ,PostDate ,PostFile 
 	PostContent ,PostDate ,PostFile 
 from prjboard
 where PrjNo = 1 and UserNo = 1;

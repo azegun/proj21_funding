@@ -24,6 +24,7 @@ import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.dto.project.PrjPlusOption;
 import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
@@ -200,13 +201,14 @@ public class UploadController {
 	
 	//수정 완료 후 리스트
 	@PostMapping("/updateList")
-	public ModelAndView updateListSuccess(PrjOption prjoption, Project project,
+	public ModelAndView updateListSuccess(PrjPlusOption prjplusoption,
 		HttpServletRequest request, MultipartFile uploadfile, HttpServletResponse response  ) throws IOException {
-		
+		 
 		//파일 존재 여부
 		if(uploadfile.getSize() !=0) {
 			// 파일 업로드
-			String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";
+			
+			String saveName = "project"+prjplusoption.getpNo()+".jpg";
 			
 			File saveFile = new File(UPLOAD_PATH, saveName);
 			
@@ -226,52 +228,53 @@ public class UploadController {
 	         String value = request.getParameter(name);
 	         map.put(name, value);
 	      }
-		
-		// 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
-		optList = optionService.selectSimplePrjOptionByPrjNo(prjoption.getPrjNo().getPrjNo());
-		
+	
 		try {
 		//리스트 조인
-			projectService.joinUpdateProjectAndPrjoptionByNo(map);	
+			
 			
 		    boolean addOptName1 = map.containsKey("addOptName1");
 		    boolean addOptName2 = map.containsKey("addOptName2");
 		    boolean addOptName3 = map.containsKey("addOptName3");
-		    		    
-		    if(addOptName1 == false) {
-		    	//수정이 1개일떄
-		    	//지어진값은 데이터 삭제
-		    	map.put("addOptNo1", optList.get(1).getOptNo());
-		    	map.put("addOptNo2", optList.get(2).getOptNo());
-	    		map.put("addOptNo3", optList.get(3).getOptNo());
-	    		
-		    	optionService.removeOptNumOne(map);
-		    	optionService.removeOptNumThree(map);
-	    		optionService.removeOptNumTwo(map);		    		
-
-		    }
+		 // 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
+		    optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
+		//조인 업데이트(프로젝트 + 옵션 1)
+		    projectService.joinUpdateProjectAndPrjoptionByNo(map);		    
+		 
+			    if(addOptName1 == false && addOptName2 == false && addOptName3 == false) {
+			    	if( optList.size() > 1) {
+			    		//수정이 1개일떄
+				    	//지어진값은 데이터 삭제
+			    		map.put("addOptNo1", optList.get(1).getOptNo());
+				    	map.put("addOptNo2", optList.get(2).getOptNo());
+			    		map.put("addOptNo3", optList.get(3).getOptNo());
+			    		
+				    	optionService.removeOptNumOne(map);
+				    	optionService.removeOptNumThree(map);
+			    		optionService.removeOptNumTwo(map);		    			
+			    	}
+			    }
 		    
-		    if(addOptName1 == true && addOptName2 == false) {
-		    	  //수정이 2개일떄
-		    	  if(addOptName2 ==false && addOptName3 ==false) {
+		    if(addOptName1 == true && addOptName2 == false  && addOptName3 ==false) {
+		    			//수정이 2개일떄
 		    		  //지어진값은 데이터 삭제
-		    		  map.put("addOptNo2", optList.get(2).getOptNo());
-		    		  map.put("addOptNo3", optList.get(3).getOptNo());
+		    		map.put("addOptNo2", optList.get(2).getOptNo());
+		    		map.put("addOptNo3", optList.get(3).getOptNo());
 		    		  
-		    		  optionService.removeOptNumThree(map);
-		    		  optionService.removeOptNumTwo(map);		    		  
-		    	  }
+		    		 optionService.removeOptNumTwo(map);	
+		    		 optionService.removeOptNumThree(map);
+		    			    		  
 		    	 
-		    	  optionService.updateOptionByMap(map);
+		    		 optionService.updateOptionByMap(map);
 
 		    }else if (addOptName1 == true && addOptName2== true && addOptName3 == false) {
 		    	  //수정이 3개일떄
-		    	  if(addOptName3 == false) {
 		    		  //지어진값은 데이터 삭제
+		    		  map.put("addOptNo3", optList.get(3).getOptNo());
+		    		  
 		    		  optionService.removeOptNumThree(map);
-		    	  }
-		    	  
-		    	  optionService.updateAllAddOptionsByMap(map);
+		    		  
+		    		  optionService.updateAllAddOptionsByMap(map);
 		    }else if(addOptName1 == true && addOptName2 == true && addOptName3 == true) {
 			  	  //수정이 4개일떄
 			      trService.trUpdateAddOptionsOfFourTimes(map);
@@ -287,8 +290,9 @@ public class UploadController {
 			out.flush();
 		}
 		//리스트 받기 (1. 옵션들 2. 카테고리들)
-		optList = optionService.selectSimplePrjOptionByPrjNo(prjoption.getPrjNo().getPrjNo());
-		Project list = projectService.showJoinPrjAndCategory(prjoption.getPrjNo().getPrjNo());
+		optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
+		Project list = projectService.showJoinPrjAndCategory(prjplusoption.getpNo());
+		System.out.println("optList 출구 전 >> "+ optList);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("optList", optList);

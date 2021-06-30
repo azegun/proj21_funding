@@ -106,6 +106,10 @@
 	justify-content: center;
 }
 
+#go_notice {
+	cursor: pointer;
+}
+
 .returnlist { /* 목록으로 돌아가기 */
 	width: 167px;
 	height: 44px;

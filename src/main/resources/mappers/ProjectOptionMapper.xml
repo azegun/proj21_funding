@@ -82,7 +82,7 @@
 			where OptNo = #{optNo}		
 		</update>
 		
-		<!-- 프로젝트 추가 옵션 수정 -->
+		<!-- 프로젝트 추가 1번쨰 옵션 수정 -->
 		<update id="updateOptionByMap" parameterType="map">
 			update prjoption 
 				set OptName = #{addOptName1}, OptPrice = #{addOptPrice1}, 
@@ -100,7 +100,7 @@
 			where op1.OptNo =#{addOptNo1}  and op2.OptNo  =#{addOptNo2} 
 		</update>
 		
-		<!-- 프로젝트 추가 옵션 수정 -->
+		<!-- 프로젝트 추가 3번째 옵션 수정 -->
 		<update id="updateSubOptByMap" parameterType="map">
 			update prjoption 
 				set OptName = #{addOptName3}, OptPrice = #{addOptPrice3}, 

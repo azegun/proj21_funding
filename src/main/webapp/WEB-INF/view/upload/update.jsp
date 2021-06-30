@@ -91,24 +91,15 @@ ${project[0].optNo}
 							<label for = "prjNo" >번호</label>
 					</td>
 					<td class = "td_right"  >
-							<input type="text" id = "prjNo" name = "prjNo.prjNo"
+							<input type="text" id = "prjNo" name = "pNo"
 									 value="${ project[0].prjNo.prjNo}" size = 17 required="required" readonly="readonly" />
 					</td>
 			</tr>
-			<%-- <tr>
-				<td class = "td_left">
-							<label for = "userName" >작성자</label>
-					</td>
-					<td class = "td_right">
-							  <input type="text" id = "userName" name = "userName" 
-							 		  value ="${ project[0].prjNo.userNo.userName} "  size = 17  readonly="readonly" required="required"/> 
-					</td>					
-			</tr> --%>
 			<tr>
 					<td class="td_left"><label for="pCategoryNo">카테고리</label></td>
 					<td class="td_right">
 					<!-- 반복으로 같은거 찾는 조건  -->
-						<select id="pCategoryNo" name="pCategoryNo.pCategoryNo" >		
+						<select id="pCategoryNo" name="pCateNo" >		
 									<option value = "0">---선택해주세요---- </option>
 							<c:forEach var = "c"  items="${category }" >
 									<c:choose>									
@@ -128,7 +119,7 @@ ${project[0].optNo}
 							<label for = "prjName">프로젝트 명</label>
 					</td>
 					<td class = "td_right"	>
-							  <input type="text" id = "prjName" name = "prjName" size = 45 
+							  <input type="text" id = "prjName" name = "pName" size = 45 
 							 		  value = "${project[0].prjNo.prjName}"  required="required"/>
 					</td>
 			</tr>
@@ -137,7 +128,7 @@ ${project[0].optNo}
 							<label for = "prjContent">프로젝트 소개</label>
 					</td>
 					<td class = "td_right">
-							 <textarea id = "textContent" name = "prjContent"   rows="11" cols="38" 
+							 <textarea id = "textContent" name = "pContent"   rows="11" cols="38" 
 							 			required="required"> ${project[0].prjNo.prjContent}</textarea>
 					</td>
 			</tr>
@@ -146,7 +137,7 @@ ${project[0].optNo}
 							<label for = "prjGoal">목표금액</label>
 					</td>
 					<td class = "td_right">
-							 <input type="text" id = "prjGoal" name = "prjGoal" 
+							 <input type="text" id = "prjGoal" name = "pGoal" 
 							 			value =  "${project[0].prjNo.prjGoal}" size = 17 required="required"></input>
 					</td>
 			</tr>
@@ -168,7 +159,7 @@ ${project[0].optNo}
 							<label for = "endDate">마감일</label>
 					</td>
 					<td class = "td_right">
-							<input type="text" class="datepicker" name = "endDate" 
+							<input type="text" class="datepicker" name = "eDate" 
 										 value = "${project[0].prjNo.endDate}" required="required">
 					</td>
 			</tr>
@@ -177,7 +168,7 @@ ${project[0].optNo}
 							<label for = "payDate">결제일</label>
 					</td>
 					<td class = "td_right">
-							<input type="text" class="datepicker" name = "payDate"
+							<input type="text" class="datepicker" name = "pDate"
 										 value = "${project[0].prjNo.payDate}" required="required">
 					</td>
 			</tr>			
@@ -198,7 +189,7 @@ ${project[0].optNo}
 							<!--옵션 3개 추가가 있을 시 보여주는view  -->		
 								<tr>
 									<td class = "td_right" colspan="2">
-											 <input type="hidden" id = "optNo" name = "optNo" value= "${project[0].optNo}" ></input>
+											 <input type="hidden" id = "optNo" name = "oNo" value= "${project[0].optNo}" ></input>
 									</td>
 								</tr>	
 								<tr>											
@@ -206,7 +197,7 @@ ${project[0].optNo}
 											<label for = "optName">옵션1 이름</label>
 									</td>									
 									<td class = "td_right">
-											 <input type="text" id = "optName" name = "optName" 
+											 <input type="text" id = "optName" name = "oName" 
 											 			value = "${ project[0].optName }" size = 17 required="required"></input>
 									</td>									
 							</tr>
@@ -215,7 +206,7 @@ ${project[0].optNo}
 											<label for = "optPrice">옵션1 금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "optPrice" name = "optPrice" 
+											 <input type="text" id = "optPrice" name = "oPrice" 
 											 			value = "${ project[0].optPrice }"  size = 17 required="required"></input>
 									</td>
 							</tr>							
@@ -224,7 +215,7 @@ ${project[0].optNo}
 											<label for = "optContent">옵션1 내용</label>
 									</td>
 									<td class = "td_right">
-											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38"
+											 <textarea id = "textContent" name = "oContent"	rows="8" cols="38"
 											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
 							</tr>	
@@ -343,7 +334,7 @@ ${project[0].optNo}
 							<!--옵션 2개 추가가 있을 시 보여주는view  -->		
 								<tr>
 									<td class = "td_right" colspan="2">
-											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
+											 <input type="hidden" id = "optNo" name = "oNo" value= "${ project[0].optNo }" ></input>
 									</td>
 								</tr>	
 								<tr>											
@@ -351,7 +342,7 @@ ${project[0].optNo}
 											<label for = "optName">옵션1 이름</label>
 									</td>									
 									<td class = "td_right">
-											 <input type="text" id = "optName" name = "optName" 
+											 <input type="text" id = "optName" name = "oName" 
 											 			value = "${ project[0].optName }" size = 17 required="required"></input>
 									</td>									
 							</tr>
@@ -360,7 +351,7 @@ ${project[0].optNo}
 											<label for = "optPrice">옵션1 금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "optPrice" name = "optPrice" 
+											 <input type="text" id = "optPrice" name = "oPrice" 
 											 			value = "${ project[0].optPrice }"  size = 17 required="required"></input>
 									</td>
 							</tr>							
@@ -369,7 +360,7 @@ ${project[0].optNo}
 											<label for = "optContent">옵션1 내용</label>
 									</td>
 									<td class = "td_right">
-											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38"
+											 <textarea id = "textContent" name = "oContent"	rows="8" cols="38"
 											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
 							</tr>	
@@ -455,7 +446,7 @@ ${project[0].optNo}
 							<!--옵션 추가가 있을 시 보여주는view  -->		
 								<tr>
 									<td class = "td_right" colspan="2">
-											 <input type="hidden" id = "optNo" name = "optNo" value= "${ project[0].optNo }" ></input>
+											 <input type="hidden" id = "optNo" name = "oNo" value= "${ project[0].optNo }" ></input>
 									</td>
 								</tr>	
 								<tr>											
@@ -463,7 +454,7 @@ ${project[0].optNo}
 											<label for = "optName">옵션1 이름</label>
 									</td>									
 									<td class = "td_right">
-											 <input type="text" id = "optName" name = "optName" 
+											 <input type="text" id = "optName" name = "oName" 
 											 			value = "${ project[0].optName }" size = 17 required="required"></input>
 									</td>									
 							</tr>
@@ -472,7 +463,7 @@ ${project[0].optNo}
 											<label for = "optPrice">옵션1 금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "optPrice" name = "optPrice" 
+											 <input type="text" id = "optPrice" name = "oPrice" 
 											 			value = "${ project[0].optPrice }"  size = 17 required="required"></input>
 									</td>
 							</tr>							
@@ -481,7 +472,7 @@ ${project[0].optNo}
 											<label for = "optContent">옵션1 내용</label>
 									</td>
 									<td class = "td_right">
-											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38"
+											 <textarea id = "textContent" name = "oContent"	rows="8" cols="38"
 											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
 							</tr>	
@@ -503,7 +494,7 @@ ${project[0].optNo}
 											<label for = "addOptName">옵션2 이름</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "addOptName" name = "addOptName"
+											 <input type="text" id = "addOptName" name = "addOptName1"
 											 		value = "${ project[1].optName }"  required  size = 17 ></input>
 									</td>
 							</tr>
@@ -512,7 +503,7 @@ ${project[0].optNo}
 											<label for = "addOptPrice">옵션2 금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "addOptPrice" name = "addOptPrice"
+											 <input type="text" id = "addOptPrice" name = "addOptPrice1"
 											 		value = "${ project[1].optPrice }" required  size = 17 ></input>
 									</td>
 							</tr>
@@ -521,7 +512,7 @@ ${project[0].optNo}
 											<label for = "addOptContent">옵션2 내용</label>
 									</td>						
 									<td class = "td_right">
-											 <textarea id = "textContent" name = "addOptContent"	
+											 <textarea id = "textContent" name = "addOptContent1"	
 											 		rows="8" cols="38" required >${ project[1].optContent }</textarea>
 									</td>
 							</tr>
@@ -536,7 +527,7 @@ ${project[0].optNo}
 											<label for = "optName">옵션이름</label>
 									</td>									
 									<td class = "td_right">
-											 <input type="text" id = "optName" name = "optName" 
+											 <input type="text" id = "optName" name = "oName" 
 											 			value = "${ project[0].optName }" size = 17 required="required"></input>
 									</td>									
 							</tr>
@@ -545,7 +536,7 @@ ${project[0].optNo}
 											<label for = "optPrice">옵션금액</label>
 									</td>
 									<td class = "td_right">
-											 <input type="text" id = "optPrice" name = "optPrice" 
+											 <input type="text" id = "optPrice" name = "oPrice" 
 											 			value = "${ project[0].optPrice }"  size = 17 required="required"></input>
 									</td>
 							</tr>
@@ -554,7 +545,7 @@ ${project[0].optNo}
 											<label for = "optContent">옵션내용</label>
 									</td>
 									<td class = "td_right">
-											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38"
+											 <textarea id = "textContent" name = "oContent"	rows="8" cols="38"
 											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
 							</tr>

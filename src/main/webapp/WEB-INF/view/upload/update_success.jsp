@@ -43,11 +43,13 @@ ${project } --%>
 <%-- ${optList[0].prjNo.prjNo}
 ${optList[1].prjNo.prjNo }
 ${project }
-${project.prjGoal }
-${category } --%>
+${project.prjGoal }--%>
+<%-- ${category }  --%>
 <%--  ${project } --%>
-${optList}
-
+<%-- ${optList} --%>
+<%-- ${project } --%>
+<%-- ${authInfo.userName } --%>
+${optList }
 		
 <%-- ${project } --%>
 <section class="container">
@@ -72,29 +74,29 @@ ${optList}
 								</tr>
 								<tr class = "col3">
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
-										<td class="td_right" ><span id="prjName">${project.prjName }</span></td>
+										<td class="td_right" ><span id="prjName">${project.pName }</span></td>
 								</tr>
 								<tr class = "col4">
 										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
 										<td class="td_right" >
-												<div class ="sboption">${project.prjContent }</div>
+												<div class ="sboption">${project.pContent }</div>
 										</td>
 								</tr>								
 								<tr class = "col5">
 										<td class="td_left"><label for="prjGoal">목표금액</label></td>
 										<td class="td_right" >
 												<span id="prjGoal">
-														<fmt:formatNumber value="${project.prjGoal }" pattern="\\#,###"/>
+														<fmt:formatNumber value="${project.pGoal }" pattern="\\#,###"/>
 												 </span>
 										 </td>										
 								</tr>								
 								<tr class = "col6">
 										<td class="td_left"><label for="endDate">마감일</label></td>
-										<td class="td_right" ><span id="endDate">${project.endDate}</span></td>
+										<td class="td_right" ><span id="endDate">${project.eDate}</span></td>
 								</tr>
 								<tr class = "col7">
 										<td class="td_left"><label for="payDate">결제일</label></td>
-										<td class="td_right" ><span id="payDate">${project.payDate}</span></td>
+										<td class="td_right" ><span id="payDate">${project.pDate}</span></td>
 								</tr>
 							
 								<c:choose>
@@ -240,7 +242,7 @@ ${optList}
 										</tr>	
 									</c:when>
 									
-									<c:otherwise>
+									<c:when test="${empty optList[1] }">
 										<tr class = "col8">
 							<!-- 옵션이 1개일때 -->
 												<td class="td_left"><label for="optName">옵션이름</label></td>
@@ -260,7 +262,7 @@ ${optList}
 												
 							<!-- 옵션이 1개일때 -->			
 										</tr>									
-									</c:otherwise>					
+									</c:when>					
 							</c:choose>			
 						</tbody>
 				</table>
