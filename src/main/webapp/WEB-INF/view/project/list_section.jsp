@@ -18,28 +18,26 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/project_list_css/list_section2.css">
 </head>
 <body>
-${prjs}
 <%-- ${projects } --%>
-	<ul>
+	<div id="listAll">
 		<c:forEach var="prj" items="${prjs }">
-			<li>
+			<div id="listcont">
 				<div class="border">
 					<div class="prj">
 						<div class="prjThumb">
-							<img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/>
+							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>"><img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/></a>
 						</div>
-						<div class="prjName">
-							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a><span>제작자 : ${prj.prjManager }</span><br>
-							<span>총 후원자 수 : ${prj.totalCount }</span><br>
-								
-							<span>후원금액 : ${prj.totalPrice } </span><br>
-							<progress value="${prj.totalPrice }" max = "${prj.prjGoal }"></progress> <span>달성률 :  ${prj.totalPrice/prj.prjGoal*100 }%</span>
-						</div>
+						<dl class="prjName">
+							<dt><a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a></dt>
+							<dd>제작자 : ${prj.prjManager }</dd>
+							<dd>총 후원자 수 : ${prj.totalCount }</dd>
+						</dl>
+							<div class="prjpercent"><progress value="${prj.totalPrice }" max = "${prj.prjGoal }"></progress></div>
+							<div class="moment"><span class="funding-amount">${prj.totalPrice }원</span><span class="percent">　${prj.totalPrice/prj.prjGoal*100 }%</span></div>
 					</div>
 				</div>
-				
-			</li>
+			</div>
 		</c:forEach>
-	</ul>
+	</div>
 </body>
 </html>

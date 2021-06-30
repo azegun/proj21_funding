@@ -38,7 +38,11 @@ public interface BoardService {
 	List<Board> selectBoardCategoryList(Pagination pagination) throws Exception;
 	List<Board> selectBoardCategoryListForCount() throws Exception;
 	List<Board> selectSearchBoardList(Map<String,Object> map) throws Exception;
+	List<Board> selectSearchBoardListAdmin(Map<String,Object> map) throws Exception;
 	int selectSearchBoardListCount(Map<String,Object> map);
+	int selectSearchBoardListAdminCount(Map<String,Object> map);
+	int selectSearchBoardListCountCategory(Map<String,Object> map);
+	List<Board> selectSearchBoardListCategory(Map<String,Object> map);
 
 
 	

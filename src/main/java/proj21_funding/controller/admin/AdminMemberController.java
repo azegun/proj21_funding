@@ -49,16 +49,6 @@ public class AdminMemberController {
 		listMap.put("delYn", delYn);
 		List<UserInfo> userList = userService.showUserListByMap(listMap);
 		
-		//		if(keyword.equals("total")) {
-//			userList = userService.showUserAll();
-//		} else if(keyword.equals("memberAccount")) {
-//			userList = userService.showUserListbyId(searchKeyword);
-//		} else if(keyword.equals("memberName")) {
-//			userList = userService.showUserListbyName(searchKeyword);
-//		} else if(keyword.equals("nickname")) {
-//			userList = userService.showUserListbyNickname(searchKeyword);
-//		}
-//		System.out.println(userList);
 		
 		ModelAndView mav= new ModelAndView();
 		mav.setViewName("admin/adminMember");

@@ -119,14 +119,17 @@
 		select count(*) as count from userInfo where BankAccount is not null and BankName is not null;
 	</select>
 	
-	<select id="selectUserListByMap" resultMap="resUser">
+	
+	<select id="selectUserListByMapAdmin" resultMap="resUser">
 		<include refid="selecSql" />
 		<where>
-			<if test="delYn != null">
+		<choose>
+			<when test="delYn.equals('notDelete')">
 				 ( Secession is null or Secession is false)
-			</if>
-			<if test="deleYn == null">
-			</if>
+			</when>
+			<when test="delYn.equals('all')">
+			</when>
+		</choose>
 		<choose>
 			<when test="keyword.equals('total')">
 			</when>
@@ -139,8 +142,54 @@
 			<when test="keyword.equals('nickname')">
 				 and nickName LIKE CONCAT('%', #{searchKeyword}, '%')
 			</when>
+			<when test="keyword.equals('userno')">
+				 and userno LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
 		</choose>
 		</where>
+		<if test="descYn.equals('desc')">
+			 order by userNo desc
+		</if>
+		<if test="descYn.equals('asc')">
+			 order by userNo asc
+		</if>
+		  LIMIT #{pageSearch}, #{cntPerPage } ;
+	</select>
+	
+	<select id="selectUserListByMapAdminCount" resultType="int">
+		select count(userno) from userinfo
+		<where>
+		<choose>
+			<when test="delYn.equals('notDelete')">
+				 ( Secession is null or Secession is false)
+			</when>
+			<when test="delYn.equals('all')">
+			</when>
+		</choose>
+		<choose>
+			<when test="keyword.equals('total')">
+			</when>
+			<when test="keyword.equals('memberAccount')">
+				and userId LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+			<when test="keyword.equals('memberName')">
+				and userName LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+			<when test="keyword.equals('nickname')">
+				 and nickName LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+			<when test="keyword.equals('userno')">
+				 and userno LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+		</choose>
+		</where>
+		<if test="descYn.equals('desc')">
+			 order by userNo desc
+		</if>
+		<if test="descYn.equals('asc')">
+			 order by userNo asc
+		</if>
+		  LIMIT #{pageSearch}, #{cntPerPage } ;
 	</select>
 
 	

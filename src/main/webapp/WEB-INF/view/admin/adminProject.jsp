@@ -71,45 +71,6 @@
 		});
 		
 		}); 
-		/* $('.btn-example').click(function(){
-	        var $href = $(this).attr('href');
-	        layer_popup($href);
-	    });
-		
-		
-	    function layer_popup(el){
-
-	        var $el = $(el);    //레이어의 id를 $el 변수에 저장
-	        var isDim = $el.prev().hasClass('dimBg'); //dimmed 레이어를 감지하기 위한 boolean 변수
-			
-	        	
-	        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
-
-	        var $elWidth = ~~($el.outerWidth()),
-	            $elHeight = ~~($el.outerHeight()),
-	            docWidth = $(document).width(),
-	            docHeight = $(document).height();
-
-	        // 화면의 중앙에 레이어를 띄운다.
-	        if ($elHeight < docHeight || $elWidth < docWidth) {
-	            $el.css({
-	                marginTop: -$elHeight /2,
-	                marginLeft: -$elWidth/2
-	            })
-	        } else {
-	            $el.css({top: 0, left: 0});
-	        }
-
-	        $el.find('a.btn-layerClose').click(function(){
-	            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-	            return false;
-	        });
-
-	        $('.layer .dimBg').click(function(){
-	            $('.dim-layer').fadeOut();
-	            return false;
-	        });
- */
 </script>
 </head>
 <body>
@@ -150,8 +111,11 @@
 						</ul>
 					</div>
 				</div>
-				<form action="searchProject" method="post" id="frmSearchProject">
-				<label><input type="checkbox" name="successYn" value="1">성공프로젝트만 보기  </label>
+				<form action="adminProject" method="post" id="frmSearchProject">
+				<input type = "hidden" name="currentPage" value="1">
+				<input type = "hidden" name="cntPerPage" value="${pagination.cntPerPage}">
+				<input type = "hidden" name="pageSize" value="10">
+				<label><input type="checkbox" name="successYn" value="successed">성공프로젝트만 보기  </label>
 				<div class="col-md-4">
 					<select name="category" class="selectpicker">
 						<option value="total" selected="selected">카테고리명</option>
@@ -242,26 +206,6 @@
 										<div class='optList'>
 										<button class="btnOption btnOption${prj.prjNo }" value="${prj.prjNo }">옵션보기</button>
 										</div>
-											<%-- 
-											<div class="dim-layer">
-											    <div class="dimBg"></div>
-											    <div id="layer2" class="pop-layer">
-											        <div class="pop-container">
-											            <div class="pop-conts">
-											                <!--content //-->
-											                	<h3>후원자 리스트</h3><hr>
-											                    <c:forEach var="pr" items="${prjList}">
-											                    ${pr }<br>
-											                    </c:forEach>
-											                <div class="btn-r">
-											                    <a href="#" class="btn-layerClose">Close</a>
-											                </div>
-											                <!--// content-->
-											            </div>
-											        </div>
-											    </div>
-											</div> --%>
-										<!--레이어관련  -->
 										</div>
 									</div>
 									</div>
@@ -270,9 +214,50 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				<!--paginate -->
+		        <div class="paginate">
+		           <div class="paging">
+		              <a class="direction prev" href="javascript:void(0);"
+		                 onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize},'${successYn }','${category }','${keyword }','${searchKeyword }');">
+		                 &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+		                 onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${successYn }','${category }','${keyword }','${searchKeyword }');">
+		                 &lt; </a>
+	
+		               <c:forEach begin="${pagination.firstPage}"
+		                  end="${pagination.lastPage}" var="idx">
+		                  <a style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+		                     href="javascript:void(0);"
+		                     onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize},'${successYn }','${category }','${keyword }','${searchKeyword }');"><c:out
+		                        value="${idx}" /></a>
+		               </c:forEach>
+		               <a class="direction next" href="javascript:void(0);"
+		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${successYn }','${category }','${keyword }','${searchKeyword }');">
+		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
+		                  onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize},'${successYn }','${category }',${keyword },'${searchKeyword }');">
+		                  &gt;&gt; </a>
+		            </div>
+		         </div>
+		         <!-- /paginate -->
 				<button  id="MOVE_TOP_BTN">TOP</button>
 			</div>
 		</div>
 	</div>
 </body>
+<script>
+//페이지 이동
+function movePage(currentPage, cntPerPage, pageSize,successYn,category,keyword,searchKeyword){
+    
+    var url = "${pageContext.request.contextPath}/adminProject";
+    url = url + "?currentPage="+currentPage;
+    url = url + "&cntPerPage="+cntPerPage;
+    url = url + "&pageSize="+pageSize;
+    url = url + "&successYn="+successYn;
+    url = url + "&category="+category;
+    url = url + "&keyword="+keyword;
+    url = url + "&searchKeyword="+searchKeyword;
+    
+    location.href=url;
+}
+ 
+</script>
 </html>

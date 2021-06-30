@@ -14,27 +14,35 @@
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
 		<section id="searchPwArea">
-			<h1>비밀번호 찾기</h1>
 			<form:form action="searchPw-rs" modelAttribute="userSearch">
 			<form:errors />
 				<fieldset id="searchPwForm">
+				<h2>비밀번호 찾기</h2>
+				<div id="searchdata">
+					<div id="searchCont">
 					<p>
-						<label >회 원 계 정</label>:
+						<label >회원계정</label>
 						<form:input path="userId" id="input"/>						
 					</p>
 					<p id="errors"><form:errors path="userId"/>&nbsp;</p>
+					</div>
+					<div id="searchCont">
 					<p>
-						<label>회 원 성 명</label>:
+						<label>회원성명</label>
 						<form:input path="userName" id="input"/> 					
 					</p>
 					<p id="errors"><form:errors path="userName"/>&nbsp;</p>
+					</div>
+					<div id="searchCont">
 					<p>
-						<label> 이 메 일 </label>:
+						<label>이메일</label>
 						<form:input path="email" id="input"/> 
 					</p>
 					<p id="errors"><form:errors path="email"/>&nbsp;</p>
+					</div>
+				</div>
+				<form:button id="submit">비밀번호 찾기</form:button>
 				</fieldset>	
-				<form:button id="search">비밀번호 찾기</form:button>
 			</form:form>				
 		</section>
 		<footer>

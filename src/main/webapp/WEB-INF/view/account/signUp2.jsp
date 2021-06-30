@@ -14,12 +14,12 @@
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
 		<section id="signUpArea">		
-			<fieldset id="signUpForm">
-				<h1>회원가입에 성공하였습니다.</h1>				
-			</fieldset>			
+			<div id="signUpForm">
+				<h1>회원가입이 완료되었습니다.</h1>				
+			</div>			
 			<div id="btn">
-				<a href="<c:url value='/login'/>"><button>로그인하기</button></a>
-				<a href="<c:url value='/main'/>"><button>메인화면으로</button></a>	
+				<a class="btn1" href="<c:url value='/login'/>"><button>로그인하기</button></a>
+				<a class="btn1" href="<c:url value='/main'/>"><button>홈페이지 바로가기</button></a>	
 			</div>	
 		</section>
 		<footer>

@@ -6,8 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>문의하기 | 고객센터</title>
-<link rel="stylesheet" href="/proj21_funding/css/servicecenter_write.css">
+<link rel="stylesheet" href="/proj21_funding/css/servicecenter/write.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
 </head>
 <body>
 	<section class="container">
@@ -15,20 +16,24 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
 	<section class = "sevicecenter_write_end">
-	<h2>고객센터</h2>
-	<nav>
-		<ul>
-			<li><a href="/proj21_funding/qnaallview">자주 묻는 질문</a></li>
+	<div id="top">
+		<div id="top_title">
+			<span class="faq">고객센터</span>
+		</div>
+		<div id="top_category">
+		<ul id="titlename">
+			<li id="cate"><a href="/proj21_funding/qnaallview" class="catetext">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview">모든 질문 보기</a></li>
+					<li id="cate" value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview" class="catetext">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview">내 질문</a></li>
+					<li id="cate" value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview" class="catetext">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</nav>
+		</div>
+	</div>
 	
 	<h2>문의하기</h2>
 	

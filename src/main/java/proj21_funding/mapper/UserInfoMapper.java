@@ -49,6 +49,9 @@ public interface UserInfoMapper {
 	int prdCount();
 //	회원찾기 Map이용
 	List<UserInfo> selectUserListByMap(Map<String, Object> listMap);
+//	desc
+	List<UserInfo> selectUserListByMapAdmin(Map<String, Object> listMap);
+	int selectUserListByMapAdminCount(Map<String, Object> listMap);
 	
 
 }
