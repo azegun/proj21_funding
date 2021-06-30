@@ -35,7 +35,6 @@ $(function(){
 		sCont="";
 	}); 
 	
-	
 	$(".fund").click(function(){
  		console.log(price)
 		if('${authInfo}' == ''){
@@ -46,9 +45,6 @@ $(function(){
  		}
  	}) 
 	
-
-	
-	
 	/* $('.optBox').each(function(index,item){
 		$(item).addClass('opt-'+index);
 	}) */
@@ -57,27 +53,51 @@ $(function(){
 </script>
 </head>
 <body>
-	${count }
-	${authInfo }
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header.jsp" />
 		</header>
-
-		<span> <img
-			src="<%=request.getContextPath() %>/images/project/project${prj[0].prjNo.prjNo }.jpg" />
-		</span>
 		<div class="content">
-			<h1>${prj[0].prjNo.prjName }</h1>
-			<br> <span>시작일:${prj[0].prjNo.startDate }</span><br> 
+			<div id="funginginfo">
+				<div id="titleheader">
+					<div id="title">
+						<a href="<%=request.getContextPath() %>/categoryByProject?pCategoryNo=${prj[0].prjNo.pCategoryNo.pCategoryNo}"><span id="titlecate">${prj[0].prjNo.pCategoryNo.pCategoryName }</span></a>
+						<h1>${prj[0].prjNo.prjName }</h1>
+						<span id="productor">${prj[0].prjNo.userNo.userName }</span>
+					</div>
+				</div>
+				<div id="img">
+					<span> <img
+						src="<%=request.getContextPath() %>/images/project/project${prj[0].prjNo.prjNo }.jpg" />
+					</span>
+				</div>
+				<aside id="funding-info">
+					<div id="huwon">
+						<div id="huwon1">
+							<span id="huwontab1">모인 금액</span><br>
+							<span id="huwontab2">${sum}원</span><span id="huwontab3">${sum/prj[0].prjNo.prjGoal*100 }%</span>
+						</div>
+						<div id="huwon1">
+							<span id="huwontab1">후원자</span><br>
+							<span id="huwontab2">${count }명</span>
+						</div>
+					</div>
+					<div id="funding-ing">
+						<span id="ing1">펀딩 진행중</span><br>
+						<span id="ing2">목표 금액인 ${prj[0].prjNo.prjGoal }원이 모여야만 결제됩니다.</span><br>
+						<span id="ing2">결제는 ${prj[0].prjNo.payDate }에 다함께 진행됩니다.</span>
+					</div>
+				</aside>
+			</div>
+		</div>
+			<span>목표 금액</span><br>
+			<span>${prj[0].prjNo.prjGoal }원</span><br>
+			<span>시작일:${prj[0].prjNo.startDate }</span><br> 
 			<span>마감일:${prj[0].prjNo.endDate }</span><br>
 			<span>결제일:${prj[0].prjNo.payDate }</span><br>
-			<span>총 후원자 수 : ${count }명</span><br>
-			<span>목표 금액: ${prj[0].prjNo.prjGoal }원</span><br>
-			<span>총 후원 금액 : ${sum}원</span>
 			<span>제작자 :${prj[0].prjNo.userNo.userName }</span>
 			<progress value="${sum }" max="${prj[0].prjNo.prjGoal }"></progress>
-			<span>달성률 : ${sum/prj[0].prjNo.prjGoal*100 }%</span><br>
+			<span>달성률 : </span><br>
 			<c:forEach var="prj" items="${prj }" varStatus="count">
 				<fieldset class="optBox">
 					<ul>
