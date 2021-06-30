@@ -43,5 +43,29 @@
 						op.OptName = #{oName}, op.OptContent = #{oContent}
 				where p.PrjNo = #{pNo}		
 		</update>		
+		
+		<!-- 프로젝트 추가 1번쨰 옵션 수정 -->
+		<update id="updateListOptionByMap" parameterType="map">
+			update prjoption 
+				set OptName = #{addOptName1}, OptContent = #{addOptContent1}
+			where OptNo = #{addOptNo1}		
+		</update>
+		
+		<!-- 프로젝트 추가 옵션들 수정 -->
+		<update id="updateListAllAddOptionsByMap" parameterType="map">
+			update prjoption as op1 inner join prjoption as op2
+				on op1.PrjNo = op2.PrjNo 
+			set 
+					op1.OptName =#{addOptName1}, op1.OptContent =#{addOptContent1} ,
+					op2.OptName = #{addOptName2}, op2.OptContent = #{addOptContent2} 
+			where op1.OptNo =#{addOptNo1}  and op2.OptNo  =#{addOptNo2} 
+		</update>
+		
+		<!-- 프로젝트 추가 3번째 옵션 수정 -->
+		<update id="updateListSubOptByMap" parameterType="map">
+			update prjoption 
+				set OptName = #{addOptName3}, OptContent = #{addOptContent3}
+			where OptNo = #{addOptNo3}		
+		</update>
 
 </mapper>

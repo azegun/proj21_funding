@@ -229,13 +229,13 @@ public class UploadController {
 	         map.put(name, value);
 	      }
 	
-		try {
+
 		//리스트 조인	
 			
 		    boolean addOptName1 = map.containsKey("addOptName1");
 		    boolean addOptName2 = map.containsKey("addOptName2");
 		    boolean addOptName3 = map.containsKey("addOptName3");
-		    
+		try {   
 		 // 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
 		    optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
 		//조인 업데이트(프로젝트 + 옵션 1)
@@ -266,7 +266,6 @@ public class UploadController {
 		    		if(optList.size() > 2) {
 		    		map.put("addOptNo2", optList.get(2).getOptNo());
 			    		if(optList.size() == 4) {
-			    			System.out.println("삭제하자");
 			    		map.put("addOptNo3", optList.get(3).getOptNo());
 			    		}
 		    		}

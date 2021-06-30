@@ -75,7 +75,7 @@
 						(#{pNo}, #{addOptName3}, #{addOptPrice3},  #{addOptContent3});		
 		</insert>
 		
-		<!-- 프로젝트  추가 옵션  수정 -->
+		<!-- 프로젝트  추가 옵션  수정 사용안함 -->
 		<update id="updatePrjOption">
 			update prjoption 
 				set OptName = #{optName}, OptPrice = #{optPrice}, OptContent = #{optContent}
