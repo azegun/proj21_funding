@@ -39,9 +39,9 @@
 				update project as p inner join prjoption as op
 						on p.PrjNo = op.PrjNo 
 				set 
-						p.PrjName = #{prjName}, p.PrjContent = #{prjContent},
-						op.OptName = #{optName}, op.OptContent = #{optContent}
-				where p.PrjNo = #{prjNo}		
+						p.PrjName = #{pName}, p.PrjContent = #{pContent},
+						op.OptName = #{oName}, op.OptContent = #{oContent}
+				where p.PrjNo = #{pNo}		
 		</update>		
 
 </mapper>

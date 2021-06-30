@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.PrjCategory;
+import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.dto.project.PrjPlusOption;
 import proj21_funding.service.MyListService;
 import proj21_funding.service.PrjCategoryService;
+import proj21_funding.service.PrjOptionService;
 
 @Controller
 public class MyListController {
@@ -31,6 +34,12 @@ public class MyListController {
 		
 		@Autowired
 		private MyListService myListService;
+		
+		@Autowired
+		private PrjOptionService optionService;
+		
+		private List<PrjOption> optList;
+		
 		
 //		파일등록에서 수정완료시 버튼
 		@GetMapping("/myUploadedlist/{authInfo.userNo}")
@@ -66,11 +75,16 @@ public class MyListController {
 		}
 //		마이리스트에서 디테일리스트
 		@RequestMapping("/selectDetailList/{prjNo}")
-		public ModelAndView	showDetailList(@PathVariable("prjNo") int prjNo) {		
+		public ModelAndView	showDetailList(PrjPlusOption prjplusoption,
+				@PathVariable("prjNo") int prjNo) {		
 			List<Project> list = listService.showDetailListByprjNo(prjNo);
 			List<PrjCategory> categorylist = prjCategoryService.showCategory();
 			
 			ModelAndView mav = new ModelAndView();
+			optList = optionService.selectSimplePrjOptionByPrjNo(prjNo);
+			
+			System.out.println("optList >> " + optList);
+			mav.addObject("optList", optList);
 			mav.addObject("myList", list);
 			mav.addObject("categoryList", categorylist);
 			mav.setViewName("mylist/mydetail_list");	
@@ -79,7 +93,8 @@ public class MyListController {
 		}
 //		디테일리스트에서 수정
 		@PostMapping("/myListUpdate/{authInfo.userNo}")
-		public ModelAndView myListUpdate(@PathVariable("authInfo.userNo") int userNo, HttpServletRequest request) {
+		public ModelAndView myListUpdate(
+				@PathVariable("authInfo.userNo") int userNo, HttpServletRequest request) {
 			
 			Map<String, Object> map = new HashMap<String, Object>();	
 			
@@ -91,8 +106,11 @@ public class MyListController {
 		      }
 		      
 			myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
+			
+			
 			List<Project> list = listService.showAllMyList(userNo);
 			ModelAndView mav = new ModelAndView();		
+			
 			mav.addObject("myList", list);
 			mav.setViewName("mylist/myuploaded_list");	
 			

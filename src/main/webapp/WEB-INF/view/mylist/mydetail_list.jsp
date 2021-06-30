@@ -19,12 +19,19 @@
 		});			
 	});
 		
+	$(function(){
+		$('.optionShowHide').click(function(){
+			$('.optionShowHide').parent().parent().parent().parent().parent().next().toggleClass('hidden');
+		});
+	});
+		
 </script>
 </head>
 <body>
 <%-- ${myList[0]}
 ${myList[0].prjNo.prjNo} --%>
-${uploadfile }
+<%-- ${myList } --%>
+${optList }
 
 	<section class="container">
 			<header id = "mydetail_header">		   
@@ -33,11 +40,11 @@ ${uploadfile }
 			<h2>프로젝트</h2>
 		<form  action= "<%=request.getContextPath() %>/myListUpdate/${authInfo.userNo}" method="post">
 			<section id = "detaillist_content">
-				<table>
+				<table border=1 >
 						<tbody>
 								<tr class = "col1">
 										<td class="td_right" colspan="2" >
-												<input type="hidden" id="prjNo" name="prjNo" value="${myList[0].prjNo.prjNo}" 
+												<input type="hidden" id="prjNo" name="pNo" value="${myList[0].prjNo.prjNo}" 
 														size=49	readonly="readonly"/>																			
 										</td>					
 								</tr>
@@ -56,16 +63,14 @@ ${uploadfile }
 								<tr class = "col4">
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
 										<td class="td_right" >
-											<input type="text" id="prjName" name="prjName" value="${myList[0].prjNo.prjName}" 
+											<input type="text" id="prjName" name="pName" value="${myList[0].prjNo.prjName}" 
 														size=46	required="required"/>			
 										</td>
 								</tr>
 								<tr class = "col5">
 										<td class="td_left"><label for="prjContent">프로젝트 소개</label></td>
-										<td class="td_right" >
-													<textarea id="textContent" name="prjContent" class="sboption"
-																rows="13" cols="35"	required="required" >${myList[0].prjNo.prjContent}
-													</textarea>
+										<td class = "td_right">
+											 <textarea id = "textContent" name = "pContent" class="sboption" required="required">${myList[0].prjNo.prjContent}</textarea>
 										</td>
 								</tr>								
 								<tr class = "col6">
@@ -102,31 +107,209 @@ ${uploadfile }
 											<img id = "uploadfile" src="<%=request.getContextPath() %>/images/project/project${myList[0].prjNo.prjNo}.jpg" />
 										</td>
 								</tr>
-								
-								<tr class = "col12">
-										<td class="td_left"><label for="optName">옵션이름</label></td>
-										<td class="td_right" >
-												<input type="text" id="optName"	name="optName"
-																value="${myList[0].optName}"	 size=49 required="required" ></input>
-										</td>									
-								</tr>
-								<tr class = "col13">
-										<td class="td_left"><label for="optPrice">옵션금액</label></td>
-										<td class="td_right" >
-												<span id="optPrice">													
-														<fmt:formatNumber value="${myList[0].optPrice}" pattern="\\#,###"/>
-												</span>
+								<tr>
+										<td class="td_right" colspan="2" >
+										<div id = "addbtns"><button type="button" class ="optionShowHide">옵션</button> </div>
 										</td>
 								</tr>
-								<tr class = "col14">
-										<td class="td_left"><label for="optContent">옵션내용</label></td>
-										<td class="td_right" >
-													<textarea id="textContent" name="optContent"  class="sboption"
-															rows="8" cols="35"	required="required" >${myList[0].optContent}</textarea>
-										</td>											
-								</tr>
-						</tbody>
-				</table>
+							</tbody>
+					</table>
+					<section class= "addOption hidden">
+					<table border="1">
+							<tbody>
+									 <c:choose>
+									<c:when test="${optList[0].prjNo.prjNo eq optList[3].prjNo.prjNo}">
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션1</label>	</td>
+													<td class="td_right" >
+															<span class = "opt1">
+																		아이템 : <input type="text" id="optName"	name="oName"
+																			value="${optList[0].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="oContent"  class="sb2option"
+																			required="required" >${optList[0].optContent}</textarea>
+													</td>											
+											</tr>
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션2</label>	</td>
+													<td class="td_right" >
+															<span class = "opt2">
+																		아이템 : <input type="text" id="optName"	name="addOptName1"
+																			value="${optList[1].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="addOptContent1"  class="sb2option"
+																		required="required" >${optList[1].optContent}</textarea>
+													</td>											
+											</tr>
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션3</label>	</td>
+													<td class="td_right" >
+															<span class = "opt3">
+																		아이템 : <input type="text" id="optName"	name="addOptName2"
+																			value="${optList[2].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="addOptContent2"  class="sb2option"
+																		required="required" >${optList[2].optContent}</textarea>
+													</td>											
+											</tr>
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션4</label>	</td>
+													<td class="td_right" >
+															<span class = "opt4">
+																		아이템 : <input type="text" id="optName"	name="addOptName3"
+																			value="${optList[3].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[3].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="addOptContent3"  class="sb2option"
+																	required="required" >${optList[3].optContent}</textarea>
+													</td>											
+											</tr>								
+									</c:when>
+									<c:when test="${optList[0].prjNo.prjNo eq optList[2].prjNo.prjNo}">
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션1</label>	</td>
+													<td class="td_right" >
+															<span class = "opt1">
+																		아이템 : <input type="text" id="optName"	name="oName"
+																			value="${optList[0].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="oContent"  class="sb2option"
+																			required="required" >${optList[0].optContent}</textarea>
+													</td>											
+											</tr>
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션2</label>	</td>
+													<td class="td_right" >
+															<span class = "opt2">
+																		아이템 : <input type="text" id="optName"	name="addOptName1"
+																			value="${optList[1].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="addOptContent1"  class="sb2option"
+																		required="required" >${optList[1].optContent}</textarea>
+													</td>											
+											</tr>
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션3</label>	</td>
+													<td class="td_right" >
+															<span class = "opt3">
+																		아이템 : <input type="text" id="optName"	name="addOptName2"
+																			value="${optList[2].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="addOptContent2"  class="sb2option"
+																		required="required" >${optList[2].optContent}</textarea>
+													</td>											
+											</tr>
+											</c:when>
+											<c:when test="${optList[0].prjNo.prjNo eq optList[1].prjNo.prjNo}">
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션1</label>	</td>
+													<td class="td_right" >
+															<span class = "opt1">
+																		아이템 : <input type="text" id="optName"	name="oName"
+																			value="${optList[0].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="oContent"  class="sb2option"
+																			required="required" >${optList[0].optContent}</textarea>
+													</td>											
+											</tr>
+											<tr class = "col12">
+													<td class="td_left">	<label for="optName">옵션2</label>	</td>
+													<td class="td_right" >
+															<span class = "opt2">
+																		아이템 : <input type="text" id="optName"	name="addOptName1"
+																			value="${optList[1].optName}"	 size=49 required="required"/><br>
+																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
+															</span>						
+													</td>									
+											</tr>											
+											<tr class = "col14">
+													<td class="td_left"><label for="optContent">아이템</label></td>
+													<td class="td_right" >
+																<textarea id="textContent" name="addOptContent1"  class="sb2option"
+																		required="required" >${optList[1].optContent}</textarea>
+													</td>											
+											</tr>											
+											</c:when>
+											<c:when test="${empty optList[1] }">
+												<tr class = "col12">
+														<td class="td_left"><label for="optName">옵션이름</label></td>
+														<td class="td_right" >
+																<input type="text" id="optName"	name="oName"
+																				value="${myList[0].optName}"	 size=49 required="required" ></input>
+														</td>									
+												</tr>
+												<tr class = "col13">
+														<td class="td_left"><label for="optPrice">옵션금액</label></td>
+														<td class="td_right" >
+																<span id="optPrice">													
+																		<fmt:formatNumber value="${myList[0].optPrice}" pattern="\\#,###"/>
+																</span>
+														</td>
+												</tr>
+												<tr class = "col14">
+														<td class="td_left"><label for="optContent">옵션내용</label></td>
+														<td class="td_right" >
+																	<textarea id="textContent" name="oContent"  class="sb2option"
+																			rows="8" cols="35"	required="required" >${myList[0].optContent}</textarea>
+														</td>											
+												</tr> 										
+											</c:when>
+								</c:choose>
+							
+							</tbody>					
+					</table>
+					
+					
+					</section>
+								
+			
 				</section>						
 						<div id = "btns">
 								<input type="submit"  value="수정"/>&nbsp;

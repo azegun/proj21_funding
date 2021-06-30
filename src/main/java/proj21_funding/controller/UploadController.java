@@ -240,8 +240,7 @@ public class UploadController {
 		    optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
 		//조인 업데이트(프로젝트 + 옵션 1)
 		    projectService.joinUpdateProjectAndPrjoptionByNo(map);		   
-		    System.out.println("optList >> "+ optList);
-		    	System.out.println("optList.size()011111>> "+ optList.size());
+		    
 			    if(addOptName1 == false && addOptName2 == false && addOptName3 == false) {
 			    	if( optList.size() > 1) {
 			    		//수정이 1개일떄
@@ -264,11 +263,12 @@ public class UploadController {
 		    if(addOptName1 == true && addOptName2 == false  && addOptName3 ==false) {
 		    		  //수정이 2개일떄
 		    		  //지어진값은 데이터 삭제
-		    		System.out.println("2번>> ");
+		    		if(optList.size() > 2) {
 		    		map.put("addOptNo2", optList.get(2).getOptNo());
-		    		if(optList.size() == 4) {
-		    			System.out.println("삭제하자");
-		    		map.put("addOptNo3", optList.get(3).getOptNo());
+			    		if(optList.size() == 4) {
+			    			System.out.println("삭제하자");
+			    		map.put("addOptNo3", optList.get(3).getOptNo());
+			    		}
 		    		}
 		    		 optionService.removeOptNumTwo(map);	
 		    		 optionService.removeOptNumThree(map);		    			    		  
@@ -278,8 +278,9 @@ public class UploadController {
 		    }else if (addOptName1 == true && addOptName2== true && addOptName3 == false) {
 		    	  //수정이 3개일떄
 		    		  //지어진값은 데이터 삭제
-		    		  System.out.println("3번>> ");
-		    		  map.put("addOptNo3", optList.get(3).getOptNo());
+		    		  if(optList.size() > 3) {
+		    			  map.put("addOptNo3", optList.get(3).getOptNo());
+		    			  }  		
 		    		  
 		    		  optionService.removeOptNumThree(map);
 		    		  
@@ -302,8 +303,7 @@ public class UploadController {
 		//리스트 받기 (1. 옵션들 2. 카테고리들)
 		optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
 		Project list = projectService.showJoinPrjAndCategory(prjplusoption.getpNo());
-		System.out.println("optList 출구 전 >> "+ optList);
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("optList", optList);
 		mav.addObject("project", map);
