@@ -14,22 +14,28 @@
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
 		<section id="searchIdArea">
-			<h1>회원계정 찾기</h1>
 			<form:form action="searchId-rs" modelAttribute="userSearch">
 			<form:errors />
 				<fieldset id="searchIdForm">
-					<p>
-						<label>회 원 성 명</label>:<br>
-						<form:input path="userName" id="input"/> 					
-					</p>
-					<p id="errors"><form:errors path="userName"/>&nbsp;</p>
-					<p>
-						<label> 이 메 일 </label>:<br>
-						<form:input path="email" id="input"/> 
-					</p>
-					<p id="errors"><form:errors path="email"/>&nbsp;</p>
-				</fieldset>				
-				<form:button>아이디 찾기</form:button>					
+				<h2>회원계정 찾기</h2>
+					<div id="searchData">
+						<div id="searchCont">
+						<p>
+							<label>회원성명</label><br>
+							<form:input path="userName" id="input" placeholder=" 이름을 입력해주세요."/> 					
+						</p>
+						<p id="errors"><form:errors path="userName"/>&nbsp;</p>
+						</div>
+						<div id="searchCont">
+						<p>
+							<label>이메일</label><br>
+							<form:input path="email" id="input" placeholder=" 가입하신 이메일 주소를 입력해주세요."/> 
+						</p>
+						<p id="errors"><form:errors path="email"/>&nbsp;</p>
+						</div>
+					</div>
+				<form:button id="submit">아이디 찾기</form:button>		
+				</fieldset>							
 			</form:form>				
 		</section>
 		<footer>

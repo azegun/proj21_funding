@@ -11,27 +11,32 @@
 <title>고객센터</title>
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
 </head>
 <body>
 	<div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
 		</header>
-	<section class = "sevicecenter_view_detail">	
-	<h2>고객센터</h2>
-	<nav>
-		<ul>
-			<li><a href="/proj21_funding/qnaallview">자주 묻는 질문</a></li>
+	<section class = "sevicecenter_view_detail">
+	<div id="top">
+		<div id="top_title">
+			<span class="faq">고객센터</span>
+		</div>
+		<div id="top_category">
+		<ul id="titlename">
+			<li id="cate"><a href="/proj21_funding/qnaallview" class="catetext">자주 묻는 질문</a></li>
 			<c:choose>
 				<c:when test="${authInfo.userNo < 0 }">
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview">모든 질문 보기</a></li>
+					<li id="cate" value="${authInfo.userNo }"><a href="/proj21_funding/qnaadminview" class="catetext">모든 질문 보기</a></li>
 				</c:when>
 				<c:otherwise>
-					<li value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview">내 질문</a></li>
+					<li id="cate" value="${authInfo.userNo }"><a href="/proj21_funding/qnauserview" class="catetext">내 질문</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</nav>	
+		</div>
+	</div>
 		<table>
 		<tr>
 			<td class="td_left"><label for="categoryNo">질문 분류</label></td>
