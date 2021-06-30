@@ -115,7 +115,7 @@ public class AdminController {
 		listMap.put("pageSearch",pageSearch);
 		
 		
-		int listCnt = boardService.selectSearchBoardListCount(listMap);
+		int listCnt = boardService.selectSearchBoardListAdminCount(listMap);
 		System.out.println(listCnt);
 		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
 		pagination.setTotalRecordCount(listCnt);
@@ -129,7 +129,7 @@ public class AdminController {
 		mav.setViewName("admin/adminBoard");
 		mav.addObject("pagination", pagination);
 		mav.addObject("listCnt", listCnt);
-		mav.addObject("board", boardService.selectSearchBoardList(listMap));
+		mav.addObject("board", boardService.selectSearchBoardListAdmin(listMap));
 		mav.addObject("bc", bc);
 
 		return mav;

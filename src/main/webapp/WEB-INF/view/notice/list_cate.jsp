@@ -43,6 +43,20 @@
 					</c:forEach>
 				</div>
 			</div>
+			<div>
+				<form action="<%=request.getContextPath()%>/notice/list/${categoryNo }" method="post" id="frmSearchBoard">
+					<input type = "hidden" name="currentPage" value="1">
+					<input type = "hidden" name="cntPerPage" value="${pagination.cntPerPage}">
+					<input type = "hidden" name="pageSize" value="10">
+					<select name="keyword" class="selectpicker">
+						<option value="total" selected="selected">검색키워드</option>
+						<option value="boardTitle">제 목</option>
+						<option value="boardContent">내 용</option>
+					</select>
+					<input type="text" class="searchKeyword" name="searchKeyword"/>
+					<input type="submit" class="searchBtn" value="검 색"/>
+				</form>			
+			</div>
 			
 			
 			<div class="list">
@@ -51,15 +65,15 @@
 						<c:when test="${fn:length(board) > 0}">
 							<c:forEach items="${board}" var="board">
 								<li class="title-box"><a
-									href="<%=request.getContextPath() %>/notice/detail/${board.BoardNo }&${board.CategoryNo}"
+									href="<%=request.getContextPath() %>/notice/detail/${board.boardNo }&${board.categoryNo.categoryNo}"
 									class="notice"><span class="title-box"><span
 											class="group"><c:forEach var="bc" items="${bc }">
-													<c:if test="${bc.categoryNo eq board.CategoryNo }">
+													<c:if test="${bc.categoryNo eq board.categoryNo.categoryNo }">
 							${bc.categoryName }
 						</c:if>
-												</c:forEach></span> <span class="title">${board.BoardTitle }</span> <span
+												</c:forEach></span> <span class="title">${board.boardTitle }</span> <span
 											class="date"><fmt:formatDate
-													pattern="yyyy-MM-dd HH:mm" value="${board.BoardDate }" /></span></span></a></li>
+													pattern="yyyy-MM-dd HH:mm" value="${board.boardDate }" /></span></span></a></li>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
@@ -73,15 +87,15 @@
 			<!--paginate -->
 			<div class="paginate">
 				<ul class="paging">
-					<li><a class="direction prev" href="javascript:void(0);" onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">&lt;&lt;</a></li>
-					<li><a class="direction prev" href="javascript:void(0);" onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">&lt;</a></li>
+					<li><a class="direction prev" href="javascript:void(0);" onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize},'${keyword }','${searchKeyword }');">&lt;&lt;</a></li>
+					<li><a class="direction prev" href="javascript:void(0);" onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${keyword }','${searchKeyword }');">&lt;</a></li>
 
 					<c:forEach begin="${pagination.firstPage}" end="${pagination.lastPage}" var="idx">
-						<li><a style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> " href="javascript:void(0);" onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});">
+						<li><a style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> " href="javascript:void(0);" onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize},'${keyword }','${searchKeyword }');">
 						<c:out value="${idx}" /></a></li>
 					</c:forEach>
-					<li><a class="direction next" href="javascript:void(0);" onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">&gt; </a></li>
-					<li><a class="direction next" href="javascript:void(0);" onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize});">&gt;&gt;</a></li>
+					<li><a class="direction next" href="javascript:void(0);" onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${keyword }','${searchKeyword }');">&gt; </a></li>
+					<li><a class="direction next" href="javascript:void(0);" onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize},'${keyword }','${searchKeyword }');">&gt;&gt;</a></li>
 				</ul>
 			</div>
 			<!-- /paginate -->
@@ -101,13 +115,15 @@
 <script>
 
 //페이지 이동
-function movePage(currentPage, cntPerPage, pageSize){
+function movePage(currentPage, cntPerPage, pageSize,keyword,searchKeyword){
     
     var url = "${pageContext.request.contextPath}/notice/list";
     url = url + "/${categoryNo}"
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;
+    url = url + "&keyword="+keyword;
+    url = url + "&searchKeyword="+searchKeyword;
     
     location.href=url;
 }

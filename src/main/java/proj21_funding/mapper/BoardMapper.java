@@ -40,7 +40,11 @@ public interface BoardMapper {
 //	List<Map<String, Object>> selectBoardCategoryList(Pagination pagination);
 	List<Board> selectBoardCategoryList(Pagination pagination);
 	List<Board> selectBoardCategoryListForCount();
-	List<Board> selectSearchBoardList(Map<String,Object> map);
+	List<Board> selectSearchBoardListAdmin(Map<String,Object> map);
+	int selectSearchBoardListAdminCount(Map<String,Object> map);
 	int selectSearchBoardListCount(Map<String,Object> map);
+	List<Board> selectSearchBoardList(Map<String,Object> map);
+	int selectSearchBoardListCountCategory(Map<String,Object> map);
+	List<Board> selectSearchBoardListCategory(Map<String,Object> map);
 
 }
