@@ -21,5 +21,6 @@ public interface ProjectJoinService {
 	
 	List<ProjectJoin> showProjectJoinByMap(Map<String,Object> listMap);
 	ProjectJoin showProjectSumCountAll();
+	int showProjectJoinByMapCount(Map<String,Object> listMap);
 	
 }

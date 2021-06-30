@@ -6,9 +6,12 @@
 	height: 350px;
 }
 
+.prjImg{
+	border-radius: 10px;
+}
+
 .border{
-	width: 300px;
-	height:360px;
+	height:500px;
 }
 .prjThumb{
 	margin-top: 10px;
@@ -17,6 +20,7 @@
 .prjThumb img {
 	width: 300px;
 	height: 300px;
+	margin:auto;
 }
 
 .prjName{

@@ -118,31 +118,31 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				 <!--paginate -->
-         <div class="paginate">
-            <div class="paging">
-               <a class="direction prev" href="javascript:void(0);"
-                  onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
-                  &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
-                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
-                  &lt; </a>
-
-               <c:forEach begin="${pagination.firstPage}"
-                  end="${pagination.lastPage}" var="idx">
-                  <a
-                     style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
-                     href="javascript:void(0);"
-                     onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');"><c:out
-                        value="${idx}" /></a>
-               </c:forEach>
-               <a class="direction next" href="javascript:void(0);"
-                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
-                  &gt; </a> <a class="direction next" href="javascript:void(0);"
-                  onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize},'${category }','${searchKeyword }');">
-                  &gt;&gt; </a>
-            </div>
-         </div>
-         <!-- /paginate -->
+						 <!--paginate -->
+		         <div class="paginate">
+		            <div class="paging">
+		               <a class="direction prev" href="javascript:void(0);"
+		                  onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
+		                  &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
+		                  &lt; </a>
+		
+		               <c:forEach begin="${pagination.firstPage}"
+		                  end="${pagination.lastPage}" var="idx">
+		                  <a
+		                     style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+		                     href="javascript:void(0);"
+		                     onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');"><c:out
+		                        value="${idx}" /></a>
+		               </c:forEach>
+		               <a class="direction next" href="javascript:void(0);"
+		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
+		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
+		                  onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
+		                  &gt;&gt; </a>
+		            </div>
+		         </div>
+		         <!-- /paginate -->
 			</div>
 		</div>
 	</div>

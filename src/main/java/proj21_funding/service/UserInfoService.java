@@ -29,4 +29,8 @@ public interface UserInfoService {
 	UserInfo showBankAccount(int userNo);
 	// 계좌 등록 업데이트
 	int updateBankAccount(UserInfo userInfo);
+	
+	List<UserInfo> showUserListByMapAdmin(Map<String, Object> listMap);
+	int showUserListByMapAdminCount(Map<String, Object> listMap);
+
 }

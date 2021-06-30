@@ -111,4 +111,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return mapper.updateBankAccount(userInfo);
 	}
 
+	@Override
+	public List<UserInfo> showUserListByMapAdmin(Map<String, Object> listMap) {
+		return mapper.selectUserListByMapAdmin(listMap);
+	}
+
+	@Override
+	public int showUserListByMapAdminCount(Map<String, Object> listMap) {
+		return mapper.selectUserListByMapAdminCount(listMap);
+	}
+
 }

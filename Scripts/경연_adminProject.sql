@@ -63,3 +63,12 @@ select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
 			
 		
 select * from prjoption  where prjno =4;
+
+select count(R1.prjno) from (select p.prjno as prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount,prjContent, c.pcategoryno, c.pcategoryname, startDate, endDate, round(sum(optprice)/prjgoal*100,2) as rate
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo having (rate >= 100))as r1;
