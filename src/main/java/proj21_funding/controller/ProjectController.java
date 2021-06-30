@@ -140,8 +140,7 @@ public class ProjectController {
 		int prjNo = (int) session.getAttribute("prjNo");
 		try{
 		uai = (UserAuthInfo) session.getAttribute("authInfo");
-		System.out.println(uai);
-		 
+		
 		String userId = uai.getUserId();
 		UserInfo ui = userService.showUserInfoById(userId);
 //		System.out.println(ui);

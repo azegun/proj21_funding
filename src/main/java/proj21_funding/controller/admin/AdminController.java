@@ -51,7 +51,7 @@ public class AdminController {
 		return "admin/adminMain";
 	}
 	
-	@RequestMapping("/adminMember")
+//	@RequestMapping("/adminMember")
 	public ModelAndView adminMember() {
 		//회원 후원한프로젝트수,후원금액
 		List<ProjectJoin> fundingStat= joinService.showSumCountGroupByUserNo();
@@ -77,7 +77,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	@RequestMapping("/adminProject")
+//	@RequestMapping("/adminProject")
 	public ModelAndView adminProject() {
 //		카테고리 콤보박스 리스트
 		List<PrjCategory> categoryList = categoryService.showCategory();
@@ -98,6 +98,10 @@ public class AdminController {
 			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			 HttpSession session) throws Exception {
+		//관리자아니면 로그인창으로 리다이렉트
+		if(session.getAttribute("authInfo")==null) {
+			return new ModelAndView("redirect:/login");
+		}
 		
 		int pageSearch = (currentPage-1)*cntPerPage;
 		
@@ -139,18 +143,22 @@ public class AdminController {
 			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			@RequestParam(value="replyYn", required = false, defaultValue="total") String replyYn, HttpSession session) throws Exception {
+		//관리자아니면 로그인창으로 리다이렉트
+		if(session.getAttribute("authInfo")==null) {
+			return new ModelAndView("redirect:/login");
+		}
 
 		int pageSearch = (currentPage-1)*cntPerPage;
 		
 		Map<String,Object> listMap = new HashMap<String,Object>();
 		listMap.put("category", category);
+		listMap.put("replyYn",replyYn);
 		listMap.put("keyword", keyword);
 		listMap.put("searchKeyword", searchKeyword);
 		listMap.put("currentPage",currentPage );
 		listMap.put("cntPerPage", cntPerPage);
 		listMap.put("pageSize",pageSize );
 		listMap.put("pageSearch",pageSearch);
-		listMap.put("replyYn",replyYn);
 		
 		
 
@@ -159,11 +167,11 @@ public class AdminController {
 		
 		Pagination pagination1 = new Pagination(currentPage, cntPerPage, pageSize);
 		pagination1.setTotalRecordCount(count);
+		session.setAttribute("replyYn", replyYn);
 		session.setAttribute("pagination1", pagination1);
 		session.setAttribute("category", category);
 		session.setAttribute("keyword", keyword);
 		session.setAttribute("searchKeyword", searchKeyword);
-		session.setAttribute("replyYn", replyYn);
 
 		
 		ModelAndView mav = new ModelAndView("admin/adminQna");
@@ -174,5 +182,111 @@ public class AdminController {
 		return mav;
 	}
 	
+	@RequestMapping("/adminMember")
+	public ModelAndView adminMemb(@RequestParam(value="keyword", required = false,defaultValue = "total") String keyword,
+			@RequestParam(value="searchKeyword", required = false,defaultValue = "") String searchKeyword,
+			@RequestParam(value="delYn", required = false,defaultValue = "all") String delYn,
+			@RequestParam(value="descYn", required = false,defaultValue = "asc") String descYn,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session) throws Exception {
+		//관리자아니면 로그인창으로 리다이렉트
+		if(session.getAttribute("authInfo")==null) {
+			return new ModelAndView("redirect:/login");
+		}
+		
+		int pageSearch = (currentPage-1)*cntPerPage;
+		//회원 후원한프로젝트수,후원금액
+		List<ProjectJoin> fundingStatic= joinService.showSumCountGroupByUserNo();
+		//회원별 등록프로젝트수
+		List<ProjectJoin> regProject= joinService.showProjectGroupByUserNo();	
+		//회원별 제작성공프로젝트수
+		List<ProjectJoin> successProject= joinService.showSucessProjectGroupByUserNo();
+		//총유저수
+		int count =userService.userCount();
+		//탈퇴 제외 유저수
+		int currentCount=userService.currentUserCount();
+		//제작자수
+		int prdCount=userService.prdcount();
+		Map<String,Object> listMap = new HashMap<String, Object>();
+		
+		listMap.put("keyword", keyword);
+		listMap.put("searchKeyword", searchKeyword);
+		listMap.put("delYn", delYn);
+		listMap.put("descYn", descYn);
+		listMap.put("currentPage",currentPage );
+		listMap.put("cntPerPage", cntPerPage);
+		listMap.put("pageSize",pageSize );
+		listMap.put("pageSearch",pageSearch);
+		List<UserInfo> userList = userService.showUserListByMapAdmin(listMap);
+		
+		int listCount = userService.showUserListByMapAdminCount(listMap);	
+		
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		pagination.setTotalRecordCount(listCount);
+		
+		session.setAttribute("pagination", pagination);
+		session.setAttribute("delYn", delYn);
+		session.setAttribute("descYn", descYn);
+		session.setAttribute("keyword", keyword);
+		session.setAttribute("searchKeyword", searchKeyword);
+		
+		ModelAndView mav= new ModelAndView();
+		mav.setViewName("admin/adminMember");
+		mav.addObject("userList",userList);
+		mav.addObject("count",count);
+		mav.addObject("prdCount",prdCount);
+		mav.addObject("currentCount", currentCount);
+		mav.addObject("fundingStatic", fundingStatic);
+		mav.addObject("regProject", regProject);
+		mav.addObject("successProject", successProject);
+		return mav;
+	}
 	
+	@RequestMapping("/adminProject")
+	public ModelAndView searchProject(@RequestParam(value="category",defaultValue = "total") String category,
+			@RequestParam(value="keyword",defaultValue = "total") String keyword,
+			@RequestParam(value="searchKeyword", required = false,defaultValue = "") String searchKeyword,
+			@RequestParam(value="successYn", required = false,defaultValue = "all") String successYn,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session) throws Exception {
+		//관리자아니면 로그인창으로 리다이렉트
+		if(session.getAttribute("authInfo")==null) {
+			return new ModelAndView("redirect:/login");
+		}
+		
+		int pageSearch = (currentPage-1)*cntPerPage;
+		List<PrjCategory> categoryList = categoryService.showCategory();
+		ProjectJoin sumCount =joinService.showProjectSumCountAll();
+
+		Map<String,Object> listMap = new HashMap<String,Object>();
+		listMap.put("category", category);
+		listMap.put("keyword", keyword);
+		listMap.put("searchKeyword", searchKeyword);
+		listMap.put("successYn",successYn);
+		listMap.put("currentPage",currentPage );
+		listMap.put("cntPerPage", cntPerPage);
+		listMap.put("pageSize",pageSize );
+		listMap.put("pageSearch",pageSearch);
+		
+		int listCount = joinService.showProjectJoinByMapCount(listMap);
+		
+		List<ProjectJoin> prjList = joinService.showProjectJoinByMap(listMap);
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		pagination.setTotalRecordCount(listCount);
+		
+		session.setAttribute("pagination", pagination);
+		session.setAttribute("category", category);
+		session.setAttribute("keyword", keyword);
+		session.setAttribute("searchKeyword", searchKeyword);
+		session.setAttribute("successYn", successYn);
+		
+		ModelAndView mav= new ModelAndView();
+		mav.setViewName("admin/adminProject");
+		mav.addObject("prjList",prjList);
+		mav.addObject("sumCount",sumCount);
+		mav.addObject("categoryList",categoryList);
+		return mav;
+	}
 }

@@ -3,7 +3,6 @@ select count(*),userNo  from fundinginfo where payyn=0 group by userno;
 
 select * from userinfo;
 select * from fundinginfo;
-update fundinginfo  set payyn =1 where fundingno=1;
 -- 결제완료한 총금액,펀딩 수
 select u.userno,count(fundingno) as totalCount, if(sum(optprice)>0,sum(optprice),0) as totalPrice
 from userinfo u left join fundinginfo f on f.userno = u.userno 

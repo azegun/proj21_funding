@@ -144,10 +144,10 @@
 		 group by p.prjNo
 		 having
 		<!--  <if test="listMap != null"> -->
-			 <if test="successYn != null">
+			 <if test="successYn.equals('successed')">
 			 	<![CDATA[(rate >= 100)]]>
 			 </if>
-			 <if test="successYn == null">
+			 <if test="successYn.equals('all')">
 			 	<![CDATA[(rate >100 or rate<=100 or rate is null)]]>
 			 </if>
 			 <choose>
@@ -167,10 +167,44 @@
 			 <if test="!category.equals('total')">
 			 and pCategoryNo = #{category}
 			 </if>
-		<!--  </if>
-		 <if test="listMap == null">
-		 </if> -->
+			 order by p.prjNo desc LIMIT #{pageSearch}, #{cntPerPage } ;
+	</select>
 	
+	<select id="selectProjectJoinByMapCount" resultType="int">
+	select count(R1.prjno) from (select p.prjno as prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
+			,count(fundingno) as totalCount,prjContent, c.pcategoryno, c.pcategoryname, startDate, endDate, round(sum(optprice)/prjgoal*100,2) as rate
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo
+		 having
+		<!--  <if test="listMap != null"> -->
+			 <if test="successYn.equals('successed')">
+			 	<![CDATA[(rate >= 100)]]>
+			 </if>
+			 <if test="successYn.equals('all')">
+			 	<![CDATA[(rate >100 or rate<=100 or rate is null)]]>
+			 </if>
+			 <choose>
+			 	<when test="keyword.equals('total')"></when>
+			 	<when test="keyword.equals('prjName')">
+			 		and prjName LIKE CONCAT('%', #{searchKeyword}, '%')
+			 	</when>
+			 	<when test="keyword.equals('prjManager')">
+			 		and prjManager LIKE CONCAT('%', #{searchKeyword}, '%')
+			 	</when>
+			 	<when test="keyword.equals('nickname')">
+			  		and nickname LIKE CONCAT('%', #{searchKeyword}, '%')
+			 	</when>
+			 </choose>
+			 <if test="category.equals('total')">
+			 </if>
+			 <if test="!category.equals('total')">
+			 and pCategoryNo = #{category}
+			 </if>
+			 ) as R1
 	</select>
 	
 	<select id="selectProjectSumCountAll" resultMap="resProjectJoin">														<!-- prjno : 프로젝트 갯수  -->
