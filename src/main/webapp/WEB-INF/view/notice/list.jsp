@@ -55,7 +55,7 @@
 						<option value="boardContent">내 용</option>
 					</select>
 					<input type="text" class="searchKeyword" name="searchKeyword"/>
-					<input type="submit" class="searchBtn" value="검 색"/>
+					<input type="submit" class="searchBtn" value="검색"/>
 				</form>			
 			</div>
 			<!-- 검색제작중 -->
