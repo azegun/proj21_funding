@@ -44,7 +44,7 @@
 				</div>
 			</div>
 			<!-- 검색제작중 -->
-			<div>
+			<div id="noticesearch">
 				<form action="<%=request.getContextPath()%>/notice/list" method="post" id="frmSearchBoard">
 					<input type = "hidden" name="currentPage" value="1">
 					<input type = "hidden" name="cntPerPage" value="${pagination.cntPerPage}">

@@ -235,3 +235,31 @@ li.title-box {
 	background: rgb(255, 255, 255);
 	margin: 0px;
 }
+
+#noticesearch{
+}
+
+#noticesearch select{
+	height: 45px;
+}
+
+#noticesearch input[type=text]{
+  width: 75%;
+  height: 45px;
+  padding: 0px 20px;
+  margin: 0px;
+  box-sizing: border-box;
+  border-radius: 0px;
+  background-color:#f8f8ff;
+  border: 0px;
+}
+
+#noticesearch input[type=submit]{
+	height: 45px;
+	width: 10%;
+	background-color: #007ac3;
+	color : white;
+  	border-radius: 0px;
+  	border: 0px;
+  	cursor: pointer;
+}
