@@ -27,6 +27,9 @@ public class PrjBoardServiceImpl implements PrjBoardService {
 
 	@Override
 	public int registPrjBoard(PrjBoard prjBoard) {
+		if(prjBoard.getPostContent().equals("")) {
+			throw new NullPointerException();
+		}
 		return boardMapper.insertPrjBoard(prjBoard);
 	}
 

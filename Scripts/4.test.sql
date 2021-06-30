@@ -244,7 +244,8 @@ where PrjNo =222;
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
 select 
 	PostNo, PrjNo, UserNo, PostContent 
-from prjboard;
+from prjboard
+order by PostNo desc;
 
 insert into prjboard (PrjNo, UserNo, PostContent )
 values (2, 2, '잘되고있어요'), (2, 2, '잘되고있어요'), (2, 2, '잘되고있어요');

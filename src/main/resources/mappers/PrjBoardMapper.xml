@@ -14,24 +14,25 @@
 	<select id="selectPrjBoardbyPrjNo" resultMap="resPb">
 		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile 
 		  from prjboard
-		 where PrjNo = #{PrjNo}
+		 where PrjNo = #{prjNo}
+		 order by PostNo desc
 	</select>
 	
 	<select id="selectPrjBoardbyUserNo" parameterType="PrjBoard" resultMap="resPb">
 		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile 
 		  from prjboard
-		 where PrjNo = #{PrjNo} and UserNo = #{userNo.userNo} 	
+		 where PrjNo = #{prjNo} and UserNo = #{userNo.userNo} 	
 	</select>
 
 	<insert id="insertPrjBoard">
 		insert
 		  into prjboard(PrjNo, UserNo, PostContent,PostFile)
-		  values (#{PrjNo}, #{userNo.userNo}, #{postContent}, #{postFile})
+		  values (#{prjNo}, #{userNo.userNo}, #{postContent}, #{postFile})
 	</insert>
 	
 	<update id="updatePrjBoard">
 		update prjboard
-		   set PrjNo = #{PrjNo}, UserNo = #{userNo.userNo}, PostContent=#{postContent}, PostFile = #{postFile}
+		   set PrjNo = #{prjNo}, UserNo = #{userNo.userNo}, PostContent=#{postContent}, PostFile = #{postFile}
 	     where PostNo = #{postNo}
 	</update>
 	
