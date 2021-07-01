@@ -243,7 +243,7 @@ where PrjNo =222;
 
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
 select 
-	PostNo, PrjNo, UserNo, PostContent 
+	PostNo, PrjNo, UserNo, PostContent, PostDate, PostFile 
 from prjboard
 order by PostNo desc;
 

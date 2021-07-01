@@ -1,6 +1,7 @@
 package proj21_funding.dto;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 import proj21_funding.dto.account.UserInfo;
 
@@ -10,7 +11,7 @@ public class PrjBoard {
 	private UserInfo userNo;// 글작성자
 	private String postContent;// 게시글내용
 	private LocalDateTime postDate;// 게시글날짜
-	private String postFile;// 첨부파일
+	private byte[] postFile;// 첨부파일
 
 	// 기본생성자
 	public PrjBoard() {
@@ -62,18 +63,20 @@ public class PrjBoard {
 		this.postDate = postDate;
 	}
 
-	public String getPostFile() {
+	public byte[] getPostFile() {
 		return postFile;
 	}
 
-	public void setPostFile(String postFile) {
+	public void setPostFile(byte[] postFile) {
 		this.postFile = postFile;
 	}
 
 	@Override
 	public String toString() {
 		return String.format("PrjBoard [postNo=%s, prjNo=%s, userNo=%s, postContent=%s, postDate=%s, postFile=%s]",
-				postNo, prjNo, userNo, postContent, postDate, postFile);
+				postNo, prjNo, userNo, postContent, postDate, Arrays.toString(postFile));
 	}
+
+	
 
 }

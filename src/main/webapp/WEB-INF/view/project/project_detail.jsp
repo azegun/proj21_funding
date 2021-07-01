@@ -122,6 +122,6 @@ $(function(){
 			<div id="prjBoard">
 				<jsp:include page="/WEB-INF/view/prjBoard/prjBoard.jsp" />
 			</div>
-		</div>
+		</div>	
 </body>
 </html>

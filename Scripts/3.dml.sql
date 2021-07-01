@@ -234,7 +234,6 @@ values (5,'안중근 흉상 C세트+배송비무료', 110000, '안중근 흉상 
 
 
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
-
 insert into prjboard values
 (00001, 00001, 00001, '고생들했어요', now(), null );
 #default값 null값 제외
