@@ -121,12 +121,13 @@
 </script>		
 </head>
 <body>	
-		<header>		   
-				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
-		</header>
+	
 		
 		<form action= "<%=request.getContextPath() %>/listSuccess" method="post" enctype="multipart/form-data">
 		<section class="container">	
+		<header>		   
+				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
+		</header>
 		<section id = "register_mid">
 		<!--탭 부분  -->
 			<section class="container_tab">
@@ -141,7 +142,7 @@
 			<h2>프로젝트 등록</h2>
 			
 	<section id="register_prjcontent">
-		<table border="1">
+		<table >
 			<tbody>
 				<tr>
 					<td class= "td_right" colspan="2">
@@ -190,15 +191,15 @@
 					</td>						
 				</tr>
 				<tr>
-					<td class="td_left"><label for="uploadFile">프로젝트 파일첨부</label>
+					<td class="td_left" id ="border_1"><label for="uploadFile">프로젝트 파일첨부</label>
 					</td>
 					<td class="td_right">
-								<input type="file" name="uploadfile"	placeholder="파일 선택">
+								<input type="file" name="uploadfile"	placeholder="파일 선택" required>
 					</td>
 				</tr>
 			
 				<tr>
-					<td class="td_right" colspan="2">
+					<td class="td_right" id = "info"colspan="2">
 							<h4>마감 후에 결제를 할 수 있으니, 결제일은 마감일보다 늦게 선택해주세요	</h4>								
 					</td>
 				</tr>				
@@ -244,13 +245,18 @@
 									</td>
 							</tr>
 							<tr>
-									<td class = "td_left">
+									<td class = "td_left"  id ="border_1">
 											<label for = "optContent">옵션내용</label>
 									</td>
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "optContent"	rows="8" cols="38" required="required"></textarea>
 									</td>
 							</tr>
+							<tr>
+								<td class="td_right" id = "info"colspan="2">
+										<h4>옵션은 최대 4개까지 입력하실 수 있습니다.</h4>								
+								</td>
+							</tr>		
 							<tr>
 									<td class ="td_right" colspan="2">
 											  <div id="register_btns">

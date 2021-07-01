@@ -84,7 +84,7 @@ ${project[0].optNo}
 					<div id="tab-1" class="register_mid current">
 					<h2>프로젝트 수정</h2>	
 		<section id = "upload_prjcontent">					
-			<table border=1>			
+			<table>			
 				<tbody>						
 			<tr>
 					 <td class = "td_left">
@@ -143,14 +143,14 @@ ${project[0].optNo}
 			</tr>
 			<tr>
 					<td class = "td_left">
-							<label for = "uploadFile">프로젝트 파일첨부</label>
+							<label for = "uploadFile"  id ="border_1">프로젝트 파일첨부</label>
 					</td>
 					<td class = "td_right">
 							<input type="file" name = "uploadfile" placeholder="파일 선택">
 					</td>
 			</tr> 
 			<tr>
-					<td class="td_right" colspan="2">
+					<td class="td_right"  id = "info" colspan="2">
 							<h4>마감 후에 결제를 할 수 있으니, 결제일은 마감일보다 늦게 선택해주세요	</h4>								
 					</td>
 				</tr>			
@@ -218,6 +218,11 @@ ${project[0].optNo}
 											 <textarea id = "textContent" name = "oContent"	rows="8" cols="38"
 											 			 required="required">${ project[0].optContent }</textarea>
 									</td>
+							</tr>	
+							<tr>
+								<td class="td_right" id = "info"colspan="2">
+										<h4>옵션은 최대 4개까지 입력하실 수 있습니다.</h4>								
+								</td>
 							</tr>	
 							<tr>
 									<td class ="td_right" colspan="2">

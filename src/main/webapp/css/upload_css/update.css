@@ -10,7 +10,6 @@ body{
 	margin-top: 20px;
 	border-collapse: collapse;	
 }
-
 ul.tabs{
 	margin: 0px;
 	padding: 0px;
@@ -25,18 +24,20 @@ ul.tabs li{
 }
 
 ul.tabs li.current{
-	background: #e4e4e4;
+	background: #d2e9ff;
+	border-bottom: solid 3px #8ec7ff;
 	color: #222;
 }
 
 .register_mid{	
 	display: none;
-	background: #e4e4e4;
+	background: #d2e9ff;	
 	padding: 15px;
 }
 
 .register_mid.current{
 	display: inherit;
+	padding-bottom: 20px;
 }	
 /*탭 */
 
@@ -48,12 +49,14 @@ h2{
 	margin:0 auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
+	border-bottom: 3px solid #ffcece;
 }
 #upload_prjcontent{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
+		margin-bottom: 50px;
 }
 #upload_opjcontent{
 	display: flex;
@@ -64,6 +67,16 @@ h2{
 }
 .td_left{
 	width: 170px;
+	border-bottom: 2px solid #ffcece;
+	border-right: 1px solid #ffcece;
+}
+#info{
+	border-top: 3px solid #ffcece;
+	border-bottom: 3px solid #ffcece;
+	background: 
+}
+#border_1{
+	border-bottom: none;
 }
 .td_right{
 	width: 330px;
