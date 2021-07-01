@@ -67,7 +67,7 @@
 							<td id = "prjGoal">
 									<fmt:formatNumber value="${list.prjNo.prjGoal }" pattern="\\#,###"/> </td>	
 							<td>
-									<fmt:formatNumber value="${list.prjNo.totalPrice/list.prjNo.prjGoal*100}" pattern = ".0" />
+									<fmt:formatNumber value="${list.prjNo.totalPrice/list.prjNo.prjGoal*100}" pattern = "0.0" />
 										<span>%</span>						
 							</td>									
 							<td>${list.prjNo.startDate }</td>

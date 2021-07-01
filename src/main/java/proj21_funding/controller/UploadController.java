@@ -229,26 +229,31 @@ public class UploadController {
 	         map.put(name, value);
 	      }
 	
-		try {
-		//리스트 조인
-			
+
+		//리스트 조인	
 			
 		    boolean addOptName1 = map.containsKey("addOptName1");
 		    boolean addOptName2 = map.containsKey("addOptName2");
 		    boolean addOptName3 = map.containsKey("addOptName3");
+		try {   
 		 // 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
 		    optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
 		//조인 업데이트(프로젝트 + 옵션 1)
-		    projectService.joinUpdateProjectAndPrjoptionByNo(map);		    
-		 
+		    projectService.joinUpdateProjectAndPrjoptionByNo(map);		   
+		    
 			    if(addOptName1 == false && addOptName2 == false && addOptName3 == false) {
 			    	if( optList.size() > 1) {
 			    		//수정이 1개일떄
 				    	//지어진값은 데이터 삭제
 			    		map.put("addOptNo1", optList.get(1).getOptNo());
+			    		if(optList.size() > 2) {
 				    	map.put("addOptNo2", optList.get(2).getOptNo());
-			    		map.put("addOptNo3", optList.get(3).getOptNo());
-			    		
+				    	//조건하기
+					    	if(optList.size() == 4) {
+				    		map.put("addOptNo3", optList.get(3).getOptNo());
+					    	}
+			    		}
+				    	
 				    	optionService.removeOptNumOne(map);
 				    	optionService.removeOptNumThree(map);
 			    		optionService.removeOptNumTwo(map);		    			
@@ -256,21 +261,25 @@ public class UploadController {
 			    }
 		    
 		    if(addOptName1 == true && addOptName2 == false  && addOptName3 ==false) {
-		    			//수정이 2개일떄
+		    		  //수정이 2개일떄
 		    		  //지어진값은 데이터 삭제
+		    		if(optList.size() > 2) {
 		    		map.put("addOptNo2", optList.get(2).getOptNo());
-		    		map.put("addOptNo3", optList.get(3).getOptNo());
-		    		  
+			    		if(optList.size() == 4) {
+			    		map.put("addOptNo3", optList.get(3).getOptNo());
+			    		}
+		    		}
 		    		 optionService.removeOptNumTwo(map);	
-		    		 optionService.removeOptNumThree(map);
-		    			    		  
+		    		 optionService.removeOptNumThree(map);		    			    		  
 		    	 
 		    		 optionService.updateOptionByMap(map);
 
 		    }else if (addOptName1 == true && addOptName2== true && addOptName3 == false) {
 		    	  //수정이 3개일떄
 		    		  //지어진값은 데이터 삭제
-		    		  map.put("addOptNo3", optList.get(3).getOptNo());
+		    		  if(optList.size() > 3) {
+		    			  map.put("addOptNo3", optList.get(3).getOptNo());
+		    			  }  		
 		    		  
 		    		  optionService.removeOptNumThree(map);
 		    		  
@@ -289,11 +298,11 @@ public class UploadController {
 			out.println("</script>");
 			out.flush();
 		}
+		
 		//리스트 받기 (1. 옵션들 2. 카테고리들)
 		optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
 		Project list = projectService.showJoinPrjAndCategory(prjplusoption.getpNo());
-		System.out.println("optList 출구 전 >> "+ optList);
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("optList", optList);
 		mav.addObject("project", map);
@@ -311,7 +320,6 @@ public class UploadController {
 			throw new ProjectNotDeleteException();
 		}		
 		return "/upload/register_success";
-	}
-		
+	}		
 
 }

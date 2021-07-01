@@ -30,4 +30,19 @@ public class MyListServiceImpl implements MyListService {
 		return mapper.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
 	}
 
+	@Override
+	public int updateListOptionByMap(Map<String, Object> map) {
+		return mapper.updateListOptionByMap(map);
+	}
+
+	@Override
+	public int updateListAllAddOptionsByMap(Map<String, Object> map) {
+		return mapper.updateListAllAddOptionsByMap(map);
+	}
+
+	@Override
+	public int updateListSubOptByMap(Map<String, Object> map) {
+		return mapper.updateListSubOptByMap(map);
+	}
+
 }

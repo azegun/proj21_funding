@@ -5,17 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function closeWrite(){		
+		opener.document.location.reload();
+		self.close();
+	}
+		
+
+</script>
 </head>
 <body>
 	<fieldset id="prjBoardwriteArea">
 	<form:form modelAttribute="prjBoard">
 	<form:errors />
-		<form:hidden path="prjNo"/>
-		<form:hidden path="userNo"/>		
+		<form:hidden path="prjNo" value="${prjNo}"/>
+		<form:hidden path="userNo.userNo" value="${authInfo.userNo}"/>		
 		<p><form:input path="postFile"/></p>
 		<p><form:textarea path="postContent"/><p>	
 		<p id="errors"><form:errors path="postContent" />&nbsp;</p>		
 		<form:button>등록하기</form:button>
+		<form:button type="button" onclick="closeWrite()">닫기</form:button>
 	</form:form>	
 	</fieldset>
 </body>

@@ -12,11 +12,13 @@ import org.springframework.web.multipart.MultipartFile;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.exception.DateTimeOverException;
+import proj21_funding.mapper.MyListMapper;
 import proj21_funding.mapper.PrjOptionMapper;
 import proj21_funding.mapper.ProjectMapper;
 import proj21_funding.service.ProjectAndPrjOptionService;
 @Service
 public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionService {
+	
 	//web.xml에 있는 multipart-config 주소랑 동일시하게 
 	private static final String UPLOAD_PATH = "C:\\workspace_web\\proj21_funding\\src\\main\\webapp\\images\\project";
 	
@@ -25,6 +27,9 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	
 	@Autowired
 	private PrjOptionMapper prjOptMapper;
+	
+	@Autowired
+	private MyListMapper myMapper;
 
 	@Override
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile ) {
@@ -71,13 +76,21 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	      
 		
 	}
-
+	//등록업데이트
 	@Override
 	public void trUpdateAddOptionsOfFourTimes(Map<String, Object> map) {
 		int res = prjOptMapper.updateAllAddOptionsByMap(map);
 		System.out.println("map >> "+ map);
 		res += prjOptMapper.updateSubOptByMap(map);
 		System.out.println("res >> "+ res);
+		if(res != 3) throw new RuntimeException();
+	}
+	//myList 업데이트
+	@Override
+	public void trUpdateListAddOptionsOfFourTimes(Map<String, Object> map) {
+		int res = myMapper.updateListAllAddOptionsByMap(map);
+		res += myMapper.updateListSubOptByMap(map);
+		
 		if(res != 3) throw new RuntimeException();
 	}
 	}

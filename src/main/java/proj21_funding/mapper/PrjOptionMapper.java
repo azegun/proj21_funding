@@ -19,7 +19,7 @@ public interface PrjOptionMapper {
 	//프로젝트 옵션들 추가3 
 	int insertPrjOptionsOfFourByMap(Map<String, Object> map);
 	
-	//프로젝트옵션 수정
+	//프로젝트옵션 수정 사용안함
 	int updatePrjOption(PrjOption prjoption);
 	//프로젝트 추가옵션1 수정
 	int updateOptionByMap(Map<String, Object> map);
