@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.Message;
@@ -132,7 +133,7 @@ public class ProjectController {
 		mav.addObject("sum", sum);
 		return mav;
 	}
-	
+	// 프로젝트 게시판 글쓰기
 	@GetMapping("/prjBoard/prjBoard-write")
 	public String write(PrjBoard prjBoard, HttpSession session, Model model) {
 		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
@@ -141,9 +142,13 @@ public class ProjectController {
 	}
 	
 	@PostMapping("/prjBoard/prjBoard-write")
-	public String write(@Valid PrjBoard prjBoard, Errors errors) {		
+	public String write(@Valid PrjBoard prjBoard, Errors errors, Model model, MultipartFile uploadfile) {		
+		System.out.println("prjBoard:"+prjBoard);
+		System.out.println("uploadfile:"+uploadfile);
 		try {
-			boardService.registPrjBoard(prjBoard);		
+			boardService.registPrjBoard(prjBoard);
+			String complet = "등록되었습니다.";
+			model.addAttribute("complet",complet);
 		}catch(NullPointerException e) {
 			errors.rejectValue("postContent", "nullContent");
 			return "prjBoard/prjBoard-write";
