@@ -193,6 +193,24 @@ public class ProjectController {
 		return mav;
 	}
 	
+	@GetMapping("/prjBoard/prjBoard-write")
+	public String write(PrjBoard prjBoard, HttpSession session, Model model) {
+		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
+		model.addAttribute("authInfo", authInfo);
+		return "prjBoard/prjBoard-write";		
+	}
+	
+	@PostMapping("/prjBoard/prjBoard-write")
+	public String write(@Valid PrjBoard prjBoard, Errors errors) {		
+		try {
+			boardService.registPrjBoard(prjBoard);		
+		}catch(NullPointerException e) {
+			errors.rejectValue("postContent", "nullContent");
+			return "prjBoard/prjBoard-write";
+		}
+		return "prjBoard/prjBoard-write";		
+	}
+	
 	@RequestMapping("/fundingProject")
 	public ModelAndView funding(@Valid UserLogin userLogin,
 			HttpServletRequest request,HttpSession session, HttpServletResponse response) {

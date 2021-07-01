@@ -120,7 +120,7 @@ $(function(){
 				<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />
 			</div>
 			<div id="prjBoard">
-				<jsp:include page="/WEB-INF/view/project/prjBoard.jsp" />
+				<jsp:include page="/WEB-INF/view/prjBoard/prjBoard.jsp" />
 			</div>
 		</div>
 </body>

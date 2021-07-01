@@ -188,7 +188,7 @@ select
 	PostContent ,PostDate ,PostFile 
 from prjboard
 where PrjNo = 1 and UserNo = 1;
-
+select * from prjboard p2 ;
 insert into prjboard values
 (00001, 00001, 00001, '고생들했어요', now(), null );
 #default값 null값 제외

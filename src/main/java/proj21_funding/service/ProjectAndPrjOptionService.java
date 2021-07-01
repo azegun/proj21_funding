@@ -13,4 +13,6 @@ public interface ProjectAndPrjOptionService {
 	void trremovePrjAndPrjOpt(int prjNo);
 	void trUpdateAddOptionsOfFourTimes(Map<String, Object> map);
 	
+	void trUpdateListAddOptionsOfFourTimes(Map<String, Object> map);
+	
 }

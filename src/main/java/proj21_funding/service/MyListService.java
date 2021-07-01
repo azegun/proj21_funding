@@ -14,6 +14,13 @@ public interface MyListService {
 	// 프로젝트 번호로 디테일하게 검색
 	List<Project> showDetailListByprjNo(int prjNo);
 	// 프로젝트 and 옵션 조인 디테일리스트
-		int joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(Map<String, Object> map);
+	int joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(Map<String, Object> map);
+	
+	//프로젝트 추가옵션1 수정
+	int updateListOptionByMap(Map<String, Object> map);
+	//프로젝트 추가옵션1,2  수정
+	int updateListAllAddOptionsByMap(Map<String, Object> map);
+	//프로젝트 추가옵션1,2,3  부속 수정
+	int updateListSubOptByMap(Map<String, Object> map);
 	
 }
