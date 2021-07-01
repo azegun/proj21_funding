@@ -82,6 +82,7 @@
 	letter-spacing: -0.01em;
 	line-height: 1.54;
 	color: rgb(109, 109, 109);
+	cursor: pointer;
 }
 
 .detail {

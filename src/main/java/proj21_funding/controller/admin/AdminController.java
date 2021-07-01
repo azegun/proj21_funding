@@ -20,9 +20,10 @@ import proj21_funding.dto.paging.Pagination;
 import proj21_funding.dto.project.ProjectJoin;
 import proj21_funding.service.BoardService;
 import proj21_funding.service.CategoryService;
+import proj21_funding.service.FundingInfoService;
 import proj21_funding.service.PrjCategoryService;
-import proj21_funding.service.PrjOptionService;
 import proj21_funding.service.ProjectJoinService;
+import proj21_funding.service.ProjectService;
 import proj21_funding.service.QNAService;
 import proj21_funding.service.UserInfoService;
 
@@ -46,8 +47,16 @@ public class AdminController {
 	@Autowired
 	private CategoryService bcService;
 	
+	@Autowired
+	private ProjectService projectService;
+	
+	@Autowired
+	private FundingInfoService fundingService;
+	
 	@RequestMapping("/admin")
 	public String adminMain() {
+		projectService.modifyEndYn();
+		fundingService.modifyPayYes();
 		return "admin/adminMain";
 	}
 	

@@ -51,8 +51,8 @@
 					<input type = "hidden" name="pageSize" value="10">
 					<select name="keyword" class="selectpicker">
 						<option value="total" selected="selected">검색키워드</option>
-						<option value="boardTitle">제 목</option>
-						<option value="boardContent">내 용</option>
+						<option value="boardTitle">제목</option>
+						<option value="boardContent">내용</option>
 					</select>
 					<input type="text" class="searchKeyword" name="searchKeyword"/>
 					<input type="submit" class="searchBtn" value="검색"/>
@@ -65,7 +65,7 @@
 						<c:when test="${fn:length(board) > 0}">
 							<c:forEach items="${board}" var="board">
 								<li class="title-box"><a
-									href="<%=request.getContextPath() %>/notice/detail/${board.boardNo }&${board.categoryNo}"
+									href="<%=request.getContextPath() %>/notice/detail/${board.boardNo }&${board.categoryNo.categoryNo}"
 									class="notice"><span class="title-box"><span
 											class="group"><c:forEach var="bc" items="${bc }">
 													<c:if test="${bc.categoryNo eq board.categoryNo.categoryNo }">

@@ -13,6 +13,7 @@ select * from userinfo o where Secession is null  or Secession is false;
 select * from userinfo where BankAccount is not null and BankName is not null;
 
 update userInfo set Secession = true where userno=3;
+	select * from fundinginfo;
 
 -- 프로젝트별 인원수, 가격
 select count(*),sum(optprice) 
@@ -113,4 +114,50 @@ from project p left join fundinginfo f on p.prjno = f.prjno
 			   left	join prjoption o on o.optno = f.optno; 
 			  
 select * from fundinginfo f join prjoption o on f.optno = o.optno where f.prjno = 2;
-s
+
+
+select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, 
+				o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN
+		  from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo
+		 where f.userno = 2 order by f.fundingno desc;
+		 
+select count(*)  from fundinginfo where userno=2 and payyn=0;
+
+
+select r1.prjno from (select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname,p.prjContent, p.prjgoal, u.nickname as prjManager,u.userName as managerName
+			,count(fundingno) as totalCount, round(sum(optprice)/prjgoal*100,2) as rate
+		  from fundinginfo f
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		 group by p.prjNo
+		 ) as r1
+where rate>100;
+
+update project set EndDate ='20210630' where PrjNo =6;
+update fundinginfo set payyn =0 where prjno=6;
+			
+update fundinginfo f join project p on f.prjno = p.prjno 
+ set f.payYn = 1
+ where f.prjNo in ( select r1.prjno from (select p.prjno, p.Prjname,p.prjgoal, round(sum(optprice)/prjgoal*100,2) as rate
+		  from fundinginfo f
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		 group by p.prjNo
+		 ) as r1
+where rate>=100) and (payyn=0 or payyn is null) and p.endDate <now();
+
+
+ select * from userinfo;
+ select * from project;
+
+select count(r1.prjno) from	(select p.endDate, p.prjno,p.prjname,u.Nickname as prjManager,c.pcategoryno
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo 
+	having 1=1
+			 ) as r1

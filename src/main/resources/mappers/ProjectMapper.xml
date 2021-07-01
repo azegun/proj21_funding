@@ -106,4 +106,8 @@
 					where PrjNo  = #{prjNo}		
 		</delete>
 		
+		<update id="updateEndYn">
+			update project set endyn =1 where <![CDATA[EndDate <now() ]]>;
+		</update>
+		
 </mapper>

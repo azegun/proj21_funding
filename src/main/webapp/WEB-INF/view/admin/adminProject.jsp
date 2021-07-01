@@ -70,7 +70,7 @@
 			return false;
 		});
 		
-		}); 
+	}); 
 </script>
 </head>
 <body>
@@ -126,8 +126,8 @@
 					<select name="keyword" class="selectpicker">
 						<option value="total" selected="selected">검색키워드</option>
 						<option value="prjName">프로젝트명</option>
-						<option value="prjManager">제작자</option>
-						<option value="nickname">회원별명</option>
+						<option value="nickname">닉네임</option>
+						<option value="managerName">성명</option>
 					</select>
 				</div>
 				<input type="text" class="searchKeyword" name="searchKeyword"/>
@@ -156,7 +156,7 @@
 								<td>${prj.prjNo}</td>
 								<td class="text-left">${prj.prjName }</td>
 								<td>${prj.pCategoryName }</td>
-								<td>${prj.prjManager }</td>
+								<td>${prj.prjManager } (${prj.managerName })</td>
 								<td><fmt:formatNumber value="${prj.prjGoal }" pattern="#,###"/> 원</td>
 								<td><fmt:formatNumber value="${prj.totalPrice }" pattern="#,###"/> 원</td>
 								<td>${prj.rate }%</td>

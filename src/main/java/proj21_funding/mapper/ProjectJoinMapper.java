@@ -26,4 +26,7 @@ public interface ProjectJoinMapper {
 	//프로젝트 누적개수,누적금액
 	ProjectJoin selectProjectSumCountAll();
 	int selectProjectJoinByMapCount(Map<String,Object> listMap);
+	
+	List<ProjectJoin> selectProjectListByMap(Map<String,Object> listMap);
+	int selectProjectListByMapCount(Map<String,Object> listMap);
 }

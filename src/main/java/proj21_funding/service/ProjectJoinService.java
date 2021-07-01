@@ -23,4 +23,9 @@ public interface ProjectJoinService {
 	ProjectJoin showProjectSumCountAll();
 	int showProjectJoinByMapCount(Map<String,Object> listMap);
 	
+//	프로젝트리스트화면 쓰이는 메소드 검색조건 추가
+	List<ProjectJoin> showProjectListByMap(Map<String,Object> listMap);
+	int showProjectListByMapCount(Map<String,Object> listMap);
+
+	
 }

@@ -19,7 +19,7 @@
 		<section id="menulist">
 			<div class="menulist2">
 				<div class="project_menu">
-					<a href="<%=request.getContextPath()%>/projectListAll">모든 프로젝트</a>
+					<a href="<%=request.getContextPath()%>/projectList">모든 프로젝트</a>
 				</div>
 				<div class="project_menu">
 					<a href="">추천 프로젝트</a>
@@ -35,7 +35,7 @@
 			<div class="menulist2">
 				<div class="cate_title">카테고리</div>
 				<c:forEach items="${prjCategory}" var="prjCategory">
-					<div class="project_menu"><a href="<c:url value='/categoryByProject?pCategoryNo=${prjCategory.pCategoryNo}'/>">${prjCategory.pCategoryName}</a></div>
+					<div class="project_menu"><a href="<c:url value='/projectList/${prjCategory.pCategoryNo}'/>">${prjCategory.pCategoryName}</a></div>
 				</c:forEach>
 			</div>
 		</section>
