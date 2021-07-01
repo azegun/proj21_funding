@@ -85,6 +85,7 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 		System.out.println("res >> "+ res);
 		if(res != 3) throw new RuntimeException();
 	}
+	
 	//myList 업데이트
 	@Override
 	public void trUpdateListAddOptionsOfFourTimes(Map<String, Object> map) {
