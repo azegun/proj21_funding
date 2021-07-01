@@ -51,7 +51,7 @@
 				<jsp:include page="/WEB-INF/view/message/message-menu.jsp"/>
 			</fieldset>
 			<div id="message">
-				<h2>안 읽은 쪽지함${pagination.totalRecordCount})</h2>
+				<h2>안 읽은 쪽지함(${pagination.totalRecordCount})</h2>
 				<form:form modelAttribute="message"  action="dels">
 				<fieldset id="messageForm">
 					<table>

@@ -8,13 +8,27 @@ from message;
  insert into message
 	 (SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelRecevie)
  values 
- ('test10', 'test2', '펀딩팀 화이팅', now(), 1, 0, 0);
+ ('test1', 'kykim', '고전 게임의 재미를 계승한 모바일 게임 “퍼스트클로버”에  참여해주셔서 감사합니다.', now(), 1, 0, 0);
 
 #default값 제외
 insert into message (
-	SendUser, ReceiveUser,
-	MsgContent, ReadYN) 
-values ( 'test2', 'test10', '펀딩팀 화이팅',  0);
+	SendUser, ReceiveUser, MsgContent, ReadYN) 
+values
+( 'test1', 'sgkim', '고전 게임의 재미를 계승한 모바일 게임 “퍼스트클로버”에  참여해주셔서 감사합니다.',  0),
+( 'test1', 'mywns', '고전 게임의 재미를 계승한 모바일 게임 “퍼스트클로버”에  참여해주셔서 감사합니다.',  0),
+( 'test1', 'pinethx', '고전 게임의 재미를 계승한 모바일 게임 “퍼스트클로버”에  참여해주셔서 감사합니다.',  0),
+( 'test1', 'jrkim', '고전 게임의 재미를 계승한 모바일 게임 “퍼스트클로버”에  참여해주셔서 감사합니다.',  0),
+( 'kykim', 'test1', '"청년들이 모여 1919년 청년들을 재해석하다."에  참여해주셔서 감사합니다.',  0),
+( 'kykim', 'sgkim', '"청년들이 모여 1919년 청년들을 재해석하다."에  참여해주셔서 감사합니다.',  0),
+( 'kykim', 'mywns', '"청년들이 모여 1919년 청년들을 재해석하다."에  참여해주셔서 감사합니다.',  0),
+( 'kykim', 'pinethx', '"청년들이 모여 1919년 청년들을 재해석하다."에  참여해주셔서 감사합니다.',  0),
+( 'kykim', 'jrkim', '"청년들이 모여 1919년 청년들을 재해석하다."에  참여해주셔서 감사합니다.',  0),
+( 'sgkim', 'kykim', '"[RE:PLA] 쓰레기도 줄여주고 플라스틱 업사이클까지??"에  참여해주셔서 감사합니다.',  0),
+( 'sgkim', 'test1', '"[RE:PLA] 쓰레기도 줄여주고 플라스틱 업사이클까지??"에  참여해주셔서 감사합니다.',  0),
+( 'mywns', 'kykim', '"청사과와 청포도의 싱그러운 만남 <애플머스캣> 그린 퍼퓸"에  참여해주셔서 감사합니다.',  0),
+( 'mywns', 'test1', '"청사과와 청포도의 싱그러운 만남 <애플머스캣> 그린 퍼퓸"에  참여해주셔서 감사합니다.',  0),
+( 'pinethx', 'kykim', '"부활 프로젝트 첫번째 이야기,안중근 의사 흉상"에  참여해주셔서 감사합니다.',  0),
+( 'pinethx', 'test1', '"부활 프로젝트 첫번째 이야기,안중근 의사 흉상"에  참여해주셔서 감사합니다.',  0);
 
 
 
@@ -382,10 +396,8 @@ values (5,'안중근 흉상 C세트+배송비무료', 110000, '안중근 흉상 
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
 select 
 	PostNo, PrjNo, UserNo,
-	PostTitle, PostContent ,PostDate ,PostFile 
-	PostContent ,PostDate ,PostFile 
-from prjboard
-where PrjNo = 1 and UserNo = 1;
+	PostContent ,PostDate ,PostFile 	
+from prjboard;
 
 insert into prjboard values
 (00001, 00001, 00001, '고생들했어요', now(), null );
