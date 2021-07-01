@@ -95,7 +95,7 @@
 		) R1 join boardcategory bc on r1.categoryNo = bc.CategoryNo order by boardNo desc
     </select>
     
-     <select id="selectSearchBoardList" resultMap="AssociateResCategory">
+     <select id="selectSearchBoardListAdmin" resultMap="AssociateResCategory">
     	select R1.*,categoryName FROM board R1 join boardcategory bc on r1.categoryNo = bc.CategoryNo
 		<where>
 			<choose>
@@ -117,7 +117,7 @@
 		 order by boardNo desc LIMIT #{pageSearch}, #{cntPerPage } ;
     </select>
     
-     <select id="selectSearchBoardListCount" resultType="int">
+     <select id="selectSearchBoardListAdminCount" resultType="int">
     	select count(*) FROM(
 			SELECT * FROM BOARD 
 		) R1 join boardcategory bc on R1.categoryNo = bc.categoryNo
@@ -138,5 +138,73 @@
 				</when>
 			</choose>
 		</where>
+    </select>
+     <select id="selectSearchBoardListCount" resultType="int">
+    	select count(*) FROM(
+			SELECT * FROM BOARD 
+		) R1 join boardcategory bc on R1.categoryNo = bc.categoryNo
+		<where>
+			<choose>
+				<when test="keyword.equals('total')"></when>
+				<when test="keyword.equals('boardTitle')">
+					and boardTitle LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+				<when test="keyword.equals('boardContent')">
+					and boardContent LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+			</choose>
+		</where>
+    </select>
+    
+     <select id="selectSearchBoardList" resultMap="AssociateResCategory">
+    	select R1.*,categoryName,categoryClass FROM board R1 join boardcategory bc on r1.categoryNo = bc.CategoryNo
+		<where>
+			<choose>
+				<when test="keyword.equals('total')"></when>
+				<when test="keyword.equals('boardTitle')">
+					and boardTitle LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+				<when test="keyword.equals('boardContent')">
+					and boardContent LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+			</choose>
+		</where>
+		 order by boardNo desc LIMIT #{pageSearch}, #{cntPerPage } ;
+    </select>
+    
+    <!-- 카테고리별 -->
+     <select id="selectSearchBoardListCountCategory" resultType="int">
+    	select count(*) FROM(
+			SELECT * FROM BOARD 
+		) R1 join boardcategory bc on R1.categoryNo = bc.categoryNo
+		<where>
+			<choose>
+				<when test="keyword.equals('total')"></when>
+				<when test="keyword.equals('boardTitle')">
+					and boardTitle LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+				<when test="keyword.equals('boardContent')">
+					and boardContent LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+			</choose>
+			and bc.categoryNo = #{categoryNo}
+		</where>
+    </select>
+    
+     <select id="selectSearchBoardListCategory" resultMap="AssociateResCategory">
+    	select R1.*,categoryName,categoryClass FROM board R1 join boardcategory bc on r1.categoryNo = bc.CategoryNo
+		<where>
+			<choose>
+				<when test="keyword.equals('total')"></when>
+				<when test="keyword.equals('boardTitle')">
+					and boardTitle LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+				<when test="keyword.equals('boardContent')">
+					and boardContent LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+			</choose>
+			and bc.categoryNo = #{categoryNo}
+		</where>
+		 order by boardNo desc LIMIT #{pageSearch}, #{cntPerPage } ;
     </select>
 </mapper>

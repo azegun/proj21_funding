@@ -101,5 +101,25 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.selectSearchBoardListCount(map);
 	}
 
+	@Override
+	public List<Board> selectSearchBoardListAdmin(Map<String, Object> map) throws Exception {
+		return mapper.selectSearchBoardListAdmin(map);
+	}
+
+	@Override
+	public int selectSearchBoardListAdminCount(Map<String, Object> map) {
+		return mapper.selectSearchBoardListAdminCount(map);
+	}
+
+	@Override
+	public int selectSearchBoardListCountCategory(Map<String, Object> map) {
+		return mapper.selectSearchBoardListCountCategory(map);
+	}
+
+	@Override
+	public List<Board> selectSearchBoardListCategory(Map<String, Object> map) {
+		return mapper.selectSearchBoardListCategory(map);
+	}
+
 // 끝
 }

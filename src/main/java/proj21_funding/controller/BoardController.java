@@ -2,7 +2,9 @@ package proj21_funding.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,18 +38,35 @@ public class BoardController {
 	public ModelAndView noticeAll(
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
 			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
-			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session)
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
+			@RequestParam(value = "keyword", required = false, defaultValue = "total") String keyword,
+			@RequestParam(value = "searchKeyword", required = false, defaultValue = "") String searchKeyword,
+			HttpSession session)
 			throws Exception {
+		int pageSearch = (currentPage-1)*cntPerPage;
 		ModelAndView mav = new ModelAndView();
-
-		int listCnt = boardService.BoardCount();
-		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
-		pagination.setTotalRecordCount(listCnt);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("currentPage", currentPage);
+		map.put("cntPerPage", cntPerPage);
+		map.put("pageSize", pageSize);
+		map.put("pageSearch", pageSearch);
+		map.put("keyword", keyword);
+		map.put("searchKeyword", searchKeyword);
+		
 		List<BoardCategory> bc = bcService.showBCByClass("board");
+		System.out.println(map);
+		System.out.println(boardService.selectSearchBoardList(map));
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		int listCnt = boardService.selectSearchBoardListCount(map);
+		pagination.setTotalRecordCount(listCnt);
+		
 		session.setAttribute("pagination", pagination);
+		session.setAttribute("keyword", keyword);
+		session.setAttribute("searchKeyword", searchKeyword);
 
 		mav.addObject("pagination", pagination);
-		mav.addObject("board", boardService.SelectAllList(pagination));
+		mav.addObject("board", boardService.selectSearchBoardList(map));
 		mav.addObject("bc", bc);
 		mav.setViewName("/notice/list");
 		return mav;
@@ -57,18 +76,33 @@ public class BoardController {
 	public ModelAndView noticeCategory(@PathVariable("categoryNo") int categoryNo,
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
 			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
-			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session)
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
+			@RequestParam(value = "keyword", required = false, defaultValue = "total") String keyword,
+			@RequestParam(value = "searchKeyword", required = false, defaultValue = "") String searchKeyword,
+			HttpSession session)
 			throws Exception {
+		int pageSearch = (currentPage-1)*cntPerPage;
 		ModelAndView mav = new ModelAndView();
-
-		int listCnt = boardService.BoardCategoryCount(categoryNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("currentPage", currentPage);
+		map.put("cntPerPage", cntPerPage);
+		map.put("pageSize", pageSize);
+		map.put("pageSearch", pageSearch);
+		map.put("keyword", keyword);
+		map.put("searchKeyword", searchKeyword);
+		map.put("categoryNo", categoryNo);
+		
+		int listCnt = boardService.selectSearchBoardListCountCategory(map);
 		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
 		pagination.setTotalRecordCount(listCnt);
 		List<BoardCategory> bc = bcService.showBCByClass("board");
 		session.setAttribute("pagination", pagination);
+		session.setAttribute("keyword", keyword);
+		session.setAttribute("searchKeyword", searchKeyword);
 
 		mav.addObject("pagination", pagination);
-		mav.addObject("board", boardService.SelectCategoryList(categoryNo, pagination));
+		mav.addObject("board", boardService.selectSearchBoardListCategory(map));
 		mav.addObject("bc", bc);
 		mav.setViewName("/notice/list_cate");
 		return mav;
@@ -109,8 +143,9 @@ public class BoardController {
 			pagination.setCurrentPage(1);
 			pagination.setCntPerPage(10);
 			pagination.setPageSize(10);
-			return noticeAll(pagination.getCurrentPage(), pagination.getCntPerPage(), pagination.getPageSize(),
-					session);
+			return new ModelAndView("redirect:/notice/list");
+//			return noticeAll(pagination.getCurrentPage(), pagination.getCntPerPage(), pagination.getPageSize(),
+//					session);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -203,8 +238,9 @@ public class BoardController {
 		try {
 			System.out.println(boardNo);
 			boardService.removeBoard(boardNo);
-			return noticeAll(pagination.getCurrentPage(), pagination.getCntPerPage(), pagination.getPageSize(),
-					session);
+			return new ModelAndView("redirect:/notice/list");
+//			return noticeAll(pagination.getCurrentPage(), pagination.getCntPerPage(), pagination.getPageSize(),
+//					session);
 
 		} catch (Exception e) {
 			e.printStackTrace();

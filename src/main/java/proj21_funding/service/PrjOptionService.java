@@ -34,6 +34,7 @@ public interface PrjOptionService {
 	//프로젝트 추가옵션1,2  수정
 	int updateAllAddOptionsByMap(Map<String, Object> map);
 	
+	
 	//프로젝트옵션 삭제 (Map) 1번
 	int removeOptNumOne(Map<String, Object> map);
 	//프로젝트옵션 삭제 (Map) 2번
