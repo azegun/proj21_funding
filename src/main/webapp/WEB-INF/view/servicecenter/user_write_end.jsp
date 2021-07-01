@@ -8,6 +8,7 @@
 <title>문의하기 | 고객센터</title>
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter/write.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/write2.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
 </head>
 <body>
@@ -37,14 +38,17 @@
 	
 	<h2>문의하기</h2>
 	
-	<p>질문이 접수되었습니다.</p>
-	<p>질문의 답변까지는 주말을 제외하고 2~3일이 소요될 수 있습니다.</p>
-	<p>문의 답변 시간 : 평일 09:00 ~ 17:00</p>
+	<div class="writeendform">
+		<p class="complete">질문이 접수되었습니다.</p>
+		<p class="buyeon">질문의 답변까지는 주말을 제외하고 2~3일이 소요될 수 있습니다.</p>
+		<p class="time">문의 답변 시간 : <span>평일 09:00 ~ 17:00</span></p>
 	
-	<div>
-		<a href="/proj21_funding/qnawrite"><input type="button" value="다른 문의하기" ></a>
-		<a href="/proj21_funding/qnauserview"><input type="button" value="내 문의 내역 확인하기" ></a>
+	<div id="btn">
+		<a href="/proj21_funding/qnawrite"><input type="button" value="다른 문의하기" class="btn1"></a>
+		<a href="/proj21_funding/qnauserview"><input type="button" value="내 문의 내역 확인하기" class="btn1"></a>
 	</div>	
+	
+	</div>
 	
 	</section>
 		<footer>
