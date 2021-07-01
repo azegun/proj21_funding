@@ -98,7 +98,7 @@ CREATE TABLE proj21_funding.Project (
 	PrjNo       INT(10)     NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
 	UserNo      INT(10)     NOT NULL COMMENT '프로젝트관리자', -- 프로젝트관리자
 	pCategoryNo INT(3)      NOT NULL COMMENT '프로젝트 분류', -- 프로젝트 분류
-	PrjName     VARCHAR(30) NOT NULL COMMENT '프로젝트명', -- 프로젝트명
+	PrjName     VARCHAR(100) NOT NULL COMMENT '프로젝트명', -- 프로젝트명
 	PrjContent  LONGTEXT    NOT NULL COMMENT '프로젝트내용', -- 프로젝트내용
 	PrjGoal     INT(10)     NOT NULL COMMENT '목표금액', -- 목표금액
 	StartDate   DATE        NOT NULL COMMENT '시작일', -- 시작일
@@ -122,7 +122,7 @@ ALTER TABLE proj21_funding.Project
 CREATE TABLE proj21_funding.PrjOption (
 	OptNo      INT(10)      NOT NULL COMMENT '옵션번호', -- 옵션번호
 	PrjNo      INT(10)      NOT NULL COMMENT '프로젝트번호', -- 프로젝트번호
-	OptName    VARCHAR(30)  NULL     COMMENT '옵션명', -- 옵션명
+	OptName    VARCHAR(50)  NULL     COMMENT '옵션명', -- 옵션명
 	OptPrice   INT(30)      NOT NULL COMMENT '옵션금액', -- 옵션금액
 	OptContent VARCHAR(100) NOT NULL COMMENT '옵션내용' -- 옵션내용
 )

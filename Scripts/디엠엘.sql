@@ -60,6 +60,8 @@ insert into admin values
 insert into admin (AdminId, AdminPw, AdminName, AdminTel)
 values ('admin1', password('0000'),'김상건','010-3302-1972');
 
+
+
 -- UserInfo(회원정보) -> QnA(QnA) 외래키
 select 
 	UserNo, UserId, UserPw,	UserName, Nickname, Email,
@@ -124,27 +126,53 @@ insert into prjcategory (pCategoryName)
 
 -- Project(프로젝트) - UserInfo(회원정보) 외래키 받음
 select
-	PrjNo, UserNo, PrjName, PrjContent, PrjGoal,
-	StartDate, EndDate, PayDate, EndYN
+	PrjNo, UserNo,pCategoryNo, PrjName, PrjContent, PrjGoal,
+	StartDate, EndDate, EndYN
 from project;
 
 insert into project values(
-00001, 00001,1, '클라우드펀딩', '후원받아 제품만들기', 1000000,
-now(), now(),  now(), 1
+1, 1,1, '고전 게임의 재미를 계승한 모바일 게임 “퍼스트클로버”', 
+'개발에 참여한 4인이 고전에서 느낀 재미 요소들이 상이할 정도로, 여러 매력을 가진 “퍼스트퀸4”의 핵심 재미요소를 충실히 담기 위해 노력하였고, 그를 계승한다는 의미로
+“퍼스트”의 앞 글자를 가져왔으며, 인 게임 상 메인 스토리의 진행 요소, 4인의 개발자를 상징하는 중의적 의미를 가진 클로버를 합성해 "퍼스트 클로버" 가 탄생되었습니다.
+CLOVER Logo는 뫼비우스의 띠처럼 무한(Eternity)과 공고한 결속의 의미를 가집니다.', 500000,
+'20210701', '20210720', 0
 );
+
 #default값 null값 제외
 insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
-	StartDate, EndDate, PayDate)
-values (1,2,'홈페이지만들기','펀딩프로젝트만듭니다.',5000000,now(),'2021-6-30','2021-7-12');
+	StartDate, EndDate)
+values (2,2,'청년들이 모여 1919년 청년들을 재해석하다.',
+'청년 단체 피움에서 직접 작업한 연극 <그날의 기록>은
+1919년도 3.1 운동의 거점이 된 2.8 독립선언문의 내용으로,
+그중에서도 많이 알려지지 못한 여성 운동가를 통해 기록되지 않은
+그들의 투쟁과 누릴 수 없었던 삶을 재해석한 작품입니다.
+이를 통해 그들의 의지와 열정을 기억하고자 하였고,
+그 뜨거운 의지가 현시대를 살아가고 있는 청년들에게 새로운 울림이 되기를 기대합니다.
+1919년 당시의 뜨거움을 관객분들에게 전달하기 위해 피움에서는
+답사, 역사서적, 토론 등 다양한 방법으로 매 순간 공연의 완성도를 높이고 있습니다.
+많은 기대 부탁드립니다.',500000,'20210630','20210713');
+
 insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
-	StartDate, EndDate, PayDate)
-values (2,3,'보드게임','부루마블입니다.',15000000,now(),'2021-7-1','2021-7-12');
+	StartDate, EndDate)
+values (3,3,'[RE:PLA] 쓰레기도 줄여주고 플라스틱 업사이클까지??',
+'버려지는 플라스틱이 쓰레기를 줄이는 제품으로 돌아오다',
+500000,'20210625','20210730');
+
 insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
-	StartDate, EndDate, PayDate)
-values (1,4,'UDT 훈련 수기, <내가 유디티가 된 이유> 출간','UDT 훈련 수기, <내가 유디티가 된 이유> 출간.',10000000,now(),'2021-6-30','2021-7-12');
+	StartDate, EndDate)
+values (4,6,'청사과와 청포도의 싱그러운 만남 <애플머스캣> 그린 퍼퓸',
+'청사과는 여름철에 많은 사랑을 받는 과일인데요.
+ 흐르는 물에 잘 씻어 껍질을 벗기지 않은 채로 한 입 와삭 베어 물면 상큼 달달한 과즙의 향이 퍼집니다.
+ 일반적인 사과와 달리 청사과는 좀 더 빨리 수확을 하며 여름 제철 과일인 만큼 한여름의 향기를 품고 있습니다.',1000000,now(),'20210630','20210730');
+
+
 insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
-	StartDate, EndDate, PayDate)
-values (1,5,'성평등한 하루를 위한 양말','성평등한 하루를 위한 양말.',7000000,now(),'2021-6-10','2021-7-22');
+	StartDate, EndDate)
+values (5,5,'부활 프로젝트 첫번째 이야기,안중근 의사 흉상',
+'하나는 기록된 사진이 없어 그들의 업적, 행동을 주로 된 이미지로 기억하는것.
+ 또 다른 하나는 영웅들의 사진자료가 남아
+영웅의 모습(얼굴)을 바탕으로 그들의 업적, 행동을 기억하는 것. 우리는 흉상으로 그분들의 진실한 모습을 부활시키고자 합니다.',
+2000000,'20210630','20200730');
 
 
 -- FundingInfo(후원정보) - UserInfo(회원정보), Project(프로젝트) 외래키 받음
@@ -157,12 +185,6 @@ insert into fundinginfo values
 #default값 null값 제외
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
 values (2, 1, 2, '12341234',12345,'대구시 북구','아파트203호' );
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
-values (2, 2, 3, '12341234',12345,'대구시 북구','아파트203호' );
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
-values (2, 1, 4, '12341234' ,12345,'대구시 북구','아파트203호');
-insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
-values (2, 1, 1, '3131214' ,12345,'대구시 북구','아파트203호');
 
 
 
@@ -174,22 +196,37 @@ from prjoption;
 
 
 insert into prjoption values
-(00001, 00001, '문구세트A', 30000, '가방2개+연필1자루');
+(1, 1, '실버세트', 50000, '실버 50개+생사초50개');
 -- default값 null값 제외
 insert into prjoption (prjno, OptName, OptPrice,OptContent)
-values (1, '문구세트B', 300000, '필통');
+values (1, '골드세트', 100000, '골드 50개 + 고급장비 상자');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
-values (2,'옵션B', 300000, '메인홈페이지만');
+values (1,'다이아세트', 150000, '다이아 50개 + 고급장비 상자 + 한정 캐릭터 1종');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
-values (1,'문구세트C' ,500000, '가방3개+연필 2자루');
+values (2,'방구석 1열', 15000, 'USB로 공연영상 제공');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
-values (1,'문구세트D',100000, '연필1자루');
+values (2,'방구석 1열', 22000, 'USB로 공연영상 제공 / '그날의 기록' 제작 이야기가 담긴 책');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
-values (3,'부루마블',100000, '부루마블세트');
+values (2,'방구석 1열', 35000, 'USB로 공연영상 제공/그날의기록 제작 이야기가 담긴 책/그날의기록노트');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
-values (4,'사인도서',100000, '작가 친필사인이 추가된 도서');
+values (3,'얼리버드E', 18000, '마스크훅3개');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
-values (5,'세트1',100000, '흰색양말+파란색양말');
+values (3,'얼리버드F', 25000, '마스크훅3개+업사이클립2개');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (3,'얼리버드G', 51000, '마스크훅3개+업사이클립2개+뚜밴커터2개');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (4,'애플머스캣 EDP 30ml', 40000, '애플머스캣 EDP 30ml');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (4,'애플머스캣 EDP 30ml*2', 75000, '애플머스캣 EDP 30ml*2');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (4,'애플머스캣 EDP 30ml*3', 110000, '애플머스캣 EDP 30ml*3');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (5,'안중근 흉상 A세트+배송비무료', 40000, '안중근 흉상 A(1번형) + 안중근 흉상 A 전용 고급 케이스');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (5,'안중근 흉상 B세트+배송비무료', 75000, '안중근 흉상B(2번형) + 안중근 흉상 B 전용 고급 케이스');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (5,'안중근 흉상 C세트+배송비무료', 110000, '안중근 흉상 C(3번형) + 안중근 흉상 C 전용 고급 케이스');
+
 
 
 
@@ -209,13 +246,6 @@ values (2, 2, '잘되고있어요');
 
 
 
--- addresses(주소)
-select 
-	addr_id, street, city, state, zip, country 
-from addresses ;
-
-insert into addresses values
-(00001, '달서구로', '대구', '달서구', '000-00-01', '진천동' );
 
 
 
