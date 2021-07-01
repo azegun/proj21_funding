@@ -39,46 +39,46 @@
 		</ul>
 		</div>
 	</div>
-			<h2>문의하기</h2>
-			<form action="<%=request.getContextPath()%>/qnaSuccess"
-				method="post">
-				<table>
-					<tr>
-						<td class="td_left"><label for="categoryNo">분류</label></td>
-						<td class="td_right"><select name="categoryNo.categoryNo">
-								<c:forEach var="bc" items="${bc }">
-									<option value="${bc.categoryNo }">${bc.categoryName }</option>
-								</c:forEach>
-						</select></td>
-					</tr>
-
-					<tr>
-						<td class="td_left"><label for="qnaTitle">제목</label></td>
-						<td class="td_right"><input type="text" name="qnaTitle"
-							id="qnaTitle" required="required"></td>
-					</tr>
-					<tr>
-						<td class="td_left"><label for="qnaContent">내용</label></td>
-						<td class="td_right"><textarea name="qnaContent"
-								id="qnaContent" cols="40" rows="15" required="required"></textarea></td>
-					</tr>
-					<tr>
-						<td class="td_left"><label for="qnaFile">파일첨부</label></td>
-						<td class="td_right"><input type="file" name="qnaFile"
-							id="qnaFile"></input></td>
-					</tr>
-					<tr>
-						<td><input type="hidden" id="userNo" name="userNo.userNo"
-							value="${authInfo.userNo }" size=40 required="required"
-							readonly="readonly" /></td>
-					</tr>
-				</table>
-				<section id="commandCell">
-					<input type="submit" value="등록">&nbsp;&nbsp; <input
-						type="reset" value="다시쓰기">
-				</section>
-			</form>
-			<a href="/proj21_funding/qnauserview"><button id="go_qna">돌아가기</button></a>
+		<div id="quesall">
+			<div id="question-title">
+				<h2>문의하기</h2>
+			</div>
+			<div id="questioncont">
+				<form action="<%=request.getContextPath()%>/qnaSuccess"
+					method="post">
+					<dl>
+						<dt class="td_left"><label for="categoryNo">분류</label></dt>
+						<dd class="td_right"><select name="categoryNo.categoryNo">
+									<c:forEach var="bc" items="${bc }">
+										<option value="${bc.categoryNo }">${bc.categoryName }</option>
+									</c:forEach>
+							</select></dd>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="qnaTitle">제목</label></dt>
+						<dd class="td_right"><input type="text" name="qnaTitle"
+								id="qnaTitle" required="required"></dd>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="qnaContent">내용</label></dt>
+						<dd class="td_right"><textarea name="qnaContent"
+									id="qnaContent" cols="40" rows="15" required="required"></textarea></dd>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="qnaFile">파일첨부</label></dt>
+						<dd class="td_right"><input type="file" name="qnaFile"
+								id="qnaFile"></input></dd>
+					</dl>
+						<div id="hidden"><input type="hidden" id="userNo" name="userNo.userNo"
+								value="${authInfo.userNo }" size=40 required="required"
+								readonly="readonly" /></div>
+					<section id="commandCell">
+						<input type="submit" value="등록">&nbsp;&nbsp; <input
+							type="reset" value="다시쓰기">
+					</section>
+				</form>
+			</div>
+		</div>
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer_menu.jsp" />

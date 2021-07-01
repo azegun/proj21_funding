@@ -67,6 +67,7 @@ span.notice{
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	float:left;
+	text-align: center;
 }
 
 .cate {
@@ -234,17 +235,16 @@ li.title-box {
 	box-sizing: border-box;
 	background: rgb(255, 255, 255);
 	margin: 0px;
-}
-
-#noticesearch{
+	cursor: pointer;
 }
 
 #noticesearch select{
 	height: 45px;
+	width: 12%;
 }
 
 #noticesearch input[type=text]{
-  width: 75%;
+  width: 77%;
   height: 45px;
   padding: 0px 20px;
   margin: 0px;
@@ -259,6 +259,7 @@ li.title-box {
 	width: 10%;
 	background-color: #007ac3;
 	color : white;
+	margin: 0px;
   	border-radius: 0px;
   	border: 0px;
   	cursor: pointer;
