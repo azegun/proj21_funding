@@ -31,6 +31,8 @@ public interface ProjectMapper {
 //	프로젝트 삭제
 	int removeProject(int prjNo);
 	
+	int updateEndYn();
+	
 	
 	
 }

@@ -3,18 +3,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%=request.getContextPath()%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>100펀딩 - 크리에이터를 위한 크라우드펀딩</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico">
 <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 	$(function() {
 		
@@ -29,7 +28,6 @@
 </script>
 </head>
 <body>
-
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header.jsp" />
@@ -37,7 +35,7 @@
 		<%-- ${projects } --%>
 		<!-- 프로젝트검색 부분 개발중  -->
 		<section>
-			<form action="projectList" method="post">
+			<form action="<%=request.getContextPath()%>/projectList/${pCategoryNo }" method="post">
 				<input type = "hidden" name="currentPage" value="1">
 				<input type = "hidden" name="cntPerPage" value="${pagination.cntPerPage}">
 				<input type = "hidden" name="pageSize" value="10">
@@ -83,6 +81,7 @@
 		         </div>
 		         <!-- /paginate -->
 				<button  id="MOVE_TOP_BTN">TOP</button>
+
 	
 	<footer>
 		<jsp:include page="/WEB-INF/view/home/footer.jsp" />
@@ -93,7 +92,7 @@
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize,finishYn,keyword,searchKeyword){
     
-    var url = "${pageContext.request.contextPath}/projectList";
+    var url = "${pageContext.request.contextPath}/projectList/${pCategoryNo }";
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;

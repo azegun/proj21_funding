@@ -73,5 +73,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return mapper.showJoinPrjAndCategory(prjNo);
 	}
 
+	@Override
+	public int modifyEndYn() {
+		return mapper.updateEndYn();
+	}
+
 
 }

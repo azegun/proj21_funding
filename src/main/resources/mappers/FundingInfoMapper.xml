@@ -44,10 +44,20 @@
 	<!--회원별 프로젝트 후원 현황 리스트  -->
 	<select id="selectFundingInfoByUserNo" resultMap="resFundingInfo" parameterType="int">
 		select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, 
-				o.optprice,p.StartDate , p.EndDate , p.PayDate , p.EndYN ,f.PayYN
+				o.optprice,p.StartDate , p.EndDate , p.EndYN ,f.PayYN
 		  from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo
 		 where f.userno = #{userNo.userNo} order by f.fundingno desc; 
 	 </select>
+	<!-- 맵으로 -->
+	
+	<select id="selectFundingInfoByUserNoMap" resultMap="resFundingInfo">
+		select f.prjNo,f.FundingNo ,p.PrjName ,o.optname, o.OptContent, 
+				o.optprice,p.StartDate , p.EndDate , p.EndYN ,f.PayYN
+		  from fundinginfo f join project p on f.PrjNo = p.PrjNo join prjoption o on f.OptNo = o.OptNo
+		 where f.userno = #{userNo} order by f.fundingno desc LIMIT #{pageSearch}, #{cntPerPage }; 
+	 </select>
+	
+	
 	
 	<select id="selectFundingInfoByPrjNo" resultMap="resFundingInfo">
 		select FundingNo, UserNo, PrjNo, OptNo, AccountNo, PayYN, EndYN
@@ -66,4 +76,17 @@
 			from fundinginfo f 
 	  join prjoption o on o.optno= f.OptNo group by o.prjNo;
 	</select> -->
+	
+	<!-- 달성률 100이넘고 마감날짜가 지났고 payyn이 0이거나 null인 것들을 payyn 1로 업데이트  -->
+	<update id="updatePayYes">
+	update fundinginfo f join project p on f.prjno = p.prjno 
+ set f.payYn = 1
+ where f.prjNo in ( select r1.prjno from (select p.prjno, p.Prjname,p.prjgoal, round(sum(optprice)/prjgoal*100,2) as rate
+		  from fundinginfo f
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		 group by p.prjNo
+		 ) as r1
+where rate>=100) and (payyn=0 or payyn is null) and <![CDATA[ p.endDate  < now();]]>	</update>
 </mapper>

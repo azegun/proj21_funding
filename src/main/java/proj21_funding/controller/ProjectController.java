@@ -1,6 +1,8 @@
 package proj21_funding.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +28,7 @@ import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
+import proj21_funding.dto.paging.Pagination;
 import proj21_funding.dto.project.ProjectJoin;
 import proj21_funding.service.FundingInfoService;
 import proj21_funding.service.MessageService;
@@ -54,22 +57,79 @@ public class ProjectController {
 	private PrjBoardService boardService;
 	
 //	모든 프로젝트
-	@RequestMapping("/projectListAll")
-	public ModelAndView listAll() {
-		List<Project> projects = projectService.showProjectListAll();
-		List<ProjectJoin> prjs = joinService.showProjectJoinAll();
+	@RequestMapping("/projectList")
+	public ModelAndView listAll(@RequestParam(value="keyword",defaultValue = "total") String keyword,
+			@RequestParam(value="searchKeyword", required = false,defaultValue = "") String searchKeyword,
+			@RequestParam(value="finishYn", required = false,defaultValue = "notFinished") String finishYn,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "12") int cntPerPage,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "9") int pageSize, HttpSession session) throws Exception {
+		
+		int pageSearch = (currentPage-1)*cntPerPage;
+		
+		Map<String,Object> listMap = new HashMap<String,Object>();
+		listMap.put("keyword", keyword);
+		listMap.put("searchKeyword", searchKeyword);
+		listMap.put("finishYn",finishYn);
+		listMap.put("currentPage",currentPage );
+		listMap.put("cntPerPage", cntPerPage);
+		listMap.put("pageSize",pageSize );
+		listMap.put("pageSearch",pageSearch);
+		
+		List<ProjectJoin> prjs = joinService.showProjectListByMap(listMap);
+		int listCount=joinService.showProjectListByMapCount(listMap);
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		pagination.setTotalRecordCount(listCount);
+		
+		session.setAttribute("pagination", pagination);
+		session.setAttribute("keyword", keyword);
+		session.setAttribute("searchKeyword", searchKeyword);
+		session.setAttribute("finishYn", finishYn);
+
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("project/list");
-		mav.addObject("projects", projects);
 		mav.addObject("prjs", prjs);
+		mav.addObject("listCount", listCount);
 		return mav;
 	}
 
-	@RequestMapping("/categoryByProject")
-	public String category(@RequestParam("pCategoryNo")int pCategoryNo, Model model) {
-		List<ProjectJoin> prjs = joinService.showProjectJoinByPcategoryno(pCategoryNo);
+	@RequestMapping("/projectList/{pCategoryNo}")
+	public String category(@PathVariable("pCategoryNo")int pCategoryNo, Model model,
+			@RequestParam(value="keyword",defaultValue = "total") String keyword,
+			@RequestParam(value="searchKeyword", required = false,defaultValue = "") String searchKeyword,
+			@RequestParam(value="finishYn", required = false,defaultValue = "notFinished") String finishYn,
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session) throws Exception {
+		
+		int pageSearch = (currentPage-1)*cntPerPage;
+		
+		Map<String,Object> listMap = new HashMap<String,Object>();
+		listMap.put("keyword", keyword);
+		listMap.put("searchKeyword", searchKeyword);
+		listMap.put("finishYn",finishYn);
+		listMap.put("currentPage",currentPage );
+		listMap.put("cntPerPage", cntPerPage);
+		listMap.put("pageSize",pageSize );
+		listMap.put("pageSearch",pageSearch);
+		listMap.put("category",pCategoryNo);
+				
+		List<ProjectJoin> prjs = joinService.showProjectListByMap(listMap);
+		int listCount=joinService.showProjectListByMapCount(listMap);
+		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+		pagination.setTotalRecordCount(listCount);
+		
+		session.setAttribute("pagination", pagination);
+		session.setAttribute("keyword", keyword);
+		session.setAttribute("searchKeyword", searchKeyword);
+		session.setAttribute("finishYn", finishYn);
+		
+//		List<ProjectJoin> prjs = joinService.showProjectJoinByPcategoryno(pCategoryNo);
 		model.addAttribute("prjs", prjs);
-		return "project/list";		
+		model.addAttribute("pCateogryNo", pCategoryNo);
+		model.addAttribute("listCount", listCount);
+		return "project/listByCategory";		
 	}
 	
 	
@@ -140,7 +200,8 @@ public class ProjectController {
 		int prjNo = (int) session.getAttribute("prjNo");
 		try{
 		uai = (UserAuthInfo) session.getAttribute("authInfo");
-		
+		System.out.println(request.getParameter("price"));
+		System.out.println(request.getParameter("optNo"));
 		String userId = uai.getUserId();
 		UserInfo ui = userService.showUserInfoById(userId);
 //		System.out.println(ui);
@@ -156,10 +217,10 @@ public class ProjectController {
 		return mav;
 		} catch (NullPointerException e) {
 			return new ModelAndView("redirect:/login");
-		} catch (NumberFormatException e) {
-			System.out.println("들어옴");
-			return new ModelAndView("redirect:/prjDetail/"+prjNo);
-		}
+		} /*
+			 * catch (NumberFormatException e) { return new
+			 * ModelAndView("redirect:/prjDetail/"+prjNo); }
+			 */
 	}
 	
 	

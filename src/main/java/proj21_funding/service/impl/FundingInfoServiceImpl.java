@@ -1,6 +1,7 @@
 package proj21_funding.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,16 @@ public class FundingInfoServiceImpl implements FundingInfoService {
 	@Override
 	public int showSumByUserNo(int userNo) {
 		return mapper.selectSumByUserNo(userNo);
+	}
+
+	@Override
+	public List<FundingInfo> showFundingInfoByUserNoMap(Map<String, Object> listMap) {
+		return mapper.selectFundingInfoByUserNoMap(listMap);
+	}
+
+	@Override
+	public int modifyPayYes() {
+		return mapper.updatePayYes();
 	}
 
 

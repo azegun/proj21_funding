@@ -1,6 +1,7 @@
 package proj21_funding.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -18,8 +19,11 @@ public interface FundingInfoMapper {
 	int insertFundingInfo(FundingInfo fundingInfo);
 	
 	List<FundingInfo> selectFundingInfoByUserNo(int userNo);
+	List<FundingInfo> selectFundingInfoByUserNoMap(Map<String,Object> listMap);
 	// 프로젝트 번호로 펀딩정보 검색
 	List<FundingInfo> selectFundingInfoByPrjNo(int prjNo);
+	
+	int updatePayYes();
 	
 
 }

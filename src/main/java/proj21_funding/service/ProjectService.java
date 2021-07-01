@@ -21,6 +21,8 @@ public interface ProjectService {
 	int joinUpdateProjectAndPrjoptionByNo(Map<String, Object> map);
 //  프로젝트 + 카테고리 출력
 	Project showJoinPrjAndCategory(int prjNo);
+//	날짜지나면 endyn수정
+	int modifyEndYn();
 	
 
 }

@@ -83,4 +83,14 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 		return mapper.selectProjectJoinByMapCount(listMap);
 	}
 
+	@Override
+	public List<ProjectJoin> showProjectListByMap(Map<String, Object> listMap) {
+		return mapper.selectProjectListByMap(listMap);
+	}
+
+	@Override
+	public int showProjectListByMapCount(Map<String, Object> listMap) {
+		return mapper.selectProjectListByMapCount(listMap);
+	}
+
 }

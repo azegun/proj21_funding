@@ -31,8 +31,9 @@ $(function(){
 	var sCont="";
 		sCont+="<input type='hidden' class='price' name='price' value='"+price+"'/>";
 		sCont+="<input type='hidden' class='optNo' name='optNo' value='"+optNo+"'/>";
-		$(".fundingForm:last-child").prepend(sCont); 
+		$(".fundingForm").prepend(sCont); 
 		sCont="";
+		console.log(1);
 	}); 
 	
 	$(".fund").click(function(){
@@ -85,7 +86,7 @@ $(function(){
 					<div id="funding-ing">
 						<span id="ing1">펀딩 진행중</span><br>
 						<span id="ing2">목표 금액인 ${prj[0].prjNo.prjGoal }원이 모여야만 결제됩니다.</span><br>
-						<span id="ing2">결제는 ${prj[0].prjNo.payDate }에 다함께 진행됩니다.</span>
+						<span id="ing2">결제는 ${prj[0].prjNo.endDate }에 다함께 진행됩니다.</span>
 					</div>
 				</aside>
 			</div>
@@ -122,6 +123,5 @@ $(function(){
 				<jsp:include page="/WEB-INF/view/project/prjBoard.jsp" />
 			</div>
 		</div>
-	</div>
 </body>
 </html>

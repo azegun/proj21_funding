@@ -1,6 +1,7 @@
 package proj21_funding.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -16,4 +17,8 @@ public interface FundingInfoService {
 	
 	int addFundingInfo(FundingInfo fundingInfo);
 	List<FundingInfo> showFundingInfoByUserNo(int userNo);
+	List<FundingInfo> showFundingInfoByUserNoMap(Map<String,Object> listMap);
+	
+	int modifyPayYes();
+
 }
