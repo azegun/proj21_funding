@@ -47,74 +47,98 @@
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
 		<section id="userInfoArea">
-			<h1>회 원 정 보</h1>
 			<form:form modelAttribute="userInfo">
 			<form:errors />			
 				<fieldset id="userInfoForm">
-				<p>
-					<label>회 원 계 정</label>:
-					<form:input path="userId" readonly="true" value="${userInfo.userId}" />
-				</p>
-				<p id="errors">&nbsp;</p>
-				<p>
-					<label>비 밀 번 호 </label>:
-					<form:button type = "button" onclick="openCh()">비밀번호 변경</form:button>
-				</p>
-				<p id="errors">&nbsp;</p>
-				<p>
-					<label>회 원 성 명</label>:
-					<form:input path="userName" readonly="true" value="${userInfo.userName}" /> 
-				</p>
-				<p id="errors">&nbsp;</p>				
-				<p>
-					<label>회 원 별 명</label>:
-					<form:input path="nickName" value="${userInfo.nickName}"/> 
-				</p>
-				<p id="errors"><form:errors path="nickName"/>&nbsp;</p>
-				<p>
-					<label> 이 메 일 </label>:
-					<form:input path="email" value="${userInfo.email}"/> 
-				</p>
-				<p id="errors"><form:errors path="email"/>&nbsp;</p>
-				<p>
-					<label>회 원 H.P</label>:
-					<form:input path="userPhone" value="${userInfo.userPhone}"/> 
-				</p>
-				<p id="errors">&nbsp;</p>				
-				<p>
-					<label>우 편 번 호</label>:
-					<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true"/> 
-					<form:button type="button" onclick="findAddr()">검색</form:button>
-				</p>
-				<p id="errors">&nbsp;</p>
-				<p>
-					<label>주  소</label>:
-					<form:input path="address" id="member_addr" readonly="true" value="${userInfo.address}"/> 
-				</p>
-				<p id="errors"><form:errors path="address"/>&nbsp;</p>	
-				<p>
-					<label>상 세 주 소</label>:
-					<form:input path="detailAddress" value="${userInfo.detailAddress}"/> 
-				</p>
-				<p id="errors">&nbsp;</p>
-				<p>
-					<label>은 행 명</label>:
-					<form:input path="bankName" value="${userInfo.bankName}"/> 
-				</p>
-				<p id="errors">&nbsp;</p>
-				<p>
-					<label>예 금 주</label>:
-					<form:input path="accountHolder" /> 
-				</p>
-				<p id="errors">&nbsp;</p>	
-				<p>
-					<label>계 좌 번 호</label>:
-					<form:input path="bankAccount" value="${userInfo.bankAccount}"/> 									
-				</p>
-				<p id="errors">&nbsp;</p>
+				<h2>회원정보</h2>
+					<div id="infodata">
+						<div id="infoCont">
+							<p>
+								<label>아이디</label><br>
+								<form:input path="userId" readonly="true" value="${userInfo.userId}" />
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+						<p>
+							<label>비밀번호</label><br>
+							<form:button type = "button" onclick="openCh()">비밀번호 변경</form:button>
+						</p>
+						<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+						<p>
+							<label>이름</label><br>
+							<form:input path="userName" readonly="true" value="${userInfo.userName}" /> 
+							</p>
+							<p id="errors">&nbsp;</p>	
+							</div>
+						<div id="infoCont">			
+							<p>
+								<label>별명</label><br>
+								<form:input path="nickName" value="${userInfo.nickName}"/> 
+							</p>
+							<p id="errors"><form:errors path="nickName"/>&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>이메일</label><br>
+								<form:input path="email" value="${userInfo.email}"/> 
+							</p>
+							<p id="errors"><form:errors path="email"/>&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>H.P</label><br>
+								<form:input path="userPhone" value="${userInfo.userPhone}"/> 
+							</p>
+							<p id="errors">&nbsp;</p>				
+						</div>
+						<div id="member_post1">
+							<p>
+								<label>주소</label><br>
+								<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true"/> 
+								<form:button type="button" onclick="findAddr()" id="addresssearch">검색</form:button>
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<form:input path="address" id="member_addr" readonly="true" value="${userInfo.address}"/> 
+							</p>
+							<p id="errors"><form:errors path="address"/>&nbsp;</p>	
+						</div>
+						<div id="infoCont">
+							<p>
+								<form:input path="detailAddress" value="${userInfo.detailAddress}"/> 
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>은행명</label><br>
+								<form:input path="bankName" value="${userInfo.bankName}"/> 
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>예금주</label><br>
+								<form:input path="accountHolder" /> 
+							</p>
+							<p id="errors">&nbsp;</p>	
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>계좌번호</label><br>
+								<form:input path="bankAccount" value="${userInfo.bankAccount}"/> 									
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+					</div>
 				<div id="btn">
-					<form:button id="sub" value="submit">수정하기</form:button>											
-					<a href="<c:url value='/account/userReSign'/>"><form:button id="sub" type="button" value="del">탈퇴하기</form:button></a>
+					<form:button id="sub1" value="submit">수정하기</form:button>											
+					<a href="<c:url value='/account/userReSign'/>"><form:button id="sub2" type="button" value="del">탈퇴하기</form:button></a>
 				</div>
 				</fieldset>
 			</form:form>

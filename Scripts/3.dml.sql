@@ -5,8 +5,10 @@ select
 	MsgContent, SendDate, ReadYN, DelSend, DelRecevie
 from message;
 
- insert into message values 
-(1,'test1', 'kykim', '고전 게임의 재미를 계승한 모바일 게임 “퍼스트클로버”에  참여해주셔서 감사합니다.', now(), 1, 0, 0);
+insert into message
+	 (SendUser, ReceiveUser, MsgContent, SendDate, ReadYN, DelSend, DelRecevie)
+ values 
+ ('test1', 'kykim', '고전 게임의 재미를 계승한 모바일 게임 “퍼스트클로버”에  참여해주셔서 감사합니다.', now(), 1, 0, 0);
 
 #default값 제외
 insert into message (
@@ -27,8 +29,6 @@ values
 ( 'mywns', 'test1', '"청사과와 청포도의 싱그러운 만남 <애플머스캣> 그린 퍼퓸"에  참여해주셔서 감사합니다.',  0),
 ( 'pinethx', 'kykim', '"부활 프로젝트 첫번째 이야기,안중근 의사 흉상"에  참여해주셔서 감사합니다.',  0),
 ( 'pinethx', 'test1', '"부활 프로젝트 첫번째 이야기,안중근 의사 흉상"에  참여해주셔서 감사합니다.',  0);
-
-
 
 
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
@@ -431,6 +431,11 @@ values (8,'bicolor - 커플세트', 100000, '월계수 암시반지 - bicolor*2'
 
 
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
+select 
+	PostNo, PrjNo, UserNo,
+	PostContent ,PostDate ,PostFile 	
+from prjboard;
+
 insert into prjboard values
 (00001, 00001, 00003, '고생들했어요', now(), null );
 #default값 null값 제외

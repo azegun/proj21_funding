@@ -49,7 +49,7 @@ ${optList }
 			<h2>프로젝트</h2>
 		<form  action= "<%=request.getContextPath() %>/myListUpdate/${authInfo.userNo}" method="post">
 			<section id = "detaillist_content">
-				<table border=1 >
+				<table>
 						<tbody>
 								<tr class = "col1">
 										<td class="td_right" colspan="2" >
