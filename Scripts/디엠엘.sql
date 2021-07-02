@@ -31,8 +31,6 @@ values
 ( 'pinethx', 'test1', '"부활 프로젝트 첫번째 이야기,안중근 의사 흉상"에  참여해주셔서 감사합니다.',  0);
 
 
-
-
 -- BoardCategory (글분류)-> Board(사이트게시판) 외래키
 select
 	CategoryNo, CategoryName, CategoryClass 
@@ -97,7 +95,7 @@ values ('kykim', password('1111'),'김경연', '경연짱123', 'kymonk@naver.com
 		('sgkim', password('1111'),'김상건', '김상건', 'tkdrjs7@gmail.com', '01012345678', '222333', '대구', '달서구','국민은행','김상건','12346546541',0),
 		('mywns', password('1111'),'임준엽', '임준엽', 'wnsduq7@gmail.com', '01012345678', '222333', '대구', '달서구','우리은행','임준엽','9687654134',0),
 		('pinethx', password('1111'),'유한솔', '유한솔', 'gksthf7@gmail.com', '01012345678', '222333', '대구', '달서구','대구은행','유한솔','654321789',0),
-		('chamdodari2', password('1111'),'김예진', '김예진', 'chamdodari2@gmail.com', '01012345678', '222333', '대구', '달서구','카카오뱅크','김예진','1321545',0),
+		('chamdo2', password('1111'),'김예진', '김예진', 'chamdodari2@gmail.com', '01012345678', '222333', '대구', '달서구','카카오뱅크','김예진','1321545',0),
 		('mjlee', password('1111'),'이민정', '이민정', 'alswjd7@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,1),
 		('mkjung', password('1111'),'정민강', '정민강', 'alsrkd7@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
 		('jrkim', password('1111'),'김재룡', '김재룡', 'wofyd7@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,1),
@@ -400,10 +398,19 @@ select
 from prjboard;
 
 insert into prjboard values
-(00001, 00001, 00001, '고생들했어요', now(), null );
+(00001, 00001, 00003, '고생들했어요', now(), null );
 #default값 null값 제외
 insert into prjboard (PrjNo, UserNo, PostContent )
-values (2, 2, '잘되고있어요');
+values
+(2, 3, '고생들했어요'),
+(4, 3, '고생들했어요'),
+(5, 3, '고생들했어요'),
+(1, 2, '잘되고있어요'),
+(3, 2, '잘되고있어요'),
+(4, 2, '잘되고있어요'),
+(5, 2, '잘되고있어요'),
+(1, 4, '응원합니다. 화이팅!'),
+(2, 4, '응원합니다. 화이팅!');
 
 
 
