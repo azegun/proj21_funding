@@ -68,7 +68,7 @@
 				<div class="slider">						
 					<c:forEach items="${newprj}" var="newprj">
 						<div class="post">
-							<a href="<c:url value='/prjDetail/${newprj.prjNo}'/>"><img src="images/project/project${newprj.prjNo}.jpg">${newprj.prjName}</a>
+							<a href="<c:url value='/prjDetail/${newprj.prjNo}'/>"><img src="images/project/project${newprj.prjNo}.jpg"><span class="listprojtitle">${newprj.prjName}</span></a>
 						</div>
 					</c:forEach>										
 				</div>			
@@ -79,7 +79,7 @@
 				<div class="slider">								
 					<c:forEach items="${recommendPrjs}" var="rePrjs">
 						<div class="post">
-							<a href="<c:url value='/prjDetail/${rePrjs.prjNo}'/>"><img src="images/project/project${rePrjs.prjNo}.jpg">${rePrjs.prjName}</a>
+							<a href="<c:url value='/prjDetail/${rePrjs.prjNo}'/>"><img src="images/project/project${rePrjs.prjNo}.jpg"><span class="listprojtitle">${rePrjs.prjName}</span></a>
 						</div>
 					</c:forEach>
 				</div>					
@@ -90,7 +90,7 @@
 					<div class="slider">							
 					<c:forEach items="${endprjs}" var="endprjs">
 						<div class="post">
-							<a href="<c:url value='/prjDetail/${endprjs.prjNo}'/>"><img src="images/project/project${endprjs.prjNo}.jpg">${endprjs.prjName}</a>
+							<a href="<c:url value='/prjDetail/${endprjs.prjNo}'/>"><img src="images/project/project${endprjs.prjNo}.jpg"><span class="listprojtitle">${endprjs.prjName}</span></a>
 						</div>						
 					</c:forEach>					
 				</div>					
