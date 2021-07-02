@@ -22,7 +22,9 @@
 				<fieldset>
 					<div id="nickName">${board.userNo.nickName}</div>				
 					<div id="postDate"><tf:formatDateTime value="${board.postDate}" pattern="yyyy-MM-dd" /></div>				
-					<%-- <div id="postFile"><img src="${img}"></div> --%>
+					<c:if test="${!empty board.postFile}">
+						<div id="postFile"><img src="data:image/jpeg;base64,${img}" alt="img"></div>	
+					</c:if>
 					<div id="postContent">${board.postContent}</div>
 				</fieldset>	
 			</c:forEach>

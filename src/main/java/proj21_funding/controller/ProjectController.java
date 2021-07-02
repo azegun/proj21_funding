@@ -1,5 +1,7 @@
 package proj21_funding.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -179,22 +182,23 @@ public class ProjectController {
 //		List<Project> prjList=projectService.showProjectListAll();
 		List<PrjBoard> prBd= boardService.showPrjBoardbyPrjNo(prjNo);
 		for(PrjBoard board : prBd){
+			
 			UserInfo user= service.showUserbyNo(board.getUserNo().getUserNo());
 			board.setUserNo(user);	
 			
-			if(board.getPostFile() != null) {
+			if(board.getPostFile() != null) {	
 				try {
 					byte[] imagefile = board.getPostFile();
+					System.out.println("imagefile:"+imagefile);
 					byte[] encodeBase64 = Base64.encodeBase64(imagefile);
 					String base64DataString = new String(encodeBase64 , "UTF-8");
-					session.setAttribute("img", base64DataString);
-					/* System.out.println(base64DataString); */
-					
+					session.setAttribute("img", base64DataString);									
 				} catch (UnsupportedEncodingException e) {				
 					e.printStackTrace();
 				}
 			}		
-		}		
+		}
+		System.out.println(prBd);
 		session.setAttribute("board", prBd);
 		
 		try {
