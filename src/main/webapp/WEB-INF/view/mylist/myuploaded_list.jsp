@@ -25,7 +25,7 @@
 	$(function(){
 		var contextPath = "<%=request.getContextPath()%>";
 		$("#select_list").on("click", function(){
-			window.location.href = contextPath+"/projectListAll";
+			window.location.href = contextPath+"/projectList";
 		});			
 	});
 		
@@ -40,7 +40,7 @@
 		</header>
 			<h4>프로젝트 제목을 선택하시면 자세한 프로젝트 정보를 확인하실 수 있습니다.</h4>
 		<section id= "table_all">
-		<table border= 1>		
+		<table>		
 			<thead id = "column">
 				<tr>
 						<th>번호</th>
