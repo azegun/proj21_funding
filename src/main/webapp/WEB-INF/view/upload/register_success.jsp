@@ -62,7 +62,7 @@ ${optList }
 			<div id ="foot_btn">	
 					
 			</div>	
-		<table border=1>		
+		<table>		
 				<tbody>
 					<tr class = "col1">
 										<td class="td_left"><label for="prjNo">프로젝트번호</label></td>

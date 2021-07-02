@@ -58,7 +58,7 @@ ${optList }
 		</header>
 		<h2>프로젝트 등록하였습니다.</h2>
 		<section id= "table_all">
-			<table border = 1>
+			<table >
 						<tbody>
 								<tr class = "col1">
 										<td class="td_left"><label for="userName">작성자</label></td>

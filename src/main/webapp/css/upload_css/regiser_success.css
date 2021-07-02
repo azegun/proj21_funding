@@ -58,15 +58,21 @@ h2{
     background-color:#ffffff;
     box-shadow: inset 0px 0px 5px white;
 }
+tr{
+
+}
 td{
 	text-align: center;
 	padding: 5px;
 }
 .td_left{
 	width: 150px;
+	 background-color:#A5E3E6;
+	 border-bottom: solid 2px  #A5E3E6;
+	border-right:  solid 2px #A5E3E6;
 }
 .td_right{
-	width: 380px;
+	width: 380px;.
 }
 #userName, #optPrice, #optName, #prjName, #prjGoal{
 	font-size: 15px;
