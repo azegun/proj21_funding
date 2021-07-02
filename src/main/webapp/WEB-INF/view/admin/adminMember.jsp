@@ -181,7 +181,7 @@
 		               <a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${delYn }','${descYn }','${keyword }','${searchKeyword }');">
 		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
-		                  onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize},'${delYn }','${descYn }',${keyword },'${searchKeyword }');">
+		                  onclick="movePage(${pagination.lastPage},${pagination.cntPerPage},${pagination.pageSize},'${delYn }','${descYn }','${keyword }','${searchKeyword }');">
 		                  &gt;&gt; </a>
 		            </div>
 		         </div>

@@ -55,7 +55,9 @@ public class AdminController {
 	
 	@RequestMapping("/admin")
 	public String adminMain() {
+		
 		projectService.modifyEndYn();
+//		달성률 100이넘고 마감날짜가 지났고 payyn이 0이거나 null인 것들을 payyn 1로 업데이트
 		fundingService.modifyPayYes();
 		return "admin/adminMain";
 	}

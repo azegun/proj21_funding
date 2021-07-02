@@ -72,7 +72,6 @@
 </script>
 </head>
 <body>
-${authInfo }
 <div id="page-wrapper">
 	<header>
 		<!-- 사이드바 -->
@@ -204,7 +203,7 @@ ${authInfo }
 		               <a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination1.currentPage}<c:if test="${pagination1.hasNextPage == true}">+1</c:if>,${pagination1.cntPerPage},${pagination1.pageSize},'${category }','${keyword }','${searchKeyword }','${replyYn }');">
 		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
-		                  onclick="movePage(${pagination1.totalRecordCount},${pagination1.cntPerPage},${pagination1.pageSize},'${category }','${searchKeyword }','${replyYn }');">
+		                  onclick="movePage(${pagination1.lastPage},${pagination1.cntPerPage},${pagination1.pageSize},'${category }','${keyword }','${searchKeyword }','${replyYn }');">
 		                  &gt;&gt; </a>
 		            </div>
 		         </div>

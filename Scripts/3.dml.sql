@@ -181,7 +181,25 @@ values (5,5,'부활 프로젝트 첫번째 이야기,안중근 의사 흉상',
 '하나는 기록된 사진이 없어 그들의 업적, 행동을 주로 된 이미지로 기억하는것.
  또 다른 하나는 영웅들의 사진자료가 남아
 영웅의 모습(얼굴)을 바탕으로 그들의 업적, 행동을 기억하는 것. 우리는 흉상으로 그분들의 진실한 모습을 부활시키고자 합니다.',
-2000000,'20210630','20200730','20200730');
+2000000,'20210630','20210730','20210730');
+
+insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
+	StartDate, EndDate, payDate)
+values (6,11,'실무자가 알려주는 굿즈 제조업체 500선',
+'초보자부터 프로까지 누구나 바로 써먹는 실전 책ㅣ전국 제조 업체, 용어, 단가 총 정리!',
+500000,'20210530','20210630','20210630');
+
+insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
+StartDate, EndDate, payDate)
+values (1,12,'세상에서 제일 예쁜 인테리어 무선충전기 <게이즈온 포 홈>',
+'투박하고 못생긴 무선충전기는 이제 끝, 세.젤.예 인테리어 무선충전기를 만나보세요.',
+700000,'20210702','20210730','20210730');
+
+insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
+StartDate, EndDate, payDate)
+values (1,13,'영광의 순간을 위해, 나만 보는 각인링 <월계수 암시반지>',
+'승리와 영광의 상징 월계수. 그 안쪽에는 나만 보는 꿈과 목표를 새기는 암시반지입니다.',
+500000,'20210701','20210830','20210830');
 
 
 
@@ -198,6 +216,8 @@ values (2, 2, 3, '12341234',12345,'대구시 북구','아파트203호' );
 insert into fundinginfo (UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
 values (2, 1, 4, '12341234' ,12345,'대구시 북구','아파트203호');
 
+
+ 
 insert into fundinginfo
 	(UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
 values
@@ -352,33 +372,60 @@ from prjoption;
 
 -- default값 null값 제외
 insert into prjoption (prjno, OptName, OptPrice,OptContent)
-values (1, '골드세트', 100000, '골드 50개 + 고급장비 상자');
+values (1, '      세트', 100000, '골드 50개 + 고급장비 상자');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (1,'다이아세트', 150000, '다이아 50개 + 고급장비 상자 + 한정 캐릭터 1종');
+
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (2,'방구석 1열', 15000, 'USB로 공연영상 제공');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (2,'방구석 1열', 22000, 'USB로 공연영상 제공 / 그날의 기록 제작 이야기가 담긴 책');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (2,'방구석 1열', 35000, 'USB로 공연영상 제공/그날의기록 제작 이야기가 담긴 책/그날의기록노트');
+
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (3,'얼리버드E', 18000, '마스크훅3개');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (3,'얼리버드F', 25000, '마스크훅3개+업사이클립2개');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (3,'얼리버드G', 51000, '마스크훅3개+업사이클립2개+뚜밴커터2개');
+
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (4,'애플머스캣 EDP 30ml', 40000, '애플머스캣 EDP 30ml');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (4,'애플머스캣 EDP 30ml*2', 75000, '애플머스캣 EDP 30ml*2');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (4,'애플머스캣 EDP 30ml*3', 110000, '애플머스캣 EDP 30ml*3');
+
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (5,'안중근 흉상 A세트+배송비무료', 40000, '안중근 흉상 A(1번형) + 안중근 흉상 A 전용 고급 케이스');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (5,'안중근 흉상 B세트+배송비무료', 75000, '안중근 흉상B(2번형) + 안중근 흉상 B 전용 고급 케이스');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (5,'안중근 흉상 C세트+배송비무료', 110000, '안중근 흉상 C(3번형) + 안중근 흉상 C 전용 고급 케이스');
+
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (6,'[얼리버드] PDF 생활용품편 1권', 30000, '<제조백과 500> 생활용품편 (PDF) ( x 1 )');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (6,'PDF 문구편+생활용품편 SET', 35000, '<제조백과 500> 문구편 + 생활용품편 (PDF) ( x 1 )');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (6,'실물책 문구편+생활용품편 SET (배송비 포함)', 40000, '<제조백과 500> 문구편 + 생활용품편 (실물책) ( x 1 )');
+
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (7,'옵션A', 30000, '게이즈온 포 홈 USB-C 골드 케이블 ');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (7,'옵션B', 50000, '게이즈온 포 홈 마블 스탠드 무선충전기');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (7,'옵션C', 100000, '게이즈온 포 홈 마블 스탠드 무선충전기 + 게이즈온 포 홈 화이트 마블 패드 무선충전기 + 게이즈온 포 홈 USB-C 골드 케이블 ');
+
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (8,'basic - 기본세트', 30000, '월계수 암시반지 - basic');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (8,'bicolor - 기본세트', 50000, '월계수 암시반지 - bicolor');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (8,'basic - 커플세트', 100000, '월계수 암시반지 - basic*2');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (8,'bicolor - 커플세트', 100000, '월계수 암시반지 - bicolor*2');
 
 
 

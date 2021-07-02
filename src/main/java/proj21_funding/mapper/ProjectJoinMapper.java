@@ -29,4 +29,12 @@ public interface ProjectJoinMapper {
 	
 	List<ProjectJoin> selectProjectListByMap(Map<String,Object> listMap);
 	int selectProjectListByMapCount(Map<String,Object> listMap);
+	
+//	메인화면프로젝트 리스트
+//	주목할만한 프로젝트
+	List<ProjectJoin> selectMainJumok();
+//	성공임박 프로젝트(성공률 기준 100%임박)
+	List<ProjectJoin> selectMainSuccessImbak();
+//	마감임박 프로젝트(기간기준)
+	List<ProjectJoin> selectMainMagamImbak();
 }

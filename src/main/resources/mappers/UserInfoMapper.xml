@@ -183,13 +183,6 @@
 			</when>
 		</choose>
 		</where>
-		<if test="descYn.equals('desc')">
-			 order by userNo desc
-		</if>
-		<if test="descYn.equals('asc')">
-			 order by userNo asc
-		</if>
-		  LIMIT #{pageSearch}, #{cntPerPage } ;
 	</select>
 
 	
