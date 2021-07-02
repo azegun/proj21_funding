@@ -24,13 +24,13 @@ ul.tabs li{
 }
 
 ul.tabs li.current{
-	 background: #d2e9ff;
-	border-bottom: solid 3px #8ec7ff;
+	 background: #dfdfdf;
+	border-bottom: solid 4px #ffcece;
 	color: #222;
 }
 .register_mid{	
 	display: none;
-	 background: #d2e9ff;
+	 background: #dfdfdf;
 	padding: 15px;
 }
 .register_mid.current{
