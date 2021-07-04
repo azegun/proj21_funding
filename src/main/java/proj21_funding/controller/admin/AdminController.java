@@ -136,10 +136,15 @@ public class AdminController {
 		session.setAttribute("keyword", keyword);
 		session.setAttribute("searchKeyword", searchKeyword);
 		
+		int noticeCount = boardService.BoardCategoryCount(1);
+		int eventCount = boardService.BoardCategoryCount(2);
+		
 		ModelAndView mav= new ModelAndView();
 		mav.setViewName("admin/adminBoard");
 		mav.addObject("pagination", pagination);
 		mav.addObject("listCnt", listCnt);
+		mav.addObject("noticeCount", noticeCount);
+		mav.addObject("eventCount", eventCount);
 		mav.addObject("board", boardService.selectSearchBoardListAdmin(listMap));
 		mav.addObject("bc", bc);
 
@@ -174,7 +179,9 @@ public class AdminController {
 		
 
 		List<QNA> qnaList = qnaService.selectQnaListByMap(listMap);
-		int count = qnaService.selectQnaCountByMap(listMap);	
+		int count = qnaService.selectQnaCountByMap(listMap);
+		int qnaCount = qnaService.QNACount();
+		int replyCount = qnaService.QNAReplyCount();
 		
 		Pagination pagination1 = new Pagination(currentPage, cntPerPage, pageSize);
 		pagination1.setTotalRecordCount(count);
@@ -189,6 +196,8 @@ public class AdminController {
 		mav.addObject("pagination1",pagination1);
 		mav.addObject("qnaList",qnaList);
 		mav.addObject("count",count);
+		mav.addObject("qnaCount",qnaCount);
+		mav.addObject("replyCount",replyCount);
 		
 		return mav;
 	}
@@ -251,6 +260,7 @@ public class AdminController {
 		mav.addObject("fundingStatic", fundingStatic);
 		mav.addObject("regProject", regProject);
 		mav.addObject("successProject", successProject);
+		mav.addObject("listCount", listCount);
 		return mav;
 	}
 	

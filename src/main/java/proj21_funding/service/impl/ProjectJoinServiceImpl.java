@@ -93,4 +93,19 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 		return mapper.selectProjectListByMapCount(listMap);
 	}
 
+	@Override
+	public List<ProjectJoin> selectMainJumok() {
+		return mapper.selectMainJumok();
+	}
+
+	@Override
+	public List<ProjectJoin> selectMainSuccessImbak() {
+		return mapper.selectMainSuccessImbak();
+	}
+
+	@Override
+	public List<ProjectJoin> selectMainMagamImbak() {
+		return mapper.selectMainMagamImbak();
+	}
+
 }

@@ -26,6 +26,14 @@ public interface ProjectJoinService {
 //	프로젝트리스트화면 쓰이는 메소드 검색조건 추가
 	List<ProjectJoin> showProjectListByMap(Map<String,Object> listMap);
 	int showProjectListByMapCount(Map<String,Object> listMap);
+	
+//	메인화면프로젝트 리스트
+//	주목할만한 프로젝트
+	List<ProjectJoin> selectMainJumok();
+//	성공임박 프로젝트(성공률 기준 100%임박)
+	List<ProjectJoin> selectMainSuccessImbak();
+//	마감임박 프로젝트(기간기준)
+	List<ProjectJoin> selectMainMagamImbak();
 
 	
 }

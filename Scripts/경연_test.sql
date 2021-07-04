@@ -220,3 +220,5 @@ select p.prjno,
 		  join userinfo u on p.userno = u.userno
 		  join prjCategory c on p.pcategoryno = c.pcategoryno
 		 group by p.prjNo having enddate > now() order by enddate asc;
+		 
+select count(*) from qna q;

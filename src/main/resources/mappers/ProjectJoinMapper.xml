@@ -353,6 +353,6 @@
 		  right join project p on p.prjno = f.PrjNo 
 		  join userinfo u on p.userno = u.userno
 		  join prjCategory c on p.pcategoryno = c.pcategoryno
-		 group by p.prjNo having <![CDATA[enddate > now()]]> order by enddate asc;
+		 group by p.prjNo having <![CDATA[enddate > now()]]> order by enddate asc limit 4;
 	</select>
 </mapper>

@@ -23,7 +23,6 @@
 	href="/proj21_funding/css/admin_css/sponsorList.css">
 </head>
 <body>
-${prjDetail }
 		<!-- 본문 -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">

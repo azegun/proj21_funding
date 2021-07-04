@@ -21,6 +21,7 @@ public interface QNAMapper {
 	List<Map<String, Object>> SelectUserList (@Param("userNo") int userNo, @Param("pageSearch") int pageSearch, @Param("cntPerPage") int cntPerPage);
 	
 	int QNACount();
+	int QNAReplyCount();
 
 	int QNAUserCount(int userNo);
 	

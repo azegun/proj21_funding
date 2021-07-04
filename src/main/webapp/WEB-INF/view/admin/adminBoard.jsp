@@ -50,8 +50,8 @@
 					</div>
 					<div class="panel-body">
 						<ul>
-							<li><strong>공지사항 수</strong> : 개</li>
-							<li><strong>이벤트 수</strong> : 개</li>
+							<li><strong>공지사항 수</strong> : ${noticeCount }개</li>
+							<li><strong>이벤트 수</strong> : ${eventCount }개</li>
 						</ul>
 					</div>
 				</div>

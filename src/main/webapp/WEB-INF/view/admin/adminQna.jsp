@@ -98,9 +98,9 @@
 					</div>
 					<div class="panel-body">
 						<ul>
-							<li><strong>전체 QnA 수</strong> : 개</li>
-							<li><strong>답변완료 QnA 수</strong> : 개</li>
-							<li><strong>미완료 QnA 수</strong> : 개</li>
+							<li><strong>전체 QnA 수</strong> : ${qnaCount } 개</li>
+							<li><strong>답변완료 QnA 수</strong> : ${replyCount } 개</li>
+							<li><strong>미완료 QnA 수</strong> : ${qnaCount-replyCount } 개</li>
 							
 						</ul>
 					</div>

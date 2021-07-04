@@ -90,7 +90,7 @@
 				</div>
 				<input type="text" class="searchKeyword" name="searchKeyword"/>
 				<input type="submit" class="searchBtn" value="검색"/>
-				<span>검색결과 : ${fn:length(userList) }명</span>
+				<span>검색결과 : ${listCount }명</span>
 				</form>
 				<table class="table table-stripedPink table-bordered ">
 					<thead>

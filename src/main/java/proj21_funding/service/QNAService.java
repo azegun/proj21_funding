@@ -33,6 +33,7 @@ public interface QNAService {
 	List<Map<String, Object>> SelectUserList (int userNo, Pagination pagination) throws Exception;
 	
 	int QNACount() throws Exception;
+	int QNAReplyCount() throws Exception;
 	
 	int QNAUserCount(int userNo) throws Exception;
 //	adminQna
