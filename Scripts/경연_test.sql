@@ -161,3 +161,64 @@ select count(r1.prjno) from	(select p.endDate, p.prjno,p.prjname,u.Nickname as p
 		 group by p.prjNo 
 	having 1=1
 			 ) as r1
+			 
+-- 주목할만한 프로젝트 top4	 
+select p.prjno,
+			 if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
+			  p.Prjname,
+			  p.prjgoal,
+			  u.nickname as prjManager
+			,count(fundingno) as totalCount,
+			prjContent,
+			 c.pcategoryno,
+			  c.pcategoryname,
+			   startDate,
+			    endDate,
+			     ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo having enddate > now() order by rate desc limit 4;
+
+-- 성공 임박 프로젝트 탑 4
+select p.prjno,
+			 if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
+			  p.Prjname,
+			  p.prjgoal,
+			  u.nickname as prjManager
+			,count(fundingno) as totalCount,
+			prjContent,
+			 c.pcategoryno,
+			  c.pcategoryname,
+			   startDate,
+			    endDate,
+			     ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo having rate < 100 and enddate > now() order by rate desc limit 4;
+		 
+select p.prjno,
+			 if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
+			  p.Prjname,
+			  p.prjgoal,
+			  u.nickname as prjManager
+			,count(fundingno) as totalCount,
+			prjContent,
+			 c.pcategoryno,
+			  c.pcategoryname,
+			   startDate,
+			    endDate,
+			     ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo having enddate > now() order by enddate asc;
+		 
+select count(*) from qna q;

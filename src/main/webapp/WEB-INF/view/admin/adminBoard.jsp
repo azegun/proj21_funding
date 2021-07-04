@@ -50,8 +50,8 @@
 					</div>
 					<div class="panel-body">
 						<ul>
-							<li><strong>공지사항 수</strong> : 개</li>
-							<li><strong>이벤트 수</strong> : 개</li>
+							<li><strong>공지사항 수</strong> : ${noticeCount }개</li>
+							<li><strong>이벤트 수</strong> : ${eventCount }개</li>
 						</ul>
 					</div>
 				</div>
@@ -138,7 +138,7 @@
 		               <a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
 		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
-		                  onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
+		                  onclick="movePage(${pagination.lastPage},${pagination.cntPerPage},${pagination.pageSize},'${category }','${keyword }','${searchKeyword }');">
 		                  &gt;&gt; </a>
 		            </div>
 		         </div>

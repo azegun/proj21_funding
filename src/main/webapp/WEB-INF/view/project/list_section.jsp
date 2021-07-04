@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%-- <%
@@ -18,6 +19,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/project_list_css/list_section2.css">
 </head>
 <body>
+<c:set var="now" value="<%=new java.util.Date()%>" />
+<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 
 <%-- ${projects } --%>
 	<div id="listAll">
 		<c:forEach var="prj" items="${prjs }">
@@ -29,11 +32,11 @@
 						</div>
 						<dl class="prjName">
 							<dt><a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a></dt>
-							<dd>제작자 : ${prj.prjManager }</dd>
+							<dd>제작자 : ${prj.prjManager } | ${prj.pCategoryName }</dd>
 							<dd>총 후원자 수 : ${prj.totalCount }</dd>
 						</dl>
 							<div class="prjpercent"><progress value="${prj.totalPrice }" max = "${prj.prjGoal }"></progress></div>
-							<div class="moment"><span class="funding-amount">${prj.totalPrice }원</span><span class="percent">　${prj.totalPrice/prj.prjGoal*100 }%</span></div>
+							<div class="moment"><span class="funding-amount"><fmt:formatNumber value="${prj.totalPrice }" pattern="#,###"/>원</span><span class="percent">　${prj.totalPrice/prj.prjGoal*100 }%</span></div>
 					</div>
 				</div>
 			</div>

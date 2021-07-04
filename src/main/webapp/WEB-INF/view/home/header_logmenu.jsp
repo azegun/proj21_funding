@@ -21,9 +21,6 @@
 		<c:if test="${empty authInfo}">
 			<section id="logon_infomation">
 				<div class="logonmenu">
-					<a href="">마이페이지</a>
-				</div>
-				<div class="logonmenu">
 					<a href="">회원정보관리</a>
 				</div>
 				<div class="logonmenu">
@@ -35,13 +32,7 @@
 				<div class="logonmenu">
 					<a href="">등록한 프로젝트</a>
 				</div>
-				<div class="logonmenu">
-					<a href="">관심 프로젝트</a>
-				</div>
 				<section id="logon_footer">
-					<div class="logonmenu">
-						<a href="">설정</a>
-					</div>
 					<div class="logonmenu">
 						<a href="">로그아웃</a>
 					</div>
@@ -50,9 +41,6 @@
 		</c:if>
 		<c:if test="${!empty authInfo}">
 			<section id="logon_infomation">
-				<div class="logonmenu">
-					<a href="">마이페이지</a>
-				</div>
 				<div class="logonmenu">
 					<a href="<c:url value='/account/userInfo'/>">회원정보관리</a>
 				</div>
@@ -66,13 +54,7 @@
 					<a href="<c:url value = '/homeToMyList/${authInfo.userNo}'/>">등록한
 						프로젝트</a>
 				</div>
-				<div class="logonmenu">
-					<a href="">관심 프로젝트</a>
-				</div>
 				<section id="logon_footer">
-					<div class="logonmenu">
-						<a href="">설정</a>
-					</div>
 					<div class="logonmenu">
 						<a href="<c:url value='/logout'/>">로그아웃</a>
 					</div>

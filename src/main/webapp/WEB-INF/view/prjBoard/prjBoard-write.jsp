@@ -16,11 +16,11 @@
 </head>
 <body>
 	<fieldset id="prjBoardwriteArea">
-	<form:form modelAttribute="prjBoard" enctype="multipart/form-data">
+	<form:form modelAttribute="prjBoard" enctype="multipart/form-data" method="post">
 	<form:errors />
 		<form:hidden path="prjNo" value="${prjNo}"/>
 		<form:hidden path="userNo.userNo" value="${authInfo.userNo}"/>		
-		<p>파일 : <form:input path="postFile" type="file" /></p>
+		<p>파일 : <form:input path="postFile" type="file" accept=".jpg, .jpeg, .png"/></p>
 		<p><form:textarea path="postContent"/><p>	
 		<p id="errors"><form:errors path="postContent" value="${complet}"/>&nbsp;</p>		
 		<form:button>등록하기</form:button>

@@ -38,6 +38,10 @@
     <select id="QNACount" resultType="int">
         SELECT count(*) FROM QNA
     </select>
+    
+    <select id="QNAReplyCount" resultType="int">
+        SELECT count(*) FROM QNA where QnaReply is not null
+    </select>
 	
 	<select id="SelectUserList" resultMap="resQNA">
     	select R1.* FROM(

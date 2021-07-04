@@ -91,4 +91,9 @@ public class QNAImpl implements QNAService {
 		return mapper.updateQNA(qna);
 	}
 
+	@Override
+	public int QNAReplyCount() throws Exception {
+		return mapper.QNAReplyCount();
+	}
+
 }

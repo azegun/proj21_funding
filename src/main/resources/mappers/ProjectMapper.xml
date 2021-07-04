@@ -106,6 +106,7 @@
 					where PrjNo  = #{prjNo}		
 		</delete>
 		
+		<!-- 마감날짜 지나면 endyn 1로 수정  -->
 		<update id="updateEndYn">
 			update project set endyn =1 where <![CDATA[EndDate <now() ]]>;
 		</update>

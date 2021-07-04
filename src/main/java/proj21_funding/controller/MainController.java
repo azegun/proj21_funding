@@ -28,6 +28,47 @@ public class MainController {
 		return "redirect:/main";
 	}
 
+//	@RequestMapping("/main")
+//	public String main(Model model) {
+//		List<ProjectJoin> maxprj = joinService.showProjectJoinAll();
+//		model.addAttribute("maxprj", maxprj);
+//		
+//		List<ProjectJoin> prjs = joinService.showProjectJoinAll();
+//		List<ProjectJoin> newprj = null;
+//		if (prjs.size() <= 10) {
+//			newprj = prjs;
+//		} else {
+//			newprj = prjs.subList(prjs.size() - 10, prjs.size());
+//		}
+//		model.addAttribute("newprj", newprj);
+//
+//		List<ProjectJoin> recommendPrjs = new ArrayList<ProjectJoin>();
+//		for (ProjectJoin rePrj : prjs) {
+//			if (rePrj.getRate() >= 100) {
+//				recommendPrjs.add(rePrj);
+//			} 
+//		}		
+//		if (recommendPrjs.size() <= 10) {
+//			recommendPrjs = prjs;
+//		} else {
+//			recommendPrjs = prjs.subList(prjs.size() - 10, prjs.size());
+//		}
+//		model.addAttribute("recommendPrjs", recommendPrjs);
+//
+//		List<ProjectJoin> endprjs = joinService.showProjectSuccessImbak();
+//		List<ProjectJoin> end = new ArrayList<ProjectJoin>();
+//		if (endprjs.size() <= 10) {
+//			end = endprjs;
+//			for(int i = endprjs.size(); i > 10; i++) {
+//				end.add(null);
+//			}			
+//		} else {
+//			end = endprjs.subList(endprjs.size() - 10, endprjs.size());
+//		}
+//		model.addAttribute("endprjs", end);
+//		return "main";
+//	}
+	
 	@RequestMapping("/main")
 	public String main(Model model) {
 		List<ProjectJoin> maxprj = joinService.showProjectJoinAll();
@@ -35,37 +76,22 @@ public class MainController {
 		
 		List<ProjectJoin> prjs = joinService.showProjectJoinAll();
 		List<ProjectJoin> newprj = null;
-		if (prjs.size() <= 10) {
+		if (prjs.size() <= 4) {
 			newprj = prjs;
 		} else {
-			newprj = prjs.subList(prjs.size() - 10, prjs.size());
+			newprj = prjs.subList(prjs.size() - 4, prjs.size());
 		}
 		model.addAttribute("newprj", newprj);
-
-		List<ProjectJoin> recommendPrjs = new ArrayList<ProjectJoin>();
-		for (ProjectJoin rePrj : prjs) {
-			if (rePrj.getRate() >= 100) {
-				recommendPrjs.add(rePrj);
-			} 
-		}		
-		if (recommendPrjs.size() <= 10) {
-			recommendPrjs = prjs;
-		} else {
-			recommendPrjs = prjs.subList(prjs.size() - 10, prjs.size());
-		}
-		model.addAttribute("recommendPrjs", recommendPrjs);
-
-		List<ProjectJoin> endprjs = joinService.showProjectSuccessImbak();
-		List<ProjectJoin> end = new ArrayList<ProjectJoin>();
-		if (endprjs.size() <= 10) {
-			end = endprjs;
-			for(int i = endprjs.size(); i > 10; i++) {
-				end.add(null);
-			}			
-		} else {
-			end = endprjs.subList(endprjs.size() - 10, endprjs.size());
-		}
-		model.addAttribute("endprjs", end);
+		
+		//주목 프로젝트
+		List<ProjectJoin> jumokPrjs = joinService.selectMainJumok();
+		model.addAttribute("jumokPrjs", jumokPrjs);
+		//성공임박 프로젝트
+		List<ProjectJoin> successPrjs = joinService.selectMainSuccessImbak();
+		model.addAttribute("successPrjs", successPrjs);
+		//마감임박 프로젝트
+		List<ProjectJoin> endPrjs = joinService.selectMainMagamImbak();
+		model.addAttribute("endPrjs", endPrjs);
 		return "main";
 	}
 

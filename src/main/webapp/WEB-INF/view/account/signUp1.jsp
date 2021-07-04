@@ -134,7 +134,7 @@
 					<a href="#"><form:button type="button">보기</form:button></a>
 				</p>
 				<p id="agreeEerrors"><form:errors path="agree"/>&nbsp;</p>							
-				<form:button id="submit">회 원 가 입</form:button>
+				<form:button id="submit">회원가입</form:button>
 			</fieldset>			
 			</form:form>
 		</section>		

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+
     
 <!DOCTYPE html>
 <html>
@@ -9,13 +11,8 @@
 <title>100펀딩-후원현황</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="/proj21_funding/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="/proj21_funding/bootstrap/css/bootstrap-theme.min.css">
-<script type="text/javascript"
-	src="/proj21_funding/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/user_css/funding_status.css">
 </head>
 <body>
 <%-- ${fundingList }
@@ -25,19 +22,18 @@
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
 		<section>
-		<table class="table" border="1px">
-			<tr>
-				<th> </th><th>프로젝트명</th><th>옵션명</th><th>옵션내용</th><th>가격</th><th>시작일</th>
+		<table>
+			<tr class="tablehead">
+				<th> </th><th>프로젝트명</th><th>옵션명</th><th>옵션내용</th><th>가격</th>
 				<th>마감일(결제일)</th><th>결제여부</th><th>마감여부</th>
 			</tr>
 			<c:forEach var="funding" items="${fundingList }">
 			<tr>
 				<td><img src="<%=request.getContextPath()%>/images/project/project${funding.prjNo.prjNo }.jpg"/>
-				<td>${funding.prjNo.prjName }</td>
+				<td class="link"><a href="<%=request.getContextPath()%>/prjDetail/${funding.prjNo.prjNo}">${funding.prjNo.prjName }</a></td>
 				<td>${funding.optNo.optName }</td>
 				<td>${funding.optNo.optContent}</td>
-				<td>${funding.optNo.optPrice}</td>
-				<td>${funding.prjNo.startDate}</td>
+				<td><fmt:formatNumber value="${funding.optNo.optPrice}" pattern="#,###"/>원</td>
 				<td>${funding.prjNo.endDate}</td>
 				<c:choose>
 					<c:when test="${funding.payYn eq true}">
