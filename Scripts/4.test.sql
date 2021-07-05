@@ -422,3 +422,22 @@ values (1, "210618 업데이트 내용", "안내하는 중"),
         ,boardTitle
         FROM board
         );
+        
+--   상건_페이징
+    	select 
+						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
+						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
+						if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+				from project p
+						join prjoption op  on p.PrjNo = op.PrjNo 
+						join userinfo u on p.UserNo = u.UserNo 
+						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
+				where u.userno = 1		 	
+				group by prjno
+				order by p.PrjNo  desc limit 1, 5;
+			
+	select count(*)  from project p where userno=1;
+			
+       
+   

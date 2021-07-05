@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/user_css/funding_status.css">
 </head>
 <body>
+${count }
 <%-- ${fundingList }
 후원현황 --%>
 <div class="container">

@@ -2,6 +2,7 @@ package proj21_funding.mapper;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -49,10 +50,10 @@ public class MyListMapperTest {
 		Assert.assertNotNull(list);
 	}	
 	
-	@Test
+//	@Test
 	public void testJoinUpdateProjectAndPrjOptionInMyList() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		java.util.Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pNo", 3);
 		map.put("pName", "프로젝트테스트");
 		map.put("pContent", "업데이트");
@@ -65,5 +66,34 @@ public class MyListMapperTest {
 		
 		
 	}
+	
+	@Test
+	public void testShowMyListByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("uNo", 1);
+		map.put("pageSearch", 1);
+		map.put("cntPerPage", 5);
+		System.out.println("map  >> "+ map);
+		List<Project> list = mapper.showAllListByMap(map);
+		
+		Assert.assertNotNull(list);		
+		
+	}
+	
+	@Test
+	public void testshowCountPrjByUserNo() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("uNo", 1);
+		System.out.println("map  >> "+ map);
+		int res = mapper.selectCountPrjByUserNo(map);
+		
+		Assert.assertEquals(2, res);
+		
+		
+		
+	}
+
 
 }

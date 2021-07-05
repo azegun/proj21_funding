@@ -30,6 +30,7 @@ public class MyPageController {
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			HttpSession session	) throws Exception {
 		//로그인 확인
+		
 		if(session.getAttribute("authInfo")==null) {
 			return new ModelAndView("redirect:/login");
 		}

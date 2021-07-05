@@ -18,6 +18,27 @@
 				group by prjno
 		</select>
 		
+		<!--페이징 리스트  -->
+		<select id="showAllListByMap"
+		 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
+				select 
+						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
+						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
+						if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+				from project p
+						join prjoption op  on p.PrjNo = op.PrjNo 
+						join userinfo u on p.UserNo = u.UserNo 
+						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
+				where u.userno = #{uNo}				 	
+				group by prjno
+				order by p.prjNo desc LIMIT #{pageSearch}, #{cntPerPage }
+		</select>
+		
+		<select id="selectCountPrjByUserNo"  resultType="int" >
+				select count(*)  from project p where userno=#{uNo}
+		</select>
+		
 		
 		<!-- 프로젝트 번호로 리스트 받아오기 detail  -->
 		<select id="showDetailListByprjNo" 

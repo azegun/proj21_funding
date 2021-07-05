@@ -1,7 +1,5 @@
 package proj21_funding.controller;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
@@ -23,14 +21,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_funding.dto.Message;
 import proj21_funding.dto.PrjBoard;
 import proj21_funding.dto.PrjOption;
-import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
@@ -259,10 +255,7 @@ public class ProjectController {
 		return mav;
 		} catch (NullPointerException e) {
 			return new ModelAndView("redirect:/login");
-		} /*
-			 * catch (NumberFormatException e) { return new
-			 * ModelAndView("redirect:/prjDetail/"+prjNo); }
-			 */
+		}
 	}
 	
 	

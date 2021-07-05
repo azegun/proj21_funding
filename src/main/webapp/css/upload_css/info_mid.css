@@ -1,5 +1,7 @@
 @charset "UTF-8";
-#mid_first{}
+#mid_first{	
+	width: 900px;
+	}
 #mid_context1{		
 	height: 240px;		
 	/* 같이 움직이기 */
