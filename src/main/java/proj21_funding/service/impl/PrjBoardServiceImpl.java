@@ -32,16 +32,20 @@ public class PrjBoardServiceImpl implements PrjBoardService {
 		if(prjBoard.getPostContent().equals("")) {
 			throw new NullPointerException();
 		}	
-		byte[] pic = null;	
-		try {
-			pic = postFile.getBytes();
-		} catch (IOException e2) {			
-			e2.printStackTrace();
-		}	
 		
-		if(pic != null) {
-			prjBoard.setPostFile(pic);
-		}		
+		if(!postFile.getOriginalFilename().equals("")) {
+			byte[] pic = null;				
+			
+			try {
+				pic = postFile.getBytes();
+			} catch (IOException e2) {			
+				e2.printStackTrace();
+			}	
+			
+			if(pic != null) {
+				prjBoard.setPostFile(pic);
+			}		
+		}	
 		
 		return boardMapper.insertPrjBoard(prjBoard);
 	}
