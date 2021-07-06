@@ -18,12 +18,14 @@ import proj21_funding.dto.QNA;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.paging.Pagination;
 import proj21_funding.dto.project.ProjectJoin;
+import proj21_funding.dto.project.ProjectStat;
 import proj21_funding.service.BoardService;
 import proj21_funding.service.CategoryService;
 import proj21_funding.service.FundingInfoService;
 import proj21_funding.service.PrjCategoryService;
 import proj21_funding.service.ProjectJoinService;
 import proj21_funding.service.ProjectService;
+import proj21_funding.service.ProjectStatService;
 import proj21_funding.service.QNAService;
 import proj21_funding.service.UserInfoService;
 
@@ -53,13 +55,23 @@ public class AdminController {
 	@Autowired
 	private FundingInfoService fundingService;
 	
+	@Autowired
+	private ProjectStatService statService;
+	
 	@RequestMapping("/admin")
-	public String adminMain() {
-		
+	public ModelAndView adminMain() {
+		List<ProjectStat> salesStat = statService.selectSalesStat();
+		List<ProjectJoin> salesRanking = joinService.selectSalesRankingByProject();
+		List<ProjectJoin> sponsorRanking = joinService.selectSponsorRanking();
 		projectService.modifyEndYn();
 //		달성률 100이넘고 마감날짜가 지났고 payyn이 0이거나 null인 것들을 payyn 1로 업데이트
 		fundingService.modifyPayYes();
-		return "admin/adminMain";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/adminMain");
+		mav.addObject("salesStat",salesStat);
+		mav.addObject("salesRanking",salesRanking);
+		mav.addObject("sponsorRanking",sponsorRanking);
+		return mav;
 	}
 	
 //	@RequestMapping("/adminMember")

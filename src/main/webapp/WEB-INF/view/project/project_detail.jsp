@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,6 +55,9 @@ $(function(){
 </script>
 </head>
 <body>
+<c:set var="now" value="<%=new java.util.Date()%>" />
+<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 
+${prj[0] }
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header.jsp" />
@@ -63,7 +67,7 @@ $(function(){
 				<div id="titleheader">
 					<div id="title">
 						<a href="<%=request.getContextPath() %>/categoryByProject?pCategoryNo=${prj[0].prjNo.pCategoryNo.pCategoryNo}"><span id="titlecate">${prj[0].prjNo.pCategoryNo.pCategoryName }</span></a>
-						<h1>${prj[0].prjNo.prjName }</h1>
+						<h1><c:if test="${sysYear>=prj[0].prjNo.endDate}">[ 마감완료 ]</c:if>${prj[0].prjNo.prjName }</h1>
 						<span id="productor">${prj[0].prjNo.userNo.userName }</span>
 					</div>
 				</div>
@@ -113,8 +117,10 @@ $(function(){
 			</c:forEach>
 			<span class="resultPrice">가격 : 0원 </span>
 			<form action="<%=request.getContextPath() %>/fundingProject" method="post" class="fundingForm">
-
-				<input class="fund" type="submit" value="후 원" >
+				<c:if test="${sysYear>prj[0].prjNo.endDate}"><button disabled="disabled">후원 불가</button></c:if>
+				<c:if test="${sysYear<=prj[0].prjNo.endDate}">
+					<input class="fund" type="submit" value="후 원" >
+				</c:if>
 			</form>
 			<div id="projectUserInfo">
 				<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />

@@ -108,4 +108,19 @@ public class ProjectJoinServiceImpl implements ProjectJoinService {
 		return mapper.selectMainMagamImbak();
 	}
 
+	@Override
+	public List<ProjectJoin> selectMainNewProject() {
+		return mapper.selectMainNewProject();
+	}
+
+	@Override
+	public List<ProjectJoin> selectSalesRankingByProject() {
+		return mapper.selectSalesRankingByProject();
+	}
+
+	@Override
+	public List<ProjectJoin> selectSponsorRanking() {
+		return mapper.selectSponsorRanking();
+	}
+
 }
