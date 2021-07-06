@@ -102,11 +102,9 @@ public class MessageController {
 		
 		try {			
 			Message message1 = new Message(message.getReceiveUser(), message.getSendUser(), message.getMsgContent());
-			service.sendMessage(message1);	
-			
-					
+			service.sendMessage(message1);						
 		} catch (NullPointerException e) {			
-			rttr.addFlashAttribute("err","전달하고 싶은 내용을 적어주세요.");			
+			rttr.addFlashAttribute("err","내용을 적어주세요.");			
 		}
 		return "redirect:/message/message-receive/"+ msgNo
 				+"?currentPage=" +message.getCurrentPage()

@@ -21,6 +21,8 @@ public class PrjBoard {
 	public PrjBoard(int postNo) {
 		this.postNo = postNo;
 	}
+	
+	
 	// Getter &Setter
 
 	public int getPostNo() {

@@ -32,14 +32,19 @@
 </script>
 </head>
 <body>
-<%-- ${myList } --%>
-
-	<section class="container">
+<%-- ${myList }
+${count }
+ --%>
+ <%-- ${map } --%>
+ ${pagination }
+ ${count }
+		<section class="container">	
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
-			<h4>프로젝트 제목을 선택하시면 자세한 프로젝트 정보를 확인하실 수 있습니다.</h4>
-		<section id= "table_all">
+		
+			<h4>프로젝트 제목을 선택하시면 자세한 프로젝트 정보를 확인하실 수 있습니다.</h4>	
+		<section class = "list_main">
 		<table>		
 			<thead id = "column">
 				<tr>
@@ -50,7 +55,7 @@
 						<th>달성률</th>
 						<th>시작일</th>
 						<th>마감일</th>
-						<th>결제일</th>
+						<!-- <th>결제일</th> -->
 						<!-- <th>옵션이름</th>
 						<th>옵션금액</th>
 						<th>옵션내용</th> -->
@@ -72,7 +77,7 @@
 							</td>									
 							<td>${list.prjNo.startDate }</td>
 							<td>${list.prjNo.endDate }</td>
-							<td>${list.prjNo.payDate } </td>
+						<%-- 	<td>${list.prjNo.payDate } </td> --%>
 								
 						 <jsp:useBean id="now" class = "java.util.Date"></jsp:useBean>
 						 <fmt:formatDate  var="today"  value="${now}" pattern="yyyy-MM-dd"/>  
@@ -96,14 +101,51 @@
 				</c:forEach>
 				</tbody>
 		</table>
+		 <!--paginate -->
+		         <div class="paginate">
+		            <div class="paging">
+		               <a class="direction prev" href="javascript:void(0);"
+		                  onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">
+		                  &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
+		                  &lt; </a>
+		
+		               <c:forEach begin="${pagination.firstPage}"
+		                  end="${pagination.lastPage}" var="idx">
+		                  <a
+		                     style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+		                     href="javascript:void(0);"
+		                     onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});"><c:out
+		                        value="${idx}" /></a>
+		               </c:forEach>
+		               <a class="direction next" href="javascript:void(0);"
+		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
+		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
+		                  onclick="movePage(${pagination.lastPage},${pagination.cntPerPage},${pagination.pageSize});">
+		                  &gt;&gt; </a>
+		            </div>
+		         </div>
+		         <!-- /paginate -->		         
+
 		</section>
 				<div id ="foot_btn">
 						<button id= "select_list">프로젝트 보기</button>
 						<button id = "go_main">메인</button>&nbsp;						
-				</div>
+				</div>	
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
 		</footer>
-	</section>
+			</section>
 </body>
+<script>
+function movePage(currentPage, cntPerPage, pageSize){
+    
+    var url = "${pageContext.request.contextPath}/homeToMyList/${authInfo.userNo}";
+    url = url + "?currentPage="+currentPage;
+    url = url + "&cntPerPage="+cntPerPage;
+    url = url + "&pageSize="+pageSize;    
+    
+    location.href=url;
+}
+</script>
 </html>

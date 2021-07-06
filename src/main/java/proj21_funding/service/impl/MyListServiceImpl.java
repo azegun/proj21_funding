@@ -13,12 +13,7 @@ import proj21_funding.service.MyListService;
 public class MyListServiceImpl implements MyListService {
 
 	@Autowired
-	private MyListMapper mapper;
-		
-	@Override
-	public List<Project> showAllMyList(int userNo) {
-		return mapper.showAllMyList(userNo);
-	}
+	private MyListMapper mapper;		
 
 	@Override
 	public 	List<Project> showDetailListByprjNo(int prjNo) {
@@ -44,5 +39,21 @@ public class MyListServiceImpl implements MyListService {
 	public int updateListSubOptByMap(Map<String, Object> map) {
 		return mapper.updateListSubOptByMap(map);
 	}
+
+	@Override
+	public List<Project> showAllMyList(int userNo) {
+		return mapper.showAllMyList(userNo);
+	}
+
+	@Override
+	public List<Project> showAllListByMap(Map<String, Object> map) {
+		return mapper.showAllListByMap(map);
+	}
+
+	@Override
+	public int selectCountPrjByUserNo(Map<String, Object> map) {
+		return mapper.selectCountPrjByUserNo(map);
+	}
+
 
 }

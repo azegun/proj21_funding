@@ -647,8 +647,15 @@ values
 (2, 4, '응원합니다. 화이팅!');
 
 
-
-
+-- PrjBoardReply(프로젝트게시판답글)
+select * from PrjBoard;
+select ReplyNo, PostNo, UserNo, ReplyContent from PrjBoardReply;
+insert into PrjBoardReply(PostNo, UserNo, ReplyContent)
+values
+(1, 1, "안녕하세요"),
+(1, 2, "안녕하세요"),
+(5, 3, "안녕하세요"),
+(5, 4, "안녕하세요");
 
 
 

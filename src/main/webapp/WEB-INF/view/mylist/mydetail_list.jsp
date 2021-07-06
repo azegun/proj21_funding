@@ -106,10 +106,10 @@ ${optList }
 										<td class="td_left"><label for="endDate">마감일</label></td>
 										<td class="td_right" ><span id="endDate">${myList[0].prjNo.endDate}</span></td>
 								</tr>
-								<tr class = "col10">
+								<%-- <tr class = "col10">
 										<td class="td_left"><label for="payDate">결제일</label></td>
 										<td class="td_right" ><span id="payDate">${myList[0].prjNo.payDate}</span></td>
-								</tr>
+								</tr> --%>
 								<tr class = "col11">
 										<td class="td_left"><label for="uploadfile">첨부사진</label></td>
 										<td class="td_right" >
@@ -124,7 +124,7 @@ ${optList }
 							</tbody>
 					</table>
 					<section class= "addOption hidden">
-					<table border="1">
+					<table>
 							<tbody>
 									 <c:choose>
 									<c:when test="${optList[0].prjNo.prjNo eq optList[3].prjNo.prjNo}">
