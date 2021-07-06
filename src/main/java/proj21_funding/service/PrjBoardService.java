@@ -6,12 +6,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import proj21_funding.dto.PrjBoard;
+import proj21_funding.dto.PrjBoardReply;
 
 @Service
 public interface PrjBoardService {
 	List<PrjBoard> showPrjBoardbyPrjNo(int prjNo);
 	
-	List<PrjBoard> showPrjBoardbyUserNo(PrjBoard prjBoard);
+	PrjBoard showPrjBoardbyPostNo(int postNo);
 	
 	int registPrjBoard(PrjBoard prjBoard, MultipartFile postFile);
 
@@ -19,4 +20,11 @@ public interface PrjBoardService {
 
 	int removePrjBoard(PrjBoard prjBoard);	
 
+	List<PrjBoardReply> showPrjBoardReplyPostNo(int postNo);
+	
+	int registPrjBoardReply(PrjBoardReply prjBoardReply);
+
+	int modifyPrjBoardReply(PrjBoardReply prjBoardReply);
+
+	int removePrjBoardReply(PrjBoardReply prjBoardReply);
 }

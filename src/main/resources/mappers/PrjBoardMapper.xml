@@ -11,6 +11,13 @@
 		<association property="userNo" resultMap="proj21_funding.mapper.UserInfoMapper.resUser" ></association>
 	</resultMap>
 	
+	<resultMap type="PrjBoardReply" id="resPbr">
+		<id property="replyNo" column="replyNo"/>		
+		<result property="postNo" column="postNo"/>		
+		<result property="replyContent" column="replyContent"/>		
+		<association property="userNo" resultMap="proj21_funding.mapper.UserInfoMapper.resUser" ></association>
+	</resultMap>
+	
 	<select id="selectPrjBoardbyPrjNo" resultMap="resPb">
 		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile 
 		  from prjboard
@@ -18,10 +25,10 @@
 		 order by PostNo desc
 	</select>
 	
-	<select id="selectPrjBoardbyUserNo" parameterType="PrjBoard" resultMap="resPb">
+	<select id="selectPrjBoardbyPostNo" resultMap="resPb">
 		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile 
 		  from prjboard
-		 where PrjNo = #{prjNo} and UserNo = #{userNo.userNo} 	
+		 where PostNo = #{postNo}
 	</select>
 
 	<insert id="insertPrjBoard">
@@ -42,4 +49,28 @@
 		 where PostNo = #{postNo}
 	</delete>
 
+	<select id="selectPrjBoardReplyPostNo" resultMap="resPbr">
+		select PostNo, UserNo, ReplyContent 
+		  from PrjBoardReply
+		 where PostNo = #{postNo}
+		 order by ReplyNo desc	
+	</select>
+	
+	<insert id="insertPrjBoardReply">
+		insert into PrjBoardReply(PostNo, UserNo, ReplyContent)
+		values (#{postNo}, #{userNo.userNo}, #{replyContent})	
+	</insert>
+	
+	<update id="updatePrjBoardReply">
+		update PrjBoardReply
+  		   set ReplyContent = #{replyContent}
+		 where ReplyNo = #{replyNo}
+	</update>
+	
+	<delete id="deletePrjBoardReply">
+		delete 
+  		  from PrjBoardReply
+ 		 where ReplyNo = #{replyNo}	
+	</delete>	
+	
 </mapper>

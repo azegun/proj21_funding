@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import proj21_funding.dto.PrjBoard;
+import proj21_funding.dto.PrjBoardReply;
 import proj21_funding.mapper.PrjBoardMapper;
 import proj21_funding.service.PrjBoardService;
 
@@ -23,30 +24,30 @@ public class PrjBoardServiceImpl implements PrjBoardService {
 	}
 
 	@Override
-	public List<PrjBoard> showPrjBoardbyUserNo(PrjBoard prjBoard) {
-		return boardMapper.selectPrjBoardbyUserNo(prjBoard);
+	public PrjBoard showPrjBoardbyPostNo(int postNo) {
+		return boardMapper.selectPrjBoardbyPostNo(postNo);
 	}
 
 	@Override
 	public int registPrjBoard(PrjBoard prjBoard, MultipartFile postFile) {
-		if(prjBoard.getPostContent().equals("")) {
+		if (prjBoard.getPostContent().equals("")) {
 			throw new NullPointerException();
-		}	
-		
-		if(!postFile.getOriginalFilename().equals("")) {
-			byte[] pic = null;				
-			
+		}
+
+		if (!postFile.getOriginalFilename().equals("")) {
+			byte[] pic = null;
+
 			try {
 				pic = postFile.getBytes();
-			} catch (IOException e2) {			
+			} catch (IOException e2) {
 				e2.printStackTrace();
-			}	
-			
-			if(pic != null) {
+			}
+
+			if (pic != null) {
 				prjBoard.setPostFile(pic);
-			}		
-		}	
-		
+			}
+		}
+
 		return boardMapper.insertPrjBoard(prjBoard);
 	}
 
@@ -58,6 +59,29 @@ public class PrjBoardServiceImpl implements PrjBoardService {
 	@Override
 	public int removePrjBoard(PrjBoard prjBoard) {
 		return boardMapper.deletePrjBoard(prjBoard);
+	}
+
+	@Override
+	public List<PrjBoardReply> showPrjBoardReplyPostNo(int postNo) {
+		return boardMapper.selectPrjBoardReplyPostNo(postNo);
+	}
+
+	@Override
+	public int registPrjBoardReply(PrjBoardReply prjBoardReply) {
+		if (prjBoardReply.getReplyContent().equals("")) {
+			throw new NullPointerException();
+		}
+		return boardMapper.insertPrjBoardReply(prjBoardReply);
+	}
+
+	@Override
+	public int modifyPrjBoardReply(PrjBoardReply prjBoardReply) {
+		return boardMapper.updatePrjBoardReply(prjBoardReply);
+	}
+
+	@Override
+	public int removePrjBoardReply(PrjBoardReply prjBoardReply) {
+		return boardMapper.deletePrjBoardReply(prjBoardReply);
 	}
 
 }

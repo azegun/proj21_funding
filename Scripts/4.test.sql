@@ -438,6 +438,17 @@ values (1, "210618 업데이트 내용", "안내하는 중"),
 				order by p.PrjNo  desc limit 1, 5;
 			
 	select count(*)  from project p where userno=1;
-			
+
+-- PrjBoardReply(프로젝트게시판답글)
+select ReplyNo, PostNo, UserNo, ReplyContent from PrjBoardReply;
+
+update PrjBoardReply
+   set ReplyContent = "화이팅"
+ where ReplyNo = 1;
+
+delete 
+  from PrjBoardReply
+ where ReplyNo = 1;
+
        
    
