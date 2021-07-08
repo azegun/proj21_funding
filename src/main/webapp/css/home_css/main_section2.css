@@ -112,7 +112,15 @@
 	text-decoration: none;
 }
 
-.prjName dd {
+.point {
+	font-size: 15px;
+	line-height: 20px;
+	letter-spacing: -0.015em;
+	padding: 0px 0px 10px;
+	margin: 0px;
+	color: red;
+}
+.prjName .prd {
 	font-size: 13px;
 	line-height: 20px;
 	letter-spacing: -0.015em;

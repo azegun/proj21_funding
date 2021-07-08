@@ -73,16 +73,9 @@ public class MainController {
 	public String main(Model model) {
 		List<ProjectJoin> maxprj = joinService.showProjectJoinAll();
 		model.addAttribute("maxprj", maxprj);
-		
-		List<ProjectJoin> prjs = joinService.showProjectJoinAll();
-		List<ProjectJoin> newprj = null;
-		if (prjs.size() <= 4) {
-			newprj = prjs;
-		} else {
-			newprj = prjs.subList(prjs.size() - 4, prjs.size());
-		}
+		//신규프로젝트
+		List<ProjectJoin> newprj = joinService.selectMainNewProject();
 		model.addAttribute("newprj", newprj);
-		
 		//주목 프로젝트
 		List<ProjectJoin> jumokPrjs = joinService.selectMainJumok();
 		model.addAttribute("jumokPrjs", jumokPrjs);

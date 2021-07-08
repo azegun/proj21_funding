@@ -33,7 +33,7 @@
 		</div>
 
 		<div class=account_menu>
-			<c:if test="${authInfo.userNo < 0 }"><button class="adminHome" onclick="location.href='admin'">관리자 홈</button></c:if>
+			<c:if test="${authInfo.userNo < 0 }"><button class="adminHome" onclick="location.href='<%=request.getContextPath()%>/admin'">관리자 홈</button></c:if>
 			<c:if test="${empty authInfo}">
 				<a class="login" href="<c:url value='/login'/>">로그인</a>&nbsp;&colon;&nbsp;
 				<a class="login" href="<c:url value='/account/signUp1'/>">회원가입</a>

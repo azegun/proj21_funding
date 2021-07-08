@@ -31,12 +31,12 @@
 							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>"><img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/></a>
 						</div>
 						<dl class="prjName">
-							<dt><a href="<c:url value='/prjDetail/${prj.prjNo }'/>">${prj.prjName }</a></dt>
+							<dt><a href="<c:url value='/prjDetail/${prj.prjNo }'/>"><c:if test="${sysYear>=prj.endDate}">[ 마감완료 ]</c:if> ${prj.prjName }</a></dt>
 							<dd>제작자 : ${prj.prjManager } | ${prj.pCategoryName }</dd>
 							<dd>총 후원자 수 : ${prj.totalCount }</dd>
 						</dl>
 							<div class="prjpercent"><progress value="${prj.totalPrice }" max = "${prj.prjGoal }"></progress></div>
-							<div class="moment"><span class="funding-amount"><fmt:formatNumber value="${prj.totalPrice }" pattern="#,###"/>원</span><span class="percent">　${prj.totalPrice/prj.prjGoal*100 }%</span></div>
+							<div class="moment"><span class="funding-amount"><fmt:formatNumber value="${prj.totalPrice }" pattern="#,###"/>원</span><span class="percent"><fmt:formatNumber value="${prj.totalPrice/prj.prjGoal*100 }" pattern="0.00"/>%</span></div>
 					</div>
 				</div>
 			</div>

@@ -22,7 +22,7 @@
 		<form:hidden path="userNo.userNo" value="${authInfo.userNo}"/>		
 		<p>파일 : <form:input path="postFile" type="file" accept=".jpg, .jpeg, .png"/></p>
 		<p><form:textarea path="postContent"/><p>	
-		<p id="errors"><form:errors path="postContent" value="${complet}"/>&nbsp;</p>		
+		<p id="errors"><form:errors path="postContent"/>${complet}&nbsp;</p>		
 		<form:button>등록하기</form:button>
 		<form:button type="button" onclick="closeWrite()">닫기</form:button>
 	</form:form>	

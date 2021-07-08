@@ -43,6 +43,9 @@ DROP TABLE IF EXISTS proj21_funding.addresses RESTRICT;
 -- 프로젝트카테고리
 DROP TABLE IF EXISTS proj21_funding.PrjCategory RESTRICT;
 
+-- 프로젝트게시판답글
+DROP TABLE IF EXISTS proj21_funding.PrjBoardReply RESTRICT;
+
 -- proj21_funding
 DROP SCHEMA IF EXISTS proj21_funding;
 
@@ -435,3 +438,21 @@ ALTER TABLE proj21_funding.Board
 		REFERENCES proj21_funding.BoardCategory ( -- 글분류
 			CategoryNo -- 글 분류
 		);
+		
+-- 프로젝트게시판답글
+CREATE TABLE proj21_funding.PrjBoardReply (
+	ReplyNo      INT(10)  NOT NULL COMMENT '답글번호', -- 답글번호
+	PostNo       INT(10)  NOT NULL COMMENT '게시글번호', -- 게시글번호
+	UserNo       INT(10)  NOT NULL COMMENT '회원번호', -- 회원번호
+	ReplyContent LONGTEXT NOT NULL COMMENT '답글내용' -- 답글내용
+)
+COMMENT '프로젝트게시판답글';
+
+-- 프로젝트게시판답글
+ALTER TABLE proj21_funding.PrjBoardReply
+	ADD CONSTRAINT PK_PrjBoardReply -- 프로젝트게시판답글 기본키
+		PRIMARY KEY (
+			ReplyNo -- 답글번호
+		);
+ALTER TABLE proj21_funding.PrjBoardReply
+	MODIFY COLUMN ReplyNo INT(10) NOT NULL AUTO_INCREMENT COMMENT '답글번호';

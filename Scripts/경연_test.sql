@@ -38,6 +38,7 @@ join project p on o.prjno = p.PrjNo
 join userinfo u on u.userno = p.userno
 group by o.PrjNo having sum(optprice)/PrjGoal*100>80;
 
+
 -- 번호별 
 select o.prjNo ,count(*),sum(optprice) 
 from fundinginfo f 
@@ -220,5 +221,36 @@ select p.prjno,
 		  join userinfo u on p.userno = u.userno
 		  join prjCategory c on p.pcategoryno = c.pcategoryno
 		 group by p.prjNo having enddate > now() order by enddate asc;
+
+		
+
+-- 차트 
+select date_format(p.EndDate,'%Y년 %m월') as period , count(fundingno) as count1, sum(o.OptPrice) as sum1 from fundinginfo f join project p on f.PrjNo = p.prjno
+							join prjoption o on f.OptNo = o.OptNo group by period;
+							
+select * from project;
+
+-- 프로젝트별 매출액 랭킹
+select p.prjno,
+			 if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
+			  p.Prjname,
+			  p.prjgoal,
+			  u.nickname as prjManager
+			,count(fundingno) as totalCount,
+			prjContent,
+			 c.pcategoryno,
+			  c.pcategoryname,
+			   startDate,
+			    endDate,
+				ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
+		  from fundinginfo f 
+	      join prjoption o on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo having rate >100 order by totalprice desc limit 5;
 		 
-select count(*) from qna q;
+-- 회원별 후원횟수 랭킹
+select count(f.userno) as totalCount ,u.nickname as sponsor
+  from fundinginfo f join userinfo u on f.userno = u.UserNo 
+  group by f.userNo order by totalcount desc limit 5;

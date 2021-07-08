@@ -30,6 +30,11 @@ public interface ProjectJoinMapper {
 	List<ProjectJoin> selectProjectListByMap(Map<String,Object> listMap);
 	int selectProjectListByMapCount(Map<String,Object> listMap);
 	
+//  adminMain매출랭킹
+	List<ProjectJoin> selectSalesRankingByProject();
+//	adminMain 회원별 후원수 랭킹
+	List<ProjectJoin> selectSponsorRanking();
+	
 //	메인화면프로젝트 리스트
 //	주목할만한 프로젝트
 	List<ProjectJoin> selectMainJumok();
@@ -37,4 +42,6 @@ public interface ProjectJoinMapper {
 	List<ProjectJoin> selectMainSuccessImbak();
 //	마감임박 프로젝트(기간기준)
 	List<ProjectJoin> selectMainMagamImbak();
+//	신규프로젝트
+	List<ProjectJoin> selectMainNewProject();
 }

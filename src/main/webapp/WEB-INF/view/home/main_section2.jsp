@@ -59,7 +59,8 @@
 							</div>
 							<dl class="prjName">
 								<dt><a href="<c:url value='/prjDetail/${newprj.prjNo}'/>">${newprj.prjName }</a></dt>
-								<dd>제작자: ${newprj.prjManager } | ${newprj.pCategoryName }</dd>
+								<dd class="prd">제작자: ${newprj.prjManager } | ${newprj.pCategoryName }</dd>
+								<dd class="point">시작일: ${newprj.startDate }</dd>
 							</dl>
 						</div>
 					</div>			
@@ -75,7 +76,8 @@
 							</div>
 							<dl class="prjName">
 								<dt><a href="<c:url value='/prjDetail/${jumokPrj.prjNo}'/>">${jumokPrj.prjName }</a></dt>
-								<dd>제작자: ${jumokPrj.prjManager } | ${jumokPrj.pCategoryName }</dd>
+								<dd class="prd">제작자: ${jumokPrj.prjManager } | ${jumokPrj.pCategoryName }</dd>
+								<dd class="point">달성률: ${jumokPrj.rate }%</dd>
 							</dl>
 						</div>
 					</div>			
@@ -91,7 +93,8 @@
 							</div>
 							<dl class="prjName">
 								<dt><a href="<c:url value='/prjDetail/${successPrj.prjNo}'/>">${successPrj.prjName }</a></dt>
-								<dd>제작자: ${successPrj.prjManager } | ${successPrj.pCategoryName }</dd>
+								<dd class="prd">제작자: ${successPrj.prjManager } | ${successPrj.pCategoryName }</dd>
+								<dd class="point">달성률: ${successPrj.rate }%</dd>
 							</dl>
 						</div>
 					</div>			
@@ -107,7 +110,8 @@
 							</div>
 							<dl class="prjName">
 								<dt><a href="<c:url value='/prjDetail/${endPrj.prjNo}'/>">${endPrj.prjName }</a></dt>
-								<dd>제작자: ${endPrj.prjManager } | ${endPrj.pCategoryName }</dd>
+								<dd class="prd">제작자: ${endPrj.prjManager } | ${endPrj.pCategoryName }</dd>
+								<dd class="point">마감일: ${endPrj.endDate }</dd>
 							</dl>
 						</div>
 					</div>			

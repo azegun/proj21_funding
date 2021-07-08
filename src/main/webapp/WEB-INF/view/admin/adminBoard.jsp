@@ -41,6 +41,7 @@
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<button class="goMain" onclick="location.href='<%=request.getContextPath()%>'">메인으로 이동</button>
+				<button class="goMain" onclick="location.href='<%=request.getContextPath()%>/logout'">로그아웃</button>
 				<section>
 					<h1>게시판관리</h1>
 				</section>
