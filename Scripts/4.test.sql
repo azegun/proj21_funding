@@ -142,11 +142,11 @@ update project as p inner join prjoption as op
 on p.PrjNo = op.PrjNo 
 	set 
 	 	p.pCategoryNo = '1',
-		p.PrjName = '업데이트너무힘들었음', p.PrjContent ='dto하나로 다받는게 쉬움', p.PrjGoal = 333333333,
-		p.EndDate = '2022-06-13', p.PayDate = '2021-06-13',
-		op.OptName = '1주일쨰 파일올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
-where p.PrjNo =59;
-
+		p.PrjName = '업데이트너무1힘들었음', p.PrjContent ='dto하나1로 다받는게 쉬움', p.PrjGoal = 333333333,
+		p.EndDate = '2022-06-13',
+		op.OptName = '1주일쨰 파일1올리기,수정', op.OptPrice =30330000, op.OptContent ='화이팅하자'
+where p.PrjNo =22;
+select * from project;
 select * from prjoption p 
 where PrjNo =225;
 select  * from prjoption p ;
@@ -179,12 +179,13 @@ from project p join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
 -- 업데이트 프로젝트
 update project 
 	set 
-			PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, 
-			EndDate = '2021-06-13', PayDate = '2021-06-13'
-	where prjno = 66;
+	pCategoryNo = 3,
+	PrjName = '업데이트', PrjContent ='성공', PrjGoal = 200000, 
+	EndDate = '2021-06-13'
+	where prjno = 21;
 
 select * from prjoption p2 ;
-select * from project p 
+select * from project;
 where PrjNo  = 27;
 
 
@@ -329,17 +330,17 @@ from project p
 select * from project p ;
  
  
- 	select 
-								p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryNo, PrjName, PrjContent, PrjGoal,
-								p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-								o.OptNo, o.optName,  o.OptPrice, o.OptContent,
-								if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-					from fundinginfo f 
-						      join prjoption o on o.optno= f.OptNo 
-							  right join project p on p.prjno = f.PrjNo 
-							  join userinfo u on p.userno = u.userno
-							  join prjcategory pc on p.pCategoryNo =pc.pCategoryNo 
- 				where o.prjno = 2;	
+ select 
+		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryNo, PrjName, PrjContent, PrjGoal,
+		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+		o.OptNo, o.optName,  o.OptPrice, o.OptContent,
+	if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+from fundinginfo f 
+		 join prjoption o on o.optno= f.OptNo 
+		 right join project p on p.prjno = f.PrjNo 
+		 join userinfo u on p.userno = u.userno
+		 join prjcategory pc on p.pCategoryNo =pc.pCategoryNo 
+ where o.prjno = 2;	
  
  
 -- qna test	
@@ -424,21 +425,21 @@ values (1, "210618 업데이트 내용", "안내하는 중"),
         );
         
 --   상건_페이징
-    	select 
-						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
-						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
-						if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-				from project p
-						join prjoption op  on p.PrjNo = op.PrjNo 
-						join userinfo u on p.UserNo = u.UserNo 
-						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
-				where u.userno = 1		 	
-				group by prjno
-				order by p.PrjNo  desc limit 1, 5;
+ select 
+		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
+		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+		op.OptNo, op.optName,  op.OptPrice, op.OptContent,
+		if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
+	from project p
+			join prjoption op  on p.PrjNo = op.PrjNo 
+			join userinfo u on p.UserNo = u.UserNo 
+			join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
+	where u.userno = 1		 	
+	group by prjno
+	order by p.PrjNo  desc limit 1, 5;
 			
-	select count(*)  from project p where userno=1;
-	select * from project p ;
+select count(*)  from project p where userno=1;
+select * from project p ;
 
 -- PrjBoardReply(프로젝트게시판답글)
 select ReplyNo, PostNo, UserNo, ReplyContent from PrjBoardReply;

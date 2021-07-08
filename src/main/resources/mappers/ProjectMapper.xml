@@ -68,10 +68,10 @@
 		 <insert id="insertProject" parameterType="Project">
 				insert into project(
 						UserNo, pCategoryNo, PrjName, PrjContent, PrjGoal, 
-						StartDate, EndDate) 
+						StartDate, EndDate, PayDate) 
 				values(
 						#{userNo.userNo}, #{pCategoryNo.pCategoryNo}, #{prjName}, #{prjContent}, #{prjGoal},
-						 now(), #{endDate})
+						 now(), #{endDate}, now())
 					<selectKey keyProperty="prjNo" resultType="int">
 							SELECT last_insert_id()
 					</selectKey>
@@ -83,7 +83,7 @@
 					set 
 					pCategoryNo = #{pCategoryNo.pCategoryNo}, 
 					PrjName = #{prjName}, PrjContent =#{prjContent}, 
-					PrjGoal = #{prjGoal}, EndDate = #{endDate}, PayDate = #{payDate}
+					PrjGoal = #{prjGoal}, EndDate = #{endDate}
 				where prjno = #{prjNo.prjNo}
 		</update>
 		
@@ -95,7 +95,7 @@
 				set 
 						p.pCategoryNo = #{pCateNo},
 						p.PrjName = #{pName}, p.PrjContent = #{pContent}, p.PrjGoal = #{pGoal},
-						p.EndDate = #{eDate}, p.PayDate = #{pDate},
+						p.EndDate = #{eDate},
 						op.OptName = #{oName}, op.OptPrice =#{oPrice}, op.OptContent = #{oContent}
 				where p.PrjNo = #{pNo}		
 		</update>

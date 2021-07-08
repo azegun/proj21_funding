@@ -48,16 +48,13 @@ ${optList }
 			</header>
 			<h2>프로젝트</h2>
 		<form  action= "<%=request.getContextPath() %>/myListUpdate/${authInfo.userNo}" method="post">
+					<div><input type="hidden" id="prjNo" name="pNo" value="${myList[0].prjNo.prjNo}" 
+														size=49	readonly="readonly"/>				
+						 </div>
 			<section id = "detaillist_content">
-				<table>
+				<table class = "update_table">
 						<tbody>
-								<tr class = "col1">
-										<td class="td_right" colspan="2" >
-												<input type="hidden" id="prjNo" name="pNo" value="${myList[0].prjNo.prjNo}" 
-														size=49	readonly="readonly"/>																			
-										</td>					
-								</tr>
-								<tr class = "col2">
+						<tr class = "col2">
 										<td class="td_left"><label for="userName">작성자</label></td>
 										<td class="td_right" >
 												<span id="userName">${authInfo.userName}</span>																					
@@ -94,7 +91,7 @@ ${optList }
 										<td class="td_left"><label for="prjTagetPercent">달성률</label></td>
 										<td class="td_right" >
 												<progress value="${myList[0].prjNo.totalPrice}" max = "${myList[0].prjNo.prjGoal }"></progress><br> 
-													<fmt:formatNumber value="${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100}" pattern = ".0" /><span>%</span>
+													<fmt:formatNumber value="${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100}" pattern = "0.0" /><span>%</span>
 										</td>
 								</tr>
 								
@@ -106,10 +103,6 @@ ${optList }
 										<td class="td_left"><label for="endDate">마감일</label></td>
 										<td class="td_right" ><span id="endDate">${myList[0].prjNo.endDate}</span></td>
 								</tr>
-								<%-- <tr class = "col10">
-										<td class="td_left"><label for="payDate">결제일</label></td>
-										<td class="td_right" ><span id="payDate">${myList[0].prjNo.payDate}</span></td>
-								</tr> --%>
 								<tr class = "col11">
 										<td class="td_left"><label for="uploadfile">첨부사진</label></td>
 										<td class="td_right" >
@@ -124,7 +117,7 @@ ${optList }
 							</tbody>
 					</table>
 					<section class= "addOption hidden">
-					<table>
+					<table  class = "update_table">
 							<tbody>
 									 <c:choose>
 									<c:when test="${optList[0].prjNo.prjNo eq optList[3].prjNo.prjNo}">

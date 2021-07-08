@@ -24,14 +24,14 @@ ul.tabs li{
 }
 
 ul.tabs li.current{
-	background: #dfdfdf;
-	border-bottom: solid 4px #ffcece;
+	background: #e0f3fe;	
+	border-bottom: solid solid 2.5px #acd6ff; 
 	color: #222;
 }
 
 .register_mid{	
 	display: none;
-	background: #dfdfdf;
+	background: #e0f3fe;
 	padding: 15px;
 }
 
@@ -42,6 +42,10 @@ ul.tabs li.current{
 /*탭 */
 
 /*태이블  */
+.update_table{
+		border-collapse: collapse;		
+}
+
 h2{
 	display: flex;
 	justify-content: center;
@@ -49,7 +53,6 @@ h2{
 	margin:0 auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	border-bottom: 3px solid #ffcece;
 }
 #upload_prjcontent{
 	display: flex;
@@ -67,13 +70,15 @@ h2{
 }
 .td_left{
 	width: 170px;
-	border-bottom: 2px solid #ffcece;
-	border-right: 1px solid #ffcece;
+	 background-color:#d0eaff;
+	border-bottom: 2px solid #acd6ff; 
+	border-right: 1px solid #acd6ff; 
+ 	border-left: 1px solid #acd6ff; 
 }
 #info{
-	border-top: 3px solid #ffcece;
-	border-bottom: 3px solid #ffcece;
-	background: 
+	border-top: 3px solid #acd6ff; 
+	border-bottom: 2px solid #acd6ff; 
+	background-color:#d0eaff;
 }
 #border_1{
 	border-bottom: none;
@@ -83,7 +88,6 @@ h2{
 }
 td{
 	text-align: center;
-	padding: 5px;
 }
 #textContent{
 	font-size:20px;
@@ -100,9 +104,20 @@ td{
 	font-size: 15px;
 	width: 170px;
 }
+.options{
+	background-color:#d0eaff;		
+}
 /*태이블  */
 
 /*버튼  */
+#tdoption_btns{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top:20px;
+	text-align: center;	
+	border-bottom: 2px solid #acd6ff; 
+}
 #update_btns{
 	margin-top:20px;
 	text-align: center;	

@@ -93,6 +93,7 @@ td{
 }
 #textContent{
 		font-size:20px;
+		overflow: auto;
 }
 #pCategoryNo{
 	width: 175px;
@@ -109,9 +110,7 @@ td{
 /*태이블  */
 
 .options{
-	background-color:#d0eaff;
-	
-	
+	background-color:#d0eaff;		
 }
 #tdoption_btns{
 	display: flex;
