@@ -8,6 +8,8 @@
 <link rel="stylesheet"
 	href="/proj21_funding/css/servicecenter_write.css">
 <link rel="stylesheet"
+	href="/proj21_funding/css/admin_css/resultClose.css">
+<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/notice_css/write.css">
@@ -27,6 +29,14 @@
 </script>
 </head>
 <body>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<div class="close1">
+<img src="<%=request.getContextPath() %>/images/admin/check.jpg" style="width:150px; hegiht:150px">
+<h1>게시글 작성이 완료되었습니다.</h1>
+<br>
 <button class="menubutton" onclick="closeWindow()">닫기</button>
+</div>
 </body>
 </html>

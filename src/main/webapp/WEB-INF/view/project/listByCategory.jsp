@@ -12,6 +12,7 @@
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico">
 <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/paging_css/paging.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
@@ -40,7 +41,7 @@
 				<input type = "hidden" name="cntPerPage" value="${pagination.cntPerPage}">
 				<input type = "hidden" name="pageSize" value="10">
 				<label><input type="checkbox" name="finishYn" value="finished">마감 프로젝트도 보기  </label>
-				<div class="col-md-4">
+				<div class="col-md-4" >
 					<select name="keyword" class="selectpicker">
 						<option value="total" selected="selected">검색키워드</option>
 						<option value="prjName">프로젝트명</option>
@@ -58,26 +59,27 @@
 		</section>
 		<!--paginate -->
 		        <div class="paginate">
-		           <div class="paging">
-		              <a class="direction prev" href="javascript:void(0);"
+		           <ul class="paging">
+		              <li class="direction prev" href="javascript:void(0);"
 		                 onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize},'${finishYn }','${keyword }','${searchKeyword }');">
-		                 &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+		                 &lt;&lt; </a></li> <li><a class="direction prev" href="javascript:void(0);"
 		                 onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${finishYn }','${keyword }','${searchKeyword }');">
-		                 &lt; </a>
+		                 &lt; </a></li>
 	
 		               <c:forEach begin="${pagination.firstPage}"
 		                  end="${pagination.lastPage}" var="idx">
-		                  <a style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+		                  <li><a style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
 		                     href="javascript:void(0);"
 		                     onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize},'${finishYn }','${keyword }','${searchKeyword }');"><c:out
-		                        value="${idx}" /></a>
+		                        value="${idx}" /></a></li>
 		               </c:forEach>
-		               <a class="direction next" href="javascript:void(0);"
+		               <li><a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize},'${finishYn }','${keyword }','${searchKeyword }');">
-		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
+		                  &gt; </a></li>
+		               <li><a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination.lastPage},${pagination.cntPerPage},${pagination.pageSize},'${finishYn }','${keyword }','${searchKeyword }');">
-		                  &gt;&gt; </a>
-		            </div>
+		                  &gt;&gt; </a></li>
+		            </ul>
 		         </div>
 		         <!-- /paginate -->
 				<button  id="MOVE_TOP_BTN">TOP</button>

@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="/proj21_funding/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/proj21_funding/bootstrap/css/bootstrap-theme.min.css">
 <script type="text/javascript" src="/proj21_funding/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/paging_css/paging.css">
 <link rel="stylesheet" href="/proj21_funding/css/admin_css/adminSide.css">
+<link rel="stylesheet" href="/proj21_funding/css/admin_css/btn.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 //차트버전 최신으로 불러오기

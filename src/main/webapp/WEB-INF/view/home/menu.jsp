@@ -22,14 +22,8 @@
 					<a href="<%=request.getContextPath()%>/projectList">모든 프로젝트</a>
 				</div>
 				<div class="project_menu">
-					<a href="">추천 프로젝트</a>
-				</div>
-				<div class="project_menu">
 					<a href="<%=request.getContextPath()%>/sucessImbakProject">성공
 						임박 프로젝트</a>
-				</div>
-				<div class="project_menu">
-					<a href="">신규 프로젝트</a>
 				</div>
 			</div>					
 			<div class="menulist2">

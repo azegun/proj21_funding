@@ -245,6 +245,12 @@ values (3,9,'사과 한 알이 통째로 퐁당 [한알가득 사과담아]',
 '경북 의성의 제철 사과를 통채로 넣었어요. 사과, 깎지 말고 이제는 짜먹으세요!?.',
 1000000,'20210701','20210730','20210730');
 
+insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
+	StartDate, EndDate, payDate)
+values (4,1,'SF 텍스트 방탈출 게임 <A.I.>',
+'인공지능이 관리하는 스마트홈을 탈출하라! 텍스트 기반 모바일 방탈출 게임 <A.I.>!',
+1000000,'20210708','20210720','20210720');
+
 
 
 
@@ -619,6 +625,13 @@ insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (11,'커플 사과담아 (2박스)', 55000, '사과담아 1박스 (30개입) (x2)');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (11,'패밀리 사과담아 (4박스)', 90000, '사과담아 1박스 (30개입) (x4)');
+
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (12,'A set', 30000, '<A.I>게임');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (12,'B set', 55000, '<A.I>게임 + 게임 아이템');
+insert into prjoption (prjno,OptName,OptPrice,OptContent)
+values (12,'C set', 90000, '<A.I>게임 + 게임 아이템 + 엔딩크레딧 기재');
 
 
 
