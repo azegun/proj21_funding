@@ -438,6 +438,6 @@ values (1, "210618 업데이트 내용", "안내하는 중"),
 				order by p.PrjNo  desc limit 1, 5;
 			
 	select count(*)  from project p where userno=1;
-			
+			select * from project p ;
        
    

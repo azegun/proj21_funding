@@ -68,10 +68,10 @@
 		 <insert id="insertProject" parameterType="Project">
 				insert into project(
 						UserNo, pCategoryNo, PrjName, PrjContent, PrjGoal, 
-						StartDate, EndDate, PayDate) 
+						StartDate, EndDate) 
 				values(
 						#{userNo.userNo}, #{pCategoryNo.pCategoryNo}, #{prjName}, #{prjContent}, #{prjGoal},
-						 now(), #{endDate}, #{payDate})
+						 now(), #{endDate})
 					<selectKey keyProperty="prjNo" resultType="int">
 							SELECT last_insert_id()
 					</selectKey>

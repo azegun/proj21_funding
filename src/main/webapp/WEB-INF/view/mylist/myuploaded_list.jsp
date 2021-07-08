@@ -45,7 +45,7 @@ ${count }
 		
 			<h4>프로젝트 제목을 선택하시면 자세한 프로젝트 정보를 확인하실 수 있습니다.</h4>	
 		<section class = "list_main">
-		<table>		
+		<table class= "list_table">		
 			<thead id = "column">
 				<tr>
 						<th>번호</th>
@@ -67,7 +67,7 @@ ${count }
 				<tr class = "size"> 
 							<td>${status.index+1 } </td>
 							<td>
-									<a class = "pointer" href = "<%=request.getContextPath() %>/selectDetailList/${list.prjNo.prjNo }" >${list.prjNo.prjName }</a>
+									<a id = "pointer" href = "<%=request.getContextPath() %>/selectDetailList/${list.prjNo.prjNo }" >${list.prjNo.prjName }</a>
 							</td>
 							<td id = "prjGoal">
 									<fmt:formatNumber value="${list.prjNo.prjGoal }" pattern="\\#,###"/> </td>	

@@ -8,6 +8,7 @@
 <html>
 <head>
 		<meta charset="UTF-8">
+		<meta name = "viewport" content="width=device-width, initial-scale=1">
 		<title>업로드 완료</title>
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/regiser_success.css">
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/main.css">
