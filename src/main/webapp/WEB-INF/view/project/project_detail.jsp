@@ -57,7 +57,6 @@ $(function(){
 <body>
 <c:set var="now" value="<%=new java.util.Date()%>" />
 <c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 
-${prj[0] }
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header.jsp" />
@@ -126,7 +125,12 @@ ${prj[0] }
 				<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />
 			</div>
 			<div id="prjBoard">
-				<jsp:include page="/WEB-INF/view/prjBoard/prjBoard.jsp" />
+				<c:if test="${empty prjBoard}">
+					<jsp:include page="/WEB-INF/view/prjBoard/prjBoard.jsp" />
+				</c:if>
+				<c:if test="${!empty prjBoard}">
+					<jsp:include page="/WEB-INF/view/prjBoard/prjBoard-detail.jsp" />
+				</c:if>				
 			</div>
 		</div>	
 </body>

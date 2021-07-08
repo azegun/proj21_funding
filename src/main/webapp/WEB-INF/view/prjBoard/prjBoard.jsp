@@ -59,9 +59,9 @@
 							<div id="nickName">${board.userNo.nickName}</div>				
 							<div id="postDate"><tf:formatDateTime value="${board.postDate}" pattern="yyyy-MM-dd" /></div>				
 							<c:if test="${!empty board.postFile}">					
-								<div id="postFile"><a href="<c:url value="/prjBoard/${board.postNo}" />"><img src="data:image/jpeg;base64,${img[status.index]}" alt="img"></a></div>	
+								<div id="postFile"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>"><img src="data:image/jpeg;base64,${img[status.index]}" alt="img"></a></div>	
 							</c:if>
-							<div id="postContent"><a href="<c:url value="/prjBoard/${board.postNo}" />">${board.postContent}</a></div>
+							<div id="postContent"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">${board.postContent}</a></div>
 						</fieldset>	
 					</c:forEach>
 				</div>
@@ -75,14 +75,13 @@
 								<div id="nickName">${board.userNo.nickName}</div>				
 								<div id="postDate"><tf:formatDateTime value="${board.postDate}" pattern="yyyy-MM-dd" /></div>				
 								<c:if test="${!empty board.postFile}">					
-									<div id="postFile"><a href="<c:url value="/prjBoard/${board.postNo}" />"><img src="data:image/jpeg;base64,${img[status.index]}" alt="img"></a></div>	
+									<div id="postFile"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>"><img src="data:image/jpeg;base64,${img[status.index]}" alt="img"></a></div>	
 								</c:if>
-								<div id="postContent"><a href="<c:url value="/prjBoard/${board.postNo}" />">${board.postContent}</a></div>
+								<div id="postContent"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">${board.postContent}</a></div>
 							</fieldset>	
 						</c:if>	
 					</c:forEach>
-				</div>
-				
+				</div>			
 			</section>			
 		</section>
 	</fieldset>

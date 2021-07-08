@@ -14,8 +14,6 @@ import javax.validation.Valid;
 import org.apache.ibatis.binding.BindingException;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -24,9 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import proj21_funding.dto.FundingInfo;
 import proj21_funding.dto.Message;
@@ -173,18 +169,20 @@ public class ProjectController {
 //	}
 
 	@RequestMapping("/prjDetail/{prjNo}")
-	public ModelAndView detail(@PathVariable("prjNo") int prjNo, HttpSession session) {
+	public ModelAndView detail(@PathVariable("prjNo") int prjNo, HttpSession session, PrjBoardReply prjBoardReply, Model model) {
 		int count;
 		int sum;
 		List<PrjOption> prj = optionService.showPrjOptionByPrjNo(prjNo);
 		session.setAttribute("prj", prj);
 		session.setAttribute("prjNo", prjNo);
 //		List<Project> prjList=projectService.showProjectListAll();
+		
+		// 프로젝트 게시판 목록
 		List<PrjBoard> prBd = boardService.showPrjBoardbyPrjNo(prjNo);
 		List<String> imgList = new ArrayList<String>();
 		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
 		List<FundingInfo> fundingInfos = service.showFundingInfosByPrjNo(prjNo);
-
+		
 		for (PrjBoard board : prBd) {
 			UserInfo user = service.showUserbyNo(board.getUserNo().getUserNo());
 			board.setUserNo(user);
@@ -208,9 +206,36 @@ public class ProjectController {
 				}
 			}
 		}
-
 		session.setAttribute("img", imgList);
 		session.setAttribute("board", prBd);
+		
+		// 프로젝트 게시판 상세보기
+		if(prjBoardReply.getPostNo()!= 0) {
+			PrjBoard prjBoard = boardService.showPrjBoardbyPostNo(prjBoardReply.getPostNo());
+			UserInfo user = service.showUserbyNo(prjBoard.getUserNo().getUserNo());
+			prjBoard.setUserNo(user);		
+
+			if (prjBoard.getPostFile() != null && prjBoard.getPostFile().length > 0) {
+				try {
+					byte[] imagefile = prjBoard.getPostFile();
+					byte[] encodeBase64 = Base64.encodeBase64(imagefile);
+					String base64DataString = new String(encodeBase64, "UTF-8");
+					model.addAttribute("img", base64DataString);
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+			}
+			model.addAttribute("prjBoard", prjBoard);
+			
+			List<PrjBoardReply> boardReply = boardService.showPrjBoardReplyPostNo(prjBoardReply.getPostNo());
+			for(PrjBoardReply reply : boardReply) {
+				UserInfo userInfo = service.showUserbyNo(reply.getUserNo().getUserNo());
+				reply.setUserNo(userInfo);
+			}				
+			model.addAttribute("boardReply", boardReply);
+		}
+		
+		
 		try {
 			count = fundingService.showCountByPrjNo(prjNo);
 			sum = fundingService.showSumByPrjNo(prjNo);
@@ -222,71 +247,6 @@ public class ProjectController {
 		mav.addObject("count", count);
 		mav.addObject("sum", sum);
 		return mav;
-	}
-
-	@GetMapping("/prjBoard/{postNo}")
-	public String prjBoard(@PathVariable int postNo, PrjBoardReply prjBoardReply, Model model) {			
-		PrjBoard prjBoard = boardService.showPrjBoardbyPostNo(postNo);
-		UserInfo user = service.showUserbyNo(prjBoard.getUserNo().getUserNo());
-		prjBoard.setUserNo(user);		
-
-		if (prjBoard.getPostFile() != null && prjBoard.getPostFile().length > 0) {
-			try {
-				byte[] imagefile = prjBoard.getPostFile();
-				byte[] encodeBase64 = Base64.encodeBase64(imagefile);
-				String base64DataString = new String(encodeBase64, "UTF-8");
-				model.addAttribute("img", base64DataString);
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		}
-		model.addAttribute("prjBoard", prjBoard);
-		
-		List<PrjBoardReply> boardReply = boardService.showPrjBoardReplyPostNo(postNo);
-		for(PrjBoardReply reply : boardReply) {
-			UserInfo userInfo = service.showUserbyNo(reply.getUserNo().getUserNo());
-			reply.setUserNo(userInfo);
-		}				
-		model.addAttribute("boardReply", boardReply);
-		return "/prjBoard/prjBoard-detail";		
-	}
-	
-	@PostMapping("/prjBoard/{postNo}")
-	public String prjBoard(@PathVariable int postNo, PrjBoardReply prjBoardReply, RedirectAttributes rttr, HttpSession session, Model model) {
-		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
-		UserInfo userInfo = service.showUserbyNo(authInfo.getUserNo());
-		if(userInfo == null) {
-			return "redirect:/prjBoard/"+ postNo;
-		}
-		prjBoardReply.setUserNo(userInfo);		
-		try {
-			boardService.registPrjBoardReply(prjBoardReply);
-		}catch (NullPointerException e) {
-			rttr.addFlashAttribute("err","전달하고 싶은 내용을 적어주세요.");
-		}
-		return "redirect:/prjBoard/"+ postNo;
-	}
-	
-	// 프로젝트 게시판 글쓰기
-	@GetMapping("/prjBoard/prjBoard-write")
-	public String write(PrjBoard prjBoard, HttpSession session, Model model, MultipartFile postFile) {
-		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
-		model.addAttribute("authInfo", authInfo);
-		return "prjBoard/prjBoard-write";
-	}
-
-	@PostMapping("/prjBoard/prjBoard-write")
-	public String write(@Valid PrjBoard prjBoard, Errors errors, Model model, MultipartFile postFile) {
-
-		try {
-			boardService.registPrjBoard(prjBoard, postFile);
-			String complet = "등록되었습니다.";
-			model.addAttribute("complet", complet);
-		} catch (NullPointerException e) {
-			errors.rejectValue("postContent", "nullContent");
-			return "prjBoard/prjBoard-write";
-		}
-		return "prjBoard/prjBoard-write";
 	}
 
 	@RequestMapping("/fundingProject")
