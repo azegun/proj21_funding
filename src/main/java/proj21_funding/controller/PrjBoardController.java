@@ -9,8 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,47 +26,86 @@ public class PrjBoardController {
 	private MessageService service;
 	@Autowired
 	private PrjBoardService boardService;
-	
-	
-	@ResponseBody
-	@PostMapping("/registerReply")
-	public String prjBoard(@RequestBody int postNo,String replyContent, PrjBoardReply prjBoardReply, RedirectAttributes rttr, HttpSession session, Model model) {
-		System.out.println("postNo" + postNo);
-		System.out.println("replyContent"+ replyContent);
-		System.out.println(prjBoardReply);
-		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
-		UserInfo userInfo = service.showUserbyNo(authInfo.getUserNo());
-		if(userInfo == null) {
-			return "redirect:/project/project_detail";
-		}
-		prjBoardReply.setUserNo(userInfo);		
-		try {
-			boardService.registPrjBoardReply(prjBoardReply);
-		}catch (NullPointerException e) {
-			rttr.addFlashAttribute("err","전달하고 싶은 내용을 적어주세요.");
-		}
-		return "redirect:/project/project_detail";
-	}
-	
+
 	// 프로젝트 게시판 글쓰기
 	@GetMapping("/prjBoard/prjBoard-write")
 	public String write(PrjBoard prjBoard, HttpSession session, Model model, MultipartFile postFile) {
 		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
 		model.addAttribute("authInfo", authInfo);
+		
+		if(prjBoard.getPostNo() != 0) {			
+			PrjBoard pBoard = boardService.showPrjBoardbyPostNo(prjBoard.getPostNo());
+			model.addAttribute("pBoard", pBoard);
+		}		
 		return "prjBoard/prjBoard-write";
 	}
 
 	@PostMapping("/prjBoard/prjBoard-write")
 	public String write(@Valid PrjBoard prjBoard, Errors errors, Model model, MultipartFile postFile) {
-
-		try {
-			boardService.registPrjBoard(prjBoard, postFile);
-			String complet = "등록되었습니다.";
-			model.addAttribute("complet", complet);
-		} catch (NullPointerException e) {
-			errors.rejectValue("postContent", "nullContent");
-			return "prjBoard/prjBoard-write";
+		if (prjBoard.getPostNo() == 0) {
+			try {
+				boardService.registPrjBoard(prjBoard, postFile);
+				String complet = "등록되었습니다.";
+				model.addAttribute("complet", complet);
+			} catch (NullPointerException e) {
+				errors.rejectValue("postContent", "nullContent");
+				return "prjBoard/prjBoard-write";
+			}
+		}else {
+			try {
+				boardService.modifyPrjBoard(prjBoard);
+				String complet = "수정되었습니다.";
+				model.addAttribute("complet", complet);
+			} catch (NullPointerException e) {
+				errors.rejectValue("postContent", "nullContent");
+				return "prjBoard/prjBoard-write";
+			}
 		}
+		
 		return "prjBoard/prjBoard-write";
 	}
+
+	// 프로젝트 게시판 삭제
+	@RequestMapping("/prjDetail/deleteBoard")
+	public String delprjBoard(PrjBoard prjBoard) {
+		prjBoard = boardService.showPrjBoardbyPostNo(prjBoard.getPostNo());
+		try {
+			boardService.removePrjBoard(prjBoard);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/prjDetail/" + prjBoard.getPrjNo();
+	}
+
+	// 게시판 리플 작성
+	@RequestMapping("/prjDetail/registerReply")
+	public String prjBoard(PrjBoardReply prjBoardReply, RedirectAttributes rttr, HttpSession session) {
+		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
+		UserInfo userInfo = service.showUserbyNo(authInfo.getUserNo());
+		PrjBoard prjBoard = boardService.showPrjBoardbyPostNo(prjBoardReply.getPostNo());
+
+		if (userInfo == null) {
+		}
+		prjBoardReply.setUserNo(userInfo);
+		try {
+			boardService.registPrjBoardReply(prjBoardReply);
+		} catch (NullPointerException e) {
+			rttr.addFlashAttribute("err", "전달하고 싶은 내용을 적어주세요.");
+		}
+		return "redirect:/prjDetail/" + prjBoard.getPrjNo() + "?postNo=" + prjBoardReply.getPostNo() + "#prjBoard";
+	}
+
+	// 게시판 리플 삭제
+	@RequestMapping("/prjDetail/deleteReply")
+	public String deleteReply(PrjBoard prjBoard, PrjBoardReply prjBoardReply) {
+		prjBoard = boardService.showPrjBoardbyPostNo(prjBoard.getPostNo());
+		prjBoardReply = boardService.showPrjBoardReplyReplyNo(prjBoardReply.getReplyNo());
+		try {
+			boardService.removePrjBoardReply(prjBoardReply);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/prjDetail/" + prjBoard.getPrjNo() + "?postNo=" + prjBoardReply.getPostNo() + "#prjBoard";
+	}
+
 }

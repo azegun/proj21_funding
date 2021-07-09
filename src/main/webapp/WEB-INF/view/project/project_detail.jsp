@@ -125,10 +125,10 @@ $(function(){
 				<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />
 			</div>
 			<div id="prjBoard">
-				<c:if test="${empty prjBoard}">
+				<c:if test="${empty prBoard}">
 					<jsp:include page="/WEB-INF/view/prjBoard/prjBoard.jsp" />
 				</c:if>
-				<c:if test="${!empty prjBoard}">
+				<c:if test="${!empty prBoard}">
 					<jsp:include page="/WEB-INF/view/prjBoard/prjBoard-detail.jsp" />
 				</c:if>				
 			</div>

@@ -169,7 +169,7 @@ public class ProjectController {
 //	}
 
 	@RequestMapping("/prjDetail/{prjNo}")
-	public ModelAndView detail(@PathVariable("prjNo") int prjNo, HttpSession session, PrjBoardReply prjBoardReply, Model model) {
+	public ModelAndView detail(@PathVariable("prjNo") int prjNo, HttpSession session, PrjBoardReply prjBoardReply,PrjBoard prjBoard,  Model model) {
 		int count;
 		int sum;
 		List<PrjOption> prj = optionService.showPrjOptionByPrjNo(prjNo);
@@ -211,13 +211,13 @@ public class ProjectController {
 		
 		// 프로젝트 게시판 상세보기
 		if(prjBoardReply.getPostNo()!= 0) {
-			PrjBoard prjBoard = boardService.showPrjBoardbyPostNo(prjBoardReply.getPostNo());
-			UserInfo user = service.showUserbyNo(prjBoard.getUserNo().getUserNo());
-			prjBoard.setUserNo(user);		
+			PrjBoard prBoard = boardService.showPrjBoardbyPostNo(prjBoardReply.getPostNo());
+			UserInfo user = service.showUserbyNo(prBoard.getUserNo().getUserNo());
+			prBoard.setUserNo(user);		
 
-			if (prjBoard.getPostFile() != null && prjBoard.getPostFile().length > 0) {
+			if (prBoard.getPostFile() != null && prBoard.getPostFile().length > 0) {
 				try {
-					byte[] imagefile = prjBoard.getPostFile();
+					byte[] imagefile = prBoard.getPostFile();
 					byte[] encodeBase64 = Base64.encodeBase64(imagefile);
 					String base64DataString = new String(encodeBase64, "UTF-8");
 					model.addAttribute("img", base64DataString);
@@ -225,11 +225,12 @@ public class ProjectController {
 					e.printStackTrace();
 				}
 			}
-			model.addAttribute("prjBoard", prjBoard);
+			model.addAttribute("prBoard", prBoard);
 			
 			List<PrjBoardReply> boardReply = boardService.showPrjBoardReplyPostNo(prjBoardReply.getPostNo());
 			for(PrjBoardReply reply : boardReply) {
 				UserInfo userInfo = service.showUserbyNo(reply.getUserNo().getUserNo());
+				
 				reply.setUserNo(userInfo);
 			}				
 			model.addAttribute("boardReply", boardReply);

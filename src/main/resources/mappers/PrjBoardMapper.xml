@@ -39,7 +39,7 @@
 	
 	<update id="updatePrjBoard">
 		update prjboard
-		   set PrjNo = #{prjNo}, UserNo = #{userNo.userNo}, PostContent=#{postContent}, PostFile = #{postFile}
+		   set PostContent=#{postContent}, PostFile = #{postFile}
 	     where PostNo = #{postNo}
 	</update>
 	
@@ -50,11 +50,17 @@
 	</delete>
 
 	<select id="selectPrjBoardReplyPostNo" resultMap="resPbr">
-		select PostNo, UserNo, ReplyContent 
+		select ReplyNo, PostNo, UserNo, ReplyContent 
 		  from PrjBoardReply
-		 where PostNo = #{postNo}
-		 order by ReplyNo desc	
+		 where PostNo = #{postNo}		 	
 	</select>
+	
+	<select id="selectPrjBoardbyReplyNo" resultMap="resPbr">
+		select ReplyNo, PostNo, UserNo, ReplyContent 
+		  from PrjBoardReply
+		 where ReplyNo = #{replyNo}			
+	</select>
+	
 	
 	<insert id="insertPrjBoardReply">
 		insert into PrjBoardReply(PostNo, UserNo, ReplyContent)
