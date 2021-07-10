@@ -58,6 +58,44 @@
 				$('.addAll:last-child').remove();
 			});	
 		});
+			
+		    $(function(){
+		         var contextPath = "<%=request.getContextPath()%>";
+		         $(".test").on("click", function(){
+		               var category = $('#pCategoryNo').val()
+		               if(category == 0){
+		                  alert("카테고리를 	선택해주세요")
+		               }
+		               
+		              var prjGoal =  $('#prjGoal').val();
+		              var optPrice = $('#optPrice').val();
+		              
+		              var addOptPrice1 = $('#addOptPrice1').val();
+		              var addOptPrice2 = $('#addOptPrice2').val();
+		              var addOptPrice3 = $('#addOptPrice3').val();
+		              
+		              
+		 			  var regexp = /^[0-9]*$/			
+					// 조건별 옵션걸기 (문자 사용금지)
+		 			 if(!regexp.test(prjGoal) || !regexp.test(optPrice)){
+		 				alert("숫자를 선택해주세요")
+		 			 }else if(addOptPrice1 != null && addOptPrice2 == null){
+		 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1))
+		 				alert("숫자를 선택해주세요")
+		 			 }else if(addOptPrice1 != null && addOptPrice2 != null && addOptPrice3 == null){
+		 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1) ||  !regexp.test(addOptPrice2))
+		 				alert("숫자를 선택해주세요")
+		 				history.back();
+		 			 }else if(addOptPrice1 != null && addOptPrice2 != null && addOptPrice3 != null){
+		 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1) ||  !regexp.test(addOptPrice2) ||  !regexp.test(addOptPrice3))
+		 				alert("숫자를 선택해주세요")
+		 			 }			 			  
+		         });         
+		      });   
+			
+			
+			
+			
 	</script>		
 </head>
 <body>	
@@ -150,17 +188,12 @@ ${project[0].optNo}
 					</td>
 			</tr> 
 			<tr class ='tr_all'>
-					<td class="td_right"  id = "info" colspan="2">
-							<h4>마감 후에 결제를 할 수 있으니, 결제일은 마감일보다 늦게 선택해주세요	</h4>								
-					</td>
-				</tr>			
-			<tr class ='tr_all'>
 					<td class = "td_left">
 							<label for = "endDate">마감일</label>
 					</td>
 					<td class = "td_right">
 							<input type="text" class="datepicker" name = "eDate" 
-										 value = "${project[0].prjNo.endDate}" required="required">
+										 value = "${project[0].prjNo.endDate}" required="required" autocomplete="off">
 					</td>
 			</tr>	
 				</tbody>	
@@ -556,7 +589,7 @@ ${project[0].optNo}
 		
 			</div>		
 			<div id="update_btns">
-					<input type="submit"  value="등록"/>&nbsp;
+					<input  class = "test" type="submit"  value="등록"/>&nbsp;
 					<input type="reset" value="다시쓰기" />&nbsp; 
 					<button type="button"  id = "return">뒤로</button>
 			</div>	

@@ -1,10 +1,16 @@
 package proj21_funding.dto;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.util.InputMismatchException;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import proj21_funding.dto.account.UserInfo;
+import proj21_funding.exception.InputTypeStringError;
 
 public class Project {
 	private int prjNo;			//프로젝트번호	
@@ -21,6 +27,7 @@ public class Project {
 	private LocalDate payDate;	//결제일
 	private boolean	endYn;			//마감여부
 	private int totalPrice;
+	private HttpServletResponse response;
 	
 //	생성자
 	public Project() {
@@ -78,7 +85,7 @@ public class Project {
 	}
 
 	public String getPrjName() {
-		return prjName;
+		return prjName.trim();
 	}
 
 	public void setPrjName(String prjName) {
@@ -95,15 +102,15 @@ public class Project {
 	}
 
 	public String getPrjContent() {
-		return prjContent;
+		return prjContent.trim();
 	}
 
 	public void setPrjContent(String prjContent) {
 		this.prjContent = prjContent;
 	}
 
-	public int getPrjGoal() {
-		return prjGoal;
+	public int getPrjGoal()  {			
+			return prjGoal;		
 	}
 
 	public void setPrjGoal(int prjGoal) {

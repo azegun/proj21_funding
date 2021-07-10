@@ -26,6 +26,8 @@ import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.PrjPlusOption;
 import proj21_funding.exception.DateTimeOverException;
+import proj21_funding.exception.EmptySpaceException;
+import proj21_funding.exception.InputTypeStringError;
 import proj21_funding.exception.ProjectNotDeleteException;
 import proj21_funding.exception.ProjectNotFoundException;
 import proj21_funding.service.PrjCategoryService;
@@ -128,10 +130,20 @@ public class UploadController {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		try {		
+		System.out.println("ddd");
+		System.out.println("controller >> >  "+ project.getPrjGoal());
+		try {
 			//트렌젝션추가
 			trService.trJoinPrjAndPrjOpt(project, prjoption , uploadfile);		
+		}catch (EmptySpaceException e) {
+			out.println("<script type='text/javascript'>");
+			out.println("alert('잘못된 등록입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}
 		
+		try {				
 			//map들어오는거 확인하는 방법 (강추)			
 			Map<String, Object>	map = new HashMap<String, Object>();	
 	
@@ -168,13 +180,12 @@ public class UploadController {
 			mav.setViewName("upload/register_success");	
 			return mav;	
 		
-		}catch (DateTimeOverException e) { 	
+		}catch (Exception e) { 	
 			out.println("<script type='text/javascript'>");
-			out.println("alert('결재일이 마감일보다 빠를 수 없습니다.');");
+			out.println("alert('잘못된 등록입니다..');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
-			mav.setViewName("upload/register");
 		 return mav; 
 		 }				
 	}	

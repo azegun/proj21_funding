@@ -52,16 +52,23 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.selectSimplePrjOptionByPrjNo(prjNo);
 	}
 
-
+//	옵션추가 1개
+	@Override
+	public int insertOptionByMap(Map<String, Object> map) {		
+	
+		return mapper.insertOptionByMap(map);
+	}
+//	옵션추가 2개
 	@Override
 	public int insertPrjOptionsByMap(Map<String, Object> map) {
 		return mapper.insertPrjOptionsByMap(map);
 	}
-
+//	옵션추가 3개
 	@Override
-	public int insertOptionByMap(Map<String, Object> map) {
-		return mapper.insertOptionByMap(map);
+	public int insertPrjOptionsOfFourByMap(Map<String, Object> map) {
+		return mapper.insertPrjOptionsOfFourByMap(map);
 	}
+
 
 	@Override
 	public int updateOptionByMap(Map<String, Object> map) {
@@ -73,10 +80,7 @@ public class PrjOptionServiceImpl implements PrjOptionService {
 		return mapper.updateAllAddOptionsByMap(map);
 	}
 
-	@Override
-	public int insertPrjOptionsOfFourByMap(Map<String, Object> map) {
-		return mapper.insertPrjOptionsOfFourByMap(map);
-	}
+
 
 	@Override
 	public int removeOptNumOne(Map<String, Object> map) {

@@ -251,9 +251,7 @@ public class MyListController {
 			mav.addObject("project", map);
 			mav.addObject("myList", list);
 			mav.addObject("count",count);
-			mav.setViewName("mylist/myuploaded_list");	
-			
+			mav.setViewName("redirect:/homeToMyList/"+userNo);				
 			return mav;
 		}
-
-}
+	}

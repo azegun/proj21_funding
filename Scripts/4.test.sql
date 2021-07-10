@@ -130,7 +130,6 @@ select
 			PrjName, PrjContent, PrjGoal,
 			StartDate, EndDate, PayDate, EndYN
 from project;
-
 -- 수정 프로젝트
 select 
 PrjNo, pCategoryNo, PrjName, PrjContent, PrjGoal, 
@@ -452,5 +451,5 @@ delete
   from PrjBoardReply
  where ReplyNo = 1;
 
-       
-   
+ select  * from project p ;
+ select * from prjoption p ;

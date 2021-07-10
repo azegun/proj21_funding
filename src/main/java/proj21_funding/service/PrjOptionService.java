@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.PrjOption;
+import proj21_funding.dto.project.PrjPlusOption;
 @Service
 public interface PrjOptionService {
 	List<PrjOption> showPrjOptionListAll();
