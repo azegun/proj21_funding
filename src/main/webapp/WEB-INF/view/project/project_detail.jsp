@@ -57,7 +57,6 @@ $(function(){
 <body>
 <c:set var="now" value="<%=new java.util.Date()%>" />
 <c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 
-${prj[0] }
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header.jsp" />
@@ -80,7 +79,7 @@ ${prj[0] }
 					<div id="huwon">
 						<div id="huwon1">
 							<span id="huwontab1">모인 금액</span><br>
-							<span id="huwontab2">${sum}원</span><span id="huwontab3">${sum/prj[0].prjNo.prjGoal*100 }%</span>
+							<span id="huwontab2"><fmt:formatNumber value="${sum }" pattern="#,###"/>원</span><span id="huwontab3"><fmt:formatNumber value="${sum/prj[0].prjNo.prjGoal*100 }" pattern="0.00"/>%</span>
 						</div>
 						<div id="huwon1">
 							<span id="huwontab1">후원자</span><br>
@@ -89,14 +88,15 @@ ${prj[0] }
 					</div>
 					<div id="funding-ing">
 						<span id="ing1">펀딩 진행중</span><br>
-						<span id="ing2">목표 금액인 ${prj[0].prjNo.prjGoal }원이 모여야만 결제됩니다.</span><br>
+						<span id="ing2">목표 금액인 <fmt:formatNumber value="${prj[0].prjNo.prjGoal }" pattern="#,###"/>원이 모여야만 결제됩니다.</span><br>
 						<span id="ing2">결제는 ${prj[0].prjNo.endDate }에 다함께 진행됩니다.</span>
 					</div>
 				</aside>
 			</div>
 		</div>
 			<span>목표 금액</span><br>
-			<span>${prj[0].prjNo.prjGoal }원</span><br>
+			
+			<span><fmt:formatNumber value="${prj[0].prjNo.prjGoal }" pattern="#,###"/>원</span><br>
 			<span>시작일:${prj[0].prjNo.startDate }</span><br> 
 			<span>마감일:${prj[0].prjNo.endDate }</span><br>
 			<span>결제일:${prj[0].prjNo.payDate }</span><br>
@@ -106,8 +106,8 @@ ${prj[0] }
 			<c:forEach var="prj" items="${prj }" varStatus="count">
 				<fieldset class="optBox">
 					<ul>
-						<li>${prj.optName }:${prj.optContent }<span class="price"><c:out
-									value="${prj.optPrice }원" /></span></li>
+						<li><b>${prj.optName }</b> <br> ${prj.optContent }<span class="price">
+									<fmt:formatNumber value='${prj.optPrice }' pattern='#,###'/>원 </span></li>
 					</ul>
 					<input class="resOptNo" type="hidden" value="${prj.optNo }" /> 
 					<input class="resPrice" type="hidden" value="${prj.optPrice }" />

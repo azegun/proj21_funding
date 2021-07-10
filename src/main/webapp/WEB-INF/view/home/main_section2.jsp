@@ -31,7 +31,19 @@
 </script>
 </head>
 <body>																					
-				<div class="title">						
+				<div class="title">
+				<%--<div id="title-post">
+						<div id="title-image">
+						<a href = "<c:url value='/prjDetail/13'/>"><img src="images/slider/13.jpg" id="projImg"></a>
+						</div>
+						<div id="title-imageinfo" style="background: rgb(160, 145, 112);">
+									<span class="infoTitle">당신의 여름을 <br>
+									완성하는 허브향기</span>
+									<br>
+									허브를 태워 향을 내는 스머징세트
+							</div>
+					</div> --%>
+								
 					<c:forEach items="${maxprj}" var="maxprj">
 						<div id="title-post">
 							<div id="title-image">
