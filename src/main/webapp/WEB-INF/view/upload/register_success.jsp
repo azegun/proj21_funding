@@ -8,6 +8,7 @@
 <html>
 <head>
 		<meta charset="UTF-8">
+		<meta name = "viewport" content="width=device-width, initial-scale=1">
 		<title>업로드 완료</title>
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/regiser_success.css">
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/main.css">
@@ -57,12 +58,9 @@ ${optList }
 				</div>	
 		</c:if>
 		<c:if test = "${pro != null}">
-		<h2>프로젝트 등록</h2>
-		<section id= "table_all">
-			<div id ="foot_btn">	
-					
-			</div>	
-		<table>		
+		<h2>프로젝트 정보</h2>
+		<section id= "table_all">			
+		<table class = "register_table">		
 				<tbody>
 					<tr class = "col1">
 										<td class="td_left"><label for="prjNo">프로젝트번호</label></td>
@@ -94,11 +92,6 @@ ${optList }
 										<td class="td_left"><label for="endDate">마감일</label></td>
 										<td class="td_right" ><span id="endDate">${pro.endDate }</span></td>
 					</tr>	
-					<tr class = "col7">
-										<td class="td_left"><label for="payDate">결제일</label></td>
-										<td class="td_right" ><span id="payDate">${pro.payDate}</span></td>
-					</tr>				
-
 					<c:choose>
 							<c:when test="${optList[0].prjNo.prjNo eq optList[3].prjNo.prjNo}">
 									<tr class = "col8">					
@@ -111,7 +104,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
-											<!-- <td class="td_left"><label for="optContent">옵션1 내용</label></td> -->
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right"  colspan="2">
 															<div class ="sb2option">${propt.optContent}</div>
 											</td>
@@ -125,6 +118,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right" colspan="2" >
 															<div class ="sb2option">${optList[1].optContent}</div>
 										  	</td>	
@@ -138,6 +132,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right" colspan="2" >
 															<div class ="sb2option">${optList[2].optContent}</div>
 										  	</td>										  										  			
@@ -151,6 +146,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right" colspan="2" >
 															<div class ="sb2option">${optList[3].optContent}</div>
 										  	</td>	
@@ -168,7 +164,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
-											<!-- <td class="td_left"><label for="optContent">옵션1 내용</label></td> -->
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right"  colspan="2">
 															<div class ="sb2option">${propt.optContent}</div>
 											</td>
@@ -182,6 +178,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right" colspan="2" >
 															<div class ="sb2option">${optList[1].optContent}</div>
 										  	</td>	
@@ -195,6 +192,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right" colspan="2" >
 															<div class ="sb2option">${optList[2].optContent}</div>
 										  	</td>	
@@ -213,7 +211,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
-											<!-- <td class="td_left"><label for="optContent">옵션1 내용</label></td> -->
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right"  colspan="2">
 															<div class ="sb2option">${propt.optContent}</div>
 											</td>
@@ -227,6 +225,7 @@ ${optList }
 											</td>
 								</tr>
 								<tr class = "col10">
+											<td class="td_left"><label for="optContent">내용</label></td>
 											<td class="td_right" colspan="2" >
 															<div class ="sb2option">${optList[1].optContent}</div>
 										  	</td>	

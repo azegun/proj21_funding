@@ -7,6 +7,10 @@ h2{
 	margin-top: 40px;
 	margin-bottom: 30px;
 }
+.register_table{
+		border-collapse: collapse;		
+		border: solid 2px #97d5fb;
+}
 #table_all{
 	display: flex;
 	justify-content: center;
@@ -59,7 +63,7 @@ h2{
     box-shadow: inset 0px 0px 5px white;
 }
 tr{
-
+	border-bottom: 2.5px solid #97d5fb;
 }
 td{
 	text-align: center;
@@ -68,11 +72,15 @@ td{
 .td_left{
 	width: 150px;
 	 background-color:#A5E3E6;
-	 border-bottom: solid 2px  #A5E3E6;
-	border-right:  solid 2px #A5E3E6;
+	border-right:  solid 2px #97d5fb;
+	border-left:  solid 2px #97d5fb;
+	font-size: 1.1em;
+
 }
 .td_right{
-	width: 380px;.
+	width: 380px;
+	border-right:  solid 2px #97d5fb;
+	
 }
 #userName, #optPrice, #optName, #prjName, #prjGoal{
 	font-size: 15px;

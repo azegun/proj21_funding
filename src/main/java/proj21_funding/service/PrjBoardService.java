@@ -22,6 +22,8 @@ public interface PrjBoardService {
 
 	List<PrjBoardReply> showPrjBoardReplyPostNo(int postNo);
 	
+	PrjBoardReply showPrjBoardReplyReplyNo(int replyNo);
+	
 	int registPrjBoardReply(PrjBoardReply prjBoardReply);
 
 	int modifyPrjBoardReply(PrjBoardReply prjBoardReply);

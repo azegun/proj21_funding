@@ -2,17 +2,158 @@
     pageEncoding="UTF-8"%>
 <html>
   <head>
-  <style>
-.hidden {
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/mylist_css/practice.css">
+  </head> 
+  <body><div class="container">
+  <div class="row">
+    <div class="custom-table">
+      <div class="table-header">
+        <div>S No</div>
+        <div>Name</div>
+        <div>Job Role</div>
+        <div>Allocation</div>
+        <div>Additional</div>
+        <div>Working on</div>
+        <div class="date-column">Joined date</div>
+        <div class="date-column">Expected release date</div>
+        <div>Actions</div>
+      </div>
+      <div class="table-content">
+        <div class="table-row">
+          <div>1</div>
+          <div>Some One</div>
+          <div>Web developer</div>
+          <div>2</div>
+          <div>
+            <input type="checkbox" />
+          </div>
+          <div>html,angular</div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div><a href="#">delete</a></div>
+        </div>
+        <div class="table-row">
+          <div>1</div>
+          <div>Some One</div>
+          <div>Web developer</div>
+          <div>2</div>
+          <div>
+            <input type="checkbox" />
+          </div>
+          <div>html,angular</div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div><a href="#">delete</a></div>
+        </div>
+        <div class="table-row">
+          <div>1</div>
+          <div>Some One</div>
+          <div>Web developer</div>
+          <div>2</div>
+          <div>
+            <input type="checkbox" />
+          </div>
+          <div>html,angular</div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div><a href="#">delete</a></div>
+        </div>
+        <div class="table-row">
+          <div>1</div>
+          <div>Some One</div>
+          <div>Web developer</div>
+          <div>2</div>
+          <div>
+            <input type="checkbox" />
+          </div>
+          <div>html,angular</div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div><a href="#">delete</a></div>
+        </div>
+        <div class="table-row">
+          <div>1</div>
+          <div>Some One</div>
+          <div>Web developer</div>
+          <div>2</div>
+          <div>
+            <input type="checkbox" />
+          </div>
+          <div>html,angular</div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div><a href="#">delete</a></div>
+        </div>
+        <div class="table-row">
+          <div>1</div>
+          <div>Some One</div>
+          <div>Web developer</div>
+          <div>2</div>
+          <div>
+            <input type="checkbox" />
+          </div>
+          <div>html,angular</div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div><a href="#">delete</a></div>
+        </div>
+        <div class="table-row">
+          <div>1</div>
+          <div>Some One</div>
+          <div>Web developer</div>
+          <div>2</div>
+          <div>
+            <input type="checkbox" />
+          </div>
+          <div>html,angular</div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div class="date-column">
+            <input type="date" class="form-control" />
+          </div>
+          <div><a href="#">delete</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>
+
+ <!-- <script>
+   <style>
+ .hidden {
     display: none;
 }
   </style>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </head>
-  <body>
 
- 
-   <script>
    $(function(){ 
    $('.commentsToggle').click(function(){
        $(this).siblings(".comments").toggleClass('hidden');
@@ -47,13 +188,9 @@
    
    
   </script>
-   <body>
-
-  </body>
-</html>
 	 /*   $('.optionPlusMinus').parent().parent().parent().parent().next().toggleClass('hidden');		 */   
 		   var required =   $(".addtext").prop('required',false);
-		   		   var attr =  $(".addtext").attr('required', true);
+		   		   var attr =  $(".addtext").attr('required', true); -->
 <!--    <div>
    		<button class = "optionPlusMinus" >옵션추가/삭제</button>
    </div>

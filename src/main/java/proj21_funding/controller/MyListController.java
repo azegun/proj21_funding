@@ -137,9 +137,24 @@ public class MyListController {
 //		디테일리스트에서 수정
 		@PostMapping("/myListUpdate/{authInfo.userNo}")
 		public ModelAndView myListUpdate(PrjPlusOption prjplusoption,
-				@PathVariable("authInfo.userNo") int userNo, HttpServletRequest request) {
+				@PathVariable("authInfo.userNo") int userNo,
+				@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+				@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+				@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, 
+				HttpSession session, 
+				HttpServletRequest request) {
+			
+			if(session.getAttribute("authInfo")==null) {
+				return new ModelAndView("redirect:/login");
+			}
+			
+			int pageSearch = (currentPage-1)*cntPerPage;
 			
 			Map<String, Object> map = new HashMap<String, Object>();	
+			map.put("currentPage",currentPage );
+			map.put("cntPerPage", cntPerPage);
+			map.put("pageSize",pageSize );
+			map.put("pageSearch",pageSearch);
 			
 			Enumeration enu = request.getParameterNames();
 		      while (enu.hasMoreElements()) {
@@ -147,6 +162,10 @@ public class MyListController {
 		         String value = request.getParameter(name);
 		         map.put(name, value);
 		      }
+		      
+		      int count = myListService.selectCountPrjByUserNo(map);
+			
+			
 		      System.out.println("map>> "+ map);
 		      
 		   boolean addOptName1 = map.containsKey("addOptName1");
@@ -217,13 +236,21 @@ public class MyListController {
 		    	System.out.println(e);
 		    }
 		    
+		    Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+			pagination.setTotalRecordCount(count);
+			session.setAttribute("pagination", pagination);
+			
+			System.out.println("page >> "+ pagination);
+			List<Project> list = listService.showAllListByMap(map);		
+		    
 		    optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
-			List<Project> list = listService.showAllMyList(userNo);
+//			List<Project> list = listService.showAllMyList(userNo);
 			ModelAndView mav = new ModelAndView();		
 			
 			mav.addObject("optList", optList);
 			mav.addObject("project", map);
 			mav.addObject("myList", list);
+			mav.addObject("count",count);
 			mav.setViewName("mylist/myuploaded_list");	
 			
 			return mav;

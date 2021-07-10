@@ -23,8 +23,8 @@ ${count }
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
-		<section>
-		<table>
+		<section class = "funding_main">
+		<table class = "funding_table">
 			<tr class="tablehead">
 				<th> </th><th>프로젝트명</th><th>옵션명</th><th>옵션내용</th><th>가격</th>
 				<th>마감일<br>(결제일)</th><th>결제<br>여부</th><th>마감<br>여부</th>
@@ -32,7 +32,7 @@ ${count }
 			<c:forEach var="funding" items="${fundingList }">
 			<tr>
 				<td><img src="<%=request.getContextPath()%>/images/project/project${funding.prjNo.prjNo }.jpg"/>
-				<td class="link"><a href="<%=request.getContextPath()%>/prjDetail/${funding.prjNo.prjNo}">${funding.prjNo.prjName }</a></td>
+				<td class="link"><a id = "pointer" href="<%=request.getContextPath()%>/prjDetail/${funding.prjNo.prjNo}">${funding.prjNo.prjName }</a></td>
 				<td>${funding.optNo.optName }</td>
 				<td>${funding.optNo.optContent}</td>
 				<td><fmt:formatNumber value="${funding.optNo.optPrice}" pattern="#,###"/>원</td>

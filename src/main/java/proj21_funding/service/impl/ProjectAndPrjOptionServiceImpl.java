@@ -34,19 +34,20 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	@Override
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile ) {
 //		날짜비교
-		LocalDate EndDate = project.getEndDate();
-		LocalDate PayDate = project.getPayDate();
+//		LocalDate EndDate = project.getEndDate();
+//		LocalDate PayDate = project.getPayDate();
 		
-		int compareEtoP = EndDate.compareTo(PayDate);
+//		int compareEtoP = EndDate.compareTo(PayDate);
 //		날짜비교		
 		
-		int res;
-		if(compareEtoP <= 0) {
-			 res = pMapper.insertProject(project);
-		}else {
-			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
-		}	
+//		int res;
+//		if(compareEtoP <= 0) {
+//			 
+//		}else {
+//			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
+//		}	
 		//트렌젝션 prjNo 찾아오기 위함.
+		int res = pMapper.insertProject(project);
 		prjoption.setPrjNo(project);
 		
 		  if(uploadfile.getSize() !=0) {

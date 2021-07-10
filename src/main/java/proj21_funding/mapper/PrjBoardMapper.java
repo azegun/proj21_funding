@@ -21,6 +21,8 @@ public interface PrjBoardMapper {
 
 	List<PrjBoardReply> selectPrjBoardReplyPostNo(int postNo);
 	
+	PrjBoardReply selectPrjBoardbyReplyNo(int replyNo);
+	
 	int insertPrjBoardReply(PrjBoardReply prjBoardReply);
 	
 	int updatePrjBoardReply(PrjBoardReply prjBoardReply);

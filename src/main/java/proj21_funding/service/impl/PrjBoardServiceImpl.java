@@ -84,4 +84,9 @@ public class PrjBoardServiceImpl implements PrjBoardService {
 		return boardMapper.deletePrjBoardReply(prjBoardReply);
 	}
 
+	@Override
+	public PrjBoardReply showPrjBoardReplyReplyNo(int replyNo) {		
+		return boardMapper.selectPrjBoardbyReplyNo(replyNo);
+	}
+
 }
