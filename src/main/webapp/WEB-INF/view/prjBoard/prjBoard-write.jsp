@@ -20,9 +20,14 @@
 		<form:hidden path="postNo" value="${pBoard.postNo}"/>
 		<form:hidden path="prjNo" value="${prjNo}"/>		
 		<form:hidden path="userNo.userNo" value="${authInfo.userNo}"/>		
-		<p>파일 : <form:input path="postFile" type="file" accept=".jpg, .jpeg, .png" value="${pBoard.postFile}"/>
-		${pBoard.postFile}</p>
-		<p><form:textarea path="postContent" value="${pBoard.postContent}"/>${pBoard.postContent}<p>	
+		<p>파일 : 
+			<c:if test="${!empty pBoard}">
+				${pBoard.fileName}<br>
+			</c:if>
+			<form:input path="postFile" type="file" accept=".jpg, .jpeg, .png" text="${pBoard.fileName}" />
+		</p>
+		<textarea name="postContent" id="postContent" >${pBoard.postContent}</textarea>
+		<%-- <p><form:textarea path="postContent" value="${pBoard.postContent}" /><c:out value="${pBoard.postContent}"/><p>	 --%>
 		<p id="errors"><form:errors path="postContent"/>${complet}&nbsp;</p>		
 		<c:if test="${empty pBoard}">
 			<form:button>등록하기</form:button>

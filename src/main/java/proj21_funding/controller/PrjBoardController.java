@@ -34,7 +34,7 @@ public class PrjBoardController {
 		model.addAttribute("authInfo", authInfo);
 		
 		if(prjBoard.getPostNo() != 0) {			
-			PrjBoard pBoard = boardService.showPrjBoardbyPostNo(prjBoard.getPostNo());
+			PrjBoard pBoard = boardService.showPrjBoardbyPostNo(prjBoard.getPostNo());			
 			model.addAttribute("pBoard", pBoard);
 		}		
 		return "prjBoard/prjBoard-write";
@@ -53,7 +53,7 @@ public class PrjBoardController {
 			}
 		}else {
 			try {
-				boardService.modifyPrjBoard(prjBoard);
+				boardService.modifyPrjBoard(prjBoard, postFile);
 				String complet = "수정되었습니다.";
 				model.addAttribute("complet", complet);
 			} catch (NullPointerException e) {

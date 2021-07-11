@@ -16,6 +16,8 @@ public interface PrjBoardMapper {
 	int insertPrjBoard(PrjBoard prjBoard);
 
 	int updatePrjBoard(PrjBoard prjBoard);
+	
+	int updatePrjBoardNoFile(PrjBoard prjBoard);
 
 	int deletePrjBoard(PrjBoard prjBoard);
 

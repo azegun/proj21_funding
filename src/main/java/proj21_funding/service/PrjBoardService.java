@@ -16,7 +16,7 @@ public interface PrjBoardService {
 	
 	int registPrjBoard(PrjBoard prjBoard, MultipartFile postFile);
 
-	int modifyPrjBoard(PrjBoard prjBoard);
+	int modifyPrjBoard(PrjBoard prjBoard, MultipartFile postFile);
 
 	int removePrjBoard(PrjBoard prjBoard);	
 
