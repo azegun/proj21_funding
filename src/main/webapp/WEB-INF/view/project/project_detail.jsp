@@ -18,12 +18,14 @@ $(function(){
 	var price = 0;
 	
 	$(".optBox").click(function(){
-		$(".optBox").css({"background-color":"white"});
+		$(".optBox").css({"background-color":"#ecf0f1"});
+		$(".optBox").css({"color":"black"});
 		price = $(this).children(".resPrice").val();
 		optNo = $(this).children(".resOptNo").val();
 		console.log(optNo)
 		console.log(price);
-		$(this).css({"background-color":"red"});
+		$(this).css({"background-color":"#fab1a0"});
+		$(this).css({"color":"white"});
 		$(".resultPrice").text("가격 : "+price+"원")
 		
 		$(".fundingForm").children().remove(".price")
@@ -87,42 +89,66 @@ $(function(){
 						</div>
 					</div>
 					<div id="funding-ing">
+						<c:if test="${sysYear>prj[0].prjNo.endDate}">
+						<span id="ing1">마감 완료</span><br>
+						<span id="ing2">기간이 종료되었습니다.</span><br>
+						</c:if>
+						<c:if test="${sysYear<=prj[0].prjNo.endDate}">
 						<span id="ing1">펀딩 진행중</span><br>
 						<span id="ing2">목표 금액인 <fmt:formatNumber value="${prj[0].prjNo.prjGoal }" pattern="#,###"/>원이 모여야만 결제됩니다.</span><br>
 						<span id="ing2">결제는 ${prj[0].prjNo.endDate }에 다함께 진행됩니다.</span>
+						</c:if>
 					</div>
 				</aside>
 			</div>
 		</div>
-			<span>목표 금액</span><br>
+		
+			<div>
+				<span class="prjTitle">프로젝트 소개</span><br>
+				<div class="content">
+					 ${prj[0].prjNo.prjContent}
+				</div>
+				
+			</div>
 			
-			<span><fmt:formatNumber value="${prj[0].prjNo.prjGoal }" pattern="#,###"/>원</span><br>
 			<span>시작일:${prj[0].prjNo.startDate }</span><br> 
-			<span>마감일:${prj[0].prjNo.endDate }</span><br>
 			<span>결제일:${prj[0].prjNo.payDate }</span><br>
-			<span>제작자 :${prj[0].prjNo.userNo.userName }</span>
-			<progress value="${sum }" max="${prj[0].prjNo.prjGoal }"></progress>
-			<span>달성률 : </span><br>
-			<c:forEach var="prj" items="${prj }" varStatus="count">
-				<fieldset class="optBox">
-					<ul>
-						<li><b>${prj.optName }</b> <br> ${prj.optContent }<span class="price">
-									<fmt:formatNumber value='${prj.optPrice }' pattern='#,###'/>원 </span></li>
-					</ul>
-					<input class="resOptNo" type="hidden" value="${prj.optNo }" /> 
-					<input class="resPrice" type="hidden" value="${prj.optPrice }" />
-					<input type="hidden" value="${prj.optNo }" />
-				</fieldset>
-				<br>
-			</c:forEach>
-			<span class="resultPrice">가격 : 0원 </span>
-			<form action="<%=request.getContextPath() %>/fundingProject" method="post" class="fundingForm">
-				<c:if test="${sysYear>prj[0].prjNo.endDate}"><button disabled="disabled">후원 불가</button></c:if>
-				<c:if test="${sysYear<=prj[0].prjNo.endDate}">
-					<input class="fund" type="submit" value="후 원" >
-				</c:if>
-			</form>
-			<div id="projectUserInfo">
+			<div style="display:flex">
+				<div class="fundingPart">
+				<c:forEach var="prj" items="${prj }" varStatus="count">
+					<fieldset class="optBox" style="border-radius: 15px; background-color:#ecf0f1">
+						<ul>
+							<li class="optList">
+							<span class="optName">${prj.optName }</span><br> 
+							<span class="optContent">${prj.optContent }</span><br>
+							<span class="price">
+								<fmt:formatNumber value='${prj.optPrice }' pattern='#,###'/>원
+							</span>
+							</li>
+						</ul>
+						<input class="resOptNo" type="hidden" value="${prj.optNo }" /> 
+						<input class="resPrice" type="hidden" value="${prj.optPrice }" />
+						<input type="hidden" value="${prj.optNo }" />
+					</fieldset>
+					<br>
+				</c:forEach>
+				</div>
+				
+				<div class="fundingPart">
+				<div class="prjGoal">마감일:${prj[0].prjNo.endDate }</div><br>
+				<div class="prjGoal">목표 금액 : <fmt:formatNumber value="${prj[0].prjNo.prjGoal }" pattern="#,###"/>원</div><br>
+				<progress value="${sum }" max="${prj[0].prjNo.prjGoal }"></progress>
+				<div class="rate">달성률 : <fmt:formatNumber value="${sum/prj[0].prjNo.prjGoal*100 }" pattern="0.00"/>%</div><br>
+				<p class="resultPrice">가격 : 0원 </p>
+				<form action="<%=request.getContextPath() %>/fundingProject" method="post" class="fundingForm">
+					<c:if test="${sysYear>prj[0].prjNo.endDate}"><button disabled="disabled">후원 불가</button></c:if>
+					<c:if test="${sysYear<=prj[0].prjNo.endDate}">
+						<input class="fund" type="submit"  style="display:block;" value="후 원 하 기" >
+					</c:if>
+				</form>
+				</div>
+			</div>
+			<div id="projectUserInfo" >
 				<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />
 			</div>
 			<div id="prjBoard">

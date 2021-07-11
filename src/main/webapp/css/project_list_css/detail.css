@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 #funginginfo {
 	display: flex;
 	flex-wrap: wrap;
@@ -37,6 +38,14 @@
 	border-radius: 2px;
 }
 
+.prjTitle{
+	font-weight:bold;
+	font-size:28px;
+	border-bottom:3px solid #ffcece;
+	display:inline-block;
+	margin:15px;
+}
+
 #title h1 {
 	font-size: 2.8rem;
 	margin: 1.5rem 0px 1rem;
@@ -57,7 +66,6 @@
 }
 
 #img span {
-	background-color: rgb(0, 0, 0);
 	display: block;
 	height: 0px;
 	margin: 0px;
@@ -72,9 +80,35 @@
 	max-width: 100%;
 	top: 0px;
 	left: 0px;
-	margin: 0px;
+	margin: 0px 0px 15px 0px;
 	padding: 0px;
 	position: absolute;
+	border-radius:20px;
+	
+}
+progress::-webkit-progress-value { 
+}
+
+progress{
+	width: 80%;
+	float:right;
+	-webkit-appearance: none;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #ecf0f1;
+    border-radius: 5px;
+}
+progress[value]::-webkit-progress-value {
+    border-radius: 5px;
+    background: rgb(250, 100, 98);
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.rate{
+	clear: right;
+	text-align: right;
 }
 
 #funding-info {
@@ -130,4 +164,49 @@
 #ing2 {
 	line-height: 1.5;
 	font-size: 0.9rem;
+}
+
+.fund{
+	background-color: rgb(250, 100, 98);
+	width:50%;
+	height:80px;
+	border:none;
+	border-radius:15px;
+	font-size: 25px;
+	font-weight:bold;
+	color:white;
+	float:right;
+}
+
+.fundingPart{
+	width:49%;
+	display:inline-block;
+	
+}
+.optList{
+	list-style: none;
+}
+
+.optName{
+	font-weight: bold;
+	line-height: 27px;
+	font-size: 20px;
+}
+
+.price{
+	float:right;
+	font-size:17px;
+	font-weight: bold;
+}
+
+.resultPrice{
+	font-size: 30px;
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.prjGoal{
+	font-size:30px;
+	font-weight: bold;
+	text-align: right;
 }
