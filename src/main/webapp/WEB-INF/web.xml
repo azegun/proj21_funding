@@ -31,7 +31,7 @@
 		
 		<!-- 파일 등록할때 위치 알려주기 -->
 		<multipart-config>
-      		  <location>C:\workspace_web\proj21_funding\src\main\webapp\images\project</location>
+      		  <location>D:\workspace_java1\proj21_funding\src\main\webapp\images\project</location>
       		  <max-file-size>209715200</max-file-size>
       		  <max-request-size>209715200</max-request-size>
       		  <file-size-threshold>0</file-size-threshold>

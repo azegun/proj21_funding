@@ -17,7 +17,7 @@
 </head>
 <body>
 	<fieldset id="prjBoardDetailArea">
-	<button type="button" onclick="history.back(-1);">다른 게시글 보기</button>			
+	<a href="<c:url value='/prjDetail/${prBoard.prjNo}#prjBoard'/>"><button type="button">다른 게시글 보기</button></a>			
 			<section>						
 				<div id="nickName">${prBoard.userNo.nickName}</div>				
 				<div id="postDate"><tf:formatDateTime value="${prBoard.postDate}" pattern="yyyy-MM-dd" /></div>				

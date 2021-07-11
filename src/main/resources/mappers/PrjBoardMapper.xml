@@ -8,6 +8,7 @@
 		<result property="postContent" column="postContent"/>
 		<result property="postDate" column="postDate"/>
 		<result property="postFile" column="postFile"/>
+		<result property="fileName" column="fileName"/>
 		<association property="userNo" resultMap="proj21_funding.mapper.UserInfoMapper.resUser" ></association>
 	</resultMap>
 	
@@ -19,29 +20,36 @@
 	</resultMap>
 	
 	<select id="selectPrjBoardbyPrjNo" resultMap="resPb">
-		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile 
+		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile, FileName 
 		  from prjboard
 		 where PrjNo = #{prjNo}
 		 order by PostNo desc
 	</select>
 	
 	<select id="selectPrjBoardbyPostNo" resultMap="resPb">
-		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile 
+		select PostNo, PrjNo, UserNo, PostContent ,PostDate ,PostFile, FileName 
 		  from prjboard
 		 where PostNo = #{postNo}
 	</select>
 
 	<insert id="insertPrjBoard">
 		insert
-		  into prjboard(PrjNo, UserNo, PostContent,PostFile)
-		  values (#{prjNo}, #{userNo.userNo}, #{postContent}, #{postFile})
+		  into prjboard(PrjNo, UserNo, PostContent,PostFile, FileName)
+		  values (#{prjNo}, #{userNo.userNo}, #{postContent}, #{postFile}, #{fileName})
 	</insert>
 	
 	<update id="updatePrjBoard">
 		update prjboard
-		   set PostContent=#{postContent}, PostFile = #{postFile}
+		   set PostContent=#{postContent}, PostFile = #{postFile}, FileName = #{fileName}
 	     where PostNo = #{postNo}
 	</update>
+	
+	<update id="updatePrjBoardNoFile">
+		update prjboard
+		   set PostContent=#{postContent}
+	     where PostNo = #{postNo}
+	</update>
+	
 	
 	<delete id="deletePrjBoard">
 		delete

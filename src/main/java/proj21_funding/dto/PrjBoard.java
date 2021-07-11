@@ -12,6 +12,7 @@ public class PrjBoard {
 	private String postContent;// 게시글내용
 	private LocalDateTime postDate;// 게시글날짜
 	private byte[] postFile;// 첨부파일
+	private String fileName;// 파일이름
 
 	// 기본생성자
 	public PrjBoard() {
@@ -21,8 +22,7 @@ public class PrjBoard {
 	public PrjBoard(int postNo) {
 		this.postNo = postNo;
 	}
-	
-	
+
 	// Getter &Setter
 
 	public int getPostNo() {
@@ -73,12 +73,19 @@ public class PrjBoard {
 		this.postFile = postFile;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("PrjBoard [postNo=%s, prjNo=%s, userNo=%s, postContent=%s, postDate=%s, postFile=%s]",
-				postNo, prjNo, userNo, postContent, postDate, Arrays.toString(postFile));
+	public String getFileName() {
+		return fileName;
 	}
 
-	
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"PrjBoard [postNo=%s, prjNo=%s, userNo=%s, postContent=%s, postDate=%s, postFile=%s, fileName=%s]",
+				postNo, prjNo, userNo, postContent, postDate, Arrays.toString(postFile), fileName);
+	}
 
 }

@@ -689,11 +689,11 @@ values (13,'스머징 풀 세트', 80000, '스머징 플레이트 + 허브믹스
 -- PrjBoard(프로젝트게시판) - Project(프로젝트) 외래키 받음
 select 
 	PostNo, PrjNo, UserNo,
-	PostContent ,PostDate ,PostFile 	
+	PostContent ,PostDate ,PostFile, FileName  	
 from prjboard;
 
 insert into prjboard values
-(00001, 00001, 00003, '고생들했어요', now(), null );
+(00001, 00001, 00003, '고생들했어요', now(), null, null );
 #default값 null값 제외
 insert into prjboard (PrjNo, UserNo, PostContent )
 values

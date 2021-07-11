@@ -45,15 +45,32 @@ public class PrjBoardServiceImpl implements PrjBoardService {
 
 			if (pic != null) {
 				prjBoard.setPostFile(pic);
+				prjBoard.setFileName(postFile.getOriginalFilename());
 			}
-		}
-
+		}		
 		return boardMapper.insertPrjBoard(prjBoard);
 	}
 
 	@Override
-	public int modifyPrjBoard(PrjBoard prjBoard) {
-		return boardMapper.updatePrjBoard(prjBoard);
+	public int modifyPrjBoard(PrjBoard prjBoard, MultipartFile postFile) {
+		if(!postFile.getOriginalFilename().equals("")) {
+			byte[] pic = null;
+
+			try {
+				pic = postFile.getBytes();
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			}
+
+			if (pic != null) {
+				prjBoard.setPostFile(pic);
+				prjBoard.setFileName(postFile.getOriginalFilename());
+			}
+			
+			return boardMapper.updatePrjBoard(prjBoard);
+		}else{
+			return boardMapper.updatePrjBoardNoFile(prjBoard);
+		}		
 	}
 
 	@Override
