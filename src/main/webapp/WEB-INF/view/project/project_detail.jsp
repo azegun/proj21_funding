@@ -89,11 +89,11 @@ $(function(){
 						</div>
 					</div>
 					<div id="funding-ing">
-						<c:if test="${sysYear>prj[0].prjNo.endDate}">
+						<c:if test="${sysYear>=prj[0].prjNo.endDate}">
 						<span id="ing1">마감 완료</span><br>
 						<span id="ing2">기간이 종료되었습니다.</span><br>
 						</c:if>
-						<c:if test="${sysYear<=prj[0].prjNo.endDate}">
+						<c:if test="${sysYear<prj[0].prjNo.endDate}">
 						<span id="ing1">펀딩 진행중</span><br>
 						<span id="ing2">목표 금액인 <fmt:formatNumber value="${prj[0].prjNo.prjGoal }" pattern="#,###"/>원이 모여야만 결제됩니다.</span><br>
 						<span id="ing2">결제는 ${prj[0].prjNo.endDate }에 다함께 진행됩니다.</span>
@@ -104,15 +104,15 @@ $(function(){
 		</div>
 		
 			<div>
-				<span class="prjTitle">프로젝트 소개</span><br>
 				<div class="content">
-					 ${prj[0].prjNo.prjContent}
+					<fieldset class="contentBox">
+					<span class="prjTitle">프로젝트 소개</span><br>
+					<span class="prjContent">${prj[0].prjNo.prjContent}</span>
+					</fieldset>
 				</div>
 				
 			</div>
 			
-			<span>시작일:${prj[0].prjNo.startDate }</span><br> 
-			<span>결제일:${prj[0].prjNo.payDate }</span><br>
 			<div style="display:flex">
 				<div class="fundingPart">
 				<c:forEach var="prj" items="${prj }" varStatus="count">
@@ -141,7 +141,7 @@ $(function(){
 				<div class="rate">달성률 : <fmt:formatNumber value="${sum/prj[0].prjNo.prjGoal*100 }" pattern="0.00"/>%</div><br>
 				<p class="resultPrice">가격 : 0원 </p>
 				<form action="<%=request.getContextPath() %>/fundingProject" method="post" class="fundingForm">
-					<c:if test="${sysYear>prj[0].prjNo.endDate}"><button disabled="disabled">후원 불가</button></c:if>
+					<c:if test="${sysYear>prj[0].prjNo.endDate}"><button class="cantFund" disabled="disabled">후원 불가</button></c:if>
 					<c:if test="${sysYear<=prj[0].prjNo.endDate}">
 						<input class="fund" type="submit"  style="display:block;" value="후 원 하 기" >
 					</c:if>
@@ -159,6 +159,7 @@ $(function(){
 					<jsp:include page="/WEB-INF/view/prjBoard/prjBoard-detail.jsp" />
 				</c:if>				
 			</div>
+			
 		</div>	
 </body>
 </html>

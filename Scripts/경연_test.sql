@@ -242,15 +242,28 @@ select p.prjno,
 			  c.pcategoryname,
 			   startDate,
 			    endDate,
+			    f.payyn,
 				ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
 		  from fundinginfo f 
 	      join prjoption o on o.optno= f.OptNo 
 		  right join project p on p.prjno = f.PrjNo 
 		  join userinfo u on p.userno = u.userno
 		  join prjCategory c on p.pcategoryno = c.pcategoryno
-		 group by p.prjNo having rate >100 order by totalprice desc limit 5;
+		 group by p.prjNo having rate >100 and f.payyn = 1 order by totalprice desc limit 5;
+		
+
 		 
 -- 회원별 후원횟수 랭킹
-select count(f.userno) as totalCount ,u.nickname as sponsor
+select count(f.userno) as totalCount ,u.nickname as sponsor,f.payyn
   from fundinginfo f join userinfo u on f.userno = u.UserNo 
-  group by f.userNo order by totalcount desc limit 5;
+  group by f.userNo  having f.payyn = 1 order by totalcount desc limit 5;
+
+ select date_format(p.EndDate,'%Y년 %m월') as period ,
+			count(fundingno) as count1,
+			sum(o.OptPrice) as sum1
+		from (select * from fundinginfo where payyn = 1) f join project p on f.PrjNo = p.prjno
+		join prjoption o on f.OptNo = o.OptNo
+		group by period;
+		
+
+update project set enddate = '20210712' where prjno=4;

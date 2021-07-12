@@ -16,7 +16,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/project_list_css/list_section2.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/project_list_css/list_section.css">
 </head>
 <body>
 <c:set var="now" value="<%=new java.util.Date()%>" />
@@ -28,7 +28,7 @@
 				<div class="border">
 					<div class="prj">
 						<div class="prjThumb">
-							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>"><img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg"/></a>
+							<a href="<c:url value='/prjDetail/${prj.prjNo }'/>"><img src = "<%=request.getContextPath() %>/images/project/project${prj.prjNo }.jpg" class="imgThumb"/></a>
 						</div>
 						<dl class="prjName">
 							<dt><a href="<c:url value='/prjDetail/${prj.prjNo }'/>"><c:if test="${sysYear>=prj.endDate}">[ 마감완료 ]</c:if> ${prj.prjName }</a></dt>

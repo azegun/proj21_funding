@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자-메인</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/proj21_funding/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/proj21_funding/bootstrap/css/bootstrap-theme.min.css">
@@ -18,8 +18,6 @@
 //차트버전 최신으로 불러오기
 google.charts.load('current', {'packages':['corechart']});
 //차트를 로드3
-google.charts.setOnLoadCallback(drawVisualization);
-google.charts.setOnLoadCallback(drawVisualization1);
 google.charts.setOnLoadCallback(lineChart);
 google.charts.setOnLoadCallback(salesRankingChart);
 google.charts.setOnLoadCallback(sponsorRankingChart);
@@ -65,26 +63,7 @@ google.charts.setOnLoadCallback(sponsorRankingChart);
 		 var chart = new google.visualization.BarChart(document.getElementById("sponsorRankingChart"));
 	     chart.draw(data, options);
 	}
-	function drawVisualization() { 
-		var data = google.visualization.arrayToDataTable([
-				['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-				['2004/05',  165,      938,         522,             998,           450,      614.6],
-				['2005/06',  135,      1120,        599,             1268,          288,      682],
-				['2006/07',  157,      1167,        587,             807,           397,      623],
-				['2007/08',  139,      1110,        615,             968,           215,      609.4],
-				['2008/09',  136,      691,         629,             1026,          366,      569.6]
-			]);
-		var options = {
-				title : 'Monthly Coffee Production by Country',
-				vAxis: {title: 'Cups'},
-				hAxis: {title: 'Month'}, 
-				seriesType: 'bars',
-				series: {5: {type: 'line'}}
-			};
-		
-		var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-		chart.draw(data, options);
-	}
+	
 	
 	
 	function lineChart(){
@@ -100,9 +79,6 @@ google.charts.setOnLoadCallback(sponsorRankingChart);
 		
 		var options = {
 				title: '100펀딩 월별 후원수 및 매출 현황',
-				/* vAxis : {0: {logScale: false},
-		            	 1: {logScale: false}
-						}, */
 				legend : {position:'bottom'},
  				series : {0:{targetAxisIndex:0,axis:'후원수'},
 					      1:{targetAxisIndex:1}} ,
@@ -117,60 +93,8 @@ google.charts.setOnLoadCallback(sponsorRankingChart);
 	}
 	
 	
-	function drawVisualization1() {
-		  // Create and populate the data table.
-		  var data = new google.visualization.DataTable();
-		  data.addColumn('string', 'x');
-		  data.addColumn('number', 'Cats');
-		  data.addColumn('number', 'Blanket 1');
-		  data.addColumn('number', 'Blanket 2');
-		  data.addRow(["A", 1, 1, 0.5]);
-		  data.addRow(["B", 2, 0.5, 1]);
-		  data.addRow(["C", 4, 1, 0.5]);
-		  data.addRow(["D", 8, 0.5, 1]);
-		  data.addRow(["E", 7, 1, 0.5]);
-		  data.addRow(["F", 7, 0.5, 1]);
-		  data.addRow(["G", 8, 1, 0.5]);
-		  data.addRow(["H", 4, 0.5, 1]);
-		  data.addRow(["I", 2, 1, 0.5]);
-		  data.addRow(["J", 3.5, 0.5, 1]);
-		  data.addRow(["K", 3, 1, 0.5]);
-		  data.addRow(["L", 3.5, 0.5, 1]);
-		  data.addRow(["M", 1, 1, 0.5]);
-		  data.addRow(["N", 1, 0.5, 1]);
-
-
-		  // Create and draw the visualization.
-		  new google.visualization.LineChart(document.getElementById('visualization')).
-		      draw(data, {curveType: "function", width: 500, height: 500,
-		    vAxes: {0: {logScale: false},
-		            1: {logScale: false, maxValue: 2}},
-		    series:{
-		       0:{targetAxisIndex:0},
-		       1:{targetAxisIndex:1},
-		       2:{targetAxisIndex:1}}}
-		          );
-		}
-	function drawVisualization() { 
-		var data = google.visualization.arrayToDataTable([
-				['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-				['2004/05',  165,      938,         522,             998,           450,      614.6],
-				['2005/06',  135,      1120,        599,             1268,          288,      682],
-				['2006/07',  157,      1167,        587,             807,           397,      623],
-				['2007/08',  139,      1110,        615,             968,           215,      609.4],
-				['2008/09',  136,      691,         629,             1026,          366,      569.6]
-			]);
-		var options = {
-				title : 'Monthly Coffee Production by Country',
-				vAxis: {title: 'Cups'},
-				hAxis: {title: 'Month'}, 
-				seriesType: 'bars',
-				series: {5: {type: 'line'}}
-			};
-		
-		var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-		chart.draw(data, options);
-	}
+	
+	
 </script>
 
 <script>
@@ -201,8 +125,6 @@ google.charts.setOnLoadCallback(sponsorRankingChart);
     	<div id="line_chart" style="width:100%; height:500px;"></div>
     	<div id="projectRankingChart" style="width:49%; height:500px; display:inline-block"></div>
     	<div id="sponsorRankingChart" style="width:49%; height:500px; display:inline-block"></div>
-    	<div id="chart_div"></div>
-    	<div id="visualization"></div>
     </div>
   </div>
 </div>  

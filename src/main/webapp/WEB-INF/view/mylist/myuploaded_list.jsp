@@ -9,7 +9,9 @@
 		<meta charset="UTF-8">
 		<title>등록된 리스트</title>
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/home_css/main.css">
-						<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/mylist_css/myuploaded_list.css">			
+			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/mylist_css/myuploaded_list.css">			
+			<link rel="stylesheet" href="<%=request.getContextPath() %>/css/paging_css/paging.css">
+			
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		
 		<script type="text/javascript">			
@@ -36,8 +38,6 @@
 ${count }
  --%>
  <%-- ${map } --%>
- ${pagination }
- ${count }
 		<section class="container">	
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
@@ -103,27 +103,26 @@ ${count }
 		</table>
 		 <!--paginate -->
 		         <div class="paginate">
-		            <div class="paging">
-		               <a class="direction prev" href="javascript:void(0);"
+		            <ul class="paging">
+		               <li><a class="direction prev" href="javascript:void(0);"
 		                  onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">
-		                  &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+		                  &lt;&lt; </a></li>
+		               <li><a class="direction prev" href="javascript:void(0);"
 		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
-		                  &lt; </a>
+		                  &lt; </a></li>
 		
-		               <c:forEach begin="${pagination.firstPage}"
-		                  end="${pagination.lastPage}" var="idx">
-		                  <a
-		                     style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
-		                     href="javascript:void(0);"
-		                     onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});"><c:out
-		                        value="${idx}" /></a>
+		               <c:forEach begin="${pagination.firstPage}" end="${pagination.lastPage}" var="idx">
+		               <li><a style="color:<c:out value="${pagination.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+		                     href="javascript:void(0);" onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});"><c:out
+		                        value="${idx}" /></a></li>
 		               </c:forEach>
-		               <a class="direction next" href="javascript:void(0);"
+		               <li><a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination.currentPage}<c:if test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
-		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
+		                  &gt; </a></li>
+		               <li><a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination.lastPage},${pagination.cntPerPage},${pagination.pageSize});">
-		                  &gt;&gt; </a>
-		            </div>
+		                  &gt;&gt; </a></li>
+		            </ul>
 		         </div>
 		         <!-- /paginate -->		         
 

@@ -43,7 +43,8 @@
 	font-size:28px;
 	border-bottom:3px solid #ffcece;
 	display:inline-block;
-	margin:15px;
+	margin:0 auto;
+	text-align:center;
 }
 
 #title h1 {
@@ -178,10 +179,22 @@ progress[value]::-webkit-progress-value {
 	float:right;
 }
 
+.cantFund{
+	background-color:#636e72;
+	width:50%;
+	height:80px;
+	border:none;
+	border-radius:15px;
+	font-size: 25px;
+	font-weight:bold;
+	color:#b2bec3;
+	float:right;
+}
+
 .fundingPart{
 	width:49%;
 	display:inline-block;
-	
+	margin-bottom:30px;
 }
 .optList{
 	list-style: none;
@@ -209,4 +222,21 @@ progress[value]::-webkit-progress-value {
 	font-size:30px;
 	font-weight: bold;
 	text-align: right;
+}
+
+.contentBox{
+	widtH:80%;
+	margin: 15px auto;
+	border-radius: 15px;
+}
+
+.prjContent{
+	font-size:15px;
+	font-weight:bold;
+	margin-top:15px;
+	margin-left:20px;
+	margin-right:20px;
+	display:inline-block;
+	line-height: 30px;
+
 }
