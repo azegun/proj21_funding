@@ -106,6 +106,7 @@ public class MyListController {
 			
 			System.out.println("page >> "+ pagination);
 			List<Project> list = listService.showAllListByMap(map);		
+			System.out.println("list>> "+ list);
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("map", map);
@@ -119,6 +120,7 @@ public class MyListController {
 		@RequestMapping("/selectDetailList/{prjNo}")
 		public ModelAndView	showDetailList(PrjPlusOption prjplusoption,
 				@PathVariable("prjNo") int prjNo) {		
+			
 			List<Project> list = listService.showDetailListByprjNo(prjNo);
 			List<PrjCategory> categorylist = prjCategoryService.showCategory();
 			
@@ -241,6 +243,7 @@ public class MyListController {
 			session.setAttribute("pagination", pagination);
 			
 			System.out.println("page >> "+ pagination);
+			
 			List<Project> list = listService.showAllListByMap(map);		
 		    
 		    optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());

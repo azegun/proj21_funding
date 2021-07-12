@@ -7,8 +7,9 @@ public class PrjOption {
 		private String optName; //옵션명
 		private int optPrice;//옵션급액
 		private String optContent;//옵션내용
-	
 		
+		
+
 		//기본 생성자
 		public PrjOption() {}
 		

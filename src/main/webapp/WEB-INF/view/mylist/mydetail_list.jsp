@@ -41,6 +41,7 @@
 ${myList[0].prjNo.prjNo} --%>
 <%-- ${myList } --%>
 <%-- ${optList } --%>
+				${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100}
 
 	<section class="container">
 			<header id = "mydetail_header">		   
@@ -94,6 +95,7 @@ ${myList[0].prjNo.prjNo} --%>
 													<fmt:formatNumber value="${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100}" pattern = "0.0" /><span>%</span>
 										</td>
 								</tr>
+				
 								
 								<tr class = "col8">
 										<td class="td_left"><label for="startDate">시작일</label></td>

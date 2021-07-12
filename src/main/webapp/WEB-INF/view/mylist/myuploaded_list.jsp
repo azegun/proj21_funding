@@ -28,10 +28,16 @@
 			window.location.href = contextPath+"/projectList";
 		});			
 	});
+<%-- 		/*팝업 창  */
+	function openWrite(){		
+		window.open('<%=request.getContextPath()%>/prjBoard/prjBoard-write', '', 'left = 600, top = 150, width = 500, height = 500');
+	}; --%>
 		
 </script>
 </head>
 <body>
+${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100 }
+<%-- ${myList[0] } --%>
 <%-- ${myList }
 ${count }
  --%>
@@ -72,7 +78,7 @@ ${count }
 							<td id = "prjGoal">
 									<fmt:formatNumber value="${list.prjNo.prjGoal }" pattern="\\#,###"/> </td>	
 							<td>
-									<fmt:formatNumber value="${list.prjNo.totalPrice/list.prjNo.prjGoal*100}" pattern = "0.0" />
+							<fmt:formatNumber value="${list.prjNo.totalPrice/list.prjNo.prjGoal*100}" pattern = "0.0" />
 										<span>%</span>						
 							</td>									
 							<td>${list.prjNo.startDate }</td>
