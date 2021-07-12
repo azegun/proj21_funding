@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보관리</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/userChangePw1.css">
 </head>
 <body>

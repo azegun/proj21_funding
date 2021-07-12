@@ -238,5 +238,15 @@ progress[value]::-webkit-progress-value {
 	margin-right:20px;
 	display:inline-block;
 	line-height: 30px;
+}
 
+#additional{
+	display: flex;
+	width: 100%;
+}
+#prjBoard{
+	width: 85%;
+}
+#projectUserInfo{
+	width: 120pxs;
 }

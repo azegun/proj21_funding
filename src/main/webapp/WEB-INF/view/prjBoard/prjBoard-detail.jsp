@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/prjBoard_css/prjBoard_detail.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"  ></script>
 <script type="text/javascript">
 	function modifyBoard(){	
@@ -23,15 +24,18 @@
 				<div id="postDate"><tf:formatDateTime value="${prBoard.postDate}" pattern="yyyy-MM-dd" /></div>				
 				<c:if test="${!empty prBoard.postFile}">					
 					<div id="postFile"><img src="data:image/jpeg;base64,${img}" alt="img"></div>	
+					<br>
 				</c:if>
-				<div id="postContent">${prBoard.postContent}</div>
+				<div id="postContent">
+					<pre>${prBoard.postContent}</pre>
+				</div>
 			</section>
 			<div id="btn">
 				<button type="button" onclick="modifyBoard()">수정</button>
 				<a href="<c:url value="/prjDetail/deleteBoard?postNo=${prBoard.postNo}"/>"><button type="button">삭제</button></a>	
 			</div>
 					
-			<p>-----------------------------------------------------------------</p>
+			<hr>
 		<form:form modelAttribute="prjBoardReply" action="registerReply">
 			<div><form:hidden path="postNo" value="${prBoard.postNo}"/></div>
 			<div>

@@ -52,16 +52,20 @@
 				<div id="tab-1" class="board_mid current">
 					<h2>모든 게시물 보기</h2>
 					<c:forEach  var="board" items="${board}" varStatus="status">				
-						<fieldset>
+						<fieldset class="board">
 						<c:if test="${prj[0].prjNo.userNo.userNo eq board.userNo.userNo}">
 							<div>  창작자   </div>
 						</c:if>				
 							<div id="nickName">${board.userNo.nickName}</div>				
 							<div id="postDate"><tf:formatDateTime value="${board.postDate}" pattern="yyyy-MM-dd" /></div>				
-							<c:if test="${!empty board.postFile}">					
-								<div id="postFile"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>"><img src="data:image/jpeg;base64,${img[status.index]}" alt="img"></a></div>	
-							</c:if>
-							<div id="postContent"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">${board.postContent}</a></div>
+							<div id="content">
+								<c:if test="${!empty board.postFile}">					
+									<div id="postFile"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>"><img src="data:image/jpeg;base64,${img[status.index]}" alt="img"></a></div>	
+								</c:if>
+								<div id="postContent">
+									<pre><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">${board.postContent}</a></pre>
+								</div>
+							</div>
 						</fieldset>	
 					</c:forEach>
 				</div>
@@ -70,14 +74,18 @@
 					<h2>창작자 작성 게시물</h2>						
 					<c:forEach  var="board" items="${board}" varStatus="status">				
 						<c:if test="${prj[0].prjNo.userNo.userNo eq board.userNo.userNo}">
-							<fieldset>						
+							<fieldset class="board">						
 								<div>  창작자   </div>									
 								<div id="nickName">${board.userNo.nickName}</div>				
 								<div id="postDate"><tf:formatDateTime value="${board.postDate}" pattern="yyyy-MM-dd" /></div>				
-								<c:if test="${!empty board.postFile}">					
-									<div id="postFile"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>"><img src="data:image/jpeg;base64,${img[status.index]}" alt="img"></a></div>	
-								</c:if>
-								<div id="postContent"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">${board.postContent}</a></div>
+								<div id="content">
+									<c:if test="${!empty board.postFile}">					
+										<div id="postFile"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>"><img src="data:image/jpeg;base64,${img[status.index]}" alt="img"></a></div>	
+									</c:if>
+									<div id="postContent">
+										<pre><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">${board.postContent}</a></pre>								
+									</div>
+								</div>
 							</fieldset>	
 						</c:if>	
 					</c:forEach>
