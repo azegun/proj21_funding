@@ -21,6 +21,8 @@
 	href="/proj21_funding/css/admin_css/adminSide.css">
 <link rel="stylesheet"
 	href="/proj21_funding/css/admin_css/adminQna.css">
+<link rel="stylesheet" href="/proj21_funding/css/admin_css/btn.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/paging_css/paging.css">
 <script>
 	$(function(){
 		$(".btnUpdate").on("click",function(e){
@@ -186,27 +188,29 @@
 				</table>
 				<!--paginate -->
 		         <div class="paginate">
-		            <div class="paging">
-		               <a class="direction prev" href="javascript:void(0);"
+		            <ul class="paging">
+		               <li><a class="direction prev" href="javascript:void(0);"
 		                  onclick="movePage(1,${pagination1.cntPerPage},${pagination1.pageSize},'${category }','${keyword }','${searchKeyword }','${replyYn }');">
-		                  &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+		                  &lt;&lt; </a></li>
+		               <li><a class="direction prev" href="javascript:void(0);"
 		                  onclick="movePage(${pagination1.currentPage}<c:if test="${pagination1.hasPreviousPage == true}">-1</c:if>,${pagination1.cntPerPage},${pagination1.pageSize},'${category }','${keyword }','${searchKeyword }','${replyYn }');">
-		                  &lt; </a>
+		                  &lt; </a></li>
 		
 		               <c:forEach begin="${pagination1.firstPage}"
 		                  end="${pagination1.lastPage}" var="idx">
-		                  <a
+		                  <li><a
 		                     style="color:<c:out value="${pagination1.currentPage == idx ? '#cc0000; font-weight:700; margin-bottom: 2px;' : ''}"/> "
 		                     href="javascript:void(0);"
 		                     onclick="movePage(${idx},${pagination1.cntPerPage},${pagination1.pageSize},'${category }','${keyword }','${searchKeyword }','${replyYn }');"><c:out
-		                        value="${idx}" /></a>
+		                        value="${idx}" /></a></li>
 		               </c:forEach>
-		               <a class="direction next" href="javascript:void(0);"
+		               <li><a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination1.currentPage}<c:if test="${pagination1.hasNextPage == true}">+1</c:if>,${pagination1.cntPerPage},${pagination1.pageSize},'${category }','${keyword }','${searchKeyword }','${replyYn }');">
-		                  &gt; </a> <a class="direction next" href="javascript:void(0);"
+		                  &gt; </a></li>
+		               <li><a class="direction next" href="javascript:void(0);"
 		                  onclick="movePage(${pagination1.lastPage},${pagination1.cntPerPage},${pagination1.pageSize},'${category }','${keyword }','${searchKeyword }','${replyYn }');">
-		                  &gt;&gt; </a>
-		            </div>
+		                  &gt;&gt; </a></li>
+		            </ul>
 		         </div>
 		         <!-- /paginate -->
 	    	</div>

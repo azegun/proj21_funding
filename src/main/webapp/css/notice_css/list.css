@@ -191,6 +191,11 @@ li.title-box {
     padding: 0px;
 }
 
+.paging a{
+	text-decoration: none;
+	color: gray;
+	font-weight: 700;
+}
 .paging li{
     display: flex;
     color: rgb(158, 158, 158);
@@ -205,11 +210,6 @@ li.title-box {
     padding-inline-end: 10px;
 }
 
-.paging a{
-	text-decoration: none;
-	color: gray;
-	font-weight: 700;
-}
 
 /* 공지글 작성하기 */
 

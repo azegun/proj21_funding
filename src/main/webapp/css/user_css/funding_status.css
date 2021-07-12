@@ -23,7 +23,10 @@ img{
 	width:100px;
 }
 .tablehead{
-  	background: #A5E3E6 ;
+	width: 155px;
+ 	padding: 10px;
+  	background: #07f0a6;
+  	/* background: #A5E3E6 ; */
 }
 th, td{
 	text-align: center;	
