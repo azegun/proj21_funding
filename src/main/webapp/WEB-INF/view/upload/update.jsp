@@ -78,17 +78,16 @@
 		 			  var regexp = /^[0-9]*$/			
 					// 조건별 옵션걸기 (문자 사용금지)
 		 			 if(!regexp.test(prjGoal) || !regexp.test(optPrice)){
-		 				alert("숫자를 선택해주세요")
+		 				alert("숫자를 입력해주세요")
 		 			 }else if(addOptPrice1 != null && addOptPrice2 == null){
 		 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1))
-		 				alert("숫자를 선택해주세요")
+		 				alert("숫자를 입력해주세요")
 		 			 }else if(addOptPrice1 != null && addOptPrice2 != null && addOptPrice3 == null){
 		 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1) ||  !regexp.test(addOptPrice2))
-		 				alert("숫자를 선택해주세요")
-		 				history.back();
+		 				alert("숫자를 입력해주세요")
 		 			 }else if(addOptPrice1 != null && addOptPrice2 != null && addOptPrice3 != null){
 		 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1) ||  !regexp.test(addOptPrice2) ||  !regexp.test(addOptPrice3))
-		 				alert("숫자를 선택해주세요")
+		 				alert("숫자를 입력해주세요")
 		 			 }			 			  
 		         });         
 		      });   

@@ -18,7 +18,7 @@
 							$(function(){
 								var contextPath = "<%=request.getContextPath()%>";
 								$("#go_list").on("click", function(){
-									window.location.href = contextPath+"/projectListAll";
+									window.location.href = contextPath+"/projectList";
 								});			
 							});
 					/* 프로젝트 리스트 수정으로 */		
