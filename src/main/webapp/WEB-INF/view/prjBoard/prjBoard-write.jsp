@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>프로젝트 게시판</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/prjBoard_css/prjBoard_write.css">
 <script type="text/javascript">
 	function closeWrite(){		
 		opener.document.location.reload();
@@ -26,16 +27,18 @@
 			</c:if>
 			<form:input path="postFile" type="file" accept=".jpg, .jpeg, .png" text="${pBoard.fileName}" />
 		</p>
-		<textarea name="postContent" id="postContent" >${pBoard.postContent}</textarea>
+		<textarea cols="40" rows="15"  name="postContent" id="postContent" >${pBoard.postContent}</textarea>
 		<%-- <p><form:textarea path="postContent" value="${pBoard.postContent}" /><c:out value="${pBoard.postContent}"/><p>	 --%>
 		<p id="errors"><form:errors path="postContent"/>${complet}&nbsp;</p>		
-		<c:if test="${empty pBoard}">
-			<form:button>등록하기</form:button>
-		</c:if>
-		<c:if test="${!empty pBoard}">
-			<form:button>수정하기</form:button>
-		</c:if>
-		<form:button type="button" onclick="closeWrite()">닫기</form:button>
+		<div id="btn">
+			<c:if test="${empty pBoard}">
+				<form:button>등록하기</form:button>
+			</c:if>
+			<c:if test="${!empty pBoard}">
+				<form:button>수정하기</form:button>
+			</c:if>
+			<form:button type="button" onclick="closeWrite()">닫기</form:button>
+		</div>
 	</form:form>	
 	</fieldset>
 </body>

@@ -13,6 +13,7 @@
 <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico">
 <link rel="icon" href="<%=request.getContextPath()%>/favicon.ico">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/paging_css/paging.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/project_list_css/searchSection.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
@@ -35,19 +36,17 @@
 		</header>
 		<%-- ${projects } --%>
 		<!-- 프로젝트검색 부분 개발중  -->
-		<section>
+		<section id="searchSection">
 			<form action="<%=request.getContextPath()%>/projectList/${pCategoryNo }" method="post">
 				<input type = "hidden" name="currentPage" value="1">
 				<input type = "hidden" name="cntPerPage" value="${pagination.cntPerPage}">
 				<input type = "hidden" name="pageSize" value="10">
-				<label><input type="checkbox" name="finishYn" value="finished">마감 프로젝트도 보기  </label>
-				<div class="col-md-4" >
-					<select name="keyword" class="selectpicker">
-						<option value="total" selected="selected">검색키워드</option>
-						<option value="prjName">프로젝트명</option>
-						<option value="prjManager">제작자</option>
-					</select>
-				</div>
+				<label id="magamYn"><input type="checkbox" name="finishYn" value="finished">마감 프로젝트도 보기  </label>
+				<select name="keyword" class="selectpicker">
+					<option value="total" selected="selected">검색키워드</option>
+					<option value="prjName">프로젝트명</option>
+					<option value="prjManager">제작자</option>
+				</select>
 				<input type="text" class="searchKeyword" name="searchKeyword"/>
 				<input type="submit" class="searchBtn" value="검색"/>
 				<span>검색결과 : ${listCount }개</span>
@@ -58,6 +57,7 @@
 			<jsp:include page="/WEB-INF/view/project/list_section.jsp" />
 		</section>
 		<!--paginate -->
+		${pCategoryName}
 		        <div class="paginate">
 		           <ul class="paging">
 		              <li class="direction prev" href="javascript:void(0);"

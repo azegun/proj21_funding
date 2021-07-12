@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%=request.getContextPath() %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +10,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 </head>
 <body>
-${authInfo }<br>
-${buyOption }<br>
-${prjInfo }<br>
-${ui }
 <div class="container">
 	<header>		   
 		<jsp:include page="/WEB-INF/view/home/header.jsp"/>

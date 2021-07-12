@@ -28,6 +28,7 @@ import proj21_funding.dto.FundingInfo;
 import proj21_funding.dto.Message;
 import proj21_funding.dto.PrjBoard;
 import proj21_funding.dto.PrjBoardReply;
+import proj21_funding.dto.PrjCategory;
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
@@ -107,6 +108,7 @@ public class ProjectController {
 			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session)
 			throws Exception {
+		
 
 		int pageSearch = (currentPage - 1) * cntPerPage;
 
@@ -176,7 +178,7 @@ public class ProjectController {
 		session.setAttribute("prj", prj);
 		session.setAttribute("prjNo", prjNo);
 //		List<Project> prjList=projectService.showProjectListAll();
-		
+
 		// 프로젝트 게시판 목록
 		List<PrjBoard> prBd = boardService.showPrjBoardbyPrjNo(prjNo);
 		List<String> imgList = new ArrayList<String>();

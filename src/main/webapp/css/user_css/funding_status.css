@@ -23,9 +23,8 @@ img{
 	width:100px;
 }
 .tablehead{
-	width: 155px;
  	padding: 10px;
-  	background: #07f0a6;
+  	background: #A5E3E6;
   	/* background: #A5E3E6 ; */
 }
 th, td{
@@ -36,9 +35,12 @@ th{
 	padding:5px;
 }
 td{
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding: 5px;
 }
 #pointer{
 	color: #3f72af;
+}
+
+#prjName{
+	width:300px;
 }

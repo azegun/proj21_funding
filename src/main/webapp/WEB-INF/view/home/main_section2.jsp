@@ -50,15 +50,15 @@
 							<a href="<c:url value='/prjDetail/${maxprj.prjNo}'/>"><img src="images/project/project${maxprj.prjNo}.jpg"  id="projImg"></a>							
 							</div>
 							<div id="title-imageinfo">
-									${maxprj.prjName}<br>
-									${maxprj.totalCount}명 / ${maxprj.rate}% 
+									<span class="slidePrjName">${maxprj.prjName}</span>
+									<span class="slideRate">${maxprj.totalCount}명 / ${maxprj.rate}%</span> 
+								<div id="title-btn">
+									<button type="button" class="title-prev prevNextBtn"><</button>
+									<button type="button" class="title-next prevNextBtn">></button>		
+								</div>
 							</div>
 						</div>																	
 					</c:forEach>							
-				</div>
-				<div id="title-btn">
-					<button type="button" class="title-prev"><</button>
-					<button type="button" class="title-next">></button>					
 				</div>
 
 			<h2>신규 프로젝트</h2>																				
@@ -67,7 +67,7 @@
 					<div class="listcont">
 						<div class="prj">
 							<div class="prjThumb">
-								<a href="<c:url value='/prjDetail/${newprj.prjNo}'/>"><img src="images/project/project${newprj.prjNo}.jpg"></a>
+								<a href="<c:url value='/prjDetail/${newprj.prjNo}'/>"><img src="images/project/project${newprj.prjNo}.jpg" class="mainThumb"></a>
 							</div>
 							<dl class="prjName">
 								<dt><a href="<c:url value='/prjDetail/${newprj.prjNo}'/>">${newprj.prjName }</a></dt>
@@ -84,7 +84,7 @@
 					<div class="listcont">
 						<div class="prj">
 							<div class="prjThumb">
-								<a href="<c:url value='/prjDetail/${jumokPrj.prjNo}'/>"><img src="images/project/project${jumokPrj.prjNo}.jpg"></a>
+								<a href="<c:url value='/prjDetail/${jumokPrj.prjNo}'/>"><img src="images/project/project${jumokPrj.prjNo}.jpg" class="mainThumb"></a>
 							</div>
 							<dl class="prjName">
 								<dt><a href="<c:url value='/prjDetail/${jumokPrj.prjNo}'/>">${jumokPrj.prjName }</a></dt>
@@ -101,7 +101,7 @@
 					<div class="listcont">
 						<div class="prj">
 							<div class="prjThumb">
-								<a href="<c:url value='/prjDetail/${successPrj.prjNo}'/>"><img src="images/project/project${successPrj.prjNo}.jpg"></a>
+								<a href="<c:url value='/prjDetail/${successPrj.prjNo}'/>"><img src="images/project/project${successPrj.prjNo}.jpg" class="mainThumb"></a>
 							</div>
 							<dl class="prjName">
 								<dt><a href="<c:url value='/prjDetail/${successPrj.prjNo}'/>">${successPrj.prjName }</a></dt>
@@ -118,7 +118,7 @@
 					<div class="listcont">
 						<div class="prj">
 							<div class="prjThumb">
-								<a href="<c:url value='/prjDetail/${endPrj.prjNo}'/>"><img src="images/project/project${endPrj.prjNo}.jpg"></a>
+								<a href="<c:url value='/prjDetail/${endPrj.prjNo}'/>"><img src="images/project/project${endPrj.prjNo}.jpg" class="mainThumb"></a>
 							</div>
 							<dl class="prjName">
 								<dt><a href="<c:url value='/prjDetail/${endPrj.prjNo}'/>">${endPrj.prjName }</a></dt>
@@ -129,7 +129,7 @@
 					</div>			
 				</c:forEach>										
 			</div>		
-			<button  id="MOVE_TOP_BTN">TOP</button>	
+			<button  id="MOVE_TOP_BTN">&#10514</button>	
 			
 </body>
 </html>

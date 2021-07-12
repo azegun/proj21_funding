@@ -11,10 +11,10 @@
 	</resultMap>
 	
 	<select id="selectSalesStat" resultMap="resProjectStat">
-		select date_format(p.EndDate,'%Y년 %m월') as period ,
+		 select date_format(p.EndDate,'%Y년 %m월') as period ,
 			count(fundingno) as count1,
 			sum(o.OptPrice) as sum1
-		from fundinginfo f join project p on f.PrjNo = p.prjno
+		from (select * from fundinginfo where payyn = 1) f join project p on f.PrjNo = p.prjno
 		join prjoption o on f.OptNo = o.OptNo
 		group by period;
 	</select>

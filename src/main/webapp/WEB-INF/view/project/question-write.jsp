@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>창작자에게 문의하기</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/project_list_css/question-write.css">
 </head>
 <body>

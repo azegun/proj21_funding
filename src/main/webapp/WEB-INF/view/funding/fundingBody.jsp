@@ -43,7 +43,7 @@
 		
 		/* 후원자정보 본인 확인 메소드 */
 		$(".btnConfig").click(function(){
-			var textPhoneNo=$(".textPhoneNo").val()
+			var textPhoneNo=$(".textInput").val()
 			console.log(textPhoneNo)
 			var phoneNo=$(".phoneNo").val()
 			console.log(phoneNo)
@@ -96,6 +96,10 @@
 				alert('정보를 모두 입력해 주세요')
 			}
 		})
+		
+		$('.btnCancel').click(function(){
+			history.go(-1);
+		})
 	})
 </script>
 </head>
@@ -107,80 +111,83 @@
 		<div class="prjInfo">
 			<img src="<%=request.getContextPath() %>/images/project/project${prj[0].prjNo.prjNo }.jpg" align="left" />
 			<div class="divPrjInfo">
-				<span>후원 프로젝트 : ${prjInfo.prjName }</span><br>
+				<span class="prjTitle">${prjInfo.prjName }</span><br>
 				<span>제작자 : ${prjInfo.prjManager }</span><br>
 				<span><fmt:formatNumber value="${prjInfo.totalPrice }" pattern="#,###"/>원 </span> 
-				<span class="achiRate">${prjInfo.totalPrice/prjInfo.prjGoal*100 }%</span>
+				<span class="achiRate"><fmt:formatNumber value="${prjInfo.totalPrice/prjInfo.prjGoal*100 }" pattern="0.00"/>%</span>
 			</div>
 		</div>
 </div>
 <form  class="fundingForm" action="fundingSuccess/${ui.userNo }/${buyOption.optNo}" method="post">
 	<div>
-		<h3>선물 정보</h3>
+		<h2>선물 정보</h2>
 		<div class="giftInfo">
-		<table border="1">
-			<tr>
-				<td rowspan="2" class="tdTitle">선물 구성</td>
-				<td class="tdContent">${buyOption.optName}</td>
-			</tr>
-			<tr>
-				<td class="tdContent">${buyOption.optContent }</td>
-			</tr>
-			<tr>
-				<td class="tdTitle">선물금액</td>
-				<td class="tdContent"><fmt:formatNumber value="${buyOption.optPrice }" pattern="#,###"/>원</td>
-			</tr>
-			<tr>
-				<td class="tdTitle">예상 전달일</td>
-				<td class="tdContent">${buyOption.prjNo.payDate }</td>
-			</tr>
-		</table>
+			<fieldset style="border-radius:15px;">
+				<table class="tbGifInfo">
+					<tr>
+						<td class="tdTitle">선물 구성</td>
+						<td class="tdContent">${buyOption.optContent }</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">선물금액</td>
+						<td class="tdContent tdPrice"><fmt:formatNumber value="${buyOption.optPrice }" pattern="#,###"/>원</td>
+					</tr>
+				</table>
+			</fieldset>
 		</div>
 	</div>
 	<div>
-		<h3>후원자 정보</h3>
-		<div>
-		<table>
-			<tr>
-				<td>후원자</td>
-				<td>${ui.userName }</td>
-			</tr>
-			<tr>
-				<td>연락처</td>
-				<td>
-					<input type="text" class="textPhoneNo" placeholder="휴대폰번호를 입력하세요!" />
-					<input type="hidden" class="phoneNo" value="${ui.userPhone }"/>
-					<input type="button" class="btnConfig" value="본인 확인">
-					<span class="checkText">본인 확인이 필요합니다.</span>
-					<input type="hidden" class="authCheck" value="0"/>
-				</td>
-			</tr>
-			<tr><td>이메일</td>
-			<td>${ui.email }</td></tr>
-		</table>
+		<h2>후원자 정보</h2>
+		<div class="giftInfo">
+		<fieldset style="border-radius:15px;">
+			<table>
+				<tr>
+					<td class="tdTitle">후원자</td>
+					<td>${ui.userName }</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">연락처</td>
+					<td>
+						<input type="text" class="textInput" placeholder="휴대폰번호를 입력하세요!" />
+						<input type="hidden" class="phoneNo" value="${ui.userPhone }"/>
+						<input type="button" class="btnConfig" value="본인 확인">
+						<span class="checkText">본인 확인이 필요합니다.</span>
+						<input type="hidden" class="authCheck" value="0"/>
+					</td>
+				</tr>
+				<tr><td class="tdTitle">이메일</td>
+				<td>${ui.email }</td></tr>
+			</table>
+		</fieldset>
 		</div>
 	</div>
 	<div>
-		<h3>배송지 정보</h3>
+		<h2>배송지 정보</h2>
+		<fieldset class="info" style="border-radius:15px;">
 		<label><input type="radio" class="baseAdd" name="address" value="base" checked/>기본 배송지</label>
 		<label><input type="radio" class="newAdd" name="address" value="new"/>새로운 배송지</label><br>
 		
-		<input type="text" id="zip" value="${ui.zipCode }" name="zipCode" readonly="readonly"/> 
-		<input type="button" id="btnAdd" onclick="execDaumPostCode()" value="우편번호 찾기"  disabled="disabled"/> <br>
-		<input type="text" id="address" value="${ui.address }" name="address" readonly="readonly"/> 
-		<input type="text" id="detailAdd" value="${ui.detailAddress }" name="detailAddress" readonly="readonly"/> <br>
+		<input type="text" class="textInput" id="zip" value="${ui.zipCode }" name="zipCode" style="margin-top:15px; width:200px;" readonly="readonly"/> 
+		<input type="button" id="btnAdd" onclick="execDaumPostCode()" value="우편번호 찾기" disabled="disabled"/> <br>
+		<input type="text" class="textInput" id="address" value="${ui.address }" name="address" style="margin-top:10px; width:200px;" readonly="readonly"/> 
+		<input type="text" class="textInput" id="detailAdd" value="${ui.detailAddress }" name="detailAddress" style="margin-top:10px; width:200px;" readonly="readonly"/> <br>
+		</fieldset>
 	</div>
 	<div>
-		<h3>결제 정보</h3>
+		<h2>결제 정보</h2>
+		<fieldset class="info" style="border-radius:15px; margin-bottom:30px;">
 		<label><input type="radio" class="payCard" name="payMethod" value="card" checked/>신용카드/체크카드</label>
 		<label><input type="radio" class="payBank" name="payMethod" value="bank"/>계좌이체</label><br>
 		
-		<span id="payText">카드 번호 </span><input type="text" id="textNo" name="accountNo" />
+		<span id="payText">카드 번호 </span><input type="text" id="textNo" name="accountNo" style="margin-top:15px;"/>
+		</fieldset>
 	</div>
 	<input type="hidden" name="prjNo" value="${prjInfo.prjNo }"/>
 	<input type="hidden" name="userNo" value="${ui.userNo }"/>
 	<input type="hidden" name="optNo" value="${buyOption.optNo }"/>
-	<input type="button" class="btnSubmit" value="후원하기"/>
+	<input type="button" class="btnSubmit" value="후 원 하 기"/>
 </form>
+	<button class="btnCancel">취 소 하 기</button>
+	
 </body>
 </html>
