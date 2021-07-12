@@ -101,9 +101,9 @@
 <body>	
 <%-- ${project } --%>
 <%-- ${ project}  --%>
-
+<%-- 
 ${ project[0].prjNo.prjNo}
-${project[0].optNo}
+${project[0].optNo} --%>
 <section class="container">		
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>

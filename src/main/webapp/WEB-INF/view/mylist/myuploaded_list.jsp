@@ -36,8 +36,8 @@
 ${count }
  --%>
  <%-- ${map } --%>
- ${pagination }
- ${count }
+<%--  ${pagination }
+ ${count } --%>
 		<section class="container">	
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>

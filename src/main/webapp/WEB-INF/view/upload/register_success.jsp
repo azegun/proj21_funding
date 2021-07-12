@@ -38,10 +38,10 @@
 					</script>
 </head>
 <body>
-${optList[0].prjNo.prjNo}
+<%-- ${optList[0].prjNo.prjNo}
 ${optList[1].prjNo.prjNo}
 ${optList[2].prjNo.prjNo}
-${optList }
+${optList } --%>
 <%-- ${optList[1].optName} --%>
 <%-- ${category.pCategoryNo.pCategoryName } --%>
 <%-- ${optList } --%>
