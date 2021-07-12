@@ -26,6 +26,11 @@ h4{
 	 	margin-top: 30px;
 	 	margin-bottom: 10px;
 }
+.success{
+	color: crimson;
+	font-size: 1.1em;
+	
+}
 #column{
 	 background-color:#A5E3E6;
 }
@@ -79,5 +84,5 @@ td{
 }
 /* 진행상황 */
 .size td:nth-of-type(8) {
-/* 	
 }
+

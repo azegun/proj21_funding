@@ -38,7 +38,6 @@
 </script>
 </head>
 <body>
-${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100 }
 <%-- ${myList[0] } --%>
 <%-- ${myList }
 ${count }
@@ -92,14 +91,14 @@ ${count }
 							<td>
 							<c:choose>
 										<c:when test="${ list.prjNo.endDate < today  }">
-											<span>진행완료</span><br>
+											<span class = "success">진행완료</span><br>
 										</c:when>
 										<c:when test="${list.prjNo.endDate >= today }">									
 											<span>진행중</span><br>
 										</c:when>										
 							</c:choose>	
 							<c:if test = "${list.prjNo.totalPrice >= list.prjNo.prjGoal}">
-											<span>목표금액달성</span>
+											<span class = "success">목표금액달성</span>
 							</c:if>
 							<c:if test = "${list.prjNo.totalPrice< list.prjNo.prjGoal}">
 											<span></span>

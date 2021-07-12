@@ -21,6 +21,7 @@ h2{
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 .addOption hidden{
 	display: flex;
@@ -95,17 +96,19 @@ h2{
 }
 td{
 	text-align: center;
-	padding: 5px;
+
 }
 .td_left{
+		padding: 5px;
+	font-size:1.3em;
 	width: 150px;
 	 background-color:#A5E3E6;
 	border-right:  solid 2px #97d5fb;
 	border-left:  solid 2px #97d5fb;
-	font-size: 1.1em;
 }
 .td_right{
 	width: 380px;
+		padding: 5px;
 	border-right:  solid 2px #97d5fb;
 }
 #uploadfile{
@@ -125,5 +128,29 @@ td{
 	 text-align: center;	
 }
 #addbtns{
+	 background-color:#A5E3E6;
 	text-align: center;	
+}
+#MOVE_TOP_BTN {
+    position: fixed;
+    right: 2%;
+    bottom: 50px;
+    z-index: 999;
+    border-color: #ccc;
+    text-align: center;
+    display: inline-block;
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	border-radius:50%;
+	color:black;
+	font-size:30px;
+	width:50px;
+	height:50px;
+}
+#MOVE_TOP_BTN:hover{
+	background-color:#ccc;
+	color:white;
 }

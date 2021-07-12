@@ -96,3 +96,26 @@ td{
 /* 옵션 소개 */
  .col10 td:nth-of-type(2) {
 }
+#MOVE_TOP_BTN {
+    position: fixed;
+    right: 2%;
+    bottom: 50px;
+    z-index: 999;
+    border-color: #ccc;
+    text-align: center;
+    display: inline-block;
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	border-radius:50%;
+	color:black;
+	font-size:30px;
+	width:50px;
+	height:50px;
+}
+#MOVE_TOP_BTN:hover{
+	background-color:#ccc;
+	color:white;
+}

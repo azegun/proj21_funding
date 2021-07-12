@@ -20,21 +20,25 @@
 								$("#go_list").on("click", function(){
 									window.location.href = contextPath+"/projectList";
 								});			
-							});
+					
 					/* 프로젝트 리스트 수정으로 */		
-							$(function(){
-								var contextPath = "<%=request.getContextPath()%>";
 								$("#update_list").on("click", function(){
 									window.location.href = contextPath+"/updatePrj/${pro.prjNo}";
 								});			
-							});
 					/* 프로젝트 삭제 */		
-							$(function(){
-								var contextPath = "<%=request.getContextPath()%>";
 								$("#delete_list").on("click", function(){
 									window.location.href = contextPath+"/removeOneProject/${pro.prjNo}";
 								});			
-							});
+					
+								$("#MOVE_TOP_BTN").click(function() {
+									$('html, body').animate({
+										scrollTop : 0
+									}, 400);
+									return false;
+								});
+					
+					
+						});
 					</script>
 </head>
 <body>
@@ -258,6 +262,7 @@ ${optList } --%>
 				</tbody>
 		</table>
 		</section>
+			<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 				<div id ="foot_btn">					
 						<button id= "update_list">수정</button>
 						<button id = "go_list">리스트</button>

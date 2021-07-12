@@ -36,6 +36,12 @@
 			$(this).addClass('current');
 			$("#"+tab_id).addClass('current');
 		}); 
+			  $("#MOVE_TOP_BTN").click(function() {
+		     		$('html, body').animate({
+		     			scrollTop : 0
+		     		}, 400);
+		     		return false;
+		     	});
 	});
 			//goback()
 			$(function(){
@@ -51,6 +57,7 @@
 					minDate: 0
 				});
 			});
+						
 			//옵션삭제
 			$(function(){				
 			$('.optionMinus').on("click", function(){
@@ -583,10 +590,12 @@ ${project[0].optNo} --%>
 					</tbody>	
 				</table>					
 			</section>			
+			
 				</div>	
 		<!--탭2 옵션부분  -->	
 		
 			</div>		
+				<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 			<div id="update_btns">
 					<input  class = "test" type="submit"  value="등록"/>&nbsp;
 					<input type="reset" value="다시쓰기" />&nbsp; 

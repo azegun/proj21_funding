@@ -18,22 +18,23 @@
 								$("#go_list").on("click", function(){
 									window.location.href = contextPath+"/projectListAll";
 								});			
-							});
 							
 							/* 메인으로 */
-							$(function(){
-								var contextPath = "<%=request.getContextPath()%>";
 								$("#go_main").on("click", function(){
 									window.location.href = contextPath+"/";
-								});			
 							});
 							
 							/* 나의 리스트로으로 */
-							$(function(){
-								var contextPath = "<%=request.getContextPath()%>";
 								$("#go_myList").on("click", function(){
 									window.location.href = contextPath+"/myUploadedlist/${authInfo.userNo }";
 								});			
+							      $("#MOVE_TOP_BTN").click(function() {
+							     		$('html, body').animate({
+							     			scrollTop : 0
+							     		}, 400);
+							     		return false;
+							     	});
+							
 							});
 					</script>
 </head>
@@ -262,6 +263,7 @@ ${project.prjGoal }--%>
 						</tbody>
 				</table>
 		</section>
+			<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 				<div id ="foot_btn">
 						<button id = "go_list">최근 프로젝트</button>&nbsp;
 						<button id = "go_main">메인</button>&nbsp;

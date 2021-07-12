@@ -125,8 +125,7 @@ public class MyListController {
 			List<PrjCategory> categorylist = prjCategoryService.showCategory();
 			
 			ModelAndView mav = new ModelAndView();
-			optList = optionService.selectSimplePrjOptionByPrjNo(prjNo);
-			
+			optList = optionService.selectSimplePrjOptionByPrjNo(prjNo);			
 			System.out.println("optList >> " + optList);
 			mav.addObject("optList", optList);
 			mav.addObject("myList", list);
@@ -174,31 +173,35 @@ public class MyListController {
 		   boolean addOptName2 = map.containsKey("addOptName2");
 		   boolean addOptName3 = map.containsKey("addOptName3");
 			    
-			    // 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
+			   // 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
 		   optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());    
-		   System.out.println("optList>> "+ optList);
 		    try {
 	
 		    //프로젝트 + 옵션1 조인 업데이트
-			myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
+			System.out.println("optList.size() !!!!!>>> "+optList.size() );
+			if(optList.size() ==1) {
+				System.err.println("optList.size()  >>");
+				myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
+			}
 			
 			   if(addOptName1 == false && addOptName2 == false && addOptName3 == false) {
 			    	if( optList.size() > 1) {
 			    		//수정이 1개일떄
 				    	//지어진값은 데이터 삭제
-			    		System.out.println("1번");
-			    		map.put("addOptNo1", optList.get(1).getOptNo());
-			    		if(optList.size() > 2) {
-				    	map.put("addOptNo2", optList.get(2).getOptNo());
-				    	//조건하기
+			    		//조건하기
+			 		  map.put("addOptNo1", optList.get(1).getOptNo());
+			    		if(optList.size() > 2) {				    	
+			    			map.put("addOptNo2", optList.get(2).getOptNo());
 					    	if(optList.size() == 4) {
-				    		map.put("addOptNo3", optList.get(3).getOptNo());
+					    		map.put("addOptNo3", optList.get(3).getOptNo());
 					    	}
 			    		}
-				    	
-				    	optionService.removeOptNumOne(map);
+			    		optionService.removeOptNumOne(map);
 				    	optionService.removeOptNumThree(map);
-			    		optionService.removeOptNumTwo(map);		    			
+			    		optionService.removeOptNumTwo(map);		    	
+			    
+				    	
+				    	
 			    	}
 			    }
 		    
@@ -242,7 +245,6 @@ public class MyListController {
 			pagination.setTotalRecordCount(count);
 			session.setAttribute("pagination", pagination);
 			
-			System.out.println("page >> "+ pagination);
 			
 			List<Project> list = listService.showAllListByMap(map);		
 		    
