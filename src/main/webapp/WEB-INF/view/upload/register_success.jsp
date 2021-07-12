@@ -264,9 +264,9 @@ ${optList } --%>
 		</section>
 			<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 				<div id ="foot_btn">					
-						<button id= "update_list">수정</button>
-						<button id = "go_list">리스트</button>
-						<button id= "delete_list">삭제</button>
+						<button class = " btns" id= "update_list">수정</button>
+						<button class = " btns" id = "go_list">리스트</button>
+						<button class = " btns" id= "delete_list">삭제</button>
 				</div>
 				</c:if>
 		<footer>

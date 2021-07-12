@@ -135,8 +135,8 @@ ${count }
 
 		</section>
 				<div id ="foot_btn">
-						<button id= "select_list">프로젝트 보기</button>
-						<button id = "go_main">메인</button>&nbsp;						
+						<button class = "btns" id= "select_list">프로젝트 보기</button>
+						<button class = "btns" id = "go_main">메인</button>&nbsp;						
 				</div>	
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>

@@ -9,13 +9,18 @@ h2{
 }
 .register_table{
 		border-collapse: collapse;		
-		border: solid 2px #97d5fb;
+		border-radius: 10px;
 }
 #table_all{
+	padding-top:20px;
+	padding-bottom:20px;
+	width:610px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin:0 auto;
+	border-radius: 17px;
+	background: #e0f3fe;
 }
 /* 프로젝트 소개 스크롤  */
 .sboption {
@@ -63,7 +68,8 @@ h2{
     box-shadow: inset 0px 0px 5px white;
 }
 tr{
-	border-bottom: 2.5px solid #97d5fb;
+	border-top: 1px solid #97d5fb;
+	border-bottom: 1px solid #97d5fb;
 }
 td{
 	text-align: center;
@@ -71,15 +77,15 @@ td{
 }
 .td_left{
 	width: 150px;
-	 background-color:#A5E3E6;
-	border-right:  solid 2px #97d5fb;
+	background:  #d0eaff;
 	border-left:  solid 2px #97d5fb;
-	font-size: 1.1em;
+	font-size: 1.2em;
 
 }
 .td_right{
 	width: 380px;
-	border-right:  solid 2px #97d5fb;
+	 background-color:white;
+	border-right:  solid 2.1px #97d5fb;
 	
 }
 #userName, #optPrice, #optName, #prjName, #prjGoal{
@@ -88,6 +94,16 @@ td{
 #foot_btn{	
 	margin-top:20px;
 	text-align: center;	
+}
+.btns{
+	width: 150px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff7675;
+    border-radius: 5px;
+    border: none;
 }
 /* 프로젝트 소개 */
  .col4 td:nth-of-type(2) {

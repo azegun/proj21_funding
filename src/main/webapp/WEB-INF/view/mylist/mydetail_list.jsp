@@ -119,8 +119,8 @@ ${myList[0].prjNo.prjNo} --%>
 								<tr>
 										<td  colspan="2" >
 											<div id = "addbtns">
-													<button type="button" class ="optionShowHide">옵션</button> 
-													<button type = "button" class = "optionMinus hidden" >옵션삭제</button>
+													<button class = "optionMinus" type="button" class ="optionShowHide">옵션</button> 
+													<button class = "optionMinus"type = "button" class = "optionMinus hidden" >옵션삭제</button>
 											</div>
 										</td>
 								</tr>
@@ -347,9 +347,9 @@ ${myList[0].prjNo.prjNo} --%>
 						
 				</section>					
 					<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
-						<div id = "btns">
-								<input type="submit"  value="수정"/>&nbsp;
-								<button type="button" id = "back">뒤로</button>								
+						<div id = "btns_bottom">
+								<input class= "btns" type="submit"  value="수정"/>&nbsp;
+								<button class= "btns" type="button" id = "back">뒤로</button>								
 						</div>		
 					</form>				
 			<footer>

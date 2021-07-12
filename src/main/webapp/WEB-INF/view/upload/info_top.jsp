@@ -23,12 +23,12 @@
 			<div id = "top_btns">
 			<c:choose>
 					<c:when test="${empty authInfo }">
-							<button id = "login">프로젝트 등록하기</button>
-							<button id = "guide_proj">창작자 가이드</button>
+							<button id = "register_proj">프로젝트 등록하기</button>
+						<!-- 	<button id = "guide_proj">창작자 가이드</button> -->
 					</c:when>
 					<c:otherwise>
 							 <button id = "register_proj">프로젝트 등록하기</button>
-							 <button id = "guide_proj">창작자 가이드</button>
+				<!-- 			 <button id = "guide_proj">창작자 가이드</button> -->
 					</c:otherwise>
 			
 			</c:choose>
