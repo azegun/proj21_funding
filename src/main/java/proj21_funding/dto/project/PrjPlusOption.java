@@ -143,7 +143,7 @@ public class PrjPlusOption {
 		this.addOptNo3 = addOptNo3;
 	}
 	public String getAddOptName1() {
-		return addOptName1;
+		return addOptName1.trim();
 	}
 	public void setAddOptName1(String addOptName1) {
 		this.addOptName1 = addOptName1;
@@ -179,7 +179,7 @@ public class PrjPlusOption {
 		this.addOptPrice3 = addOptPrice3;
 	}
 	public String getAddOptContent1() {
-		return addOptContent1;
+		return addOptContent1.trim();
 	}
 	public void setAddOptContent1(String addOptContent1) {
 		this.addOptContent1 = addOptContent1;

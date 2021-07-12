@@ -49,8 +49,8 @@ ${project.prjGoal }--%>
 <%-- ${optList} --%>
 <%-- ${project } --%>
 <%-- ${authInfo.userName } --%>
-${optList }
-		
+<%-- ${optList }
+		 --%>
 <%-- ${project } --%>
 <section class="container">
 		<header>		   

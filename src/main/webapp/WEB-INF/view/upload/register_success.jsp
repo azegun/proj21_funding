@@ -18,7 +18,7 @@
 							$(function(){
 								var contextPath = "<%=request.getContextPath()%>";
 								$("#go_list").on("click", function(){
-									window.location.href = contextPath+"/projectListAll";
+									window.location.href = contextPath+"/projectList";
 								});			
 							});
 					/* 프로젝트 리스트 수정으로 */		
@@ -38,10 +38,10 @@
 					</script>
 </head>
 <body>
-${optList[0].prjNo.prjNo}
+<%-- ${optList[0].prjNo.prjNo}
 ${optList[1].prjNo.prjNo}
 ${optList[2].prjNo.prjNo}
-${optList }
+${optList } --%>
 <%-- ${optList[1].optName} --%>
 <%-- ${category.pCategoryNo.pCategoryName } --%>
 <%-- ${optList } --%>

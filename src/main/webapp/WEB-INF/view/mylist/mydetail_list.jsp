@@ -40,7 +40,7 @@
 <%-- ${myList[0]}
 ${myList[0].prjNo.prjNo} --%>
 <%-- ${myList } --%>
-${optList }
+<%-- ${optList } --%>
 
 	<section class="container">
 			<header id = "mydetail_header">		   

@@ -31,7 +31,8 @@
 		
 		<!-- 파일 등록할때 위치 알려주기 -->
 		<multipart-config>
-      		  <location>D:\workspace_java1\proj21_funding\src\main\webapp\images\project</location>
+		<!-- 임시거쳐 파일이 꼭 있어야함. 그러면 각자의 주소에 파일 업로드 가능 -->
+		    <location>D:\upload\temp</location>
       		  <max-file-size>209715200</max-file-size>
       		  <max-request-size>209715200</max-request-size>
       		  <file-size-threshold>0</file-size-threshold>

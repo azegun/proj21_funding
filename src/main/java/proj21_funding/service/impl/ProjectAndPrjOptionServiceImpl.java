@@ -2,7 +2,6 @@ package proj21_funding.service.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
-import proj21_funding.exception.DateTimeOverException;
+import proj21_funding.exception.EmptySpaceException;
 import proj21_funding.mapper.MyListMapper;
 import proj21_funding.mapper.PrjOptionMapper;
 import proj21_funding.mapper.ProjectMapper;
@@ -33,38 +32,50 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 
 	@Override
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile ) {
-//		날짜비교
-//		LocalDate EndDate = project.getEndDate();
-//		LocalDate PayDate = project.getPayDate();
+	
+		int prjName =  project.getPrjName().length();
+		int prjContent =  project.getPrjContent().length();
+		int optName =  prjoption.getOptName().length();
+		int optContent =  prjoption.getOptContent().length();
 		
-//		int compareEtoP = EndDate.compareTo(PayDate);
-//		날짜비교		
-		
-//		int res;
-//		if(compareEtoP <= 0) {
-//			 
-//		}else {
-//			throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
-//		}	
-		//트렌젝션 prjNo 찾아오기 위함.
-		int res = pMapper.insertProject(project);
-		prjoption.setPrjNo(project);
-		
-		  if(uploadfile.getSize() !=0) {
-			  
-		      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";	     
+		if(prjName ==0 || prjContent == 0 || optName == 0 || optContent == 0 ) {
+			throw new EmptySpaceException("문자를 등록 해야됩니다.");
+		}else {
+			//트렌젝션 prjNo 찾아오기 위함.
+			int res = pMapper.insertProject(project);
+			prjoption.setPrjNo(project);				
+			
+			if(uploadfile.getSize() !=0) {
+				  
+			      String saveName = "project"+prjoption.getPrjNo().getPrjNo()+".jpg";	     
+			      
+			      File saveFile = new File(UPLOAD_PATH, saveName);
+			      try {
+			         uploadfile.transferTo(saveFile);
+			      }catch (IOException e) {
+			      e.printStackTrace();
+			      }      
+			  }		
 		      
-		      File saveFile = new File(UPLOAD_PATH, saveName);
-		      try {
-		         uploadfile.transferTo(saveFile);
-		      }catch (IOException e) {
-		      e.printStackTrace();
-		      }      
-		  }		
+		      res += prjOptMapper.insertPrjOption(prjoption);	      
+		      
+		      if(res != 2) throw new RuntimeException();            
+		}
+
+	
 	      
-	      res += prjOptMapper.insertPrjOption(prjoption);	      
-	      
-	      if(res != 2) throw new RuntimeException();            
+//			날짜비교
+//			LocalDate now = project.getStartDate();
+//			LocalDate EndDate = project.getEndDate();
+			
+//			int compareEtoP = EndDate.compareTo(PayDate);
+			
+//			int res;
+//			if(compareEtoP <= 0) {
+//				 
+//			}else {
+//				throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
+//			}	
 	}
 
 	@Override

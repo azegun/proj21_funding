@@ -28,6 +28,8 @@
   		<!--datepicker 소스api  -->
   		
 		<script type="text/javascript">	
+	
+		
 		/*탭   */
 		$(document).ready(function(){   
 	         $('ul.tabs li').click(function(){
@@ -55,19 +57,40 @@
 					dateFormat: 'yy-mm-dd',
 					minDate: 0
 				});
+			
 			});
 	      
-		//진행해야함.
+	      
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
 	         $(".test").on("click", function(){
-	               var test = $('#pCategoryNo').val()
-	               if(test == 0){
-	            	   console.log("확인")
+	               var category = $('#pCategoryNo').val()
+	               if(category == 0){
 	                  alert("카테고리를 	선택해주세요")
-	                 /*   window.location.href = contextPath+"/emptyCategory"; */
-	           		   history.back() 
 	               }
+	               
+	              var prjGoal =  $('#prjGoal').val();
+	              var optPrice = $('#optPrice').val();
+	              
+	              var addOptPrice1 = $('#addOptPrice1').val();
+	              var addOptPrice2 = $('#addOptPrice2').val();
+	              var addOptPrice3 = $('#addOptPrice3').val();
+	              
+	              
+	 			  var regexp = /^[0-9]*$/			
+				// 조건별 옵션걸기 (문자 사용금지)
+	 			 if(!regexp.test(prjGoal) || !regexp.test(optPrice)){
+	 				alert("숫자를 입력해주세요")
+	 			 }else if(addOptPrice1 != null && addOptPrice2 == null){
+	 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1))
+	 				alert("숫자를 입력해주세요")
+	 			 }else if(addOptPrice1 != null && addOptPrice2 != null && addOptPrice3 == null){
+	 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1) ||  !regexp.test(addOptPrice2))
+	 				alert("숫자를 입력해주세요")
+	 			 }else if(addOptPrice1 != null && addOptPrice2 != null && addOptPrice3 != null){
+	 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1) ||  !regexp.test(addOptPrice2) ||  !regexp.test(addOptPrice3))
+	 				alert("숫자를 입력해주세요")
+	 			 }			 			  
 	         });         
 	      });   
 	      function addopt(i){
@@ -79,7 +102,7 @@
 				sCont += "</tr>";
 				sCont += "	<tr class ='tr_all'>";
 				sCont += "	<td class = 'td_left'><label for = 'addOptPrice'>옵션금액</label></td>";
-				sCont += "	<td class = 'td_right'><input type='text' id = 'addOptPrice'   class = 'addtext' name = 'addOptPrice"+ i +"'   required  size = 17 /></td>";
+				sCont += "	<td class = 'td_right'><input type='text' id = 'addOptPrice"+ i +"'   class = 'addtext' name = 'addOptPrice"+ i +"'   required  size = 17 /></td>";
 				sCont += "</tr>";
 				sCont += "	<tr class ='tr_all'>";
 				sCont += "	<td class = 'td_left'><label for = 'addOptContent'>옵션내용</label></td>	";
@@ -96,8 +119,7 @@
 				//옵션추가
 				$('.optionPlus').on("click", function(){	
 				//개수 제한걸기
-				if(i < 3){
-					console.log(111)
+				if(i < 3){					
 					i += 1
 					addopt(i)	
 				
@@ -114,8 +136,9 @@
 					}else if(i ==1){
 						i =2
 					}
-				});	
-		  
+				});		
+				
+			
 		   });
 	</script>		
 	</head>
@@ -187,7 +210,7 @@
 					<tr class ='tr_all'>
 						<td class="td_left"><label for="prjGoal">목표금액</label></td>
 						<td class="td_right">
-									<input type="text" id="prjGoal"	name="prjGoal" size=17 required="required"/>
+									<input type="text" id="prjGoal"	name="prjGoal" size=17 required="required" />
 						</td>						
 					</tr>
 					<tr class ='tr_all'>
@@ -197,25 +220,12 @@
 									<input type="file" name="uploadfile"	placeholder="파일 선택" required>
 						</td>
 					</tr>
-				
-					<tr class ='tr_all'>
-						<td id = "info"colspan="2">
-								<h4>마감 후에 결제를 할 수 있으니, 결제일은 마감일보다 늦게 선택해주세요	</h4>								
-						</td>
-					</tr>				
 					<tr class ='tr_all'>
 						<td class="td_left"><label for="endDate">마감일</label></td>
 						<td class="td_right">						
-								<input type="text" class="datepicker" name = "endDate" required="required" placeholder="ex)2021-06-22">
+								<input type="text" class="datepicker" name = "endDate" required="required" placeholder="ex)2021-06-22" autocomplete="off">
 						</td>
 					</tr>
-					<!-- <tr class ='tr_all'>
-						<td class="td_left"><label for="payDate">결제일</label></td>
-						<td class="td_right">
-							<input type="text" class="datepicker" name = "payDate" required="required" placeholder="ex)2021-06-23">
-						</td>
-				   </tr> -->
-
 				</tbody>
 			</table>
 		</section>

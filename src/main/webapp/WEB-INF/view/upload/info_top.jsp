@@ -35,7 +35,7 @@
 		</script>
 </head>
 <body>
-${list.bankAccount}
+<%-- ${list.bankAccount} --%>
 			 <!-- 프로모션 배너 -->
 			<img src=" <%=request.getContextPath() %>/images/home2.jpg" id="top_img">
 			<div id = "top_context">					

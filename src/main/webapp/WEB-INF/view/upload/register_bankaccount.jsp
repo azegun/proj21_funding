@@ -20,7 +20,7 @@
 					
 </head>
 <body>
-${authInfo.userNo}
+<%-- ${authInfo.userNo} --%>
 		<section class="container">
 			<header id = "bankaccount" >		   
 					<jsp:include page="/WEB-INF/view/home/header.jsp"/>
@@ -28,7 +28,7 @@ ${authInfo.userNo}
 				<h2>계좌등록</h2>
 						<form  action= "<%=request.getContextPath() %>/registerBank/${authInfo.userNo}" method="post">
 								<section id = "bankaccount_content">
-										<table>
+										<table class= "register_table">
 												<tbody>
 															<tr class = "col1">
 																	<td></td>
@@ -41,7 +41,7 @@ ${authInfo.userNo}
 																	<td class="td_left"><label for="accountHolder">예금주</label></td>
 																	<td class="td_right" >
 																			<input type="text" id="accountHolder" name="accountHolder" 
-																					size=21	required="required" />																								
+																					size=30	required="required"   placeholder= "입력해주세요."/>																								
 																	</td>
 															</tr>	
 															<tr class = "col3">
@@ -63,7 +63,7 @@ ${authInfo.userNo}
 																	<td class="td_left"><label for="bankAccount">계좌번호</label></td>
 																	<td class="td_right" >
 																			<input type="text" id="bankAccount" name="bankAccount" 
-																					size=21	required="required" />																								
+																					size=30	required="required"  placeholder= "결제시 사용 할 계좌를 적어주세요." />																								
 																	</td>
 																</tr>											
 												</tbody>
