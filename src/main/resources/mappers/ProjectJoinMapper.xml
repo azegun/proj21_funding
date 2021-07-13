@@ -400,8 +400,8 @@
 	</select>
 	
 	<select id="selectSponsorRanking" resultMap="resProjectJoin">
-	select count(f.userno) as totalCount , u.nickname as fundingUserName, u.userId as fundingUser, f.payyn
-	  from fundinginfo f join userinfo u on f.userno = u.UserNo 
-	  group by f.userNo having f.payyn = 1 order by totalcount desc limit 5;
+	select count(f.userno) as totalCount , u.nickname as fundingUserName, u.userId as fundingUser
+	  from (select * from fundinginfo where payyn = 1) f join userinfo u on f.userno = u.UserNo 
+	  group by f.userNo order by totalcount desc limit 5;
 	</select>
 </mapper>

@@ -109,7 +109,7 @@
 <div>
 	<h1>프로젝트 후원하기</h1>
 		<div class="prjInfo">
-			<img src="<%=request.getContextPath() %>/images/project/project${prj[0].prjNo.prjNo }.jpg" align="left" />
+			<img src="<%=request.getContextPath() %>/images/project/project${prj[0].prjNo.prjNo }.jpg" style="width:200px;height:200px;margin-right:20px;" align="left" />
 			<div class="divPrjInfo">
 				<span class="prjTitle">${prjInfo.prjName }</span><br>
 				<span>제작자 : ${prjInfo.prjManager }</span><br>

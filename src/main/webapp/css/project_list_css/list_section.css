@@ -79,6 +79,22 @@
 	color: #dc143c;
 }
 
+progress{
+	width: 100%;
+	float:right;
+	-webkit-appearance: none;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #ecf0f1;
+}
+progress[value]::-webkit-progress-value {
+    border-radius: 5px;
+    background: rgb(250, 100, 98);
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
 .moment {
 	height: 35px;
 	display: flex;
