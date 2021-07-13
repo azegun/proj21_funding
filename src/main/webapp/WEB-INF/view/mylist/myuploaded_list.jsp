@@ -55,24 +55,19 @@ ${count }
 		<table class= "list_table">		
 			<thead id = "column">
 				<tr>
-						<th>번호</th>
+						<th class = "count">번호</th>
 						<th>프로젝트</th>
-						<!-- <th>소개</th> -->
 						<th>목표 금액</th>
 						<th>달성률</th>
 						<th>시작일</th>
-						<th>마감일</th>
-						<!-- <th>결제일</th> -->
-						<!-- <th>옵션이름</th>
-						<th>옵션금액</th>
-						<th>옵션내용</th> -->
+						<th>마감일<br>(결제일)</th>
 						<th>진행상황</th>
 				</tr>
 			</thead>
 			<tbody id= "context">
 				<c:forEach var = "list" items = "${myList}" varStatus="status">	
 				<tr class = "size"> 
-							<td>${status.index+1 } </td>
+							<td class = "count">${status.index+1 } </td>
 							<td>
 									<a id = "pointer" href = "<%=request.getContextPath() %>/selectDetailList/${list.prjNo.prjNo }" >${list.prjNo.prjName }</a>
 							</td>

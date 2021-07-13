@@ -33,12 +33,17 @@ th, td{
 th{
 	border-bottom: 3px solid #97d5fb;
 	padding:5px;
+	font-size: 1em;
+	font-weight: bold;
 }
 td{
-	padding: 5px;
+		padding-top: 10px;
+	padding-bottom: 10px;
 }
 #pointer{
 	color: #3f72af;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 #prjName{

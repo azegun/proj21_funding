@@ -26,31 +26,40 @@ ${count }
 		<section class = "funding_main">
 		<table class = "funding_table">
 			<tr class="tablehead">
-				<th> </th><th id="prjName">프로젝트명</th><th>옵션내용</th><th>가격</th>
-				<th>마감일<br>(결제일)</th><th>결제<br>여부</th><th>마감<br>여부</th>
+				<th> </th>
+				<th id="prjName">프로젝트명</th>
+				<th>옵션내용</th>
+				<th>가격</th>
+				<th>마감일<br>(결제일)</th>
+				<th>결제<br>여부</th>
+				<th>마감<br>여부</th>
 			</tr>
 			<c:forEach var="funding" items="${fundingList }">
 			<tr>
-				<td><img src="<%=request.getContextPath()%>/images/project/project${funding.prjNo.prjNo }.jpg"/>
-				<td class="link"><a id = "pointer" href="<%=request.getContextPath()%>/prjDetail/${funding.prjNo.prjNo}">${funding.prjNo.prjName }</a></td>
+				<td><img src="<%=request.getContextPath()%>/images/project/project${funding.prjNo.prjNo }.jpg"/></td>
+				<td class="link">
+						<a id = "pointer" href="<%=request.getContextPath()%>/prjDetail/${funding.prjNo.prjNo}">${funding.prjNo.prjName }</a>
+				</td>
 				<td>${funding.optNo.optContent}</td>
-				<td><fmt:formatNumber value="${funding.optNo.optPrice}" pattern="#,###"/>원</td>
+				<td>
+						<fmt:formatNumber value="${funding.optNo.optPrice}" pattern="\\#,###"/>
+				</td>
 				<td>${funding.prjNo.endDate}</td>
 				<c:choose>
-					<c:when test="${funding.payYn eq true}">
-						<td style="color:red; font-weight:bold">결제<br>완료</td>
-					</c:when>
-					<c:otherwise>
-						<td>미결제</td>
-					</c:otherwise>
+						<c:when test="${funding.payYn eq true}">
+								<td style="color:red; font-weight:bold">결제<br>완료</td>
+						</c:when>
+						<c:otherwise>
+								<td>미결제</td>
+						</c:otherwise>
 				</c:choose>
 				<c:choose>
-					<c:when test="${funding.endYn eq true}">
-						<td style="color:red; font-weight:bold">마감<br>완료</td>
-					</c:when>
-					<c:otherwise>
-						<td>진행중</td>
-					</c:otherwise>
+						<c:when test="${funding.endYn eq true}">
+								<td style="color:red; font-weight:bold">마감<br>완료</td>
+						</c:when>
+						<c:otherwise>
+							<td>진행중</td>
+						</c:otherwise>
 				</c:choose>
 			</tr>
 			</c:forEach>

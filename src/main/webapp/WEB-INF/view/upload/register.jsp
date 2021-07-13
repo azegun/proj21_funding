@@ -139,13 +139,12 @@
 						i =2
 					}
 				});	
-				
-		/* 		$('.optionPlus').click(function(){
-					$('.optionPlus').toggleClass('hidden');
-					$('.optionMinus')
-				});
-				 */
-			
+				/* 버튼 보여주기  */
+		 		$('.optionShow').click(function(){				
+		 			$(this).parent().remove();
+					$('.optionMinus').toggleClass('hidden');	
+					$('.optionPlus').toggleClass('hidden');						
+				}); 							
 		   });
 	</script>		
 	</head>
@@ -275,8 +274,11 @@
 								</tr>		
 								<tr  class="options" >
 										<td colspan="2">
+												 <div id= "tdoption_btns1" >
+												  		<button id = "optadd_minu" type = "button" class = "optionShow" >옵션</button>&nbsp; 
+												  </div>
 												  <div id= "tdoption_btns" >
-												  		<button id = "optadd_minu" type = "button" class = "optionPlus" >추가</button>&nbsp; 
+												  		<button id = "optadd_minu" type = "button" class = "optionPlus hidden" >추가</button>&nbsp; 
 												  		<button id = "optadd_minu"  type = "button" class = "optionMinus hidden" >삭제</button>
 												  </div>
 										</td>

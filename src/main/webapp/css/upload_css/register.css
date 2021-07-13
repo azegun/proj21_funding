@@ -16,6 +16,8 @@ ul.tabs{
 	list-style: none;
 }
 ul.tabs li{
+	font-size:1.1em;
+	font-weight:bold;
 	background: none;
 	color: #222;
 	display: inline-block;
@@ -74,6 +76,8 @@ ul.tabs li.current{
 .td_left{
 	padding: 5px;
 	width: 170px;
+	font-size:1.1em;
+	font-weight:bold;
 	 background-color:#d0eaff;
 	border-bottom: 2px solid #acd6ff; 
 	border-right: 1px solid #acd6ff; 
@@ -105,7 +109,7 @@ td{
 	border-radius: 5px;
 }
 #userName, #optPrice, #optName, #prjName,
-#prjGoal, #addOptPrice, #addOptName{
+#prjGoal, #addOptPrice, #addOptName, #addOptPrice1, #addOptPrice2, #addOptPrice3{
 	font-size: 15px;
 	border-radius: 5px;
 }

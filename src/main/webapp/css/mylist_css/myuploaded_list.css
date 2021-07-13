@@ -29,6 +29,7 @@ h4{
 .success{
 	color: crimson;
 	font-size: 1.1em;
+	font-weight: bold;
 	
 }
 #column{
@@ -40,14 +41,20 @@ th, td{
 th{
 	border-bottom: 3px solid #97d5fb;
 	padding:5px;
+	font-size: 1em;
+	font-weight: bold;
 }
 td{
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+.count{
+	border-right: 1px solid #cdcdcf;
+}
 #pointer{
 	color: #3f72af;
 	text-decoration: none;
+	cursor: pointer;
 }
 #foot_btn{	
 	margin-top:-20px;

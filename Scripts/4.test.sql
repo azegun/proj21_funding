@@ -75,7 +75,7 @@ select
 	CategoryNo, CategoryName 
 from boardcategory;
 
-
+select * from userinfo u ;
 
 -- Board (사이트게시판)
 select

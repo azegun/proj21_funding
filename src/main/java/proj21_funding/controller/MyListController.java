@@ -161,18 +161,13 @@ public class MyListController {
 		public ModelAndView  cascadeProject(
 					@PathVariable("prjNo") int prjNo,
 					@RequestParam("userNo") int userNo,
-					HttpServletResponse response	) throws IOException {
+					HttpServletResponse response) throws IOException {
 				
 			//param userNo= ? <=== 괄호안 value
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("pNo", prjNo);
-			myListService.deleteCascadeProjectByMap(map);
+			map.put("pNo", prjNo);			
 			
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script type='text/javascript'>");	
-			out.println("alert('프로젝트 삭제되었습니다.');");
-			out.println("</script>");
+			myListService.deleteCascadeProjectByMap(map);			
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:/homeToMyList/"+userNo);				
