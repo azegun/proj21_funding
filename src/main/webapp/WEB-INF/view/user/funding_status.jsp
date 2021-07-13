@@ -9,11 +9,22 @@
 <head>
 <meta charset="UTF-8">
 <title>100펀딩-후원현황</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/user_css/funding_status.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/paging_css/paging.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#MOVE_TOP_BTN").click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});		
+	});
+
+</script>
+
 </head>
 <body>
 ${count }
@@ -64,6 +75,7 @@ ${count }
 			</tr>
 			</c:forEach>
 		</table>
+		         <div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>	
 				 <!--paginate -->
 		         <div class="paginate">
 		            <ul class="paging">
@@ -88,6 +100,7 @@ ${count }
 		            </ul>
 		         </div>
 		         <!-- /paginate -->
+			
 		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
