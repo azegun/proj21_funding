@@ -27,15 +27,18 @@
 </script>
 </head>
 <body>
-	<fieldset id="prjBoardArea">		
+	<div id="projectUserInfo" >
+		<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />
+	</div>	
+	<fieldset id="prjBoardArea">			
 		<section>	
-			<fieldset>
+			<fieldset id="btnWrite">
 				<c:choose>
 					<c:when test="${!empty info}">			
-						<button onclick="openWrite()" value="${prjNo}">글쓰기</button>
+						<button id="btnOpenWrite" onclick="openWrite()" value="${prjNo}">글쓰기</button>
 					</c:when>
 					<c:when test="${prj[0].prjNo.userNo.userNo eq authInfo.userNo}">			
-						<button onclick="openWrite()" value="${prjNo}">글쓰기</button>
+						<button id="btnOpenWrite" onclick="openWrite()" value="${prjNo}">글쓰기</button>
 					</c:when>
 					<c:otherwise>
 						후원자만 글을 쓸 수 있습니다.
@@ -53,10 +56,12 @@
 					<h2>모든 게시물 보기</h2>
 					<c:forEach  var="board" items="${board}" varStatus="status">				
 						<fieldset class="board">
-						<c:if test="${prj[0].prjNo.userNo.userNo eq board.userNo.userNo}">
-							<div>  창작자   </div>
-						</c:if>				
-							<div id="nickName">${board.userNo.nickName}</div>				
+						<div id="boardContent">											
+							<div id="nickName">작성자 : ${board.userNo.nickName}
+							<c:if test="${prj[0].prjNo.userNo.userNo eq board.userNo.userNo}">
+								<label id="originator">&nbsp;창작자&nbsp; </label>
+							</c:if>
+							</div>				
 							<div id="postDate"><tf:formatDateTime value="${board.postDate}" pattern="yyyy-MM-dd" /></div>				
 							<div id="content">
 								<c:if test="${!empty board.postFile}">					
@@ -66,6 +71,9 @@
 									<pre><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">${board.postContent}</a></pre>
 								</div>
 							</div>
+						</div>
+							<hr>
+							<p id="reCount"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">💬&nbsp;${reCount[status.index]}</a></p>
 						</fieldset>	
 					</c:forEach>
 				</div>
@@ -74,9 +82,10 @@
 					<h2>창작자 작성 게시물</h2>						
 					<c:forEach  var="board" items="${board}" varStatus="status">				
 						<c:if test="${prj[0].prjNo.userNo.userNo eq board.userNo.userNo}">
-							<fieldset class="board">						
-								<div>  창작자   </div>									
-								<div id="nickName">${board.userNo.nickName}</div>				
+							<fieldset class="board">
+							<div id="boardContent">								
+								<div id="nickName">작성자 : ${board.userNo.nickName}
+								<label id="originator">창작자</label></div>				
 								<div id="postDate"><tf:formatDateTime value="${board.postDate}" pattern="yyyy-MM-dd" /></div>				
 								<div id="content">
 									<c:if test="${!empty board.postFile}">					
@@ -86,6 +95,9 @@
 										<pre><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">${board.postContent}</a></pre>								
 									</div>
 								</div>
+							</div>
+								<hr>
+								<p id="reCount"><a href="<c:url value="/prjDetail/${prj[0].prjNo.prjNo}?postNo=${board.postNo}#prjBoard"/>">💬&nbsp;${reCount[status.index]}</a></p>
 							</fieldset>	
 						</c:if>	
 					</c:forEach>

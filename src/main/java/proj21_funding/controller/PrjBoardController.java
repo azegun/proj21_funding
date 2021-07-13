@@ -1,5 +1,9 @@
 package proj21_funding.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -41,7 +45,8 @@ public class PrjBoardController {
 	}
 
 	@PostMapping("/prjBoard/prjBoard-write")
-	public String write(@Valid PrjBoard prjBoard, Errors errors, Model model, MultipartFile postFile) {
+	public String write(@Valid PrjBoard prjBoard, Errors errors, Model model, MultipartFile postFile,HttpServletResponse response) {
+				
 		if (prjBoard.getPostNo() == 0) {
 			try {
 				boardService.registPrjBoard(prjBoard, postFile);
@@ -60,8 +65,18 @@ public class PrjBoardController {
 				errors.rejectValue("postContent", "nullContent");
 				return "prjBoard/prjBoard-write";
 			}
-		}
-		
+		}		
+		PrintWriter out;		
+		try {
+			out = response.getWriter();			
+			out.println("<script type='text/javascript'>");
+			out.println("opener.document.location.reload();");
+			out.println("window.close();");
+			out.println("</script>");
+			out.flush();
+		} catch (IOException e1) {			
+			e1.printStackTrace();
+		}		
 		return "prjBoard/prjBoard-write";
 	}
 
@@ -74,7 +89,7 @@ public class PrjBoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/prjDetail/" + prjBoard.getPrjNo();
+		return "redirect:/prjDetail/" + prjBoard.getPrjNo() + "#prjBoard";
 	}
 
 	// 게시판 리플 작성

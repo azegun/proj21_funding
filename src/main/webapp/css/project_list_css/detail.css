@@ -238,13 +238,14 @@ progress[value]::-webkit-progress-value {
 	line-height: 30px;
 }
 
-#additional{
-	display: flex;
-	width: 100%;
+#additional{	
+	width: 100%;	
 }
-#prjBoard{
-	width: 85%;
+#prjBoard{	
+	width: 95%;	
 }
+
 #projectUserInfo{
-	width: 120pxs;
+	
+	
 }

@@ -7,12 +7,6 @@
 <meta charset="UTF-8">
 <title>프로젝트 게시판</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/prjBoard_css/prjBoard_write.css">
-<script type="text/javascript">
-	function closeWrite(){		
-		opener.document.location.reload();
-		self.close();
-	}
-</script>
 </head>
 <body>
 	<fieldset id="prjBoardwriteArea">
@@ -36,8 +30,7 @@
 			</c:if>
 			<c:if test="${!empty pBoard}">
 				<form:button>수정하기</form:button>
-			</c:if>
-			<form:button type="button" onclick="closeWrite()">닫기</form:button>
+			</c:if>			
 		</div>
 	</form:form>	
 	</fieldset>
