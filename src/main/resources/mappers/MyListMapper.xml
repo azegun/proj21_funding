@@ -93,5 +93,9 @@
 				set OptName = #{addOptName3}, OptContent = #{addOptContent3}
 			where OptNo = #{addOptNo3}		
 		</update>
+		<!--캐스캐이드 맵으로 지우기  -->
+		<delete id="deleteCascadeProjectByMap" parameterType="map">
+				delete from project where PrjNo =#{pNo}
+		</delete>
 
 </mapper>

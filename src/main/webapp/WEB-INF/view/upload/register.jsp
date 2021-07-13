@@ -142,8 +142,13 @@
 					}else if(i ==1){
 						i =2
 					}
-				});		
+				});	
 				
+		/* 		$('.optionPlus').click(function(){
+					$('.optionPlus').toggleClass('hidden');
+					$('.optionMinus')
+				});
+				 */
 			
 		   });
 	</script>		
@@ -276,7 +281,7 @@
 										<td colspan="2">
 												  <div id= "tdoption_btns" >
 												  		<button id = "optadd_minu" type = "button" class = "optionPlus" >추가</button>&nbsp; 
-												  		<button id = "optadd_minu"  type = "button" class = "optionMinus" >삭제</button>
+												  		<button id = "optadd_minu"  type = "button" class = "optionMinus hidden" >삭제</button>
 												  </div>
 										</td>
 								</tr>	
