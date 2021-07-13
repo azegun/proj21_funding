@@ -299,18 +299,22 @@ from prjoption
 where optno > 4;
 
 
--- 프로젝트 올린거 조회 고객번호로, totalPrice까지 옵션
-select 
-		p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
-		p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-		op.OptNo, op.optName,  op.OptPrice, op.OptContent,
-		if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-from project p
-		join prjoption op  on p.PrjNo = op.PrjNo 
-		join userinfo u on p.UserNo = u.UserNo 
-		join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
- 	where u.userno = 1
-	group by prjno;
+-- 프로젝트 올린거 조회 고객번호로, totalPrice까지 옵션 +  페이징
+	select 
+				p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
+				p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+				op.OptNo, op.optName,  op.OptPrice, op.OptContent,
+				if(sum(op.optPrice)>0,sum(op.optPrice),0) as totalPrice
+		from fundinginfo f 
+	   			join prjoption op on op.optno= f.OptNo 
+				right join project p on p.prjno = f.PrjNo 
+				join userinfo u on p.UserNo = u.UserNo 
+				join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
+	group by prjno
+	having p.userno = 1
+	order by p.prjNo desc LIMIT 1, 10;
+
+
 
 -- 프로젝트 no로 검색 detail 프로젝트리스트
 select 
@@ -451,54 +455,16 @@ delete
   from PrjBoardReply
  where ReplyNo = 1;
 
+select *from fundinginfo f2 ;
  select  * from project p ;
  select * from prjoption p ;
-			select 
-						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
-						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
-						if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
-						ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
-						  from fundinginfo f 
-	   				   join prjoption op on op.optno= f.OptNo 
-						 right join project p on p.prjno = f.PrjNo 
-						join userinfo u on p.UserNo = u.UserNo 
-						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
-				group by p.prjno
-				having p.userno = 1;
-				
-	
-			select 
-						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
-						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
-						if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
-				ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
-						  from fundinginfo f 
-	   				   join prjoption op on op.optno= f.OptNo 
-						 right join project p on p.prjno = f.PrjNo 
-						join userinfo u on p.UserNo = u.UserNo 
-						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
-				group by p.prjno
-				having p.userno = 1;
-			
-			
-				select 
-						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
-						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
-						if(sum(op.optPrice)>0,sum(op.optPrice),0) as totalPrice
-				from fundinginfo f 
-	   				  join prjoption op on op.optno= f.OptNo 
-					 right join project p on p.prjno = f.PrjNo 
-					join userinfo u on p.UserNo = u.UserNo 
-					join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
-				group by prjno
-				having p.userno = 1
-				order by p.prjNo desc LIMIT 1, 10;
-			
-			select * from userinfo u ;
-			update userinfo 
-			set BankName =null, AccountHolder =null, BankAccount = null
-			where UserNo = 39;
+delete from project where PrjNo =4;
+-- 	계좌 수정	
+select * from userinfo u ;
+update userinfo 
+	set BankName =null, AccountHolder =null, BankAccount = null
+where UserNo = 39;
+		
+		select * from project p2 ;
+		select * from project p2 ;
 			

@@ -157,6 +157,9 @@ td{
 	background-color:#ccc;
 	color:white;
 }
+.hidden{
+	display: none;
+}
 #btns{
 	width: 150px;
     height: 30px;

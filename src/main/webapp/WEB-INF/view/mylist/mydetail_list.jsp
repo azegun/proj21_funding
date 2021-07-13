@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/mylist_css/mydetail_list.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 			<script type="text/javascript">			
-			 $(document).ready(function(){
+	 $(document).ready(function(){
 	//뒤로
 	$(function(){
 		var contextPath = "<%=request.getContextPath()%>";
@@ -25,7 +25,7 @@
 			$('.optionShowHide').parent().parent().parent().parent().parent().next().toggleClass('hidden');			
 			$('.optionMinus').toggleClass('hidden');
 		});
-	
+	// 화면 상단이동
 	$("#MOVE_TOP_BTN").click(function() {
 		$('html, body').animate({
 			scrollTop : 0
@@ -37,16 +37,17 @@
 	$('.optionMinus').on("click", function(){
 		$('.addAll:last-child').remove();
 	});
+	
+	var contextPath = "<%=request.getContextPath()%>";
+	$('#delete_button').on("click", function(){
+		window.location.href = contextPath+"/deletePrj/${optList[0].prjNo.prjNo}?userNo=${authInfo.userNo}";
+	});
  });
 		
 </script>
 </head>
 <body>
-
-<%-- ${myList[0]}
-${myList[0].prjNo.prjNo} --%>
-<%-- ${myList } --%>
-<%-- ${optList } --%>
+${optList[0].prjNo.prjNo}
 
 	<section class="container">
 			<header id = "mydetail_header">		   
@@ -60,7 +61,6 @@ ${myList[0].prjNo.prjNo} --%>
 						<tr class = "col2">
 										<td class="td_left"><label for="userName">작성자</label></td>
 										<td class="td_right" >
-											 <%-- <input type="hidden" id = "optNo" name = "uNo" value= "${authInfo.userNo}"/> --%>
 												<span id="userName">${authInfo.userName}</span>																					
 										</td>					
 								</tr>
@@ -74,6 +74,8 @@ ${myList[0].prjNo.prjNo} --%>
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
 										<td class="td_right" >
 											<input type="hidden" id="prjNo" name="pNo" value="${optList[0].prjNo.prjNo}" 
+														readonly="readonly"/>
+											<input type="hidden" id="userNo" name="userNo.userNo" value="${authInfo.userNo}" 
 														readonly="readonly"/>
 											<input type="text" id="prjName" name="pName" value="${myList[0].prjNo.prjName}" 
 														size=46	required="required"/>			
@@ -349,6 +351,7 @@ ${myList[0].prjNo.prjNo} --%>
 					<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 						<div id = "btns_bottom">
 								<input class= "btns" type="submit"  value="수정"/>&nbsp;
+								<button class= "btns" type="button" id = "delete_button">삭제</button>								
 								<button class= "btns" type="button" id = "back">뒤로</button>								
 						</div>		
 					</form>				
