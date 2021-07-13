@@ -96,12 +96,12 @@
 								readonly="readonly" /></div>
 				<section id="commandCell">
 					<c:if test="${authInfo.userNo < 0 }">
-						<a href="/proj21_funding/qnaadminview?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button>돌아가기</button></a>
-						<a href="<%=request.getContextPath() %>/qnareply/${qna.qnaNo}"><input type="button" value="답변하기"></a>
+						<a href="/proj21_funding/qnaadminview?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button  id="commandbutton">돌아가기</button></a>
+						<a href="<%=request.getContextPath() %>/qnareply/${qna.qnaNo}"><input type="button" id="commandbutton" value="답변하기"></a>
 					</c:if>
 					<c:if test="${authInfo.userNo > 0 }">
-						<a href="/proj21_funding/qnauserview?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button>돌아가기</button></a>
-						<a href="<%=request.getContextPath() %>/qnadelete/${qna.qnaNo}"><input type="button" value="삭제하기"></a>
+						<a href="/proj21_funding/qnauserview?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button  id="commandbutton">돌아가기</button></a>
+						<a href="<%=request.getContextPath() %>/qnadelete/${qna.qnaNo}"><input type="button" id="commandbutton" value="삭제하기"></a>
 					</c:if>
 				</section>
 			</div>

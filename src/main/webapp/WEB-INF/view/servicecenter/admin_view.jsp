@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/user_view.css">
 </head>
 <body>
-${qna }
 	<div class="container">
 		<header>
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />

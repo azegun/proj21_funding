@@ -76,7 +76,7 @@ dd textarea {
 	text-decoration: none;
 }
 
-#commandCell input[type=submit], input[type=reset], input[type=button], button {
+#commandCell input[type=submit], input[type=reset], input[type=button], #go_qna, #commandbutton {
 	color: gray;
 	margin-top: 20px;
 	display: inline-flex;
@@ -98,4 +98,8 @@ dd textarea {
 	text-align: center;
 	text-decoration: none;
 	background-color: white;
+}
+
+#go_qna {
+	text-decoration: none;
 }

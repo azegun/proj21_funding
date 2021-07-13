@@ -54,9 +54,9 @@ response.setContentType("text/html; charset=UTF-8");
 				</select>
 				<input type="text" name="boardTitle" id="boardTitle"
 					required="required" class="boardTitle"
-					value="${board.boardTitle }">
+					value="${board.boardTitle }"  required="required">
 				<textarea name="boardContent" id="boardContent" id="ir1"
-					style="width: 100%; height: 400px;">${board.boardContent }</textarea>
+					style="width: 100%; height: 400px;" required="required">${board.boardContent }</textarea>
 					
 				<div class="commandCell">
 					<input type="submit" value="등록" onclick="submitContents(this)" class="menubutton">&nbsp;&nbsp;
