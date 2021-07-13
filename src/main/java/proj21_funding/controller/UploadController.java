@@ -25,6 +25,7 @@ import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.PrjPlusOption;
+import proj21_funding.exception.CategoryException;
 import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.EmptySpaceException;
 import proj21_funding.exception.InputTypeStringError;
@@ -84,15 +85,34 @@ public class UploadController {
 	}
 //  계좌 등록 페이지
 	@PostMapping("/registerBank/{authInfo.userNo}")
-	public ModelAndView updateBankAccount(@PathVariable("authInfo.userNo") int userNo, UserInfo userInfo ) {
-		userService.updateBankAccount(userInfo);
-		List<PrjCategory> list = prjCategoryService.showCategory();
-
-		ModelAndView mav = new ModelAndView();		
-		mav.addObject("category", list);
-		mav.setViewName("upload/register");
+	public void updateBankAccount(
+			@PathVariable("authInfo.userNo") int userNo, UserInfo userInfo,  
+			HttpServletResponse response, HttpServletRequest request) throws IOException {
+		//절대값 및 기본 설정
+		String ContextPath =request.getContextPath();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type='text/javascript'>");	
 		
-		return mav;
+		try {
+			userService.updateBankAccount(userInfo);
+		}catch (EmptySpaceException e) {		
+			out.println("alert('잘못된 등록입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}catch (CategoryException e) {
+			out.println("alert('은행 명을 선택하셔야됩니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}		
+		// 팝업 창 컨트롤러에서 종료 후 자동 실행
+		out.println("alert('계좌 등록되었습니다.');");
+		out.println("window.close();");
+		out.println("	opener.document.location.replace('"+ContextPath+"/registerForm');");
+		out.println("</script>");
+				
 	}
 	
 	//광고페이지에서 등록 html 여기
@@ -181,11 +201,7 @@ public class UploadController {
 			return mav;	
 		
 		}catch (Exception e) { 	
-			out.println("<script type='text/javascript'>");
-			out.println("alert('잘못된 등록입니다..');");
-			out.println("history.back();");
-			out.println("</script>");
-			out.flush();
+			System.out.println("에러 발생>> "+ e);
 		 return mav; 
 		 }				
 	}	

@@ -217,16 +217,12 @@ ${project[0].optNo} --%>
 						<c:choose>		
 						<c:when test="${optList[0].prjNo.prjNo eq optList[3].prjNo.prjNo}">
 							<!--옵션 3개 추가가 있을 시 보여주는view  -->		
-								<tr>
-									<td colspan="2">
-											 <input type="hidden" id = "optNo" name = "oNo" value= "${project[0].optNo}" ></input>
-									</td>
-								</tr>	
 								<tr class ='tr_all'>											
 									<td class = "td_left">
 											<label for = "optName">옵션1 이름</label>
 									</td>									
 									<td class = "td_right">
+									 <input type="hidden" id = "optNo" name = "oNo" value= "${project[0].optNo}"/>
 											 <input type="text" id = "optName" name = "oName" 
 											 			value = "${ project[0].optName }" size = 17 required="required"></input>
 									</td>									
