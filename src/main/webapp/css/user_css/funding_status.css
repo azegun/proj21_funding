@@ -32,12 +32,12 @@ th, td{
 }
 th{
 	border-bottom: 3px solid #97d5fb;
-	padding:5px;
 	font-size: 1em;
 	font-weight: bold;
+	padding:5px;
 }
 td{
-		padding-top: 10px;
+	padding-top: 10px;
 	padding-bottom: 10px;
 }
 #pointer{

@@ -150,6 +150,7 @@ td{
     background-color: #ff7675;
     border-radius: 5px;
     border: none;
+     cursor: pointer;
 }
 #addbtns{
 	 background-color:#e0f3fe;
@@ -167,6 +168,7 @@ td{
     border: none;
    	margin-top:5px;
    	margin-bottom:5px;    
+   	 cursor: pointer;
 	
 }
 #MOVE_TOP_BTN {
