@@ -281,4 +281,19 @@ select count(f.userno) as totalCount ,u.nickname as sponsor,f.payyn
 		group by period;
 		
 
-update project set enddate = '20210712' where prjno=4;
+update project set enddate = '20210712' where prjno=1;
+
+
+delete from project where prjno = 1;
+select * from prjoption;
+
+select count(f.userno) as totalCount , u.nickname as fundingUserName, u.userId as fundingUser
+	  from (select * from fundinginfo where payyn = 1) f join userinfo u on f.userno = u.UserNo 
+	  group by f.userNo order by totalcount desc limit 5;
+	  
+	 select date_format(p.EndDate,'%Y년 %m월') as period ,
+			count(fundingno) as count1,
+			sum(o.OptPrice) as sum1
+		from (select * from fundinginfo where payyn = 1) f join project p on f.PrjNo = p.prjno
+		join prjoption o on f.OptNo = o.OptNo
+		group by period;

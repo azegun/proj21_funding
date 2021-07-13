@@ -3,13 +3,12 @@
 img{
 	width:200px;
 	hegiht:200px;
-	margin: 25 50 25 25;
 	border-radius:10px;
 }
 
 .prjInfo{
 	border-bottom : 2px solid grey;
-	height: 200px;
+	height: 220px;
 }
 
 .achiRate{

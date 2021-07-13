@@ -368,7 +368,7 @@ ALTER TABLE proj21_funding.PrjOption
 		)
 		REFERENCES proj21_funding.Project ( -- 프로젝트
 			PrjNo -- 프로젝트번호
-		);
+		) on delete cascade;
 
 -- 후원정보
 ALTER TABLE proj21_funding.FundingInfo
@@ -388,7 +388,7 @@ ALTER TABLE proj21_funding.FundingInfo
 		)
 		REFERENCES proj21_funding.Project ( -- 프로젝트
 			PrjNo -- 프로젝트번호
-		);
+		)  on delete cascade;
 
 -- 프로젝트게시판
 ALTER TABLE proj21_funding.PrjBoard
@@ -398,7 +398,7 @@ ALTER TABLE proj21_funding.PrjBoard
 		)
 		REFERENCES proj21_funding.Project ( -- 프로젝트
 			PrjNo -- 프로젝트번호
-		);
+		)  on delete cascade;
 
 -- Q&A
 ALTER TABLE proj21_funding.QnA

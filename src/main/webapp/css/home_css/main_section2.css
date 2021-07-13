@@ -25,6 +25,10 @@
 	height: 100%;
 }
 
+.draggable{
+	height:100%;
+}
+
 #title-imageinfo{
 	border-radius:0px 20px 20px 0px;
 	width: 30%;

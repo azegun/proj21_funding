@@ -43,9 +43,9 @@
         SELECT count(*) FROM QNA where QnaReply is not null
     </select>
 	
-	<select id="SelectUserList" resultMap="resQNA">
+	<select id="SelectUserList" resultMap="Associate">
     	select R1.* FROM(
-			SELECT * FROM QNA where userNo = #{userNo} order by qnaNo desc
+			SELECT qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile FROM QNA where userNo = #{userNo} order by qnaNo desc
 		) R1
 		LIMIT #{pageSearch}, #{cntPerPage };
 		
