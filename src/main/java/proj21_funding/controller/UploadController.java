@@ -110,7 +110,7 @@ public class UploadController {
 		// 팝업 창 컨트롤러에서 종료 후 자동 실행
 		out.println("alert('계좌 등록되었습니다.');");
 		out.println("window.close();");
-		out.println("	opener.document.location.replace('"+ContextPath+"/registerForm');");
+		out.println("opener.document.location.replace('"+ContextPath+"/registerForm');");
 		out.println("</script>");
 				
 	}

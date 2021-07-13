@@ -19,6 +19,13 @@
 	    $(this).addClass('current');
 	    $("#"+tab_id).addClass('current');
 	 }); 
+	    
+	    $("#MOVE_TOP_BTN").click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});
 	});
 
 	function openWrite(){		
@@ -103,7 +110,8 @@
 					</c:forEach>
 				</div>			
 			</section>			
-		</section>
+		</section>		
 	</fieldset>
+	<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>		
 </body>
 </html>
