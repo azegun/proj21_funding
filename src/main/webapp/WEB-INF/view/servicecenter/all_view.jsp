@@ -21,6 +21,7 @@
 	td{border : 1px solid;}
 </style>
 <body>
+${qna }
 	<div class="container">
 		<header>		   
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 

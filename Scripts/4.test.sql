@@ -1,5 +1,11 @@
 -- test는 구역안에서 해주시고, 스크립트 길이가 너무 길어지면 그때 조금씩 new 만들어서 옮기는게 좋을 것 같아요
 
+
+select R1.* FROM(
+	SELECT qnaNo, userNo, adminNo, categoryNo, qnaTitle, qnaContent, qnaDate, qnaReply, replyDate, qnaFile FROM QNA where userNo = 2 order by qnaNo desc
+) R1
+LIMIT 0, 10;
+
 -- Message (메세지)
 select
 	MsgNo, SendUser, ReceiveUser,
