@@ -10,45 +10,65 @@
 					<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 				<script type="text/javascript">			
 				/* 뒤로 */
+				
 			$(function(){
-				var contextPath = "<%=request.getContextPath()%>";
-				$("#cancel").on("click", function(){
-					window.location.href = contextPath+"/uploadMain";
-				});			
+				$(".cancel").on("click", function(){
+				self.opener=self;
+				window.close();
+				});	
+				
+				  $(".test").on("click", function(){
+						   
+					   var bankAccount =$('#bankAccount').val();
+			           var accountHolder = $('#accountHolder').val();
+					   
+					   var regexp = /^[0-9]*$/			
+					   
+					   if(!regexp.test(bankAccount)){
+						  	alert("숫자를 입력해주세요")
+					   }else if(regexp.test(accountHolder)){
+							alert("숫자는 입력이 안됩니다.")
+					   }
+					   window.location.href = contextPath+"/registerForm";
+						window.close();
+					  /*  window.open("about:blank", "_self").close(); */
+					   
+			         });	
+				
+				
 			});		
+				
+				  
+				
+				
+	
 </script>
 					
 </head>
 <body>
+${authInfo.userNo}
 <%-- ${authInfo.userNo} --%>
 		<section class="container">
-			<header id = "bankaccount" >		   
-					<jsp:include page="/WEB-INF/view/home/header.jsp"/>
-			</header>
+			
 				<h2>계좌등록</h2>
-						<form  action= "<%=request.getContextPath() %>/registerBank/${authInfo.userNo}" method="post">
+						<form  action= "<%=request.getContextPath() %>/registerBank/${authInfo.userNo} " method="post">
 								<section id = "bankaccount_content">
 										<table class= "register_table">
 												<tbody>
-															<tr class = "col1">
-																	<td></td>
-																	<td class="td_right"  colspan="2">
-																			<input type="hidden" id="userNo" name="userNo" value="${authInfo.userNo}" 
-																					size=49	required="required" readonly="readonly"/>																			
-																	</td>					
-															</tr>
 															<tr class = "col2">
 																	<td class="td_left"><label for="accountHolder">예금주</label></td>
 																	<td class="td_right" >
+																		<input type="hidden" id="userNo" name="userNo" value="${authInfo.userNo}" 
+																					size=49	required="required" readonly="readonly"/>								
 																			<input type="text" id="accountHolder" name="accountHolder" 
-																					size=30	required="required"   placeholder= "입력해주세요."/>																								
+																					size=30	placeholder= "예금주를 입력해주세요."/>																								
 																	</td>
 															</tr>	
 															<tr class = "col3">
 																	<td class="td_left"><label for="bankName">은행명</label></td>
 																	<td class="td_right" >
-																			<select id = "bankName" name = "bankName">
-																					<option value = "선택안함">----은행을 선택해주세요----</option>
+																			<select id = "bankName" name = "bankName" required="required" readonly="readonly" >
+																					<option value = "0">----은행을 선택해주세요----</option>
 																					<option value = "국민은행">국민은행</option>
 																					<option value = "농협">농협</option>
 																					<option value = "신한은행">신한은행</option>
@@ -63,20 +83,18 @@
 																	<td class="td_left"><label for="bankAccount">계좌번호</label></td>
 																	<td class="td_right" >
 																			<input type="text" id="bankAccount" name="bankAccount" 
-																					size=30	required="required"  placeholder= "결제시 사용 할 계좌를 적어주세요." />																								
+																					size=30	 required="required"   placeholder= "결제시 사용 할 계좌를 적어주세요." />																								
 																	</td>
 																</tr>											
 												</tbody>
 										</table>
 								</section>						
-											<div id = "btns">
-													<input type="submit"  value="계좌등록"/>&nbsp;													
-													<button id = "cancel">취소</button>																					
+											<div id = "btns_bottom">
+													<input id = "btns" type="submit" class= "test"  value="계좌등록" readonly="readonly"/>&nbsp;							
+													<button id = "btns"  type="button" class = "cancel" >취소</button>																					
 											</div>		
-							</form>					
-				<footer>
-					<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
-			</footer>
+							</form>				
+				
 	</section>
 </body>
 </html>

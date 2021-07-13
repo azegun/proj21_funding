@@ -64,8 +64,34 @@ public class MyListController {
 		
 //		디테일리스트에서 마이리스트로
 		@GetMapping("/backMyList/{authInfo.userNo}")
-		public ModelAndView backMyList(@PathVariable("authInfo.userNo") int userNo) {
-			List<Project> list = listService.showAllMyList(userNo);
+		public ModelAndView backMyList(@PathVariable("authInfo.userNo") int userNo,
+				@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+				@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+				@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, 
+				HttpSession session) throws Exception {
+			
+			if(session.getAttribute("authInfo")==null) {
+				return new ModelAndView("redirect:/login");
+			}
+			
+			int pageSearch = (currentPage-1)*cntPerPage;
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("uNo", userNo);
+			map.put("currentPage",currentPage );
+			map.put("cntPerPage", cntPerPage);
+			map.put("pageSize",pageSize );
+			map.put("pageSearch",pageSearch);
+			System.out.println("map >> " + map);			
+			
+			
+			int count = myListService.selectCountPrjByUserNo(map);
+			
+			Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+			pagination.setTotalRecordCount(count);
+			session.setAttribute("pagination", pagination);
+			
+			List<Project> list = listService.showAllListByMap(map);		
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("myList", list);
@@ -104,9 +130,7 @@ public class MyListController {
 			pagination.setTotalRecordCount(count);
 			session.setAttribute("pagination", pagination);
 			
-			System.out.println("page >> "+ pagination);
 			List<Project> list = listService.showAllListByMap(map);		
-			System.out.println("list>> "+ list);
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("map", map);

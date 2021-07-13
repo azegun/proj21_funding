@@ -497,4 +497,8 @@ delete
 				having p.userno = 1
 				order by p.prjNo desc LIMIT 1, 10;
 			
+			select * from userinfo u ;
+			update userinfo 
+			set BankName =null, AccountHolder =null, BankAccount = null
+			where UserNo = 39;
 			

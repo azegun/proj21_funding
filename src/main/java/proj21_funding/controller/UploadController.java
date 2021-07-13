@@ -25,6 +25,7 @@ import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.PrjPlusOption;
+import proj21_funding.exception.CategoryException;
 import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.EmptySpaceException;
 import proj21_funding.exception.InputTypeStringError;
@@ -84,8 +85,28 @@ public class UploadController {
 	}
 //  계좌 등록 페이지
 	@PostMapping("/registerBank/{authInfo.userNo}")
-	public ModelAndView updateBankAccount(@PathVariable("authInfo.userNo") int userNo, UserInfo userInfo ) {
-		userService.updateBankAccount(userInfo);
+	public ModelAndView updateBankAccount(
+			@PathVariable("authInfo.userNo") int userNo, UserInfo userInfo,  
+			HttpServletResponse response ) throws IOException {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type='text/javascript'>");
+		
+		try {
+			userService.updateBankAccount(userInfo);
+		}catch (EmptySpaceException e) {		
+			out.println("alert('잘못된 등록입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}catch (CategoryException e) {
+			out.println("alert('은행 명을 선택하셔야됩니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}
+		
+	
 		List<PrjCategory> list = prjCategoryService.showCategory();
 
 		ModelAndView mav = new ModelAndView();		
@@ -181,11 +202,7 @@ public class UploadController {
 			return mav;	
 		
 		}catch (Exception e) { 	
-			out.println("<script type='text/javascript'>");
-			out.println("alert('잘못된 등록입니다..');");
-			out.println("history.back();");
-			out.println("</script>");
-			out.flush();
+			System.out.println("에러 발생>> "+ e);
 		 return mav; 
 		 }				
 	}	

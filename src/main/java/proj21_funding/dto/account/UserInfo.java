@@ -157,7 +157,7 @@ public class UserInfo {
 	}
 
 	public String getBankName() {
-		return bankName;
+		return bankName.trim();
 	}
 
 	public void setBankName(String bankName) {
@@ -165,7 +165,7 @@ public class UserInfo {
 	}
 
 	public String getBankAccount() {
-		return bankAccount;
+		return bankAccount.trim();
 	}
 
 	public void setBankAccount(String bankAccount) {
@@ -181,7 +181,7 @@ public class UserInfo {
 	}
 
 	public String getAccountHolder() {
-		return accountHolder;
+		return accountHolder.trim();
 	}
 
 	public void setAccountHolder(String accountHolder) {

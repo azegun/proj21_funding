@@ -70,7 +70,7 @@
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
 	         $(".test").on("click", function(){
-	               var category = $('#pCategoryNo').val()
+	               var category = $('#pCategoryNo').val();
 	               if(category == 0){
 	                  alert("카테고리를 	선택해주세요")
 	               }

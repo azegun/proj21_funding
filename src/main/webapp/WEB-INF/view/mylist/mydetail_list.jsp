@@ -35,7 +35,6 @@
 	
 	//옵션삭제
 	$('.optionMinus').on("click", function(){
-		console.log(55)
 		$('.addAll:last-child').remove();
 	});
  });
@@ -61,6 +60,7 @@ ${myList[0].prjNo.prjNo} --%>
 						<tr class = "col2">
 										<td class="td_left"><label for="userName">작성자</label></td>
 										<td class="td_right" >
+											 <input type="hidden" id = "optNo" name = "uNo" value= "${authInfo.userNo}"/>
 												<span id="userName">${authInfo.userName}</span>																					
 										</td>					
 								</tr>
