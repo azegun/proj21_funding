@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +40,16 @@
 					<pre>${prBoard.postContent}</pre>
 				</div>
 			</section>
-			<div id="btn">
-				<button type="button" onclick="modifyBoard()">수정</button>
-				<a href="<c:url value="/prjDetail/deleteBoard?postNo=${prBoard.postNo}"/>"><button type="button">삭제</button></a>	
-			</div>					
+			<c:if test="${authInfo.userId eq prBoard.userNo.userId}">
+				<div id="btn">
+					<button type="button" onclick="modifyBoard()">수정</button>
+					<a href="<c:url value="/prjDetail/deleteBoard?postNo=${prBoard.postNo}"/>"><button type="button">삭제</button></a>	
+				</div>
+			</c:if>
+			<br>	
+			<p id="countReply">${fn:length(boardReply)}개의 댓글이 있습니다.</p>		
 			<hr>
+			<c:if test="${!empty info || prj[0].prjNo.userNo.userNo eq authInfo.userNo}">
 		<form:form modelAttribute="prjBoardReply" action="registerReply">		
 			<div><form:hidden path="postNo" value="${prBoard.postNo}"/></div>
 			<div id="reReply">
@@ -52,6 +58,7 @@
 			</div>	
 			<p id="errors">${err}&nbsp;</p>		
 		</form:form>		
+		</c:if>
 		<section id="boardReply">						
 			<c:forEach items="${boardReply}" var="reply">
 				<div id="boardReplyCon" >
@@ -61,10 +68,12 @@
 					</c:if>
 					 &nbsp;:</div>				
 					<div id="replyContent"><pre>${reply.replyContent}</pre></div>									
-				</div>								
-				<div id="delRebtn">
-					<a href="<c:url value="/prjDetail/deleteReply?postNo=${prBoard.postNo}&replyNo=${reply.replyNo}"/>"><button type="button" id="reBtn">삭제</button></a>	
 				</div>
+				<c:if test="${authInfo.userId eq reply.userNo.userId}">								
+					<div id="delRebtn">
+						<a href="<c:url value="/prjDetail/deleteReply?postNo=${prBoard.postNo}&replyNo=${reply.replyNo}"/>"><button type="button" id="reBtn">삭제</button></a>	
+					</div>
+				</c:if>
 				<p>----------------------------------------------------------------------------------------------------------</p>
 			</c:forEach>				
 		</section>
