@@ -18,22 +18,23 @@
 								$("#go_list").on("click", function(){
 									window.location.href = contextPath+"/projectListAll";
 								});			
-							});
 							
 							/* 메인으로 */
-							$(function(){
-								var contextPath = "<%=request.getContextPath()%>";
 								$("#go_main").on("click", function(){
 									window.location.href = contextPath+"/";
-								});			
 							});
 							
 							/* 나의 리스트로으로 */
-							$(function(){
-								var contextPath = "<%=request.getContextPath()%>";
 								$("#go_myList").on("click", function(){
 									window.location.href = contextPath+"/myUploadedlist/${authInfo.userNo }";
 								});			
+							      $("#MOVE_TOP_BTN").click(function() {
+							     		$('html, body').animate({
+							     			scrollTop : 0
+							     		}, 400);
+							     		return false;
+							     	});
+							
 							});
 					</script>
 </head>
@@ -56,7 +57,7 @@ ${project.prjGoal }--%>
 		<header>		   
 				<jsp:include page="/WEB-INF/view/home/header.jsp"/>
 		</header>
-		<h2>프로젝트 등록하였습니다.</h2>
+		<h2>프로젝트 수정을 하였습니다.</h2>
 		<section id= "table_all">
 			<table class= "update_table" >
 						<tbody>
@@ -262,10 +263,11 @@ ${project.prjGoal }--%>
 						</tbody>
 				</table>
 		</section>
+			<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 				<div id ="foot_btn">
-						<button id = "go_list">최근 프로젝트</button>&nbsp;
-						<button id = "go_main">메인</button>&nbsp;
-						<button id = "go_myList">내 프로젝트</button>						
+						<button class = "btns" id = "go_list">최근 프로젝트</button>&nbsp;
+						<button class = "btns" id = "go_main">메인</button>&nbsp;
+						<button class = "btns" id = "go_myList">내 프로젝트</button>						
 				</div>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>

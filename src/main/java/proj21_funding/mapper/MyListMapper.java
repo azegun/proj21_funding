@@ -24,6 +24,8 @@ public interface MyListMapper {
 	int updateListAllAddOptionsByMap(Map<String, Object> map);
 //	프로젝트 추가옵션1,2,3  부속 수정
 	int updateListSubOptByMap(Map<String, Object> map);
+//	캐스캐이드 맵으로 지우기
+	int deleteCascadeProjectByMap(Map<String, Object> map);
 //	회원별 프로젝트 통계
 	int selectCountPrjByUserNo(Map<String, Object> map);
 	

@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/mylist_css/mydetail_list.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 			<script type="text/javascript">			
+	 $(document).ready(function(){
 	//뒤로
 	$(function(){
 		var contextPath = "<%=request.getContextPath()%>";
@@ -20,27 +21,33 @@
 	});
 		
 	//옵션버튼
-	$(function(){
 		$('.optionShowHide').click(function(){
-			$('.optionShowHide').parent().parent().parent().parent().parent().next().toggleClass('hidden');
+			$('.optionShowHide').parent().parent().parent().parent().parent().next().toggleClass('hidden');			
+			$('.optionMinus').toggleClass('hidden');
 		});
+	// 화면 상단이동
+	$("#MOVE_TOP_BTN").click(function() {
+		$('html, body').animate({
+			scrollTop : 0
+		}, 400);
+		return false;
 	});
 	
 	//옵션삭제
-	$(function(){				
 	$('.optionMinus').on("click", function(){
-		console.log(55)
 		$('.addAll:last-child').remove();
-	});	
-});
+	});
+	
+	var contextPath = "<%=request.getContextPath()%>";
+	$('#delete_button').on("click", function(){
+		window.location.href = contextPath+"/deletePrj/${optList[0].prjNo.prjNo}?userNo=${authInfo.userNo}";
+	});
+ });
 		
 </script>
 </head>
 <body>
-<%-- ${myList[0]}
-${myList[0].prjNo.prjNo} --%>
-<%-- ${myList } --%>
-<%-- ${optList } --%>
+${optList[0].prjNo.prjNo}
 
 	<section class="container">
 			<header id = "mydetail_header">		   
@@ -48,9 +55,6 @@ ${myList[0].prjNo.prjNo} --%>
 			</header>
 			<h2>프로젝트</h2>
 		<form  action= "<%=request.getContextPath() %>/myListUpdate/${authInfo.userNo}" method="post">
-					<div><input type="hidden" id="prjNo" name="pNo" value="${myList[0].prjNo.prjNo}" 
-														size=49	readonly="readonly"/>				
-						 </div>
 			<section id = "detaillist_content">
 				<table class = "update_table">
 						<tbody>
@@ -69,6 +73,10 @@ ${myList[0].prjNo.prjNo} --%>
 								<tr class = "col4">
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
 										<td class="td_right" >
+											<input type="hidden" id="prjNo" name="pNo" value="${optList[0].prjNo.prjNo}" 
+														readonly="readonly"/>
+											<input type="hidden" id="userNo" name="userNo.userNo" value="${authInfo.userNo}" 
+														readonly="readonly"/>
 											<input type="text" id="prjName" name="pName" value="${myList[0].prjNo.prjName}" 
 														size=46	required="required"/>			
 										</td>
@@ -94,6 +102,7 @@ ${myList[0].prjNo.prjNo} --%>
 													<fmt:formatNumber value="${myList[0].prjNo.totalPrice/myList[0].prjNo.prjGoal*100}" pattern = "0.0" /><span>%</span>
 										</td>
 								</tr>
+				
 								
 								<tr class = "col8">
 										<td class="td_left"><label for="startDate">시작일</label></td>
@@ -110,8 +119,11 @@ ${myList[0].prjNo.prjNo} --%>
 										</td>
 								</tr>
 								<tr>
-										<td class="td_right" colspan="2" >
-										<div id = "addbtns"><button type="button" class ="optionShowHide">옵션</button> </div>
+										<td  colspan="2" >
+											<div id = "addbtns">
+													<button id = "optionMinus" type="button" class ="optionShowHide">옵션</button> 
+													<button id = "optionMinus"type = "button" class = "optionMinus hidden" >옵션삭제</button>
+											</div>
 										</td>
 								</tr>
 							</tbody>
@@ -121,15 +133,11 @@ ${myList[0].prjNo.prjNo} --%>
 							<tbody>
 									 <c:choose>
 									<c:when test="${optList[0].prjNo.prjNo eq optList[3].prjNo.prjNo}">
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}" ></input>
-												</td>
-											</tr>	
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션1</label>	</td>
 													<td class="td_right" >
 															<span class = "opt1">
+															<input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}" ></input>
 																		아이템 : <input type="text" id="optName"	name="oName"
 																			value="${optList[0].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
@@ -143,23 +151,12 @@ ${myList[0].prjNo.prjNo} --%>
 																			required="required" >${optList[0].optContent}</textarea>
 													</td>											
 											</tr>
-											<tr>
-													<td class ="td_right" colspan="2">
-															  <div id="addbtns">
-															  		<button type = "button" class = "optionMinus" >옵션삭제</button>
-															  </div>
-													</td>
-											</tr>	
 											<tbody class= 'addAll'>	
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}" ></input>
-												</td>
-											</tr>		
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션2</label>	</td>
 													<td class="td_right" >
 															<span class = "opt2">
+															<input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}" />
 																		아이템 : <input type="text" id="optName"	name="addOptName1"
 																			value="${optList[1].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
@@ -176,15 +173,11 @@ ${myList[0].prjNo.prjNo} --%>
 											</tbody>
 											
 											<tbody class= 'addAll'>	
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "addOptNo2" value= "${optList[2].optNo}" ></input>
-												</td>
-											</tr>		
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션3</label>	</td>
 													<td class="td_right" >
 															<span class = "opt3">
+															 <input type="hidden" id = "optNo" name = "addOptNo2" value= "${optList[2].optNo}" />
 																		아이템 : <input type="text" id="optName"	name="addOptName2"
 																			value="${optList[2].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>																		
@@ -200,16 +193,12 @@ ${myList[0].prjNo.prjNo} --%>
 											</tr>
 											</tbody>
 											
-											<tbody class= 'addAll'>	
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "addOptNo3" value= "${optList[3].optNo}" ></input>
-												</td>
-											</tr>	
+											<tbody class= 'addAll'>										
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션4</label>	</td>
 													<td class="td_right" >
 															<span class = "opt4">
+															 <input type="hidden" id = "optNo" name = "addOptNo3" value= "${optList[3].optNo}" />
 																		아이템 : <input type="text" id="optName"	name="addOptName3"
 																			value="${optList[3].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[3].optPrice}" pattern="\\#,###"/>																		
@@ -226,15 +215,11 @@ ${myList[0].prjNo.prjNo} --%>
 											</tbody>					
 									</c:when>
 									<c:when test="${optList[0].prjNo.prjNo eq optList[2].prjNo.prjNo}">
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}" ></input>
-												</td>
-											</tr>	
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션1</label>	</td>
 													<td class="td_right" >
 															<span class = "opt1">
+																 <input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}" />
 																		아이템 : <input type="text" id="optName"	name="oName"
 																			value="${optList[0].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
@@ -248,23 +233,12 @@ ${myList[0].prjNo.prjNo} --%>
 																			required="required" >${optList[0].optContent}</textarea>
 													</td>											
 											</tr>
-											<tr>
-													<td class ="td_right" colspan="2">
-															  <div id="addbtns">
-															  		<button type = "button" class = "optionMinus" >옵션삭제</button>
-															  </div>
-													</td>
-											</tr>	
 											<tbody class= 'addAll'>	
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}" ></input>
-												</td>
-											</tr>	
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션2</label>	</td>
 													<td class="td_right" >
 															<span class = "opt2">
+															<input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}"/>
 																		아이템 : <input type="text" id="optName"	name="addOptName1"
 																			value="${optList[1].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
@@ -280,16 +254,12 @@ ${myList[0].prjNo.prjNo} --%>
 											</tr>
 											</tbody>
 											
-											<tbody class= 'addAll'>	
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "addOptNo2" value= "${optList[2].optNo}" ></input>
-												</td>
-											</tr>	
+											<tbody class= 'addAll'>										
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션3</label>	</td>
 													<td class="td_right" >
 															<span class = "opt3">
+																 <input type="hidden" id = "optNo" name = "addOptNo2" value= "${optList[2].optNo}"/>
 																		아이템 : <input type="text" id="optName"	name="addOptName2"
 																			value="${optList[2].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>																		
@@ -307,15 +277,11 @@ ${myList[0].prjNo.prjNo} --%>
 											
 											</c:when>
 											<c:when test="${optList[0].prjNo.prjNo eq optList[1].prjNo.prjNo}">
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}" ></input>
-												</td>
-											</tr>	
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션1</label>	</td>
 													<td class="td_right" >
 															<span class = "opt1">
+																	 <input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}"/>
 																		아이템 : <input type="text" id="optName"	name="oName"
 																			value="${optList[0].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
@@ -329,23 +295,12 @@ ${myList[0].prjNo.prjNo} --%>
 																			required="required" >${optList[0].optContent}</textarea>
 													</td>											
 											</tr>
-											<tr>
-													<td class ="td_right" colspan="2">
-															  <div id="addbtns">
-															  		<button type = "button" class = "optionMinus" >옵션삭제</button>
-															  </div>
-													</td>
-											</tr>	
 											<tbody class= 'addAll'>	
-											<tr>
-												<td class = "td_right" colspan="2">
-														 <input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}" ></input>
-												</td>
-											</tr>	
 											<tr class = "col12">
 													<td class="td_left">	<label for="optName">옵션2</label>	</td>
 													<td class="td_right" >
 															<span class = "opt2">
+																 <input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}" />
 																		아이템 : <input type="text" id="optName"	name="addOptName1"
 																			value="${optList[1].optName}"	 size=49 required="required"/><br>
 																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
@@ -366,35 +321,38 @@ ${myList[0].prjNo.prjNo} --%>
 												<tr class = "col12">
 														<td class="td_left"><label for="optName">옵션이름</label></td>
 														<td class="td_right" >
-																<input type="text" id="optName"	name="oName"
-																				value="${myList[0].optName}"	 size=49 required="required" ></input>
+													<input type="text" id="optName"	name="oName"
+																				value="${optList[0].optName}"	 size=49 required="required" ></input> 
 														</td>									
 												</tr>
 												<tr class = "col13">
 														<td class="td_left"><label for="optPrice">옵션금액</label></td>
 														<td class="td_right" >
 																<span id="optPrice">													
-																		<fmt:formatNumber value="${myList[0].optPrice}" pattern="\\#,###"/>
+																	<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>
 																</span>
 														</td>
 												</tr>
 												<tr class = "col14">
 														<td class="td_left"><label for="optContent">옵션내용</label></td>
-														<td class="td_right" >
+													<td class="td_right" >
 																	<textarea id="textContent" name="oContent"  class="sb2option"
-																			rows="8" cols="35"	required="required" >${myList[0].optContent}</textarea>
-														</td>											
+																			rows="8" cols="35"	required="required" >${optList[0].optContent}</textarea>
+														</td>				
 												</tr> 										
 											</c:when>
 								</c:choose>
-							
+						
 							</tbody>					
 					</table>				
-					</section>		
-				</section>						
-						<div id = "btns">
-								<input type="submit"  value="수정"/>&nbsp;
-								<button type="button" id = "back">뒤로</button>								
+					</section>
+						
+				</section>					
+					<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
+						<div id = "btns_bottom">
+								<input class= "btns" type="submit"  value="수정"/>&nbsp;
+								<button class= "btns" type="button" id = "delete_button">삭제</button>								
+								<button class= "btns" type="button" id = "back">뒤로</button>								
 						</div>		
 					</form>				
 			<footer>

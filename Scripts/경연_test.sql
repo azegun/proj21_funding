@@ -74,14 +74,6 @@ select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.
 		  where u.Nickname LIKE CONCAT('%', 'ks' , '%');
 		 group by p.prjNo;
 
-select p.prjno, if(sum(optPrice)>0,sum(optPrice),0) as totalPrice, p.Prjname, p.prjgoal, u.nickname as prjManager
-			,count(fundingno) as totalCount
-		  from fundinginfo f 
-	      join prjoption o on o.optno= f.OptNo 
-		  right join project p on p.prjno = f.PrjNo 
-		  join userinfo u on p.userno = u.userno
-		  where p.prjNo =1
-		 group by p.prjNo;
 
 -- 옵션번호로 관련프로젝트정보
 select p.prjNo,p.UserNo, PrjName, PrjContent, PrjGoal,
@@ -256,6 +248,29 @@ select p.prjno,
 -- 회원별 후원횟수 랭킹
 select count(f.userno) as totalCount ,u.nickname as sponsor,f.payyn
   from fundinginfo f join userinfo u on f.userno = u.UserNo 
+<<<<<<< HEAD
+  group by f.userNo order by totalcount desc limit 5;
+
+ 
+ select p.prjno,
+			 if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
+			  p.Prjname,
+			  p.userNo,
+			  p.prjgoal,
+			  u.nickname as prjManager
+			,count(fundingno) as totalCount,
+			prjContent,
+			 c.pcategoryno,
+			  c.pcategoryname,
+			   startDate,
+			    endDate,
+				ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
+		  from fundinginfo f 
+	      join prjoption op on o.optno= f.OptNo 
+		  right join project p on p.prjno = f.PrjNo 
+		  join userinfo u on p.userno = u.userno
+		  join prjCategory c on p.pcategoryno = c.pcategoryno
+		 group by p.prjNo having p.UserNo =1;
   group by f.userNo  having f.payyn = 1 order by totalcount desc limit 5;
 
  select date_format(p.EndDate,'%Y년 %m월') as period ,
@@ -266,4 +281,19 @@ select count(f.userno) as totalCount ,u.nickname as sponsor,f.payyn
 		group by period;
 		
 
-update project set enddate = '20210712' where prjno=4;
+update project set enddate = '20210712' where prjno=1;
+
+
+delete from project where prjno = 1;
+select * from prjoption;
+
+select count(f.userno) as totalCount , u.nickname as fundingUserName, u.userId as fundingUser
+	  from (select * from fundinginfo where payyn = 1) f join userinfo u on f.userno = u.UserNo 
+	  group by f.userNo order by totalcount desc limit 5;
+	  
+	 select date_format(p.EndDate,'%Y년 %m월') as period ,
+			count(fundingno) as count1,
+			sum(o.OptPrice) as sum1
+		from (select * from fundinginfo where payyn = 1) f join project p on f.PrjNo = p.prjno
+		join prjoption o on f.OptNo = o.OptNo
+		group by period;

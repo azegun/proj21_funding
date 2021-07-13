@@ -21,6 +21,7 @@ ul.tabs li{
 	display: inline-block;
 	padding: 10px 15px;
 	cursor: pointer;
+	border-radius: 10px;
 }
 
 ul.tabs li.current{
@@ -36,6 +37,7 @@ ul.tabs li.current{
 .register_mid.current{
 	display: inherit;
 	padding-bottom: 20px;
+	border-radius: 10px;
 }	
 /*탭 */
 
@@ -70,6 +72,7 @@ ul.tabs li.current{
     flex-direction: column;
 } 
 .td_left{
+	padding: 5px;
 	width: 170px;
 	 background-color:#d0eaff;
 	border-bottom: 2px solid #acd6ff; 
@@ -85,27 +88,31 @@ ul.tabs li.current{
 	border-bottom: none;
 }
 .td_right{
-	width: 330px;
+	width: 330px;.
+	padding: 5px;
 }
 td{
 	text-align: center;
-	padding: 5px;
 }
 #textContent{
 		font-size:20px;
 		overflow: auto;
+		border-radius: 8px;
 }
 #pCategoryNo{
 	width: 175px;
 	font-size: 15px;
+	border-radius: 5px;
 }
-#userName, #optPrice, #optName, #prjName, 
+#userName, #optPrice, #optName, #prjName,
 #prjGoal, #addOptPrice, #addOptName{
 	font-size: 15px;
+	border-radius: 5px;
 }
 .datepicker{
 	font-size: 15px;
 	width: 170px;
+	border-radius: 5px;
 }
 /*태이블  */
 
@@ -116,14 +123,71 @@ td{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top:20px;
+	margin-bottom:5px;
 	text-align: center;	
 	border-bottom: 2px solid #acd6ff; 
 }
-#register_btns{
+#register_btns{ 
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top:20px;
 	text-align: center;	
+}
+#MOVE_TOP_BTN {
+    position: fixed;
+    right: 2%;
+    bottom: 50px;
+    z-index: 999;
+    border-color: #ccc;
+    text-align: center;
+    display: inline-block;
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	border-radius:50%;
+	color:black;
+	font-size:30px;
+	width:50px;
+	height:50px;
+}
+#MOVE_TOP_BTN:hover{
+	background-color:#ccc;
+	color:white;
+}
+.hidden{
+	display: none;
+}
+#btns{
+	width: 150px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff7675;
+    border-radius: 5px;
+    border: none;
+}
+.uploadfile{
+	width: 200px;
+    height: 26px;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    background-color: #e0f3fe;
+    border-radius: 5px;
+    border: none;
+}
+#optadd_minu{
+	width: 100px;
+    height: 23px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: #9b93dd;
+    border-radius: 5px;
+    border: none;
+	
 }

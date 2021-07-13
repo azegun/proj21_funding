@@ -67,7 +67,7 @@ $(function(){
 			<div id="funginginfo">
 				<div id="titleheader">
 					<div id="title">
-						<a href="<%=request.getContextPath() %>/categoryByProject?pCategoryNo=${prj[0].prjNo.pCategoryNo.pCategoryNo}"><span id="titlecate">${prj[0].prjNo.pCategoryNo.pCategoryName }</span></a>
+						<a href="<%=request.getContextPath() %>/projectList/${prj[0].prjNo.pCategoryNo.pCategoryNo}"><span id="titlecate">${prj[0].prjNo.pCategoryNo.pCategoryName }</span></a>
 						<h1><c:if test="${sysYear>=prj[0].prjNo.endDate}">[ 마감완료 ]</c:if>${prj[0].prjNo.prjName }</h1>
 						<span id="productor">${prj[0].prjNo.userNo.userName }</span>
 					</div>

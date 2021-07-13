@@ -7,8 +7,9 @@ public class PrjOption {
 		private String optName; //옵션명
 		private int optPrice;//옵션급액
 		private String optContent;//옵션내용
-	
 		
+		
+
 		//기본 생성자
 		public PrjOption() {}
 		
@@ -55,7 +56,7 @@ public class PrjOption {
 			this.prjNo = prjNo;
 		}
 		public String getOptName() {
-			return optName.trim();
+			return optName;
 		}
 
 		public void setOptName(String optName) {
@@ -69,7 +70,7 @@ public class PrjOption {
 			this.optPrice = optPrice;
 		}
 		public String getOptContent() {
-			return optContent.trim();
+			return optContent;
 		}
 		public void setOptContent(String optContent) {
 			this.optContent = optContent;

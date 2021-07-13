@@ -181,7 +181,7 @@ public class UserInfo {
 	}
 
 	public String getAccountHolder() {
-		return accountHolder;
+		return accountHolder.trim();
 	}
 
 	public void setAccountHolder(String accountHolder) {

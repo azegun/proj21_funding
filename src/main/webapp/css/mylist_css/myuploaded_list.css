@@ -26,6 +26,11 @@ h4{
 	 	margin-top: 30px;
 	 	margin-bottom: 10px;
 }
+.success{
+	color: crimson;
+	font-size: 1.1em;
+	
+}
 #column{
 	 background-color:#A5E3E6;
 }
@@ -36,18 +41,27 @@ th{
 	border-bottom: 3px solid #97d5fb;
 	padding:5px;
 }
-tr{
-}
 td{
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 #pointer{
 	color: #3f72af;
+	text-decoration: none;
 }
 #foot_btn{	
-	margin-top:30px;
+	margin-top:-20px;
 	text-align: center;	
+}
+.btns{
+	width: 150px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff7675;
+    border-radius: 5px;
+    border: none;
 }
 .size{
 	  border-bottom: 1px solid #ccc;
@@ -79,5 +93,5 @@ td{
 }
 /* 진행상황 */
 .size td:nth-of-type(8) {
-/* 	
 }
+

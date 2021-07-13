@@ -6,32 +6,35 @@
 		<select id="showAllMyList"
 		 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
 				select 
-						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
-						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
-						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
-						if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-				from project p
-						join prjoption op  on p.PrjNo = op.PrjNo 
+							p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
+							p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
+							op.OptNo, op.optName,  op.OptPrice, op.OptContent,
+							if(sum(optPrice)>0,sum(optPrice),0) as totalPrice,
+							ifnull(round(sum(optprice)/prjgoal*100,2),0) as rate
+				 from fundinginfo f 
+	   				   join prjoption op on op.optno= f.OptNo 
+						 right join project p on p.prjno = f.PrjNo 
 						join userinfo u on p.UserNo = u.UserNo 
 						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
-				where u.userno = #{userNo.userNo}				 	
-				group by prjno
+				group by p.prjno
+				having p.userno =  #{userNo.userNo}				 	
 		</select>
 		
 		<!--페이징 리스트  -->
 		<select id="showAllListByMap"
-		 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">
+		 resultMap="proj21_funding.mapper.PrjOptionMapper.AssociateProject">	
 				select 
 						p.prjNo, p.UserNo,  p.pCategoryNo, pc.pCategoryName ,PrjName, PrjContent, PrjGoal,
 						p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
 						op.OptNo, op.optName,  op.OptPrice, op.OptContent,
-						if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-				from project p
-						join prjoption op  on p.PrjNo = op.PrjNo 
-						join userinfo u on p.UserNo = u.UserNo 
-						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
-				where u.userno = #{uNo}				 	
+						if(sum(op.optPrice)>0,sum(op.optPrice),0) as totalPrice						
+				from fundinginfo f 
+	   				  join prjoption op on op.optno= f.OptNo 
+					 right join project p on p.prjno = f.PrjNo 
+					join userinfo u on p.UserNo = u.UserNo 
+					join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
 				group by prjno
+				having p.userno = #{uNo}			
 				order by p.prjNo desc LIMIT #{pageSearch}, #{cntPerPage }
 		</select>
 		
@@ -48,11 +51,13 @@
 							p.StartDate, p.EndDate, p.PayDate, p.EndYN, u.UserId , u.UserName,u.nickname,
 							op.OptNo, op.optName,  op.OptPrice, op.OptContent,
 							if(sum(optPrice)>0,sum(optPrice),0) as totalPrice
-				from project p
-						join prjoption op  on p.PrjNo = op.PrjNo 
+					from fundinginfo f 
+		   				  join prjoption op on op.optno= f.OptNo 
+						 right join project p on p.prjno = f.PrjNo 
 						join userinfo u on p.UserNo = u.UserNo 
 						join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
- 				where p.prjno = #{prjNo}		
+				group by prjno
+				having p.prjno = #{prjNo}		
 		</select>
 		
 			<!-- 프로젝트and 옵션 조인 업데이트 -->
@@ -88,5 +93,9 @@
 				set OptName = #{addOptName3}, OptContent = #{addOptContent3}
 			where OptNo = #{addOptNo3}		
 		</update>
+		<!--캐스캐이드 맵으로 지우기  -->
+		<delete id="deleteCascadeProjectByMap" parameterType="map">
+				delete from project where PrjNo =#{pNo}
+		</delete>
 
 </mapper>

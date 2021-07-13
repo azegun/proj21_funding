@@ -42,7 +42,7 @@
 								</c:forEach>
 						</select>
 						<input type="text" name="boardTitle" id="boardTitle" required="required" class="boardTitle" placeholder="제목을 입력해 주세요.">
-			<textarea name="boardContent" id="boardContent" id="ir1" style="width:100%; height:400px;" placeholder="내용을 입력하세요."></textarea>
+			<textarea name="boardContent" id="boardContent" id="ir1" style="width:100%; height:400px;" required="required" placeholder="내용을 입력하세요."></textarea>
 
 				<div class="commandCell">
 					<input type="submit" value="등록" onclick="submitContents(this)" class="menubutton">&nbsp;&nbsp;

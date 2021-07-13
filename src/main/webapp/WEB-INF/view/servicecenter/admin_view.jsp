@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/user_view.css">
 </head>
 <body>
 	<div class="container">
@@ -42,51 +43,38 @@
 		</div>
 	</div>
 			<p class="seolmyoung">전체 문의 내역 확인</p>
-			<table class="table">
-				<thead>
-					<tr>
-						<td id="qnaNo">번호</td>
-						<td id="qnaTitle">제목</td>
-						<td id="qnaDate">문의 날짜</td>
-						<td id="qnaState">문의 상태</td>
-					</tr>
-				</thead>
-				<tbody>
+			<div id="userqnaall">
 					<c:choose>
 						<c:when test="${fn:length(qna) > 0}">
 							<c:forEach items="${qna}" var="qna">
-								<%-- <c:forEach var="qna" items="${qna }"> --%>
-								<tr>
-									<td>${qna.QnaNo }</td>
-									<td><a
-										href="/proj21_funding/qnadetail/${qna.QnaNo}">
+								<ul class="userqna">
+									<li class="question">
+										<a href="/proj21_funding/qnadetail/${qna.QnaNo}" style="text-decoration:none">
 											<c:forEach var="bc" items="${bc }">
 												<c:if test="${bc.categoryNo eq qna.CategoryNo }">
-													[${bc.categoryName }]
+													<span id="ct">[${bc.categoryName }]</span>
 												</c:if>
-											</c:forEach> ${qna.QnaTitle }
-									</a></td>
-									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-											value="${qna.QnaDate }" /></td>
-									<td><c:choose>
-											<c:when test="${qna.QnaReply eq null }">
-						답변 대기 중
-					</c:when>
-											<c:when test="${qna.QnaReply ne null }">
-						답변 완료
-					</c:when>
-										</c:choose></td>
-								</tr>
+											</c:forEach>
+											<span id="q">Q.</span><span id="qtitle">${qna.QnaTitle }</span>
+											<c:choose>
+												<c:when test="${qna.qnaReply eq null }">
+													<span id="afalse">답변 대기 중</span>
+												</c:when>
+												<c:when test="${qna.qnaReply ne null }">
+													<span id="atrue">답변 완료</span>
+												</c:when>
+											</c:choose>
+											<span id="qnadate"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.QnaDate }" /></span>
+										</a>
+									</li>
+								</ul>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr>
 								<td colspan="4">조회된 결과가 없습니다.</td>
-							</tr>
 						</c:otherwise>
 					</c:choose>
-				</tbody>
-			</table>
+			</div>
 			
 			<!--paginate -->
 			<div class="paginate">

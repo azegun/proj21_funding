@@ -101,8 +101,8 @@ values ('kykim', password('1111'),'김경연', '경연짱123', 'kymonk@naver.com
 		('thlee', password('1111'),'이태훈', '이태훈', 'xogns7@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
 		('mhsong', password('1111'),'송명훈', '송명훈', 'audgns7@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
 		('nylee', password('1111'),'이나연', '이나연', 'skdus7@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
-		('sdfsf234', password('1111'),'김진종', '김진종', 'kjj@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
-		('asdfasdf', password('1111'),'권순민', '권순민', 'ksm@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
+		('sdfsf234', password('1111'),'김상건', '김상건', 'kjj@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
+		('asdfasdf', password('1111'),'이태훈', '이태훈', 'ksm@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
 		('asd21z5', password('1111'),'이중환', '이중환', 'ljh@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
 		('sdf5445', password('1111'),'송모세', '송모세', 'sms@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
 		('s56ds', password('1111'),'김철진', '김철진', 'kcj@gmail.com', '01012345678', '222333', '대구', '달서구',null,null,null,0),
@@ -170,7 +170,7 @@ insert into project values(
 '개발에 참여한 4인이 고전에서 느낀 재미 요소들이 상이할 정도로, 여러 매력을 가진 “퍼스트퀸4”의 핵심 재미요소를 충실히 담기 위해 노력하였고, 그를 계승한다는 의미로
 “퍼스트”의 앞 글자를 가져왔으며, 인 게임 상 메인 스토리의 진행 요소, 4인의 개발자를 상징하는 중의적 의미를 가진 클로버를 합성해 "퍼스트 클로버" 가 탄생되었습니다.
 CLOVER Logo는 뫼비우스의 띠처럼 무한(Eternity)과 공고한 결속의 의미를 가집니다.', 5000000,
-'20210701', '20210720','20210720', 0
+'20210701', '20210712','20210712', 0
 );
 
 #default값 null값 제외
@@ -198,7 +198,7 @@ insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
 values (4,6,' <애플머스캣> 그린 퍼퓸',
 '청사과는 여름철에 많은 사랑을 받는 과일인데요.
  흐르는 물에 잘 씻어 껍질을 벗기지 않은 채로 한 입 와삭 베어 물면 상큼 달달한 과즙의 향이 퍼집니다.
- 일반적인 사과와 달리 청사과는 좀 더 빨리 수확을 하며 여름 제철 과일인 만큼 한여름의 향기를 품고 있습니다.',1000000,'20210630','20210730','20210730');
+ 일반적인 사과와 달리 청사과는 좀 더 빨리 수확을 하며 여름 제철 과일인 만큼 한여름의 향기를 품고 있습니다.',1000000,'20210630','20210712','20210712');
 
 
 insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
@@ -219,7 +219,7 @@ insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
 StartDate, EndDate, payDate)
 values (1,12,'세상에서 제일 예쁜 인테리어 무선충전기 <게이즈온 포 홈>',
 '투박하고 못생긴 무선충전기는 이제 끝, 세.젤.예 인테리어 무선충전기를 만나보세요.',
-1500000,'20210702','20210730','20210730');
+1500000,'20210702','20210705','20210705');
 
 insert into project (UserNo, pcategoryNo, PrjName, PrjContent, PrjGoal,
 StartDate, EndDate, payDate)
@@ -591,7 +591,7 @@ from prjoption;
 
 
 insert into prjoption (prjno, OptName, OptPrice,OptContent)
-values (1, '      세트', 100000, '골드 50개 + 고급장비 상자');
+values (1, '골드세트', 100000, '골드 50개 + 고급장비 상자');
 insert into prjoption (prjno,OptName,OptPrice,OptContent)
 values (1,'다이아세트', 150000, '다이아 50개 + 고급장비 상자 + 한정 캐릭터 1종');
 

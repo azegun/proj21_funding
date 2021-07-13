@@ -41,6 +41,12 @@
 	         $(this).addClass('current');
 	         $("#"+tab_id).addClass('current');
 	      }); 
+	         $("#MOVE_TOP_BTN").click(function() {
+	     		$('html, body').animate({
+	     			scrollTop : 0
+	     		}, 400);
+	     		return false;
+	     	});
 	   });
 		
 	      //goback()
@@ -64,10 +70,6 @@
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
 	         $(".test").on("click", function(){
-	               var category = $('#pCategoryNo').val()
-	               if(category == 0){
-	                  alert("카테고리를 	선택해주세요")
-	               }
 	               
 	              var prjGoal =  $('#prjGoal').val();
 	              var optPrice = $('#optPrice').val();
@@ -136,8 +138,13 @@
 					}else if(i ==1){
 						i =2
 					}
-				});		
+				});	
 				
+		/* 		$('.optionPlus').click(function(){
+					$('.optionPlus').toggleClass('hidden');
+					$('.optionMinus')
+				});
+				 */
 			
 		   });
 	</script>		
@@ -217,7 +224,7 @@
 						<td class="td_left" id ="border_1"><label for="uploadFile">프로젝트 파일첨부</label>
 						</td>
 						<td class="td_right">
-									<input type="file" name="uploadfile"	placeholder="파일 선택" required>
+									<input class ="uploadfile"  type="file" name="uploadfile"	placeholder="파일 선택" required>
 						</td>
 					</tr>
 					<tr class ='tr_all'>
@@ -269,8 +276,8 @@
 								<tr  class="options" >
 										<td colspan="2">
 												  <div id= "tdoption_btns" >
-												  		<button type = "button" class = "optionPlus" >옵션추가</button>
-												  		<button type = "button" class = "optionMinus" >옵션삭제</button>
+												  		<button id = "optadd_minu" type = "button" class = "optionPlus" >추가</button>&nbsp; 
+												  		<button id = "optadd_minu"  type = "button" class = "optionMinus hidden" >삭제</button>
 												  </div>
 										</td>
 								</tr>	
@@ -284,10 +291,11 @@
 				<!--탭2 옵션부분  -->			
 					
 				</section>		
+					<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 				<div id="register_btns">
-						<input class = "test" type="submit" value="등록"/>&nbsp;
-						<input type="reset" value="다시쓰기" />&nbsp; 
-						<button type="button" id= "return">뒤로</button>
+						<input  id = "btns" class = "test" type="submit" value="등록"/>&nbsp;
+						<input  id = "btns" type="reset" value="다시쓰기" />&nbsp; 
+						<button  id = "btns" type="button" id= "return">뒤로</button>
 				</div>	
 			
 			</section>		

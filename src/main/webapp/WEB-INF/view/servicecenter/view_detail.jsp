@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_view.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
+<link rel="stylesheet"
+	href="/proj21_funding/css/servicecenter/write.css">
 </head>
 <body>
 	<div class="container">
@@ -37,67 +39,73 @@
 		</ul>
 		</div>
 	</div>
-		<table>
-		<tr>
-			<td class="td_left"><label for="categoryNo">질문 분류</label></td>
-			<td class="td_right">
-				<c:forEach var="bc" items="${bc }">
-					<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }" >
-						${bc.categoryName }
+		<div id="quesall">
+			<div id="question-title">
+				<h2>문의내용</h2>
+			</div>
+			<div id="questioncont">
+					<dl>
+						<dt class="td_left"><label for="categoryNo">분류</label></dt>
+						<dd class="td_right">
+							<c:forEach var="bc" items="${bc }">
+								<c:if test="${bc.categoryNo eq qna.categoryNo.categoryNo }" >
+									<label for="categoryNo">${bc.categoryName }</label>
+								</c:if>
+							</c:forEach>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="qnaTitle">제목</label></dt>
+						<dd class="td_right"><label for="qnaTitle">${qna.qnaTitle }</label></dd>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="userNo">질문자</label></dt>
+						<dd class="td_right"><label for="userNo">${user.nickName }</label></dd>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="qnaDate">질문날짜</label></dt>
+						<dd class="td_right"><label for="qnaDate"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.qnaDate }"/></label></dd>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="qnaContent">내용</label></dt>
+						<dd class="td_right"><label for="qnaContent">${qna.qnaContent }</label></dd>
+					</dl>
+				<c:choose>
+				<c:when test ="${qna.qnaReply eq null }">
+					<dl>
+						<dt class="td_left"><label for="qnaDate">답변날짜</label></dt>
+						<dd class="td_right"><label for="qnaDate">0000-00-00</label></dd>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="qnaReply">답변내용</label></dt>
+						<dd class="td_right"><label for="qnaReply"><span>답변을 준비 중입니다.<br>질문의 답변까지는 주말을 제외하고 2~3일이 소요될 수 있습니다.<br>문의 답변 시간 : 평일 09:00 ~ 17:00</span></label></dd>
+					</dl>
+				</c:when>
+				<c:when test ="${qna.qnaReply ne null }">
+					<dl>
+						<dt class="td_left"><label for="qnaDate">답변날짜</label></dt>
+						<dd class="td_right"><label for="qnaDate"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.replyDate }"/></label></dd>
+					</dl>
+					<dl>
+						<dt class="td_left"><label for="qnaReply">답변내용</label></dt>
+						<dd class="td_right"><label for="qnaReply">${qna.qnaReply }</label></dd>
+					</dl>
+				</c:when>
+				</c:choose>
+						<div id="hidden"><input type="hidden" id="userNo" name="userNo.userNo"
+								value="${authInfo.userNo }" size=40 required="required"
+								readonly="readonly" /></div>
+				<section id="commandCell">
+					<c:if test="${authInfo.userNo < 0 }">
+						<a href="/proj21_funding/qnaadminview?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button  id="commandbutton">돌아가기</button></a>
+						<a href="<%=request.getContextPath() %>/qnareply/${qna.qnaNo}"><input type="button" id="commandbutton" value="답변하기"></a>
 					</c:if>
-				</c:forEach>
-			</td>
-		</tr>
-		<tr>
-			<td class="td_left"><label for="qnaTitle">제목</label></td>
-			<td class="td_right">${qna.qnaTitle }</td>
-		</tr>
-		<tr>
-			<td class="td_left"><label for="userNo">질문자</label></td>
-			<td class="td_right">${user.nickName }</td>
-		</tr>
-		<tr>
-			<td class="td_left"><label for="qnaDate">질문날짜</label></td>
-			<td class="td_right"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.qnaDate }"/></td>
-		</tr>
-		<tr>
-			<td class="td_left"><label for="qnaContent">내용</label></td>
-			<td class="td_right">${qna.qnaContent }</td>
-		</tr>
-		<c:choose>
-			<c:when test ="${qna.qnaReply ne null }">
-				<tr>
-					<td class="td_left"><label for="replyDate">답변날짜</label></td>
-					<td class="td_right"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.replyDate }"/></td>
-				</tr>
-				<tr>
-					<td class="td_left"><label for="qnaReply">답변내용</label></td>
-					<td class="td_right">${qna.qnaReply }</td>
-				</tr>
-			</c:when>
-			<c:when test ="${qna.qnaReply eq null }">
-				<tr>
-					<td class="td_left"><label for="replyDate">답변날짜</label></td>
-					<td class="td_right">0000-00-00</td>
-				</tr>
-				<tr>
-					<td class="td_left"><label for="qnaReply">답변내용</label></td>
-					<td class="td_right"><p>답변을 준비 중입니다.</p>
-						<p>질문의 답변까지는 주말을 제외하고 2~3일이 소요될 수 있습니다.</p>
-						<p>문의 답변 시간 : 평일 09:00 ~ 17:00</p>
-					</td>
-				</tr>
-			</c:when>
-		</c:choose>
-		</table>
-		<c:if test="${authInfo.userNo < 0 }">
-			<a href="/proj21_funding/qnaadminview?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button>돌아가기</button></a>
-			<a href="<%=request.getContextPath() %>/qnareply/${qna.qnaNo}"><input type="button" value="답변하기"></a>
-		</c:if>
-		<c:if test="${authInfo.userNo > 0 }">
-			<a href="/proj21_funding/qnauserview?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button>돌아가기</button></a>
-			<a href="<%=request.getContextPath() %>/qnadelete/${qna.qnaNo}"><input type="button" value="삭제하기"></a>
-		</c:if>
+					<c:if test="${authInfo.userNo > 0 }">
+						<a href="/proj21_funding/qnauserview?currentPage=${pagination.currentPage }&cntPerPage=${pagination.cntPerPage }&pageSize=${pagination.pageSize }"><button  id="commandbutton">돌아가기</button></a>
+						<a href="<%=request.getContextPath() %>/qnadelete/${qna.qnaNo}"><input type="button" id="commandbutton" value="삭제하기"></a>
+					</c:if>
+				</section>
+			</div>
+		</div>
 	<footer>
 		<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 	</footer>

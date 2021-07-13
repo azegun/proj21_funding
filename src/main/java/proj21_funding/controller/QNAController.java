@@ -101,12 +101,13 @@ public class QNAController {
 		Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
 		pagination.setTotalRecordCount(listCnt);
 		session.setAttribute("pagination", pagination);
-
+		System.out.println(user.getUserNo());
 		System.out.println(pagination.getTotalRecordCount());
-
+		
 		mav.setViewName("servicecenter/user_view");
 		mav.addObject("pagination", pagination);
 		mav.addObject("qna", qnaService.SelectUserList(user.getUserNo(), pagination));
+		System.out.println(qnaService.SelectUserList(user.getUserNo(), pagination));
 		mav.addObject("bc", bc);
 		return mav;
 	}

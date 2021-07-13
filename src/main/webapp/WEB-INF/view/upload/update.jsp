@@ -36,12 +36,18 @@
 			$(this).addClass('current');
 			$("#"+tab_id).addClass('current');
 		}); 
+			  $("#MOVE_TOP_BTN").click(function() {
+		     		$('html, body').animate({
+		     			scrollTop : 0
+		     		}, 400);
+		     		return false;
+		     	});
 	});
 			//goback()
 			$(function(){
 				var contextPath = "<%=request.getContextPath()%>";
-				$("#return").on("click", function(){
-					/* window.location.href = contextPath+"/updateListCancel"; */
+				$(".return").on("click", function(){
+					  window.history.back();
 				});			
 			});
 			//datepicker
@@ -51,6 +57,7 @@
 					minDate: 0
 				});
 			});
+						
 			//옵션삭제
 			$(function(){				
 			$('.optionMinus').on("click", function(){
@@ -183,7 +190,7 @@ ${project[0].optNo} --%>
 							<label for = "uploadFile"  id ="border_1">프로젝트 파일첨부</label>
 					</td>
 					<td class = "td_right">
-							<input type="file" name = "uploadfile" placeholder="파일 선택">
+							<input type="file" class= "uploadfile" name = "uploadfile" placeholder="파일 선택">
 					</td>
 			</tr> 
 			<tr class ='tr_all'>
@@ -210,16 +217,12 @@ ${project[0].optNo} --%>
 						<c:choose>		
 						<c:when test="${optList[0].prjNo.prjNo eq optList[3].prjNo.prjNo}">
 							<!--옵션 3개 추가가 있을 시 보여주는view  -->		
-								<tr>
-									<td colspan="2">
-											 <input type="hidden" id = "optNo" name = "oNo" value= "${project[0].optNo}" ></input>
-									</td>
-								</tr>	
 								<tr class ='tr_all'>											
 									<td class = "td_left">
 											<label for = "optName">옵션1 이름</label>
 									</td>									
 									<td class = "td_right">
+									 <input type="hidden" id = "optNo" name = "oNo" value= "${project[0].optNo}"/>
 											 <input type="text" id = "optName" name = "oName" 
 											 			value = "${ project[0].optName }" size = 17 required="required"></input>
 									</td>									
@@ -250,21 +253,17 @@ ${project[0].optNo} --%>
 							<tr class="options">
 									<td  colspan="2">
 											  <div  id= "tdoption_btns">
-											  		<button type = "button" class = "optionMinus" >옵션삭제</button>
+											  		<button  type = "button" class = "optionMinus" >옵션삭제</button>
 											  </div>
 									</td>
 							</tr>	
 							<tbody class= 'addAll'>					
-							<tr>
-									<td colspan="2">
-											 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" ></input>
-									</td>
-							</tr>	
 							<tr class ='tr_all'>
 									<td class = "td_left">
 											<label for = "addOptName1">옵션2 이름</label>
 									</td>
 									<td class = "td_right">
+										 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" />
 											 <input type="text" id = "addOptName1" name = "addOptName1"
 											 		value = "${ project[1].optName }"  required  size = 17 ></input>
 									</td>
@@ -289,16 +288,12 @@ ${project[0].optNo} --%>
 							</tr>
 							</tbody>
 							<tbody class= 'addAll'>
-								<tr>
-									<td colspan="2">
-											 <input type="hidden" id = "addOptNo2" name = "addOptNo2" value= "${ project[2].optNo }" ></input>
-									</td>
-							</tr>	
 							<tr class ='tr_all'>
 									<td class = "td_left">
 											<label for = "addOptName2">옵션3 이름</label>
 									</td>
 									<td class = "td_right">
+										 <input type="hidden" id = "addOptNo2" name = "addOptNo2" value= "${ project[2].optNo }" />
 											 <input type="text" id = "addOptName2" name = "addOptName2"
 											 		value = "${ project[2].optName }" required  size = 17 ></input>
 									</td>
@@ -323,16 +318,12 @@ ${project[0].optNo} --%>
 							</tr>
 							</tbody>
 							<tbody class= 'addAll'>
-								<tr>
-									<td colspan="2">
-											 <input type="hidden" id = "addOptNo3" name = "addOptNo3" value= "${ project[3].optNo }" ></input>
-									</td>
-							</tr>	
 							<tr class ='tr_all'>
 									<td class = "td_left">
 											<label for = "addOptName3">옵션4 이름</label>
 									</td>
 									<td class = "td_right">
+									<input type="hidden" id = "addOptNo3" name = "addOptNo3" value= "${ project[3].optNo }" />
 											 <input type="text" id = "addOptName3" name = "addOptName3"
 											 		value = "${ project[3].optName }" required  size = 17 ></input>
 									</td>
@@ -360,16 +351,12 @@ ${project[0].optNo} --%>
 							</c:when>	
 							<c:when test="${optList[0].prjNo.prjNo eq optList[2].prjNo.prjNo}">
 							<!--옵션 2개 추가가 있을 시 보여주는view  -->		
-								<tr>
-									<td  colspan="2">
-											 <input type="hidden" id = "optNo" name = "oNo" value= "${ project[0].optNo }" ></input>
-									</td>
-								</tr>	
 								<tr class ='tr_all'>											
 									<td class = "td_left">
 											<label for = "optName">옵션1 이름</label>
 									</td>									
 									<td class = "td_right">
+										 <input type="hidden" id = "optNo" name = "oNo" value= "${ project[0].optNo }" />
 											 <input type="text" id = "optName" name = "oName" 
 											 			value = "${ project[0].optName }" size = 17 required="required"></input>
 									</td>									
@@ -400,16 +387,12 @@ ${project[0].optNo} --%>
 									</td>
 							</tr>	
 							<tbody class= 'addAll'>					
-							<tr>
-									<td  colspan="2">
-											 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" ></input>
-									</td>
-							</tr>	
 							<tr class ='tr_all'>
 									<td class = "td_left">
 											<label for = "addOptName1">옵션2 이름</label>
 									</td>
 									<td class = "td_right">
+									 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" />
 											 <input type="text" id = "addOptName1" name = "addOptName1"
 											 		value = "${ project[1].optName }"  required  size = 17 ></input>
 									</td>
@@ -434,16 +417,12 @@ ${project[0].optNo} --%>
 							</tr>
 							</tbody>
 							<tbody class= 'addAll'>
-								<tr>
-									<td colspan="2">
-											 <input type="hidden" id = "addOptNo2" name = "addOptNo2" value= "${ project[2].optNo }" ></input>
-									</td>
-							</tr>	
 							<tr class ='tr_all'>
 									<td class = "td_left">
 											<label for = "addOptName2">옵션3 이름</label>
 									</td>
 									<td class = "td_right">
+									 <input type="hidden" id = "addOptNo2" name = "addOptNo2" value= "${ project[2].optNo }" />
 											 <input type="text" id = "addOptName2" name = "addOptName2"
 											 		value = "${ project[2].optName }" required  size = 17 ></input>
 									</td>
@@ -472,16 +451,12 @@ ${project[0].optNo} --%>
 														
 							<c:when test="${optList[0].prjNo.prjNo eq optList[1].prjNo.prjNo}">
 							<!--옵션 추가가 있을 시 보여주는view  -->		
-								<tr>
-									<td  colspan="2">
-											 <input type="hidden" id = "optNo" name = "oNo" value= "${ project[0].optNo }" ></input>
-									</td>
-								</tr>	
 								<tr class ='tr_all'>											
 									<td class = "td_left">
 											<label for = "optName">옵션1 이름</label>
 									</td>									
 									<td class = "td_right">
+									 <input type="hidden" id = "optNo" name = "oNo" value= "${ project[0].optNo }" />
 											 <input type="text" id = "optName" name = "oName" 
 											 			value = "${ project[0].optName }" size = 17 required="required"></input>
 									</td>									
@@ -511,17 +486,13 @@ ${project[0].optNo} --%>
 											  </div>
 									</td>
 							</tr>						
-							<tr>
-									<td  colspan="2">
-											 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" ></input>
-									</td>
-							</tr>	
 							<tbody class= 'addAll'>
 							<tr class ='tr_all'>
 									<td class = "td_left">
 											<label for = "addOptName">옵션2 이름</label>
 									</td>
 									<td class = "td_right">
+									 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" />
 											 <input type="text" id = "addOptName" name = "addOptName1"
 											 		value = "${ project[1].optName }"  required  size = 17 ></input>
 									</td>
@@ -582,15 +553,16 @@ ${project[0].optNo} --%>
 						</c:choose>								
 					</tbody>	
 				</table>					
-			</section>			
+			</section>						
 				</div>	
 		<!--탭2 옵션부분  -->	
 		
 			</div>		
+				<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 			<div id="update_btns">
-					<input  class = "test" type="submit"  value="등록"/>&nbsp;
-					<input type="reset" value="다시쓰기" />&nbsp; 
-					<button type="button"  id = "return">뒤로</button>
+					<input id= "btns"  class = "test" type="submit"  value="등록"/>&nbsp;
+					<input  id= "btns" type="reset" value="다시쓰기" />&nbsp; 
+					<button  id= "btns" type="button"  class = "return">뒤로</button>
 			</div>	
 		</section>
 		</form>		

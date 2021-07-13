@@ -9,11 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>문의하기 | 고객센터</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter_view.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
-<link rel="stylesheet"
-	href="/proj21_funding/css/servicecenter/write.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/write.css">
 </head>
 <body>
 	<section class="container">
@@ -21,6 +20,7 @@
 			<jsp:include page="/WEB-INF/view/home/header_top.jsp" />
 		</header>
 		<section class="sevicecenter_write">
+	
 	<div id="top">
 		<div id="top_title">
 			<span class="faq">고객센터</span>
