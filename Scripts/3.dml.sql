@@ -695,17 +695,17 @@ from prjboard;
 insert into prjboard values
 (00001, 00001, 00003, '고생들했어요', now(), null, null );
 #default값 null값 제외
-insert into prjboard (PrjNo, UserNo, PostContent )
+insert into prjboard (PrjNo, UserNo, PostContent,PostDate ,PostFile, FileName )
 values
-(2, 3, '고생들했어요'),
-(4, 3, '고생들했어요'),
-(5, 3, '고생들했어요'),
-(1, 2, '잘되고있어요'),
-(3, 2, '잘되고있어요'),
-(4, 2, '잘되고있어요'),
-(5, 2, '잘되고있어요'),
-(1, 4, '응원합니다. 화이팅!'),
-(2, 4, '응원합니다. 화이팅!');
+(2, 3, '고생들했어요', now(), null, null),
+(4, 3, '고생들했어요', now(), null, null),
+(5, 3, '고생들했어요', now(), null, null),
+(1, 2, '잘되고있어요', now(), null, null),
+(3, 2, '잘되고있어요', now(), null, null),
+(4, 2, '잘되고있어요', now(), null, null),
+(5, 2, '잘되고있어요', now(), null, null),
+(1, 4, '응원합니다. 화이팅!', now(), null, null),
+(2, 4, '응원합니다. 화이팅!', now(), null, null);
 
 
 -- PrjBoardReply(프로젝트게시판답글)
