@@ -71,7 +71,12 @@ dd textarea {
 	text-align: center;
 }
 
-#commandCell input[type=submit], input[type=reset] {
+#commandCell a {
+	text-align: center;
+	text-decoration: none;
+}
+
+#commandCell input[type=submit], input[type=reset], input[type=button], button {
 	color: gray;
 	margin-top: 20px;
 	display: inline-flex;
