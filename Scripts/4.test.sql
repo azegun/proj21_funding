@@ -317,8 +317,10 @@ where optno > 4;
 				join userinfo u on p.UserNo = u.UserNo 
 				join prjcategory pc on p.pCategoryNo = pc.pCategoryNo
 	group by prjno
-	having p.userno = 1
-	order by p.prjNo desc LIMIT 1, 10;
+	having p.userno = 1;
+
+select * from userinfo u ;
+select * from prjoption p ;
 
 
 
@@ -469,8 +471,9 @@ delete from project where PrjNo =4;
 select * from userinfo u ;
 update userinfo 
 	set BankName =null, AccountHolder =null, BankAccount = null
-where UserNo = 39;
+where UserNo = 53;
 		
 		select * from project p2 ;
+	select * from prjoption p3 ;
 		select * from project p2 ;
 			

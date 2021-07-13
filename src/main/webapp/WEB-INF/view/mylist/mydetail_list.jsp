@@ -36,6 +36,7 @@
 	
 	//옵션삭제
 	$('.optionMinus').on("click", function(){
+		alert("옵션을 정말 삭제하시겠습니까?")		
 		$('.addAll:last-child').remove();
 	});
 	

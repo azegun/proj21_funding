@@ -47,6 +47,7 @@
 			$(function(){
 				var contextPath = "<%=request.getContextPath()%>";
 				$(".return").on("click", function(){
+					alert("프로젝트 수정을 취소하시겠습니까? ")
 					  window.history.back();
 				});			
 			});
@@ -61,7 +62,7 @@
 			//옵션삭제
 			$(function(){				
 			$('.optionMinus').on("click", function(){
-				console.log(55)
+				alert("옵션을 정말 취소하시겠습니까? ")
 				$('.addAll:last-child').remove();
 			});	
 		});
@@ -69,10 +70,6 @@
 		    $(function(){
 		         var contextPath = "<%=request.getContextPath()%>";
 		         $(".test").on("click", function(){
-		               var category = $('#pCategoryNo').val()
-		               if(category == 0){
-		                  alert("카테고리를 	선택해주세요")
-		               }
 		               
 		              var prjGoal =  $('#prjGoal').val();
 		              var optPrice = $('#optPrice').val();
@@ -95,7 +92,8 @@
 		 			 }else if(addOptPrice1 != null && addOptPrice2 != null && addOptPrice3 != null){
 		 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1) ||  !regexp.test(addOptPrice2) ||  !regexp.test(addOptPrice3))
 		 				alert("숫자를 입력해주세요")
-		 			 }			 			  
+		 			 }			 		
+		 			 alert("프로젝트 수정 하시겠습니까? ")
 		         });         
 		      });   
 			

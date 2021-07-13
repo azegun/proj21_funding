@@ -52,8 +52,9 @@
 	      //goback()
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
-	         $("#return").on("click", function(){
-	            window.location.href = contextPath+"/uploadListCancel";
+	         $(".return").on("click", function(){
+	        	 alert("프로젝트 등록을 취소하시겠습니까? ")
+	            window.location.href = contextPath+"/uploadListCancel";	            
 	         });         
 	      });
 	      
@@ -120,6 +121,7 @@
 				var i = 0;		
 				//옵션추가
 				$('.optionPlus').on("click", function(){	
+					alert("옵션을 추가 하시겠습니까?")
 				//개수 제한걸기
 				if(i < 3){					
 					i += 1
@@ -130,6 +132,7 @@
 				
 				//옵션삭제
 				$('.optionMinus').on("click", function(){
+					alert("옵션을 삭제  하시겠습니까?")
 					$('.addAll:last-child').remove();
 					if(i == 3){
 						i = 0
@@ -297,7 +300,7 @@
 				<div id="register_btns">
 						<input  id = "btns" class = "test" type="submit" value="등록"/>&nbsp;
 						<input  id = "btns" type="reset" value="다시쓰기" />&nbsp; 
-						<button  id = "btns" type="button" id= "return">뒤로</button>
+						<button  id = "btns" type="button" class= "return">뒤로</button>
 				</div>	
 			
 			</section>		
