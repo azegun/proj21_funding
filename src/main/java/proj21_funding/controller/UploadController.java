@@ -85,12 +85,14 @@ public class UploadController {
 	}
 //  계좌 등록 페이지
 	@PostMapping("/registerBank/{authInfo.userNo}")
-	public ModelAndView updateBankAccount(
+	public void updateBankAccount(
 			@PathVariable("authInfo.userNo") int userNo, UserInfo userInfo,  
-			HttpServletResponse response ) throws IOException {
+			HttpServletResponse response, HttpServletRequest request) throws IOException {
+		//절대값 및 기본 설정
+		String ContextPath =request.getContextPath();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println("<script type='text/javascript'>");
+		out.println("<script type='text/javascript'>");	
 		
 		try {
 			userService.updateBankAccount(userInfo);
@@ -104,16 +106,13 @@ public class UploadController {
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
-		}
-		
-	
-		List<PrjCategory> list = prjCategoryService.showCategory();
-
-		ModelAndView mav = new ModelAndView();		
-		mav.addObject("category", list);
-		mav.setViewName("upload/register");
-		
-		return mav;
+		}		
+		// 팝업 창 컨트롤러에서 종료 후 자동 실행
+		out.println("alert('계좌 등록되었습니다.');");
+		out.println("window.close();");
+		out.println("	opener.document.location.replace('"+ContextPath+"/registerForm');");
+		out.println("</script>");
+				
 	}
 	
 	//광고페이지에서 등록 html 여기

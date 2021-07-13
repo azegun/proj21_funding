@@ -60,7 +60,7 @@ ${myList[0].prjNo.prjNo} --%>
 						<tr class = "col2">
 										<td class="td_left"><label for="userName">작성자</label></td>
 										<td class="td_right" >
-											 <input type="hidden" id = "optNo" name = "uNo" value= "${authInfo.userNo}"/>
+											 <%-- <input type="hidden" id = "optNo" name = "uNo" value= "${authInfo.userNo}"/> --%>
 												<span id="userName">${authInfo.userName}</span>																					
 										</td>					
 								</tr>
@@ -119,8 +119,8 @@ ${myList[0].prjNo.prjNo} --%>
 								<tr>
 										<td  colspan="2" >
 											<div id = "addbtns">
-													<button class = "optionMinus" type="button" class ="optionShowHide">옵션</button> 
-													<button class = "optionMinus"type = "button" class = "optionMinus hidden" >옵션삭제</button>
+													<button id = "optionMinus" type="button" class ="optionShowHide">옵션</button> 
+													<button id = "optionMinus"type = "button" class = "optionMinus hidden" >옵션삭제</button>
 											</div>
 										</td>
 								</tr>

@@ -213,6 +213,7 @@ public class MyListController {
 			    		//수정이 1개일떄
 				    	//지어진값은 데이터 삭제
 			    		//조건하기
+			    		System.out.println("2번 >> ");
 			 		  map.put("addOptNo1", optList.get(1).getOptNo());
 			    		if(optList.size() > 2) {				    	
 			    			map.put("addOptNo2", optList.get(2).getOptNo());
@@ -222,17 +223,15 @@ public class MyListController {
 			    		}
 			    		optionService.removeOptNumOne(map);
 				    	optionService.removeOptNumThree(map);
-			    		optionService.removeOptNumTwo(map);		    	
-			    
-				    	
-				    	
+			    		optionService.removeOptNumTwo(map);	
+			    		myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);				    	
 			    	}
 			    }
 		    
 		    if(addOptName1 == true && addOptName2 == false  && addOptName3 ==false) {
 		    		  //수정이 2개일떄
 		    		  //지어진값은 데이터 삭제
-			    	System.out.println("2번");
+			    	System.out.println("3번");
 		    		if(optList.size() > 2) {
 		    		map.put("addOptNo2", optList.get(2).getOptNo());
 			    		if(optList.size() == 4) {
@@ -242,22 +241,24 @@ public class MyListController {
 		    		 optionService.removeOptNumTwo(map);	
 		    		 optionService.removeOptNumThree(map);		    
 		    		 
+		    		 myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
 		    		 myListService.updateListOptionByMap(map);
 
 		    }else if (addOptName1 == true && addOptName2== true && addOptName3 == false) {
 		    	  //수정이 3개일떄
 		    		  //지어진값은 데이터 삭제
-		    	System.out.println("3번");
+		    	System.out.println("4번");
 		    		  if(optList.size() > 3) {
 		    			  map.put("addOptNo3", optList.get(3).getOptNo());
 		    			  }  		
 		    		  
 		    		  optionService.removeOptNumThree(map);
-		    		  
+		    		  myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
 		    		  myListService.updateListAllAddOptionsByMap(map);
 		    }else if(addOptName1 == true && addOptName2 == true && addOptName3 == true) {
 			  	  //수정이 4개일떄
-		    	System.out.println("4번");
+			      System.out.println("5번");
+			      myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
 			      trService.trUpdateListAddOptionsOfFourTimes(map);
 		    }
 	    	

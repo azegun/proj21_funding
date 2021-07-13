@@ -12,13 +12,14 @@
 				/* 뒤로 */
 				
 			$(function(){
+				var contextPath = "<%=request.getContextPath()%>";
 				$(".cancel").on("click", function(){
 				self.opener=self;
 				window.close();
 				});	
 				
 				  $(".test").on("click", function(){
-						   
+						/* validation */  
 					   var bankAccount =$('#bankAccount').val();
 			           var accountHolder = $('#accountHolder').val();
 					   
@@ -29,12 +30,7 @@
 					   }else if(regexp.test(accountHolder)){
 							alert("숫자는 입력이 안됩니다.")
 					   }
-					   window.location.href = contextPath+"/registerForm";
-						window.close();
-					  /*  window.open("about:blank", "_self").close(); */
-					   
-			         });	
-				
+			         });				
 				
 			});		
 				
