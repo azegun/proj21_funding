@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
+import proj21_funding.exception.CategoryException;
 import proj21_funding.exception.EmptySpaceException;
 import proj21_funding.mapper.MyListMapper;
 import proj21_funding.mapper.PrjOptionMapper;
@@ -33,13 +34,18 @@ public class ProjectAndPrjOptionServiceImpl implements ProjectAndPrjOptionServic
 	@Override
 	public void trJoinPrjAndPrjOpt(Project project, PrjOption prjoption, MultipartFile uploadfile ) {
 	
-		int prjName =  project.getPrjName().length();
-		int prjContent =  project.getPrjContent().length();
-		int optName =  prjoption.getOptName().length();
-		int optContent =  prjoption.getOptContent().length();
+		int prjName =  project.getPrjName().trim().length();
+		int prjContent =  project.getPrjContent().trim().length();
+		int optName =  prjoption.getOptName().trim().length();
+		int optContent =  prjoption.getOptContent().trim().length();
+		
+		int categoryNo = project.getpCategoryNo().getpCategoryNo();
+		System.out.println("categoryNo >> "+ categoryNo);
 		
 		if(prjName ==0 || prjContent == 0 || optName == 0 || optContent == 0 ) {
 			throw new EmptySpaceException("문자를 등록 해야됩니다.");
+		}else if(categoryNo == 0){
+			throw new CategoryException("카테고리를 입력해주세요.");
 		}else {
 			//트렌젝션 prjNo 찾아오기 위함.
 			int res = pMapper.insertProject(project);

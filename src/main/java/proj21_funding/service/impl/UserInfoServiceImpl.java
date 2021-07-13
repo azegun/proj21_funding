@@ -111,8 +111,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 //	 계좌등록
 	@Override
 	public int updateBankAccount(UserInfo userInfo) {
-		int accountHolder = userInfo.getAccountHolder().length();
-		int bankAccount = userInfo.getBankAccount().length();
+		int accountHolder = userInfo.getAccountHolder().trim().length();
+		int bankAccount = userInfo.getBankAccount().trim().length();
 		
 		String bankName =  userInfo.getBankName();
 		System.out.println("accountHolder>> "+ accountHolder);

@@ -149,15 +149,20 @@ public class UploadController {
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+		out.println("<script type='text/javascript'>");
 		
 		System.out.println("ddd");
 		System.out.println("controller >> >  "+ project.getPrjGoal());
 		try {
 			//트렌젝션추가
 			trService.trJoinPrjAndPrjOpt(project, prjoption , uploadfile);		
-		}catch (EmptySpaceException e) {
-			out.println("<script type='text/javascript'>");
+		}catch (EmptySpaceException e) {			
 			out.println("alert('잘못된 등록입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}catch (CategoryException e) {
+			out.println("alert('카테고리를 입력해주세요.');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
@@ -231,6 +236,11 @@ public class UploadController {
 	public ModelAndView updateListSuccess(PrjPlusOption prjplusoption,
 		HttpServletRequest request, MultipartFile uploadfile, HttpServletResponse response  ) throws IOException {
 		 
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type='text/javascript'>");
+	
+		
 		//파일 존재 여부
 		if(uploadfile.getSize() !=0) {
 			// 파일 업로드
@@ -255,8 +265,6 @@ public class UploadController {
 	         String value = request.getParameter(name);
 	         map.put(name, value);
 	      }
-	
-
 		//리스트 조인	
 			
 		    boolean addOptName1 = map.containsKey("addOptName1");
@@ -266,7 +274,15 @@ public class UploadController {
 		 // 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
 		    optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
 		//조인 업데이트(프로젝트 + 옵션 1)
-		    projectService.joinUpdateProjectAndPrjoptionByNo(map);		   
+		    try {
+		    	  projectService.joinUpdateProjectAndPrjoptionByNo(map);		
+		    }catch (CategoryException e) {
+		    	out.println("alert('카테고리를 입력해주세요.');");
+		    	out.println("history.back();");
+				out.println("</script>");
+				out.flush();
+			}
+		    
 		    
 			    if(addOptName1 == false && addOptName2 == false && addOptName3 == false) {
 			    	if( optList.size() > 1) {
@@ -316,14 +332,8 @@ public class UploadController {
 			      trService.trUpdateAddOptionsOfFourTimes(map);
 		    }
 		
-		}catch (DateTimeOverException e) {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script type='text/javascript'>");
-			out.println("alert('결재일이 마감일보다 빠를 수 없습니다.');");
-			out.println("history.back();");
-			out.println("</script>");
-			out.flush();
+		}catch (Exception e) {
+			System.out.println("e>>"+ e);			
 		}
 		
 		//리스트 받기 (1. 옵션들 2. 카테고리들)
