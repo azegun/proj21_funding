@@ -362,13 +362,6 @@ ALTER TABLE proj21_funding.Project
 
 -- 프로젝트구매옵션
 ALTER TABLE proj21_funding.PrjOption
-	ADD CONSTRAINT FK_Project_TO_PrjOption -- 프로젝트 -> 프로젝트구매옵션
-		FOREIGN KEY (
-			PrjNo -- 프로젝트번호
-		)
-		REFERENCES proj21_funding.Project ( -- 프로젝트
-			PrjNo -- 프로젝트번호
-		) on delete cascade;
    ADD CONSTRAINT FK_Project_TO_PrjOption -- 프로젝트 -> 프로젝트구매옵션
       FOREIGN KEY (
          PrjNo -- 프로젝트번호
@@ -389,13 +382,6 @@ ALTER TABLE proj21_funding.FundingInfo
 
 -- 후원정보
 ALTER TABLE proj21_funding.FundingInfo
-	ADD CONSTRAINT FK_Project_TO_FundingInfo -- 프로젝트 -> 후원정보
-		FOREIGN KEY (
-			PrjNo -- 프로젝트번호
-		)
-		REFERENCES proj21_funding.Project ( -- 프로젝트
-			PrjNo -- 프로젝트번호
-		)  on delete cascade;
    ADD CONSTRAINT FK_Project_TO_FundingInfo -- 프로젝트 -> 후원정보
       FOREIGN KEY (
          PrjNo -- 프로젝트번호
@@ -406,13 +392,6 @@ ALTER TABLE proj21_funding.FundingInfo
 
 -- 프로젝트게시판
 ALTER TABLE proj21_funding.PrjBoard
-	ADD CONSTRAINT FK_Project_TO_PrjBoard -- 프로젝트 -> 프로젝트게시판
-		FOREIGN KEY (
-			PrjNo -- 프로젝트번호
-		)
-		REFERENCES proj21_funding.Project ( -- 프로젝트
-			PrjNo -- 프로젝트번호
-		)  on delete cascade;
    ADD CONSTRAINT FK_Project_TO_PrjBoard -- 프로젝트 -> 프로젝트게시판
       FOREIGN KEY (
          PrjNo -- 프로젝트번호
