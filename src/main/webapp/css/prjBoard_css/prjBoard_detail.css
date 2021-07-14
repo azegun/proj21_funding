@@ -83,6 +83,10 @@ padding-bottom: 50px;}
 	width: 30%;
 }
 
+#replyContent{
+	margin-left: 20px;
+}
+
 #delRebtn{text-align: right;
 margin-top: -20px;
 margin-bottom: -15px}
