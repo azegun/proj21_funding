@@ -46,7 +46,7 @@
 						</c:if>						
 						<a href="<c:url value="/message/message-receive/delete/${msgNo}?readYN=${readYN}&currentPage=${currentPage}" />">
 							<form:button type="button">삭제</form:button></a>
-						<button type="button" onclick="history.back(-1);">뒤로가기</button>
+						<button type="button" onclick="location.href = document.referrer;">뒤로가기</button>
 					</div>
 				</form:form>
 			</fieldset>

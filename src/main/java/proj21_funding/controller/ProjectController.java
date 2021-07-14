@@ -37,6 +37,7 @@ import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
 import proj21_funding.dto.paging.Pagination;
 import proj21_funding.dto.project.ProjectJoin;
+import proj21_funding.exception.SameUserException;
 import proj21_funding.service.FundingInfoService;
 import proj21_funding.service.MessageService;
 import proj21_funding.service.PrjBoardService;
@@ -305,6 +306,8 @@ public class ProjectController {
 			model.addAttribute("complet", complet);
 		} catch (NullPointerException e) {
 			errors.rejectValue("msgContent", "nullContent");
+		}catch (SameUserException e) {
+			errors.rejectValue("msgContent", "SameUserImpossible");			
 		}
 		return "project/question-write";
 	}
