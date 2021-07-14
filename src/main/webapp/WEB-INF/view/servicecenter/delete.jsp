@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/proj21_funding/css/servicecenter_write.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/all_view_top.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/servicecenter/write2.css">
 </head>
 <body>
 	<section class="container">
@@ -37,13 +38,16 @@
 	
 	<h2>문의하기</h2>
 	
-	<p>질문이 취소되었습니다.</p>
-	<p>감사합니다.</p>
+	<div class="writeendform">
+	<p class="complete">질문이 취소되었습니다.</p>
+	<p class="complete">감사합니다.</p>
 	
-	<div>
+	<div id="btn">
 		<a href="/proj21_funding/qnawrite"><input type="button" value="다른 문의하기" ></a>
 		<a href="/proj21_funding/qnauserview"><input type="button" value="내 문의 내역 확인하기" ></a>
 	</div>	
+	
+	</div>
 	
 	</section>
 		<footer>

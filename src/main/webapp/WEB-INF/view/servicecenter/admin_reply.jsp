@@ -45,7 +45,7 @@
 				<h2>답변하기</h2>
 			</div>
 			<div id="questioncont">
-				<form action="<%=request.getContextPath()%>/qnaSuccess"
+				<form action="<%=request.getContextPath()%>/qnaRpSuccess"
 					method="post">
 					<dl>
 						<dt class="td_left"><label for="categoryNo">분류</label></dt>
