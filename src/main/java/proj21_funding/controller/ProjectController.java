@@ -1,5 +1,7 @@
 package proj21_funding.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -256,7 +258,7 @@ public class ProjectController {
 
 	@RequestMapping("/fundingProject")
 	public ModelAndView funding(@Valid UserLogin userLogin, HttpServletRequest request, HttpSession session,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws IOException {
 		System.out.println(request.getContextPath());
 		UserAuthInfo uai;
 		int prjNo = (int) session.getAttribute("prjNo");
