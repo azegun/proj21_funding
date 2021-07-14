@@ -139,6 +139,10 @@
 					from prjoption
 				where PrjNo =#{prjNo.prjNo}		
 		</select>
+		
+		<select id = "selectSimpleOptionByPrjNo" resultMap="resOption">
+			select * from prjoption  where prjno =#{prjNo}
+		</select>
 
 
 </mapper>

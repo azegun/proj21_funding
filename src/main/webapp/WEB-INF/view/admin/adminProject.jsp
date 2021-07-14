@@ -36,10 +36,9 @@
 			var contextPath = "${contextPath}"
 			$.ajax({
 				type :"Get",
-				url:contextPath +"/getOptList/"+prjNo,
+				url:contextPath+"/getOptList/"+prjNo,
 				contentType:"application/json; charset=utf-8",
 				dataType: 'json',
-				cache : false,
 				success: function(json){
 					console.log(prjNo)
 					var dataLength = json.length;

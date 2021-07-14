@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,8 +151,8 @@
 									<div class="panel panel-default">
 										<div class="panel-heading"><strong>프로젝트 관련정보</strong></div>
 										<div class="panel-body">
-										<span class="userDetail"><strong>후원한 프로젝트 수 : </strong><input type="text" value="${fundingStat[user.userNo-1].totalCount } 개" size="10px" readonly/></span>
-										<span class="userDetail"><strong>총 후원 금액 : </strong><input type="text" value="${fundingStat[user.userNo-1].totalPrice } 원" size="10px" readonly/></span><br>
+										<span class="userDetail"><strong>후원한 프로젝트 수 : </strong><input type="text" value="${fundingStatic[user.userNo-1].totalCount } 개" size="10px" readonly/></span>
+										<span class="userDetail"><strong>총 후원 금액 : </strong><input type="text" value="<fmt:formatNumber value='${fundingStatic[user.userNo-1].totalPrice }' pattern="#,###"/> 원" size="10px" readonly/></span><br>
 										<span class="userDetail"><strong>등록한 프로젝트 수 : </strong><input type="text" value="${regProject[user.userNo-1].totalCount } 개" size="10px" readonly/></span>
 										<span class="userDetail"><strong>성공한 프로젝트 수 : </strong><input type="text" value="${successProject[user.userNo-1].totalCount } 개" size="10px" readonly/></span>
 										</div>
