@@ -14,6 +14,7 @@
 	padding-left: 20px;
 	padding-right: 20px;
 	width: 700px;
+	border-radius: 15px;
 }
 
 #back{margin-top: 10px;
@@ -81,6 +82,10 @@ padding-bottom: 50px;}
 }
 #nickName{
 	width: 30%;
+}
+
+#replyContent{
+	margin-left: 20px;
 }
 
 #delRebtn{text-align: right;

@@ -64,6 +64,10 @@ img{
 	width:200px;
 	height:30px;
 }
+
+#textNo:invalid{
+	border:3px solid red;
+}
 .info{
 	padding:20px;
 }

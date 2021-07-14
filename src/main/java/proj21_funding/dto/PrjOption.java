@@ -11,7 +11,9 @@ public class PrjOption {
 		
 
 		//기본 생성자
-		public PrjOption() {}
+		public PrjOption() {
+			
+		}
 		
 		//옵션 번호로 검색
 		public PrjOption(int optNo) {

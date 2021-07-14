@@ -79,7 +79,7 @@
 				<input type="submit" class="searchBtn" value="검 색"/>
 				<span>검색결과 : ${listCnt }개</span>
 				<button class="searchBtn" style="float:right"
-				 onclick="window.open('adminNotice/write','수정하기','width=1000,height=800,location=no,status=no')">글쓰기</button>
+				 onclick="window.open('adminNotice/write','수정하기','width=1200,height=800,location=no,status=no')">글쓰기</button>
 				</form>
 				<table class="table table-stripedPink table-bordered ">
 					<thead>
@@ -105,7 +105,7 @@
 									<div id="accordion${status.index }" class="collapse">
 										<div>
 											<h4><strong>글 상세보기</strong></h4>
-											<button onclick="window.open('adminNoticeUpdate/${board.boardNo}&${board.categoryNo.categoryNo }','수정하기','width=1000,height=800,location=no,status=no')" style="float:right">수 정</button>
+											<button onclick="window.open('adminNoticeUpdate/${board.boardNo}&${board.categoryNo.categoryNo }','수정하기','width=1200,height=800,location=no,status=no')" style="float:right">수 정</button>
 										</div>
 										<div class="panel panel-default">
 											<div class="panel-heading"><strong>제목 : ${board.boardTitle }</strong>

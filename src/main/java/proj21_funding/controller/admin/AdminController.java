@@ -59,7 +59,11 @@ public class AdminController {
 	private ProjectStatService statService;
 	
 	@RequestMapping("/admin")
-	public ModelAndView adminMain() {
+	public ModelAndView adminMain(HttpSession session) {
+		//관리자아니면 로그인창으로 리다이렉트
+				if(session.getAttribute("authInfo")==null) {
+					return new ModelAndView("redirect:/login");
+				}
 		List<ProjectStat> salesStat = statService.selectSalesStat();
 		List<ProjectJoin> salesRanking = joinService.selectSalesRankingByProject();
 		List<ProjectJoin> sponsorRanking = joinService.selectSponsorRanking();

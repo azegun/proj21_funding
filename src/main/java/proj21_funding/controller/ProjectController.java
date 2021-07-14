@@ -1,5 +1,7 @@
 package proj21_funding.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +37,7 @@ import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
 import proj21_funding.dto.paging.Pagination;
 import proj21_funding.dto.project.ProjectJoin;
+import proj21_funding.exception.SameUserException;
 import proj21_funding.service.FundingInfoService;
 import proj21_funding.service.MessageService;
 import proj21_funding.service.PrjBoardService;
@@ -256,7 +259,8 @@ public class ProjectController {
 
 	@RequestMapping("/fundingProject")
 	public ModelAndView funding(@Valid UserLogin userLogin, HttpServletRequest request, HttpSession session,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws IOException {
+		System.out.println(request.getContextPath());
 		UserAuthInfo uai;
 		int prjNo = (int) session.getAttribute("prjNo");
 		try {
@@ -278,6 +282,8 @@ public class ProjectController {
 			return mav;
 		} catch (NullPointerException e) {
 			return new ModelAndView("redirect:/login");
+		} catch (NumberFormatException e) {
+			return new ModelAndView("project/project_detail");
 		}
 	}
 
@@ -300,6 +306,8 @@ public class ProjectController {
 			model.addAttribute("complet", complet);
 		} catch (NullPointerException e) {
 			errors.rejectValue("msgContent", "nullContent");
+		}catch (SameUserException e) {
+			errors.rejectValue("msgContent", "SameUserImpossible");			
 		}
 		return "project/question-write";
 	}

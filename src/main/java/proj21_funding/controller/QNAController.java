@@ -24,6 +24,7 @@ import proj21_funding.dto.paging.Pagination;
 import proj21_funding.service.CategoryService;
 import proj21_funding.service.MessageService;
 import proj21_funding.service.QNAService;
+import proj21_funding.service.UserInfoService;
 
 @Controller
 public class QNAController {
@@ -36,6 +37,9 @@ public class QNAController {
 
 	@Autowired
 	MessageService userService;
+	
+	@Autowired
+	UserInfoService userinfoService;
 
 	@RequestMapping("/qnaallview")
 	public ModelAndView qnaAll() {
@@ -116,7 +120,7 @@ public class QNAController {
 	public ModelAndView detail(@PathVariable("qnaNo") int qnaNo) {
 		List<BoardCategory> bc = bcService.showBCByClass("qna");
 		QNA qna = qnaService.showQNAByNo(qnaNo);
-		UserInfo user = userService.showUserbyNo(qnaNo);
+		List<UserInfo> user = userinfoService.showUserAll();
 		System.out.println(user);
 		ModelAndView mav = new ModelAndView("servicecenter/view_detail", "qna", qna);
 		mav.addObject("bc", bc);

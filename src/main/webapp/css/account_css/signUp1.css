@@ -105,7 +105,9 @@ margin-left: 10px;}
     font-weight: normal;
     text-decoration: underline;
 }
-
+#agreeEerrors{
+	color: rgb(255, 87, 87);
+}
 #submit {
 	width: 100%;
 	cursor: pointer;

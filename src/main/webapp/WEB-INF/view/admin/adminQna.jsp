@@ -25,51 +25,52 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/paging_css/paging.css">
 <script>
 	$(function(){
+		
 		$(".btnUpdate").on("click",function(e){
 			e.preventDefault();
 			var contextPath = "<%= request.getContextPath()%>";
 			var idx = $(this).val();
 			var adminNo = ${authInfo.userNo};
 			if($(this).html()=="답변하기"){
-				$(".btnUpdate"+idx).parent().append("<button class='btnCancel"+idx+"' style='float:right'>취소</button>");
+				$(".btnUpdate"+idx).parent().append("<button class='btnCancel"+idx+"' style='float:right; width:50px;margin-top:10px'>취소</button>");
 				$(".btnUpdate"+idx).text("답변저장");
 				$(".btnUpdate"+idx).addClass("btnConfirm"+idx);
+				$(".reply"+idx).removeAttr("readonly");
 				
 				$(".btnCancel"+idx).click(function(){
+					$(".reply"+idx).attr("readonly","readonly");
+					$(".btnUpdate"+idx).text("답변하기");
+					$(".btnCancel"+idx).remove();
+					$(".btnUpdate"+idx).removeClass("btnConfirm"+idx);
+					return false;
 				})
-				
 				var data;
-				
-				$(".btnConfirm"+idx).click(function(){
-					e.preventDefault();
-					data = {
-							qnaNo : idx,
-							adminNo : 1,
-							qnaReply : $(".reply"+idx).val(),
-							replyDate : $.now()};
-					alert("data >> " +data.qnaReply);
-				
-					$.ajax({
-						url:contextPath +"/replyQna/"+idx,
-						type:"PATCH",
-						contentType:"application/json; charset=utf-8",
-						dataType:"json",
-						cache:false,
-						data: JSON.stringify(data),
-						success: function(data) {
-							$(".btnUpdate"+idx).text("답변하기");
-							$(".reply"+idx).prop("readonly","readonly");
-							$(".btnCancel"+idx).remove();
-							$(".btnConfirm"+idx).removeClass();
-							window.location.reload();
-						}
-					})
-				})
 			}
-			
-			$(".reply"+idx).removeAttr("readonly");
-			
 		})
+			$(".btnConfirm"+idx).click(function(){
+				e.preventDefault();
+				data = {
+						qnaNo : idx,
+						adminNo : 1,
+						qnaReply : $(".reply"+idx).val(),
+						replyDate : $.now()};
+		
+				$.ajax({
+					url:contextPath +"/replyQna/"+idx,
+					type:"PATCH",
+					contentType:"application/json; charset=utf-8",
+					dataType:"json",
+					cache:false,
+					data: JSON.stringify(data),
+					success: function(data) {
+						$(".btnUpdate"+idx).text("답변하기");
+						$(".reply"+idx).prop("readonly","readonly");
+						$(".btnCancel"+idx).remove();
+						$(".btnConfirm"+idx).removeClass();
+						window.location.reload();
+					}
+				})
+			})
 	})
 </script>
 </head>

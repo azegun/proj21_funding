@@ -158,6 +158,9 @@ $(function(){
 					</c:if>				
 				</div>				
 			</div>
+			<footer>
+			<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
+			</footer>
 		</div>	
 </body>
 </html>

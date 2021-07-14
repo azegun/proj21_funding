@@ -57,10 +57,10 @@
 											</c:forEach>
 											<span id="q">Q.</span><span id="qtitle">${qna.QnaTitle }</span>
 											<c:choose>
-												<c:when test="${qna.qnaReply eq null }">
+												<c:when test="${qna.QnaReply eq null }">
 													<span id="afalse">답변 대기 중</span>
 												</c:when>
-												<c:when test="${qna.qnaReply ne null }">
+												<c:when test="${qna.QnaReply ne null }">
 													<span id="atrue">답변 완료</span>
 												</c:when>
 											</c:choose>

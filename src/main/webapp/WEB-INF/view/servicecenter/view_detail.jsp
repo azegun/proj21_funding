@@ -59,7 +59,13 @@
 					</dl>
 					<dl>
 						<dt class="td_left"><label for="userNo">질문자</label></dt>
-						<dd class="td_right"><label for="userNo">${user.nickName }</label></dd>
+						<dd class="td_right"><label for="userNo">
+							<c:forEach var="user" items="${user }">
+								<c:if test="${user.userNo eq qna.userNo.userNo }" >
+									${user.nickName }
+								</c:if>
+							</c:forEach>
+						</label></dd>
 					</dl>
 					<dl>
 						<dt class="td_left"><label for="qnaDate">질문날짜</label></dt>
