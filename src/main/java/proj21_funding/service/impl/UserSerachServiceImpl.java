@@ -112,10 +112,10 @@ public class UserSerachServiceImpl implements UserSerachService {
 			String content = "안녕하세요. 100펀딩 임시비밀번호 안내 관련 이메일 입니다.[" + userInfo.getUserName() + "]님의 임시 비밀번호는 "
 					+ userInfo.getUserPw() + "입니다.";
 			message.setContent(content, "text/html;charset=utf-8");
-			message.setSentDate(new Date());
+	  		message.setSentDate(new Date());
 
 			Transport transport = s.getTransport("smtp");
-			transport.connect(server, "mywns1231@gmail.com", "비밀번호");
+			transport.connect(server, "mywns1231@gmail.com", "lrurkawkvjoxnzgj");
 			transport.sendMessage(message, message.getAllRecipients());
 			transport.close();
 		} catch (Exception e) {

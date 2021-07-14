@@ -156,7 +156,7 @@
 								data-target="#accordion${status.index }"
 								class="text-center clickable">
 								<td>${prj.prjNo}</td>
-								<td class="text-left">${prj.prjName }</td>
+								<td class="text-left"><a href="<%=request.getContextPath() %>/prjDetail/${prj.prjNo}">${prj.prjName }</a></td>
 								<td>${prj.pCategoryName }</td>
 								<td>${prj.prjManager } (${prj.managerName })</td>
 								<td><fmt:formatNumber value="${prj.prjGoal }" pattern="#,###"/> 원</td>
