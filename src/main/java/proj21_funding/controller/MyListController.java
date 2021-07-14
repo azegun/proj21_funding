@@ -1,11 +1,14 @@
 package proj21_funding.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +48,6 @@ public class MyListController {
 		
 		@Autowired
 		private PrjOptionService optionService;
-		@Autowired
-		private ProjectJoinService joinService;
 		
 		private List<PrjOption> optList;
 		
@@ -82,7 +83,6 @@ public class MyListController {
 			map.put("cntPerPage", cntPerPage);
 			map.put("pageSize",pageSize );
 			map.put("pageSearch",pageSearch);
-			System.out.println("map >> " + map);			
 			
 			
 			int count = myListService.selectCountPrjByUserNo(map);
@@ -122,7 +122,6 @@ public class MyListController {
 			map.put("cntPerPage", cntPerPage);
 			map.put("pageSize",pageSize );
 			map.put("pageSearch",pageSearch);
-			System.out.println("map >> " + map);			
 				
 			int count = myListService.selectCountPrjByUserNo(map);
 			
@@ -150,13 +149,30 @@ public class MyListController {
 			
 			ModelAndView mav = new ModelAndView();
 			optList = optionService.selectSimplePrjOptionByPrjNo(prjNo);			
-			System.out.println("optList >> " + optList);
+			
 			mav.addObject("optList", optList);
 			mav.addObject("myList", list);
 			mav.addObject("categoryList", categorylist);
 			mav.setViewName("mylist/mydetail_list");	
 		
 			return mav;
+		}
+		@RequestMapping("/deletePrj/{prjNo}")
+		public ModelAndView  cascadeProject(
+					@PathVariable("prjNo") int prjNo,
+					@RequestParam("userNo") int userNo,
+					HttpServletResponse response) throws IOException {
+				
+			//param userNo= ? <=== 괄호안 value
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("pNo", prjNo);			
+			
+			myListService.deleteCascadeProjectByMap(map);			
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/homeToMyList/"+userNo);				
+			return mav ;
+
 		}
 		
 //		디테일리스트에서 수정
@@ -191,7 +207,6 @@ public class MyListController {
 		      int count = myListService.selectCountPrjByUserNo(map);
 			
 			
-		      System.out.println("map>> "+ map);
 		      
 		   boolean addOptName1 = map.containsKey("addOptName1");
 		   boolean addOptName2 = map.containsKey("addOptName2");
@@ -202,7 +217,6 @@ public class MyListController {
 		    try {
 	
 		    //프로젝트 + 옵션1 조인 업데이트
-			System.out.println("optList.size() !!!!!>>> "+optList.size() );
 			if(optList.size() ==1) {
 				System.err.println("optList.size()  >>");
 				myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
@@ -213,7 +227,6 @@ public class MyListController {
 			    		//수정이 1개일떄
 				    	//지어진값은 데이터 삭제
 			    		//조건하기
-			    		System.out.println("2번 >> ");
 			 		  map.put("addOptNo1", optList.get(1).getOptNo());
 			    		if(optList.size() > 2) {				    	
 			    			map.put("addOptNo2", optList.get(2).getOptNo());
@@ -231,7 +244,6 @@ public class MyListController {
 		    if(addOptName1 == true && addOptName2 == false  && addOptName3 ==false) {
 		    		  //수정이 2개일떄
 		    		  //지어진값은 데이터 삭제
-			    	System.out.println("3번");
 		    		if(optList.size() > 2) {
 		    		map.put("addOptNo2", optList.get(2).getOptNo());
 			    		if(optList.size() == 4) {
@@ -247,7 +259,6 @@ public class MyListController {
 		    }else if (addOptName1 == true && addOptName2== true && addOptName3 == false) {
 		    	  //수정이 3개일떄
 		    		  //지어진값은 데이터 삭제
-		    	System.out.println("4번");
 		    		  if(optList.size() > 3) {
 		    			  map.put("addOptNo3", optList.get(3).getOptNo());
 		    			  }  		
@@ -257,7 +268,6 @@ public class MyListController {
 		    		  myListService.updateListAllAddOptionsByMap(map);
 		    }else if(addOptName1 == true && addOptName2 == true && addOptName3 == true) {
 			  	  //수정이 4개일떄
-			      System.out.println("5번");
 			      myListService.joinUpdateProjectAndPrjOptionByPrjNoInMyLIst(map);
 			      trService.trUpdateListAddOptionsOfFourTimes(map);
 		    }

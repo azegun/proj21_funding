@@ -12,6 +12,10 @@
 	border: 1px solid rgb(228, 228, 228);
 }
 
+#necessary{font-size: 8px;
+color: rgb(255, 87, 87);
+margin-left: 10px;}
+
 #signUpForm h2 {
 	font-size: 24px;
 	line-height: 36px;

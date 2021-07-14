@@ -91,9 +91,21 @@ public class MyListMapperTest {
 		
 		Assert.assertEquals(2, res);
 		
+	}
+	@Test
+	public void testdeleteCascadeProjectByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pNo", 3);
+		System.out.println("map  >> "+ map);
+		int res = mapper.deleteCascadeProjectByMap(map);
 		
+		Assert.assertEquals(1, res);
 		
 	}
+	
+	
+	
 
 
 }

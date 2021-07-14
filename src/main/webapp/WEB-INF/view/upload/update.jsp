@@ -47,6 +47,7 @@
 			$(function(){
 				var contextPath = "<%=request.getContextPath()%>";
 				$(".return").on("click", function(){
+					alert("프로젝트 수정을 취소하시겠습니까? ")
 					  window.history.back();
 				});			
 			});
@@ -61,7 +62,7 @@
 			//옵션삭제
 			$(function(){				
 			$('.optionMinus').on("click", function(){
-				console.log(55)
+				alert("옵션을 정말 취소하시겠습니까? ")
 				$('.addAll:last-child').remove();
 			});	
 		});
@@ -69,10 +70,6 @@
 		    $(function(){
 		         var contextPath = "<%=request.getContextPath()%>";
 		         $(".test").on("click", function(){
-		               var category = $('#pCategoryNo').val()
-		               if(category == 0){
-		                  alert("카테고리를 	선택해주세요")
-		               }
 		               
 		              var prjGoal =  $('#prjGoal').val();
 		              var optPrice = $('#optPrice').val();
@@ -95,7 +92,8 @@
 		 			 }else if(addOptPrice1 != null && addOptPrice2 != null && addOptPrice3 != null){
 		 				 if(!regexp.test(prjGoal) || !regexp.test(optPrice) || !regexp.test(addOptPrice1) ||  !regexp.test(addOptPrice2) ||  !regexp.test(addOptPrice3))
 		 				alert("숫자를 입력해주세요")
-		 			 }			 			  
+		 			 }			 		
+		 			 alert("프로젝트 수정 하시겠습니까? ")
 		         });         
 		      });   
 			
@@ -219,7 +217,7 @@ ${project[0].optNo} --%>
 							<!--옵션 3개 추가가 있을 시 보여주는view  -->		
 								<tr class ='tr_all'>											
 									<td class = "td_left">
-											<label for = "optName">옵션1 이름</label>
+											<label for = "optName">옵션 이름</label>
 									</td>									
 									<td class = "td_right">
 									 <input type="hidden" id = "optNo" name = "oNo" value= "${project[0].optNo}"/>
@@ -229,7 +227,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "optPrice">옵션1 금액</label>
+											<label for = "optPrice">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "optPrice" name = "oPrice" 
@@ -238,7 +236,7 @@ ${project[0].optNo} --%>
 							</tr>							
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "optContent">옵션1 내용</label>
+											<label for = "optContent">옵션 내용</label>
 									</td>
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "oContent"	rows="8" cols="38"
@@ -260,7 +258,7 @@ ${project[0].optNo} --%>
 							<tbody class= 'addAll'>					
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptName1">옵션2 이름</label>
+											<label for = "addOptName1">옵션 이름</label>
 									</td>
 									<td class = "td_right">
 										 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" />
@@ -270,7 +268,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptPrice1">옵션2 금액</label>
+											<label for = "addOptPrice1">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice1" name = "addOptPrice1"
@@ -279,7 +277,7 @@ ${project[0].optNo} --%>
 							</tr>						
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptContent1">옵션2 내용</label>
+											<label for = "addOptContent1">옵션 내용</label>
 									</td>						
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "addOptContent1"	 required
@@ -290,7 +288,7 @@ ${project[0].optNo} --%>
 							<tbody class= 'addAll'>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptName2">옵션3 이름</label>
+											<label for = "addOptName2">옵션 이름</label>
 									</td>
 									<td class = "td_right">
 										 <input type="hidden" id = "addOptNo2" name = "addOptNo2" value= "${ project[2].optNo }" />
@@ -300,7 +298,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptPrice2">옵션3 금액</label>
+											<label for = "addOptPrice2">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice2" name = "addOptPrice2"
@@ -309,7 +307,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptContent2">옵션3 내용</label>
+											<label for = "addOptContent2">옵션 내용</label>
 									</td>						
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "addOptContent2"	
@@ -320,7 +318,7 @@ ${project[0].optNo} --%>
 							<tbody class= 'addAll'>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptName3">옵션4 이름</label>
+											<label for = "addOptName3">옵션 이름</label>
 									</td>
 									<td class = "td_right">
 									<input type="hidden" id = "addOptNo3" name = "addOptNo3" value= "${ project[3].optNo }" />
@@ -330,7 +328,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptPrice3">옵션4 금액</label>
+											<label for = "addOptPrice3">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice3" name = "addOptPrice3"
@@ -339,7 +337,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptContent3">옵션4 내용</label>
+											<label for = "addOptContent3">옵션 내용</label>
 									</td>						
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "addOptContent3"	
@@ -353,7 +351,7 @@ ${project[0].optNo} --%>
 							<!--옵션 2개 추가가 있을 시 보여주는view  -->		
 								<tr class ='tr_all'>											
 									<td class = "td_left">
-											<label for = "optName">옵션1 이름</label>
+											<label for = "optName">옵션 이름</label>
 									</td>									
 									<td class = "td_right">
 										 <input type="hidden" id = "optNo" name = "oNo" value= "${ project[0].optNo }" />
@@ -363,7 +361,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "optPrice">옵션1 금액</label>
+											<label for = "optPrice">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "optPrice" name = "oPrice" 
@@ -372,7 +370,7 @@ ${project[0].optNo} --%>
 							</tr>							
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "optContent">옵션1 내용</label>
+											<label for = "optContent">옵션 내용</label>
 									</td>
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "oContent"	rows="8" cols="38"
@@ -389,7 +387,7 @@ ${project[0].optNo} --%>
 							<tbody class= 'addAll'>					
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptName1">옵션2 이름</label>
+											<label for = "addOptName1">옵션 이름</label>
 									</td>
 									<td class = "td_right">
 									 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" />
@@ -399,7 +397,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptPrice1">옵션2 금액</label>
+											<label for = "addOptPrice1">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice1" name = "addOptPrice1"
@@ -408,7 +406,7 @@ ${project[0].optNo} --%>
 							</tr>						
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptContent1">옵션2 내용</label>
+											<label for = "addOptContent1">옵션 내용</label>
 									</td>						
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "addOptContent1"	 required
@@ -419,7 +417,7 @@ ${project[0].optNo} --%>
 							<tbody class= 'addAll'>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptName2">옵션3 이름</label>
+											<label for = "addOptName2">옵션 이름</label>
 									</td>
 									<td class = "td_right">
 									 <input type="hidden" id = "addOptNo2" name = "addOptNo2" value= "${ project[2].optNo }" />
@@ -429,7 +427,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptPrice2">옵션3 금액</label>
+											<label for = "addOptPrice2">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice2" name = "addOptPrice2"
@@ -438,7 +436,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptContent2">옵션3 내용</label>
+											<label for = "addOptContent2">옵션 내용</label>
 									</td>						
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "addOptContent2"	
@@ -453,7 +451,7 @@ ${project[0].optNo} --%>
 							<!--옵션 추가가 있을 시 보여주는view  -->		
 								<tr class ='tr_all'>											
 									<td class = "td_left">
-											<label for = "optName">옵션1 이름</label>
+											<label for = "optName">옵션 이름</label>
 									</td>									
 									<td class = "td_right">
 									 <input type="hidden" id = "optNo" name = "oNo" value= "${ project[0].optNo }" />
@@ -463,7 +461,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "optPrice">옵션1 금액</label>
+											<label for = "optPrice">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "optPrice" name = "oPrice" 
@@ -472,7 +470,7 @@ ${project[0].optNo} --%>
 							</tr>							
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "optContent">옵션1 내용</label>
+											<label for = "optContent">옵션 내용</label>
 									</td>
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "oContent"	rows="8" cols="38"
@@ -489,7 +487,7 @@ ${project[0].optNo} --%>
 							<tbody class= 'addAll'>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptName">옵션2 이름</label>
+											<label for = "addOptName">옵션 이름</label>
 									</td>
 									<td class = "td_right">
 									 <input type="hidden" id = "addOptNo1" name = "addOptNo1" value= "${ project[1].optNo }" />
@@ -499,7 +497,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptPrice">옵션2 금액</label>
+											<label for = "addOptPrice">옵션 금액</label>
 									</td>
 									<td class = "td_right">
 											 <input type="text" id = "addOptPrice" name = "addOptPrice1"
@@ -508,7 +506,7 @@ ${project[0].optNo} --%>
 							</tr>
 							<tr class ='tr_all'>
 									<td class = "td_left">
-											<label for = "addOptContent">옵션2 내용</label>
+											<label for = "addOptContent">옵션 내용</label>
 									</td>						
 									<td class = "td_right">
 											 <textarea id = "textContent" name = "addOptContent1"	

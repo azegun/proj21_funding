@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/mylist_css/mydetail_list.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 			<script type="text/javascript">			
-			 $(document).ready(function(){
+	 $(document).ready(function(){
 	//뒤로
 	$(function(){
 		var contextPath = "<%=request.getContextPath()%>";
@@ -26,6 +26,7 @@
 			$('.optionMinus').toggleClass('hidden');
 		});
 	
+	// 화면 상단이동
 	$("#MOVE_TOP_BTN").click(function() {
 		$('html, body').animate({
 			scrollTop : 0
@@ -35,18 +36,21 @@
 	
 	//옵션삭제
 	$('.optionMinus').on("click", function(){
+		alert("옵션을 정말 삭제하시겠습니까?")		
 		$('.addAll:last-child').remove();
+	});
+	
+	var contextPath = "<%=request.getContextPath()%>";
+	$('#delete_button').on("click", function(){
+		window.location.href = contextPath+"/deletePrj/${optList[0].prjNo.prjNo}?userNo=${authInfo.userNo}";
+		alert("프로젝트가 삭제되었습니다.")		
 	});
  });
 		
 </script>
 </head>
 <body>
-
-<%-- ${myList[0]}
-${myList[0].prjNo.prjNo} --%>
-<%-- ${myList } --%>
-<%-- ${optList } --%>
+${optList[0].prjNo.prjNo}
 
 	<section class="container">
 			<header id = "mydetail_header">		   
@@ -60,7 +64,6 @@ ${myList[0].prjNo.prjNo} --%>
 						<tr class = "col2">
 										<td class="td_left"><label for="userName">작성자</label></td>
 										<td class="td_right" >
-											 <%-- <input type="hidden" id = "optNo" name = "uNo" value= "${authInfo.userNo}"/> --%>
 												<span id="userName">${authInfo.userName}</span>																					
 										</td>					
 								</tr>
@@ -74,6 +77,8 @@ ${myList[0].prjNo.prjNo} --%>
 										<td class="td_left"><label for="prjName">프로젝트</label></td>
 										<td class="td_right" >
 											<input type="hidden" id="prjNo" name="pNo" value="${optList[0].prjNo.prjNo}" 
+														readonly="readonly"/>
+											<input type="hidden" id="userNo" name="userNo.userNo" value="${authInfo.userNo}" 
 														readonly="readonly"/>
 											<input type="text" id="prjName" name="pName" value="${myList[0].prjNo.prjName}" 
 														size=46	required="required"/>			
@@ -136,8 +141,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt1">
 															<input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}" ></input>
-																		아이템 : <input type="text" id="optName"	name="oName"
-																			value="${optList[0].optName}"	 size=49 required="required"/><br>
+																		<input type="text" id="optName"	name="oName"
+																			value="${optList[0].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -155,8 +160,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt2">
 															<input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}" />
-																		아이템 : <input type="text" id="optName"	name="addOptName1"
-																			value="${optList[1].optName}"	 size=49 required="required"/><br>
+																		<input type="text" id="optName"	name="addOptName1"
+																			value="${optList[1].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -176,8 +181,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt3">
 															 <input type="hidden" id = "optNo" name = "addOptNo2" value= "${optList[2].optNo}" />
-																		아이템 : <input type="text" id="optName"	name="addOptName2"
-																			value="${optList[2].optName}"	 size=49 required="required"/><br>
+																		<input type="text" id="optName"	name="addOptName2"
+																			value="${optList[2].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -197,8 +202,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt4">
 															 <input type="hidden" id = "optNo" name = "addOptNo3" value= "${optList[3].optNo}" />
-																		아이템 : <input type="text" id="optName"	name="addOptName3"
-																			value="${optList[3].optName}"	 size=49 required="required"/><br>
+																		<input type="text" id="optName"	name="addOptName3"
+																			value="${optList[3].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[3].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -218,8 +223,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt1">
 																 <input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}" />
-																		아이템 : <input type="text" id="optName"	name="oName"
-																			value="${optList[0].optName}"	 size=49 required="required"/><br>
+																		 <input type="text" id="optName"	name="oName"
+																			value="${optList[0].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -237,8 +242,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt2">
 															<input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}"/>
-																		아이템 : <input type="text" id="optName"	name="addOptName1"
-																			value="${optList[1].optName}"	 size=49 required="required"/><br>
+																		 <input type="text" id="optName"	name="addOptName1"
+																			value="${optList[1].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -258,8 +263,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt3">
 																 <input type="hidden" id = "optNo" name = "addOptNo2" value= "${optList[2].optNo}"/>
-																		아이템 : <input type="text" id="optName"	name="addOptName2"
-																			value="${optList[2].optName}"	 size=49 required="required"/><br>
+																		 <input type="text" id="optName"	name="addOptName2"
+																			value="${optList[2].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[2].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -280,8 +285,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt1">
 																	 <input type="hidden" id = "optNo" name = "oNo" value= "${optList[0].optNo}"/>
-																		아이템 : <input type="text" id="optName"	name="oName"
-																			value="${optList[0].optName}"	 size=49 required="required"/><br>
+																		<input type="text" id="optName"	name="oName"
+																			value="${optList[0].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[0].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -299,8 +304,8 @@ ${myList[0].prjNo.prjNo} --%>
 													<td class="td_right" >
 															<span class = "opt2">
 																 <input type="hidden" id = "optNo" name = "addOptNo1" value= "${optList[1].optNo}" />
-																		아이템 : <input type="text" id="optName"	name="addOptName1"
-																			value="${optList[1].optName}"	 size=49 required="required"/><br>
+																		 <input type="text" id="optName"	name="addOptName1"
+																			value="${optList[1].optName}"	 size=45 required="required"/><br>
 																		<fmt:formatNumber value="${optList[1].optPrice}" pattern="\\#,###"/>																		
 															</span>						
 													</td>									
@@ -320,7 +325,7 @@ ${myList[0].prjNo.prjNo} --%>
 														<td class="td_left"><label for="optName">옵션이름</label></td>
 														<td class="td_right" >
 													<input type="text" id="optName"	name="oName"
-																				value="${optList[0].optName}"	 size=49 required="required" ></input> 
+																				value="${optList[0].optName}"	 size=45 required="required" ></input> 
 														</td>									
 												</tr>
 												<tr class = "col13">
@@ -349,6 +354,7 @@ ${myList[0].prjNo.prjNo} --%>
 					<div>	<button  id="MOVE_TOP_BTN">&#10514</button>	</div>			
 						<div id = "btns_bottom">
 								<input class= "btns" type="submit"  value="수정"/>&nbsp;
+								<button class= "btns" type="button" id = "delete_button">삭제</button>&nbsp;							
 								<button class= "btns" type="button" id = "back">뒤로</button>								
 						</div>		
 					</form>				

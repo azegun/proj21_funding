@@ -40,18 +40,18 @@
 			<form:form action="signUp2" modelAttribute="userSignUp">	
 			<form:errors />		
 			<fieldset id="signUpForm">
-			<h2>회원 가입</h2>	
+			<h2>회원 가입<span id="necessary">*필수 입력사항입니다.</span></h2>			
 				<div id="signUpdata">
 					<div id="signUpCont">
 					<p>
-						<label >아이디</label><br>
+						<label >*아이디</label><br>
 						<form:input path="userId" placeholder="사용할 아이디를 입력해주세요." />
 					</p>					
 					<p id="errors"><form:errors path="userId"/>&nbsp;</p>
 					</div>
 					<div id="signUpCont">
 					<p>
-						<label>비밀번호입력 </label><br>
+						<label>*비밀번호입력 </label><br>
 						<form:password path="userPw" placeholder="비밀번호를 입력해주세요."/>
 					</p>	
 					<p id="errors"><form:errors path="userPw"/>&nbsp;</p>				
@@ -62,21 +62,21 @@
 					</div>
 					<div id="signUpCont">
 					<p>
-						<label>이름</label><br>
+						<label>*이름</label><br>
 						<form:input path="userName" placeholder="이름을 입력해주세요."/> 
 					</p>
 					<p id="errors"><form:errors path="userName"/>&nbsp;</p>	
 					</div>
 					<div id="signUpCont">
 					<p>
-						<label>별명</label><br>
+						<label>*별명</label><br>
 						<form:input path="nickName" placeholder="별명을 입력해주세요."/>
 					</p> 
 					<p id="errors"><form:errors path="nickName"/>&nbsp;</p>
 					</div>
 					<div id="signUpCont">
 					<p>
-						<label>이메일</label><br>
+						<label>*이메일</label><br>
 						<form:input path="email" placeholder="이메일을 입력해주세요."/>
 					</p> 
 					<p id="errors"><form:errors path="email"/>&nbsp;</p>
@@ -90,7 +90,7 @@
 					</div>
 					<div id="signUpCont">
 					<p>
-						<label>주소</label><br>
+						<label>*주소</label><br>
 						<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true" /> 
 						<form:button type="button" onclick="findAddr()">검색</form:button>
 					</p>

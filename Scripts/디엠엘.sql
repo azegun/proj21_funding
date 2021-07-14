@@ -284,7 +284,6 @@ values
 (7, 4, 1, '2211243234', 34861,'경남 창원시','빌라604호' ),
 (7, 3, 1, '2211243234', 34861,'경남 창원시','빌라604호' ),
 (7, 3, 2, '2211243234', 34861,'경남 창원시','빌라604호' );
-
 insert into fundinginfo
 	(UserNo, PrjNo, OptNo, AccountNo,ZipCode, Address, DetailAddress)
 values
@@ -354,6 +353,7 @@ select * from prjoption p;
 select
 	OptNo, PrjNo, OptName, OptPrice, OptContent
 from prjoption;
+
 
 
 insert into prjoption values

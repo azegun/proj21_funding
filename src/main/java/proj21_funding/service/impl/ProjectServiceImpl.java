@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import proj21_funding.dto.Project;
+import proj21_funding.exception.CategoryException;
 import proj21_funding.mapper.ProjectMapper;
 import proj21_funding.service.ProjectService;
 
@@ -37,7 +38,6 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public int insertProject(Project project) {
-		System.out.println("ProjectImpl >> " +project);
 		return mapper.insertProject(project);
 	}
 
@@ -48,24 +48,13 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public int joinUpdateProjectAndPrjoptionByNo(Map<String, Object>map) {
-//		System.out.println("map >> " + map);
-		/*
-		 * System.out.println("eDate map>> " + map.get("eDate"));
-		 * System.out.println("pDate map>>" + map.get("pDate") );
-		 */
-//		System.out.println(" map impl>> " + map.get("endDate"));
-//		
-//		System.out.println("end >> " + map.get("eDate"));
-//		System.out.println("pay >> " +map.get("pDate"));
-//		LocalDate EndDate = LocalDate.parse("map.get('endDate')", yyyy-mm-dd) ;
-//		LocalDate PayDate = map.get("payDate");
-//		int compareEtoP = EndDate.compareTo(PayDate);
-//		
-//		if(compareEtoP <= 0) {
+		
+		boolean pCate = map.get("pCateNo").equals("0");
+		
+		if(pCate) {
+			throw new CategoryException("카테고리를 입력해주세요.");
+		}
 				return mapper.joinUpdateProjectAndPrjoptionByPrjNo(map);
-//		}else {
-//				throw new DateTimeOverException("결제일이 마감일보다 빠를 수 없습니다.");
-//			}	
 		}
 
 	@Override
