@@ -80,10 +80,20 @@ google.charts.setOnLoadCallback(sponsorRankingChart);
 		var options = {
 				title: '100펀딩 월별 후원수 및 매출 현황',
 				legend : {position:'bottom'},
- 				series : {0:{targetAxisIndex:0,axis:'후원수'},
-					      1:{targetAxisIndex:1}} ,
-				vAxes:{0:{title:'후원수'},
-					   1:{title:'매출'}},
+ 				series : {
+ 					0:{targetAxisIndex:0,axis:'후원수'},
+					1:{targetAxisIndex:1,axis:'매출'}
+ 				},
+				vAxes:{
+					0:{title:'후원수'},
+					1:{title:'매출'}
+				},
+				vAxis:{
+					gridlines:{count:0}
+				},
+				hAxis:{
+					gridlines: {count: 2}
+				}
 		};
 		
 		var objDiv = document.getElementById('line_chart');

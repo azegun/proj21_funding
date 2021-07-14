@@ -29,9 +29,11 @@ public class RestAdminController {
 	
 	@GetMapping("/getOptList/{prjNo}")
 	public ResponseEntity<Object> member(@PathVariable int prjNo, HttpServletResponse response) {
-        List<PrjOption> option = optionService.showSimpleOptionByPrjNo(prjNo);
-        System.out.println(option);
-        return ResponseEntity.ok(option);
+		System.out.println(1);
+		System.out.println(prjNo);
+//        List<PrjOption> option = optionService.showSimpleOptionByPrjNo(prjNo);
+//        System.out.println(option);
+        return ResponseEntity.ok(optionService.showSimpleOptionByPrjNo(prjNo));
     }
 	
 	@PatchMapping("replyQna/{idx}")

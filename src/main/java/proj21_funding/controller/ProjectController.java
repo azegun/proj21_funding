@@ -255,6 +255,7 @@ public class ProjectController {
 	@RequestMapping("/fundingProject")
 	public ModelAndView funding(@Valid UserLogin userLogin, HttpServletRequest request, HttpSession session,
 			HttpServletResponse response) {
+		System.out.println(request.getContextPath());
 		UserAuthInfo uai;
 		int prjNo = (int) session.getAttribute("prjNo");
 		try {
@@ -276,6 +277,8 @@ public class ProjectController {
 			return mav;
 		} catch (NullPointerException e) {
 			return new ModelAndView("redirect:/login");
+		} catch (NumberFormatException e) {
+			return new ModelAndView("project/project_detail");
 		}
 	}
 

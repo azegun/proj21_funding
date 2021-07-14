@@ -11,7 +11,9 @@ public class PrjOption {
 		
 
 		//기본 생성자
-		public PrjOption() {}
+		public PrjOption() {
+			
+		}
 		
 		//옵션 번호로 검색
 		public PrjOption(int optNo) {
@@ -56,7 +58,7 @@ public class PrjOption {
 			this.prjNo = prjNo;
 		}
 		public String getOptName() {
-			return optName.trim();
+			return optName;
 		}
 
 		public void setOptName(String optName) {
@@ -70,7 +72,7 @@ public class PrjOption {
 			this.optPrice = optPrice;
 		}
 		public String getOptContent() {
-			return optContent.trim();
+			return optContent;
 		}
 		public void setOptContent(String optContent) {
 			this.optContent = optContent;
