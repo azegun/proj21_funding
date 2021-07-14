@@ -50,7 +50,7 @@
 </script>
 </head>
 <body>
-${optList[0].prjNo.prjNo}
+<%-- ${optList[0].prjNo.prjNo} --%>
 
 	<section class="container">
 			<header id = "mydetail_header">		   

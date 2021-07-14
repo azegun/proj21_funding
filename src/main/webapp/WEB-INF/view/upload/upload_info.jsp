@@ -48,7 +48,7 @@
 		</script>
 </head>
 <body>
-${list.bankAccount }
+<%-- ${list.bankAccount } --%>
 	<section id = "info">
 		<section id = "info_top">
 				<jsp:include page="/WEB-INF/view/upload/info_top.jsp"/>

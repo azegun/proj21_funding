@@ -118,28 +118,33 @@
 			
 			 //아이템 추가
 		   $(function(){
-				var i = 0;		
+				var i = 0;						
 				//옵션추가
 				$('.optionPlus').on("click", function(){	
+					console.log(i ) 
 					alert("옵션을 추가 하시겠습니까?")
 				//개수 제한걸기
 				if(i < 3){					
 					i += 1
-					addopt(i)	
-				
+					addopt(i)					
+				}else if(i ==3){
+					alert("옵션은 최대 4개까지만 입력하실 수 있습니다.")
 				}
 				});
 				
 				//옵션삭제
 				$('.optionMinus').on("click", function(){
+					console.log(i)
 					alert("옵션을 삭제  하시겠습니까?")
 					$('.addAll:last-child').remove();
 					if(i == 3){
-						i = 0
+						i = 2
 					}else if(i ==2){
 						i =1
-					}else if(i ==1){
-						i =2
+					}else if(i == 1){
+						i = 0
+					}else if(i ==0){
+						alert("최소한 1개의 옵션은 등록하셔야 됩니다.")
 					}
 				});	
 				/* 버튼 보여주기  */

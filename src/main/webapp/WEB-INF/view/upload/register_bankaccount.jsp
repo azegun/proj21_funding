@@ -42,7 +42,7 @@
 					
 </head>
 <body>
-${authInfo.userNo}
+<%-- ${authInfo.userNo} --%>
 <%-- ${authInfo.userNo} --%>
 		<section class="container">
 			
