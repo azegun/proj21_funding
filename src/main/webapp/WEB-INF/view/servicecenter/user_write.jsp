@@ -64,11 +64,6 @@
 						<dd class="td_right"><textarea name="qnaContent"
 									id="qnaContent" cols="40" rows="15" required="required"></textarea></dd>
 					</dl>
-					<dl>
-						<dt class="td_left"><label for="qnaFile">파일첨부</label></dt>
-						<dd class="td_right"><input type="file" name="qnaFile"
-								id="qnaFile"></input></dd>
-					</dl>
 						<div id="hidden"><input type="hidden" id="userNo" name="userNo.userNo"
 								value="${authInfo.userNo }" size=40 required="required"
 								readonly="readonly" /></div>
