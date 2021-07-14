@@ -17,6 +17,9 @@
 	<section>
 		<jsp:include page="/WEB-INF/view/funding/fundingBody.jsp"/>
 	</section>
+	<footer>
+		<jsp:include page="/WEB-INF/view/home/footer.jsp"/>
+	</footer>
 
 </div>
 </body>

@@ -179,7 +179,7 @@
 		<label><input type="radio" class="payCard" name="payMethod" value="card" checked/>신용카드/체크카드</label>
 		<label><input type="radio" class="payBank" name="payMethod" value="bank"/>계좌이체</label><br>
 		
-		<span id="payText">카드 번호 </span><input type="text" id="textNo" name="accountNo" style="margin-top:15px;"/>
+		<span id="payText">카드 번호 </span><input type="text" id="textNo" name="accountNo" pattern="[0-9]+" style="margin-top:15px;"/>
 		</fieldset>
 	</div>
 	<input type="hidden" name="prjNo" value="${prjInfo.prjNo }"/>
