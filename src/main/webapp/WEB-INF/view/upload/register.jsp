@@ -52,8 +52,9 @@
 	      //goback()
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
-	         $("#return").on("click", function(){
-	            window.location.href = contextPath+"/uploadListCancel";
+	         $(".return").on("click", function(){
+	        	 alert("프로젝트 등록을 취소하시겠습니까? ")
+	            window.location.href = contextPath+"/uploadListCancel";	            
 	         });         
 	      });
 	      
@@ -70,10 +71,6 @@
 	      $(function(){
 	         var contextPath = "<%=request.getContextPath()%>";
 	         $(".test").on("click", function(){
-	               var category = $('#pCategoryNo').val()
-	               if(category == 0){
-	                  alert("카테고리를 	선택해주세요")
-	               }
 	               
 	              var prjGoal =  $('#prjGoal').val();
 	              var optPrice = $('#optPrice').val();
@@ -124,6 +121,7 @@
 				var i = 0;		
 				//옵션추가
 				$('.optionPlus').on("click", function(){	
+					alert("옵션을 추가 하시겠습니까?")
 				//개수 제한걸기
 				if(i < 3){					
 					i += 1
@@ -134,6 +132,7 @@
 				
 				//옵션삭제
 				$('.optionMinus').on("click", function(){
+					alert("옵션을 삭제  하시겠습니까?")
 					$('.addAll:last-child').remove();
 					if(i == 3){
 						i = 0
@@ -142,9 +141,13 @@
 					}else if(i ==1){
 						i =2
 					}
-				});		
-				
-			
+				});	
+				/* 버튼 보여주기  */
+		 		$('.optionShow').click(function(){				
+		 			$(this).parent().remove();
+					$('.optionMinus').toggleClass('hidden');	
+					$('.optionPlus').toggleClass('hidden');						
+				}); 							
 		   });
 	</script>		
 	</head>
@@ -274,9 +277,12 @@
 								</tr>		
 								<tr  class="options" >
 										<td colspan="2">
+												 <div id= "tdoption_btns1" >
+												  		<button id = "optadd_minu" type = "button" class = "optionShow" >옵션</button>&nbsp; 
+												  </div>
 												  <div id= "tdoption_btns" >
-												  		<button id = "optadd_minu" type = "button" class = "optionPlus" >추가</button>&nbsp; 
-												  		<button id = "optadd_minu"  type = "button" class = "optionMinus" >삭제</button>
+												  		<button id = "optadd_minu" type = "button" class = "optionPlus hidden" >추가</button>&nbsp; 
+												  		<button id = "optadd_minu"  type = "button" class = "optionMinus hidden" >삭제</button>
 												  </div>
 										</td>
 								</tr>	
@@ -294,7 +300,7 @@
 				<div id="register_btns">
 						<input  id = "btns" class = "test" type="submit" value="등록"/>&nbsp;
 						<input  id = "btns" type="reset" value="다시쓰기" />&nbsp; 
-						<button  id = "btns" type="button" id= "return">뒤로</button>
+						<button  id = "btns" type="button" class= "return">뒤로</button>
 				</div>	
 			
 			</section>		

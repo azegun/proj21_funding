@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.account.UserLogin;
+import proj21_funding.exception.CategoryException;
 import proj21_funding.exception.DuplicateEmailException;
 import proj21_funding.exception.DuplicateNickNameException;
+import proj21_funding.exception.EmptySpaceException;
 import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.mapper.UserInfoMapper;
 import proj21_funding.service.UserInfoService;
@@ -106,8 +108,23 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return mapper.showBankAccount(userNo);
 	}
 
+//	 계좌등록
 	@Override
 	public int updateBankAccount(UserInfo userInfo) {
+		int accountHolder = userInfo.getAccountHolder().trim().length();
+		int bankAccount = userInfo.getBankAccount().trim().length();
+		
+		String bankName =  userInfo.getBankName();
+		System.out.println("accountHolder>> "+ accountHolder);
+		System.out.println("bankAccount>> "+ bankAccount);
+		
+		  if(accountHolder == 0 || bankAccount ==0) {
+			 throw new EmptySpaceException("문자를 등록 해야됩니다."); 
+			 }else if(bankName.contains("0")){
+				 System.out.println("111");
+			throw new CategoryException("은행명을 선택하세요.");
+			 }
+		
 		return mapper.updateBankAccount(userInfo);
 	}
 

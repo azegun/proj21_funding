@@ -23,10 +23,12 @@
 					
 					/* 프로젝트 리스트 수정으로 */		
 								$("#update_list").on("click", function(){
-									window.location.href = contextPath+"/updatePrj/${pro.prjNo}";
+									alert("프로젝트 수정 하시겠습니까? ")
+									window.location.href = contextPath+"/updatePrj/${pro.prjNo}";									
 								});			
 					/* 프로젝트 삭제 */		
 								$("#delete_list").on("click", function(){
+									 alert("프로젝트 삭제하시겠습니까? ")
 									window.location.href = contextPath+"/removeOneProject/${pro.prjNo}";
 								});			
 					
@@ -58,7 +60,7 @@ ${optList } --%>
 		<c:if test="${pro == null}">
 				<h2>등록된 프로젝트이 존재하지 않습니다.</h2>
 				<div id ="foot_btn">		
-				<button id = "go_list">리스트</button>
+				<button class = " btns" type="button" id = "go_list">리스트</button>
 				</div>	
 		</c:if>
 		<c:if test = "${pro != null}">

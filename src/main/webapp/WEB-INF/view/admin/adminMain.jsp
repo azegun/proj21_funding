@@ -116,7 +116,6 @@ google.charts.setOnLoadCallback(sponsorRankingChart);
 			<!-- /사이드바 -->
 		</header>
   <!-- 본문 -->
-  ${salesStat }<br>
   <div id="page-content-wrapper">
     <div class="container-fluid">
     	<button class="goMain" onclick="location.href='<%=request.getContextPath()%>'">메인으로 이동</button>

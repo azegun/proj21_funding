@@ -85,7 +85,7 @@ public class Project {
 	}
 
 	public String getPrjName() {
-		return prjName.trim();
+		return prjName;
 	}
 
 	public void setPrjName(String prjName) {
@@ -102,7 +102,7 @@ public class Project {
 	}
 
 	public String getPrjContent() {
-		return prjContent.trim();
+		return prjContent;
 	}
 
 	public void setPrjContent(String prjContent) {

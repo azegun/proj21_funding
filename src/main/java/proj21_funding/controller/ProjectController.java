@@ -184,11 +184,12 @@ public class ProjectController {
 		List<String> imgList = new ArrayList<String>();
 		UserAuthInfo authInfo = (UserAuthInfo) session.getAttribute("authInfo");
 		List<FundingInfo> fundingInfos = service.showFundingInfosByPrjNo(prjNo);
-		
+		List<Integer> reCountList = new ArrayList<Integer>();
 		for (PrjBoard board : prBd) {
 			UserInfo user = service.showUserbyNo(board.getUserNo().getUserNo());
 			board.setUserNo(user);
-
+			List<PrjBoardReply> boardRe = boardService.showPrjBoardReplyPostNo(board.getPostNo());
+			reCountList.add(boardRe.size());
 			if (board.getPostFile() != null && board.getPostFile().length > 0) {
 				try {
 					byte[] imagefile = board.getPostFile();
@@ -208,6 +209,7 @@ public class ProjectController {
 				}
 			}
 		}
+		session.setAttribute("reCount", reCountList);
 		session.setAttribute("img", imgList);
 		session.setAttribute("board", prBd);
 		

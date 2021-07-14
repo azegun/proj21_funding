@@ -14,7 +14,7 @@
 #top_btns{
 	margin-left: 300px;	
 }
-#register_proj{
+.btns{
 	 width: 150px;
     height: 30px;
     font-size: 15px;
@@ -23,4 +23,5 @@
     background-color: #ff7675;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
 }

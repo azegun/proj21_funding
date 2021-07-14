@@ -25,6 +25,7 @@ import proj21_funding.dto.PrjOption;
 import proj21_funding.dto.Project;
 import proj21_funding.dto.account.UserInfo;
 import proj21_funding.dto.project.PrjPlusOption;
+import proj21_funding.exception.CategoryException;
 import proj21_funding.exception.DateTimeOverException;
 import proj21_funding.exception.EmptySpaceException;
 import proj21_funding.exception.InputTypeStringError;
@@ -84,15 +85,34 @@ public class UploadController {
 	}
 //  계좌 등록 페이지
 	@PostMapping("/registerBank/{authInfo.userNo}")
-	public ModelAndView updateBankAccount(@PathVariable("authInfo.userNo") int userNo, UserInfo userInfo ) {
-		userService.updateBankAccount(userInfo);
-		List<PrjCategory> list = prjCategoryService.showCategory();
-
-		ModelAndView mav = new ModelAndView();		
-		mav.addObject("category", list);
-		mav.setViewName("upload/register");
+	public void updateBankAccount(
+			@PathVariable("authInfo.userNo") int userNo, UserInfo userInfo,  
+			HttpServletResponse response, HttpServletRequest request) throws IOException {
+		//절대값 및 기본 설정
+		String ContextPath =request.getContextPath();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type='text/javascript'>");	
 		
-		return mav;
+		try {
+			userService.updateBankAccount(userInfo);
+		}catch (EmptySpaceException e) {		
+			out.println("alert('잘못된 등록입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}catch (CategoryException e) {
+			out.println("alert('은행 명을 선택하셔야됩니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}		
+		// 팝업 창 컨트롤러에서 종료 후 자동 실행
+		out.println("alert('계좌 등록되었습니다.');");
+		out.println("window.close();");
+		out.println("opener.document.location.replace('"+ContextPath+"/registerForm');");
+		out.println("</script>");
+				
 	}
 	
 	//광고페이지에서 등록 html 여기
@@ -129,15 +149,20 @@ public class UploadController {
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+		out.println("<script type='text/javascript'>");
 		
 		System.out.println("ddd");
 		System.out.println("controller >> >  "+ project.getPrjGoal());
 		try {
 			//트렌젝션추가
 			trService.trJoinPrjAndPrjOpt(project, prjoption , uploadfile);		
-		}catch (EmptySpaceException e) {
-			out.println("<script type='text/javascript'>");
+		}catch (EmptySpaceException e) {			
 			out.println("alert('잘못된 등록입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}catch (CategoryException e) {
+			out.println("alert('카테고리를 입력해주세요.');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
@@ -181,11 +206,7 @@ public class UploadController {
 			return mav;	
 		
 		}catch (Exception e) { 	
-			out.println("<script type='text/javascript'>");
-			out.println("alert('잘못된 등록입니다..');");
-			out.println("history.back();");
-			out.println("</script>");
-			out.flush();
+			System.out.println("에러 발생>> "+ e);
 		 return mav; 
 		 }				
 	}	
@@ -215,6 +236,11 @@ public class UploadController {
 	public ModelAndView updateListSuccess(PrjPlusOption prjplusoption,
 		HttpServletRequest request, MultipartFile uploadfile, HttpServletResponse response  ) throws IOException {
 		 
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type='text/javascript'>");
+	
+		
 		//파일 존재 여부
 		if(uploadfile.getSize() !=0) {
 			// 파일 업로드
@@ -239,8 +265,6 @@ public class UploadController {
 	         String value = request.getParameter(name);
 	         map.put(name, value);
 	      }
-	
-
 		//리스트 조인	
 			
 		    boolean addOptName1 = map.containsKey("addOptName1");
@@ -250,7 +274,15 @@ public class UploadController {
 		 // 리스트를 새로 찍어줘야지 if조건에서 리스트를 찾음
 		    optList = optionService.selectSimplePrjOptionByPrjNo(prjplusoption.getpNo());
 		//조인 업데이트(프로젝트 + 옵션 1)
-		    projectService.joinUpdateProjectAndPrjoptionByNo(map);		   
+		    try {
+		    	  projectService.joinUpdateProjectAndPrjoptionByNo(map);		
+		    }catch (CategoryException e) {
+		    	out.println("alert('카테고리를 입력해주세요.');");
+		    	out.println("history.back();");
+				out.println("</script>");
+				out.flush();
+			}
+		    
 		    
 			    if(addOptName1 == false && addOptName2 == false && addOptName3 == false) {
 			    	if( optList.size() > 1) {
@@ -300,14 +332,8 @@ public class UploadController {
 			      trService.trUpdateAddOptionsOfFourTimes(map);
 		    }
 		
-		}catch (DateTimeOverException e) {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script type='text/javascript'>");
-			out.println("alert('결재일이 마감일보다 빠를 수 없습니다.');");
-			out.println("history.back();");
-			out.println("</script>");
-			out.flush();
+		}catch (Exception e) {
+			System.out.println("e>>"+ e);			
 		}
 		
 		//리스트 받기 (1. 옵션들 2. 카테고리들)

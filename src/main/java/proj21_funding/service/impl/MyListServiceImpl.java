@@ -55,5 +55,10 @@ public class MyListServiceImpl implements MyListService {
 		return mapper.selectCountPrjByUserNo(map);
 	}
 
+	@Override
+	public int deleteCascadeProjectByMap(Map<String, Object> map) {
+		return mapper.deleteCascadeProjectByMap(map);
+	}
+
 
 }

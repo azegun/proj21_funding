@@ -68,8 +68,8 @@ h2{
     box-shadow: inset 0px 0px 5px white;
 }
 tr{
-	border-top: 1px solid #97d5fb;
-	border-bottom: 1px solid #97d5fb;
+	border-top: 2px solid #97d5fb;
+	border-bottom: 2px solid #97d5fb;
 }
 td{
 	text-align: center;
@@ -80,6 +80,7 @@ td{
 	background:  #d0eaff;
 	border-left:  solid 2px #97d5fb;
 	font-size: 1.2em;
+	font-weight: bold;
 }
 .td_right{
 	width: 380px;
@@ -109,6 +110,7 @@ td{
     background-color: #ff7675;
     border-radius: 5px;
     border: none;
+     cursor: pointer;
 }
 #MOVE_TOP_BTN {
     position: fixed;

@@ -156,10 +156,7 @@ $(function(){
 					<c:if test="${!empty prBoard}">
 						<jsp:include page="/WEB-INF/view/prjBoard/prjBoard-detail.jsp" />
 					</c:if>				
-				</div>
-				<div id="projectUserInfo" >
-					<jsp:include page="/WEB-INF/view/project/projectUserInfo.jsp" />
-				</div>
+				</div>				
 			</div>
 		</div>	
 </body>
