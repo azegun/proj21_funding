@@ -2,30 +2,42 @@ package proj21_funding.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Board {
 
 	private int boardNo; // 게시글번호
 	private BoardCategory categoryNo; // 글 분류
 	private String boardTitle; // 공지제목
 	private String boardContent; // 공지내용
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date boardDate; // 작성일
-	private int boardReadCount; // 조회수
 
 	public Board() {
 		super();
 	}
 
-	public Board(int boardNo, BoardCategory categoryNo, String boardTitle, String boardContent, Date boardDate,
-			int boardReadCount) {
+	public Board(int boardNo, BoardCategory categoryNo, String boardTitle, String boardContent, Date boardDate) {
 		super();
 		this.boardNo = boardNo;
 		this.categoryNo = categoryNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
 		this.boardDate = boardDate;
-		this.boardReadCount = boardReadCount;
 	}
 	
+	public Board(int boardNo) {
+		super();
+		this.boardNo = boardNo;
+	}
+
+	public Board(BoardCategory categoryNo, String boardTitle, String boardContent) {
+		super();
+		this.categoryNo = categoryNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+	}
+
 	public Board(int boardNo, BoardCategory categoryNo, String boardTitle, String boardContent) {
 		super();
 		this.boardNo = boardNo;
@@ -80,20 +92,12 @@ public class Board {
 	public void setBoardDate(Date boardDate) {
 		this.boardDate = boardDate;
 	}
-
-	public int getBoardReadCount() {
-		return boardReadCount;
-	}
-
-	public void setBoardReadCount(int boardReadCount) {
-		this.boardReadCount = boardReadCount;
-	}
 	
 	@Override
 	public String toString() {
 		return String.format(
-				"Board [boardNo=%s, categoryNo=%s, boardTitle=%s, boardContent=%s, boardDate=%s, boardReadCount=%s]",
-				boardNo, categoryNo, boardTitle, boardContent, boardDate, boardReadCount);
+				"Board [boardNo=%s, categoryNo=%s, boardTitle=%s, boardContent=%s, boardDate=%s]",
+				boardNo, categoryNo, boardTitle, boardContent, boardDate);
 	}
 
 }

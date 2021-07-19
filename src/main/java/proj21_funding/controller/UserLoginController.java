@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserLogin;
+import proj21_funding.exception.UserNotFoundException;
 import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.service.UserAuthService;
 
@@ -36,18 +37,17 @@ public class UserLoginController {
 
 	// 로그인 성공시 메인화면으로
 	@PostMapping("/login")
-	public String submit(@Valid UserLogin userLogin, Errors errors, HttpSession session,
-			HttpServletResponse response) {
+	public String submit(@Valid UserLogin userLogin, Errors errors, HttpSession session, HttpServletResponse response) {
 		if (errors.hasErrors())
 			return "account/login";
 
 		try {
-			UserAuthInfo userAuthInfo = authService.authenicate(userLogin.getUserId(), userLogin.getUserPw());
+			UserAuthInfo userAuthInfo = authService.authenicate(userLogin);
 			session.setAttribute("authInfo", userAuthInfo);
-
+			
 			Cookie rememberCookie = new Cookie("REMEMBER", userLogin.getUserId());
 			rememberCookie.setPath("/");
-
+ 
 			if (userLogin.isRememberUserId()) {
 				rememberCookie.setMaxAge(60 * 60 * 24 * 30);
 			} else {
@@ -55,19 +55,25 @@ public class UserLoginController {
 			}
 			response.addCookie(rememberCookie);
 
-			return "/main";
-		} catch (WrongIdPasswordException ex) {
-			errors.reject("idPasswordNotMatching");
+			if(userAuthInfo.getUserNo() < 0) {
+				return "redirect:/admin";
+			}
+			return "redirect:/main";			
+		} catch (UserNotFoundException ex) {
+			errors.rejectValue("userId","userNotFound");
 			return "account/login";
-		}
+		}catch (WrongIdPasswordException ex) {
+			errors.rejectValue("userPw", "idPasswordNotMatching");
+			return "account/login";
+		} 
 
 	}
 
-	//로그아웃
-		@RequestMapping("/logout")
-		public String logout(HttpSession session) {
-			session.invalidate();
-			return "redirect:/main";
-		}
-	
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main";
+	}
+
 }

@@ -1,6 +1,7 @@
 package proj21_funding.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 
 //메세지
 public class Message {
@@ -8,11 +9,20 @@ public class Message {
 	private String sendUser; // 발신자
 	private String receiveUser;// 수신자
 	private String msgContent; // 내용
-	private Date sendDate; // 발신일
+	private LocalDateTime sendDate; // 발신일
 	private boolean readYN; // 확인여부
-
+	private boolean delSend; //보낸메세지삭제
+	private boolean delRecevie; // 받은메세지삭제
+	private String[] check; // 체크여부	
+	private int currentPage; // 현재페이지
 	// 생성자
 	public Message() {
+	}
+
+	public Message(String sendUser, String receiveUser, String msgContent) {
+		this.sendUser = sendUser;
+		this.receiveUser = receiveUser;
+		this.msgContent = msgContent;
 	}
 
 	// getter & setter
@@ -48,11 +58,11 @@ public class Message {
 		this.msgContent = msgContent;
 	}
 
-	public Date getSendDate() {
+	public LocalDateTime getSendDate() {
 		return sendDate;
 	}
 
-	public void setSendDate(Date sendDate) {
+	public void setSendDate(LocalDateTime sendDate) {
 		this.sendDate = sendDate;
 	}
 
@@ -64,10 +74,47 @@ public class Message {
 		this.readYN = readYN;
 	}
 
+	public boolean isDelSend() {
+		return delSend;
+	}
+
+	public void setDelSend(boolean delSend) {
+		this.delSend = delSend;
+	}
+
+	public boolean isDelRecevie() {
+		return delRecevie;
+	}
+
+	public void setDelRecevie(boolean delRecevie) {
+		this.delRecevie = delRecevie;
+	}
+
+	public String[] getCheck() {
+		return check;
+	}
+
+	public void setCheck(String[] check) {
+		this.check = check;
+	}
+
+	
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("Message [msgNo=%s, sendUser=%s, receiveUser=%s, msgContent=%s, sendDate=%s, readYN=%s]",
-				msgNo, sendUser, receiveUser, msgContent, sendDate, readYN);
+		return String.format(
+				"Message [msgNo=%s, sendUser=%s, receiveUser=%s, msgContent=%s, sendDate=%s, readYN=%s, delSend=%s, delRecevie=%s, check=%s]",
+				msgNo, sendUser, receiveUser, msgContent, sendDate, readYN, delSend, delRecevie,
+				Arrays.toString(check));
 	}
+
+	
 
 }

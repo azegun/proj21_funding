@@ -5,38 +5,44 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/searchPw.css">
 </head>
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
-		<section id="searchPwFormArea">
-			<h1>비밀번호 찾기</h1>
-			<form:form modelAttribute="userInfo">
+		<section id="searchPwArea">
+			<form:form action="searchPw-rs" modelAttribute="userSearch">
 			<form:errors />
-				<fieldset id="searchBtn">
+				<fieldset id="searchPwForm">
+				<h2>비밀번호 찾기</h2>
+				<div id="searchdata">
+					<div id="searchCont">
 					<p>
-						<label>아이디:
-						<form:input path="userId"  />
-						<form:errors path="userId" />
-						</label>
+						<label >회원계정</label>
+						<form:input path="userId" id="input"/>						
 					</p>
+					<p id="errors"><form:errors path="userId"/>&nbsp;</p>
+					</div>
+					<div id="searchCont">
 					<p>
-						<label> 회원성명 :
-						<form:input path="userName" /> 
-						<form:errors path="userName" />
-						</label>
+						<label>회원성명</label>
+						<form:input path="userName" id="input"/> 					
 					</p>
+					<p id="errors"><form:errors path="userName"/>&nbsp;</p>
+					</div>
+					<div id="searchCont">
 					<p>
-						<label> 회원H.P :
-						<form:input path="userPhone" /> 
-						<form:errors path="userPhone" />
-						</label>
+						<label>이메일</label>
+						<form:input path="email" id="input"/> 
 					</p>
+					<p id="errors"><form:errors path="email"/>&nbsp;</p>
+					</div>
+				</div>
+				<form:button id="submit">비밀번호 찾기</form:button>
 				</fieldset>	
-				<form:button id="search">비밀번호 찾기</form:button>
 			</form:form>				
 		</section>
 		<footer>

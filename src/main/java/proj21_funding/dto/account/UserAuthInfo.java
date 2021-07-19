@@ -6,31 +6,20 @@ public class UserAuthInfo {
 	private int userNo; // 회원번호
 	private String userId; // 회원계정
 	private String userName; // 회원성명
-	private String userPhone; // 회원H.P
-	private int zipCode; // 우편번호
-	private String address; // 주소
-	private String detailAddress;// 상세주소
-	private String email; // 이메일
-	private String bankName; // 은행명
-	private int bankAccount; // 계좌번호
+	private String nickName; // 회원별명
 
 	public UserAuthInfo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserAuthInfo(int userNo, String userId, String userName, String userPhone, int zipCode, String address,
-			String detailAddress, String email, String bankName, int bankAccount) {
+	public UserAuthInfo(int userNo, String userId, String userName, String nickName) {
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userName = userName;
-		this.userPhone = userPhone;
-		this.zipCode = zipCode;
-		this.address = address;
-		this.detailAddress = detailAddress;
-		this.email = email;
-		this.bankName = bankName;
-		this.bankAccount = bankAccount;
+		this.nickName = nickName;
 	}
+
+
 
 	// getter & setter
 	public int getUserNo() {
@@ -45,39 +34,22 @@ public class UserAuthInfo {
 		return userName;
 	}
 
-	public String getUserPhone() {
-		return userPhone;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public int getZipCode() {
-		return zipCode;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public String getDetailAddress() {
-		return detailAddress;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getBankName() {
-		return bankName;
-	}
-
-	public int getBankAccount() {
-		return bankAccount;
+	
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	@Override
 	public String toString() {
-		return String.format(
-				"UserAuthInfo [userNo=%s, userId=%s, userName=%s, userPhone=%s, zipCode=%s, address=%s, detailAddress=%s, email=%s, bankName=%s, bankAccount=%s]",
-				userNo, userId, userName, userPhone, zipCode, address, detailAddress, email, bankName, bankAccount);
+		return String.format("UserAuthInfo [userNo=%s, userId=%s, userName=%s, nickName=%s]", userNo, userId, userName,
+				nickName);
 	}
+
+	
+	
 
 }

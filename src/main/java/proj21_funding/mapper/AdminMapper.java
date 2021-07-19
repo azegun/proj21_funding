@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import proj21_funding.dto.Admin;
 
+
 @Component
 public interface AdminMapper {
 
@@ -16,6 +17,8 @@ public interface AdminMapper {
 	Admin selectAdminbyId(String adminId);
 
 	Admin selectAdminbyName(String adminName);
+
+	Admin selectAdminbylogin(Admin admin);
 
 	int insertAdmin(Admin admin);
 

@@ -5,13 +5,16 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import proj21_funding.dto.account.UserAuthInfo;
 import proj21_funding.dto.account.UserInfo;
-import proj21_funding.exception.DuplicateUserException;
+import proj21_funding.exception.DuplicateEmailException;
+import proj21_funding.exception.DuplicateNickNameException;
+import proj21_funding.exception.WrongIdPasswordException;
 import proj21_funding.service.UserInfoService;
 
 @Controller
@@ -22,7 +25,15 @@ public class UserInfoController {
 
 	// 회원정보 보기
 	@GetMapping("/account/userInfo")
-	public String form(UserInfo userInfo, HttpSession session) {
+	public String form(UserInfo userInfo, HttpSession session, Model model) {
+		UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
+		
+		if(userAuthInfo.getUserNo() < 0) {
+		         return "redirect:/main";
+		}		
+		
+		userInfo = service.showUserInfoById(userAuthInfo.getUserId());
+		model.addAttribute(userInfo);
 		return "account/userInfo";
 	}
 
@@ -34,12 +45,18 @@ public class UserInfoController {
 
 		try {
 			service.modifyUserInfo(userInfo);
-			session.setAttribute("authInfo", userInfo);
+			UserAuthInfo userAuthInfo = (UserAuthInfo) session.getAttribute("authInfo");
+			userAuthInfo.setNickName(userInfo.getNickName());			
+			
+			session.setAttribute("authInfo", userAuthInfo);
 			return "account/userInfo";
-		} catch (DuplicateUserException e) {
-			errors.rejectValue("userId", "duplicate");
+		} catch (DuplicateEmailException e) {
+			errors.rejectValue("email", "duplicate");
 			return "account/userInfo";
-		}
+		} catch (DuplicateNickNameException  e) {
+			errors.rejectValue("nickName", "duplicate");
+			return "account/userInfo";
+		} 
 
 	}
 
@@ -57,8 +74,8 @@ public class UserInfoController {
 			service.removeUserInfo(userAuthInfo.getUserId(), userInfo.getUserPw());
 			session.invalidate();
 			return "redirect:/main";
-		} catch (DuplicateUserException e) {
-			errors.rejectValue("currentUserPw", "notMatching");
+		} catch (WrongIdPasswordException e) {
+			errors.rejectValue("userPw", "notMatching");
 			return "account/userReSign";
 		}
 	}

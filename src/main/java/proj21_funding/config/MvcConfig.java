@@ -34,6 +34,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/main").setViewName("main");
+		registry.addViewController("/practice").setViewName("practice");
 	}
 	
 	@Bean
@@ -47,6 +48,9 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/account/user**");
+		registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/message/**");
+		registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/qnauserview");
+		registry.addInterceptor(authCheckInterceptor()).addPathPatterns("/qnawrite");
 	}
 
 	@Bean

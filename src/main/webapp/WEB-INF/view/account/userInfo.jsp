@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보관리</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/userInfo.css">
 	<script type="text/javascript">
 	function findAddr(){
@@ -29,81 +29,119 @@
 	        }
 	    }).open();
 	}
+	
+	function openCh(){		
+		var popupWidth = 400;
+		var popupHeight = 300;
+		var popupX = (window.screen.width / 2) - (popupWidth / 2);
+		var popupY= (window.screen.height / 2) - (popupHeight / 2);
+		window.open('userChangePw', '', 'width = ' + popupWidth + ', height = '+ popupHeight
+				+ ', left =' + popupX + ', top =' + popupY);
+	}	
 	</script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 <div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
 		<section id="userInfoArea">
-			<h1>회원정보</h1>
 			<form:form modelAttribute="userInfo">
-			<form:errors />
-				<p>
-					<label>아이디:
-					<form:input path="userId" readonly="true" value="${authInfo.userId}" />
-					<form:errors path="userId" />
-					</label>
-				</p>
-				<p>
-					<label>비밀번호:
-					<a href="<c:url value='/account/userChangePw'/>">비밀번호 변경</a>
-					</label>
-				</p>
-				<p>
-					<label> 회원성명 :
-					<form:input path="userName" readonly="true" value="${authInfo.userName}" /> 
-					<form:errors path="userName" />
-					</label>
-				</p>
-				<p>
-					<label> 회원H.P :
-					<form:input path="userPhone" value="${authInfo.userPhone}"/> 
-					<form:errors path="userPhone" />
-					</label>
-				</p>
-				<p>
-					<label> 우편번호 검색하기 :
-					<form:input path="zipCode" id="member_post"  readonly="true" onclick="findAddr()" value="${authInfo.zipCode}"/>					 
-					<form:errors path="zipCode" />										
-					</label>
-				</p>
-				<p>
-					<label> 주소 :
-					<form:input path="address" id="member_addr" readonly="true" value="${authInfo.address}"/> 
-					<form:errors path="address" />					
-					</label>
-				</p>
-				<p>
-					<label> 상세주소 :
-					<form:input path="detailAddress" value="${authInfo.detailAddress}"/> 
-					<form:errors path="detailAddress" />					
-					</label>
-				</p>				
-				<p>
-					<label> 이메일 :
-					<form:input path="email" value="${authInfo.email}"/> 
-					<form:errors path="email" />
-					</label>
-				</p>
-				<p>
-					<label> 은행명 :
-					<form:input path="bankName" value="${authInfo.bankName}"/> 
-					<form:errors path="bankName" />
-					</label>
-				</p>
-				<p>
-					<label> 계좌번호 :
-					<form:input path="bankAccount" value="${authInfo.bankAccount}"/> 									
-					<form:errors path="bankAccount" />
-					</label>
-				</p>
-				<form:button id="submit" value="submit">수정하기</form:button>
-											
+			<form:errors />			
+				<fieldset id="userInfoForm">
+				<h2>회원정보</h2>
+					<div id="infodata">
+						<div id="infoCont">
+							<p>
+								<label>아이디</label><br>
+								<form:input path="userId" readonly="true" value="${userInfo.userId}" />
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+						<p>
+							<label>비밀번호</label><br>
+							<form:button type = "button" onclick="openCh()">비밀번호 변경</form:button>
+						</p>
+						<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+						<p>
+							<label>이름</label><br>
+							<form:input path="userName" readonly="true" value="${userInfo.userName}" /> 
+							</p>
+							<p id="errors">&nbsp;</p>	
+							</div>
+						<div id="infoCont">			
+							<p>
+								<label>별명</label><br>
+								<form:input path="nickName" value="${userInfo.nickName}"/> 
+							</p>
+							<p id="errors"><form:errors path="nickName"/>&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>이메일</label><br>
+								<form:input path="email" value="${userInfo.email}"/> 
+							</p>
+							<p id="errors"><form:errors path="email"/>&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>H.P</label><br>
+								<form:input path="userPhone" value="${userInfo.userPhone}"/> 
+							</p>
+							<p id="errors">&nbsp;</p>				
+						</div>
+						<div id="member_post1">
+							<p>
+								<label>주소</label><br>
+								<form:input path="zipCode" id="member_post" placeholder="클릭하세요" readonly="true"/> 
+								<form:button type="button" onclick="findAddr()" id="addresssearch">검색</form:button>
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<form:input path="address" id="member_addr" readonly="true" value="${userInfo.address}"/> 
+							</p>
+							<p id="errors"><form:errors path="address"/>&nbsp;</p>	
+						</div>
+						<div id="infoCont">
+							<p>
+								<form:input path="detailAddress" value="${userInfo.detailAddress}"/> 
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>은행명</label><br>
+								<form:input path="bankName" value="${userInfo.bankName}"/> 
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>예금주</label><br>
+								<form:input path="accountHolder" /> 
+							</p>
+							<p id="errors">&nbsp;</p>	
+						</div>
+						<div id="infoCont">
+							<p>
+								<label>계좌번호</label><br>
+								<form:input path="bankAccount" value="${userInfo.bankAccount}"/> 									
+							</p>
+							<p id="errors">&nbsp;</p>
+						</div>
+					</div>
+				<div id="btn">
+					<form:button id="sub1" value="submit">수정하기</form:button>											
+					<a href="<c:url value='/account/userReSign'/>"><form:button id="sub2" type="button" value="del">탈퇴하기</form:button></a>
+				</div>
+				</fieldset>
 			</form:form>
-			<a href="<c:url value='/account/userReSign'/>"><button value="del">탈퇴하기</button></a>
 		</section>			
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 

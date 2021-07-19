@@ -5,10 +5,11 @@
 	<resultMap type="BoardCategory" id="resBC">
 		<id property="categoryNo" column="CategoryNo" />
 		<result property="categoryName" column="CategoryName" />
+		<result property="categoryClass" column="categoryClass" />
 	</resultMap>
 
 	<sql id="selectSql">
-		select CategoryNo, CategoryName
+		select CategoryNo, CategoryName, categoryClass
 		  from BoardCategory	
 	</sql>
 
@@ -26,15 +27,20 @@
 		where categoryName = #{categoryName}	
 	</select>
 
+	<select id="selectBCbyClass" resultMap="resBC">
+		<include refid="selectSql" />
+		where categoryClass = #{categoryClass}	
+	</select>
+	
 	<insert id="insertBC" parameterType="BoardCategory">
 		insert
-		  into BoardCategory( categoryNo, categoryName )
-		values(#{categoryNo}, #{categoryName})			
+		  into BoardCategory( categoryNo, categoryName, categoryClass )
+		values(#{categoryNo}, #{categoryName}, #{categoryClass})			
 	</insert>
 	
 	<update id="updateBC">
 		update BoardCategory
-		   set categoryName = #{categoryName}
+		   set categoryName = #{categoryName}, #{categoryClass}
 		 where categoryNo = #{categoryNo}
 	</update>
 	

@@ -4,5 +4,7 @@
 .container{
 	margin:0 auto;
 	width:65%;	
+    min-width: 1080px;	
 }
+
 

@@ -6,6 +6,13 @@ public class UserLogin {
 	private String userPw;//회원비밀번호
 	private boolean rememberUserId; //아이디기억하기
 
+	public UserLogin() {}
+
+	public UserLogin(String userId, String userPw) {
+		this.userId = userId;
+		this.userPw = userPw;
+	}
+
 	// getter & setter
 	public String getUserId() {
 		return userId;

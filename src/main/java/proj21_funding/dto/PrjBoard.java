@@ -1,86 +1,91 @@
 package proj21_funding.dto;
 
+import java.time.LocalDateTime;
+import java.util.Arrays;
+
+import proj21_funding.dto.account.UserInfo;
+
 public class PrjBoard {
-		private int postNo;   //게시글번호
-		private Project prjNo;//프로젝트번호
-		private int userNo;//글작성자
-		private String postTitle;//게시글제목
-		private String postContent;//게시글내용
-		private String postDate;//게시글날짜
-		private String postFile;//첨부파일
-	
-		//기본생성자
-		public PrjBoard() {}
-	
-		//게시글 번호 검색
-		public PrjBoard(int postNo) {
-			this.postNo = postNo;
-		}
-		//Getter &Setter
-		public int getPostNo() {
-			return postNo;
-		}
+	private int postNo; // 게시글번호
+	private int prjNo;// 프로젝트번호
+	private UserInfo userNo;// 글작성자
+	private String postContent;// 게시글내용
+	private LocalDateTime postDate;// 게시글날짜
+	private byte[] postFile;// 첨부파일
+	private String fileName;// 파일이름
 
-		public void setPostNo(int postNo) {
-			this.postNo = postNo;
-		}
+	// 기본생성자
+	public PrjBoard() {
+	}
 
-		public Project getPrjNo() {
-			return prjNo;
-		}
+	// 게시글 번호 검색
+	public PrjBoard(int postNo) {
+		this.postNo = postNo;
+	}
 
-		public void setPrjNo(Project prjNo) {
-			this.prjNo = prjNo;
-		}
+	// Getter &Setter
 
-		public int getUserNo() {
-			return userNo;
-		}
+	public int getPostNo() {
+		return postNo;
+	}
 
-		public void setUserNo(int userNo) {
-			this.userNo = userNo;
-		}
+	public void setPostNo(int postNo) {
+		this.postNo = postNo;
+	}
 
-		public String getPostTitle() {
-			return postTitle;
-		}
+	public int getPrjNo() {
+		return prjNo;
+	}
 
-		public void setPostTitle(String postTitle) {
-			this.postTitle = postTitle;
-		}
+	public void setPrjNo(int prjNo) {
+		this.prjNo = prjNo;
+	}
 
-		public String getPostDate() {
-			return postDate;
-		}
+	public UserInfo getUserNo() {
+		return userNo;
+	}
 
-		public void setPostDate(String postDate) {
-			this.postDate = postDate;
-		}
+	public void setUserNo(UserInfo userNo) {
+		this.userNo = userNo;
+	}
 
-		public String getPostFile() {
-			return postFile;
-		}
+	public String getPostContent() {
+		return postContent;
+	}
 
-		public void setPostFile(String postFile) {
-			this.postFile = postFile;
-		}
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
+	}
 
-		public String getPostContent() {
-			return postContent;
-		}
+	public LocalDateTime getPostDate() {
+		return postDate;
+	}
 
-		public void setPostContent(String postContent) {
-			this.postContent = postContent;
-		}
+	public void setPostDate(LocalDateTime postDate) {
+		this.postDate = postDate;
+	}
 
-		@Override
-		public String toString() {
-			return String.format(
-					"PrjBoard [postNo=%s, prjNo=%s, userNo=%s, postTitle=%s, postContent=%s, postDate=%s, postFile=%s]",
-					postNo, prjNo, userNo, postTitle, postContent, postDate, postFile);
-		}
-		
-		
-		
-		
+	public byte[] getPostFile() {
+		return postFile;
+	}
+
+	public void setPostFile(byte[] postFile) {
+		this.postFile = postFile;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"PrjBoard [postNo=%s, prjNo=%s, userNo=%s, postContent=%s, postDate=%s, postFile=%s, fileName=%s]",
+				postNo, prjNo, userNo, postContent, postDate, Arrays.toString(postFile), fileName);
+	}
+
 }

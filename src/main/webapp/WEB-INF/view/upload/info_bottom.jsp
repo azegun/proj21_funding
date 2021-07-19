@@ -8,6 +8,7 @@
 			<link rel="stylesheet" href=" <%=request.getContextPath() %>/css/upload_css/info_bottom.css">
 </head>
 <body>
+
 			<section id = "bottom" >			
 					<h3>창조적인 도전을 잘 아는 사람들이 만듭니다.</h3>
 				<div id = "bottom_first">
@@ -30,9 +31,9 @@
 						후원의 상당 부분이 70만 텀블벅 커뮤니티와 확장된 소셜네트워크에서 유입됩니다. 
 						데이터에 기초해 스마트한 홍보와 진행을 할 수 있도록 노하우를 지원해 드리겠습니다.
 						</p>
-				</div>
-				
+				</div>				
 				</section>
+			
 				
 </body>
 </html>

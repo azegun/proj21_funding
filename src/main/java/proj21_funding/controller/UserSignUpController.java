@@ -8,9 +8,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import proj21_funding.dto.account.UserSignUp;
+import proj21_funding.exception.DuplicateEmailException;
+import proj21_funding.exception.DuplicateNickNameException;
 import proj21_funding.exception.DuplicateUserException;
 import proj21_funding.service.UserRegisterService;
 
@@ -28,12 +29,12 @@ public class UserSignUpController {
 
 	// 가입성공화면가기
 	@PostMapping("/account/signUp2")
-	public String signUp2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree,
-			@Valid UserSignUp userSignUp, Errors errors) {
+	public String signUp2(@Valid UserSignUp userSignUp, Errors errors) {
 		if (errors.hasErrors()) {
 			return "account/signUp1";
 		}
-		if (!agree) {
+		if (!userSignUp.getAgree()) {
+			errors.rejectValue("agree", "nocheck");
 			return "account/signUp1";
 		}
 
@@ -41,13 +42,20 @@ public class UserSignUpController {
 			errors.rejectValue("confirmUserPw", "nomatch");
 			return "account/signUp1";
 		}
+		
 		try {
 			service.regist(userSignUp);
 			return "account/signUp2";
-		} catch (DuplicateUserException e) {
+		} catch (DuplicateUserException  e) {
 			errors.rejectValue("userId", "duplicate");
 			return "account/signUp1";
-		}
+		} catch (DuplicateNickNameException  e) {
+			errors.rejectValue("nickName", "duplicate");
+			return "account/signUp1";
+		} catch (DuplicateEmailException  e) {
+			errors.rejectValue("email", "duplicate");
+			return "account/signUp1";
+		} 
 	}
 
 	// 회원가입 성공화면 직접입력방지

@@ -2,8 +2,10 @@ package proj21_funding.mapper;
 
 import java.util.List;
 
-import proj21_funding.dto.BoardCategory;
+import org.springframework.stereotype.Component;
 
+import proj21_funding.dto.BoardCategory;
+@Component
 public interface BoardCategoryMapper {
 	
 	List<BoardCategory> selectBCAll();
@@ -11,6 +13,8 @@ public interface BoardCategoryMapper {
 	BoardCategory selectBCbyNo(int categoryNo);
 
 	BoardCategory selectBCbyName(String categoryName);
+	
+	List<BoardCategory> selectBCbyClass(String categoryClass);
 	
 	int insertBC(BoardCategory bc);
 	

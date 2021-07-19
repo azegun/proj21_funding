@@ -1,33 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/header.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home_css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/account_css/searchId-rs.css">
 </head>
 <body>
 	<div class="container">
 		<header>		   
-			<jsp:include page="/WEB-INF/view/home/header_top.jsp"/> 
+			<jsp:include page="/WEB-INF/view/home/header.jsp"/> 
 		</header>
-		<fieldset id="searchId">			
-			<c:if test="userInfo.userId != null">
-				<section id="searchIdFormArea">
-					회원계정은 ${userInfo.userId}입니다.
-				</section>
-				<p><a href ="<c:url value='/login'/>" >로그인화면으로 가기</a></p>
-				<p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a>
-			</c:if>
-			<c:if test="userInfo.userId == null">
-				<section id="searchIdFormArea">
-					회원계정을 찾을 수 없습니다.
-				</section>						
-				<p><a href="<c:url value='/main'/>">메인화면으로가기</a></p>
-				<p><a href="<c:url value='/account/signUp1'/>">회원가입하기</a></p>	
-			</c:if>	
-		</fieldset>
+		<section id="searchIdFormArea">	
+			<fieldset id="searchId">				
+				회원계정은  [${userSearch.userId}]입니다.							
+			</fieldset>
+			<div id="btn">
+				<a href ="<c:url value='/login'/>" ><button>로그인화면으로</button></a>
+				<a href="<c:url value='/account/searchPw'/>"><button>비밀번호 찾기</button></a>
+			</div>
+		</section>
 		<footer>
 			<jsp:include page="/WEB-INF/view/home/footer.jsp"/> 
 		</footer>
